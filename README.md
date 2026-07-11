@@ -1,34 +1,22 @@
 # AKS Platform Project Book
 
-Document de référence pour la conception, l’architecture, la gouvernance et le développement d’AKS Platform.
+Documentation officielle de l'architecture d'AKS Platform.
 
-## Statut
+## Présentation
 
-En cours de rédaction.
+Ce dépôt contient l'ensemble de la documentation qui régit la conception, le développement et l'évolution d'AKS Platform.
 
-## Rôle
+Le **Project Book** constitue la référence officielle du projet. Toute décision d'architecture, de gouvernance ou de développement y est documentée avant son implémentation.
 
-Ce dépôt contient uniquement la documentation fondatrice du projet :
+Le code source est développé dans un dépôt distinct.
 
-- vision ;
-- architecture ;
-- décisions techniques ;
-- RFC ;
-- enseignements tirés du prototype ;
-- conventions de développement ;
-- roadmap.
+## Structure du dépôt
 
-Aucun code de production n’est développé dans ce dépôt.
-
-## Organisation
-
-- `docs/ProjectBook/` : chapitres du Project Book ;
-- `docs/ADR/` : Architecture Decision Records ;
-- `docs/RFC/` : propositions techniques ;
-- `docs/Lessons-Learned/` : enseignements tirés du prototype.
-
-## Gouvernance
-
-- Product Owner : Anthony SERRIDJ
-- Technical Lead : OpenAI / ChatGPT
-- Organisation : Association Karaté Serémange
+```
+project-book/
+adr/
+rfc/
+standards/
+templates/
+assets/
+```

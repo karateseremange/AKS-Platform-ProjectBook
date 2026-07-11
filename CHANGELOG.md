@@ -1,12 +1,10 @@
 # Changelog
 
-Toutes les évolutions importantes du Project Book seront documentées ici.
+## v0.2.0
 
-## [0.1.0] - 2026-07-10
-
-### Ajouté
-
-- création du dépôt documentaire ;
-- création de l’arborescence initiale ;
-- ajout du README ;
-- préparation du Project Book v1.0.
+- Initialisation du dépôt documentaire.
+- Ajout du README.
+- Ajout de STD-000.
+- Ajout de PB-00.
+- Ajout de PB-01.
+- Ajout de PB-02.
