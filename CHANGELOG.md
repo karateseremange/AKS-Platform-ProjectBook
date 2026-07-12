@@ -1,5 +1,13 @@
 # Changelog
 
+## RC 0.5.0 — 2026-07-13
+
+- Validation de HQ-007 — Notifications par e-mail.
+- Ajout des notifications conditionnelles du représentant légal.
+- Ajout du récapitulatif éphémère des réponses, envoyé uniquement au représentant légal.
+- Ajout de la notification administrative du club avec identité du licencié, référence et formalité attendue.
+- Confirmation de l’absence de persistance et de transmission au club des réponses détaillées.
+
 ## RC 0.4.0 — 2026-07-12
 
 - Validation de HQ-006 — Génération de l’attestation PDF FFKDA.
