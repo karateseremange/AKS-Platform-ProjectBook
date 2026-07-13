@@ -1,5 +1,12 @@
 # Changelog
 
+## RC 0.6.0 — 2026-07-13
+
+- Validation de HQ-008 — Saisie mobile de la date de naissance.
+- Remplacement du calendrier natif par une saisie jour/mois/année adaptée au mobile.
+- Maintien du format ISO et des validations existantes.
+- Ajout du rappel concernant l’e-mail et les courriers indésirables sur la confirmation.
+
 ## RC 0.5.0 — 2026-07-13
 
 - Validation de HQ-007 — Notifications par e-mail.
