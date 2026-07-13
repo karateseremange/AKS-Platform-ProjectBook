@@ -1,5 +1,15 @@
 # Changelog
 
+## RC 0.7.0 — 2026-07-13
+
+- Validation de HQ-009 — Intégration WordPress sécurisée.
+- Ajout d'une API Apps Script signée HMAC-SHA256 avec expiration et protection anti-rejeu.
+- Ajout de l'extension WordPress AKS Platform Connector 0.10.1.
+- Ajout du shortcode `[aks_health_questionnaire]` et du parcours responsive complet.
+- Suppression de la dépendance à une session Google pour les visiteurs du site.
+- Maintien de l'absence de stockage WordPress des réponses détaillées.
+- Validation réelle sur ordinateur, Android et en navigation privée.
+
 ## RC 0.6.0 — 2026-07-13
 
 - Validation de HQ-008 — Saisie mobile de la date de naissance.
