@@ -1,5 +1,15 @@
 # Changelog
 
+## RC 0.8.0 — 2026-07-15
+
+- Validation de HQ-010 — Intégration WordPress professionnelle.
+- Ajout du shortcode `[aks_health_questionnaire_page]`.
+- Ajout d’une page d’entrée responsive avec préparation, confidentialité et assistance.
+- Conservation du shortcode HQ-009 et du contrat sécurisé existant.
+- Mise à jour de l’extension AKS Platform Connector en version 0.11.0.
+- Validation visuelle et fonctionnelle réelle sur le site du club.
+- Validation des 20 contrôles automatisés HQ-010.
+
 ## DOC-001 — 2026-07-15
 
 - Ajout du guide d’installation et d’administration d’AKS Platform RC 0.7.0.
