@@ -1,5 +1,13 @@
 # Changelog
 
+## DOC-001 — 2026-07-15
+
+- Ajout du guide d’installation et d’administration d’AKS Platform RC 0.7.0.
+- Ajout du guide utilisateur destiné aux gestionnaires autorisés du club.
+- Ajout de la fiche d’information destinée aux familles.
+- Ajout de l’index des guides opérationnels.
+- Mise à jour de la structure documentaire du Project Book.
+
 ## RC 0.7.0 — 2026-07-13
 
 - Validation de HQ-009 — Intégration WordPress sécurisée.
