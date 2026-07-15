@@ -11,6 +11,12 @@ Questionnaire santé des licenciés mineurs.
 | [Guide utilisateur du club](utilisateur/GUIDE-UTILISATEUR-CLUB.md) | Président, secrétaire, gestionnaire autorisé | Créer une campagne et suivre les formalités administratives |
 | [Fiche questionnaire mineur](familles/FICHE-QUESTIONNAIRE-MINEUR.md) | Familles et représentants légaux | Comprendre et compléter le questionnaire en ligne |
 
+## Versions PDF
+
+- [Guide d’installation et d’administration](pdf/AKS-Platform-Guide-Installation-Administration-RC-0.7.0.pdf) ;
+- [Guide utilisateur du club](pdf/AKS-Platform-Guide-Utilisateur-Club-RC-0.7.0.pdf) ;
+- [Fiche destinée aux familles](pdf/AKS-Platform-Fiche-Familles-Questionnaire-Mineur.pdf).
+
 ## Principes communs
 
 - les réponses détaillées restent confidentielles ;

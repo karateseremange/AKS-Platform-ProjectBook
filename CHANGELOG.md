@@ -7,6 +7,7 @@
 - Ajout de la fiche d’information destinée aux familles.
 - Ajout de l’index des guides opérationnels.
 - Mise à jour de la structure documentaire du Project Book.
+- Ajout des trois versions PDF A4 contrôlées visuellement.
 
 ## RC 0.7.0 — 2026-07-13
 
