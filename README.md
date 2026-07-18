@@ -4,7 +4,19 @@ Bienvenue dans le **Project Book** d'AKS Platform.
 
 Ce dépôt constitue la **documentation officielle** du projet. Toute décision fonctionnelle, d'architecture ou de gouvernance doit y être documentée avant ou en parallèle de son implémentation.
 
----
+## Historique
+
+AKS Platform est née de la volonté de remplacer une collection d'outils indépendants par une plateforme unique, cohérente, documentée, maintenable et évolutive.
+
+Avant le développement officiel de la version 1.0.0, un **Proof of Concept (PoC)** a permis de valider les principaux choix techniques et méthodologiques. Cette phase exploratoire a confirmé la faisabilité du projet et conduit à la conception d'une nouvelle architecture, accompagnée de la création du **Project Book** comme documentation officielle de référence.
+
+Depuis la publication de la version **1.0.0**, le développement suit une approche structurée basée sur :
+
+- une gouvernance documentaire ;
+- une architecture modulaire ;
+- des services communs mutualisés ;
+- un processus de publication maîtrisé ;
+- une évolution incrémentale des modules métier.
 
 # Objectifs
 
