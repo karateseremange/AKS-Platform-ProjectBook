@@ -1,13 +1,13 @@
 # PB-03 — Objectifs
 
-| Propriété | Valeur |
-|-----------|--------|
-| **Document ID** | PB-03 |
-| **Titre** | Objectifs |
-| **Version** | 0.2.0 |
-| **Statut** | Review |
-| **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-10 |
+| Propriété                | Valeur        |
+| ------------------------ | ------------- |
+| **Document ID**          | PB-03         |
+| **Titre**                | Objectifs     |
+| **Version**              | 0.2.0         |
+| **Statut**               | Review        |
+| **Propriétaire**         | Product Owner |
+| **Dernière mise à jour** | 2026-07-10    |
 
 ---
 
@@ -45,18 +45,7 @@ Construire une plateforme dont l'évolution ne dépend ni d'une personne, ni d'u
 
 La plateforme doit permettre de couvrir progressivement l'ensemble des besoins numériques de l'association.
 
-Les principaux domaines fonctionnels sont :
-
-- Gestion des licenciés
-- Gestion des inscriptions
-- Gestion des passages de grades
-- Gestion des présences
-- Gestion des compétitions
-- Gestion documentaire
-- Communication
-- Tableaux de bord
-- Statistiques
-- Gestion des événements
+La plateforme évolue progressivement par l'ajout de modules fonctionnels indépendants reposant sur AKS Core. La liste des modules est maintenue dans la feuille de route officielle (`ROADMAP-001`) afin d'éviter toute duplication.
 
 Chaque domaine fonctionnel est développé sous la forme d'un module indépendant reposant sur AKS Core.
 
@@ -93,7 +82,7 @@ Les objectifs sont les suivants :
 
 ---
 
-# Critères de réussite
+# Indicateurs de réussite
 
 AKS Platform atteint ses objectifs lorsque :
 

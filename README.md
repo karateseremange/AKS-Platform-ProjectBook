@@ -39,6 +39,7 @@ project-book/
 ├── documentation/
 ├── modules/
 ├── release/
+└── strategy/
 └── ux/
 ```
 
@@ -50,7 +51,6 @@ Chaque document possède une responsabilité unique et est identifié par un cod
 
 ## Gouvernance
 
-- ROADMAP-001 — Feuille de route
 - DOC-001 — Gouvernance documentaire
 - RELEASE-001 — Processus de publication
 
@@ -80,6 +80,11 @@ Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'*
 ## Vision
 
 - VISION-001 — Vision d'AKS Platform
+
+## Strategy
+
+- OBJECTIVES-001
+- ROADMAP-001 — Feuille de route
 
 ---
 
