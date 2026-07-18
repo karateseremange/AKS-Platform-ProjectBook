@@ -85,6 +85,7 @@ Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'*
 
 - OBJECTIVES-001
 - ROADMAP-001 — Feuille de route
+- SCOPE-001 — Périmètre fonctionnel
 
 ---
 

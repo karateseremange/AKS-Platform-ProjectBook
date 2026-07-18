@@ -1,13 +1,13 @@
-# PB-04 — Périmètre
+# SCOPE-001 — Périmètre
 
-| Propriété | Valeur |
-|-----------|--------|
-| **Document ID** | PB-04 |
-| **Titre** | Périmètre |
-| **Version** | 0.2.0 |
-| **Statut** | Review |
-| **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-10 |
+| Propriété                | Valeur        |
+| ------------------------ | ------------- |
+| **Document ID**          | SCOPE-001     |
+| **Titre**                | Périmètre     |
+| **Version**              | 0.2.0         |
+| **Statut**               | Review        |
+| **Propriétaire**         | Product Owner |
+| **Dernière mise à jour** | 2026-07-18    |
 
 ---
 
@@ -31,7 +31,7 @@ Toute nouvelle fonctionnalité doit s'inscrire dans ce périmètre ou faire l'ob
 
 ---
 
-# Périmètre actuel
+# Périmètre fonctionnel
 
 La plateforme couvre progressivement les domaines suivants :
 
@@ -113,7 +113,7 @@ Le projet recherche l'efficacité et la cohérence plutôt que la centralisation
 
 ---
 
-# Références
+# Documents associés
 
 - PB-01 — Vision
 - PB-02 — Philosophie
