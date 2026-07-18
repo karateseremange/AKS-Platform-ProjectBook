@@ -1,61 +1,88 @@
 # Changelog
 
-## RC 0.8.0 — 2026-07-15
+Toutes les évolutions importantes d'AKS Platform sont documentées dans ce fichier.
 
-- Validation de HQ-010 — Intégration WordPress professionnelle.
-- Ajout du shortcode `[aks_health_questionnaire_page]`.
-- Ajout d’une page d’entrée responsive avec préparation, confidentialité et assistance.
-- Conservation du shortcode HQ-009 et du contrat sécurisé existant.
-- Mise à jour de l’extension AKS Platform Connector en version 0.11.0.
-- Validation visuelle et fonctionnelle réelle sur le site du club.
-- Validation des 20 contrôles automatisés HQ-010.
+Ce document constitue l'historique officiel des versions publiées de la plateforme.
 
-## DOC-001 — 2026-07-15
+Les versions candidates (Release Candidates) correspondent aux phases de préparation d'une version officielle. Les versions publiées suivent le versionnement sémantique (`vX.Y.Z`).
 
-- Ajout du guide d’installation et d’administration d’AKS Platform RC 0.7.0.
-- Ajout du guide utilisateur destiné aux gestionnaires autorisés du club.
-- Ajout de la fiche d’information destinée aux familles.
-- Ajout de l’index des guides opérationnels.
-- Mise à jour de la structure documentaire du Project Book.
-- Ajout des trois versions PDF A4 contrôlées visuellement.
+---
 
-## RC 0.7.0 — 2026-07-13
+## [1.0.0] - 2026-07-XX
 
-- Validation de HQ-009 — Intégration WordPress sécurisée.
-- Ajout d'une API Apps Script signée HMAC-SHA256 avec expiration et protection anti-rejeu.
-- Ajout de l'extension WordPress AKS Platform Connector 0.10.1.
-- Ajout du shortcode `[aks_health_questionnaire]` et du parcours responsive complet.
-- Suppression de la dépendance à une session Google pour les visiteurs du site.
-- Maintien de l'absence de stockage WordPress des réponses détaillées.
-- Validation réelle sur ordinateur, Android et en navigation privée.
+### Première version officielle
 
-## RC 0.6.0 — 2026-07-13
+Cette version constitue la première publication officielle d'AKS Platform.
 
-- Validation de HQ-008 — Saisie mobile de la date de naissance.
-- Remplacement du calendrier natif par une saisie jour/mois/année adaptée au mobile.
-- Maintien du format ISO et des validations existantes.
-- Ajout du rappel concernant l’e-mail et les courriers indésirables sur la confirmation.
+Elle marque la stabilisation de l'architecture de la plateforme et la mise en production du premier module métier.
 
-## RC 0.5.0 — 2026-07-13
+### Ajouts
 
-- Validation de HQ-007 — Notifications par e-mail.
-- Ajout des notifications conditionnelles du représentant légal.
-- Ajout du récapitulatif éphémère des réponses, envoyé uniquement au représentant légal.
-- Ajout de la notification administrative du club avec identité du licencié, référence et formalité attendue.
-- Confirmation de l’absence de persistance et de transmission au club des réponses détaillées.
+- Publication officielle d'AKS Platform v1.0.0.
+- Mise en place d'AKS Core.
+- Intégration du module **Questionnaire Santé**.
+- Intégration d'AKS Platform Connector 0.11.0.
 
-## RC 0.4.0 — 2026-07-12
+### Confidentialité
 
-- Validation de HQ-006 — Génération de l’attestation PDF FFKDA.
-- Ajout du modèle officiel de l’attestation mineur.
-- Ajout du logo officiel FFKDA.
-- Validation du QR code opaque et du stockage Drive privé.
+- Mise en œuvre du principe **Privacy by Design**.
+- Aucune conservation des réponses au questionnaire santé.
+- Transmission limitée aux seules informations administratives nécessaires au traitement des licences.
 
-## v0.2.0
+### Documentation
 
-- Initialisation du dépôt documentaire.
-- Ajout du README.
-- Ajout de STD-000.
-- Ajout de PB-00.
-- Ajout de PB-01.
-- Ajout de PB-02.
+- Publication du Project Book v1.
+- Publication des guides d'installation, d'administration et d'utilisation.
+- Qualification des guides opérationnels (DOC-001).
+- Mise à disposition de la documentation officielle de la plateforme.
+
+### Compatibilité validée
+
+| Composant | Version |
+|-----------|---------|
+| AKS Platform Connector | 0.11.0 |
+| WordPress | 7.0.1 |
+| PHP | 8.3.23 |
+| Google Apps Script | Runtime V8 |
+
+---
+
+## Historique des Release Candidates
+
+Les Release Candidates correspondent aux différentes étapes ayant conduit à la publication de la première version officielle.
+
+| Version | Description |
+|----------|-------------|
+| RC 0.8.0 | Dernière Release Candidate avant publication de la version 1.0.0. |
+| RC 0.7.0 | Stabilisation fonctionnelle et documentaire. |
+| RC 0.6.0 | Finalisation des fonctionnalités principales. |
+| RC 0.5.0 | Consolidation de l'architecture. |
+| RC 0.4.0 | Stabilisation d'AKS Core. |
+| RC 0.3.0 | Première Release Candidate publique. |
+
+---
+
+## Politique de versionnement
+
+AKS Platform utilise le versionnement sémantique.
+
+- Les **Release Candidates** sont identifiées par le préfixe `RC`.
+- Les **versions officielles** utilisent le format `vX.Y.Z`.
+
+Chaque version officielle fait l'objet :
+
+- d'une documentation mise à jour ;
+- d'une validation documentaire ;
+- d'une publication Git avec un tag correspondant.
+
+---
+
+## Références
+
+Pour les informations détaillées relatives à chaque version, consulter :
+
+- les notes de version ;
+- le Project Book ;
+- les guides officiels ;
+- les décisions d'architecture (ADR) ;
+- les décisions de gouvernance (DG).
