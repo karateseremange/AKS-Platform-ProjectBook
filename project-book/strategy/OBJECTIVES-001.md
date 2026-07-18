@@ -98,5 +98,5 @@ AKS Platform atteint ses objectifs lorsque :
 
 - PB-01 — Vision
 - PB-02 — Philosophie
-- PB-04 — Périmètre
+- SCOPE-001 — Périmètre
 - PB-05 — Vue d'ensemble
