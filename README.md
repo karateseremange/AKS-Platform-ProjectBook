@@ -77,6 +77,10 @@ Le premier module historique est **Questionnaire Santé** (V1.0.0).
 
 Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'**AKS Calendar**.
 
+## Vision
+
+- VISION-001 — Vision d'AKS Platform
+
 ---
 
 # Dépôts Git
