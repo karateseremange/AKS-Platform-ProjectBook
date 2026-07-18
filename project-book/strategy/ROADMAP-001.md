@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.1.0 |
+| **Version** | 1.1.1 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-18 |
@@ -324,6 +324,57 @@ La V1.1 pourra être publiée lorsque :
 - la version est prête à être fusionnée dans `main` ;
 - le tag de publication peut être créé selon RELEASE-001.
 
+## 6.14 Ordre d’exécution documentaire de la consolidation
+
+L’ordre de consolidation documentaire retenu pour la V1.1 est le suivant :
+
+1. ROADMAP-001 — feuille de route et pilotage ;
+2. GOV-001 — gouvernance produit ;
+3. ADMIN-001 — tableau de bord d’administration ;
+4. SECURITY-001 — sécurité de la plateforme ;
+5. AUDIT-001 — audit et traçabilité ;
+6. NOTIF-001 — notifications ;
+7. API-001 — interfaces et contrats internes ;
+8. ERROR-001 — gestion des erreurs ;
+9. DOCUMENT-001 — génération documentaire ;
+10. STORAGE-001 — stockage et conservation ;
+11. DOC-001 — revue finale de la gouvernance documentaire et de la cohérence du Project Book.
+
+Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consolidés avant la formalisation de cet ordre. Ils restent des dépendances de référence et doivent être réexaminés uniquement si une consolidation ultérieure introduit une contradiction ou une dépendance nouvelle.
+
+## 6.15 État documentaire de la V1.1
+
+| Document | Domaine | État au 18 juillet 2026 |
+|---|---|---|
+| ROADMAP-001 | Feuille de route | Consolidé |
+| ARCH-001 | Architecture fonctionnelle | Consolidé |
+| CORE-001 | Services de plateforme | Consolidé |
+| CONFIG-001 | Paramétrage centralisé | Consolidé |
+| LOG-001 | Journalisation | Consolidé |
+| UX-001 | Expérience utilisateur | Consolidé |
+| GOV-001 | Gouvernance produit | À consolider |
+| ADMIN-001 | Administration | À consolider |
+| SECURITY-001 | Sécurité | À consolider |
+| AUDIT-001 | Audit et traçabilité | À consolider |
+| NOTIF-001 | Notifications | À consolider |
+| API-001 | Interfaces internes | À consolider |
+| ERROR-001 | Gestion des erreurs | À consolider |
+| DOCUMENT-001 | Génération documentaire | À consolider |
+| STORAGE-001 | Stockage et conservation | À consolider |
+| DOC-001 | Gouvernance documentaire | Revue finale à réaliser |
+
+L’état **Consolidé** signifie que le document a fait l’objet d’une revue de cohérence V1.1 et d’une mise à jour validée dans le dépôt documentaire. Il ne signifie pas automatiquement que toutes les fonctionnalités décrites sont déjà implémentées dans le dépôt applicatif.
+
+## 6.16 Règle de mise à jour du suivi
+
+Après chaque consolidation documentaire :
+
+- le document concerné est mis à jour dans le dépôt Project Book ;
+- le commit constitue la preuve de la consolidation ;
+- le tableau de suivi de la présente section est actualisé lorsque nécessaire ;
+- les contradictions détectées avec un document déjà consolidé doivent être résolues avant de poursuivre ;
+- aucune fonctionnalité ne doit être déclarée opérationnelle sur la seule base de sa documentation.
+
 ---
 
 # 7. Dépendances de la V1.1
@@ -332,16 +383,27 @@ La V1.1 pourra être publiée lorsque :
 
 La V1.1 doit assurer la cohérence entre :
 
+- ROADMAP-001 ;
+- GOV-001 ;
 - ARCH-001 ;
 - CORE-001 ;
 - ADMIN-001 ;
 - CONFIG-001 ;
 - LOG-001 ;
 - UX-001 ;
+- SECURITY-001 ;
+- AUDIT-001 ;
+- NOTIF-001 ;
+- API-001 ;
+- ERROR-001 ;
+- DOCUMENT-001 ;
+- STORAGE-001 ;
 - DOC-001 ;
 - RELEASE-001.
 
 Aucun de ces documents ne doit définir un comportement contradictoire avec les autres.
+
+L’absence temporaire d’un document dédié n’autorise pas l’implémentation implicite de son domaine. Le besoin doit d’abord être cadré dans le Project Book ou rattaché explicitement à un document existant.
 
 ## 7.2 Dépendances avec AKS Analytics
 
@@ -509,7 +571,8 @@ Le suivi de la roadmap repose au minimum sur :
 - les dépendances non résolues ;
 - l’état de synchronisation du code et de la documentation ;
 - les régressions détectées ;
-- les décisions de gouvernance ouvertes.
+- les décisions de gouvernance ouvertes ;
+- l’état de consolidation des documents structurants de la V1.1.
 
 Ces indicateurs servent au pilotage et ne remplacent pas la validation fonctionnelle des livrables.
 
@@ -545,6 +608,7 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - quel module vient ensuite ?
 - quels éléments restent de simples candidats ?
 - comment une modification de trajectoire est-elle décidée ?
+- quel est l’état de consolidation documentaire de la V1.1 ?
 
 La trajectoire officielle reste :
 
