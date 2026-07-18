@@ -1,9 +1,11 @@
-# ADMIN-001
-# Tableau de bord d'administration d'AKS Platform
-
-Version : 1.0  
-Statut : Validé  
-Version du produit : V1.1
+| Propriété | Valeur |
+|-----------|--------|
+| **Document ID** | ADMIN-001 |
+| **Titre** | Tableau de bord d'administration d'AKS Platform |
+| **Version** | 1.1.0 |
+| **Statut** | Validé |
+| **Propriétaire** | Product Owner |
+| **Dernière mise à jour** | 2026-07-18 |
 
 ---
 
@@ -30,7 +32,7 @@ Le tableau de bord d'administration doit permettre de :
 
 ---
 
-# 3. Position dans l'architecture
+# 3. Architecture fonctionnelle
 
 Le tableau de bord d'administration s'appuie sur :
 
@@ -201,6 +203,8 @@ Le tableau de bord doit respecter les principes suivants :
 - ne pas dépendre directement d'un module particulier ;
 - rester cohérent avec `ARCH-001` et `CORE-001`.
 
+Les principes décrits dans ce chapitre complètent ceux définis dans ARCH-001 et CORE-001.
+
 ---
 
 # 9. Éléments exclus
@@ -223,7 +227,7 @@ Le tableau de bord dépend de :
 
 - `ARCH-001` pour les règles d'architecture ;
 - `CORE-001` pour les services communs ;
-- `CONFIG-001` pour le paramétrage ;
+- `PARAM-001` pour le paramétrage ;
 - `LOG-001` pour la journalisation ;
 - `UX-001` pour les règles d'expérience utilisateur ;
 - des interfaces d'administration exposées par les modules.
@@ -254,14 +258,31 @@ Le tableau de bord d'administration sera considéré comme conforme lorsque :
 - `ROADMAP-001` — Feuille de route officielle d'AKS Platform v1.1
 - `ARCH-001` — Architecture fonctionnelle
 - `CORE-001` — AKS Core
-- `CONFIG-001` — Paramétrage centralisé, à produire
+- `PARAM-001` — Paramétrage centralisé, à produire
 - `LOG-001` — Journalisation, à produire
 - `UX-001` — Principes UX, à produire
 
 ---
 
-# 13. Conclusion
+# 13. Position dans le Project Book
 
-Le tableau de bord d'administration constitue le point d'entrée opérationnel de la gestion d'AKS Platform.
+ADMIN-001 décrit l'organisation fonctionnelle de l'administration d'AKS Platform.
+
+Il constitue le document de référence pour toutes les fonctionnalités réservées aux administrateurs de la plateforme.
+
+Il s'appuie sur les principes définis dans :
+
+- **ARCH-001** — Architecture fonctionnelle d'AKS Platform ;
+- **CORE-001** — Architecture d'AKS Core.
+
+Les futurs documents spécialisés, notamment ceux relatifs au paramétrage, à la journalisation ou aux modules métier, viendront préciser certaines fonctionnalités du tableau de bord sans remettre en cause son organisation générale.
+
+Toute évolution des fonctionnalités d'administration devra respecter les principes établis dans le présent document.
+
+---
+
+# 14. Conclusion
+
+le tableau de bord est l'unique point d'entrée des fonctions d'administration, en cohérence avec l'architecture définie dans ARCH-001.
 
 Il centralise l'accès aux fonctions transversales, améliore la supervision de la plateforme et prépare l'intégration des futurs modules sans introduire de dépendance métier supplémentaire.
