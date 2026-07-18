@@ -18,7 +18,42 @@ Il constitue la référence d'architecture pour tous les développements futurs.
 
 ---
 
-# 2. Principes d'architecture
+# 2. Principes d'ingénierie
+
+Le développement d'AKS Platform repose sur les principes suivants.
+
+## Documentation Before Code
+
+Toute décision structurante est documentée avant son implémentation.
+
+## Architecture Before Implementation
+
+L'architecture est définie avant le développement des fonctionnalités.
+
+## Generic by Design
+
+Les composants sont conçus pour être réutilisables lorsqu'un bénéfice réel est identifié.
+
+La généricité ne constitue pas un objectif en soi.
+
+## YAGNI (You Aren't Gonna Need It)
+
+Aucune fonctionnalité n'est développée sans besoin métier identifié et validé.
+
+## Simplicité
+
+La solution la plus simple répondant au besoin est toujours privilégiée.
+
+## Maintenabilité
+
+Chaque décision doit favoriser :
+
+- la lisibilité ;
+- la modularité ;
+- les évolutions futures ;
+- la facilité de maintenance.
+
+# 3. Principes d'architecture
 
 AKS Platform repose sur les principes suivants :
 
@@ -36,7 +71,7 @@ Les choix d'implémentation ne doivent jamais remettre en cause ces principes.
 
 ---
 
-# 3. Vue d'ensemble
+# 4. Vue d'ensemble
 
 L'architecture fonctionnelle est organisée autour de quatre couches.
 
@@ -62,9 +97,9 @@ L'architecture fonctionnelle est organisée autour de quatre couches.
 
 ---
 
-# 4. Les composants de la plateforme
+# 5. Les composants de la plateforme
 
-## 4.1 AKS Core
+## 5.1 AKS Core
 
 AKS Core constitue le socle de la plateforme.
 
@@ -74,7 +109,7 @@ AKS Core ne contient aucune logique métier spécifique.
 
 ---
 
-## 4.2 Services communs
+## 5.2 Services communs
 
 Les services communs sont mutualisés entre tous les modules.
 
@@ -92,7 +127,7 @@ Un service commun est développé une seule fois puis réutilisé.
 
 ---
 
-## 4.3 Modules métier
+## 5.3 Modules métier
 
 Chaque module répond à un besoin métier clairement identifié.
 
@@ -111,7 +146,7 @@ Chaque module possède :
 
 ---
 
-## 4.4 Intégrations externes
+## 5.4 Intégrations externes
 
 Les intégrations externes permettent à AKS Platform de communiquer avec des services tiers.
 
@@ -127,7 +162,7 @@ Ces intégrations restent découplées des modules métier.
 
 ---
 
-# 5. Règles de dépendance
+# 6. Règles de dépendance
 
 Les dépendances autorisées sont les suivantes :
 
@@ -143,7 +178,7 @@ Toute fonctionnalité partagée doit être extraite dans un service commun.
 
 ---
 
-# 6. Cycle d'évolution
+# 7. Cycle d'évolution
 
 Toute évolution suit le cycle suivant :
 
@@ -159,7 +194,7 @@ Aucune fonctionnalité ne peut être publiée sans documentation associée.
 
 ---
 
-# 7. Principes de développement
+# 8. Principes de développement
 
 Le développement d'AKS Platform repose sur les règles suivantes :
 
@@ -174,7 +209,7 @@ Toute évolution doit préserver la stabilité globale de la plateforme.
 
 ---
 
-# 8. Compatibilité
+# 9. Compatibilité
 
 Les évolutions de la plateforme doivent :
 
@@ -185,7 +220,7 @@ Les évolutions de la plateforme doivent :
 
 ---
 
-# 9. Évolutions futures
+# 10. Évolutions futures
 
 L'ajout d'un nouveau module suit les étapes suivantes :
 
@@ -201,7 +236,7 @@ Chaque module doit pouvoir évoluer indépendamment des autres.
 
 ---
 
-# 10. Conclusion
+# 11. Conclusion
 
 ARCH-001 constitue la référence officielle de l'architecture fonctionnelle d'AKS Platform.
 
