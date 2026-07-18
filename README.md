@@ -1,144 +1,121 @@
-AKS Platform Project Book
-Version 1.0.0
+# AKS Platform Project Book
 
-Documentation officielle
-Association Karaté Serémange
+Bienvenue dans le **Project Book** d'AKS Platform.
 
-# AKS Platform – Project Book
-
-> Documentation officielle d'AKS Platform
+Ce dépôt constitue la **documentation officielle** du projet. Toute décision fonctionnelle, d'architecture ou de gouvernance doit y être documentée avant ou en parallèle de son implémentation.
 
 ---
 
-## Présentation
-
-Le **Project Book** constitue la référence documentaire officielle d'AKS Platform.
-
-Il centralise l'ensemble des informations nécessaires à la compréhension, au développement, au déploiement, à l'exploitation et à l'évolution de la plateforme.
-
-La documentation est maintenue en parallèle du code source afin de garantir la cohérence du produit tout au long de son cycle de vie.
-
----
-
-# À propos d'AKS Platform
-
-AKS Platform est une plateforme numérique développée par l'Association Karaté Serémange afin de moderniser la gestion administrative de ses activités.
-
-Son architecture modulaire permet d'intégrer progressivement de nouveaux modules métiers tout en s'appuyant sur un socle technique commun (**AKS Core**).
-
-La première version officielle met à disposition le **module Questionnaire Santé**, utilisé dans le cadre du renouvellement annuel des licences.
-
----
-
-# Objectifs du Project Book
+# Objectifs
 
 Le Project Book a pour objectifs de :
 
-- documenter les choix d'architecture ;
-- formaliser les décisions de gouvernance ;
-- fournir les guides d'installation, d'administration et d'utilisation ;
-- assurer la traçabilité des évolutions ;
-- garantir la maintenabilité de la plateforme.
-
-Il constitue la documentation de référence du projet.
+- centraliser la documentation officielle ;
+- garantir la cohérence des développements ;
+- assurer la traçabilité des décisions ;
+- faciliter la maintenance et les évolutions.
 
 ---
 
-# Organisation documentaire
+# Organisation
 
-Le Project Book est organisé en plusieurs catégories de documents.
+```text
+project-book/
+├── roadmap/
+├── architecture/
+├── administration/
+├── documentation/
+├── modules/
+├── release/
+└── ux/
+```
+
+Chaque document possède une responsabilité unique et est identifié par un code (`ARCH-001`, `CORE-001`, etc.).
+
+---
+
+# Documents de référence
+
+## Gouvernance
+
+- ROADMAP-001 — Feuille de route
+- DOC-001 — Gouvernance documentaire
+- RELEASE-001 — Processus de publication
+
+## Architecture
+
+- ARCH-001 — Architecture fonctionnelle
+- CORE-001 — AKS Core
+
+## Administration
+
+- ADMIN-001 — Tableau de bord
+- CONFIG-001 — Paramétrage centralisé
+- LOG-001 — Journalisation
+
+## Expérience utilisateur
+
+- UX-001 — Principes UX
+
+## Modules
+
+Les spécifications des modules métier sont regroupées dans le dossier `modules/`.
+
+Le premier module historique est **Questionnaire Santé** (V1.0.0).
+
+Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'**AKS Calendar**.
+
+---
+
+# Dépôts Git
+
+## Application
+
+- Branche `develop` : développement
+- Branche `main` : production
 
 ## Project Book
 
-Les documents **PB** présentent la vision globale du projet, son architecture et ses principes de fonctionnement.
+Le dépôt documentaire utilise actuellement sa branche de référence `master`.
 
 ---
 
-## Standards
+# Principes
 
-Les documents **STD** définissent les conventions de développement et les règles applicables au projet.
+Les développements doivent respecter les règles suivantes :
 
----
-
-## Guides
-
-Les guides décrivent les procédures d'installation, d'administration, d'exploitation et d'utilisation de la plateforme.
-
----
-
-## Releases
-
-Les documents de release assurent la traçabilité des versions publiées.
-
-Ils comprennent notamment :
-
-- les notes de version ;
-- les documents de qualification documentaire ;
-- les informations liées aux publications officielles.
+- aucune régression fonctionnelle ;
+- documentation synchronisée avec le code ;
+- architecture modulaire ;
+- services communs mutualisés ;
+- compatibilité ascendante autant que possible.
 
 ---
 
-# Principes de gouvernance
+# Démarrage
 
-Le Project Book repose sur les principes suivants :
+Pour découvrir le projet, il est recommandé de lire les documents dans l'ordre suivant :
 
-- une documentation unique et centralisée ;
-- des documents pérennes qui évoluent avec le produit ;
-- une séparation claire entre le code et la documentation ;
-- une documentation versionnée avec le logiciel ;
-- une traçabilité des décisions importantes.
-
----
-
-# Comment utiliser cette documentation
-
-Selon votre rôle, les documents suivants sont recommandés :
-
-| Vous êtes... | Consultez en priorité... |
-|--------------|--------------------------|
-| Développeur | Project Book, Standards |
-| Administrateur | Guides d'installation et d'administration |
-| Exploitant | Guides d'exploitation |
-| Contributeur | Project Book et Standards |
-| Responsable du projet | Ensemble de la documentation |
-
----
-
-# Dépôts du projet
-
-Le projet est organisé autour de deux dépôts Git distincts.
-
-| Dépôt | Contenu |
-|--------|---------|
-| **AKS Platform** | Code source de la plateforme |
-| **AKS Platform Project Book** | Documentation officielle |
-
-Cette séparation garantit une meilleure maintenabilité et facilite l'évolution indépendante du code et de la documentation.
-
----
-
-# Versionnement
-
-Le Project Book évolue en parallèle d'AKS Platform.
-
-Les versions officielles sont identifiées selon le versionnement sémantique.
-
-Les versions candidates utilisent le préfixe **RC**.
-
-Les versions publiées utilisent le format **vX.Y.Z**.
+1. ROADMAP-001
+2. ARCH-001
+3. CORE-001
+4. ADMIN-001
+5. CONFIG-001
+6. LOG-001
+7. UX-001
+8. DOC-001
+9. RELEASE-001
 
 ---
 
 # Licence
 
-© 2026 Association Karaté Serémange.
-
-Tous droits réservés.
+La licence applicable au projet est définie dans le dépôt GitHub principal.
 
 ---
 
-# Conclusion
+# État du Project Book
 
-Le Project Book constitue la référence documentaire officielle d'AKS Platform.
+Le Project Book est maintenu conjointement avec le développement d'AKS Platform.
 
-Son objectif est d'assurer la pérennité, la cohérence et la traçabilité du projet en accompagnant chaque évolution de la plateforme tout au long de son cycle de vie.
+Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée.
