@@ -1,57 +1,60 @@
-# PB-03 — Objectifs
+# OBJECTIVES-001
 
-| Propriété                | Valeur        |
-| ------------------------ | ------------- |
-| **Document ID**          | PB-03         |
-| **Titre**                | Objectifs     |
-| **Version**              | 0.2.0         |
-| **Statut**               | Review        |
-| **Propriétaire**         | Product Owner |
-| **Dernière mise à jour** | 2026-07-10    |
+# Objectifs stratégiques d'AKS Platform
+
+| Propriété | Valeur |
+|-----------|--------|
+| Document ID | OBJECTIVES-001 |
+| Titre | Objectifs stratégiques d'AKS Platform |
+| Version | 1.1.0 |
+| Statut | Validé |
+| Propriétaire | Product Owner |
+| Dernière mise à jour | 2026-07-19 |
+| Version du produit | V1.1 |
 
 ---
 
-# Objet du document
+# 1. Objet
 
 Ce document définit les objectifs poursuivis par AKS Platform.
 
-Il traduit la vision du projet en objectifs concrets qui guideront les décisions d'architecture, les priorités de développement et les critères de réussite de la plateforme.
+Il traduit la vision du produit en objectifs concrets qui guident les décisions d'architecture, les priorités de développement et les critères de réussite de la plateforme.
 
 ---
 
-# Objectifs stratégiques
+# 2. Objectifs stratégiques
 
 AKS Platform poursuit les objectifs stratégiques suivants.
 
-## Accompagner durablement l'association
+## 2.1. Accompagner durablement l'association
 
 Fournir une plateforme capable d'accompagner l'évolution de l'Association Karaté Serémange sur le long terme.
 
-## Constituer un patrimoine numérique
+## 2.2. Constituer un patrimoine numérique
 
 Préserver les données, les documents, les connaissances et les processus de l'association au sein d'un système unique et cohérent.
 
-## Améliorer le fonctionnement de l'association
+## 2.3. Améliorer le fonctionnement de l'association
 
 Réduire la charge administrative afin de permettre aux bénévoles et aux enseignants de consacrer davantage de temps à leur mission.
 
-## Garantir la pérennité du système
+## 2.4. Garantir la pérennité du système
 
 Construire une plateforme dont l'évolution ne dépend ni d'une personne, ni d'un outil, ni d'une technologie particulière.
 
 ---
 
-# Objectifs fonctionnels
+# 3. Objectifs fonctionnels
 
-La plateforme doit permettre de couvrir progressivement l'ensemble des besoins numériques de l'association.
+La plateforme doit permettre de couvrir progressivement les besoins numériques de l'association dans le périmètre défini par `SCOPE-001`.
 
-La plateforme évolue progressivement par l'ajout de modules fonctionnels indépendants reposant sur AKS Core. La liste des modules est maintenue dans la feuille de route officielle (`ROADMAP-001`) afin d'éviter toute duplication.
+Elle évolue par l'ajout de modules fonctionnels indépendants reposant sur AKS Core. L'ordre de réalisation des modules est maintenu dans `ROADMAP-001` afin d'éviter toute duplication.
 
-Chaque domaine fonctionnel est développé sous la forme d'un module indépendant reposant sur AKS Core.
+Chaque domaine fonctionnel est développé sous la forme d'un module indépendant reposant sur le socle commun défini par `CORE-001`.
 
 ---
 
-# Objectifs techniques
+# 4. Objectifs techniques
 
 AKS Platform doit être :
 
@@ -68,7 +71,7 @@ Ces objectifs orientent les choix d'architecture et les standards de développem
 
 ---
 
-# Objectifs organisationnels
+# 5. Objectifs organisationnels
 
 Le projet vise également à améliorer son propre mode de fonctionnement.
 
@@ -82,7 +85,33 @@ Les objectifs sont les suivants :
 
 ---
 
-# Indicateurs de réussite
+# 6. Dépendances
+
+Ce document dépend de :
+
+- `VISION-001`, qui définit la finalité et les principes directeurs du produit.
+
+Il encadre notamment :
+
+- `SCOPE-001` ;
+- `ROADMAP-001` ;
+- `GOV-001` ;
+- `ARCH-001`.
+
+---
+
+# 7. Exclusions
+
+Ce document ne définit pas :
+
+- le périmètre détaillé des fonctionnalités, traité dans `SCOPE-001` ;
+- l'ordre de réalisation des versions et modules, traité dans `ROADMAP-001` ;
+- les choix d'architecture, traités dans `ARCH-001` ;
+- les modalités opérationnelles de réalisation.
+
+---
+
+# 8. Indicateurs de réussite
 
 AKS Platform atteint ses objectifs lorsque :
 
@@ -94,9 +123,32 @@ AKS Platform atteint ses objectifs lorsque :
 
 ---
 
-# Références
+# 9. Critères d'acceptation
 
-- PB-01 — Vision
-- PB-02 — Philosophie
-- SCOPE-001 — Périmètre
-- PB-05 — Vue d'ensemble
+Le document est conforme lorsque :
+
+- les objectifs sont cohérents avec `VISION-001` ;
+- chaque priorité de `ROADMAP-001` contribue à au moins un objectif défini ici ;
+- les limites définies dans `SCOPE-001` ne contredisent pas les objectifs stratégiques ;
+- les choix d'architecture peuvent être justifiés par un ou plusieurs objectifs techniques ou organisationnels.
+
+---
+
+# 10. Historique
+
+| Version | Date | Évolution |
+|---------|------|-----------|
+| 1.1.0 | 2026-07-19 | Migration de PB-03 vers OBJECTIVES-001, normalisation et validation pour la V1.1 |
+| 0.2.0 | 2026-07-10 | Version historique PB-03 en revue |
+
+---
+
+# 11. Références
+
+- `VISION-001` — Vision d'AKS Platform
+- `SCOPE-001` — Périmètre fonctionnel
+- `ROADMAP-001` — Feuille de route officielle
+- `GOV-001` — Gouvernance produit
+- `ARCH-001` — Architecture fonctionnelle
+- `CORE-001` — AKS Core
+- `INDEX-001` — Catalogue du Project Book
