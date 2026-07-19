@@ -1,9 +1,15 @@
 # DECISIONS
 # Registre des décisions d'architecture et de gouvernance
 
-Version : 1.0
-Statut : Actif
-Version du produit : V1.1
+| Propriété | Valeur |
+|-----------|--------|
+| Document ID | DECISIONS |
+| Titre | Registre des décisions d'architecture et de gouvernance |
+| Version | 1.1.0 |
+| Statut | Actif |
+| Propriétaire | Product Owner |
+| Dernière mise à jour | 2026-07-19 |
+| Version du produit | V1.1 |
 
 ---
 
@@ -11,7 +17,7 @@ Version du produit : V1.1
 
 Ce document conserve l'historique des décisions structurantes prises pour AKS Platform.
 
-Il constitue un registre des décisions d'architecture (ADR simplifiées) afin d'expliquer **ce qui a été décidé, pourquoi et quelles en sont les conséquences**.
+Il constitue un registre des décisions d'architecture et de gouvernance afin d'expliquer **ce qui a été décidé, pourquoi et quelles en sont les conséquences**.
 
 Les décisions validées ne doivent être remises en cause qu'en présence d'un nouvel élément technique, fonctionnel ou réglementaire.
 
@@ -135,6 +141,24 @@ Le futur module AKS Calendar sera une couche d'intégration avant d'envisager un
 - Une décision validée n'est pas modifiée ; une nouvelle décision vient la compléter ou la remplacer.
 - Les décisions obsolètes restent dans l'historique avec leur statut mis à jour.
 - Les décisions doivent être référencées dans les documents concernés lorsque cela est pertinent.
+
+---
+
+# Historique
+
+| Version | Date | Évolution |
+|---------|------|-----------|
+| 1.1.0 | 2026-07-19 | Normalisation des métadonnées du registre sans modification des décisions validées |
+
+---
+
+# Références
+
+- INDEX-001
+- GOV-001
+- ROADMAP-001
+- ARCH-001
+- DOC-001
 
 ---
 
