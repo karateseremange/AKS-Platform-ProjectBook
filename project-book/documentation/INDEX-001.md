@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.1.0 |
+| Version | 1.1.1 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-19 |
@@ -66,7 +66,7 @@ L'arborescence réelle peut évoluer lorsque de nouveaux domaines apparaissent. 
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Roadmap | Validé | 1.1.0 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Roadmap | Validé | 1.1.1 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Gouvernance | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.1.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Validé | 1.1.0 | Définit le socle commun de la plateforme |
@@ -282,6 +282,7 @@ Avant le gel d'une version du Project Book, les contrôles suivants doivent êtr
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.1.1 | 2026-07-19 | Alignement de la version de ROADMAP-001 avec le document de référence |
 | 1.1.0 | 2026-07-19 | Création du catalogue officiel du Project Book et ajout de OBJECTIVES-001 et SCOPE-001 |
 
 ---
