@@ -1,4 +1,18 @@
-# DOCUMENT-001 — Gestion des documents générés
+# DOCUMENT-001
+
+# Gestion des documents générés
+
+| Propriété | Valeur |
+|-----------|--------|
+| Document ID | DOCUMENT-001 |
+| Titre | Gestion des documents générés |
+| Version | 1.1.0 |
+| Statut | Validé |
+| Propriétaire | Product Owner |
+| Dernière mise à jour | 2026-07-19 |
+| Version du produit | V1.1 |
+
+---
 
 ## 1. Objet
 
