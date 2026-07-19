@@ -4,6 +4,8 @@ Bienvenue dans le **Project Book** d'AKS Platform.
 
 Ce dépôt constitue la **documentation officielle** du projet. Toute décision fonctionnelle, d'architecture ou de gouvernance doit y être documentée avant ou en parallèle de son implémentation.
 
+Le catalogue documentaire officiel est disponible dans [`project-book/documentation/INDEX-001.md`](project-book/documentation/INDEX-001.md).
+
 ## Historique
 
 AKS Platform est née de la volonté de remplacer une collection d'outils indépendants par une plateforme unique, cohérente, documentée, maintenable et évolutive.
@@ -33,26 +35,41 @@ Le Project Book a pour objectifs de :
 
 ```text
 project-book/
+├── vision/
+├── strategy/
 ├── roadmap/
+├── governance/
 ├── architecture/
 ├── administration/
-├── documentation/
+├── ux/
 ├── modules/
+├── operations/
+├── documentation/
 ├── release/
-└── strategy/
-└── ux/
+└── references/
 ```
 
 Chaque document possède une responsabilité unique et est identifié par un code (`ARCH-001`, `CORE-001`, etc.).
+
+L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md) fait autorité sur l'organisation documentaire active.
 
 ---
 
 # Documents de référence
 
-## Gouvernance
+## Catalogue et gouvernance documentaire
 
-- DOC-001 — Gouvernance documentaire
+- [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
+- [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - RELEASE-001 — Processus de publication
+
+## Vision et stratégie
+
+- VISION-001 — Vision d'AKS Platform
+- OBJECTIVES-001 — Objectifs stratégiques
+- SCOPE-001 — Périmètre fonctionnel
+- ROADMAP-001 — Feuille de route officielle
+- GOV-001 — Gouvernance produit
 
 ## Architecture
 
@@ -76,16 +93,6 @@ Les spécifications des modules métier sont regroupées dans le dossier `module
 Le premier module historique est **Questionnaire Santé** (V1.0.0).
 
 Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'**AKS Calendar**.
-
-## Vision
-
-- VISION-001 — Vision d'AKS Platform
-
-## Strategy
-
-- OBJECTIVES-001
-- ROADMAP-001 — Feuille de route
-- SCOPE-001 — Périmètre fonctionnel
 
 ---
 
@@ -114,19 +121,22 @@ Les développements doivent respecter les règles suivantes :
 
 ---
 
-# Démarrage
+# Ordre de lecture recommandé
 
 Pour découvrir le projet, il est recommandé de lire les documents dans l'ordre suivant :
 
-1. ROADMAP-001
-2. ARCH-001
-3. CORE-001
-4. ADMIN-001
-5. CONFIG-001
-6. LOG-001
-7. UX-001
-8. DOC-001
-9. RELEASE-001
+1. INDEX-001 — Catalogue du Project Book
+2. VISION-001 — Vision d'AKS Platform
+3. OBJECTIVES-001 — Objectifs stratégiques
+4. SCOPE-001 — Périmètre fonctionnel
+5. ROADMAP-001 — Feuille de route officielle
+6. GOV-001 — Gouvernance produit
+7. ARCH-001 — Architecture fonctionnelle
+8. CORE-001 — AKS Core
+9. documents transverses, d'administration et d'expérience utilisateur
+10. documents des modules métier
+11. DOC-001 — Règles de documentation
+12. RELEASE-001 — Processus de publication
 
 ---
 
@@ -140,4 +150,4 @@ La licence applicable au projet est définie dans le dépôt GitHub principal.
 
 Le Project Book est maintenu conjointement avec le développement d'AKS Platform.
 
-Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée.
+Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).
