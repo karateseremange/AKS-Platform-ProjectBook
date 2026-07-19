@@ -100,12 +100,17 @@ Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'*
 
 ## Application
 
-- Branche `develop` : développement
-- Branche `main` : production
+- Branche `develop` : développement courant.
+- Branche `main` : version stable et production.
 
 ## Project Book
 
-Le dépôt documentaire utilise actuellement sa branche de référence `master`.
+- Branche `develop` : préparation et validation des évolutions documentaires.
+- Branche `main` : documentation officielle validée et publiée.
+
+Toute publication documentaire suit un cycle de validation, de fusion de `develop` vers `main`, puis de création d'un tag correspondant.
+
+Les modifications courantes ne doivent pas être réalisées directement sur `main`, sauf correctif documentaire urgent et explicitement validé.
 
 ---
 
