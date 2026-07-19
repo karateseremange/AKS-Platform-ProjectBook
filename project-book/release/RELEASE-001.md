@@ -5,7 +5,7 @@
 |-----------|--------|
 | Document ID | RELEASE-001 |
 | Titre | Processus de publication d'AKS Platform |
-| Version | 1.1.0 |
+| Version | 1.1.1 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-19 |
@@ -38,11 +38,23 @@ Le processus de publication doit :
 ## Dépôt applicatif
 
 - `develop` : développement courant ;
-- `main` : production.
+- `main` : version stable et production.
 
 ## Dépôt Project Book
 
-- `master` : branche documentaire de référence.
+- `develop` : préparation et validation des évolutions documentaires ;
+- `main` : documentation officielle validée et publiée.
+
+Les modifications courantes sont réalisées sur `develop`. Elles sont fusionnées vers `main` uniquement après validation documentaire.
+
+Toute publication documentaire suit les étapes suivantes :
+
+1. mise à jour et revue sur `develop` ;
+2. validation du Quality Gate documentaire ;
+3. fusion de `develop` vers `main` ;
+4. création et publication du tag documentaire correspondant.
+
+Un correctif documentaire urgent peut exceptionnellement être appliqué sur `main` après validation explicite. Il doit ensuite être réintégré dans `develop` afin de maintenir la cohérence des branches.
 
 Toute évolution de cette stratégie Git doit faire l'objet d'une décision de gouvernance documentée.
 
@@ -57,8 +69,9 @@ Chaque publication suit les étapes suivantes :
 3. mise à jour de la documentation ;
 4. revue fonctionnelle ;
 5. validation ;
-6. création du tag ;
-7. publication.
+6. fusion vers les branches stables ;
+7. création du tag ;
+8. publication.
 
 Aucune version ne doit être publiée sans documentation à jour.
 
@@ -85,7 +98,8 @@ Avant publication :
 - les documents concernés sont mis à jour ;
 - les régressions connues sont analysées ;
 - les dépendances sont vérifiées ;
-- les anomalies bloquantes sont corrigées.
+- les anomalies bloquantes sont corrigées ;
+- les branches applicatives et documentaires sont synchronisées.
 
 ---
 
@@ -127,7 +141,9 @@ Le processus est conforme lorsque :
 - chaque publication possède sa documentation ;
 - les tags Git sont cohérents ;
 - les tests ont été réalisés ;
-- les changements sont traçables.
+- les changements sont traçables ;
+- `main` contient uniquement les éléments validés et publiés ;
+- `develop` contient les évolutions en préparation.
 
 ---
 
@@ -135,6 +151,7 @@ Le processus est conforme lorsque :
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.1.1 | 2026-07-19 | Adoption des branches `main` et `develop` pour le dépôt Project Book et formalisation du cycle de publication documentaire |
 | 1.1.0 | 2026-07-19 | Normalisation des métadonnées et clarification de la branche documentaire de référence |
 
 ---
@@ -143,6 +160,8 @@ Le processus est conforme lorsque :
 
 - INDEX-001
 - ROADMAP-001
+- GOV-001
+- DECISIONS
 - ARCH-001
 - CORE-001
 - ADMIN-001
