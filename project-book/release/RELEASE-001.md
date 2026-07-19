@@ -1,9 +1,15 @@
 # RELEASE-001
 # Processus de publication d'AKS Platform
 
-Version : 1.0
-Statut : Validé
-Version du produit : V1.1
+| Propriété | Valeur |
+|-----------|--------|
+| Document ID | RELEASE-001 |
+| Titre | Processus de publication d'AKS Platform |
+| Version | 1.1.0 |
+| Statut | Validé |
+| Propriétaire | Product Owner |
+| Dernière mise à jour | 2026-07-19 |
+| Version du produit | V1.1 |
 
 ---
 
@@ -36,7 +42,9 @@ Le processus de publication doit :
 
 ## Dépôt Project Book
 
-La branche actuelle constitue la branche de référence tant qu'aucune évolution de stratégie Git n'est décidée.
+- `master` : branche documentaire de référence.
+
+Toute évolution de cette stratégie Git doit faire l'objet d'une décision de gouvernance documentée.
 
 ---
 
@@ -123,8 +131,17 @@ Le processus est conforme lorsque :
 
 ---
 
-# 11. Références
+# 11. Historique
 
+| Version | Date | Évolution |
+|---------|------|-----------|
+| 1.1.0 | 2026-07-19 | Normalisation des métadonnées et clarification de la branche documentaire de référence |
+
+---
+
+# 12. Références
+
+- INDEX-001
 - ROADMAP-001
 - ARCH-001
 - CORE-001
@@ -136,6 +153,6 @@ Le processus est conforme lorsque :
 
 ---
 
-# 12. Conclusion
+# 13. Conclusion
 
 Le processus défini dans RELEASE-001 garantit des publications maîtrisées, documentées et reproductibles. Il constitue la référence pour toutes les futures versions d'AKS Platform.
