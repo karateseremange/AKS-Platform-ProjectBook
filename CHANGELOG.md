@@ -8,7 +8,7 @@ Les versions candidates (Release Candidates) correspondent aux phases de prépar
 
 ---
 
-## [1.0.0] - 2026-07-XX
+## [1.0.0] - 2026-07-18
 
 ### Première version officielle
 
