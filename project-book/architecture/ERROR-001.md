@@ -1,4 +1,18 @@
-# ERROR-001 — Gestion transverse des erreurs
+# ERROR-001
+
+# Gestion transverse des erreurs
+
+| Propriété | Valeur |
+|-----------|--------|
+| Document ID | ERROR-001 |
+| Titre | Gestion transverse des erreurs |
+| Version | 1.1.0 |
+| Statut | Validé |
+| Propriétaire | Product Owner |
+| Dernière mise à jour | 2026-07-19 |
+| Version du produit | V1.1 |
+
+---
 
 ## 1. Objet
 
