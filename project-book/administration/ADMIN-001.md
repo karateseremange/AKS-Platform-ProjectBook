@@ -1,374 +1,257 @@
-# ADMIN-001
-
-# Tableau de bord d'administration d'AKS Platform
+# ADMIN-001 — Tableau de bord d’administration
 
 | Propriété | Valeur |
-|-----------|--------|
+|---|---|
 | **Document ID** | ADMIN-001 |
-| **Titre** | Tableau de bord d'administration d'AKS Platform |
 | **Version** | 1.1.0 |
-| **Statut** | Validé |
+| **Statut** | Référence de développement |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-19 |
 | **Version du produit** | V1.1 |
 
 ---
 
-# 1. Objet
+## 1. Objet
 
-Le présent document définit le rôle, le périmètre, les responsabilités et les règles du tableau de bord d'administration d'AKS Platform.
+Le Dashboard est la page d’accueil de l’espace d’administration d’AKS Platform.
 
-Il constitue le point d'entrée central pour l'exploitation, le paramétrage, la supervision et le contrôle des services transverses et des modules métier de la plateforme.
+Le présent document décrit exclusivement le Dashboard. L’architecture générale de l’espace d’administration fera l’objet d’une documentation spécifique lorsqu’elle sera nécessaire.
 
----
-
-# 2. Position dans le Project Book
-
-ADMIN-001 complète notamment :
-
-- ARCH-001 — Architecture fonctionnelle ;
-- CORE-001 — Architecture d'AKS Core ;
-- CONFIG-001 — Paramétrage centralisé ;
-- LOG-001 — Journalisation ;
-- AUDIT-001 — Journal d'audit ;
-- SECURITY-001 — Sécurité ;
-- ERROR-001 — Gestion des erreurs ;
-- NOTIF-001 — Notifications ;
-- DOCUMENT-001 — Gestion documentaire ;
-- STORAGE-001 — Stratégie de stockage ;
-- UX-001 — Expérience utilisateur.
-
-ADMIN-001 ne remplace pas les règles métier propres aux modules. Il définit leur cadre commun d'administration.
+Cette spécification constitue la référence de développement d’ADMIN-001. Elle ne doit être ajustée que si l’implémentation met en évidence un point qui ne pouvait pas être identifié lors de la conception.
 
 ---
 
-# 3. Objectifs
+## 2. Finalité fonctionnelle
 
-Le tableau de bord doit permettre de :
+Le Dashboard permet à un administrateur de :
 
-- disposer d'une vue synthétique de l'état de la plateforme ;
-- administrer les paramètres autorisés ;
-- suivre les traitements, erreurs et notifications ;
-- consulter les événements techniques et d'audit ;
-- faciliter le diagnostic et l'exploitation ;
-- limiter les interventions directes dans les supports de stockage ;
-- centraliser les actions administratives sensibles ;
-- préparer l'intégration progressive des futurs modules métier.
+- identifier immédiatement la version exécutée ;
+- accéder rapidement aux fonctionnalités administratives effectivement disponibles ;
+- disposer progressivement d’une vue synthétique de la plateforme au fur et à mesure de son évolution.
+
+Le Dashboard n’est pas une console de supervision technique.
 
 ---
 
-# 4. Principes directeurs
+## 3. Principes d’architecture
 
-Le tableau de bord respecte les principes suivants :
+### 3.1 Consommateur de services
 
-- accès réservé aux personnes habilitées ;
-- moindre privilège ;
-- séparation entre consultation et modification ;
-- confirmation des actions sensibles ;
-- traçabilité des opérations administratives ;
-- absence d'exposition des secrets ;
-- cohérence avec UX-001 ;
-- fonctionnement dégradé explicite ;
-- aucune dépendance directe à la structure interne des données.
+Le Dashboard consomme uniquement des informations fournies par des services identifiés d’AKS Core ou par des modules existants. Il ne constitue jamais une source de données.
 
----
+### 3.2 Absence de logique métier
 
-# 5. Périmètre fonctionnel
+Le Dashboard ne réalise aucun calcul, aucune décision administrative, aucune interprétation métier et aucune déduction sur l’état de la plateforme.
 
-Le tableau de bord peut regrouper les domaines suivants :
+### 3.3 Architecture déclarative
 
-- accueil et synthèse ;
-- état des modules ;
-- configuration ;
-- journalisation ;
-- audit ;
-- erreurs et incidents ;
-- notifications ;
-- documents générés ;
-- stockage et capacité ;
-- opérations de maintenance ;
-- informations de version et de déploiement.
+Le Dashboard est entièrement déclaratif. Il affiche des informations déjà déterminées par leurs services sources et des actions de navigation vers des fonctionnalités existantes.
 
-Chaque fonction doit être activée uniquement lorsque le service correspondant existe et est documenté.
+### 3.4 Absence de création de dépendance
+
+ADMIN-001 ne provoque pas la création de services uniquement pour alimenter le Dashboard. Une abstraction n’est introduite que lorsqu’elle possède une responsabilité réelle.
+
+Le premier incrément ne contient donc ni `DashboardService`, ni `DashboardFacade`, ni enregistrement supplémentaire dans le Container.
+
+### 3.5 Traçabilité des sources
+
+Chaque information affichée possède une source identifiée. Aucune information ne doit être dupliquée, simulée ou déduite à partir d’indicateurs incomplets.
+
+### 3.6 Séparation avec la supervision
+
+Les notions d’uptime, d’état d’un conteneur, de mémoire, de serveur ou de disponibilité d’infrastructure sont exclues tant qu’un véritable service de diagnostic ne les fournit pas.
 
 ---
 
-# 6. Accueil et synthèse
+## 4. Périmètre du premier incrément
 
-La page d'accueil présente une synthèse exploitable sans exposer de données sensibles.
+Le premier incrément d’ADMIN-001 est complet avec les deux cartes suivantes.
 
-Elle peut notamment afficher :
+### 4.1 Carte « Informations plateforme »
 
-- version active de la plateforme ;
-- environnement courant ;
-- état général des services ;
-- modules activés ;
-- erreurs récentes significatives ;
-- notifications en échec ;
-- traitements nécessitant une action ;
-- alertes de configuration ;
-- capacité de stockage ;
-- date des dernières opérations de maintenance.
+**Objectif**
 
-Les indicateurs doivent être compréhensibles et orientés vers l'action.
+Présenter l’identité de la version d’AKS Platform actuellement exécutée.
 
----
+**Informations affichées**
 
-# 7. Gestion des paramètres
+- nom de la plateforme ;
+- numéro de version ;
+- nom de code.
 
-L'administration des paramètres respecte CONFIG-001.
+**Source**
 
-L'interface doit :
+```javascript
+AKS.Version.getReleaseInfo()
+```
 
-- distinguer les paramètres fonctionnels, techniques et sensibles ;
-- afficher une description et la valeur effective ;
-- valider les saisies avant enregistrement ;
-- signaler les dépendances et impacts ;
-- conserver l'historique des changements significatifs ;
-- permettre une restauration maîtrisée lorsqu'elle est prévue ;
-- masquer intégralement les secrets.
+La version et le nom de code proviennent exclusivement du service transversal de version.
 
-Un secret ne doit jamais être affiché en clair ni réinjecté dans un formulaire après son enregistrement.
+### 4.2 Carte « Actions rapides »
 
----
+**Objectif**
 
-# 8. Journalisation et audit
+Donner au Dashboard son rôle de page d’accueil de l’espace d’administration.
 
-Les journaux techniques sont consultés conformément à LOG-001.
+Les Actions rapides correspondent uniquement aux fonctionnalités administratives effectivement disponibles dans la version exécutée.
 
-Le journal d'audit est consulté conformément à AUDIT-001.
+Une action rapide :
 
-L'interface doit permettre, selon les droits :
+- réalise uniquement une navigation ;
+- ne contient aucune logique métier ;
+- ne déclenche aucun traitement administratif directement depuis le Dashboard ;
+- n’est affichée que si sa destination existe ;
+- respecte les règles d’autorisation de l’écran ciblé.
 
-- filtrage par date, module, niveau, catégorie ou acteur ;
-- recherche par identifiant de corrélation ;
-- consultation des détails autorisés ;
-- distinction entre événement technique et action administrative ;
-- export limité et sécurisé lorsque nécessaire.
-
-La suppression ou l'altération manuelle des journaux depuis l'interface est interdite, sauf procédure exceptionnelle documentée.
+Lorsque aucune autre fonctionnalité administrative Web n’est disponible, la carte reste présente et affiche un état vide explicite.
 
 ---
 
-# 9. Gestion des erreurs
+## 5. Architecture du premier incrément
 
-La supervision des erreurs respecte ERROR-001.
+```text
+Contrôleur administratif
+        ↓
+Contrôle d’autorisation Google côté serveur
+        ↓
+AKS.Version
+        ↓
+Vue Dashboard
+```
 
-Elle doit permettre de :
+Le contrôleur possède uniquement des responsabilités d’interface :
 
-- identifier les erreurs récentes ;
-- distinguer erreurs temporaires et définitives ;
-- consulter le code, le composant et l'identifiant de corrélation ;
-- connaître l'impact fonctionnel ;
-- suivre les nouvelles tentatives ;
-- déclencher une reprise manuelle lorsqu'elle est autorisée ;
-- éviter toute exposition d'information sensible.
+- contrôler l’autorisation ;
+- obtenir les informations de version ;
+- préparer le modèle de présentation ;
+- rendre la vue.
 
-Toute reprise manuelle doit être contrôlée, idempotente et auditée.
-
----
-
-# 10. Gestion des notifications
-
-La supervision des notifications respecte NOTIF-001.
-
-Elle peut permettre de :
-
-- consulter les états d'envoi ;
-- filtrer par type, canal, module, période ou statut ;
-- identifier les échecs ;
-- relancer une notification éligible ;
-- vérifier le modèle et sa version ;
-- consulter les paramètres actifs sans afficher les secrets.
-
-Le contenu intégral d'un message n'est visible que lorsque cela est nécessaire et autorisé.
+Une future façade de lecture pourra être introduite lorsque plusieurs services devront être agrégés et qu’une responsabilité d’orchestration réelle apparaîtra.
 
 ---
 
-# 11. Gestion documentaire
+## 6. Vision d’évolution du Dashboard
 
-La gestion des documents respecte DOCUMENT-001 et STORAGE-001.
+Les éléments suivants ne font pas partie du premier incrément et ne conditionnent pas sa livraison.
 
-L'administration peut permettre de :
+### 6.1 Campagne active
 
-- consulter les métadonnées ;
-- vérifier le statut d'une génération ;
-- contrôler l'intégrité ;
-- identifier les documents expirés ;
-- relancer une génération autorisée ;
-- déclencher une suppression conforme à la politique de conservation.
+Dépend du futur service de configuration. Le Dashboard ne calculera jamais lui-même l’état d’une campagne.
 
-L'accès au contenu reste soumis aux autorisations et au niveau de confidentialité.
+### 6.2 Modules installés
 
----
+Dépend du registre des modules. Le Dashboard ne maintiendra pas sa propre liste de modules.
 
-# 12. Administration des modules
+### 6.3 Journal récent
 
-Chaque module métier expose uniquement les fonctions administratives nécessaires à son périmètre.
+Dépend du futur service transversal de journalisation. Le Dashboard ne lira pas directement des journaux techniques bruts.
 
-Un module doit fournir :
+### 6.4 État de la plateforme
 
-- son état d'activation ;
-- sa version ;
-- ses paramètres administrables ;
-- ses indicateurs utiles ;
-- ses erreurs et actions de reprise ;
-- ses règles d'autorisation ;
-- sa documentation de référence.
-
-Le tableau de bord ne doit pas reproduire la logique métier du module.
+Dépend d’un véritable service de diagnostic. Aucun indicateur artificiel ou supposé ne sera affiché.
 
 ---
 
-# 13. Rôles et autorisations
+## 7. Dépendances nécessaires pour terminer ADMIN-001
 
-Les autorisations sont appliquées côté serveur conformément à SECURITY-001.
+| Dépendance | Usage | État |
+|---|---|---|
+| Service transversal de version | Carte « Informations plateforme » | Disponible |
+| Authentification Google | Identification de l’utilisateur | Disponible |
+| Autorisation administrative côté serveur | Protection du Dashboard | Incluse dans ADMIN-001 |
+| Rendu HtmlService | Affichage du Dashboard | Disponible |
 
-Les profils peuvent notamment distinguer :
-
-- consultation ;
-- exploitation ;
-- administration fonctionnelle ;
-- administration technique ;
-- accès aux données sensibles ;
-- gestion des utilisateurs et des rôles lorsqu'elle sera disponible.
-
-Aucun contrôle d'accès ne doit reposer uniquement sur le masquage d'un élément d'interface.
+Les futurs services de configuration, registre des modules, journalisation et diagnostic ne sont pas bloquants.
 
 ---
 
-# 14. Actions sensibles
+## 8. Hors périmètre
 
-Sont notamment considérées comme sensibles :
+ADMIN-001 ne comprend pas :
 
-- modification d'un paramètre critique ;
-- activation ou désactivation d'un module ;
-- relance d'un traitement ;
-- suppression d'un document ou d'une donnée ;
-- changement d'une règle de conservation ;
-- modification d'un modèle actif ;
-- consultation ou export de données sensibles.
-
-Ces actions nécessitent selon le cas :
-
-- une confirmation explicite ;
-- une justification ;
-- une autorisation renforcée ;
-- une trace d'audit ;
-- un mécanisme de réversibilité.
-
----
-
-# 15. Expérience utilisateur
-
-L'interface respecte UX-001.
-
-Elle doit notamment :
-
-- être utilisable sur ordinateur et tablette ;
-- présenter une navigation stable ;
-- afficher clairement les droits insuffisants ;
-- distinguer informations, avertissements et erreurs ;
-- fournir un retour immédiat après une action ;
-- prévenir les doubles soumissions ;
-- conserver un vocabulaire homogène ;
-- rester accessible aux utilisateurs non techniques.
+- l’architecture générale de l’espace d’administration ;
+- le service de configuration ;
+- le registre des modules ;
+- le service de journalisation ;
+- le service de diagnostic ;
+- la supervision système ;
+- les métriques de performance ;
+- l’administration des modules ;
+- la gestion des utilisateurs ;
+- le paramétrage métier ;
+- les statistiques métier ;
+- les opérations de maintenance ;
+- les traitements du questionnaire santé ;
+- AKS Analytics ;
+- AKS Calendar.
 
 ---
 
-# 16. Sécurité
+## 9. Comportement attendu
 
-Le tableau de bord respecte SECURITY-001.
+Lorsqu’un administrateur autorisé accède au Dashboard :
 
-Il doit notamment appliquer :
+1. l’autorisation est vérifiée côté serveur ;
+2. la carte « Informations plateforme » reçoit ses données de `AKS.Version` ;
+3. la carte « Actions rapides » affiche uniquement les destinations existantes ou un état vide explicite ;
+4. aucune carte future n’est simulée ;
+5. aucune information de supervision fictive n’est affichée ;
+6. aucune logique métier n’est exécutée par l’interface.
 
-- authentification obligatoire ;
-- contrôle d'autorisation pour chaque action ;
-- protection contre les requêtes forgées ;
-- validation côté serveur ;
-- expiration des sessions ;
-- absence de secrets dans le navigateur et les journaux ;
-- journalisation des événements de sécurité ;
-- protection des exports et téléchargements.
+Le Dashboard reste pleinement fonctionnel lorsque les services prévus pour ses évolutions futures ne sont pas disponibles.
 
 ---
 
-# 17. Disponibilité et mode dégradé
+## 10. Critères d’acceptation
 
-Une indisponibilité partielle doit être signalée sans rendre toute l'administration inutilisable lorsque cela est évitable.
+### 10.1 Accès
 
-L'interface doit distinguer :
+- l’accès nécessite un compte Google authentifié ;
+- chaque accès administratif est autorisé côté serveur ;
+- un utilisateur non autorisé reçoit le code `ADMIN001_ACCESS_DENIED` ;
+- aucune donnée administrative n’est fournie avant autorisation.
 
-- service opérationnel ;
-- service dégradé ;
-- service indisponible ;
-- fonction désactivée ;
-- configuration incomplète.
+### 10.2 Informations plateforme
 
-Une erreur technique ne doit pas être présentée comme un succès.
+- la carte est présente ;
+- la version et le nom de code proviennent exclusivement de `AKS.Version.getReleaseInfo()` ;
+- aucune version n’est dupliquée dans l’interface ;
+- les informations correspondent au runtime déployé.
 
----
+### 10.3 Actions rapides
 
-# 18. Journalisation des actions administratives
+- la carte est présente ;
+- seules les destinations réellement disponibles sont affichées ;
+- chaque action réalise uniquement une navigation ;
+- l’absence d’action disponible n’empêche pas le fonctionnement du Dashboard.
 
-Toute action administrative significative doit produire :
+### 10.4 Architecture
 
-- un identifiant de corrélation ;
-- l'identité de l'acteur ;
-- la date et l'heure ;
-- l'action réalisée ;
-- la ressource concernée ;
-- le résultat ;
-- les valeurs avant et après lorsque cela est autorisé ;
-- la justification éventuelle.
+- le Dashboard reste déclaratif ;
+- aucune logique métier n’est intégrée ;
+- aucun service artificiel n’est créé pour relayer `AKS.Version` ;
+- aucune dépendance future n’est nécessaire au premier incrément ;
+- aucune supervision fictive n’est affichée ;
+- le Dashboard fonctionne sans les futurs services de configuration, registre, journalisation ou diagnostic.
 
-Les secrets et données personnelles non nécessaires sont exclus.
+### 10.5 Validation
 
----
-
-# 19. Tests
-
-Les tests doivent couvrir au minimum :
-
-- authentification et autorisations ;
-- affichage selon les rôles ;
-- validation des paramètres ;
-- confirmation des actions sensibles ;
-- journalisation et audit ;
-- recherche par corrélation ;
-- gestion des erreurs ;
-- prévention des doubles actions ;
-- comportement en mode dégradé ;
-- absence de secrets dans les réponses et l'interface.
+- les tests automatisés ADMIN-001 sont validés ;
+- les tests du service transversal de version restent valides ;
+- l’affichage est vérifié dans l’environnement Apps Script réel ;
+- l’accès autorisé et le refus d’accès sont vérifiés ;
+- aucune régression n’est introduite sur le questionnaire public.
 
 ---
 
-# 20. Critères d'acceptation
+## 11. Définition de terminé
 
-Le tableau de bord est conforme lorsque :
+ADMIN-001 est terminé lorsque le premier incrément est livré, testé et documenté avec :
 
-- il centralise les fonctions administratives disponibles ;
-- chaque action est protégée côté serveur ;
-- les paramètres respectent CONFIG-001 ;
-- les événements respectent LOG-001 et AUDIT-001 ;
-- les erreurs respectent ERROR-001 ;
-- les notifications respectent NOTIF-001 ;
-- les documents respectent DOCUMENT-001 et STORAGE-001 ;
-- les actions sensibles sont confirmées et tracées ;
-- aucun secret n'est exposé ;
-- l'interface respecte UX-001.
-
----
-
-# 21. Évolutions prévues
-
-Le tableau de bord évoluera progressivement avec :
-
-- les nouveaux modules métier ;
-- la gestion avancée des rôles ;
-- les indicateurs d'AKS Analytics ;
-- la supervision d'AKS Calendar ;
-- les opérations de maintenance automatisées ;
-- les alertes et tableaux de bord avancés.
-
-Toute évolution doit préserver les principes de sécurité, de traçabilité, de modularité et de simplicité définis dans le Project Book.
+- la page d’accueil du Dashboard ;
+- la carte « Informations plateforme » ;
+- la carte « Actions rapides » ;
+- le contrôle d’autorisation côté serveur ;
+- les tests automatisés ;
+- la validation réelle Apps Script ;
+- la documentation des évolutions futures non bloquantes.
