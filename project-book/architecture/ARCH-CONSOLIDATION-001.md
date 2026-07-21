@@ -5,7 +5,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ARCH-CONSOLIDATION-001 |
-| **Version** | 0.1.3 |
+| **Version** | 0.1.4 |
 | **Statut** | Brouillon |
 | **Nature** | Document de pilotage non normatif |
 | **Propriétaire** | Product Owner |
@@ -57,15 +57,16 @@ Le périmètre définitif du jalon M1 est confirmé par la vérification de l'ex
 | **Chantier** | ARCH-CONSOLIDATION-001 |
 | **Jalon courant** | M2 — Cartographie documentaire |
 | **Jalons validés** | M1 — Inventaire documentaire |
-| **Prochaine étape** | Établissement de la matrice descriptive des dépendances documentaires |
-| **Décision active** | D-002 — Validation du jalon M1 |
+| **Sous-jalon validé** | M2.1 — Matrice descriptive des dépendances |
+| **Prochaine étape** | M2.2 — Représentation graphique des dépendances documentaires |
+| **Décision active** | D-003 — Validation du livrable M2.1 |
 
 ## 3.1 Jalons
 
 | Jalon | Objectif | Livrable | État |
 |---|---|---|---|
 | **M1** | Inventaire documentaire | Inventaire validé | Validé |
-| **M2** | Cartographie documentaire | Graphe documentaire validé | En cours |
+| **M2** | Cartographie documentaire | Graphe documentaire validé | En cours — M2.1 validé |
 | **M3** | Analyse des responsabilités | Matrice validée | Non ouvert |
 | **M4** | Plan des migrations | Registre validé | Non ouvert |
 | **M5** | Consolidation | Famille consolidée | Non ouvert |
@@ -86,6 +87,7 @@ Le périmètre définitif du jalon M1 est confirmé par la vérification de l'ex
 |---|---|---|---|---|
 | **D-001** | Initialisation | Ouverture | 2026-07-21 | Ouverture du chantier ARCH-CONSOLIDATION-001 et démarrage du jalon M1. |
 | **D-002** | M1 | Validation | 2026-07-21 | Validation de l'inventaire documentaire et ouverture du jalon M2. |
+| **D-003** | M2.1 | Validation | 2026-07-21 | Validation de la matrice descriptive des dépendances explicites et ouverture du sous-jalon M2.2. |
 
 ---
 
@@ -144,7 +146,7 @@ Deux formes descriptives sont distinguées :
 
 Lorsqu'un document ne possède pas de métadonnée dédiée aux dépendances, cette absence est indiquée sans interprétation.
 
-## 5.3 Inventaire en cours
+## 5.3 Inventaire consolidé
 
 | Document | Existence | Version | Statut | Domaine ou rôle déclaré | Dépendances déclarées dans les métadonnées | Dépendances citées dans le contenu | Références sortantes | Source de vérification | Observations factuelles |
 |---|---|---|---|---|---|---|---|---|---|
@@ -172,3 +174,72 @@ Les documents du périmètre ont tous été localisés dans le dépôt sur la br
 Les références sortantes déjà relevées restent descriptives. Leur vérification exhaustive et leur représentation graphique relèvent du jalon M2.
 
 Aucune analyse de cohérence, recommandation ou décision de migration n'est formulée dans le présent état du livrable.
+
+---
+
+# 6. M2 — Cartographie documentaire
+
+## 6.1 Règles de lecture de la matrice
+
+La matrice M2.1 recense uniquement les relations explicitement déclarées dans les métadonnées, le catalogue `INDEX-001` ou le contenu des documents consultés.
+
+Elle ne déduit aucune dépendance implicite à partir de la proximité fonctionnelle des sujets.
+
+Les références génériques telles que « modules métier », « AKS Core », « interfaces publiques » ou noms de composants techniques sont conservées dans l'inventaire, mais ne sont pas transformées en relations documentaires lorsqu'elles ne désignent pas un identifiant documentaire précis.
+
+## 6.2 Matrice descriptive des dépendances explicites
+
+| Document source | Documents explicitement référencés | Origine de la relation | Nombre de relations |
+|---|---|---|---:|
+| **ADR-001** | GOV-DOC-001, GOV-DEV-001 | Contenu | 2 |
+| **ARCH-001** | VISION-001, OBJECTIVES-001, SCOPE-001, ROADMAP-001, CORE-001, ADMIN-001, CONFIG-001, LOG-001, UX-001 | Contenu | 9 |
+| **CORE-001** | ARCH-001, CONFIG-001, LOG-001, UX-001, ADMIN-001 | Contenu | 5 |
+| **ADMIN-001** | Aucun identifiant documentaire explicite relevé | — | 0 |
+| **CONFIG-001** | CORE-001, ADMIN-001 | INDEX-001 | 2 |
+| **LOG-001** | CORE-001, AUDIT-001, ARCH-001, ADMIN-001, CONFIG-001, ROADMAP-001 | INDEX-001 et contenu | 6 |
+| **UX-001** | VISION-001, ARCH-001 | INDEX-001 | 2 |
+| **API-001** | SECURITY-001, LOG-001, ERROR-001, AUDIT-001, CONFIG-001, ARCH-001, CORE-001, NOTIF-001 | Contenu | 8 |
+| **SECURITY-001** | ADMIN-001, CONFIG-001, LOG-001, AUDIT-001, ERROR-001, STORAGE-001 | Contenu | 6 |
+| **AUDIT-001** | LOG-001, CONFIG-001, ADMIN-001 | Contenu | 3 |
+| **ERROR-001** | API-001, LOG-001, AUDIT-001, SECURITY-001, UX-001 | Contenu | 5 |
+| **NOTIF-001** | ARCH-001, CORE-001, CONFIG-001, LOG-001, SECURITY-001, AUDIT-001 | Métadonnées et contenu | 6 |
+| **DOCUMENT-001** | Aucun identifiant documentaire explicite relevé à ce stade | — | 0 |
+| **STORAGE-001** | ARCH-001, CORE-001, CONFIG-001, LOG-001, AUDIT-001, SECURITY-001, DOCUMENT-001, ERROR-001, ADMIN-001 | Contenu | 9 |
+
+## 6.3 Relations inverses observées
+
+Ce relevé inverse identifie les documents les plus fréquemment cités dans le périmètre M2.1. Il reste descriptif et ne constitue pas encore une analyse de responsabilité.
+
+| Document référencé | Documents sources | Nombre de citations entrantes |
+|---|---|---:|
+| **CONFIG-001** | ARCH-001, CORE-001, LOG-001, API-001, SECURITY-001, AUDIT-001, NOTIF-001, STORAGE-001 | 8 |
+| **LOG-001** | ARCH-001, CORE-001, API-001, SECURITY-001, AUDIT-001, ERROR-001, NOTIF-001, STORAGE-001 | 8 |
+| **ADMIN-001** | ARCH-001, CORE-001, CONFIG-001, LOG-001, SECURITY-001, AUDIT-001, STORAGE-001 | 7 |
+| **AUDIT-001** | LOG-001, API-001, SECURITY-001, ERROR-001, NOTIF-001, STORAGE-001 | 6 |
+| **ARCH-001** | CORE-001, LOG-001, UX-001, API-001, NOTIF-001, STORAGE-001 | 6 |
+| **CORE-001** | ARCH-001, CONFIG-001, LOG-001, API-001, NOTIF-001, STORAGE-001 | 6 |
+| **SECURITY-001** | API-001, ERROR-001, NOTIF-001, STORAGE-001 | 4 |
+| **ERROR-001** | API-001, SECURITY-001, STORAGE-001 | 3 |
+| **UX-001** | ARCH-001, CORE-001, ERROR-001 | 3 |
+| **ROADMAP-001** | ARCH-001, LOG-001 | 2 |
+| **VISION-001** | ARCH-001, UX-001 | 2 |
+| **API-001** | ERROR-001 | 1 |
+| **DOCUMENT-001** | STORAGE-001 | 1 |
+| **NOTIF-001** | API-001 | 1 |
+| **OBJECTIVES-001** | ARCH-001 | 1 |
+| **SCOPE-001** | ARCH-001 | 1 |
+| **GOV-DOC-001** | ADR-001 | 1 |
+| **GOV-DEV-001** | ADR-001 | 1 |
+
+## 6.4 Résultat du sous-jalon M2.1
+
+Le sous-jalon **M2.1 — Matrice descriptive des dépendances documentaires** est validé.
+
+La matrice fournit :
+
+- les relations documentaires sortantes explicitement relevées ;
+- leur origine déclarative ;
+- une vue inverse des références entrantes ;
+- une base vérifiable pour la représentation graphique.
+
+Le jalon M2 reste ouvert. Sa prochaine étape est le sous-jalon **M2.2 — Graphe documentaire**, qui représentera les relations recensées sans encore décider d'une migration ou d'une redistribution des responsabilités.
