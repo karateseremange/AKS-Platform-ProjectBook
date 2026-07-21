@@ -5,7 +5,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ARCH-CONSOLIDATION-001 |
-| **Version** | 0.1.1 |
+| **Version** | 0.1.2 |
 | **Statut** | Brouillon |
 | **Nature** | Document de pilotage non normatif |
 | **Propriétaire** | Product Owner |
@@ -57,7 +57,7 @@ Le périmètre définitif du jalon M1 reste à confirmer par vérification de l'
 | **Chantier** | ARCH-CONSOLIDATION-001 |
 | **Jalon courant** | M1 — Inventaire documentaire |
 | **Jalons validés** | Aucun |
-| **Prochaine étape** | Vérification exhaustive des documents recensés |
+| **Prochaine étape** | Recherche exhaustive d’ADR-001 et complétude descriptive de l’inventaire |
 | **Décision active** | D-001 — Ouverture du chantier |
 
 ## 3.1 Jalons
@@ -95,7 +95,7 @@ Le périmètre définitif du jalon M1 reste à confirmer par vérification de l'
 L'inventaire est établi à partir :
 
 - du dépôt `karateseremange/AKS-Platform-ProjectBook` ;
-- de la branche `main` ;
+- de la branche `develop` ;
 - du catalogue officiel `project-book/documentation/INDEX-001.md` ;
 - des métadonnées et contenus des fichiers effectivement consultés ;
 - des recherches de fichiers réalisées dans le dépôt.
@@ -104,7 +104,7 @@ Les sources sont indiquées avec le vocabulaire suivant :
 
 | Valeur | Signification |
 |---|---|
-| **Dépôt (`main`)** | Le fichier ou l'information a été vérifié directement dans le dépôt sur la branche `main`. |
+| **Dépôt (`develop`)** | Le fichier ou l'information a été vérifié directement dans le dépôt sur la branche `develop`. |
 | **INDEX-001** | L'information provient du catalogue documentaire officiel. |
 | **Métadonnées du document** | L'information provient de l'en-tête ou des propriétés du document consulté. |
 | **Contenu du document** | L'information provient du corps du document consulté. |
@@ -147,20 +147,20 @@ Lorsqu'un document ne possède pas de métadonnée dédiée aux dépendances, ce
 
 | Document | Existence | Version | Statut | Domaine ou rôle déclaré | Dépendances déclarées dans les métadonnées | Dépendances citées dans le contenu | Références sortantes | Source de vérification | Observations factuelles |
 |---|---|---|---|---|---|---|---|---|---|
-| **ADR-001** | Non localisé | Non vérifiée | Non vérifié | Non vérifié | Non vérifiées | Non vérifiées | Non relevées | Recherche dépôt | Non recensé dans `INDEX-001`. Les chemins testés `project-book/architecture/ADR-001.md`, `project-book/governance/ADR-001.md` et `project-book/architecture/decisions/ADR-001.md` ne correspondent pas à un fichier accessible sur `main`. |
-| **ARCH-001** | Confirmé | 1.1.0 | Validé | Architecture fonctionnelle de référence et contrat architectural officiel | Aucune métadonnée dédiée relevée | VISION-001, OBJECTIVES-001, SCOPE-001, ROADMAP-001, CORE-001, ADMIN-001, CONFIG-001, LOG-001, UX-001 et documents de modules métier | Relevé partiel | Dépôt (`main`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/ARCH-001.md`. Dernière mise à jour déclarée : 2026-07-18. |
-| **CORE-001** | Confirmé | 1.1.0 | Validé | Architecture et responsabilités d'AKS Core | Aucune métadonnée dédiée relevée | ARCH-001, CONFIG-001, LOG-001, UX-001, ADMIN-001 et documents de modules métier | Relevé partiel | Dépôt (`main`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/CORE-001.md`. Dernière mise à jour déclarée : 2026-07-18. La métadonnée « Version du produit » n'apparaît pas dans l'en-tête consulté. |
-| **ADMIN-001** | Confirmé | 1.1.0 | Référence de développement | Spécification du Dashboard d'administration | Aucune métadonnée dédiée relevée | AKS Core, `AKS.Version.getReleaseInfo()` | Relevé partiel | Dépôt (`main`), métadonnées du document, contenu du document | Fichier : `project-book/administration/ADMIN-001.md`. Dernière mise à jour déclarée : 2026-07-19. |
-| **CONFIG-001** | Confirmé | 1.1 | Validé | Paramétrage centralisé d'AKS Platform | CORE-001, ADMIN-001 selon `INDEX-001` | AKS Core, tableau de bord d'administration, modules métier, AKS Analytics, AKS Calendar, Google Workspace et WordPress | Relevé partiel | Dépôt (`main`), INDEX-001, contenu du document | Fichier : `project-book/administration/CONFIG-001.md`. Version du produit déclarée : V1.1. |
-| **LOG-001** | Confirmé | 1.1 | Validé | Politique fonctionnelle de journalisation d'AKS Platform | CORE-001, AUDIT-001 selon `INDEX-001` | ARCH-001, CORE-001, ADMIN-001, CONFIG-001, ROADMAP-001, AKS Core et modules métier | Relevé partiel | Dépôt (`main`), INDEX-001, contenu du document | Fichier : `project-book/administration/LOG-001.md`. Version du produit déclarée : V1.1. |
-| **UX-001** | Confirmé | 1.1 | Validé | Principes d'expérience utilisateur applicables à toute la plateforme | VISION-001, ARCH-001 selon `INDEX-001` | Interfaces publiques, administratives et métier ; modules de la plateforme | Relevé partiel | Dépôt (`main`), INDEX-001, contenu du document | Fichier : `project-book/ux/UX-001.md`. Version du produit déclarée : V1.1. |
-| **API-001** | Recensé | 1.1.0 selon `INDEX-001` | Validé selon `INDEX-001` | Contrats et principes d'API | ARCH-001, CORE-001 selon `INDEX-001` | Non vérifiées | Non relevées | INDEX-001 | Recensé comme document d'architecture transverse. |
-| **SECURITY-001** | Recensé | 1.1.0 selon `INDEX-001` | Validé selon `INDEX-001` | Sécurité d'AKS Platform | ARCH-001, CORE-001 selon `INDEX-001` | Non vérifiées | Non relevées | INDEX-001 | Recensé comme document d'architecture transverse. |
-| **AUDIT-001** | Recensé | 1.1.0 selon `INDEX-001` | Validé selon `INDEX-001` | Audit et traçabilité | SECURITY-001, LOG-001 selon `INDEX-001` | Non vérifiées | Non relevées | INDEX-001 | Recensé comme document d'architecture transverse. |
-| **ERROR-001** | Recensé | 1.1.0 selon `INDEX-001` | Validé selon `INDEX-001` | Gestion des erreurs | API-001, LOG-001 selon `INDEX-001` | Non vérifiées | Non relevées | INDEX-001 | Recensé comme document d'architecture transverse. |
-| **NOTIF-001** | Recensé | 1.1.0 selon `INDEX-001` | Validé selon `INDEX-001` | Notifications | CORE-001, CONFIG-001 selon `INDEX-001` | Non vérifiées | Non relevées | INDEX-001 | Recensé comme document d'architecture transverse. |
-| **DOCUMENT-001** | Recensé | 1.1.0 selon `INDEX-001` | Validé selon `INDEX-001` | Gestion documentaire | CORE-001, STORAGE-001 selon `INDEX-001` | Non vérifiées | Non relevées | INDEX-001 | Recensé comme document d'architecture transverse. |
-| **STORAGE-001** | Recensé | 1.1.0 selon `INDEX-001` | Validé selon `INDEX-001` | Stockage transverse | ARCH-001, CORE-001 selon `INDEX-001` | Non vérifiées | Non relevées | INDEX-001 | Recensé comme document d'architecture transverse. |
+| **ADR-001** | Non localisé | Non vérifiée | Non vérifié | Non vérifié | Non vérifiées | Non vérifiées | Non relevées | Recherche dépôt | Non recensé dans `INDEX-001`. Les chemins testés `project-book/architecture/ADR-001.md`, `project-book/governance/ADR-001.md` et `project-book/architecture/decisions/ADR-001.md` ne correspondent pas à un fichier accessible sur `develop`. |
+| **ARCH-001** | Confirmé | 1.1.0 | Validé | Architecture fonctionnelle de référence et contrat architectural officiel | Aucune métadonnée dédiée relevée | VISION-001, OBJECTIVES-001, SCOPE-001, ROADMAP-001, CORE-001, ADMIN-001, CONFIG-001, LOG-001, UX-001 et documents de modules métier | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/ARCH-001.md`. Dernière mise à jour déclarée : 2026-07-18. |
+| **CORE-001** | Confirmé | 1.1.0 | Validé | Architecture et responsabilités d'AKS Core | Aucune métadonnée dédiée relevée | ARCH-001, CONFIG-001, LOG-001, UX-001, ADMIN-001 et documents de modules métier | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/CORE-001.md`. Dernière mise à jour déclarée : 2026-07-18. La métadonnée « Version du produit » n'apparaît pas dans l'en-tête consulté. |
+| **ADMIN-001** | Confirmé | 1.1.0 | Référence de développement | Spécification du Dashboard d'administration | Aucune métadonnée dédiée relevée | AKS Core, `AKS.Version.getReleaseInfo()` | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/administration/ADMIN-001.md`. Dernière mise à jour déclarée : 2026-07-19. |
+| **CONFIG-001** | Confirmé | 1.1 | Validé | Paramétrage centralisé d'AKS Platform | CORE-001, ADMIN-001 selon `INDEX-001` | AKS Core, tableau de bord d'administration, modules métier, AKS Analytics, AKS Calendar, Google Workspace et WordPress | Relevé partiel | Dépôt (`develop`), INDEX-001, contenu du document | Fichier : `project-book/administration/CONFIG-001.md`. Version du produit déclarée : V1.1. |
+| **LOG-001** | Confirmé | 1.1 | Validé | Politique fonctionnelle de journalisation d'AKS Platform | CORE-001, AUDIT-001 selon `INDEX-001` | ARCH-001, CORE-001, ADMIN-001, CONFIG-001, ROADMAP-001, AKS Core et modules métier | Relevé partiel | Dépôt (`develop`), INDEX-001, contenu du document | Fichier : `project-book/administration/LOG-001.md`. Version du produit déclarée : V1.1. |
+| **UX-001** | Confirmé | 1.1 | Validé | Principes d'expérience utilisateur applicables à toute la plateforme | VISION-001, ARCH-001 selon `INDEX-001` | Interfaces publiques, administratives et métier ; modules de la plateforme | Relevé partiel | Dépôt (`develop`), INDEX-001, contenu du document | Fichier : `project-book/ux/UX-001.md`. Version du produit déclarée : V1.1. |
+| **API-001** | Confirmé | Non indiquée dans l’en-tête consulté | Document de référence | Principes et conventions des API AKS Platform | Aucune métadonnée dédiée relevée | SECURITY-001, LOG-001, ERROR-001, AUDIT-001, CONFIG-001, ARCH-001, CORE-001 et NOTIF-001 | Relevé complet | Dépôt (`develop`), contenu du document | Fichier : `project-book/architecture/API-001.md`. Le document indique qu’il constitue une référence pour AKS Platform V1.1 et les versions ultérieures. |
+| **SECURITY-001** | Confirmé | 1.1.0 | Consolidé | Principes de sécurité d’AKS Platform | Aucune métadonnée dédiée relevée | ADMIN-001, CONFIG-001, LOG-001, AUDIT-001, ERROR-001 et STORAGE-001 | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/SECURITY-001.md`. Dernière mise à jour déclarée : 2026-07-19. La métadonnée « Version du produit » n’apparaît pas dans l’en-tête consulté. |
+| **AUDIT-001** | Confirmé | 1.1.0 | Consolidé | Traçabilité et audit des actions sensibles | Aucune métadonnée dédiée relevée | LOG-001, CONFIG-001 et ADMIN-001 | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/administration/AUDIT-001.md`. Dernière mise à jour déclarée : 2026-07-19. La métadonnée « Version du produit » n’apparaît pas dans l’en-tête consulté. |
+| **ERROR-001** | Confirmé | 1.1.0 | Validé | Gestion transverse des erreurs | Aucune métadonnée dédiée relevée | API-001, LOG-001, AUDIT-001, SECURITY-001 et UX-001 | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/ERROR-001.md`. Dernière mise à jour déclarée : 2026-07-19. Version du produit déclarée : V1.1. |
+| **NOTIF-001** | Confirmé | Non indiquée dans l’en-tête consulté | Référence d’architecture | Service transversal de notifications | ARCH-001, CORE-001, CONFIG-001, LOG-001, SECURITY-001 et AUDIT-001 | CONFIG-001 | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/NOTIF-001.md`. Version cible déclarée : AKS Platform V1.1. |
+| **DOCUMENT-001** | Confirmé | 1.1.0 | Validé | Gestion des documents générés | Aucune métadonnée dédiée relevée | Non relevées dans l’extrait consulté | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/DOCUMENT-001.md`. Dernière mise à jour déclarée : 2026-07-19. Version du produit déclarée : V1.1. |
+| **STORAGE-001** | Confirmé | 1.1.0 | Validé | Stratégie de stockage d’AKS Platform | Aucune métadonnée dédiée relevée | ARCH-001, CORE-001, CONFIG-001, LOG-001, AUDIT-001, SECURITY-001, DOCUMENT-001, ERROR-001 et ADMIN-001 | Relevé partiel | Dépôt (`develop`), métadonnées du document, contenu du document | Fichier : `project-book/architecture/STORAGE-001.md`. Dernière mise à jour déclarée : 2026-07-19. Version du produit déclarée : V1.1. |
 
 ## 5.4 État de complétude de M1
 
@@ -169,8 +169,7 @@ Le jalon M1 n'est pas encore validé.
 Les vérifications restant à effectuer sont :
 
 - confirmer le statut définitif d'ADR-001 après vérification exhaustive de son emplacement éventuel ;
-- vérifier les fichiers API-001, SECURITY-001, AUDIT-001, ERROR-001, NOTIF-001, DOCUMENT-001 et STORAGE-001 ;
-- relever au niveau descriptif les références sortantes de chaque document ;
+- compléter le relevé descriptif des références sortantes de chaque document ;
 - confirmer que le périmètre ne contient aucun autre document d'architecture ou document spécialisé directement rattaché à cette famille.
 
 Aucune analyse de cohérence, recommandation ou décision de migration n'est formulée dans le présent état du livrable.
