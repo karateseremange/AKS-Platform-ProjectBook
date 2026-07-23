@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-001 |
-| **Version** | 1.1.0 |
+| **Version** | 1.2.0 |
 | **Statut** | Référence de développement |
 | **Nature** | Vision et architecture fonctionnelle du module |
 | **Propriétaire** | Product Owner |
@@ -31,6 +31,8 @@ AKS Analytics s'inscrit dans les référentiels suivants :
 - `SCOPE-001` — périmètre fonctionnel ;
 - `ROADMAP-001` — feuille de route officielle ;
 - `GOV-001` — gouvernance produit ;
+- `DOC-001` — règles générales de documentation ;
+- `STD-001` — standard documentaire des modules métier ;
 - `ARCH-001` — architecture fonctionnelle ;
 - `CORE-001` — services communs d'AKS Core ;
 - `API-001` — contrats et principes d'API ;
@@ -346,7 +348,7 @@ AKS Analytics doit privilégier :
 - l'actualisation indépendante des indicateurs ;
 - l'absence de recalcul inutile à chaque affichage.
 
-La fréquence de mise à jour doit être adaptée à la nature de l'indicateur. Toutes les données n'exigent pas un calcul en temps réel.
+La fréquence de mise à jour doit être adaptée au besoin métier et à la fraîcheur réelle des sources.
 
 ---
 
@@ -362,15 +364,23 @@ L'ajout d'un nouveau type de restitution ne doit pas modifier les sources métie
 
 ## 18. Livrables documentaires suivants
 
-Le domaine Analytics sera complété progressivement par :
+Conformément à `STD-001`, le socle documentaire du module Analytics sera complété par :
 
-- `ANALYTICS-002` — modèle de données analytique ;
-- `ANALYTICS-003` — catalogue et règles des indicateurs ;
-- `ANALYTICS-004` — tableaux de bord, visualisations et rapports ;
-- `ANALYTICS-005` — contrat des fournisseurs de données ;
-- `ANALYTICS-006` — validation, qualité et conformité.
+- `ANALYTICS-002` — Modèle métier ;
+- `ANALYTICS-003` — Services ;
+- `ANALYTICS-004` — Interfaces ;
+- `ANALYTICS-005` — Contrats externes ;
+- `ANALYTICS-006` — Validation.
 
-Ces identifiants constituent une cible documentaire et peuvent être ajustés par décision de gouvernance sans modifier les principes du présent document.
+Les besoins documentaires propres au module seront traités, si leur responsabilité le justifie, dans des extensions numérotées à partir de `ANALYTICS-007`.
+
+Les sujets suivants sont actuellement identifiés comme candidats à ces extensions, sans préjuger de leur création :
+
+- catalogue et règles des indicateurs ;
+- catalogue des graphiques et restitutions ;
+- règles détaillées de qualité et de complétude des données.
+
+Toute extension devra respecter les critères de création définis dans `DOC-001`.
 
 ---
 
@@ -384,7 +394,7 @@ Ces identifiants constituent une cible documentaire et peuvent être ajustés pa
 - l'intégration avec AKS Core et le Centre de pilotage est définie ;
 - les principes de sécurité, stockage, traçabilité et qualité sont posés ;
 - l'extensibilité vers de nouveaux modules est garantie ;
-- les documents suivants disposent d'un cadre cohérent.
+- les documents suivants disposent d'un cadre conforme à `STD-001`.
 
 ---
 
@@ -399,11 +409,21 @@ Les décisions suivantes sont figées par le présent document :
 5. Toute limitation de qualité ou de couverture doit être visible dans la restitution.
 6. L'intégration au Centre de pilotage respecte `ADMIN-004`.
 7. Les données sensibles ne sont jamais exploitées au-delà du besoin validé.
+8. Le socle documentaire du module respecte `STD-001`.
 
 ---
 
-## 21. Conclusion
+## 21. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 1.2.0 | 2026-07-23 | Alignement du socle documentaire Analytics sur STD-001 et ajout des références DOC-001 et STD-001 |
+| 1.1.0 | 2026-07-23 | Version initiale de référence pour le développement du module |
+
+---
+
+## 22. Conclusion
 
 AKS Analytics fournit à AKS Platform une capacité de pilotage fondée sur des données consolidées, traçables et compréhensibles, tout en préservant l'autonomie des modules métier.
 
-Le présent document établit le cadre de référence nécessaire à la conception du modèle analytique, du catalogue d'indicateurs, des fournisseurs de données et des futures restitutions.
+Le présent document établit le cadre de référence nécessaire à la conception du modèle métier, des services, des interfaces, des contrats externes, de la validation et des éventuelles extensions documentaires du module.
