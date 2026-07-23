@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.1.2 |
+| Version | 1.2.0 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-23 |
@@ -34,7 +34,9 @@ Le Project Book respecte les principes suivants :
 - une version et un statut explicites ;
 - des références croisées traçables ;
 - une évolution cumulative sans altération silencieuse des décisions validées ;
-- l'archivage des documents devenus obsolètes plutôt que leur suppression sans trace.
+- l'archivage des documents devenus obsolètes plutôt que leur suppression sans trace ;
+- l'application des principes généraux définis dans `DOC-001` ;
+- l'application de `STD-001` à tout nouveau module métier, sauf dérogation documentée conformément à `GOV-DOC-001`.
 
 ---
 
@@ -52,9 +54,14 @@ project-book/
 │   └── analytics/
 ├── documentation/
 └── release/
+
+standards/
+└── STD-001-Module-Documentation-Standard.md
 ```
 
 Les documents transverses existants restent à leur emplacement actuel. Les modules métier sont regroupés sous `project-book/modules/`, avec un sous-dossier par module.
+
+Le dossier `standards/` contient les standards spécialisés applicables au Project Book. `STD-001` y définit l'organisation documentaire obligatoire des modules métier.
 
 Toute évolution significative de cette organisation doit être répercutée dans le présent catalogue et dans le `README.md`.
 
@@ -74,7 +81,21 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 ---
 
-# 5. Documents d'architecture transverse
+# 5. Gouvernance et standards documentaires
+
+| ID | Titre | Statut | Version | Rôle |
+|----|-------|--------|---------|------|
+| GOV-DOC-001 | Gouvernance documentaire | Published | 1.1.0 | Définit l'autorité, le cycle de vie et les règles de publication documentaire |
+| GOV-DEV-001 | Gouvernance du développement logiciel | Published | 1.0.0 | Définit les principes de gouvernance applicables au développement logiciel |
+| DOC-001 | Règles de documentation d'AKS Platform | Validé | 1.2.0 | Définit les principes généraux du système documentaire |
+| STD-001 | Module Documentation Standard | Validé | 1.0.0 | Définit l'organisation documentaire obligatoire de tout module métier |
+| ADR-001 | Architecture documentaire d'AKS Platform | Published | À confirmer | Documente les motivations de l'organisation documentaire |
+
+`DOC-001` constitue la référence générale des règles documentaires. `STD-001` en est une spécialisation applicable aux modules métier.
+
+---
+
+# 6. Documents d'architecture transverse
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
@@ -88,7 +109,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 ---
 
-# 6. Documents d'administration
+# 7. Documents d'administration
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
@@ -103,7 +124,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 ---
 
-# 7. Expérience utilisateur
+# 8. Expérience utilisateur
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
@@ -111,9 +132,11 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 ---
 
-# 8. Modules métier
+# 9. Modules métier
 
 Les modules métier sont documentés sous `project-book/modules/<module>/` lorsqu'ils entrent dans le périmètre actif de développement.
+
+Tout nouveau module métier doit respecter `STD-001`, conformément à la règle `GOV-DOC-003` définie dans `GOV-DOC-001`.
 
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
@@ -135,7 +158,7 @@ Un module futur ne doit pas être présenté comme livré tant que son document 
 
 ---
 
-# 9. Hiérarchie des références
+# 10. Hiérarchie des références
 
 ```text
 VISION-001
@@ -144,13 +167,13 @@ OBJECTIVES-001 et SCOPE-001
     ↓
 ROADMAP-001 et GOV-001
     ↓
-ARCH-001
+GOV-DOC-001
     ↓
-CORE-001
+DOC-001
     ↓
-Services transverses
+STD-001
     ↓
-Administration et UX
+ARCH-001 et référentiels transverses
     ↓
 Modules métier
     ↓
@@ -161,19 +184,19 @@ En cas de divergence, le document spécialisé fait autorité sur son propre pé
 
 ---
 
-# 10. Convention de nommage
+# 11. Convention de nommage
 
 Les documents de référence utilisent la convention `<DOMAINE>-<NUMÉRO>`. L'identifiant doit être unique, stable et utilisé dans les références croisées. Le nom de fichier recommandé est `<ID>.md`.
 
 ---
 
-# 11. Métadonnées obligatoires
+# 12. Métadonnées obligatoires
 
 Chaque document officiel doit comporter au minimum : identifiant, titre, version, statut, propriétaire, date de dernière mise à jour et version du produit concernée.
 
 ---
 
-# 12. Cycle de vie documentaire
+# 13. Cycle de vie documentaire
 
 | Statut | Signification |
 |--------|---------------|
@@ -182,47 +205,50 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | En revue | Document soumis à validation |
 | Validé | Document approuvé et applicable |
 | Référence de développement | Document applicable à l'implémentation en cours |
+| Published | Document normatif officiellement publié selon `GOV-DOC-001` |
 | Obsolète | Document remplacé, conservé pour traçabilité |
 | Archivé | Document retiré du corpus actif et conservé à titre historique |
 
 ---
 
-# 13. Matrice de couverture V1.1
+# 14. Matrice de couverture V1.1
 
 | Domaine | Documents principaux | Couverture |
 |---------|----------------------|------------|
 | Vision et stratégie | VISION-001, OBJECTIVES-001, SCOPE-001, ROADMAP-001, GOV-001 | Complète |
+| Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
 | Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001 | Complète |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 et documents suivants | En cours |
-| Autres modules métier | Documents à créer selon la roadmap | Planifiée |
+| Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
 
-# 14. Maintenance du catalogue
+# 15. Maintenance du catalogue
 
 `INDEX-001` doit être mis à jour lorsqu'un document est créé, renommé, déplacé, validé, rendu obsolète, archivé ou remplacé. Cette mise à jour fait partie intégrante de la livraison documentaire concernée.
 
 ---
 
-# 15. Contrôles de cohérence
+# 16. Contrôles de cohérence
 
 Avant le gel d'une version du Project Book, il faut vérifier l'existence des documents recensés, l'unicité des identifiants, la conformité des en-têtes, la cohérence des versions et statuts, la validité des références croisées et l'alignement du `README.md` avec le présent catalogue.
 
 ---
 
-# 16. Historique
+# 17. Historique
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.0 | 2026-07-23 | Intégration de DOC-001, STD-001, GOV-DOC-001 et GOV-DEV-001 dans le catalogue officiel et formalisation du standard applicable aux modules métier |
 | 1.1.2 | 2026-07-23 | Ajout de la structure `modules/`, intégration d'AKS Analytics et mise à jour du domaine Administration |
 | 1.1.1 | 2026-07-19 | Alignement de la version de ROADMAP-001 |
 | 1.1.0 | 2026-07-19 | Création du catalogue officiel |
 
 ---
 
-# 17. Conclusion
+# 18. Conclusion
 
 `INDEX-001` centralise l'organisation documentaire d'AKS Platform et facilite la navigation, la maintenance, les audits de cohérence et l'intégration progressive des modules métier.
