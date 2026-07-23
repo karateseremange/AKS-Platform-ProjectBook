@@ -6,10 +6,11 @@
 |-----------|--------|
 | **Document ID** | CORE-001 |
 | **Titre** | Architecture d'AKS Core |
-| **Version** | 1.1.0 |
-| **Statut** | Validé |
+| **Version** | 1.2.0 |
+| **Statut** | Published |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-18 |
+| **Dernière mise à jour** | 2026-07-23 |
+| **Version du produit** | V1.1 |
 
 ---
 
@@ -21,20 +22,28 @@ Il précise :
 
 - la mission d'AKS Core ;
 - les services de plateforme qu'il fournit ;
-- les règles d'utilisation de ces services par les modules métier ;
+- les contrats exposés aux modules métier ;
+- les règles d'utilisation de ces services ;
 - les limites de responsabilité du socle ;
-- les principes d'évolution et de compatibilité ;
+- les principes d'évolution, de compatibilité et de dépréciation ;
 - les critères d'acceptation applicables à toute évolution d'AKS Core.
 
-CORE-001 complète **ARCH-001**, qui définit l'architecture globale de la plateforme.
+`CORE-001` complète `ARCH-001`, qui définit l'architecture fonctionnelle globale de la plateforme.
 
-ARCH-001 décrit l'organisation générale d'AKS Platform. CORE-001 décrit le fonctionnement attendu de sa couche centrale de services.
+`ARCH-001` décrit l'organisation générale d'AKS Platform. `CORE-001` décrit le fonctionnement attendu de sa couche centrale de services.
+
+Le présent document ne définit pas :
+
+- les règles métier propres aux modules ;
+- le détail d'implémentation du code source ;
+- les contrats détaillés de chaque service spécialisé lorsqu'ils sont portés par un document dédié ;
+- les règles générales de structuration de la documentation.
 
 ---
 
 # 2. Position dans le Project Book
 
-CORE-001 constitue la référence officielle pour toute fonctionnalité transverse intégrée à AKS Platform.
+`CORE-001` constitue la référence officielle pour toute capacité transverse intégrée à AKS Platform.
 
 Il s'applique :
 
@@ -44,16 +53,28 @@ Il s'applique :
 - aux mécanismes d'intégration communs ;
 - aux évolutions futures de la plateforme.
 
-Les documents spécialisés complètent CORE-001 sans pouvoir le contredire, notamment :
+Les documents suivants définissent son cadre :
 
-- **ARCH-001** — Architecture fonctionnelle d'AKS Platform ;
-- **CONFIG-001** — Paramétrage de la plateforme ;
-- **LOG-001** — Journalisation ;
-- **UX-001** — Principes d'expérience utilisateur ;
-- **ADMIN-001** — Tableau de bord d'administration ;
+- `ADR-001` — Architecture documentaire d'AKS Platform ;
+- `ARCH-001` — Architecture fonctionnelle d'AKS Platform ;
+- `GOV-DOC-001` — Gouvernance documentaire ;
+- `DOC-001` — Principes du système documentaire ;
+- `STD-001` — Standard documentaire des modules métier.
+
+Les documents spécialisés complètent `CORE-001` sans pouvoir le contredire, notamment :
+
+- `CONFIG-001` — Paramétrage de la plateforme ;
+- `LOG-001` — Journalisation ;
+- `UX-001` — Principes d'expérience utilisateur ;
+- `ADMIN-001` — Tableau de bord d'administration ;
+- les documents propres aux services de plateforme ;
 - les documents propres aux modules métier.
 
-En cas de divergence, ARCH-001 fait autorité sur l'architecture globale et CORE-001 sur les responsabilités d'AKS Core.
+En cas de divergence :
+
+- `ARCH-001` fait autorité sur l'architecture globale et les règles de dépendance ;
+- `CORE-001` fait autorité sur les responsabilités d'AKS Core ;
+- le document spécialisé fait autorité sur le fonctionnement détaillé du service qu'il décrit, dans le respect de `ARCH-001` et `CORE-001`.
 
 ---
 
@@ -63,9 +84,7 @@ AKS Core constitue la couche de **Platform Services** d'AKS Platform.
 
 Sa mission est de fournir aux modules métier un ensemble de capacités communes, stables, cohérentes et réutilisables.
 
-AKS Core permet aux modules de se concentrer exclusivement sur leur domaine fonctionnel.
-
-Il centralise les mécanismes qui ne doivent pas être réimplémentés dans chaque module.
+AKS Core permet aux modules de se concentrer sur leur domaine fonctionnel. Il centralise les mécanismes qui ne doivent pas être réimplémentés dans chaque module.
 
 ## 3.1 Objectifs
 
@@ -78,7 +97,9 @@ AKS Core poursuit les objectifs suivants :
 - simplifier l'ajout de nouveaux modules ;
 - sécuriser les échanges et les traitements ;
 - faciliter l'exploitation et le diagnostic ;
-- préserver la stabilité de la plateforme.
+- préserver la stabilité de la plateforme ;
+- isoler les modules des fournisseurs externes ;
+- fournir des contrats communs testables et maintenables.
 
 ## 3.2 Position dans l'architecture
 
@@ -104,7 +125,7 @@ AKS Core ne dépend jamais d'un module métier.
 
 ## 3.3 Ce qu'AKS Core fournit
 
-AKS Core fournit notamment :
+AKS Core fournit ou coordonne notamment :
 
 - la configuration ;
 - la journalisation ;
@@ -119,6 +140,8 @@ AKS Core fournit notamment :
 - les mécanismes de sécurité transverses ;
 - à terme, l'authentification et les rôles.
 
+Cette liste constitue un catalogue de capacités. Chaque capacité peut être décrite plus précisément dans un document spécialisé.
+
 ## 3.4 Ce qu'AKS Core ne fait pas
 
 AKS Core n'implémente :
@@ -128,9 +151,11 @@ AKS Core n'implémente :
 - aucun workflow propre à un domaine fonctionnel ;
 - aucune interface utilisateur métier ;
 - aucune dépendance directe envers un module ;
-- aucun accès externe non encapsulé.
+- aucun accès externe non encapsulé ;
+- aucune donnée métier dont la propriété logique appartient à un module ;
+- aucun comportement ajouté uniquement pour satisfaire un cas particulier sans valeur transverse démontrée.
 
-Les règles métier restent exclusivement dans les modules concernés.
+Les règles métier et les données fonctionnelles restent sous la responsabilité des modules concernés.
 
 ---
 
@@ -146,7 +171,7 @@ Il ne connaît ni leurs règles fonctionnelles, ni leurs écrans, ni leur organi
 
 Chaque service d'AKS Core possède une responsabilité clairement définie.
 
-Une même capacité ne doit pas être dispersée entre plusieurs composants.
+Une même capacité ne doit pas être dispersée entre plusieurs composants sans justification architecturale.
 
 ## 4.3 Faible couplage
 
@@ -160,7 +185,7 @@ Chaque service regroupe uniquement les fonctions liées à son objectif.
 
 ## 4.5 Réutilisabilité
 
-Une capacité n'est intégrée à AKS Core que lorsqu'elle présente une valeur transverse.
+Une capacité n'est intégrée à AKS Core que lorsqu'elle présente une valeur transverse pour plusieurs modules ou pour la plateforme entière.
 
 Un besoin propre à un seul module reste dans ce module.
 
@@ -172,9 +197,9 @@ Il ne doit pas devenir un framework générique sans lien avec les besoins d'AKS
 
 ## 4.7 Compatibilité
 
-Les interfaces existantes doivent être préservées autant que possible.
+Les contrats existants doivent être préservés autant que possible.
 
-Toute rupture de compatibilité doit être exceptionnelle, justifiée, documentée et validée.
+Toute rupture de compatibilité doit être exceptionnelle, justifiée, documentée, validée et accompagnée d'une stratégie de migration.
 
 ## 4.8 Sécurité par conception
 
@@ -188,7 +213,21 @@ Tout service critique doit fournir les informations nécessaires au diagnostic, 
 
 ## 4.10 Évolutivité incrémentale
 
-AKS Core évolue progressivement, en fonction des besoins validés de plusieurs modules.
+AKS Core évolue progressivement, en fonction de besoins validés.
+
+Une capacité anticipée mais non encore nécessaire ne doit pas être implémentée prématurément.
+
+## 4.11 Contrats avant implémentation
+
+Toute capacité exposée aux modules doit disposer d'un contrat documenté avant son implémentation ou son évolution significative.
+
+Le contrat doit rester indépendant des détails techniques internes du service.
+
+## 4.12 Substituabilité des intégrations
+
+Un fournisseur externe doit pouvoir être remplacé avec un impact limité sur les modules métier.
+
+Les dépendances spécifiques à un fournisseur restent confinées dans la couche d'intégration.
 
 ---
 
@@ -209,7 +248,7 @@ Il gère :
 
 Les modules ne doivent pas coder en dur une valeur configurable.
 
-Les règles détaillées sont définies dans **CONFIG-001**.
+Les règles détaillées sont définies dans `CONFIG-001`.
 
 ## 5.2 Journalisation
 
@@ -224,7 +263,7 @@ Il fournit :
 - la protection des données personnelles ;
 - des mécanismes de rétention adaptés.
 
-Les règles détaillées sont définies dans **LOG-001**.
+Les règles détaillées sont définies dans `LOG-001`.
 
 ## 5.3 Notifications
 
@@ -239,7 +278,7 @@ Il prend en charge :
 - la traçabilité ;
 - les tentatives de renvoi lorsque cela est pertinent.
 
-Le module fournit l'intention fonctionnelle et les données nécessaires. AKS Core exécute l'envoi.
+Le module fournit l'intention fonctionnelle, le destinataire et les données validées nécessaires. AKS Core exécute l'envoi selon le contrat du service.
 
 ## 5.4 Gestion des erreurs
 
@@ -322,13 +361,13 @@ Le service documentaire fournit des mécanismes communs pour produire :
 - des documents PDF ;
 - des fichiers structurés.
 
-Le module fournit les données validées et le type de document attendu.
+Le module fournit les données validées, le type de document et les règles de contenu attendues.
 
-AKS Core gère le rendu, le format, les métadonnées techniques et les erreurs de génération.
+AKS Core gère le rendu technique, le format, les métadonnées techniques et les erreurs de génération. Il ne décide pas du contenu métier à produire.
 
 ## 5.10 Intégrations externes
 
-Les intégrations externes sont encapsulées par des adaptateurs gérés par AKS Core.
+Les intégrations externes sont encapsulées par des adaptateurs gérés par AKS Core ou par la couche d'intégration placée sous ses contrats.
 
 Elles peuvent concerner notamment :
 
@@ -339,7 +378,7 @@ Elles peuvent concerner notamment :
 - GitHub ;
 - d'autres services validés dans la feuille de route.
 
-Un module métier ne doit pas dépendre directement de l'API spécifique d'un fournisseur externe.
+Un module métier ne doit pas dépendre directement de l'API spécifique d'un fournisseur externe lorsqu'un contrat de plateforme existe.
 
 ## 5.11 Sécurité transverse
 
@@ -373,26 +412,31 @@ Les modules exprimeront les permissions nécessaires sans implémenter leur prop
 
 Un module métier consomme une capacité d'AKS Core au travers d'un contrat stable.
 
-Le contrat définit :
+Le contrat définit au minimum :
 
 - l'objectif du service ;
+- le propriétaire du contrat ;
 - les données d'entrée ;
 - le résultat attendu ;
 - les erreurs possibles ;
 - les règles de sécurité ;
 - les exigences de journalisation ;
-- les garanties de compatibilité.
+- les effets de bord ;
+- les garanties de compatibilité ;
+- le comportement en cas d'indisponibilité ;
+- les règles de versionnement ou de dépréciation lorsqu'elles sont nécessaires.
 
 ## 6.2 Responsabilités du module
 
-Le module métier doit :
+Le module doit :
 
 - appliquer ses règles fonctionnelles ;
 - valider les données propres à son domaine ;
 - transmettre uniquement les données nécessaires ;
 - interpréter le résultat fonctionnel ;
 - respecter les interfaces publiques ;
-- gérer l'indisponibilité d'un service selon le contrat prévu.
+- gérer l'indisponibilité d'un service selon le contrat prévu ;
+- ne pas déduire un comportement à partir d'un détail d'implémentation interne.
 
 ## 6.3 Responsabilités d'AKS Core
 
@@ -404,7 +448,9 @@ AKS Core doit :
 - journaliser les événements nécessaires ;
 - retourner un résultat explicite ;
 - préserver la stabilité de l'interface ;
-- isoler les détails d'implémentation.
+- isoler les détails d'implémentation ;
+- signaler explicitement les erreurs et états dégradés ;
+- maintenir la documentation du contrat.
 
 ## 6.4 Interdictions
 
@@ -415,7 +461,25 @@ Un module ne doit jamais :
 - modifier la configuration globale ;
 - appeler directement un fournisseur externe lorsqu'un adaptateur existe ;
 - dupliquer une capacité transverse ;
-- dépendre d'une classe ou d'un composant interne non contractuel.
+- dépendre d'une classe ou d'un composant interne non contractuel ;
+- utiliser une capacité non publiée comme dépendance officielle ;
+- conserver localement un secret géré par la plateforme.
+
+## 6.5 Points d'extension
+
+Un point d'extension permet à un module de fournir un comportement ou des données à un service commun sans modifier AKS Core.
+
+Un point d'extension doit :
+
+- répondre à un besoin transverse validé ;
+- disposer d'un contrat explicite ;
+- limiter les connaissances d'AKS Core sur le module ;
+- éviter toute dépendance inverse vers le module ;
+- prévoir un comportement par défaut ou une erreur explicite ;
+- être testable indépendamment ;
+- être documenté avant utilisation.
+
+Un point d'extension ne doit jamais permettre d'introduire une règle métier propre à un module dans AKS Core.
 
 ---
 
@@ -432,7 +496,9 @@ Avant intégration dans AKS Core, il faut vérifier :
 - que le besoin concerne plusieurs modules ou la plateforme entière ;
 - qu'il ne s'agit pas d'une règle métier ;
 - qu'aucun service existant ne répond déjà au besoin ;
-- que sa mutualisation apporte une valeur réelle.
+- que sa mutualisation apporte une valeur réelle ;
+- que son intégration ne crée pas un couplage disproportionné ;
+- que le contrat peut rester indépendant des détails d'un module particulier.
 
 ## 7.3 Conception
 
@@ -444,26 +510,38 @@ La conception définit :
 - ses erreurs ;
 - sa sécurité ;
 - sa journalisation ;
-- sa stratégie de test.
+- ses effets de bord ;
+- son comportement dégradé ;
+- sa stratégie de test ;
+- sa stratégie de compatibilité.
 
-## 7.4 Implémentation
+## 7.4 Documentation
 
-L'implémentation respecte les conventions du dépôt applicatif et ne débute qu'après mise à jour de la documentation.
+Avant implémentation, la documentation doit préciser le périmètre, le contrat, les dépendances et les critères de validation du service.
 
-## 7.5 Validation
+Lorsqu'un document spécialisé est nécessaire, il doit respecter `DOC-001` et être référencé dans `INDEX-001`.
+
+Les documents de modules consommateurs doivent déclarer l'utilisation du service conformément à `STD-001`.
+
+## 7.5 Implémentation
+
+L'implémentation respecte les conventions du dépôt applicatif et ne débute qu'après mise à jour de la documentation applicable.
+
+## 7.6 Validation
 
 Le service doit être testé indépendamment et depuis au moins un cas d'utilisation métier représentatif.
 
-## 7.6 Publication
+## 7.7 Publication
 
 Une capacité n'est considérée comme disponible qu'après :
 
 - validation de son contrat ;
-- documentation ;
-- tests ;
-- intégration dans une version officielle.
+- publication de sa documentation ;
+- réussite des tests ;
+- intégration dans une version officielle ;
+- mise à disposition d'une interface stable aux consommateurs.
 
-## 7.7 Dépréciation
+## 7.8 Dépréciation
 
 Une interface obsolète est d'abord déclarée dépréciée.
 
@@ -473,7 +551,8 @@ Sa suppression exige :
 - une solution de remplacement ;
 - une analyse des consommateurs ;
 - une période de transition ;
-- une mise à jour documentaire.
+- une mise à jour documentaire ;
+- une vérification de l'absence de consommateur restant.
 
 ---
 
@@ -488,7 +567,10 @@ AKS Core applique les principes suivants :
 - traçabilité des opérations sensibles ;
 - absence de données sensibles dans les journaux ;
 - suppression des données selon les durées définies ;
-- chiffrement ou signature des échanges lorsque nécessaire.
+- chiffrement ou signature des échanges lorsque nécessaire ;
+- séparation entre données métier, métadonnées techniques et secrets.
+
+AKS Core ne doit conserver une donnée métier que lorsqu'un contrat de plateforme le prévoit explicitement et que la responsabilité de cette conservation est documentée.
 
 Les réponses détaillées aux questionnaires de santé ne doivent notamment jamais être stockées par un service commun.
 
@@ -507,7 +589,9 @@ Les services critiques doivent prévoir, selon le besoin :
 - un mécanisme d'idempotence ;
 - un mode dégradé ;
 - un message d'erreur exploitable ;
-- une journalisation adaptée.
+- une journalisation adaptée ;
+- la préservation d'un état cohérent ;
+- une stratégie de reprise.
 
 ## 9.2 Performances
 
@@ -517,9 +601,10 @@ AKS Core doit éviter :
 - les lectures répétées de configuration ;
 - les traitements bloquants non nécessaires ;
 - les volumes de journalisation excessifs ;
-- la génération répétée d'une même ressource.
+- la génération répétée d'une même ressource ;
+- les abstractions coûteuses sans bénéfice mesurable.
 
-Les optimisations ne doivent jamais dégrader la lisibilité ou la fiabilité.
+Les optimisations ne doivent jamais dégrader la lisibilité, la sécurité ou la fiabilité.
 
 ---
 
@@ -536,9 +621,13 @@ Les tests doivent couvrir :
 - les règles de sécurité ;
 - la compatibilité du contrat ;
 - les effets de bord ;
-- la journalisation attendue.
+- la journalisation attendue ;
+- le comportement dégradé ;
+- les scénarios de dépréciation ou de migration lorsque nécessaires.
 
 Les intégrations externes doivent pouvoir être remplacées par des doubles de test.
+
+Les tests d'un service Core ne doivent pas nécessiter la connaissance de l'implémentation interne d'un module métier.
 
 ---
 
@@ -553,12 +642,13 @@ AKS Core est un composant central placé sous la responsabilité du Product Owne
 Toute évolution doit :
 
 1. répondre à un besoin identifié ;
-2. respecter ARCH-001 ;
+2. respecter `ARCH-001` ;
 3. être documentée avant développement ;
 4. analyser les impacts sur les modules ;
 5. préserver la compatibilité ;
 6. être testée ;
-7. être intégrée dans une version officielle.
+7. être intégrée dans une version officielle ;
+8. mettre à jour les documents spécialisés et les références concernées.
 
 ## 11.3 Exceptions
 
@@ -572,26 +662,33 @@ Toute exception doit être :
 
 Une exception ne devient jamais automatiquement une règle.
 
+Une dérogation à la structure documentaire relève de `GOV-DOC-001` et ne constitue pas une exception architecturale.
+
 ---
 
 # 12. Critères d'acceptation
 
-Une évolution d'AKS Core est acceptable lorsque tous les critères suivants sont satisfaits :
+Une évolution d'AKS Core est acceptable lorsque tous les critères applicables suivants sont satisfaits :
 
 - [ ] La capacité répond à un besoin transverse validé.
 - [ ] Elle ne contient aucune règle métier propre à un module.
 - [ ] Sa responsabilité est clairement définie.
 - [ ] Son contrat est documenté.
+- [ ] Son propriétaire et ses consommateurs sont identifiés.
 - [ ] Ses entrées et sorties sont validées.
 - [ ] Ses erreurs sont explicites et maîtrisées.
-- [ ] Sa journalisation respecte LOG-001.
-- [ ] Sa configuration respecte CONFIG-001.
-- [ ] Ses interfaces respectent ARCH-001.
+- [ ] Son comportement en cas d'indisponibilité est défini.
+- [ ] Sa journalisation respecte `LOG-001`.
+- [ ] Sa configuration respecte `CONFIG-001`.
+- [ ] Ses interfaces respectent `ARCH-001`.
 - [ ] Les données sensibles sont protégées.
 - [ ] Les intégrations externes sont encapsulées.
+- [ ] Les effets de bord sont identifiés.
 - [ ] Les tests couvrent les cas nominaux et les erreurs.
 - [ ] La compatibilité avec les consommateurs existants est vérifiée.
-- [ ] La documentation du Project Book est à jour.
+- [ ] La stratégie de migration ou de dépréciation est définie lorsque nécessaire.
+- [ ] La documentation du Project Book est à jour et publiée.
+- [ ] Les modules consommateurs déclarent la dépendance dans leur documentation.
 - [ ] Aucun module ne doit être modifié sans justification architecturale.
 
 ---
@@ -600,31 +697,50 @@ Une évolution d'AKS Core est acceptable lorsque tous les critères suivants son
 
 | Document | Rôle |
 |----------|------|
-| **ARCH-001** | Architecture globale et règles de dépendance |
-| **CONFIG-001** | Gestion du paramétrage |
-| **LOG-001** | Politique de journalisation |
-| **UX-001** | Principes d'expérience utilisateur |
-| **ADMIN-001** | Administration de la plateforme |
-| **ROADMAP-001** | Planification des évolutions |
+| `ADR-001` | Architecture documentaire et autorité du Project Book |
+| `ARCH-001` | Architecture globale et règles de dépendance |
+| `GOV-DOC-001` | Gouvernance et publication documentaire |
+| `DOC-001` | Principes du système documentaire |
+| `STD-001` | Structure documentaire obligatoire des modules métier |
+| `CONFIG-001` | Gestion du paramétrage |
+| `LOG-001` | Politique de journalisation |
+| `UX-001` | Principes d'expérience utilisateur |
+| `ADMIN-001` | Administration de la plateforme |
+| `ROADMAP-001` | Planification des évolutions |
+| `INDEX-001` | Catalogue des documents du Project Book |
 
-Les documents propres aux modules doivent référencer CORE-001 dès qu'ils utilisent un service de plateforme.
+Les documents propres aux modules doivent référencer `CORE-001` dès qu'ils utilisent un service de plateforme.
+
+Les contrats détaillés d'un service Core doivent être référencés depuis le document spécialisé correspondant et depuis le catalogue documentaire.
 
 ---
 
-# 14. Conclusion
+# 14. Historique des versions
+
+| Version | Date | Évolution |
+|---------|------|-----------|
+| 1.0.0 | 2026-07-18 | Création de l'architecture d'AKS Core |
+| 1.1.0 | 2026-07-18 | Consolidation des services, contrats et critères d'acceptation |
+| 1.2.0 | 2026-07-23 | Alignement avec ARCH-001, le système documentaire V1.1, les points d'extension et le cycle de vie des contrats |
+
+---
+
+# 15. Conclusion
 
 AKS Core constitue le socle de services d'AKS Platform.
 
 Il garantit que les capacités communes sont conçues, sécurisées, documentées et maintenues de manière homogène.
 
-Son rôle n'est pas de centraliser toutes les fonctionnalités, mais de fournir les services transversaux nécessaires à des modules métier autonomes.
+Son rôle n'est pas de centraliser toutes les fonctionnalités, mais de fournir des services transversaux clairement délimités à des modules métier autonomes.
 
-Le respect de CORE-001 permet :
+Le respect de `CORE-001` permet :
 
 - de maîtriser la complexité ;
 - de limiter la duplication ;
 - de préserver l'indépendance des modules ;
 - de faciliter les futurs développements ;
-- de garantir une plateforme stable et évolutive.
+- de garantir une plateforme stable et évolutive ;
+- de rendre les intégrations remplaçables ;
+- de préserver des contrats communs fiables.
 
-Toute évolution d'AKS Core doit rester conforme à ARCH-001 et aux documents spécialisés du Project Book.
+Toute évolution d'AKS Core doit rester conforme à `ARCH-001`, au système documentaire du Project Book et aux documents spécialisés applicables.
