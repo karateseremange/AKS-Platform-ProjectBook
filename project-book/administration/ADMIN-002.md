@@ -3,9 +3,9 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ADMIN-002 |
-| **Version** | 1.1.0 |
+| **Version** | 1.2.0 |
 | **Statut** | Référence de développement |
-| **Nature** | Spécification fonctionnelle d’interface |
+| **Nature** | Spécification fonctionnelle d’interface et de navigation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-23 |
 | **Version du produit** | V1.1 |
@@ -14,123 +14,87 @@
 
 ## 1. Objet
 
-Le présent document définit l’organisation de l’interface utilisateur et de la navigation du Centre de pilotage d’AKS Platform.
+Le présent document définit exclusivement l’organisation de l’interface utilisateur, la structure de navigation et les règles communes de déplacement dans le Centre de pilotage d’AKS Platform.
 
-Il complète `ADMIN-001`, qui décrit le premier incrément du Dashboard d’administration.
+Il complète `ADMIN-001`, qui décrit le premier incrément livrable du Dashboard.
 
-`ADMIN-002` ne redéfinit aucun principe transverse. Il applique les références fondatrices suivantes :
+Il ne définit pas :
+
+- le modèle fonctionnel détaillé des zones, cartes et états, qui relève de `ADMIN-003` ;
+- le contrat d’extension des modules, qui relève de `ADMIN-004` ;
+- le référentiel de validation, qui relève de `ADMIN-005`.
+
+---
+
+## 2. Références applicables
+
+`ADMIN-002` applique :
 
 - `ARCH-001` pour l’organisation générale de la plateforme ;
 - `CORE-001` pour les services communs ;
+- `SECURITY-001` pour les contrôles d’accès ;
 - `CONFIG-001` pour les paramètres administrables ;
 - `LOG-001` pour les informations de journalisation ;
 - `UX-001` pour les principes d’expérience utilisateur ;
 - `UI-001` pour les composants et règles visuelles.
 
+Aucun principe transverse n’est redéfini localement.
+
 ---
 
-## 2. Finalité
+## 3. Finalité
 
 Le Centre de pilotage constitue le point d’entrée principal de l’administration d’AKS Platform.
 
 Il permet à un administrateur autorisé de :
 
-- identifier l’état fonctionnel général de la plateforme ;
-- accéder aux fonctionnalités administratives disponibles ;
-- consulter les informations synthétiques publiées par les modules ;
-- rejoindre les écrans de paramétrage, de journalisation et de diagnostic lorsqu’ils existent.
+- identifier les capacités administratives réellement disponibles ;
+- accéder aux écrans de la plateforme ;
+- retrouver une structure de navigation stable et cohérente ;
+- revenir facilement au Centre de pilotage ;
+- comprendre sa position dans l’espace d’administration.
 
-Le Centre de pilotage reste un agrégateur d’informations et un point de navigation. Il n’exécute aucune logique métier.
+Le Centre de pilotage reste un point de navigation et de présentation. Il n’exécute aucune logique métier.
 
 ---
 
-## 3. Principes de conception
+## 4. Principes de conception
 
-### 3.1 Application des contrats transverses
+### 4.1 Application des contrats transverses
 
 L’interface respecte obligatoirement `UX-001` et `UI-001`.
 
-Aucun module ne définit localement une variante du Centre de pilotage ou de ses composants communs.
+Aucun module ne définit localement une variante incompatible de la navigation administrative.
 
-### 3.2 Architecture déclarative
+### 4.2 Navigation déclarative
 
-Le Centre de pilotage affiche uniquement :
+La navigation affiche uniquement des destinations existantes et autorisées dans la version exécutée.
 
-- des informations déjà déterminées par leurs services sources ;
-- des états déjà calculés ;
-- des actions de navigation vers des destinations existantes.
+Elle ne calcule, ne déduit et ne simule aucune fonctionnalité.
 
-Il ne calcule, ne déduit et ne simule aucune information.
+### 4.3 Absence de couplage métier
 
-### 3.3 Absence de couplage métier
+Le Centre de pilotage ne consulte jamais directement les données internes d’un module pour construire sa navigation.
 
-Le Centre de pilotage ne consulte jamais directement les données internes d’un module.
+Les entrées de module proviennent exclusivement des déclarations ou contrats publics prévus par AKS Core.
 
-Les informations de module sont obtenues exclusivement par les contrats publics prévus à cet effet.
-
-### 3.4 Progressivité
+### 4.4 Progressivité
 
 L’interface reste fonctionnelle lorsqu’un service ou un module facultatif n’est pas disponible.
 
-Une fonctionnalité absente n’est ni simulée ni remplacée par une donnée fictive.
+Une destination absente n’est ni simulée ni remplacée par un lien inactif trompeur.
+
+### 4.5 Contrôle côté serveur
+
+La visibilité d’un lien améliore l’expérience utilisateur mais ne constitue jamais une autorisation.
+
+Chaque destination réapplique ses propres contrôles côté serveur.
 
 ---
 
-## 4. Organisation générale de l’interface
+## 5. Structure générale de navigation
 
-Le Centre de pilotage est organisé en trois zones fonctionnelles.
-
-### 4.1 État de la plateforme
-
-Cette zone présente les informations transverses disponibles sur la plateforme.
-
-Elle peut notamment contenir :
-
-- l’identité et la version exécutée ;
-- l’état des services communs lorsqu’un service de diagnostic le fournit ;
-- les alertes administratives actives ;
-- les informations de configuration utiles à l’administration.
-
-Cette zone est en lecture seule.
-
-Aucune information technique d’infrastructure n’est affichée sans service source explicitement responsable de son calcul.
-
-### 4.2 Vue des modules
-
-Cette zone présente les synthèses déclarées par les modules installés.
-
-Chaque module peut publier un ou plusieurs widgets selon le contrat défini dans `ADMIN-003`.
-
-Le Centre de pilotage :
-
-- reçoit les widgets déclarés ;
-- applique les règles de présentation de `UI-001` ;
-- organise leur affichage ;
-- ne connaît pas leur logique métier.
-
-### 4.3 Actions rapides
-
-Cette zone regroupe les points d’entrée vers les fonctions administratives réellement disponibles.
-
-Les actions initialement envisagées sont :
-
-- Paramétrage ;
-- Journalisation ;
-- Diagnostic ;
-- À propos.
-
-Une action :
-
-- réalise uniquement une navigation ;
-- n’est affichée que si sa destination existe ;
-- respecte les règles d’autorisation de l’écran ciblé ;
-- ne déclenche aucun traitement métier directement depuis le Dashboard.
-
----
-
-## 5. Navigation principale
-
-La navigation administrative suit la structure logique suivante :
+La navigation administrative suit l’organisation fonctionnelle cible suivante :
 
 ```text
 Centre de pilotage
@@ -150,188 +114,231 @@ Maintenance
     À propos
 ```
 
-Cette structure représente une organisation fonctionnelle cible. Seules les destinations réellement disponibles dans la version exécutée sont affichées.
+Cette structure est une cible fonctionnelle. Seules les destinations réellement disponibles dans la version exécutée sont affichées.
 
-Les modules apparaissent dans la navigation uniquement lorsqu’ils sont installés, actifs et déclarés auprès d’AKS Core.
+Les modules apparaissent uniquement lorsqu’ils sont installés, actifs, déclarés auprès d’AKS Core et accessibles à l’utilisateur courant.
 
 ---
 
-## 6. Règles de navigation
+## 6. Zones de navigation
 
-### 6.1 Destination existante
+### 6.1 Accès au Centre de pilotage
 
-Aucun lien ne doit conduire vers un écran inexistant ou non disponible.
+Le Centre de pilotage est l’accueil de l’espace d’administration.
 
-### 6.2 Autorisation
+Il doit être accessible depuis toute page administrative, sauf contrainte technique temporaire explicitement documentée.
 
-L’affichage d’un lien ne remplace jamais le contrôle d’autorisation côté serveur.
+### 6.2 Navigation principale
 
-Chaque écran administratif applique ses propres règles d’accès.
+La navigation principale présente les grandes familles fonctionnelles :
 
-### 6.3 Retour au Centre de pilotage
+- Administration ;
+- Modules ;
+- Maintenance.
 
-Chaque écran administratif fournit un moyen explicite de revenir au Centre de pilotage.
+Ces familles servent uniquement à organiser les destinations. Elles ne portent aucune logique métier.
 
-### 6.4 Navigation cohérente
+### 6.3 Actions rapides
+
+Les actions rapides fournissent des raccourcis vers des destinations existantes.
+
+Elles :
+
+- réalisent uniquement une navigation ;
+- respectent les autorisations de la destination ;
+- disparaissent lorsque leur destination n’existe pas ;
+- ne déclenchent pas directement de traitement destructif ou irréversible.
+
+### 6.4 Retour et orientation
+
+Chaque écran administratif fournit :
+
+- un moyen explicite de revenir au Centre de pilotage ;
+- un titre clair ;
+- une indication suffisante de la section courante ;
+- une navigation cohérente avec les autres écrans.
+
+---
+
+## 7. Règles de navigation
+
+### 7.1 Destination existante
+
+Aucun lien ne doit conduire vers un écran inexistant, désactivé ou non disponible.
+
+### 7.2 Autorisation
+
+Chaque écran applique ses propres règles d’accès côté serveur.
+
+Un lien non visible ne dispense jamais de ce contrôle.
+
+### 7.3 Cohérence
 
 La position, le libellé et le comportement des éléments de navigation restent cohérents dans l’ensemble de l’espace d’administration.
 
-### 6.5 Absence de traitement métier
+### 7.4 Absence de traitement métier
 
 Une action de navigation ne réalise aucun traitement métier avant l’ouverture de sa destination.
 
----
+### 7.5 Liens externes
 
-## 7. Widgets du Centre de pilotage
+Un lien externe doit :
 
-Chaque widget est présenté à l’aide du composant `AKS.UI.Card` défini dans `UI-001`.
+- être explicitement identifié comme tel ;
+- utiliser une destination approuvée ;
+- ne jamais contenir de secret ;
+- respecter les règles de sécurité et de confidentialité applicables.
 
-La carte comporte obligatoirement :
+### 7.6 Documents
 
-- un en-tête ;
-- un contenu.
-
-Elle peut également comporter :
-
-- un état ;
-- des indicateurs ;
-- des actions ;
-- un pied de carte.
-
-Le Centre de pilotage ne crée aucune présentation spécifique à un module en dehors des composants du Design System.
+L’ouverture d’un document respecte `DOCUMENT-001` et les autorisations associées.
 
 ---
 
-## 8. États fonctionnels
+## 8. Sources des entrées de navigation
 
-Les états affichés utilisent exclusivement les états normalisés de `UI-001` :
-
-- Succès ;
-- Information ;
-- Attention ;
-- Incident ;
-- Désactivé.
-
-Chaque état comporte un libellé textuel. Aucune information essentielle ne repose uniquement sur la couleur.
-
-Le Centre de pilotage affiche l’état fourni par sa source. Il ne le recalcule pas.
-
----
-
-## 9. Sources d’information
-
-| Élément affiché | Source responsable |
+| Élément | Source responsable |
 |---|---|
-| Identité et version de la plateforme | Service transversal de version d’AKS Core |
-| Paramètres administrables | Service de configuration conforme à `CONFIG-001` |
-| Activité récente | Service de journalisation conforme à `LOG-001` |
-| État technique fonctionnel | Service de diagnostic lorsqu’il existe |
-| Synthèses des modules | Contrats de Dashboard définis dans `ADMIN-003` |
-| Alertes administratives | Service responsable de l’alerte |
+| Identité et version | Service transversal de version d’AKS Core |
+| Paramétrage | Service conforme à `CONFIG-001` |
+| Journalisation | Service conforme à `LOG-001` |
+| Diagnostic | Service de diagnostic lorsqu’il existe |
+| Modules disponibles | Registre des modules d’AKS Core |
+| Actions publiées par les modules | Contrat défini par `ADMIN-004` |
 
-Chaque information affichée doit posséder une source identifiée et traçable.
+Chaque entrée doit posséder une source identifiée et une destination réelle.
 
 ---
 
-## 10. Responsive et accessibilité
+## 9. Responsive et accessibilité
 
-Le Centre de pilotage est utilisable sur ordinateur, tablette et smartphone.
+La navigation est utilisable sur ordinateur, tablette et smartphone.
 
-L’adaptation responsive modifie la disposition des zones et des cartes sans modifier leur comportement fonctionnel.
+L’adaptation responsive peut modifier :
 
-L’interface applique le principe *Accessibility by Design* défini dans `UI-001`.
+- la disposition ;
+- le mode d’ouverture du menu ;
+- la présentation des regroupements.
 
-Elle doit notamment :
+Elle ne modifie pas :
+
+- le sens des destinations ;
+- les autorisations ;
+- l’ordre logique de lecture ;
+- les actions disponibles.
+
+L’interface doit notamment :
 
 - être utilisable au clavier ;
 - conserver un ordre de navigation logique ;
 - fournir des libellés explicites ;
-- présenter des contrastes suffisants ;
-- rester compréhensible sans dépendre uniquement de la couleur ;
+- présenter un focus visible ;
+- rester compréhensible sans dépendre uniquement de la couleur ou d’une icône ;
 - être compatible avec les technologies d’assistance.
 
 ---
 
-## 11. Responsabilités
+## 10. Responsabilités
 
-### 11.1 Le Centre de pilotage est responsable de
+### 10.1 Centre de pilotage
 
-- l’organisation générale de l’interface administrative ;
-- l’agrégation des informations fournies par les contrats publics ;
-- la présentation homogène des widgets ;
-- la navigation vers les fonctionnalités disponibles ;
-- l’application de `UX-001` et `UI-001`.
+Il est responsable :
 
-### 11.2 Le Centre de pilotage n’est pas responsable de
+- de la structure générale de navigation ;
+- de la présentation des destinations disponibles ;
+- de la cohérence des libellés et parcours ;
+- de l’application de `UX-001` et `UI-001` ;
+- du retour vers l’accueil administratif.
 
-- calculer des indicateurs métier ;
-- interpréter les données d’un module ;
-- consulter directement les stockages des modules ;
-- modifier l’état d’un module ;
-- administrer une infrastructure ;
-- simuler des informations indisponibles ;
-- remplacer les contrôles d’autorisation côté serveur.
+### 10.2 Services et modules
 
----
+Ils sont responsables :
 
-## 12. Périmètre d’implémentation
+- de déclarer leurs destinations ;
+- de fournir des libellés compréhensibles ;
+- d’appliquer les contrôles d’accès ;
+- de maintenir leurs écrans de destination ;
+- de retirer ou désactiver une entrée lorsque sa destination n’est plus disponible.
 
-`ADMIN-002` définit l’organisation cible de l’interface et de la navigation.
+### 10.3 Product Owner
 
-Son implémentation peut être progressive.
+Il valide :
 
-Le premier incrément reste celui défini dans `ADMIN-001` :
-
-- carte « Informations plateforme » ;
-- carte « Actions rapides » ;
-- contrôle d’autorisation côté serveur.
-
-Les zones, entrées de navigation et widgets supplémentaires sont ajoutés uniquement lorsque leurs services sources et leurs destinations existent réellement.
+- la structure fonctionnelle ;
+- les libellés ;
+- l’ordre des familles ;
+- les exceptions de navigation ;
+- les évolutions incompatibles.
 
 ---
 
-## 13. Hors périmètre
+## 11. Hors périmètre
 
 `ADMIN-002` ne définit pas :
 
-- le contrat technique des widgets ;
-- le registre des modules ;
+- le détail des zones de contenu du Dashboard ;
+- le cycle de vie des cartes ;
+- les états fonctionnels des widgets ;
+- le contrat `DashboardProvider` et `DashboardWidget` ;
 - l’implémentation des services de configuration, journalisation ou diagnostic ;
 - les règles métier des modules ;
 - la gestion des utilisateurs ;
 - la supervision d’infrastructure ;
 - les écrans détaillés de chaque fonction administrative.
 
-Le contrat technique des widgets et de leurs fournisseurs est défini dans `ADMIN-003`.
-
 ---
 
-## 14. Critères d’acceptation
+## 12. Critères d’acceptation
 
 `ADMIN-002` est respecté lorsque :
 
-- le Centre de pilotage constitue le point d’entrée de l’espace d’administration ;
+- le Centre de pilotage constitue le point d’entrée de l’administration ;
+- la structure Administration / Modules / Maintenance est cohérente ;
+- seules les destinations réellement disponibles sont affichées ;
+- les modules absents ou inactifs ne sont pas présentés ;
+- chaque écran fournit un retour explicite vers le Centre de pilotage ;
+- les liens ne déclenchent aucune logique métier locale ;
+- les contrôles d’autorisation sont réappliqués côté serveur ;
+- les liens externes sont identifiés et sécurisés ;
 - l’interface respecte `UX-001` et `UI-001` ;
-- les informations proviennent exclusivement de services ou contrats identifiés ;
-- aucun indicateur métier n’est calculé par l’interface ;
-- aucune donnée de module n’est consultée directement ;
-- les widgets utilisent `AKS.UI.Card` ;
-- seules les destinations existantes sont affichées ;
-- les contrôles d’autorisation restent exécutés côté serveur ;
-- l’absence d’un module ou d’un service facultatif ne bloque pas le Centre de pilotage ;
-- aucune information fictive ou simulée n’est présentée ;
-- l’interface reste utilisable sur ordinateur, tablette et smartphone ;
-- les exigences d’accessibilité de `UI-001` sont appliquées.
+- la navigation reste utilisable sur ordinateur, tablette et smartphone ;
+- aucune information fictive ou destination inexistante n’est présentée.
 
 ---
 
-## 15. Définition de terminé
+## 13. Définition de terminé
 
 `ADMIN-002` est terminé lorsque :
 
-- l’organisation de l’interface est validée ;
 - la structure de navigation est validée ;
-- les responsabilités et limites du Centre de pilotage sont explicites ;
-- les règles de présentation des widgets sont définies ;
-- les critères d’acceptation sont utilisables pour l’implémentation ;
-- le document est publié dans le Project Book sur la branche de développement.
+- les familles et destinations sont définies ;
+- les règles de retour et d’orientation sont documentées ;
+- les responsabilités et limites sont explicites ;
+- les contrôles d’accessibilité et responsive sont validés ;
+- les critères d’acceptation sont utilisables pour l’implémentation.
+
+---
+
+## 14. Références
+
+- `ARCH-001`
+- `CORE-001`
+- `SECURITY-001`
+- `CONFIG-001`
+- `LOG-001`
+- `DOCUMENT-001`
+- `UX-001`
+- `UI-001`
+- `ADMIN-001`
+- `ADMIN-003`
+- `ADMIN-004`
+- `ADMIN-005`
+
+---
+
+## 15. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 1.2.0 | 2026-07-23 | Recentrage sur l’interface et la navigation, suppression des chevauchements avec ADMIN-003, ajout des responsabilités et règles de sécurité |
+| 1.1.0 | 2026-07-23 | Première spécification de l’interface et de la navigation |
