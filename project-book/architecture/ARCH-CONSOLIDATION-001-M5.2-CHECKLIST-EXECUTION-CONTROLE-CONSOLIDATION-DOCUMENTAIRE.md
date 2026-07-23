@@ -3,7 +3,7 @@
 # Checklist d’exécution et de contrôle de la consolidation documentaire
 
 Version documentaire : 1.0  
-Statut : À valider  
+Statut : Validé  
 Auteur : AKS Platform
 
 ---
