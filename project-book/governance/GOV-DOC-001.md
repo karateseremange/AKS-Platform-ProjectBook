@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | GOV-DOC-001 |
 | Titre | Gouvernance documentaire |
-| Version | 1.0.0 |
+| Version | 1.1.0 |
 | Statut | Published |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-20 |
+| Dernière mise à jour | 2026-07-23 |
 | Version du produit | V1.1 |
 
 ---
@@ -32,7 +32,8 @@ Le présent document couvre :
 - le cycle de vie des documents ;
 - les règles de publication ;
 - la synchronisation entre documentation et développement ;
-- le référencement documentaire dans les User Stories.
+- le référencement documentaire dans les User Stories ;
+- l'application des standards documentaires spécialisés.
 
 Sont exclus de son périmètre :
 
@@ -209,6 +210,24 @@ Réciproquement :
 
 Ces règles s'appliquent aux nouvelles fonctionnalités, aux évolutions fonctionnelles, aux décisions d'architecture et aux règles transverses.
 
+### 7.3 Règle GOV-DOC-003
+
+> Tout nouveau module métier doit respecter le standard `STD-001`.
+
+Cette règle s'applique à la création du socle documentaire du module, à sa numérotation, à la responsabilité de chacun de ses documents et à ses éventuelles extensions.
+
+Toute dérogation doit :
+
+- répondre à un besoin concret et documenté ;
+- préciser la règle concernée ;
+- justifier pourquoi l'application du standard est inadaptée ;
+- être explicitement validée par une décision de gouvernance publiée ;
+- rester limitée au périmètre strictement nécessaire.
+
+Une dérogation ne modifie pas `STD-001` et ne crée pas de précédent implicite pour les autres modules.
+
+`DOC-001` demeure la référence des principes généraux de documentation. `STD-001` applique ces principes au périmètre particulier des modules métier.
+
 ---
 
 ## 8. Processus de publication
@@ -284,6 +303,8 @@ Une User Story ne doit pas s'appuyer uniquement sur une conversation ou sur une 
 
 Lorsqu'un document requis n'existe pas encore ou n'est pas publié, sa production précède le développement de la User Story.
 
+Pour un module métier, la User Story doit également référencer `STD-001` ou les documents du module qui en appliquent les exigences, lorsque cette conformité est pertinente pour le livrable.
+
 ---
 
 ## 11. Responsabilités
@@ -296,7 +317,8 @@ Le Product Owner :
 - confirme le périmètre fonctionnel ;
 - participe à la review ;
 - valide la publication des documents normatifs ;
-- s'assure qu'une User Story référence les documents nécessaires.
+- s'assure qu'une User Story référence les documents nécessaires ;
+- approuve explicitement toute dérogation à un standard documentaire publié.
 
 ### 11.2 Contributeur
 
@@ -305,6 +327,7 @@ Tout contributeur :
 - utilise le Project Book comme référence ;
 - signale les divergences entre documentation et code ;
 - met à jour les documents concernés par ses modifications ;
+- applique les standards documentaires correspondant au périmètre traité ;
 - ne transforme pas une décision implicite ou locale en règle normative sans publication.
 
 ### 11.3 Atelier de conception
@@ -338,35 +361,48 @@ La gouvernance documentaire est correctement appliquée lorsque :
 - le code et la documentation sont cohérents à la clôture ;
 - les documents publiés reflètent les dernières décisions validées ;
 - les brouillons et échanges ne sont pas présentés comme des références officielles ;
+- les nouveaux modules métier respectent `STD-001` ;
+- toute dérogation à `STD-001` est explicite, publiée, justifiée et limitée ;
 - les mécanismes documentaires restent proportionnés aux besoins constatés.
 
 ---
 
 ## 14. Dépendances
 
-`GOV-DOC-001` ne dépend d'aucun autre document du Project Book.
+`GOV-DOC-001` dépend des principes généraux définis dans `DOC-001`.
 
-Il constitue le cadre de publication applicable aux documents qui seront publiés après lui.
+Il constitue le cadre de publication et d'autorité applicable aux documents du Project Book.
+
+`STD-001` spécialise `DOC-001` pour la documentation des modules métier et devient obligatoire par l'effet de la règle `GOV-DOC-003`.
 
 ---
 
 ## 15. Références
 
-Aucune référence normative antérieure.
-
-Les documents suivants complètent ce cadre sans appartenir au périmètre du présent document :
-
+- `DOC-001` — Règles de documentation d'AKS Platform ;
+- `STD-001` — Module Documentation Standard ;
 - `ADR-001` — Architecture documentaire d'AKS Platform ;
-- `GOV-DEV-001` — Gouvernance de développement.
+- `GOV-DEV-001` — Gouvernance du développement logiciel.
 
 ---
 
-## 16. Conclusion
+## 16. Historique
+
+| Version | Date | Évolution |
+|---------|------|-----------|
+| 1.1.0 | 2026-07-23 | Ajout de la règle GOV-DOC-003 rendant STD-001 obligatoire pour les nouveaux modules métier et encadrant les dérogations |
+| 1.0.0 | 2026-07-20 | Publication initiale de la gouvernance documentaire |
+
+---
+
+## 17. Conclusion
 
 Le Project Book est la référence normative officielle d'AKS Platform.
 
 Les conversations servent à concevoir et à revoir les décisions, tandis que le dépôt applicatif en assure l'implémentation.
 
 La publication documentaire précède le développement, et la synchronisation entre documentation et code conditionne la clôture des User Stories.
+
+Les modules métier sont documentés selon `STD-001`, sauf dérogation exceptionnelle explicitement gouvernée et publiée.
 
 Cette gouvernance fournit un cadre simple, rigoureux et directement applicable à la poursuite de la V1.1.
