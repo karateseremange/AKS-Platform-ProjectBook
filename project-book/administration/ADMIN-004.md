@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ADMIN-004 |
-| **Version** | 1.1.0 |
+| **Version** | 1.2.0 |
 | **Statut** | Référence de développement |
 | **Nature** | Contrat d’extension du Centre de pilotage |
 | **Propriétaire** | Product Owner |
@@ -14,95 +14,109 @@
 
 ## 1. Objet
 
-Le présent document définit le contrat permettant aux modules d’AKS Platform de publier des contenus dans le Centre de pilotage.
+Le présent document définit exclusivement le contrat permettant aux modules et services transverses d’AKS Platform de publier des contenus dans le Centre de pilotage.
 
-Il formalise deux abstractions complémentaires :
+Il formalise :
 
-- `DashboardProvider`, qui expose un ensemble de widgets pour un module ou un service transverse ;
-- `DashboardWidget`, qui représente une unité d’information ou d’action affichable dans le Centre de pilotage.
+- `DashboardProvider`, source déclarative d’un ensemble de widgets ;
+- `DashboardWidget`, modèle immuable d’une unité de présentation ;
+- le registre des fournisseurs ;
+- les règles de validation, d’isolation, de versionnement et de compatibilité.
 
-`ADMIN-004` complète :
-
-- `ADMIN-001`, qui définit le Dashboard d’administration ;
-- `ADMIN-002`, qui définit son interface utilisateur et sa navigation ;
-- `ADMIN-003`, qui définit le modèle fonctionnel du Centre de pilotage.
+Il complète `ADMIN-001`, `ADMIN-002` et `ADMIN-003` sans redéfinir leur périmètre.
 
 ---
 
-## 2. Principes directeurs
+## 2. Références applicables
 
-Le contrat d’extension respecte les principes suivants :
+Le contrat applique notamment :
 
-- absence de dépendance directe entre le Centre de pilotage et les modules métier ;
+- `ARCH-001` — architecture générale ;
+- `CORE-001` — services communs et registre ;
+- `API-001` — conventions de contrat ;
+- `SECURITY-001` — autorisation et confidentialité ;
+- `CONFIG-001` — activation et paramètres ;
+- `LOG-001` — journalisation ;
+- `ERROR-001` — gestion des erreurs ;
+- `DOCUMENT-001` — ouverture des documents ;
+- `UX-001` et `UI-001` — expérience et rendu.
+
+---
+
+## 3. Principes directeurs
+
+Le contrat respecte les principes suivants :
+
+- absence de dépendance directe entre le Centre de pilotage et un module métier ;
 - absence de logique métier dans les widgets ;
-- publication déclarative des contenus ;
-- traçabilité de la source de chaque widget ;
+- publication déclarative et sérialisable ;
+- traçabilité de la source ;
+- minimisation des données ;
+- contrôles d’autorisation côté serveur ;
 - isolation des erreurs par fournisseur ;
-- compatibilité avec `CORE-001`, `UX-001` et `UI-001` ;
-- dégradation maîtrisée lorsqu’un fournisseur est indisponible.
+- compatibilité versionnée ;
+- dégradation maîtrisée ;
+- absence de recherche dynamique dans le namespace global.
 
-Le Centre de pilotage orchestre l’affichage. Il ne devient jamais propriétaire des données publiées.
+Le Centre de pilotage orchestre l’affichage sans devenir propriétaire des données publiées.
 
 ---
 
-## 3. Rôles et responsabilités
+## 4. Rôles et responsabilités
 
-### 3.1 Centre de pilotage
+### 4.1 Centre de pilotage
 
-Le Centre de pilotage :
+Il :
 
 - découvre les fournisseurs enregistrés ;
-- demande à chaque fournisseur les widgets accessibles dans le contexte courant ;
-- valide la conformité minimale des descriptions reçues ;
+- demande les widgets accessibles dans le contexte courant ;
+- valide la conformité des descriptions ;
+- refuse les contrats invalides ;
 - trie et compose les widgets ;
-- applique les règles d’autorisation et d’affichage ;
-- isole les erreurs d’un fournisseur ;
-- rend les widgets avec les composants définis par `UI-001`.
+- isole les erreurs ;
+- rend les widgets avec `UI-001`.
 
 Il ne :
 
 - calcule aucune donnée métier ;
 - interroge directement les stockages métier ;
-- transforme une information métier en décision ;
 - corrige ou complète les données d’un fournisseur ;
 - crée de dépendance vers un module particulier.
 
-### 3.2 DashboardProvider
+### 4.2 DashboardProvider
 
-Un `DashboardProvider` représente une source identifiée de widgets.
+Un fournisseur :
 
-Il :
-
-- appartient à un module ou à un service transverse unique ;
+- appartient à un module ou service unique ;
 - possède un identifiant stable ;
-- expose uniquement les widgets dont il maîtrise la source ;
-- applique les autorisations nécessaires avant publication ;
-- transforme les données de son domaine en modèles de présentation déclaratifs ;
-- signale explicitement les états vide, indisponible ou erreur.
+- expose uniquement les contenus dont il maîtrise la source ;
+- applique les autorisations avant publication ;
+- transforme les données de son domaine en modèles déclaratifs ;
+- indique explicitement les états et la fraîcheur ;
+- respecte la version du contrat.
 
 Il ne :
 
 - rend directement du HTML ;
-- manipule la vue du Centre de pilotage ;
-- modifie les widgets d’un autre fournisseur ;
-- déclenche un traitement métier lors de la simple consultation du Dashboard ;
-- contourne les contrats de services de son module.
+- fournit de script client ;
+- manipule la vue ;
+- modifie un autre fournisseur ;
+- déclenche un traitement métier lors de la consultation ;
+- contourne les services publics de son module.
 
-### 3.3 DashboardWidget
+### 4.3 DashboardWidget
 
-Un `DashboardWidget` est une description immuable d’un contenu à afficher.
+Un widget est une description immuable et sérialisable.
 
-Il contient uniquement les informations nécessaires à sa présentation, à sa priorité, à son état et à ses actions de navigation.
+Il contient uniquement les informations nécessaires à sa présentation, son état, sa priorité, sa fraîcheur et ses actions autorisées.
 
-Un widget ne possède aucune capacité d’accès direct aux données et aucune logique métier exécutable.
+Il ne possède aucune capacité d’accès direct aux données et aucune logique métier exécutable.
 
 ---
 
-## 4. Contrat DashboardProvider
+## 5. Contrat DashboardProvider
 
-### 4.1 Interface fonctionnelle minimale
-
-Tout fournisseur expose les opérations conceptuelles suivantes :
+### 5.1 Interface minimale
 
 ```text
 DashboardProvider
@@ -111,14 +125,15 @@ DashboardProvider
 └── getWidgets(context)
 ```
 
-### 4.2 getProviderId()
+### 5.2 getProviderId()
 
 Retourne un identifiant :
 
 - unique dans la plateforme ;
 - stable dans le temps ;
-- indépendant du libellé affiché ;
-- composé de caractères techniques normalisés.
+- indépendant du libellé ;
+- sans donnée personnelle ;
+- conforme à une convention technique documentée.
 
 Exemple :
 
@@ -126,37 +141,42 @@ Exemple :
 aks.analytics.dashboard
 ```
 
-### 4.3 getProviderMetadata()
-
-Retourne les métadonnées déclaratives du fournisseur :
+### 5.3 getProviderMetadata()
 
 | Propriété | Obligatoire | Description |
 |---|---|---|
-| `providerId` | Oui | Identifiant stable du fournisseur |
+| `providerId` | Oui | Identifiant stable |
 | `moduleId` | Oui | Module ou service propriétaire |
 | `label` | Oui | Libellé fonctionnel |
-| `version` | Oui | Version du contrat implémenté |
-| `enabled` | Oui | Disponibilité fonctionnelle du fournisseur |
+| `contractVersion` | Oui | Version du contrat implémenté |
+| `providerVersion` | Oui | Version du fournisseur |
+| `enabled` | Oui | Disponibilité fonctionnelle |
 
-### 4.4 getWidgets(context)
+### 5.4 getWidgets(context)
 
-Retourne une collection de `DashboardWidget` adaptée au contexte courant.
+Retourne une collection de widgets adaptée au contexte courant.
 
 Le contexte peut contenir :
 
-- l’identité de l’utilisateur autorisé ;
-- ses rôles ou permissions utiles ;
+- une identité technique minimale ;
+- les rôles ou permissions utiles ;
 - la langue ou les préférences d’affichage ;
-- les capacités disponibles dans la version exécutée ;
-- les informations de navigation nécessaires.
+- les capacités disponibles ;
+- les informations de navigation nécessaires ;
+- un identifiant de corrélation.
 
-Le contexte ne fournit jamais un accès générique aux données internes de la plateforme.
+Le contexte ne fournit jamais :
+
+- un accès générique au stockage ;
+- un secret ;
+- un jeton exposable au client ;
+- des données métier sans rapport avec le fournisseur.
 
 ---
 
-## 5. Contrat DashboardWidget
+## 6. Contrat DashboardWidget
 
-### 5.1 Structure minimale
+### 6.1 Structure minimale
 
 ```text
 DashboardWidget
@@ -169,34 +189,34 @@ DashboardWidget
 └── actions
 ```
 
-### 5.2 Propriétés obligatoires
+### 6.2 Propriétés obligatoires
 
 | Propriété | Description |
 |---|---|
-| `widgetId` | Identifiant stable et unique du widget |
+| `widgetId` | Identifiant stable et unique |
 | `providerId` | Identifiant du fournisseur |
 | `type` | Type de widget supporté |
-| `zone` | Zone fonctionnelle définie par `ADMIN-003` |
+| `zone` | Zone définie par `ADMIN-003` |
 | `title` | Titre affiché |
-| `state` | État normalisé du widget |
+| `state` | État normalisé |
 | `priority` | Priorité d’affichage |
 | `content` | Modèle de contenu déclaratif |
 
-### 5.3 Propriétés optionnelles
+### 6.3 Propriétés optionnelles
 
 | Propriété | Description |
 |---|---|
 | `subtitle` | Information secondaire |
-| `status` | Badge ou état synthétique |
-| `metrics` | Indicateurs chiffrés déjà calculés par la source |
-| `actions` | Actions de navigation autorisées |
+| `status` | État synthétique |
+| `metrics` | Indicateurs déjà calculés |
+| `actions` | Actions déclaratives |
 | `footer` | Information complémentaire |
-| `updatedAt` | Date de fraîcheur de l’information |
-| `accessibilityLabel` | Libellé d’accessibilité complémentaire |
+| `updatedAt` | Date de fraîcheur |
+| `expiresAt` | Date après laquelle le contenu ne doit plus être présenté comme actuel |
+| `accessibilityLabel` | Libellé d’accessibilité |
+| `correlationId` | Référence technique de corrélation lorsque justifiée |
 
-### 5.4 Types initiaux
-
-Les types initiaux sont :
+### 6.4 Types initiaux
 
 - `information` ;
 - `metric` ;
@@ -205,11 +225,11 @@ Les types initiaux sont :
 - `notification` ;
 - `empty-state`.
 
-L’ajout d’un nouveau type doit répondre à plusieurs cas d’usage réels et respecter la gouvernance de `UI-001`.
+Un nouveau type doit répondre à plusieurs cas d’usage réels et respecter la gouvernance de `UI-001`.
 
 ---
 
-## 6. États normalisés
+## 7. États normalisés
 
 Un widget utilise exclusivement les états définis par `ADMIN-003` :
 
@@ -218,58 +238,61 @@ Un widget utilise exclusivement les états définis par `ADMIN-003` :
 - `empty` ;
 - `unavailable` ;
 - `error` ;
-- `access-denied`.
+- `access-denied` ;
+- `disabled`.
 
-Le fournisseur détermine l’état fonctionnel de son widget.
+Le fournisseur détermine l’état fonctionnel.
 
-Le Centre de pilotage peut remplacer cet état par `error` uniquement lorsque le fournisseur ne respecte pas le contrat ou provoque une erreur non gérée.
+Le Centre de pilotage peut remplacer cet état par `error` lorsqu’un contrat est invalide ou qu’une erreur non gérée survient.
 
-Aucun état ne doit être déduit d’une absence ambiguë de données.
+Aucun état n’est déduit d’une absence ambiguë de données.
 
 ---
 
-## 7. Contenu déclaratif
+## 8. Contenu déclaratif
 
-Le contenu d’un widget est un modèle de présentation sérialisable.
-
-Il ne contient pas :
+Le contenu est sérialisable et ne contient pas :
 
 - de fonction exécutable ;
 - de fragment HTML fourni par un module ;
 - de script client ;
 - de référence directe à une ressource interne non autorisée ;
-- de données sensibles inutiles à l’affichage.
+- de secret ;
+- de donnée personnelle inutile ;
+- de contenu métier détaillé qui relève d’un écran spécialisé.
 
-Le rendu final relève exclusivement du Centre de pilotage et des composants `UI-001`.
+Le rendu final relève exclusivement du Centre de pilotage et de `UI-001`.
 
 ---
 
-## 8. Actions
+## 9. Actions
 
-Une action de widget est déclarative.
-
-Elle contient au minimum :
+Une action contient au minimum :
 
 | Propriété | Description |
 |---|---|
 | `actionId` | Identifiant stable |
 | `label` | Libellé utilisateur |
-| `type` | Type d’action autorisé |
+| `type` | Type autorisé |
 | `target` | Destination déclarée |
 
-Les types initiaux autorisés sont :
+Types initiaux :
 
 - `navigate` ;
 - `open-document` ;
 - `open-external`.
 
-Une action du Dashboard ne déclenche jamais directement un traitement métier destructif ou irréversible.
+Règles :
 
-Toute destination réapplique ses propres contrôles d’autorisation côté serveur.
+- aucune action ne déclenche directement un traitement destructif ou irréversible ;
+- toute destination réapplique ses autorisations ;
+- `open-document` respecte `DOCUMENT-001` ;
+- `open-external` utilise une destination approuvée et identifiée ;
+- aucune cible ne contient de secret ou de donnée sensible inutile.
 
 ---
 
-## 9. Enregistrement des fournisseurs
+## 10. Registre des fournisseurs
 
 Les fournisseurs sont enregistrés dans un registre transverse maîtrisé par AKS Core.
 
@@ -277,9 +300,10 @@ Le registre :
 
 - associe un `providerId` unique à une implémentation ;
 - refuse les doublons ;
+- vérifie la version de contrat ;
 - permet l’activation ou la désactivation contrôlée ;
 - expose uniquement les fournisseurs valides ;
-- ne contient aucune logique métier propre aux modules.
+- ne contient aucune logique métier.
 
 L’enregistrement est réalisé lors de l’initialisation de la plateforme ou du module.
 
@@ -287,64 +311,77 @@ Le Centre de pilotage ne recherche pas dynamiquement des fonctions par nom et ne
 
 ---
 
-## 10. Isolation et gestion des erreurs
+## 11. Validation d’un contrat
 
-L’échec d’un fournisseur ne doit pas empêcher l’affichage des widgets des autres fournisseurs.
+Avant affichage, le Centre de pilotage vérifie au minimum :
+
+- la présence des propriétés obligatoires ;
+- l’unicité du `widgetId` dans le périmètre du fournisseur ;
+- la cohérence entre `providerId` et registre ;
+- la version du contrat ;
+- le type et la zone autorisés ;
+- l’état normalisé ;
+- la sérialisabilité ;
+- l’absence de contenu exécutable ;
+- la validité minimale des actions.
+
+Un widget invalide est refusé sans bloquer les autres widgets.
+
+---
+
+## 12. Isolation et erreurs
+
+L’échec d’un fournisseur ne doit pas empêcher l’affichage des autres.
 
 Pour chaque fournisseur :
 
 1. l’appel est isolé ;
-2. les erreurs sont journalisées conformément à `LOG-001` ;
-3. les détails techniques ne sont pas exposés à l’utilisateur ;
-4. un état d’indisponibilité ou d’erreur peut être affiché ;
-5. la composition du Dashboard se poursuit.
+2. un délai maximal peut être appliqué ;
+3. les erreurs sont journalisées conformément à `LOG-001` ;
+4. les détails techniques ne sont pas exposés ;
+5. un état d’erreur ou d’indisponibilité peut être présenté ;
+6. la composition se poursuit.
 
-Le code d’erreur fonctionnel recommandé est :
+Codes recommandés :
 
 ```text
 ADMIN004_PROVIDER_FAILURE
-```
-
-Un contrat invalide utilise :
-
-```text
 ADMIN004_INVALID_WIDGET
+ADMIN004_UNSUPPORTED_CONTRACT
+ADMIN004_DUPLICATE_IDENTIFIER
 ```
 
 ---
 
-## 11. Autorisation et confidentialité
+## 13. Autorisation et confidentialité
 
-Chaque fournisseur filtre ses widgets selon les droits du contexte courant.
+Chaque fournisseur filtre ses widgets avant leur retour.
 
-Le Centre de pilotage applique en complément les contrôles généraux d’accès à l’administration.
+Le Centre de pilotage applique en complément les contrôles généraux d’accès.
 
-Règles :
+Règles obligatoires :
 
-- aucun widget interdit ne doit être retourné puis simplement masqué côté client ;
-- aucune donnée sensible ne doit être incluse dans un widget non autorisé ;
-- les actions conservent un contrôle d’autorisation côté destination ;
-- les erreurs ne révèlent ni structure interne ni données métier.
+- aucun widget interdit n’est retourné puis simplement masqué côté client ;
+- aucune donnée sensible n’est incluse dans un widget non autorisé ;
+- les actions réappliquent les contrôles à destination ;
+- les erreurs ne révèlent ni structure interne ni données métier ;
+- les journaux ne reproduisent pas le contenu complet des widgets.
 
 ---
 
-## 12. Ordonnancement et composition
+## 14. Ordonnancement
 
-Le Centre de pilotage compose les widgets selon :
+Le Centre de pilotage compose selon :
 
-1. la zone fonctionnelle ;
-2. la priorité déclarée ;
+1. la zone ;
+2. la priorité ;
 3. un ordre stable déterminé par `widgetId` en cas d’égalité.
 
 Un fournisseur ne peut imposer l’ordre absolu des widgets des autres fournisseurs.
 
-La priorité est une indication de composition, pas un droit de préemption sur l’interface.
-
 ---
 
-## 13. Compatibilité et version du contrat
-
-Chaque fournisseur déclare la version du contrat qu’il implémente.
+## 15. Compatibilité et version
 
 Pour V1.1, la version de contrat attendue est :
 
@@ -352,31 +389,36 @@ Pour V1.1, la version de contrat attendue est :
 1.0
 ```
 
-Une évolution incompatible du contrat nécessite :
+Une évolution incompatible nécessite :
 
 - une nouvelle version explicite ;
-- une stratégie de compatibilité ou de migration ;
+- une stratégie de compatibilité ou migration ;
 - une mise à jour documentaire ;
-- des tests de non-régression.
+- des tests de non-régression ;
+- une décision validée par le Product Owner.
+
+Un fournisseur utilisant une version non supportée est refusé explicitement.
 
 ---
 
-## 14. Exemple conceptuel
+## 16. Exemple conceptuel
 
 ```javascript
 {
   providerId: 'aks.analytics.dashboard',
   moduleId: 'AKS_ANALYTICS',
-  version: '1.0',
+  contractVersion: '1.0',
+  providerVersion: '1.0.0',
   widgets: [
     {
       widgetId: 'analytics.licensed-members',
       providerId: 'aks.analytics.dashboard',
       type: 'metric',
-      zone: 'overview',
+      zone: 'modules',
       title: 'Licenciés',
       state: 'available',
       priority: 100,
+      updatedAt: '2026-07-23T19:00:00Z',
       content: {
         value: 137,
         label: 'licenciés enregistrés'
@@ -394,75 +436,65 @@ Une évolution incompatible du contrat nécessite :
 }
 ```
 
-Cet exemple illustre la forme du contrat. Il ne constitue pas une implémentation définitive d’AKS Analytics.
+Cet exemple est illustratif et ne constitue pas une source de données réelle.
 
 ---
 
-## 15. Hors périmètre
+## 17. Hors périmètre
 
 `ADMIN-004` ne définit pas :
 
-- l’implémentation technique du registre dans AKS Core ;
+- l’organisation fonctionnelle des zones ;
+- la navigation générale ;
+- l’implémentation technique détaillée du registre ;
 - le protocole de chargement client ;
-- les composants graphiques eux-mêmes ;
-- les données métier publiées par chaque module ;
+- les composants graphiques ;
+- les données métier publiées ;
 - les règles métier des modules ;
-- les traitements déclenchés depuis les écrans de destination ;
-- la personnalisation libre du Dashboard par utilisateur ;
+- la personnalisation libre par utilisateur ;
 - un système de plugins externes.
 
 ---
 
-## 16. Critères d’acceptation
+## 18. Critères d’acceptation
 
-### 16.1 Fournisseurs
+Le contrat est conforme lorsque :
 
 - chaque fournisseur possède un identifiant unique et stable ;
-- chaque fournisseur appartient à un module ou service identifié ;
+- chaque fournisseur appartient à un propriétaire identifié ;
+- la version de contrat est vérifiée ;
 - aucun fournisseur ne rend directement du HTML ;
-- un fournisseur filtre ses contenus avant leur retour.
-
-### 16.2 Widgets
-
+- les contenus sont filtrés avant retour ;
 - chaque widget respecte la structure minimale ;
-- chaque widget possède une source traçable ;
-- les états sont explicites et normalisés ;
+- les états sont normalisés ;
 - le contenu est déclaratif et sérialisable ;
-- aucune logique métier exécutable n’est intégrée au widget.
-
-### 16.3 Centre de pilotage
-
-- les fournisseurs sont découverts via un registre explicite ;
-- une erreur fournisseur n’interrompt pas l’ensemble du Dashboard ;
-- l’ordre d’affichage est stable ;
-- les composants `UI-001` assurent le rendu ;
-- aucune dépendance directe vers un module métier n’est introduite.
-
-### 16.4 Sécurité
-
+- aucune logique métier exécutable n’est intégrée ;
+- les fournisseurs sont découverts via le registre ;
+- une erreur n’interrompt pas l’ensemble du Dashboard ;
+- l’ordre est stable ;
 - les contrôles d’autorisation sont réalisés côté serveur ;
 - les widgets non autorisés ne sont jamais transmis ;
-- les destinations réappliquent leurs propres contrôles ;
-- aucun détail technique sensible n’est exposé.
-
-### 16.5 Validation
-
-- les contrats sont couverts par des tests automatisés ;
-- les cas fournisseur valide, vide, indisponible, invalide et en erreur sont testés ;
-- les doublons de `providerId` et `widgetId` sont refusés ;
-- les tests existants d’ADMIN-001 restent valides ;
-- aucune régression n’est introduite sur les modules publics.
+- les doublons et contrats incompatibles sont refusés ;
+- les tests couvrent les cas valide, vide, indisponible, invalide, désactivé et en erreur.
 
 ---
 
-## 17. Définition de terminé
+## 19. Définition de terminé
 
 `ADMIN-004` est terminé lorsque :
 
-- les contrats `DashboardProvider` et `DashboardWidget` sont implémentés ;
-- le registre des fournisseurs existe dans AKS Core ;
+- les contrats sont implémentés ;
+- le registre existe dans AKS Core ;
 - le Centre de pilotage consomme exclusivement ce registre ;
-- au moins un fournisseur transverse et un fournisseur de module peuvent être intégrés sans dépendance directe ;
-- l’isolation des erreurs est validée ;
-- les contrôles d’autorisation sont testés ;
-- la conformité à `ADMIN-001`, `ADMIN-002`, `ADMIN-003`, `CORE-001`, `LOG-001`, `UX-001` et `UI-001` est démontrée.
+- au moins un fournisseur transverse et un fournisseur de module sont intégrables sans dépendance directe ;
+- l’isolation, la validation et les autorisations sont testées ;
+- la conformité aux références applicables est démontrée.
+
+---
+
+## 20. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 1.2.0 | 2026-07-23 | Renforcement du contrat, de la validation, de la sécurité, du versionnement, de la fraîcheur et de la gestion des incompatibilités |
+| 1.1.0 | 2026-07-23 | Première définition des contrats DashboardProvider et DashboardWidget |
