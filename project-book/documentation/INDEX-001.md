@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.0 |
+| Version | 1.2.1 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-23 |
@@ -53,15 +53,15 @@ project-book/
 ├── modules/
 │   └── analytics/
 ├── documentation/
+│   ├── DOC-001.md
+│   ├── INDEX-001.md
+│   └── STD-001.md
 └── release/
-
-standards/
-└── STD-001-Module-Documentation-Standard.md
 ```
 
 Les documents transverses existants restent à leur emplacement actuel. Les modules métier sont regroupés sous `project-book/modules/`, avec un sous-dossier par module.
 
-Le dossier `standards/` contient les standards spécialisés applicables au Project Book. `STD-001` y définit l'organisation documentaire obligatoire des modules métier.
+Le dossier `project-book/documentation/` contient les règles générales, le catalogue et les standards spécialisés du système documentaire.
 
 Toute évolution significative de cette organisation doit être répercutée dans le présent catalogue et dans le `README.md`.
 
@@ -242,6 +242,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.1 | 2026-07-23 | Déplacement de STD-001 dans `project-book/documentation/` et alignement de l'organisation officielle du dépôt |
 | 1.2.0 | 2026-07-23 | Intégration de DOC-001, STD-001, GOV-DOC-001 et GOV-DEV-001 dans le catalogue officiel et formalisation du standard applicable aux modules métier |
 | 1.1.2 | 2026-07-23 | Ajout de la structure `modules/`, intégration d'AKS Analytics et mise à jour du domaine Administration |
 | 1.1.1 | 2026-07-19 | Alignement de la version de ROADMAP-001 |
