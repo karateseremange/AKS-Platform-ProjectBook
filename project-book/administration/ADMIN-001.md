@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ADMIN-001 |
-| **Version** | 1.2.0 |
-| **Statut** | Référence de développement |
+| **Version** | 1.2.1 |
+| **Statut** | Validé |
 | **Nature** | Spécification du premier incrément |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
+| **Dernière mise à jour** | 2026-07-24 |
 | **Version du produit** | V1.1 |
 
 ---
@@ -20,7 +20,7 @@ Le présent document décrit exclusivement le premier incrément livrable du Das
 
 Il ne définit ni l’organisation cible complète du Centre de pilotage, ni son modèle fonctionnel, ni son contrat d’extension. Ces responsabilités relèvent respectivement de `ADMIN-002`, `ADMIN-003` et `ADMIN-004`.
 
-Cette spécification constitue la référence de développement d’`ADMIN-001`. Elle ne peut être ajustée qu’à la suite d’une décision documentée et validée conformément à la gouvernance du Project Book.
+Cette spécification constitue la référence validée d’`ADMIN-001`. Elle ne peut être ajustée qu’à la suite d’une décision documentée et validée conformément à la gouvernance du Project Book.
 
 ---
 
@@ -306,5 +306,6 @@ La simple absence d’un lien dans l’interface ne constitue jamais un contrôl
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-07-24 | Clôture documentaire d’ADMIN-001 après validation de l’implémentation et des tests V1.1 |
 | 1.2.0 | 2026-07-23 | Clarification du rôle de premier incrément, séparation avec ADMIN-002 à ADMIN-004, renforcement de la sécurité, des sources et des critères d’acceptation |
 | 1.1.0 | 2026-07-19 | Référence initiale de développement du Dashboard |
