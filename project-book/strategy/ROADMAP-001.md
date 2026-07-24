@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.1 |
+| **Version** | 1.2.2 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-24 |
+| **Dernière mise à jour** | 2026-07-25 |
 
 ---
 
@@ -344,7 +344,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 
 ## 6.15 État documentaire de la V1.1
 
-| Document | Domaine | État au 24 juillet 2026 |
+| Document | Domaine | État au 25 juillet 2026 |
 |---|---|---|
 | ROADMAP-001 | Feuille de route | Validé |
 | GOV-001 | Gouvernance produit | Validé |
@@ -362,7 +362,8 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | STORAGE-001 | Stockage et conservation | Validé |
 | DOC-001 | Gouvernance documentaire | Validé |
 | ADMIN-001 | Dashboard — premier incrément | Validé |
-| ADMIN-002, ADMIN-003 et ADMIN-005 | Centre de pilotage — incréments suivants | Référence de développement |
+| ADMIN-002 et ADMIN-005 | Centre de pilotage — incréments suivants | Référence de développement |
+| ADMIN-003 | Composition du Centre de pilotage | Validé |
 | ADMIN-004 | Contrats DashboardProvider et DashboardWidget | Validé |
 | ARCH-002 | Migration architecturale | Livrables validés, clôture à régulariser |
 | ANALYTICS-001 | AKS Analytics | Référence de développement |
