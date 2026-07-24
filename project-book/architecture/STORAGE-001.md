@@ -6,10 +6,10 @@
 |-----------|--------|
 | **Document ID** | STORAGE-001 |
 | **Titre** | Stratégie de stockage d'AKS Platform |
-| **Version** | 1.2.0 |
-| **Statut** | Consolidé |
+| **Version** | 1.2.1 |
+| **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
+| **Dernière mise à jour** | 2026-07-24 |
 | **Version du produit** | V1.1 |
 | **Classification** | Architecture transverse |
 
@@ -625,6 +625,7 @@ Toute évolution doit rester compatible avec les principes d'abstraction, de sé
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.1 | 2026-07-24 | Normalisation du statut documentaire vers le statut officiel Validé |
 | 1.1.0 | 2026-07-19 | Première version validée pour AKS Platform V1.1 |
 | 1.2.0 | 2026-07-23 | Consolidation normative, clarification des sources de vérité, rétention, restauration, responsabilités et réversibilité |
 
