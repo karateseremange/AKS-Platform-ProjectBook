@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ADMIN-002 |
-| **Version** | 1.2.0 |
-| **Statut** | Référence de développement |
+| **Version** | 1.2.1 |
+| **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle d’interface et de navigation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
+| **Dernière mise à jour** | 2026-07-25 |
 | **Version du produit** | V1.1 |
 
 ---
@@ -340,5 +340,6 @@ Il valide :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-07-25 | Validation après implémentation de la navigation déclarative, filtrage des destinations disponibles et autorisées, sécurisation des liens, rendu responsive accessible et réussite de la suite Apps Script V1.1 (48/48 tests) |
 | 1.2.0 | 2026-07-23 | Recentrage sur l’interface et la navigation, suppression des chevauchements avec ADMIN-003, ajout des responsabilités et règles de sécurité |
 | 1.1.0 | 2026-07-23 | Première spécification de l’interface et de la navigation |
