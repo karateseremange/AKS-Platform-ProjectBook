@@ -5,7 +5,7 @@
 |-----------|--------|
 | Document ID | DECISIONS |
 | Titre | Registre des décisions d'architecture et de gouvernance |
-| Version | 1.1.0 |
+| Version | 1.1.1 |
 | Statut | Actif |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-19 |
@@ -135,6 +135,39 @@ Le futur module AKS Calendar sera une couche d'intégration avant d'envisager un
 
 ---
 
+# DEC-005
+
+**Date** : 2026-07-19
+
+**Statut** : Validée
+
+## Contexte
+
+Le dépôt Project Book utilisait historiquement une branche stable `master` sans branche documentaire dédiée aux évolutions en préparation. Le dépôt applicatif utilise déjà les branches `main` et `develop`.
+
+## Décision
+
+Renommer la branche stable du dépôt `AKS-Platform-ProjectBook` en `main` et créer une branche `develop` dédiée aux évolutions documentaires.
+
+La branche `main` contient la documentation officielle validée et publiée. La branche `develop` contient les évolutions documentaires en préparation.
+
+## Justification
+
+- harmoniser la gouvernance Git entre les dépôts applicatif et documentaire ;
+- protéger la documentation officielle contre les modifications non validées ;
+- permettre la préparation d'une future version sans modifier la référence stable ;
+- simplifier les procédures de fusion, de publication et de maintenance.
+
+## Conséquences
+
+- les évolutions documentaires courantes sont réalisées sur `develop` ;
+- les publications documentaires nécessitent une validation, une fusion vers `main` et la création d'un tag ;
+- les correctifs urgents appliqués exceptionnellement sur `main` doivent être réintégrés dans `develop` ;
+- les documents faisant référence à `master` doivent être mis à jour ;
+- les deux dépôts AKS Platform utilisent désormais la convention `develop` / `main`.
+
+---
+
 # Règles de gestion
 
 - Les décisions sont numérotées chronologiquement.
@@ -148,6 +181,7 @@ Le futur module AKS Calendar sera une couche d'intégration avant d'envisager un
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.1.1 | 2026-07-19 | Ajout de DEC-005 relative à la stratégie de branches du Project Book |
 | 1.1.0 | 2026-07-19 | Normalisation des métadonnées du registre sans modification des décisions validées |
 
 ---
@@ -159,6 +193,7 @@ Le futur module AKS Calendar sera une couche d'intégration avant d'envisager un
 - ROADMAP-001
 - ARCH-001
 - DOC-001
+- RELEASE-001
 
 ---
 

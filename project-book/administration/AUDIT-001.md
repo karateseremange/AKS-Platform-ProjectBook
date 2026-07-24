@@ -2,10 +2,10 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.1.0 |
-| **Statut** | Consolidé |
+| **Version** | 1.1.1 |
+| **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-19 |
+| **Dernière mise à jour** | 2026-07-24 |
 
 ---
 

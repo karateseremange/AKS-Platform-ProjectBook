@@ -10,15 +10,7 @@ Le catalogue documentaire officiel est disponible dans [`project-book/documentat
 
 AKS Platform est née de la volonté de remplacer une collection d'outils indépendants par une plateforme unique, cohérente, documentée, maintenable et évolutive.
 
-Avant le développement officiel de la version 1.0.0, un **Proof of Concept (PoC)** a permis de valider les principaux choix techniques et méthodologiques. Cette phase exploratoire a confirmé la faisabilité du projet et conduit à la conception d'une nouvelle architecture, accompagnée de la création du **Project Book** comme documentation officielle de référence.
-
-Depuis la publication de la version **1.0.0**, le développement suit une approche structurée basée sur :
-
-- une gouvernance documentaire ;
-- une architecture modulaire ;
-- des services communs mutualisés ;
-- un processus de publication maîtrisé ;
-- une évolution incrémentale des modules métier.
+Avant le développement officiel de la version **1.0.0**, un Proof of Concept a permis de valider les principaux choix techniques et méthodologiques. Depuis cette publication, le développement suit une approche structurée fondée sur la gouvernance documentaire, l'architecture modulaire, les services communs mutualisés, la publication maîtrisée et l'évolution incrémentale des modules métier.
 
 # Objectifs
 
@@ -37,19 +29,19 @@ Le Project Book a pour objectifs de :
 project-book/
 ├── vision/
 ├── strategy/
-├── roadmap/
 ├── governance/
 ├── architecture/
 ├── administration/
 ├── ux/
 ├── modules/
-├── operations/
+│   └── analytics/
 ├── documentation/
-├── release/
-└── references/
+└── release/
 ```
 
-Chaque document possède une responsabilité unique et est identifié par un code (`ARCH-001`, `CORE-001`, etc.).
+Les documents transverses existants restent à leur emplacement actuel. Les spécifications des modules métier sont regroupées sous `project-book/modules/`, chaque module disposant de son propre sous-dossier.
+
+Chaque document possède une responsabilité unique et est identifié par un code stable (`ARCH-001`, `ADMIN-001`, `ANALYTICS-001`, etc.).
 
 L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md) fait autorité sur l'organisation documentaire active.
 
@@ -61,38 +53,50 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 
 - [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
-- RELEASE-001 — Processus de publication
+- [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
 
 ## Vision et stratégie
 
-- VISION-001 — Vision d'AKS Platform
-- OBJECTIVES-001 — Objectifs stratégiques
-- SCOPE-001 — Périmètre fonctionnel
-- ROADMAP-001 — Feuille de route officielle
-- GOV-001 — Gouvernance produit
+- [VISION-001 — Vision d'AKS Platform](project-book/vision/VISION-001.md)
+- [OBJECTIVES-001 — Objectifs stratégiques](project-book/strategy/OBJECTIVES-001.md)
+- [SCOPE-001 — Périmètre fonctionnel](project-book/strategy/SCOPE-001.md)
+- [ROADMAP-001 — Feuille de route officielle](project-book/strategy/ROADMAP-001.md)
+- [GOV-001 — Gouvernance produit](project-book/strategy/GOV-001.md)
 
 ## Architecture
 
-- ARCH-001 — Architecture fonctionnelle
-- CORE-001 — AKS Core
+- [ARCH-001 — Architecture fonctionnelle](project-book/architecture/ARCH-001.md)
+- [CORE-001 — AKS Core](project-book/architecture/CORE-001.md)
+- [API-001 — Contrats et principes d'API](project-book/architecture/API-001.md)
+- [SECURITY-001 — Sécurité](project-book/architecture/SECURITY-001.md)
+- [STORAGE-001 — Stockage transverse](project-book/architecture/STORAGE-001.md)
+- [ERROR-001 — Gestion des erreurs](project-book/architecture/ERROR-001.md)
+- [NOTIF-001 — Notifications](project-book/architecture/NOTIF-001.md)
+- [DOCUMENT-001 — Gestion documentaire](project-book/architecture/DOCUMENT-001.md)
+- [UI-001 — Contrat d'interface utilisateur](project-book/architecture/UI-001.md)
 
 ## Administration
 
-- ADMIN-001 — Tableau de bord
-- CONFIG-001 — Paramétrage centralisé
-- LOG-001 — Journalisation
+- [ADMIN-001 — Tableau de bord d'administration](project-book/administration/ADMIN-001.md)
+- [ADMIN-002 — Interface utilisateur et navigation](project-book/administration/ADMIN-002.md)
+- [ADMIN-003 — Centre de pilotage](project-book/administration/ADMIN-003.md)
+- [ADMIN-004 — Contrat DashboardProvider et DashboardWidget](project-book/administration/ADMIN-004.md)
+- [ADMIN-005 — Validation et conformité du Centre de pilotage](project-book/administration/ADMIN-005.md)
+- [CONFIG-001 — Paramétrage centralisé](project-book/administration/CONFIG-001.md)
+- [LOG-001 — Journalisation](project-book/administration/LOG-001.md)
+- [AUDIT-001 — Audit et traçabilité](project-book/administration/AUDIT-001.md)
 
 ## Expérience utilisateur
 
-- UX-001 — Principes UX
+- [UX-001 — Principes UX](project-book/ux/UX-001.md)
 
-## Modules
+## Modules métier
 
-Les spécifications des modules métier sont regroupées dans le dossier `modules/`.
+Les spécifications des modules métier sont regroupées dans le dossier [`project-book/modules/`](project-book/modules/).
 
-Le premier module historique est **Questionnaire Santé** (V1.0.0).
+- [AKS Analytics](project-book/modules/analytics/) — premier nouveau module métier de la phase suivant la consolidation V1.1.
 
-Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'**AKS Calendar**.
+Le module historique **Questionnaire Santé** reste la première capacité métier livrée en V1.0.0. Les prochains modules sont intégrés progressivement selon `ROADMAP-001`.
 
 ---
 
@@ -100,12 +104,15 @@ Le premier nouveau module prévu après la V1.1 est **AKS Analytics**, suivi d'*
 
 ## Application
 
-- Branche `develop` : développement
-- Branche `main` : production
+- Branche `develop` : développement courant.
+- Branche `main` : version stable et production.
 
 ## Project Book
 
-Le dépôt documentaire utilise actuellement sa branche de référence `master`.
+- Branche `develop` : préparation et validation des évolutions documentaires.
+- Branche `main` : documentation officielle validée et publiée.
+
+Toute publication documentaire suit un cycle de validation, de fusion de `develop` vers `main`, puis de création d'un tag correspondant.
 
 ---
 
@@ -123,8 +130,6 @@ Les développements doivent respecter les règles suivantes :
 
 # Ordre de lecture recommandé
 
-Pour découvrir le projet, il est recommandé de lire les documents dans l'ordre suivant :
-
 1. INDEX-001 — Catalogue du Project Book
 2. VISION-001 — Vision d'AKS Platform
 3. OBJECTIVES-001 — Objectifs stratégiques
@@ -137,12 +142,6 @@ Pour découvrir le projet, il est recommandé de lire les documents dans l'ordre
 10. documents des modules métier
 11. DOC-001 — Règles de documentation
 12. RELEASE-001 — Processus de publication
-
----
-
-# Licence
-
-La licence applicable au projet est définie dans le dépôt GitHub principal.
 
 ---
 

@@ -6,10 +6,10 @@
 |-----------|--------|
 | **Document ID** | ARCH-001 |
 | **Titre** | Architecture fonctionnelle d'AKS Platform |
-| **Version** | 1.1.0 |
+| **Version** | 1.2.0 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-18 |
+| **Dernière mise à jour** | 2026-07-23 |
 | **Version du produit** | V1.1 |
 
 ---
@@ -32,33 +32,39 @@ Son objectif est de garantir une plateforme :
 
 ARCH-001 décrit les principes d'organisation, les responsabilités des composants, les règles de dépendance, les flux autorisés, les exigences transverses et les critères de conformité architecturale.
 
-Il ne décrit pas les détails d'implémentation du code source. Ceux-ci sont documentés dans les documents spécialisés et dans les dépôts applicatifs.
+Il ne décrit ni l'architecture documentaire du Project Book, ni les règles éditoriales, ni les détails d'implémentation du code source. Ces sujets relèvent respectivement de `ADR-001`, `DOC-001`, `STD-001` et des documents spécialisés.
 
 ---
 
 # 2. Position dans le Project Book
 
-ARCH-001 est le document maître de l'architecture d'AKS Platform.
+ARCH-001 est le document maître de l'architecture fonctionnelle d'AKS Platform.
 
 Il traduit la vision produit et la feuille de route en règles d'organisation applicables à l'ensemble de la plateforme.
 
 Les documents suivants définissent son contexte :
 
-- VISION-001 — Vision d'AKS Platform ;
-- OBJECTIVES-001 — Objectifs stratégiques ;
-- SCOPE-001 — Périmètre fonctionnel ;
-- ROADMAP-001 — Feuille de route produit.
+- `VISION-001` — Vision d'AKS Platform ;
+- `OBJECTIVES-001` — Objectifs stratégiques ;
+- `SCOPE-001` — Périmètre fonctionnel ;
+- `ROADMAP-001` — Feuille de route produit ;
+- `ADR-001` — Architecture documentaire d'AKS Platform ;
+- `GOV-DOC-001` — Gouvernance documentaire ;
+- `DOC-001` — Règles de documentation d'AKS Platform ;
+- `STD-001` — Standard documentaire des modules métier.
 
-Les documents suivants complètent ARCH-001 sans pouvoir le contredire :
+Les documents suivants complètent ARCH-001 sans pouvoir le contredire sur son propre périmètre :
 
-- CORE-001 — Architecture d'AKS Core ;
-- ADMIN-001 — Administration de la plateforme ;
-- CONFIG-001 — Paramétrage centralisé ;
-- LOG-001 — Journalisation ;
-- UX-001 — Principes d'expérience utilisateur ;
+- `CORE-001` — Architecture d'AKS Core ;
+- `ADMIN-001` — Administration de la plateforme ;
+- `CONFIG-001` — Paramétrage centralisé ;
+- `LOG-001` — Journalisation ;
+- `UX-001` — Principes d'expérience utilisateur ;
 - les documents propres à chaque module métier.
 
-En cas de divergence sur une règle architecturale, ARCH-001 fait autorité.
+En cas de divergence sur une règle architecturale fonctionnelle, ARCH-001 fait autorité.
+
+En cas de divergence sur l'organisation documentaire, `ADR-001`, `GOV-DOC-001`, `DOC-001`, `STD-001` et `INDEX-001` font autorité selon leur périmètre respectif.
 
 Toute évolution de l'architecture doit être documentée dans le Project Book avant son implémentation.
 
@@ -195,26 +201,26 @@ AKS Platform est organisée en cinq couches fonctionnelles.
                               ▼
 ┌────────────────────────────────────────────────────────────┐
 │                 COUCHE MÉTIER                              │
-│ Questionnaire • Analytics • Calendar • Grades • autres     │
+│ Questionnaire • Analytics • Calendar • Grades • autres    │
 └────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌────────────────────────────────────────────────────────────┐
 │                 COUCHE PLATEFORME                          │
-│ AKS Core • Configuration • Logs • Notifications • Sécurité │
-│ Audit • API internes • Cache • Stockage documentaire       │
+│ AKS Core • Configuration • Logs • Notifications • Sécurité│
+│ Audit • API internes • Cache • Stockage documentaire      │
 └────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌────────────────────────────────────────────────────────────┐
 │                 COUCHE D'INTÉGRATION                       │
-│ Google Workspace • WordPress • Gmail • Calendar • API      │
+│ Google Workspace • WordPress • Gmail • Calendar • API     │
 └────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌────────────────────────────────────────────────────────────┐
 │                 COUCHE INFRASTRUCTURE                      │
-│ Hébergement • GitHub • Apps Script • stockage • réseau     │
+│ Hébergement • GitHub • Apps Script • stockage • réseau    │
 └────────────────────────────────────────────────────────────┘
 ```
 
@@ -355,7 +361,7 @@ L'authentification et la gestion des rôles peuvent évoluer progressivement, ma
 
 ## 8.6 Audit
 
-L'audit conserve la trace des opérations sensibles nécessitant une preuve de responsabilité ou de modification.
+L'audit conserve la trace des opérations sensibles nécessitant une preuve de responsabilité ou une reconstitution fiable.
 
 ## 8.7 Cache
 
@@ -407,14 +413,18 @@ Un module ne doit jamais accéder directement :
 
 ## 9.4 Convention documentaire
 
-Chaque module structurant doit disposer au minimum :
+Chaque nouveau module métier doit respecter le socle documentaire défini dans `STD-001` :
 
-- d'un document de présentation et de périmètre ;
-- d'une description de ses règles métier ;
-- d'une description de ses dépendances ;
-- de critères d'acceptation ;
-- d'un guide d'administration lorsque nécessaire ;
-- d'un historique des évolutions.
+- `001` — Vision et architecture ;
+- `002` — Modèle métier ;
+- `003` — Services ;
+- `004` — Interfaces ;
+- `005` — Contrats externes ;
+- `006` — Validation.
+
+Les documents numérotés à partir de `007` constituent des extensions propres au module.
+
+Cette convention définit l'organisation documentaire. Elle ne remplace pas les responsabilités architecturales du présent document ni les règles générales de `DOC-001`.
 
 ---
 
@@ -457,6 +467,10 @@ Les contrôles de sécurité communs ne sont pas réimplémentés localement dan
 ## Règle 8 — Documentation synchronisée
 
 Une évolution n'est complète que lorsque le code, les tests et la documentation sont cohérents.
+
+## Règle 9 — Conformité documentaire des modules
+
+Tout nouveau module métier respecte `STD-001`, sauf dérogation explicitement approuvée conformément à `GOV-DOC-001`.
 
 ---
 
@@ -595,7 +609,8 @@ La création d'un module nécessite :
 - un périmètre défini ;
 - une place identifiée dans ROADMAP-001 ;
 - une analyse des dépendances ;
-- des critères d'acceptation.
+- des critères d'acceptation ;
+- la création du socle documentaire défini dans `STD-001`.
 
 ## 13.2 Activation
 
@@ -767,9 +782,9 @@ L'architecture doit faciliter :
 - la cohérence des composants ;
 - la navigation prévisible ;
 - la prévention des erreurs ;
-- la restitution immédiate de l'état d'une action ;
-- l'utilisation mobile ;
+- la restitution immédiate de l'état ;
 - l'accessibilité ;
+- l'adaptation aux terminaux mobiles ;
 - la protection des données affichées.
 
 Les composants d'interface réutilisables doivent être mutualisés dès lors qu'ils sont utilisés dans plusieurs modules.
@@ -814,7 +829,7 @@ Un nouveau module doit pouvoir être ajouté :
 - sans modification des autres modules ;
 - sans accès direct à leurs données internes ;
 - en utilisant les contrats existants d'AKS Core ;
-- avec une documentation et des tests dédiés ;
+- avec une documentation conforme à `STD-001` et des tests dédiés ;
 - sans casser les fonctionnalités de production.
 
 Une évolution d'un contrat commun doit prévoir :
@@ -867,6 +882,8 @@ Une exception architecturale doit être :
 - accompagnée d'un plan de régularisation lorsque nécessaire.
 
 Une exception ne constitue jamais une nouvelle règle générale.
+
+Une dérogation à l'organisation documentaire d'un module relève de `GOV-DOC-001` et non d'ARCH-001.
 
 ## 22.4 Dette technique
 
@@ -924,6 +941,13 @@ Un composant ou un module est conforme à ARCH-001 lorsque tous les critères ap
 - les changements incompatibles sont identifiés ;
 - une stratégie de migration existe lorsqu'elle est nécessaire.
 
+## 23.6 Conformité documentaire
+
+- le module respecte `STD-001` ;
+- chaque document conserve une responsabilité unique conformément à `DOC-001` ;
+- les références normatives applicables sont explicites ;
+- toute dérogation est formalisée conformément à `GOV-DOC-001`.
+
 La conformité à ces critères doit être vérifiée avant toute mise en production.
 
 ---
@@ -932,23 +956,36 @@ La conformité à ces critères doit être vérifiée avant toute mise en produc
 
 | Document | Objet |
 |----------|-------|
-| VISION-001 | Vision du produit |
-| OBJECTIVES-001 | Objectifs stratégiques |
-| SCOPE-001 | Périmètre fonctionnel |
-| ROADMAP-001 | Feuille de route |
-| CORE-001 | Architecture d'AKS Core |
-| ADMIN-001 | Administration de la plateforme |
-| CONFIG-001 | Paramétrage centralisé |
-| LOG-001 | Journalisation |
-| UX-001 | Expérience utilisateur |
+| `VISION-001` | Vision du produit |
+| `OBJECTIVES-001` | Objectifs stratégiques |
+| `SCOPE-001` | Périmètre fonctionnel |
+| `ROADMAP-001` | Feuille de route |
+| `ADR-001` | Architecture documentaire |
+| `GOV-DOC-001` | Gouvernance documentaire |
+| `DOC-001` | Principes documentaires |
+| `STD-001` | Standard documentaire des modules métier |
+| `CORE-001` | Architecture d'AKS Core |
+| `ADMIN-001` | Administration de la plateforme |
+| `CONFIG-001` | Paramétrage centralisé |
+| `LOG-001` | Journalisation |
+| `UX-001` | Expérience utilisateur |
 
-Chaque futur module métier doit disposer d'une documentation cohérente avec le présent document.
+Chaque futur module métier doit disposer d'une documentation cohérente avec le présent document et structurée conformément à `STD-001`.
 
 ---
 
-# 25. Conclusion
+# 25. Historique
 
-ARCH-001 constitue la référence architecturale officielle d'AKS Platform.
+| Version | Date | Évolution |
+|---------|------|-----------|
+| 1.2.0 | 2026-07-23 | Alignement avec l'architecture documentaire, ajout des références à ADR-001, GOV-DOC-001, DOC-001 et STD-001, et formalisation de la conformité documentaire des modules |
+| 1.1.0 | 2026-07-18 | Consolidation de l'architecture fonctionnelle de la V1.1 |
+
+---
+
+# 26. Conclusion
+
+ARCH-001 constitue la référence architecturale fonctionnelle officielle d'AKS Platform.
 
 Il établit une séparation claire entre :
 
@@ -968,4 +1005,4 @@ Cette organisation garantit :
 - la compatibilité des évolutions ;
 - la capacité d'ajouter de nouveaux modules sans remettre en cause les fondations.
 
-Tous les développements futurs, notamment AKS Analytics et AKS Calendar, doivent être conçus, documentés et validés conformément aux règles du présent document.
+Tous les développements futurs, notamment AKS Analytics et AKS Calendar, doivent être conçus, documentés et validés conformément au présent document et au système documentaire du Project Book.
