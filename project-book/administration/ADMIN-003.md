@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ADMIN-003 |
-| **Version** | 1.2.0 |
-| **Statut** | Référence de développement |
+| **Version** | 1.2.1 |
+| **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle du modèle de présentation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
+| **Dernière mise à jour** | 2026-07-25 |
 | **Version du produit** | V1.1 |
 
 ---
@@ -396,5 +396,6 @@ Le modèle est respecté lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-07-25 | Validation après implémentation du composeur du Centre de pilotage, séparation des quatre zones, isolation des cartes et réussite de la suite Apps Script V1.1 (40/40 tests) |
 | 1.2.0 | 2026-07-23 | Recentrage sur le modèle fonctionnel, séparation avec la navigation, ajout de la fraîcheur, de la minimisation, de l’état disabled et des responsabilités |
 | 1.1.0 | 2026-07-23 | Première définition du modèle du Centre de pilotage |
