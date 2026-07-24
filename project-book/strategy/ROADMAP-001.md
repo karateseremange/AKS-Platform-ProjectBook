@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.1.1 |
+| **Version** | 1.2.0 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-18 |
+| **Dernière mise à jour** | 2026-07-24 |
 
 ---
 
@@ -344,26 +344,29 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 
 ## 6.15 État documentaire de la V1.1
 
-| Document | Domaine | État au 18 juillet 2026 |
+| Document | Domaine | État au 24 juillet 2026 |
 |---|---|---|
-| ROADMAP-001 | Feuille de route | Consolidé |
-| ARCH-001 | Architecture fonctionnelle | Consolidé |
-| CORE-001 | Services de plateforme | Consolidé |
-| CONFIG-001 | Paramétrage centralisé | Consolidé |
-| LOG-001 | Journalisation | Consolidé |
-| UX-001 | Expérience utilisateur | Consolidé |
-| GOV-001 | Gouvernance produit | À consolider |
-| ADMIN-001 | Administration | À consolider |
-| SECURITY-001 | Sécurité | À consolider |
-| AUDIT-001 | Audit et traçabilité | À consolider |
-| NOTIF-001 | Notifications | À consolider |
-| API-001 | Interfaces internes | À consolider |
-| ERROR-001 | Gestion des erreurs | À consolider |
-| DOCUMENT-001 | Génération documentaire | À consolider |
-| STORAGE-001 | Stockage et conservation | À consolider |
-| DOC-001 | Gouvernance documentaire | Revue finale à réaliser |
+| ROADMAP-001 | Feuille de route | Validé |
+| GOV-001 | Gouvernance produit | Validé |
+| ARCH-001 | Architecture fonctionnelle | Validé |
+| CORE-001 | Services de plateforme | Published |
+| CONFIG-001 | Paramétrage centralisé | Validé |
+| LOG-001 | Journalisation | Validé |
+| UX-001 | Expérience utilisateur | Validé |
+| SECURITY-001 | Sécurité | Validé |
+| AUDIT-001 | Audit et traçabilité | Validé |
+| NOTIF-001 | Notifications | Validé |
+| API-001 | Interfaces internes | Validé |
+| ERROR-001 | Gestion des erreurs | Validé |
+| DOCUMENT-001 | Génération documentaire | Validé |
+| STORAGE-001 | Stockage et conservation | Validé |
+| DOC-001 | Gouvernance documentaire | Validé |
+| ADMIN-001 | Dashboard — premier incrément | Validé |
+| ADMIN-002 à ADMIN-005 | Centre de pilotage — incréments suivants | Référence de développement |
+| ARCH-002 | Migration architecturale | Livrables validés, clôture à régulariser |
+| ANALYTICS-001 | AKS Analytics | Référence de développement |
 
-L’état **Consolidé** signifie que le document a fait l’objet d’une revue de cohérence V1.1 et d’une mise à jour validée dans le dépôt documentaire. Il ne signifie pas automatiquement que toutes les fonctionnalités décrites sont déjà implémentées dans le dépôt applicatif.
+Les états de ce tableau reprennent le statut réel des documents ou, pour les chantiers composites, leur niveau de clôture. Le statut documentaire ne signifie pas automatiquement que toutes les fonctionnalités décrites sont déjà implémentées dans le dépôt applicatif.
 
 ## 6.16 Règle de mise à jour du suivi
 
@@ -589,7 +592,8 @@ Pour le dépôt applicatif :
 
 Pour le Project Book :
 
-- `master` reste la branche documentaire de référence tant qu’une décision contraire n’est pas validée ;
+- `develop` porte les évolutions documentaires en préparation ;
+- `main` constitue la branche documentaire officielle validée et publiée ;
 - la documentation doit être mise à jour avec les évolutions qu’elle décrit ;
 - un document validé ne doit pas annoncer comme opérationnel un élément qui ne l’est pas.
 
