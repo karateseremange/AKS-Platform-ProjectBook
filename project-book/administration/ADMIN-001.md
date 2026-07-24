@@ -107,7 +107,7 @@ Présenter l’identité de la version d’AKS Platform actuellement exécutée.
 
 - nom de la plateforme ;
 - numéro de version ;
-- nom de code.
+- nom de la version.
 
 **Source**
 
@@ -115,7 +115,7 @@ Présenter l’identité de la version d’AKS Platform actuellement exécutée.
 AKS.Version.getReleaseInfo()
 ```
 
-La version et le nom de code proviennent exclusivement du service transversal de version.
+La version et le nom de la version proviennent exclusivement du service transversal de version.
 
 ### 5.2 Carte « Actions rapides »
 
