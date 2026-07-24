@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.1 |
+| Version | 1.2.2 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-23 |
+| Dernière mise à jour | 2026-07-24 |
 | Version du produit | V1.1 |
 
 ---
@@ -76,8 +76,8 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
 | ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.1.1 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
-| ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.1.0 | Définit l'organisation fonctionnelle générale |
-| CORE-001 | AKS Core | Architecture | Validé | 1.1.0 | Définit le socle commun de la plateforme |
+| ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
+| CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
 
 ---
 
@@ -104,7 +104,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ERROR-001 | Gestion des erreurs | Validé | 1.1.0 | API-001, LOG-001 |
 | NOTIF-001 | Notifications | Validé | 1.1.0 | CORE-001, CONFIG-001 |
 | DOCUMENT-001 | Gestion documentaire | Validé | 1.1.0 | CORE-001, STORAGE-001 |
-| STORAGE-001 | Stockage transverse | Validé | 1.1.0 | ARCH-001, CORE-001 |
+| STORAGE-001 | Stockage transverse | Validé | 1.2.1 | ARCH-001, CORE-001 |
 | UI-001 | Contrat d'interface utilisateur | Validé | 1.1.0 | UX-001, ARCH-001 |
 
 ---
@@ -113,14 +113,14 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
-| ADMIN-001 | Tableau de bord d'administration | Validé | 1.1.0 | CORE-001, CONFIG-001, LOG-001 |
-| ADMIN-002 | Interface utilisateur et navigation | Validé | 1.1.0 | ADMIN-001, UX-001, UI-001 |
-| ADMIN-003 | Centre de pilotage | Validé | 1.1.0 | ADMIN-001, ADMIN-002, CORE-001 |
-| ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.1.0 | ADMIN-003, CORE-001, API-001 |
-| ADMIN-005 | Validation et conformité du Centre de pilotage | Référence de développement | 1.1.0 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| CONFIG-001 | Paramétrage centralisé | Validé | 1.1.0 | CORE-001, ADMIN-001 |
-| LOG-001 | Journalisation | Validé | 1.1.0 | CORE-001, AUDIT-001 |
-| AUDIT-001 | Audit et traçabilité | Validé | 1.1.0 | SECURITY-001, LOG-001 |
+| ADMIN-001 | Tableau de bord d'administration | Validé | 1.2.1 | CORE-001, CONFIG-001, LOG-001 |
+| ADMIN-002 | Interface utilisateur et navigation | Référence de développement | 1.2.0 | ADMIN-001, UX-001, UI-001 |
+| ADMIN-003 | Centre de pilotage | Référence de développement | 1.2.0 | ADMIN-001, ADMIN-002, CORE-001 |
+| ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Référence de développement | 1.2.0 | ADMIN-003, CORE-001, API-001 |
+| ADMIN-005 | Validation et conformité du Centre de pilotage | Référence de développement | 1.2.0 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
+| CONFIG-001 | Paramétrage centralisé | Validé | 1.2.0 | CORE-001, ADMIN-001 |
+| LOG-001 | Journalisation | Validé | 1.2.1 | CORE-001, AUDIT-001 |
+| AUDIT-001 | Audit et traçabilité | Validé | 1.1.1 | SECURITY-001, LOG-001 |
 
 ---
 
@@ -242,6 +242,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.2 | 2026-07-24 | Alignement des versions et statuts réels, clôture d’ADMIN-001 et synchronisation avec ROADMAP-001 |
 | 1.2.1 | 2026-07-23 | Déplacement de STD-001 dans `project-book/documentation/` et alignement de l'organisation officielle du dépôt |
 | 1.2.0 | 2026-07-23 | Intégration de DOC-001, STD-001, GOV-DOC-001 et GOV-DEV-001 dans le catalogue officiel et formalisation du standard applicable aux modules métier |
 | 1.1.2 | 2026-07-23 | Ajout de la structure `modules/`, intégration d'AKS Analytics et mise à jour du domaine Administration |
