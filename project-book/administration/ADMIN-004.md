@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ADMIN-004 |
-| **Version** | 1.2.0 |
-| **Statut** | Référence de développement |
+| **Version** | 1.2.1 |
+| **Statut** | Validé |
 | **Nature** | Contrat d’extension du Centre de pilotage |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
+| **Dernière mise à jour** | 2026-07-24 |
 | **Version du produit** | V1.1 |
 
 ---
@@ -496,5 +496,6 @@ Le contrat est conforme lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-07-24 | Validation après implémentation des contrats et du registre, intégration de trois fournisseurs transverses et réussite de la suite Apps Script V1.1 (32/32 tests) |
 | 1.2.0 | 2026-07-23 | Renforcement du contrat, de la validation, de la sécurité, du versionnement, de la fraîcheur et de la gestion des incompatibilités |
 | 1.1.0 | 2026-07-23 | Première définition des contrats DashboardProvider et DashboardWidget |
