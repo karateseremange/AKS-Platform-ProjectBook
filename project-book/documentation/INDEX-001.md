@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.13 |
+| Version | 1.2.14 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-25 |
@@ -128,7 +128,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
-| UX-001 | Principes d'expérience utilisateur | Validé | 1.1.0 | VISION-001, ARCH-001 |
+| UX-001 | Principes d'expérience utilisateur — fondations administratives communes validées (111/111 tests) | Validé | 1.2 | VISION-001, ARCH-001, ADMIN-001 |
 
 ---
 
@@ -242,6 +242,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.14 | 2026-07-25 | Clôture du premier incrément UX-001 après validation des fondations administratives communes, de l'accessibilité clavier, des zones d'action, des états désactivés, de la réduction des animations et de la suite Apps Script V1.1 (111/111 tests) |
 | 1.2.13 | 2026-07-25 | Clôture finale de LOG-001 après validation de la consultation administrative, de la carte « Journal récent », des filtres serveur, de la lecture seule et de la suite Apps Script V1.1 (106/106 tests) |
 | 1.2.12 | 2026-07-25 | Clôture du troisième incrément LOG-001 après validation de la conservation à 90 jours, de la purge contrôlée par lots, de l'exclusion d'AUDIT-001 et de la suite Apps Script V1.1 (100/100 tests) |
 | 1.2.11 | 2026-07-25 | Clôture du deuxième incrément LOG-001 après validation de la persistance durable dans `AKS_Logs`, du contrôle de schéma, des écritures verrouillées et de la suite Apps Script V1.1 (95/95 tests) |
