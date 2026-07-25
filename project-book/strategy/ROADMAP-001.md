@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.19 |
+| **Version** | 1.2.20 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -527,11 +527,13 @@ WEB-001 pourra être considéré comme terminé lorsque :
 
 ---
 
-# 9. AKS Analytics — Prochain module métier
+# 9. AKS Analytics — Module métier engagé
 
 ## 9.1 Statut
 
-**Planifié**.
+**Engagé — cadrage documentaire en cours**.
+
+Le chantier est officiellement ouvert. `ANALYTICS-001` fournit la vision et l’architecture ; `ANALYTICS-002` définit le modèle métier initial avant tout développement applicatif.
 
 ## 9.2 Objectif
 
@@ -542,7 +544,8 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 - import et contrôle des données de présence ;
 - analyse par cours ;
 - rapports séparés Baby, Enfant 1, Enfant 2 et Ado/Adulte ;
-- prise en compte explicite du cours féminin dans les analyses globales ;
+- exclusion explicite du cours féminin des analyses 2025-2026 faute de données de présence complètes ;
+- préparation de son intégration à partir de 2026-2027, sous réserve d’un suivi homogène et validé ;
 - synthèse globale ;
 - graphiques ;
 - commentaires automatiques ou assistés ;
@@ -550,7 +553,7 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 - préparation automatique des ressources d’une nouvelle saison ;
 - journal de contrôle des opérations de préparation.
 
-Le cadrage détaillé fera l’objet de documents dédiés avant le démarrage du développement.
+Le cadrage détaillé suit la séquence `ANALYTICS-002` à `ANALYTICS-006`. Aucun développement applicatif ne commence avant validation du modèle métier.
 
 ## 9.4 Critères d’entrée prévisionnels
 
