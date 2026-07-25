@@ -54,6 +54,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
+- [V1.1.0 — Note de publication](releases/V1.1.0.md)
 
 ## Vision et stratégie
 
@@ -147,6 +148,8 @@ Les développements doivent respecter les règles suivantes :
 
 # État du Project Book
 
-Le Project Book est maintenu conjointement avec le développement d'AKS Platform.
+La version **V1.1.0**, publiée le 25 juillet 2026, constitue la référence stable
+documentée. La publication applicative correspond au tag `v1.1.0` et au commit
+`397d8aedbb73707a898d439e9ab7747f9e396f99`.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).

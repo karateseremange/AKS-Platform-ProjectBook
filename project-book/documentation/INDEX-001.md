@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.2 |
+| Version | 1.2.20 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-24 |
+| Dernière mise à jour | 2026-07-25 |
 | Version du produit | V1.1 |
 
 ---
@@ -99,6 +99,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
+| ARCH-002 | Architecture logique transverse — chantier M1.1 à M1.7 terminé | Validé | 1.0.0 | ARCH-001, CORE-001 |
 | API-001 | Contrats et principes d'API | Validé | 1.1.0 | ARCH-001, CORE-001 |
 | SECURITY-001 | Sécurité d'AKS Platform | Validé | 1.1.0 | ARCH-001, CORE-001 |
 | ERROR-001 | Gestion des erreurs | Validé | 1.1.0 | API-001, LOG-001 |
@@ -114,12 +115,12 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
 | ADMIN-001 | Tableau de bord d'administration | Validé | 1.2.1 | CORE-001, CONFIG-001, LOG-001 |
-| ADMIN-002 | Interface utilisateur et navigation | Référence de développement | 1.2.0 | ADMIN-001, UX-001, UI-001 |
-| ADMIN-003 | Centre de pilotage | Référence de développement | 1.2.0 | ADMIN-001, ADMIN-002, CORE-001 |
-| ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Référence de développement | 1.2.0 | ADMIN-003, CORE-001, API-001 |
-| ADMIN-005 | Validation et conformité du Centre de pilotage | Référence de développement | 1.2.0 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| CONFIG-001 | Paramétrage centralisé | Validé | 1.2.0 | CORE-001, ADMIN-001 |
-| LOG-001 | Journalisation | Validé | 1.2.1 | CORE-001, AUDIT-001 |
+| ADMIN-002 | Interface utilisateur et navigation | Validé | 1.2.1 | ADMIN-001, UX-001, UI-001 |
+| ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
+| ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
+| ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
+| CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
+| LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité | Validé | 1.1.1 | SECURITY-001, LOG-001 |
 
 ---
@@ -128,7 +129,8 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
-| UX-001 | Principes d'expérience utilisateur | Validé | 1.1.0 | VISION-001, ARCH-001 |
+| UX-001 | Principes d'expérience utilisateur — chantier V1.1 terminé : fondations communes, retours d’action, consultation des journaux et présentation compréhensible des événements validés (121/121 tests) | Validé | 1.5 | VISION-001, ARCH-001, ADMIN-001 |
+| WEB-001 | Point d’accès WordPress à AKS Platform | Planifié | 1.0.0 | ROADMAP-001, SECURITY-001, ADMIN-001 |
 
 ---
 
@@ -148,11 +150,12 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | Licenciés | À créer | À créer | Futur |
 | Communication | À créer | À créer | Futur |
 
-Ordre produit validé après la consolidation V1.1 :
+Ordre produit validé après la publication de la V1.1 :
 
-1. AKS Analytics ;
-2. AKS Calendar ;
-3. autres modules selon `ROADMAP-001`.
+1. WEB-001 — point d’accès WordPress à AKS Platform ;
+2. AKS Analytics ;
+3. AKS Calendar ;
+4. autres modules selon `ROADMAP-001`.
 
 Un module futur ne doit pas être présenté comme livré tant que son document de référence et son périmètre ne sont pas validés.
 
@@ -242,6 +245,23 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.20 | 2026-07-25 | Clôture documentaire de la publication V1.1.0, référencement du tag applicatif, des preuves de recette et de la note de release officielle |
+| 1.2.19 | 2026-07-25 | Inscription de WEB-001 comme point d’accès WordPress planifié après la publication de la V1.1 et avant AKS Analytics, avec séparation des accès publics et administratifs |
+| 1.2.18 | 2026-07-25 | Référencement et clôture documentaire du chantier ARCH-002 après validation des livrables M1.1 à M1.7, sans anticipation de l'architecture interne des futurs modules |
+| 1.2.17 | 2026-07-25 | Clôture finale de UX-001 après harmonisation des dates, heures et niveaux d’événement entre Journaux et Centre de pilotage, conservation des valeurs techniques et validation de la suite Apps Script V1.1 (121/121 tests) |
+| 1.2.16 | 2026-07-25 | Clôture du troisième incrément UX-001 après validation du nombre de résultats, de l’état filtré, de la réinitialisation des filtres, de l’état vide contextualisé et de la suite Apps Script V1.1 (118/118 tests) |
+| 1.2.15 | 2026-07-25 | Clôture du deuxième incrément UX-001 après validation de la prévention des doubles actions, du verrouillage pendant traitement, des retours accessibles, des messages publics maîtrisés et de la suite Apps Script V1.1 (115/115 tests) |
+| 1.2.14 | 2026-07-25 | Clôture du premier incrément UX-001 après validation des fondations administratives communes, de l'accessibilité clavier, des zones d'action, des états désactivés, de la réduction des animations et de la suite Apps Script V1.1 (111/111 tests) |
+| 1.2.13 | 2026-07-25 | Clôture finale de LOG-001 après validation de la consultation administrative, de la carte « Journal récent », des filtres serveur, de la lecture seule et de la suite Apps Script V1.1 (106/106 tests) |
+| 1.2.12 | 2026-07-25 | Clôture du troisième incrément LOG-001 après validation de la conservation à 90 jours, de la purge contrôlée par lots, de l'exclusion d'AUDIT-001 et de la suite Apps Script V1.1 (100/100 tests) |
+| 1.2.11 | 2026-07-25 | Clôture du deuxième incrément LOG-001 après validation de la persistance durable dans `AKS_Logs`, du contrôle de schéma, des écritures verrouillées et de la suite Apps Script V1.1 (95/95 tests) |
+| 1.2.10 | 2026-07-25 | Clôture du premier incrément LOG-001 après validation du socle d'événements structurés, de l'isolation d'une panne fournisseur et de la suite Apps Script V1.1 (88/88 tests) |
+| 1.2.9 | 2026-07-25 | Clôture du troisième incrément CONFIG-001 après validation de l’interface d’administration, de ses corrections manuelles et de la suite Apps Script V1.1 (80/80 tests) |
+| 1.2.8 | 2026-07-25 | Clôture du deuxième incrément CONFIG-001 après validation de la persistance, de l’écriture contrôlée et de la suite Apps Script V1.1 (72/72 tests) |
+| 1.2.7 | 2026-07-25 | Clôture du premier incrément CONFIG-001 après validation du registre de configuration et de la suite Apps Script V1.1 (64/64 tests) |
+| 1.2.5 | 2026-07-25 | Clôture d’ADMIN-002 après validation de l’interface utilisateur, de la navigation déclarative et de la suite Apps Script V1.1 (48/48 tests) |
+| 1.2.4 | 2026-07-25 | Clôture d’ADMIN-003 après validation de la composition du Centre de pilotage et de la suite Apps Script V1.1 (40/40 tests) |
+| 1.2.3 | 2026-07-24 | Clôture d’ADMIN-004 après validation de l’implémentation et de la suite Apps Script V1.1 (32/32 tests) |
 | 1.2.2 | 2026-07-24 | Alignement des versions et statuts réels, clôture d’ADMIN-001 et synchronisation avec ROADMAP-001 |
 | 1.2.1 | 2026-07-23 | Déplacement de STD-001 dans `project-book/documentation/` et alignement de l'organisation officielle du dépôt |
 | 1.2.0 | 2026-07-23 | Intégration de DOC-001, STD-001, GOV-DOC-001 et GOV-DEV-001 dans le catalogue officiel et formalisation du standard applicable aux modules métier |

@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.0 |
+| **Version** | 1.2.18 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-24 |
+| **Dernière mise à jour** | 2026-07-25 |
 
 ---
 
@@ -112,6 +112,8 @@ AKS Platform v1.0.0 — Référence stable
         ↓
 AKS Platform v1.1 — Consolidation du socle
         ↓
+WEB-001 — Point d’accès WordPress à AKS Platform
+        ↓
 AKS Analytics — Statistiques et rapports
         ↓
 AKS Calendar — Intégration Google Calendar
@@ -163,7 +165,15 @@ Les corrections applicatives sont traitées selon le processus de hotfix défini
 
 ## 6.1 Statut
 
-**Engagé**.
+**Publié**.
+
+La V1.1.0 a été publiée le 25 juillet 2026. La branche applicative `main` et le
+tag `v1.1.0` identifient le commit
+`397d8aedbb73707a898d439e9ab7747f9e396f99`.
+
+La publication est validée par la suite Apps Script V1.1 (**121/121 tests**) et
+par les quatre contrôles de non-régression du Questionnaire santé et du
+connecteur WordPress, sur ordinateur et mobile.
 
 ## 6.2 Objectif
 
@@ -273,6 +283,14 @@ Les améliorations UX doivent porter en priorité sur :
 
 La V1.1 ne prévoit pas de refonte graphique complète.
 
+Le premier incrément livré fournit un socle CSS commun au Centre de pilotage, au Paramétrage et aux Journaux. Il harmonise le focus clavier, les zones d'action d'au moins 44 px, les états désactivés et la réduction des animations, tout en préservant les styles propres à chaque écran. Cet incrément est validé par la suite Apps Script V1.1 (**111/111 tests**).
+
+Le deuxième incrément sécurise les actions asynchrones du Paramétrage : prévention des doubles soumissions, verrouillage pendant le traitement, annonces accessibles, réactivation après échec et messages publics sans détail technique. Cet incrément est validé par la suite Apps Script V1.1 (**115/115 tests**).
+
+Le troisième incrément améliore la lisibilité de la consultation des Journaux : nombre de résultats, indication des filtres actifs, réinitialisation directe et état vide contextualisé. Il ne modifie ni les données journalisées ni les droits d’accès. Cet incrément est validé par la suite Apps Script V1.1 (**118/118 tests**).
+
+Le quatrième et dernier incrément harmonise la présentation des événements entre Journaux et Centre de pilotage : dates et heures au format français dans le fuseau `Europe/Paris`, niveaux compréhensibles et conservation des valeurs techniques originales. Cet incrément est validé par la suite Apps Script V1.1 (**121/121 tests**). Le chantier `UX-001` est fonctionnellement terminé.
+
 ## 6.10 Documentation
 
 Tous les composants, paramètres, traitements et procédures réellement ajoutés ou modifiés doivent être documentés avant publication.
@@ -344,15 +362,15 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 
 ## 6.15 État documentaire de la V1.1
 
-| Document | Domaine | État au 24 juillet 2026 |
+| Document | Domaine | État au 25 juillet 2026 |
 |---|---|---|
 | ROADMAP-001 | Feuille de route | Validé |
 | GOV-001 | Gouvernance produit | Validé |
 | ARCH-001 | Architecture fonctionnelle | Validé |
 | CORE-001 | Services de plateforme | Published |
-| CONFIG-001 | Paramétrage centralisé | Validé |
-| LOG-001 | Journalisation | Validé |
-| UX-001 | Expérience utilisateur | Validé |
+| CONFIG-001 | Paramétrage centralisé — registre, résolution, persistance, écriture contrôlée et interface d’administration validés (80/80 tests et validation manuelle) | Validé |
+| LOG-001 | Journalisation — socle structuré, persistance durable dans `AKS_Logs`, conservation à 90 jours, purge contrôlée et consultation administrative en lecture seule validés (106/106 tests) ; chantier fonctionnellement terminé | Validé |
+| UX-001 | Expérience utilisateur — fondations administratives communes, retours d’action du Paramétrage, consultation des Journaux et présentation compréhensible des événements validés (121/121 tests) ; chantier fonctionnellement terminé | Validé |
 | SECURITY-001 | Sécurité | Validé |
 | AUDIT-001 | Audit et traçabilité | Validé |
 | NOTIF-001 | Notifications | Validé |
@@ -362,8 +380,11 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | STORAGE-001 | Stockage et conservation | Validé |
 | DOC-001 | Gouvernance documentaire | Validé |
 | ADMIN-001 | Dashboard — premier incrément | Validé |
-| ADMIN-002 à ADMIN-005 | Centre de pilotage — incréments suivants | Référence de développement |
-| ARCH-002 | Migration architecturale | Livrables validés, clôture à régulariser |
+| ADMIN-002 | Interface utilisateur et navigation | Validé |
+| ADMIN-005 | Centre de pilotage — validation et conformité | Validé |
+| ADMIN-003 | Composition du Centre de pilotage | Validé |
+| ADMIN-004 | Contrats DashboardProvider et DashboardWidget | Validé |
+| ARCH-002 | Architecture logique transverse — livrables M1.1 à M1.7 | Validé — chantier terminé |
 | ANALYTICS-001 | AKS Analytics | Référence de développement |
 
 Les états de ce tableau reprennent le statut réel des documents ou, pour les chantiers composites, leur niveau de clôture. Le statut documentaire ne signifie pas automatiquement que toutes les fonctionnalités décrites sont déjà implémentées dans le dépôt applicatif.
@@ -437,17 +458,84 @@ La première implémentation reposera sur Google Calendar et le compte du club, 
 
 ---
 
-# 8. AKS Analytics — Premier module après la V1.1
+# 8. WEB-001 — Point d’accès WordPress à AKS Platform
 
 ## 8.1 Statut
 
 **Planifié**.
 
-## 8.2 Objectif
+## 8.2 Positionnement
+
+WEB-001 sera réalisé après la publication officielle de la V1.1 sur `main` et avant le démarrage du développement d’AKS Analytics.
+
+Son inscription dans la roadmap ne modifie pas le périmètre fonctionnel de la V1.1 et ne bloque pas sa publication.
+
+## 8.3 Objectif
+
+WEB-001 doit fournir depuis le site WordPress du club un point d’entrée clair vers les services d’AKS Platform, sans créer à ce stade un portail applicatif supplémentaire.
+
+Le libellé recommandé pour le menu public est **« Services en ligne »**.
+
+## 8.4 Séparation des accès
+
+Le point d’entrée doit distinguer clairement :
+
+- les services publics, notamment le Questionnaire santé des mineurs et les futurs services destinés aux licenciés ;
+- l’accès **« Administration AKS »**, réservé aux responsables autorisés et orienté vers le Web App administratif distinct.
+
+Le Questionnaire santé reste accessible sans compte WordPress ni compte Google.
+
+L’administration conserve son authentification Google, son autorisation minimale contrôlée côté serveur et sa séparation complète du Web App public.
+
+## 8.5 Périmètre initial
+
+Le premier incrément de WEB-001 est limité à :
+
+- la création ou l’adaptation du menu WordPress ;
+- la mise à disposition des liens vers les services réellement disponibles ;
+- la distinction visuelle et fonctionnelle entre accès public et accès réservé ;
+- la vérification des liens sur ordinateur et mobile ;
+- la documentation de maintenance du menu.
+
+Les entrées correspondant à des modules futurs ne doivent pas être affichées comme disponibles avant leur publication.
+
+## 8.6 Éléments exclus
+
+Sont exclus du premier incrément :
+
+- le développement d’un portail spécifique ;
+- la création d’un système de comptes ou de rôles propre à WordPress ;
+- la fusion des Web Apps public et administratif ;
+- la modification du Questionnaire santé ;
+- le développement anticipé d’AKS Analytics ou d’AKS Calendar ;
+- l’affichage de services simulés ou non publiés.
+
+## 8.7 Critères d’acceptation prévisionnels
+
+WEB-001 pourra être considéré comme terminé lorsque :
+
+- le menu est accessible et compréhensible sur ordinateur et mobile ;
+- le Questionnaire santé est joignable depuis l’espace public ;
+- l’administration est identifiée comme un accès réservé ;
+- le lien administratif cible le Web App administratif distinct ;
+- les contrôles d’accès serveur restent inchangés et efficaces ;
+- aucune entrée ne présente comme disponible un module non publié ;
+- la procédure de maintenance des liens est documentée ;
+- les parcours publics et administratifs sont testés sans régression.
+
+---
+
+# 9. AKS Analytics — Premier module métier après la V1.1
+
+## 9.1 Statut
+
+**Planifié**.
+
+## 9.2 Objectif
 
 AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables par l’association.
 
-## 8.3 Périmètre prévisionnel
+## 9.3 Périmètre prévisionnel
 
 - import et contrôle des données de présence ;
 - analyse par cours ;
@@ -462,7 +550,7 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 
 Le cadrage détaillé fera l’objet de documents dédiés avant le démarrage du développement.
 
-## 8.4 Critères d’entrée prévisionnels
+## 9.4 Critères d’entrée prévisionnels
 
 AKS Analytics pourra être engagé lorsque :
 
@@ -475,17 +563,17 @@ AKS Analytics pourra être engagé lorsque :
 
 ---
 
-# 9. AKS Calendar — Module suivant
+# 10. AKS Calendar — Module suivant
 
-## 9.1 Statut
+## 10.1 Statut
 
 **Planifié**.
 
-## 9.2 Objectif
+## 10.2 Objectif
 
 AKS Calendar doit proposer un calendrier partagé pour les professeurs et responsables du club en s’appuyant prioritairement sur Google Calendar.
 
-## 9.3 Périmètre prévisionnel
+## 10.3 Périmètre prévisionnel
 
 - intégration avec le compte Google du club ;
 - calendrier partagé ;
@@ -495,7 +583,7 @@ AKS Calendar doit proposer un calendrier partagé pour les professeurs et respon
 - administration depuis AKS Platform lorsque cela apporte une valeur concrète ;
 - journalisation des opérations importantes.
 
-## 9.4 Principe d’implémentation
+## 10.4 Principe d’implémentation
 
 Google Calendar est retenu comme moteur initial afin de couvrir l’essentiel des besoins avec un effort maîtrisé.
 
@@ -503,7 +591,7 @@ Un développement interne complet ne pourra être envisagé que si des besoins n
 
 ---
 
-# 10. Backlog produit après AKS Calendar
+# 11. Backlog produit après AKS Calendar
 
 Les modules ou évolutions futures restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés.
 
@@ -523,7 +611,7 @@ Chaque candidat devra être évalué selon la valeur, les risques, les dépendan
 
 ---
 
-# 11. Jalons de version
+# 12. Jalons de version
 
 Chaque version suit au minimum les jalons suivants :
 
@@ -541,7 +629,7 @@ Le passage d’un jalon au suivant dépend de la validation des résultats atten
 
 ---
 
-# 12. Gestion des écarts
+# 13. Gestion des écarts
 
 Un écart à la roadmap doit être documenté lorsqu’il concerne :
 
@@ -564,7 +652,7 @@ La décision doit indiquer si l’écart est :
 
 ---
 
-# 13. Indicateurs de pilotage
+# 14. Indicateurs de pilotage
 
 Le suivi de la roadmap repose au minimum sur :
 
@@ -581,7 +669,7 @@ Ces indicateurs servent au pilotage et ne remplacent pas la validation fonctionn
 
 ---
 
-# 14. Règles de branches et de publication
+# 15. Règles de branches et de publication
 
 Pour le dépôt applicatif :
 
@@ -599,7 +687,7 @@ Pour le Project Book :
 
 ---
 
-# 15. Résultat attendu
+# 16. Résultat attendu
 
 ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes :
 
@@ -620,6 +708,8 @@ La trajectoire officielle reste :
 AKS Platform v1.0.0
         ↓
 AKS Platform v1.1 — Consolidation
+        ↓
+WEB-001 — Point d’accès WordPress
         ↓
 AKS Analytics
         ↓
