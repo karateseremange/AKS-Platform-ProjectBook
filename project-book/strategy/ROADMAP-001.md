@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.20 |
+| **Version** | 1.2.21 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-25 |
+| **Dernière mise à jour** | 2026-07-26 |
 
 ---
 
@@ -385,7 +385,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | ADMIN-003 | Composition du Centre de pilotage | Validé |
 | ADMIN-004 | Contrats DashboardProvider et DashboardWidget | Validé |
 | ARCH-002 | Architecture logique transverse — livrables M1.1 à M1.7 | Validé — chantier terminé |
-| ANALYTICS-001 | AKS Analytics | Référence de développement |
+| ANALYTICS-001 | AKS Analytics — vision et architecture | Référence de développement |\n| ANALYTICS-002 | AKS Analytics — modèle métier | Référence de développement |\n| ANALYTICS-003 | AKS Analytics — services et orchestration | Proposition soumise à validation |
 
 Les états de ce tableau reprennent le statut réel des documents ou, pour les chantiers composites, leur niveau de clôture. Le statut documentaire ne signifie pas automatiquement que toutes les fonctionnalités décrites sont déjà implémentées dans le dépôt applicatif.
 
@@ -553,7 +553,7 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 - préparation automatique des ressources d’une nouvelle saison ;
 - journal de contrôle des opérations de préparation.
 
-Le cadrage détaillé suit la séquence `ANALYTICS-002` à `ANALYTICS-006`. Aucun développement applicatif ne commence avant validation du modèle métier.
+Le modèle métier `ANALYTICS-002` est validé. Le cadrage détaillé se poursuit avec `ANALYTICS-003` à `ANALYTICS-006`. Aucun développement applicatif ne commence avant validation des prérequis documentaires décidés par la gouvernance.
 
 ## 9.4 Critères d’entrée prévisionnels
 
