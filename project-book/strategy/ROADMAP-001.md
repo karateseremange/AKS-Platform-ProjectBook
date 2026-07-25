@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.18 |
+| **Version** | 1.2.19 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -462,7 +462,9 @@ La première implémentation reposera sur Google Calendar et le compte du club, 
 
 ## 8.1 Statut
 
-**Planifié**.
+**Publié — chantier terminé**.
+
+WEB-001 a été validé le 25 juillet 2026 après mise en place du menu « Services en ligne » et réussite des cinq contrôles fonctionnels sur ordinateur, mobile, Questionnaire santé et administration autorisée ou refusée.
 
 ## 8.2 Positionnement
 
@@ -525,7 +527,7 @@ WEB-001 pourra être considéré comme terminé lorsque :
 
 ---
 
-# 9. AKS Analytics — Premier module métier après la V1.1
+# 9. AKS Analytics — Prochain module métier
 
 ## 9.1 Statut
 
@@ -702,7 +704,7 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - comment une modification de trajectoire est-elle décidée ?
 - quel est l’état de consolidation documentaire de la V1.1 ?
 
-La trajectoire officielle reste :
+La trajectoire officielle reste ; WEB-001 étant terminé, le prochain chantier est AKS Analytics :
 
 ```text
 AKS Platform v1.0.0
