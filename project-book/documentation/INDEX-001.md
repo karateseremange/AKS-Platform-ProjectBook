@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.5 |
+| Version | 1.2.6 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-25 |
@@ -117,7 +117,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-002 | Interface utilisateur et navigation | Validé | 1.2.1 | ADMIN-001, UX-001, UI-001 |
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
-| ADMIN-005 | Validation et conformité du Centre de pilotage | Référence de développement | 1.2.0 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
+| ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.0 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.1 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité | Validé | 1.1.1 | SECURITY-001, LOG-001 |
