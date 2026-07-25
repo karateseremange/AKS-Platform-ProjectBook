@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.15 |
+| Version | 1.2.16 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-25 |
@@ -128,7 +128,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
-| UX-001 | Principes d'expérience utilisateur — fondations communes et retours d’action du paramétrage validés (115/115 tests) | Validé | 1.3 | VISION-001, ARCH-001, ADMIN-001 |
+| UX-001 | Principes d'expérience utilisateur — fondations communes, retours d’action du paramétrage et consultation des journaux validés (118/118 tests) | Validé | 1.4 | VISION-001, ARCH-001, ADMIN-001 |
 
 ---
 
@@ -242,6 +242,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.16 | 2026-07-25 | Clôture du troisième incrément UX-001 après validation du nombre de résultats, de l’état filtré, de la réinitialisation des filtres, de l’état vide contextualisé et de la suite Apps Script V1.1 (118/118 tests) |
 | 1.2.15 | 2026-07-25 | Clôture du deuxième incrément UX-001 après validation de la prévention des doubles actions, du verrouillage pendant traitement, des retours accessibles, des messages publics maîtrisés et de la suite Apps Script V1.1 (115/115 tests) |
 | 1.2.14 | 2026-07-25 | Clôture du premier incrément UX-001 après validation des fondations administratives communes, de l'accessibilité clavier, des zones d'action, des états désactivés, de la réduction des animations et de la suite Apps Script V1.1 (111/111 tests) |
 | 1.2.13 | 2026-07-25 | Clôture finale de LOG-001 après validation de la consultation administrative, de la carte « Journal récent », des filtres serveur, de la lecture seule et de la suite Apps Script V1.1 (106/106 tests) |
