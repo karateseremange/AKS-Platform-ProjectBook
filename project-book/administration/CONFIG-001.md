@@ -6,10 +6,10 @@
 |-----------|--------|
 | **Document ID** | CONFIG-001 |
 | **Titre** | Paramétrage centralisé d'AKS Platform |
-| **Version** | 1.2.0 |
+| **Version** | 1.2.1 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
+| **Dernière mise à jour** | 2026-07-25 |
 | **Version du produit** | V1.1 |
 
 ---
@@ -580,17 +580,34 @@ Le système de paramétrage est conforme lorsque :
 
 ---
 
-# 24. Historique des versions
+# 24. Validation de l’incrément
+
+L’incrément applicatif « registre et résolution en lecture seule » de `CONFIG-001` a été validé dans l’environnement Apps Script réel le 25 juillet 2026.
+
+- commit applicatif testé : `5e8aa4d` ;
+- commit de fusion applicatif dans `develop` : `fd37c67` ;
+- suite consolidée AKS Platform V1.1 : **64/64 tests réussis, 0 échec** ;
+- scénarios `CONFIG-001` : **13/13 réussis**, dont 8 scénarios ajoutés pour le registre et la résolution ;
+- périmètre validé : définitions typées, clés normalisées, valeurs par défaut, source effective, validation côté service, détection des paramètres obligatoires absents et séparation des secrets ;
+- validation fonctionnelle : approuvée par le Product Owner ;
+- défaut bloquant ou critique constaté : aucun.
+
+Cette preuve clôt techniquement et documentairement le premier incrément de `CONFIG-001` sur la branche `develop`. Les écritures, la persistance et l’interface d’administration restent hors de cet incrément.
+
+---
+
+# 25. Historique des versions
 
 | Version | Date | Évolution |
 |---------|------|-----------|
 | 1.0 | 2026-07-18 | Définition initiale du paramétrage centralisé |
 | 1.1 | 2026-07-18 | Consolidation fonctionnelle pour AKS Platform V1.1 |
+| 1.2.1 | 2026-07-25 | Validation du premier incrément applicatif CONFIG-001 après exécution réelle de la suite Apps Script à 64/64 et intégration dans `develop` |
 | 1.2.0 | 2026-07-23 | Alignement architectural, séparation paramètres/secrets, résolution, migration et gouvernance documentaire |
 
 ---
 
-# 25. Conclusion
+# 26. Conclusion
 
 Le paramétrage centralisé constitue une capacité transverse d'AKS Platform.
 
