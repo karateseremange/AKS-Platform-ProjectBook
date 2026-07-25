@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.7 |
+| **Version** | 1.2.8 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -351,7 +351,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | ARCH-001 | Architecture fonctionnelle | Validé |
 | CORE-001 | Services de plateforme | Published |
 | CONFIG-001 | Paramétrage centralisé — registre, résolution, persistance, écriture contrôlée et interface d’administration validés (80/80 tests et validation manuelle) | Validé |
-| LOG-001 | Journalisation | Validé |
+| LOG-001 | Journalisation — socle d’événements structurés, corrélation, masquage, immutabilité et repli fournisseur validés (88/88 tests) ; persistance, conservation et consultation restant à réaliser | Validé |
 | UX-001 | Expérience utilisateur | Validé |
 | SECURITY-001 | Sécurité | Validé |
 | AUDIT-001 | Audit et traçabilité | Validé |
