@@ -519,15 +519,15 @@ WEB-001 pourra être considéré comme terminé lorsque :
 
 # 9. AKS Analytics — Premier module métier après la V1.1
 
-## 8.1 Statut
+## 9.1 Statut
 
 **Planifié**.
 
-## 8.2 Objectif
+## 9.2 Objectif
 
 AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables par l’association.
 
-## 8.3 Périmètre prévisionnel
+## 9.3 Périmètre prévisionnel
 
 - import et contrôle des données de présence ;
 - analyse par cours ;
@@ -542,7 +542,7 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 
 Le cadrage détaillé fera l’objet de documents dédiés avant le démarrage du développement.
 
-## 8.4 Critères d’entrée prévisionnels
+## 9.4 Critères d’entrée prévisionnels
 
 AKS Analytics pourra être engagé lorsque :
 
@@ -557,15 +557,15 @@ AKS Analytics pourra être engagé lorsque :
 
 # 10. AKS Calendar — Module suivant
 
-## 9.1 Statut
+## 10.1 Statut
 
 **Planifié**.
 
-## 9.2 Objectif
+## 10.2 Objectif
 
 AKS Calendar doit proposer un calendrier partagé pour les professeurs et responsables du club en s’appuyant prioritairement sur Google Calendar.
 
-## 9.3 Périmètre prévisionnel
+## 10.3 Périmètre prévisionnel
 
 - intégration avec le compte Google du club ;
 - calendrier partagé ;
@@ -575,7 +575,7 @@ AKS Calendar doit proposer un calendrier partagé pour les professeurs et respon
 - administration depuis AKS Platform lorsque cela apporte une valeur concrète ;
 - journalisation des opérations importantes.
 
-## 9.4 Principe d’implémentation
+## 10.4 Principe d’implémentation
 
 Google Calendar est retenu comme moteur initial afin de couvrir l’essentiel des besoins avec un effort maîtrisé.
 
