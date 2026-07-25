@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.17 |
+| **Version** | 1.2.18 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -165,7 +165,15 @@ Les corrections applicatives sont traitées selon le processus de hotfix défini
 
 ## 6.1 Statut
 
-**Engagé**.
+**Publié**.
+
+La V1.1.0 a été publiée le 25 juillet 2026. La branche applicative `main` et le
+tag `v1.1.0` identifient le commit
+`397d8aedbb73707a898d439e9ab7747f9e396f99`.
+
+La publication est validée par la suite Apps Script V1.1 (**121/121 tests**) et
+par les quatre contrôles de non-régression du Questionnaire santé et du
+connecteur WordPress, sur ordinateur et mobile.
 
 ## 6.2 Objectif
 
