@@ -6,7 +6,7 @@
 |-----------|--------|
 | **Document ID** | CONFIG-001 |
 | **Titre** | Paramétrage centralisé d'AKS Platform |
-| **Version** | 1.2.1 |
+| **Version** | 1.2.2 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -580,7 +580,9 @@ Le système de paramétrage est conforme lorsque :
 
 ---
 
-# 24. Validation de l’incrément
+# 24. Validation des incréments
+
+## 24.1 Registre et résolution en lecture seule
 
 L’incrément applicatif « registre et résolution en lecture seule » de `CONFIG-001` a été validé dans l’environnement Apps Script réel le 25 juillet 2026.
 
@@ -592,7 +594,21 @@ L’incrément applicatif « registre et résolution en lecture seule » de `CON
 - validation fonctionnelle : approuvée par le Product Owner ;
 - défaut bloquant ou critique constaté : aucun.
 
-Cette preuve clôt techniquement et documentairement le premier incrément de `CONFIG-001` sur la branche `develop`. Les écritures, la persistance et l’interface d’administration restent hors de cet incrément.
+Cette preuve clôt techniquement et documentairement le premier incrément de `CONFIG-001` sur la branche `develop`.
+
+## 24.2 Persistance et écriture contrôlée
+
+L’incrément applicatif « persistance et écriture contrôlée » de `CONFIG-001` a été validé dans l’environnement Apps Script réel le 25 juillet 2026.
+
+- commit applicatif testé : `adc27f3` ;
+- commit de fusion applicatif dans `develop` : `d07fc06` ;
+- suite consolidée AKS Platform V1.1 : **72/72 tests réussis, 0 échec** ;
+- scénarios `CONFIG-001` : **21/21 réussis**, dont 8 scénarios ajoutés pour la persistance et l’écriture contrôlée ;
+- périmètre validé : persistance dans `Script Properties` derrière un fournisseur encapsulé, écritures typées et validées, verrouillage des modifications, métadonnées d’auteur et de date, suppression contrôlée avec retour à la valeur héritée ou par défaut, protection des paramètres obligatoires, détection des données corrompues et libération du verrou en cas d’échec ;
+- validation fonctionnelle : approuvée par le Product Owner ;
+- défaut bloquant ou critique constaté : aucun.
+
+Cette preuve clôt techniquement et documentairement le deuxième incrément de `CONFIG-001` sur la branche `develop`. L’interface d’administration des paramètres reste hors de cet incrément et constitue la prochaine étape du domaine Paramétrage.
 
 ---
 
@@ -602,6 +618,7 @@ Cette preuve clôt techniquement et documentairement le premier incrément de `C
 |---------|------|-----------|
 | 1.0 | 2026-07-18 | Définition initiale du paramétrage centralisé |
 | 1.1 | 2026-07-18 | Consolidation fonctionnelle pour AKS Platform V1.1 |
+| 1.2.2 | 2026-07-25 | Validation du deuxième incrément applicatif CONFIG-001 — persistance et écriture contrôlée — après exécution réelle de la suite Apps Script à 72/72 et intégration dans `develop` |
 | 1.2.1 | 2026-07-25 | Validation du premier incrément applicatif CONFIG-001 après exécution réelle de la suite Apps Script à 64/64 et intégration dans `develop` |
 | 1.2.0 | 2026-07-23 | Alignement architectural, séparation paramètres/secrets, résolution, migration et gouvernance documentaire |
 
