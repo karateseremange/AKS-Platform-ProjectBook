@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.22 |
+| **Version** | 1.2.23 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-26 |
@@ -388,7 +388,8 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | ANALYTICS-001 | AKS Analytics — vision et architecture | Référence de développement |
 | ANALYTICS-002 | AKS Analytics — modèle métier | Référence de développement |
 | ANALYTICS-003 | AKS Analytics — services et orchestration | Référence de développement |
-| ANALYTICS-004 | AKS Analytics — interfaces et restitutions | Proposition soumise à validation |
+| ANALYTICS-004 | AKS Analytics — interfaces et restitutions | Référence de développement |
+| ANALYTICS-005 | AKS Analytics — contrats externes et formats des sources | Proposition soumise à validation |
 
 Les états de ce tableau reprennent le statut réel des documents ou, pour les chantiers composites, leur niveau de clôture. Le statut documentaire ne signifie pas automatiquement que toutes les fonctionnalités décrites sont déjà implémentées dans le dépôt applicatif.
 
@@ -536,7 +537,7 @@ WEB-001 pourra être considéré comme terminé lorsque :
 
 **Engagé — cadrage documentaire en cours**.
 
-Le chantier est officiellement ouvert. `ANALYTICS-001` fournit la vision et l’architecture, `ANALYTICS-002` le modèle métier et `ANALYTICS-003` les services et règles d’orchestration. `ANALYTICS-004` définit les interfaces et restitutions avant tout développement applicatif.
+Le chantier est officiellement ouvert. `ANALYTICS-001` fournit la vision et l’architecture, `ANALYTICS-002` le modèle métier, `ANALYTICS-003` les services et règles d’orchestration et `ANALYTICS-004` les interfaces et restitutions. `ANALYTICS-005` définit les contrats externes et formats des sources avant tout développement applicatif.
 
 ## 9.2 Objectif
 
@@ -556,7 +557,7 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 - préparation automatique des ressources d’une nouvelle saison ;
 - journal de contrôle des opérations de préparation.
 
-Le modèle métier `ANALYTICS-002` et l’orchestration `ANALYTICS-003` sont validés. Le cadrage détaillé se poursuit avec `ANALYTICS-004` à `ANALYTICS-006`. Aucun développement applicatif ne commence avant validation des prérequis documentaires décidés par la gouvernance.
+Le modèle métier `ANALYTICS-002`, l’orchestration `ANALYTICS-003` et les interfaces `ANALYTICS-004` sont validés. Le cadrage détaillé se poursuit avec `ANALYTICS-005` et `ANALYTICS-006`. Aucun développement applicatif ne commence avant validation des prérequis documentaires décidés par la gouvernance.
 
 ## 9.4 Critères d’entrée prévisionnels
 
