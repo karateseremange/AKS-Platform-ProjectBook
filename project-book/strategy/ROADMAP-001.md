@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.14 |
+| **Version** | 1.2.15 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -279,6 +279,8 @@ Le deuxième incrément sécurise les actions asynchrones du Paramétrage : pré
 
 Le troisième incrément améliore la lisibilité de la consultation des Journaux : nombre de résultats, indication des filtres actifs, réinitialisation directe et état vide contextualisé. Il ne modifie ni les données journalisées ni les droits d’accès. Cet incrément est validé par la suite Apps Script V1.1 (**118/118 tests**).
 
+Le quatrième et dernier incrément harmonise la présentation des événements entre Journaux et Centre de pilotage : dates et heures au format français dans le fuseau `Europe/Paris`, niveaux compréhensibles et conservation des valeurs techniques originales. Cet incrément est validé par la suite Apps Script V1.1 (**121/121 tests**). Le chantier `UX-001` est fonctionnellement terminé.
+
 ## 6.10 Documentation
 
 Tous les composants, paramètres, traitements et procédures réellement ajoutés ou modifiés doivent être documentés avant publication.
@@ -358,7 +360,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | CORE-001 | Services de plateforme | Published |
 | CONFIG-001 | Paramétrage centralisé — registre, résolution, persistance, écriture contrôlée et interface d’administration validés (80/80 tests et validation manuelle) | Validé |
 | LOG-001 | Journalisation — socle structuré, persistance durable dans `AKS_Logs`, conservation à 90 jours, purge contrôlée et consultation administrative en lecture seule validés (106/106 tests) ; chantier fonctionnellement terminé | Validé |
-| UX-001 | Expérience utilisateur — fondations administratives communes, retours d’action du Paramétrage et lisibilité de la consultation des Journaux validés : nombre de résultats, indication des filtres actifs, réinitialisation directe et état vide contextualisé (118/118 tests) ; autres améliorations UX ouvertes | Validé |
+| UX-001 | Expérience utilisateur — fondations administratives communes, retours d’action du Paramétrage, consultation des Journaux et présentation compréhensible des événements validés (121/121 tests) ; chantier fonctionnellement terminé | Validé |
 | SECURITY-001 | Sécurité | Validé |
 | AUDIT-001 | Audit et traçabilité | Validé |
 | NOTIF-001 | Notifications | Validé |
