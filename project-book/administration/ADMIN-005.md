@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ADMIN-005 |
-| **Version** | 1.2.0 |
-| **Statut** | Référence de développement |
+| **Version** | 1.2.1 |
+| **Statut** | Validé |
 | **Nature** | Référentiel de validation et de conformité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
+| **Dernière mise à jour** | 2026-07-25 |
 | **Version du produit** | V1.1 |
 
 ---
@@ -384,9 +384,25 @@ Toute évolution incompatible avec ces responsabilités nécessite une décision
 
 ---
 
-## 18. Historique
+## 18. Validation de l’incrément
+
+L’incrément `ADMIN-005` a été validé dans l’environnement Apps Script réel le 25 juillet 2026.
+
+- commit applicatif testé : `ac4ac602` ;
+- commit de fusion applicatif dans `develop` : `4efce4d` ;
+- suite consolidée AKS Platform V1.1 : **56/56 tests réussis, 0 échec** ;
+- scénarios dédiés `ADMIN-005` : **8/8 réussis** ;
+- validation fonctionnelle : approuvée par le Product Owner ;
+- défaut bloquant ou critique constaté : aucun.
+
+Cette preuve clôt techniquement et documentairement `ADMIN-005` sur la branche `develop`.
+
+---
+
+## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-07-25 | Validation de l’incrément ADMIN-005 après exécution réelle de la suite Apps Script à 56/56 et intégration dans `develop` |
 | 1.2.0 | 2026-07-23 | Recentrage sur la validation, ajout des principes de preuve, tests de contrat, gouvernance des écarts et clarification de la clôture documentaire |
 | 1.1.0 | 2026-07-23 | Première définition du référentiel de validation du Centre de pilotage |
