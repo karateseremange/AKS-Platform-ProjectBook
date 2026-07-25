@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-003 |
-| **Version** | 1.0.0 |
-| **Statut** | Proposition soumise à validation |
+| **Version** | 1.1.0 |
+| **Statut** | Référence de développement |
 | **Nature** | Services et orchestration du module |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-26 |
@@ -580,6 +580,7 @@ Le développement applicatif commencera uniquement lorsque les prérequis docume
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-26 | Validation comme référence de développement et ouverture d’ANALYTICS-004 pour les interfaces et restitutions |
 | 1.0.0 | 2026-07-26 | Création des services, de la chaîne d’orchestration, des règles d’isolation, d’idempotence, de publication et de préparation de saison |
 
 ---
