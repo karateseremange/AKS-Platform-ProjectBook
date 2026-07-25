@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.18 |
+| Version | 1.2.19 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-25 |
@@ -130,6 +130,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
 | UX-001 | Principes d'expérience utilisateur — chantier V1.1 terminé : fondations communes, retours d’action, consultation des journaux et présentation compréhensible des événements validés (121/121 tests) | Validé | 1.5 | VISION-001, ARCH-001, ADMIN-001 |
+| WEB-001 | Point d’accès WordPress à AKS Platform | Planifié | 1.0.0 | ROADMAP-001, SECURITY-001, ADMIN-001 |
 
 ---
 
@@ -149,11 +150,12 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | Licenciés | À créer | À créer | Futur |
 | Communication | À créer | À créer | Futur |
 
-Ordre produit validé après la consolidation V1.1 :
+Ordre produit validé après la publication de la V1.1 :
 
-1. AKS Analytics ;
-2. AKS Calendar ;
-3. autres modules selon `ROADMAP-001`.
+1. WEB-001 — point d’accès WordPress à AKS Platform ;
+2. AKS Analytics ;
+3. AKS Calendar ;
+4. autres modules selon `ROADMAP-001`.
 
 Un module futur ne doit pas être présenté comme livré tant que son document de référence et son périmètre ne sont pas validés.
 
@@ -243,6 +245,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.19 | 2026-07-25 | Inscription de WEB-001 comme point d’accès WordPress planifié après la publication de la V1.1 et avant AKS Analytics, avec séparation des accès publics et administratifs |
 | 1.2.18 | 2026-07-25 | Référencement et clôture documentaire du chantier ARCH-002 après validation des livrables M1.1 à M1.7, sans anticipation de l'architecture interne des futurs modules |
 | 1.2.17 | 2026-07-25 | Clôture finale de UX-001 après harmonisation des dates, heures et niveaux d’événement entre Journaux et Centre de pilotage, conservation des valeurs techniques et validation de la suite Apps Script V1.1 (121/121 tests) |
 | 1.2.16 | 2026-07-25 | Clôture du troisième incrément UX-001 après validation du nombre de résultats, de l’état filtré, de la réinitialisation des filtres, de l’état vide contextualisé et de la suite Apps Script V1.1 (118/118 tests) |
