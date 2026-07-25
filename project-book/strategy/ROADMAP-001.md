@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.3 |
+| **Version** | 1.2.4 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -363,7 +363,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | DOC-001 | Gouvernance documentaire | Validé |
 | ADMIN-001 | Dashboard — premier incrément | Validé |
 | ADMIN-002 | Interface utilisateur et navigation | Validé |
-| ADMIN-005 | Centre de pilotage — validation et conformité | Référence de développement |
+| ADMIN-005 | Centre de pilotage — validation et conformité | Validé |
 | ADMIN-003 | Composition du Centre de pilotage | Validé |
 | ADMIN-004 | Contrats DashboardProvider et DashboardWidget | Validé |
 | ARCH-002 | Migration architecturale | Livrables validés, clôture à régulariser |
