@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.6 |
+| Version | 1.2.7 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-25 |
@@ -118,7 +118,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| CONFIG-001 | Paramétrage centralisé | Validé | 1.2.0 | CORE-001, ADMIN-001 |
+| CONFIG-001 | Paramétrage centralisé | Validé | 1.2.1 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.1 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité | Validé | 1.1.1 | SECURITY-001, LOG-001 |
 
@@ -242,6 +242,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.7 | 2026-07-25 | Clôture du premier incrément CONFIG-001 après validation du registre de configuration et de la suite Apps Script V1.1 (64/64 tests) |
 | 1.2.5 | 2026-07-25 | Clôture d’ADMIN-002 après validation de l’interface utilisateur, de la navigation déclarative et de la suite Apps Script V1.1 (48/48 tests) |
 | 1.2.4 | 2026-07-25 | Clôture d’ADMIN-003 après validation de la composition du Centre de pilotage et de la suite Apps Script V1.1 (40/40 tests) |
 | 1.2.3 | 2026-07-24 | Clôture d’ADMIN-004 après validation de l’implémentation et de la suite Apps Script V1.1 (32/32 tests) |
