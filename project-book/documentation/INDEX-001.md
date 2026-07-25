@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.11 |
+| Version | 1.2.12 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-25 |
@@ -119,7 +119,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
-| LOG-001 | Journalisation | Validé | 1.2.3 | CORE-001, AUDIT-001 |
+| LOG-001 | Journalisation | Validé | 1.2.4 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité | Validé | 1.1.1 | SECURITY-001, LOG-001 |
 
 ---
@@ -242,6 +242,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.12 | 2026-07-25 | Clôture du troisième incrément LOG-001 après validation de la conservation à 90 jours, de la purge contrôlée par lots, de l'exclusion d'AUDIT-001 et de la suite Apps Script V1.1 (100/100 tests) |
 | 1.2.11 | 2026-07-25 | Clôture du deuxième incrément LOG-001 après validation de la persistance durable dans `AKS_Logs`, du contrôle de schéma, des écritures verrouillées et de la suite Apps Script V1.1 (95/95 tests) |
 | 1.2.10 | 2026-07-25 | Clôture du premier incrément LOG-001 après validation du socle d'événements structurés, de l'isolation d'une panne fournisseur et de la suite Apps Script V1.1 (88/88 tests) |
 | 1.2.9 | 2026-07-25 | Clôture du troisième incrément CONFIG-001 après validation de l’interface d’administration, de ses corrections manuelles et de la suite Apps Script V1.1 (80/80 tests) |
