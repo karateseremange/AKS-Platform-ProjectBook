@@ -6,7 +6,7 @@
 |-----------|--------|
 | **Document ID** | CONFIG-001 |
 | **Titre** | Paramétrage centralisé d'AKS Platform |
-| **Version** | 1.2.2 |
+| **Version** | 1.2.3 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-25 |
@@ -610,6 +610,22 @@ L’incrément applicatif « persistance et écriture contrôlée » de `CONFIG-
 
 Cette preuve clôt techniquement et documentairement le deuxième incrément de `CONFIG-001` sur la branche `develop`. L’interface d’administration des paramètres reste hors de cet incrément et constitue la prochaine étape du domaine Paramétrage.
 
+## 24.3 Interface d’administration
+
+L’incrément applicatif « interface d’administration des paramètres » de `CONFIG-001` a été validé dans l’environnement Apps Script réel le 25 juillet 2026.
+
+- commit applicatif testé : `e9e1a0f` ;
+- commit de fusion applicatif dans `develop` : `217f89c` ;
+- suite consolidée AKS Platform V1.1 : **80/80 tests réussis, 0 échec** ;
+- scénarios `CONFIG-001` : **29/29 réussis**, dont 8 scénarios ajoutés pour l’interface d’administration ;
+- périmètre validé : interface responsive intégrée au Centre de pilotage, accès réservé aux administrateurs, consultation des valeurs, sources, portées et états, modification typée et validée côté serveur, auteur issu du compte Google authentifié, restauration des valeurs par défaut, détection des paramètres obligatoires absents, protection des valeurs sensibles et navigation vers l’administration ;
+- validation manuelle : accès à l’interface via `?app=admin`, affichage de la page Paramétrage, enregistrement de la saison active `2026-2027`, retour automatique après enregistrement et restauration des valeurs par défaut sans page blanche ;
+- correctif validé : remplacement du rechargement du conteneur Apps Script par un retour explicite vers `?app=config` après enregistrement ou restauration ;
+- validation fonctionnelle : approuvée par le Product Owner ;
+- défaut bloquant ou critique constaté : aucun.
+
+Cette preuve clôt techniquement et documentairement le troisième incrément de `CONFIG-001` sur la branche `develop`. Le registre, la résolution, la persistance, l’écriture contrôlée et l’interface d’administration des paramètres sont désormais validés.
+
 ---
 
 # 25. Historique des versions
@@ -618,6 +634,7 @@ Cette preuve clôt techniquement et documentairement le deuxième incrément de 
 |---------|------|-----------|
 | 1.0 | 2026-07-18 | Définition initiale du paramétrage centralisé |
 | 1.1 | 2026-07-18 | Consolidation fonctionnelle pour AKS Platform V1.1 |
+| 1.2.3 | 2026-07-25 | Validation du troisième incrément applicatif CONFIG-001 — interface d’administration — après exécution réelle de la suite Apps Script à 80/80, validation manuelle des corrections et intégration dans `develop` |
 | 1.2.2 | 2026-07-25 | Validation du deuxième incrément applicatif CONFIG-001 — persistance et écriture contrôlée — après exécution réelle de la suite Apps Script à 72/72 et intégration dans `develop` |
 | 1.2.1 | 2026-07-25 | Validation du premier incrément applicatif CONFIG-001 après exécution réelle de la suite Apps Script à 64/64 et intégration dans `develop` |
 | 1.2.0 | 2026-07-23 | Alignement architectural, séparation paramètres/secrets, résolution, migration et gouvernance documentaire |
