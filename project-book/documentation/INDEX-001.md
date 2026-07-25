@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.20 |
+| Version | 1.2.21 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-25 |
@@ -130,7 +130,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
 | UX-001 | Principes d'expérience utilisateur — chantier V1.1 terminé : fondations communes, retours d’action, consultation des journaux et présentation compréhensible des événements validés (121/121 tests) | Validé | 1.5 | VISION-001, ARCH-001, ADMIN-001 |
-| WEB-001 | Point d’accès WordPress à AKS Platform | Planifié | 1.0.0 | ROADMAP-001, SECURITY-001, ADMIN-001 |
+| WEB-001 | Point d’accès WordPress à AKS Platform — menu « Services en ligne » publié et recette validée | Validé | 1.1.0 | ROADMAP-001, SECURITY-001, ADMIN-001 |
 
 ---
 
@@ -245,6 +245,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.21 | 2026-07-25 | Clôture de WEB-001 après validation du menu sur ordinateur et mobile, du Questionnaire santé, de l’administration autorisée et du refus d’un compte non autorisé ; AKS Analytics devient le prochain chantier |
 | 1.2.20 | 2026-07-25 | Clôture documentaire de la publication V1.1.0, référencement du tag applicatif, des preuves de recette et de la note de release officielle |
 | 1.2.19 | 2026-07-25 | Inscription de WEB-001 comme point d’accès WordPress planifié après la publication de la V1.1 et avant AKS Analytics, avec séparation des accès publics et administratifs |
 | 1.2.18 | 2026-07-25 | Référencement et clôture documentaire du chantier ARCH-002 après validation des livrables M1.1 à M1.7, sans anticipation de l'architecture interne des futurs modules |
