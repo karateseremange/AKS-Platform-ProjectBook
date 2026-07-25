@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-002 |
-| **Version** | 1.0.0 |
-| **Statut** | Proposition soumise à validation |
+| **Version** | 1.1.0 |
+| **Statut** | Référence de développement |
 | **Nature** | Modèle métier du module |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-25 |
+| **Dernière mise à jour** | 2026-07-26 |
 | **Version du produit** | V1.2 |
 
 ---
@@ -380,7 +380,7 @@ Un catalogue détaillé et versionné des indicateurs et seuils pourra être cr�
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.0.0 | 2026-07-25 | Création du modèle métier initial, exclusion du cours féminin en 2025-2026 et intégration des indicateurs validés |
+| 1.1.0 | 2026-07-26 | Validation du modèle métier comme référence de développement et ouverture d’ANALYTICS-003 |\n| 1.0.0 | 2026-07-25 | Création du modèle métier initial, exclusion du cours féminin en 2025-2026 et intégration des indicateurs validés |
 
 ---
 

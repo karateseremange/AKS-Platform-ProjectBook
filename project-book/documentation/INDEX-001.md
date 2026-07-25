@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.22 |
+| Version | 1.2.23 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-25 |
+| Dernière mise à jour | 2026-07-26 |
 | Version du produit | V1.1 |
 
 ---
@@ -142,7 +142,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
-| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001`, `ANALYTICS-002` | Modèle métier soumis à validation |
+| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-003` | Services et orchestration soumis à validation |
 | AKS Calendar | `project-book/modules/calendar/` | À créer | Planifié |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
@@ -155,7 +155,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
 | ANALYTICS-001 | Vision et architecture du module AKS Analytics | Référence de développement | 1.3.0 | ARCH-001, CORE-001, ADMIN-004, STD-001 |
-| ANALYTICS-002 | Modèle métier d’AKS Analytics | Proposition soumise à validation | 1.0.0 | ANALYTICS-001, ROADMAP-001, SECURITY-001, STORAGE-001 |
+| ANALYTICS-002 | Modèle métier d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001, ROADMAP-001, SECURITY-001, STORAGE-001 |\n| ANALYTICS-003 | Services et règles d’orchestration d’AKS Analytics | Proposition soumise à validation | 1.0.0 | ANALYTICS-001, ANALYTICS-002, CORE-001, ADMIN-004, CONFIG-001, LOG-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -252,7 +252,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.2.22 | 2026-07-25 | Ouverture du cadrage AKS Analytics, référencement d’ANALYTICS-002 et exclusion méthodologique du cours féminin des calculs 2025-2026 |
+| 1.2.23 | 2026-07-26 | Validation d’ANALYTICS-002 comme référence de développement et référencement d’ANALYTICS-003 pour les services et l’orchestration |\n| 1.2.22 | 2026-07-25 | Ouverture du cadrage AKS Analytics, référencement d’ANALYTICS-002 et exclusion méthodologique du cours féminin des calculs 2025-2026 |
 | 1.2.21 | 2026-07-25 | Clôture de WEB-001 après validation du menu sur ordinateur et mobile, du Questionnaire santé, de l’administration autorisée et du refus d’un compte non autorisé ; AKS Analytics devient le prochain chantier |
 | 1.2.20 | 2026-07-25 | Clôture documentaire de la publication V1.1.0, référencement du tag applicatif, des preuves de recette et de la note de release officielle |
 | 1.2.19 | 2026-07-25 | Inscription de WEB-001 comme point d’accès WordPress planifié après la publication de la V1.1 et avant AKS Analytics, avec séparation des accès publics et administratifs |
