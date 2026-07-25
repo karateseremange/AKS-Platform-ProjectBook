@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-004 |
-| **Version** | 1.0.0 |
-| **Statut** | Proposition soumise à validation |
+| **Version** | 1.1.0 |
+| **Statut** | Référence de développement |
 | **Nature** | Interfaces, rapports et restitutions du module |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-26 |
@@ -649,6 +649,7 @@ Le développement applicatif commencera uniquement lorsque les prérequis docume
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-26 | Validation comme référence de développement et ouverture d’ANALYTICS-005 pour les contrats externes et formats des sources |
 | 1.0.0 | 2026-07-26 | Création du contrat des interfaces, rapports, graphiques, commentaires, états de qualité et exports d’AKS Analytics |
 
 ---
