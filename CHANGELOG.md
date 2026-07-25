@@ -8,6 +8,33 @@ Les versions candidates (Release Candidates) correspondent aux phases de prépar
 
 ---
 
+## [1.1.0] - 2026-07-25
+
+### Consolidation de la plateforme
+
+- Publication du Centre de pilotage et de la navigation d'administration.
+- Publication du paramétrage centralisé et de son interface d'administration.
+- Publication de la journalisation commune, de sa conservation contrôlée et de
+  sa consultation en lecture seule.
+- Harmonisation UX des interfaces d'administration.
+- Consolidation de la gouvernance, de l'architecture et de la documentation.
+
+### Validation
+
+- Suite Apps Script V1.1 : **121/121 tests réussis**.
+- Parcours Questionnaire santé « Non » et « Oui » : **OK**.
+- Connecteur WordPress sur ordinateur et mobile : **OK**.
+- Commit applicatif publié :
+  `397d8aedbb73707a898d439e9ab7747f9e396f99`.
+- Tag applicatif : `v1.1.0`.
+
+### Suite planifiée
+
+`WEB-001`, point d'accès WordPress à AKS Platform, est le premier chantier
+post-V1.1. Il précède AKS Analytics puis AKS Calendar.
+
+---
+
 ## [1.0.0] - 2026-07-18
 
 ### Première version officielle
