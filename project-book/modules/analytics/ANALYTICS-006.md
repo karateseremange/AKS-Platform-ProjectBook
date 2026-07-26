@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-006 |
-| **Version** | 1.0.0 |
-| **Statut** | Proposition soumise à validation |
+| **Version** | 1.1.0 |
+| **Statut** | Référence de développement |
 | **Nature** | Stratégie de validation, jeux d’essai, recette et preuves |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-26 |
@@ -622,9 +622,8 @@ Le dossier de recette conserve au minimum :
 
 ## 23. Livrable suivant
 
-Après validation d’`ANALYTICS-006`, le cadrage documentaire préalable au développement applicatif sera complet. La prochaine décision de gouvernance portera sur :
+`ANALYTICS-006` étant validé, le cadrage documentaire préalable au développement applicatif est complet. La prochaine décision de gouvernance portera sur :
 
-- la validation formelle d’`ANALYTICS-006` ;
 - la préparation des jeux d’essai exécutables ;
 - le découpage du premier incrément applicatif ;
 - l’analyse des dépendances avec le dépôt applicatif existant ;
@@ -636,6 +635,7 @@ Après validation d’`ANALYTICS-006`, le cadrage documentaire préalable au dé
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-26 | Validation comme référence de développement et clôture du cadrage documentaire préalable au développement applicatif d’AKS Analytics |
 | 1.0.0 | 2026-07-26 | Création de la stratégie de validation, des jeux d’essai, jeux d’or, règles de recette, preuves et conditions d’entrée en développement |
 
 ---
