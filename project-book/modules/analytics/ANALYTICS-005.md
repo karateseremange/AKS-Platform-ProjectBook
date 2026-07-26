@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-005 |
-| **Version** | 1.0.0 |
-| **Statut** | Proposition soumise à validation |
+| **Version** | 1.1.0 |
+| **Statut** | Référence de développement |
 | **Nature** | Contrats externes, formats de sources et règles d’import |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-26 |
@@ -427,6 +427,7 @@ Après validation des contrats externes, `ANALYTICS-006` définira la stratégie
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-26 | Validation comme référence de développement et ouverture d’ANALYTICS-006 pour la stratégie de validation, les jeux d’essai et la recette |
 | 1.0.0 | 2026-07-26 | Création des contrats historique et standard, des formats, contrôles d’import et règles d’identification des licenciés |
 
 ---
