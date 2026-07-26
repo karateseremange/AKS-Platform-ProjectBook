@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.24 |
+| **Version** | 1.2.25 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-26 |
@@ -390,7 +390,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | ANALYTICS-003 | AKS Analytics — services et orchestration | Référence de développement |
 | ANALYTICS-004 | AKS Analytics — interfaces et restitutions | Référence de développement |
 | ANALYTICS-005 | AKS Analytics — contrats externes et formats des sources | Référence de développement |
-| ANALYTICS-006 | AKS Analytics — stratégie de validation, jeux d’essai et recette | Proposition soumise à validation |
+| ANALYTICS-006 | AKS Analytics — stratégie de validation, jeux d’essai et recette | Référence de développement |
 
 Les états de ce tableau reprennent le statut réel des documents ou, pour les chantiers composites, leur niveau de clôture. Le statut documentaire ne signifie pas automatiquement que toutes les fonctionnalités décrites sont déjà implémentées dans le dépôt applicatif.
 
@@ -536,9 +536,9 @@ WEB-001 pourra être considéré comme terminé lorsque :
 
 ## 9.1 Statut
 
-**Engagé — cadrage documentaire en cours**.
+**Engagé — cadrage documentaire terminé, préparation du premier incrément applicatif**.
 
-Le chantier est officiellement ouvert. `ANALYTICS-001` fournit la vision et l’architecture, `ANALYTICS-002` le modèle métier, `ANALYTICS-003` les services et règles d’orchestration, `ANALYTICS-004` les interfaces et restitutions et `ANALYTICS-005` les contrats externes et formats des sources. `ANALYTICS-006` définit la stratégie de validation, les jeux d’essai, la recette et les preuves attendues avant tout développement applicatif.
+Le chantier est officiellement ouvert. `ANALYTICS-001` à `ANALYTICS-006` forment désormais le corpus validé de référence pour le développement. Le cadrage documentaire préalable au développement applicatif est terminé ; la prochaine étape prépare les jeux d’essai exécutables et le premier incrément applicatif.
 
 ## 9.2 Objectif
 
@@ -558,7 +558,7 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 - préparation automatique des ressources d’une nouvelle saison ;
 - journal de contrôle des opérations de préparation.
 
-Le modèle métier `ANALYTICS-002`, l’orchestration `ANALYTICS-003`, les interfaces `ANALYTICS-004` et les contrats de sources `ANALYTICS-005` sont validés. Le cadrage détaillé s’achève avec `ANALYTICS-006`. Aucun développement applicatif ne commence avant validation des prérequis documentaires, des jeux d’essai et des résultats attendus décidés par la gouvernance.
+Le modèle métier, l’orchestration, les interfaces, les contrats de sources et la stratégie de validation sont validés dans `ANALYTICS-001` à `ANALYTICS-006`. Le cadrage documentaire préalable au développement applicatif est terminé. Le développement commence par la préparation des jeux d’essai exécutables et un premier incrément applicatif limité aux fondations testables, conformément aux décisions de gouvernance.
 
 ## 9.4 Critères d’entrée prévisionnels
 
