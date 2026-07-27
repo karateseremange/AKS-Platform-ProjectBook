@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.27 |
+| Version | 1.2.28 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-26 |
@@ -142,7 +142,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
-| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-006` | Corpus documentaire validé — préparation du développement applicatif |
+| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-007` | Corpus documentaire validé et catalogue des indicateurs formalisé — développement applicatif en cours |
 | AKS Calendar | `project-book/modules/calendar/` | À créer | Planifié |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
@@ -160,6 +160,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-004 | Interfaces et restitutions d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-003, ADMIN-002 à ADMIN-004, UI-001, UX-001 |
 | ANALYTICS-005 | Contrats externes et formats des sources d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-004, STORAGE-001, SECURITY-001, CONFIG-001 |
 | ANALYTICS-006 | Stratégie de validation, jeux d’essai et recette d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-005, ADMIN-004, CONFIG-001, LOG-001, SECURITY-001, STORAGE-001, UI-001, UX-001 |
+| ANALYTICS-007 | Catalogue des indicateurs et règles de calcul | Référence de développement | 1.0.0 | ANALYTICS-001 à ANALYTICS-006 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -235,7 +236,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
 | Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001 | Complète |
 | Expérience utilisateur | UX-001 | Complète |
-| AKS Analytics | ANALYTICS-001 à ANALYTICS-006 | Cadrage documentaire complet |
+| AKS Analytics | ANALYTICS-001 à ANALYTICS-007 | Cadrage documentaire complet et catalogue des indicateurs formalisé |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -256,6 +257,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.28 | 2026-07-26 | Référencement d’ANALYTICS-007, catalogue V1 des indicateurs : participation et assiduité activées, régularité, stabilité et fidélité non calculables, score AKS exclu |
 | 1.2.27 | 2026-07-26 | Validation d’ANALYTICS-006 comme référence de développement, constat du corpus ANALYTICS-001 à 006 validé et clôture du cadrage préalable au développement applicatif |
 | 1.2.26 | 2026-07-26 | Validation d’ANALYTICS-005 comme référence de développement et référencement d’ANALYTICS-006 pour la stratégie de validation, les jeux d’essai et la recette |
 | 1.2.25 | 2026-07-26 | Validation d’ANALYTICS-004 comme référence de développement et référencement d’ANALYTICS-005 pour les contrats externes et formats des sources |
