@@ -3,12 +3,12 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-001 |
-| **Version** | 1.2.0 |
+| **Version** | 1.3.0 |
 | **Statut** | Référence de développement |
 | **Nature** | Vision et architecture fonctionnelle du module |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-23 |
-| **Version du produit** | V1.1 |
+| **Dernière mise à jour** | 2026-07-25 |
+| **Version du produit** | V1.2 |
 
 ---
 
@@ -100,7 +100,7 @@ Le premier périmètre d'AKS Analytics couvre prioritairement :
 - la génération de rapports avec commentaires et graphiques ;
 - l'export des données agrégées autorisées.
 
-Le cours féminin peut être intégré à l'analyse globale à partir de ses effectifs, même lorsqu'aucun suivi détaillé des présences n'est disponible. Cette limite doit être explicitement visible dans les restitutions.
+Pour la saison 2025-2026, le cours féminin est exclu des analyses détaillées et de la consolidation globale en raison de l'absence de suivi complet des présences. Son seul effectif connu ne doit pas être utilisé pour produire un agrégat partiel ou trompeur. Son intégration est planifiée à partir de 2026-2027, sous réserve d'un suivi homogène et suffisamment complet.
 
 ---
 
@@ -417,6 +417,7 @@ Les décisions suivantes sont figées par le présent document :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.0 | 2026-07-25 | Alignement sur ANALYTICS-002 : exclusion du cours féminin des calculs 2025-2026 et intégration conditionnelle à partir de 2026-2027 |
 | 1.2.0 | 2026-07-23 | Alignement du socle documentaire Analytics sur STD-001 et ajout des références DOC-001 et STD-001 |
 | 1.1.0 | 2026-07-23 | Version initiale de référence pour le développement du module |
 

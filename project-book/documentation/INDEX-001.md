@@ -6,11 +6,11 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.22 |
+| Version | 1.2.31 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-26 |
-| Version du produit | V1.1 |
+| Dernière mise à jour | 2026-07-28 |
+| Version du produit | V1.2 |
 
 ---
 
@@ -74,7 +74,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.1.1 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.27 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -142,19 +142,26 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
-| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` | En cours de documentation |
-
-Catalogue Analytics ajouté à la référence documentaire :
-
-| ID | Titre | Statut | Version | Rôle |
-|---|---|---|---|---|
-| ANALYTICS-007 | Catalogue des indicateurs et règles de calcul | Référence de développement | 1.0.0 | Active participation et assiduité, formalise les agrégations et désactive les indicateurs non validés |
+| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-008` | Publié en V1.2.0 — exploitation conditionnée à des sources réelles exploitables |
 | AKS Calendar | `project-book/modules/calendar/` | À créer | Planifié |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | À créer | À créer | Futur |
 | Licenciés | À créer | À créer | Futur |
 | Communication | À créer | À créer | Futur |
+
+### 9.1 Documents AKS Analytics
+
+| ID | Titre | Statut | Version | Dépendances principales |
+|----|-------|--------|---------|-------------------------|
+| ANALYTICS-001 | Vision et architecture du module AKS Analytics | Référence de développement | 1.3.0 | ARCH-001, CORE-001, ADMIN-004, STD-001 |
+| ANALYTICS-002 | Modèle métier d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001, ROADMAP-001, SECURITY-001, STORAGE-001 |
+| ANALYTICS-003 | Services et règles d’orchestration d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001, ANALYTICS-002, CORE-001, ADMIN-004, CONFIG-001, LOG-001 |
+| ANALYTICS-004 | Interfaces et restitutions d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-003, ADMIN-002 à ADMIN-004, UI-001, UX-001 |
+| ANALYTICS-005 | Contrats externes et formats des sources d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-004, STORAGE-001, SECURITY-001, CONFIG-001 |
+| ANALYTICS-006 | Stratégie de validation, jeux d’essai et recette d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-005, ADMIN-004, CONFIG-001, LOG-001, SECURITY-001, STORAGE-001, UI-001, UX-001 |
+| ANALYTICS-007 | Catalogue des indicateurs et règles de calcul | Référence de développement | 1.0.0 | ANALYTICS-001 à ANALYTICS-006 |
+| ANALYTICS-008 | Bilan d’implémentation et procès-verbal de recette | Validé | 1.0.0 | ANALYTICS-001 à ANALYTICS-007 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -220,7 +227,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 
 ---
 
-# 14. Matrice de couverture V1.1
+# 14. Matrice de couverture V1.2
 
 | Domaine | Documents principaux | Couverture |
 |---------|----------------------|------------|
@@ -230,7 +237,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
 | Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001 | Complète |
 | Expérience utilisateur | UX-001 | Complète |
-| AKS Analytics | ANALYTICS-001 et documents suivants | En cours |
+| AKS Analytics | ANALYTICS-001 à ANALYTICS-008, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -251,7 +258,16 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.2.22 | 2026-07-26 | Référencement d’ANALYTICS-007, catalogue V1 des indicateurs : participation et assiduité activées, régularité, stabilité et fidélité non calculables, score AKS exclu |
+| 1.2.31 | 2026-07-28 | Clôture de la publication applicative V1.2.0 : PR #41 fusionnée, commit `47bb3ca8`, tag `v1.2.0`, et alignement de la note de version, de ROADMAP-001 et du README |
+| 1.2.30 | 2026-07-28 | Préparation documentaire de la V1.2.0 dédiée à AKS Analytics, référencement de la note de publication et alignement de ROADMAP-001 et du README sans création de tag ni publication sur main |
+| 1.2.29 | 2026-07-28 | Référencement d’ANALYTICS-008 et clôture documentaire de l’implémentation Analytics : périmètre saisonnier, diagnostic, six prévisualisations, publication Drive, recette 273/273 et restauration des sources officielles |
+| 1.2.28 | 2026-07-26 | Référencement d’ANALYTICS-007, catalogue V1 des indicateurs : participation et assiduité activées, régularité, stabilité et fidélité non calculables, score AKS exclu |
+| 1.2.27 | 2026-07-26 | Validation d’ANALYTICS-006 comme référence de développement, constat du corpus ANALYTICS-001 à 006 validé et clôture du cadrage préalable au développement applicatif |
+| 1.2.26 | 2026-07-26 | Validation d’ANALYTICS-005 comme référence de développement et référencement d’ANALYTICS-006 pour la stratégie de validation, les jeux d’essai et la recette |
+| 1.2.25 | 2026-07-26 | Validation d’ANALYTICS-004 comme référence de développement et référencement d’ANALYTICS-005 pour les contrats externes et formats des sources |
+| 1.2.24 | 2026-07-26 | Validation d’ANALYTICS-003 comme référence de développement et référencement d’ANALYTICS-004 pour les interfaces et restitutions |
+| 1.2.23 | 2026-07-26 | Validation d’ANALYTICS-002 comme référence de développement et référencement d’ANALYTICS-003 pour les services et l’orchestration |
+| 1.2.22 | 2026-07-25 | Ouverture du cadrage AKS Analytics, référencement d’ANALYTICS-002 et exclusion méthodologique du cours féminin des calculs 2025-2026 |
 | 1.2.21 | 2026-07-25 | Clôture de WEB-001 après validation du menu sur ordinateur et mobile, du Questionnaire santé, de l’administration autorisée et du refus d’un compte non autorisé ; AKS Analytics devient le prochain chantier |
 | 1.2.20 | 2026-07-25 | Clôture documentaire de la publication V1.1.0, référencement du tag applicatif, des preuves de recette et de la note de release officielle |
 | 1.2.19 | 2026-07-25 | Inscription de WEB-001 comme point d’accès WordPress planifié après la publication de la V1.1 et avant AKS Analytics, avec séparation des accès publics et administratifs |
