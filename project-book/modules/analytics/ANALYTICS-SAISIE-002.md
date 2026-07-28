@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-002 |
-| **Version** | 1.0.1 |
-| **Statut** | Validé |
+| **Version** | 1.1.0 |
+| **Statut** | Implémenté sur `develop` — recette Apps Script requise |
 | **Nature** | Spécification fonctionnelle, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -296,5 +296,39 @@ Le Product Owner a validé les huit décisions suivantes le 28 juillet 2026. Ell
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-28 | Contrat implémenté sur `develop` par la PR applicative #46, commit `261d308873ecfc5be90f18a674125b0f40367864` ; tests locaux réussis ; recette Apps Script encore requise |
 | 1.0.1 | 2026-07-28 | Validation par le Product Owner des huit décisions structurantes ; contrat prêt à développer |
 | 1.0.0 | 2026-07-28 | Première spécification du contrat d’écriture soumise à validation |
+
+## 19. État d’implémentation
+
+L’implémentation applicative est intégrée sur `develop` dans :
+
+- `AnalyticsAttendanceWriteService.gs` : validation serveur, sauvegarde par lot,
+  idempotence, version optimiste, verrou, audit et restauration ;
+- `AnalyticsAttendanceSheetsRepository.gs` : adaptation du contrat aux quatre
+  feuilles V1.2.0 et ajout compatible des colonnes techniques ;
+- `AnalyticsSheetsProvider.gs` : exclusion obligatoire des séances dont
+  `État saisie = BROUILLON`.
+
+Le service n’est pas encore exposé par une route WebApp. Sa frontière
+d’autorisation refuse l’accès tant que le service commun issu d’`ACCESS-001`
+n’est pas raccordé.
+
+### 19.1 Preuves disponibles
+
+- PR applicative : `AKS-Platform#46` ;
+- commit de fusion sur `develop` :
+  `261d308873ecfc5be90f18a674125b0f40367864` ;
+- tests du service d’écriture : 15/15 ;
+- tests du fournisseur Sheets : 15/15 ;
+- contrôle syntaxique des fichiers modifiés : réussi ;
+- aucun déploiement Apps Script ni aucune écriture dans un classeur réel.
+
+### 19.2 Validation restant à produire
+
+Avant publication sur `main` et déploiement, la suite cumulative doit être
+exécutée dans Apps Script. Une recette contrôlée doit ensuite utiliser des copies
+de classeurs Analytics pour vérifier l’ajout des colonnes, la sauvegarde d’un
+brouillon, son exclusion des rapports, la clôture et la lecture de la séance
+clôturée.
