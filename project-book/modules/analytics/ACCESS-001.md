@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.3 |
+| **Version** | 1.0.4 |
 | **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -301,14 +301,24 @@ Il comprend le registre central `access/1.0`, le calcul serveur des capacités,
 l’amorçage sécurisé depuis la liste administrative embarquée, la protection du
 dernier administrateur et 18 tests automatisés.
 
-La validation Apps Script cumulative a été exécutée avec succès le 28 juillet 2026 : **309/309 tests réussis, 0 échec**. Le socle peut désormais être raccordé aux
-routes de saisie. Aucun registre réel, aucune route utilisateur, aucun déploiement
-Web et aucun classeur de production n’ont été modifiés.
+La validation Apps Script cumulative a été exécutée avec succès le 28 juillet 2026 : **309/309 tests réussis, 0 échec**.
+
+Le raccordement au fournisseur de cours et au service d’écriture des présences est
+intégré sur `develop` par la PR applicative #52, commit
+`9375b1be609870848584a73e802a5d47502c5c8c`. Le registre central est composé
+automatiquement côté serveur, le catalogue provient des classeurs Analytics
+configurés et une identité non autorisée est refusée avant toute lecture Sheets.
+Les 17 tests ciblés réussissent ; la validation cumulative Apps Script reste requise
+avant l’exposition serveur.
+
+Aucun registre réel, aucune route utilisateur, aucun déploiement Web et aucun
+classeur de production n’ont été modifiés.
 
 ## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.4 | 2026-07-28 | Raccordement au catalogue Analytics et au service d’écriture intégré sur `develop` par la PR #52 ; refus avant lecture Sheets et 17/17 tests ciblés réussis ; validation Apps Script requise |
 | 1.0.3 | 2026-07-28 | Validation Apps Script cumulative réussie : 309/309 tests, 0 échec ; socle autorisé au raccordement fonctionnel, sans déploiement utilisateur |
 | 1.0.2 | 2026-07-28 | Socle ACCESS-001 intégré sur `develop` par la PR #51 ; 18/18 tests locaux réussis ; validation Apps Script requise avant raccordement |
 | 1.0.1 | 2026-07-28 | Validation par le Product Owner des rôles, droits de clôture, registre central, mécanisme de récupération et report de l’interface de gestion |

@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.37 |
+| **Version** | 1.2.38 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -610,7 +610,7 @@ Le premier contrat d’écriture reste celui réellement consommé par la V1.2.0
 
 Le cadrage détaillé est défini dans `ANALYTICS-SAISIE-001`.
 
-La spécification `ACCESS-001` formalise les rôles, capacités, affectations par cours et saison, le refus fermé côté serveur et la migration compatible depuis la liste administrative V1.2.0. Ses six décisions structurantes ont été validées par le Product Owner le 28 juillet 2026. Son premier socle est intégré sur `develop` par la PR applicative #51 : registre central, capacités serveur, amorçage historique sécurisé et 18 tests locaux réussis. La validation cumulative Apps Script du 28 juillet 2026 est concluante : **309/309 tests réussis, 0 échec**. Le raccordement fonctionnel peut désormais commencer.
+La spécification `ACCESS-001` formalise les rôles, capacités, affectations par cours et saison, le refus fermé côté serveur et la migration compatible depuis la liste administrative V1.2.0. Ses six décisions structurantes ont été validées par le Product Owner le 28 juillet 2026. Son premier socle est intégré sur `develop` par la PR applicative #51 : registre central, capacités serveur, amorçage historique sécurisé et 18 tests locaux réussis. La validation cumulative Apps Script du 28 juillet 2026 est concluante : **309/309 tests réussis, 0 échec**. Le raccordement au catalogue Analytics et au service d’écriture est intégré par la PR applicative #52, commit `9375b1be609870848584a73e802a5d47502c5c8c` ; 17/17 tests ciblés réussissent et la validation Apps Script de cet incrément reste requise.
 
 `ANALYTICS-SAISIE-002` spécifie le contrat d’écriture sécurisé des séances et présences. Ses huit décisions structurantes ont été validées par le Product Owner le 28 juillet 2026. Le contrat est la référence de développement : séparation des états, écriture par lot, brouillons exclus des rapports, contrôle de version, idempotence, verrouillage, motif de correction après clôture et limitation initiale à une séance par cours et par date.
 
