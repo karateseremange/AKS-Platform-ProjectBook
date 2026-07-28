@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.25 |
+| **Version** | 1.2.26 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-26 |
@@ -114,7 +114,7 @@ AKS Platform v1.1 — Consolidation du socle
         ↓
 WEB-001 — Point d’accès WordPress à AKS Platform
         ↓
-AKS Analytics — Statistiques et rapports
+AKS Platform v1.2.0 — AKS Analytics
         ↓
 AKS Calendar — Intégration Google Calendar
         ↓
@@ -532,19 +532,21 @@ WEB-001 pourra être considéré comme terminé lorsque :
 
 ---
 
-# 9. AKS Analytics — Module métier engagé
+# 9. AKS Platform V1.2.0 — AKS Analytics
 
 ## 9.1 Statut
 
-**Engagé — cadrage documentaire terminé, préparation du premier incrément applicatif**.
+**Validé — préparation de la publication V1.2.0**.
 
-Le chantier est officiellement ouvert. `ANALYTICS-001` à `ANALYTICS-006` forment désormais le corpus validé de référence pour le développement. Le cadrage documentaire préalable au développement applicatif est terminé ; la prochaine étape prépare les jeux d’essai exécutables et le premier incrément applicatif.
+Le module AKS Analytics est implémenté et sa recette est concluante. Le corpus `ANALYTICS-001` à `ANALYTICS-008` constitue la référence documentaire du périmètre livré. La suite cumulative atteint **273/273 tests réussis, 0 échec** ; la prévisualisation et la publication contrôlée des six rapports de recette ont été validées, puis les identifiants officiels ont été restaurés.
+
+La V1.2.0 reste en préparation tant que le contrôle de prépublication, la fusion applicative de `develop` vers `main` et la création du tag `v1.2.0` ne sont pas autorisés et réalisés selon `RELEASE-001`.
 
 ## 9.2 Objectif
 
 AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables par l’association.
 
-## 9.3 Périmètre prévisionnel
+## 9.3 Périmètre validé
 
 - import et contrôle des données de présence ;
 - analyse par cours ;
@@ -558,18 +560,20 @@ AKS Analytics doit fournir des indicateurs, analyses et rapports exploitables pa
 - préparation automatique des ressources d’une nouvelle saison ;
 - journal de contrôle des opérations de préparation.
 
-Le modèle métier, l’orchestration, les interfaces, les contrats de sources et la stratégie de validation sont validés dans `ANALYTICS-001` à `ANALYTICS-006`. Le cadrage documentaire préalable au développement applicatif est terminé. Le développement commence par la préparation des jeux d’essai exécutables et un premier incrément applicatif limité aux fondations testables, conformément aux décisions de gouvernance.
+Le modèle métier, l’orchestration, les interfaces, les contrats de sources, la stratégie de validation, les règles de calcul et le procès-verbal de recette sont validés dans `ANALYTICS-001` à `ANALYTICS-008`. Les rapports officiels seront exploitables lorsque les sources réelles contiendront des présences conformes ; l’absence actuelle de données réelles n’est pas un défaut de publication.
 
-## 9.4 Critères d’entrée prévisionnels
+## 9.4 Critères de sortie validés
 
-AKS Analytics pourra être engagé lorsque :
-
-- la V1.1 sera publiée ;
-- les contrats de services communs seront stables ;
-- les formats de données sources seront identifiés ;
-- les règles de calcul seront validées ;
-- les rapports attendus seront définis ;
-- les exigences de confidentialité et de conservation seront documentées.
+- V1.1.0 publiée et socle transverse stable ;
+- contrats et formats de sources validés ;
+- règles de calcul formalisées dans `ANALYTICS-007` ;
+- diagnostic saisonnier à quatre ou cinq cours validé ;
+- cinq rapports de cours et une synthèse globale prévisualisés ;
+- six PDF de recette publiés et accessibles dans Google Drive ;
+- suite cumulative **273/273** réussie ;
+- aucun défaut bloquant ou critique ouvert ;
+- bilan d’implémentation et procès-verbal de recette consignés dans `ANALYTICS-008` ;
+- code et documentation présents sur leurs branches `develop` respectives.
 
 ---
 
@@ -712,16 +716,16 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - comment une modification de trajectoire est-elle décidée ?
 - quel est l’état de consolidation documentaire de la V1.1 ?
 
-La trajectoire officielle reste ; WEB-001 étant terminé, le prochain chantier est AKS Analytics :
+La trajectoire officielle évolue : WEB-001 et AKS Analytics sont terminés ; la V1.2.0 est en préparation et le prochain chantier fonctionnel après sa publication est AKS Calendar :
 
 ```text
 AKS Platform v1.0.0
         ↓
-AKS Platform v1.1 — Consolidation
+AKS Platform v1.1.0 — Consolidation publiée
         ↓
-WEB-001 — Point d’accès WordPress
+WEB-001 — Point d’accès WordPress publié
         ↓
-AKS Analytics
+AKS Platform v1.2.0 — AKS Analytics en préparation
         ↓
 AKS Calendar
 ```
