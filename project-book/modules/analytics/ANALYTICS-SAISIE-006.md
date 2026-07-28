@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-006 |
-| **Version** | 1.0.1 |
-| **Statut** | Validé sur `develop` — déploiement Web de recette autorisé |
+| **Version** | 1.0.2 |
+| **Statut** | Correctifs mobiles validés sur `develop` — reprise de recette autorisée |
 | **Nature** | Spécification d’incrément et état d’implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-29 |
@@ -65,15 +65,14 @@ La syntaxe JavaScript est valide. La suite cumulative Apps Script exécutée le
 
 ## 5. Déploiement et recette
 
-Aucun déploiement Web de recette n’a été créé pendant la validation cumulative.
+Le déploiement Web de recette isolé a été créé puis exercé sur la date réservée. La recette navigateur a validé l’ouverture, le brouillon, sa reprise versionnée et la clôture. Deux défauts d’ergonomie ont été observés et corrigés sur `develop` : confirmation du brouillon conservée près des commandes (PR applicative #64, commit `c81eca83`) et sélection d’une séance clôturée avec statuts en lecture seule sans propagation de `PointerEvent` (PR applicative #65, commit `6f3e8f05`).
 
-La validation **333/333** autorise désormais la création d’une nouvelle version
-Apps Script et d’un déploiement Web distinct. Le déploiement existant et `main` restent
-inchangés. La recette ne doit être exécutée qu’une fois sur la date réservée.
+Après chaque correctif, la suite cumulative Apps Script est restée concluante : **333/333 tests réussis, 0 échec**. La reprise de la recette navigateur est autorisée pour contrôler le dernier scénario de lecture seule. `main`, le déploiement de production et les classeurs de production restent inchangés.
 
 ## 6. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.2 | 2026-07-29 | Recette réelle : brouillon, reprise et clôture validés ; correctifs UX PR #64 et lecture seule PR #65 validés par 333/333 ; reprise du dernier contrôle navigateur autorisée |
 | 1.0.1 | 2026-07-29 | Validation cumulative Apps Script : 333/333 réussis, 0 échec ; déploiement Web de recette isolé autorisé |
 | 1.0.0 | 2026-07-29 | Protections et route de recette mobile intégrées sur `develop` ; validation cumulative 333/333 requise |
