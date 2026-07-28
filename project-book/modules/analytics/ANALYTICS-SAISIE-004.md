@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-004 |
-| **Version** | 1.0.0 |
-| **Statut** | Intégré sur `develop` — validation Apps Script requise |
+| **Version** | 1.0.1 |
+| **Statut** | Validé sur `develop` — clôture mobile autorisée à poursuivre |
 | **Nature** | Spécification d’incrément et état d’implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -54,12 +54,17 @@ Les quatre tests ciblés réussissent. Ils contrôlent le roster nettoyé, la re
 versionnée, les quatre statuts tactiles et la sauvegarde par l’API serveur. La
 syntaxe JavaScript des fichiers modifiés est valide.
 
-La suite cumulative Apps Script attendue est **325/325 tests réussis, 0 échec**.
+Dans Apps Script, la suite cumulative exécutée le 28 juillet 2026 est concluante :
+**325/325 tests réussis, 0 échec**. Elle confirme l’incrément et l’absence de
+régression sur `develop`.
+
 Aucune publication sur `main`, aucun déploiement Web et aucune modification de
-classeur réel ne sont réalisés à ce stade.
+classeur réel ne sont réalisés à ce stade. La clôture mobile, sa confirmation et
+sa recette fonctionnelle sont autorisées à poursuivre.
 
 ## 6. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-07-28 | Validation Apps Script : suite cumulative 325/325 réussie, 0 échec ; clôture mobile autorisée à poursuivre |
 | 1.0.0 | 2026-07-28 | Saisie rapide et brouillon reprenable intégrés sur `develop` ; 4/4 tests ciblés réussis ; validation cumulative 325/325 requise |
