@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.54 |
+| Version | 1.2.55 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-28 |
@@ -146,7 +146,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | AKS Calendar | `project-book/modules/calendar/` | À créer | Planifié |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
-| Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005` | Clôture mobile validée sur `develop` ; recette mobile autorisée |
+| Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Recette mobile isolée intégrée sur `develop` ; validation Apps Script requise |
 | Licenciés | À créer | À créer | Futur |
 | Communication | À créer | À créer | Futur |
 
@@ -169,6 +169,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-SAISIE-003 | Route et navigation mobile des présences | Validée sur `develop` — saisie rapide autorisée à poursuivre | 1.0.1 | ANALYTICS-SAISIE-001, ANALYTICS-SAISIE-002, ACCESS-001, UX-001, API-001 |
 | ANALYTICS-SAISIE-004 | Saisie rapide et brouillon reprenable | Validé sur `develop` — clôture mobile autorisée à poursuivre | 1.0.1 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-003, ACCESS-001, UX-001, API-001 |
 | ANALYTICS-SAISIE-005 | Clôture mobile sécurisée | Validé sur `develop` — recette mobile autorisée | 1.0.1 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-004, ACCESS-001, UX-001, API-001 |
+| ANALYTICS-SAISIE-006 | Recette fonctionnelle mobile isolée | Intégrée sur `develop` — validation Apps Script requise | 1.0.0 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-005, ACCESS-001, UX-001, API-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -266,6 +267,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.55 | 2026-07-29 | ANALYTICS-SAISIE-006 intégré sur `develop` par la PR applicative #63, commit `0c78284c` ; route et composition de recette isolées, cible/date/identité verrouillées ; validation 333/333 requise avant déploiement de recette |
 | 1.2.54 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-005 : suite cumulative 329/329 réussie, 0 échec ; correctif de test PR #62 confirmé ; recette mobile autorisée |
 | 1.2.53 | 2026-07-28 | ANALYTICS-SAISIE-005 intégré sur `develop` par la PR applicative #61, commit `6c67719b` ; clôture mobile sécurisée et 4/4 tests ciblés réussis ; validation 329/329 requise |
 | 1.2.52 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-004 : suite cumulative 325/325 réussie, 0 échec ; clôture mobile autorisée à poursuivre |
