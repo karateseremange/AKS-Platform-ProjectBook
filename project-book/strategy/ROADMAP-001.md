@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.34 |
+| **Version** | 1.2.35 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Engagé**.
+**Contrat d’écriture publié — interface utilisateur à poursuivre**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -614,12 +614,11 @@ La spécification `ACCESS-001` formalise les rôles, capacités, affectations pa
 
 `ANALYTICS-SAISIE-002` spécifie le contrat d’écriture sécurisé des séances et présences. Ses huit décisions structurantes ont été validées par le Product Owner le 28 juillet 2026. Le contrat est la référence de développement : séparation des états, écriture par lot, brouillons exclus des rapports, contrôle de version, idempotence, verrouillage, motif de correction après clôture et limitation initiale à une séance par cours et par date.
 
-L’implémentation du contrat a été fusionnée sur `develop` par la PR applicative
-#46. Les tests locaux du service d’écriture (15/15) et du fournisseur Sheets
-(15/15) sont réussis. La suite cumulative exécutée dans Apps Script le 28 juillet
-2026 est également concluante : 290/290 tests réussis, 0 échec. L’incrément reste
-en attente d’une recette d’écriture sur des copies de classeurs ; il ne doit pas
-encore être publié sur `main` ni déployé.
+L’implémentation du contrat a été fusionnée sur `develop` par la PR applicative #46, puis son correctif de normalisation des dates Europe/Paris par la PR #48. La suite cumulative exécutée dans Apps Script le 28 juillet 2026 est concluante : 291/291 tests réussis, 0 échec.
+
+La recette d’écriture sur la copie `[RECETTE] Analytics Baby 2026-2027` est également concluante : le brouillon est exclu des rapports, la séance `SEA-96ADF8B7FE53` est clôturée en version 2 et les deux présences sont relues par Analytics. Le contrat d’écriture est publié sur `main` par la PR applicative #49, commit `6cfec0ca1378226223a48464dc6971a685b4cfb5`.
+
+Aucun déploiement utilisateur n’est réalisé à ce stade. Le raccordement du service commun d’autorisation issu d’`ACCESS-001`, l’exposition serveur et l’interface mobile constituent la suite du chantier.
 
 # 11. AKS Calendar — Module suivant
 
@@ -773,7 +772,7 @@ WEB-001 — Point d’accès WordPress publié
         ↓
 AKS Platform v1.2.0 — AKS Analytics publié
         ↓
-ANALYTICS-SAISIE — chantier engagé
+ANALYTICS-SAISIE — contrat d’écriture publié
         ↓
 AKS Calendar
 ```
