@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.26 |
+| **Version** | 1.2.27 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -536,11 +536,11 @@ WEB-001 pourra être considéré comme terminé lorsque :
 
 ## 9.1 Statut
 
-**Validé — préparation de la publication V1.2.0**.
+**Publié — version V1.2.0**.
 
 Le module AKS Analytics est implémenté et sa recette est concluante. Le corpus `ANALYTICS-001` à `ANALYTICS-008` constitue la référence documentaire du périmètre livré. La suite cumulative atteint **273/273 tests réussis, 0 échec** ; la prévisualisation et la publication contrôlée des six rapports de recette ont été validées, puis les identifiants officiels ont été restaurés.
 
-La V1.2.0 reste en préparation tant que le contrôle de prépublication, la fusion applicative de `develop` vers `main` et la création du tag `v1.2.0` ne sont pas autorisés et réalisés selon `RELEASE-001`.
+La V1.2.0 a été publiée le 28 juillet 2026 par la PR applicative #41. Le commit de publication est `47bb3ca83eb902bc9db0867c8d41affffd3ceb47` et le tag de référence est `v1.2.0`.
 
 ## 9.2 Objectif
 
@@ -573,7 +573,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 - suite cumulative **273/273** réussie ;
 - aucun défaut bloquant ou critique ouvert ;
 - bilan d’implémentation et procès-verbal de recette consignés dans `ANALYTICS-008` ;
-- code et documentation présents sur leurs branches `develop` respectives.
+- code applicatif publié sur `main` et documentation de clôture présente sur `develop`.
 
 ---
 
@@ -716,7 +716,7 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - comment une modification de trajectoire est-elle décidée ?
 - quel est l’état de consolidation documentaire de la V1.1 ?
 
-La trajectoire officielle évolue : WEB-001 et AKS Analytics sont terminés ; la V1.2.0 est en préparation et le prochain chantier fonctionnel après sa publication est AKS Calendar :
+La trajectoire officielle évolue : WEB-001 et AKS Analytics sont publiés ; la V1.2.0 est la version stable et le prochain chantier fonctionnel est AKS Calendar :
 
 ```text
 AKS Platform v1.0.0
@@ -725,7 +725,7 @@ AKS Platform v1.1.0 — Consolidation publiée
         ↓
 WEB-001 — Point d’accès WordPress publié
         ↓
-AKS Platform v1.2.0 — AKS Analytics en préparation
+AKS Platform v1.2.0 — AKS Analytics publié
         ↓
 AKS Calendar
 ```
