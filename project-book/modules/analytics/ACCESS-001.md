@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.6 |
+| **Version** | 1.0.7 |
 | **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -317,7 +317,9 @@ L’exposition serveur sécurisée est intégrée sur `develop` par la PR applic
 commit `d67bc1c241d6dccc2c94b74c29759752aab6e4b0`. Elle expose uniquement le
 contexte autorisé et l’enregistrement par lot, compose toutes les dépendances côté
 serveur et masque les erreurs internes. Quatre tests ciblés sont ajoutés à la suite
-cumulative ; leur validation Apps Script reste requise avant recette fonctionnelle.
+cumulative. Leur validation Apps Script exécutée le 28 juillet 2026 est concluante :
+**315/315 tests réussis, 0 échec**. L’exposition serveur est ainsi autorisée à
+poursuivre vers sa recette fonctionnelle, sans déploiement utilisateur.
 
 Aucun registre réel, aucune interface utilisateur, aucun déploiement Web et aucun
 classeur de production n’ont été modifiés.
@@ -326,6 +328,7 @@ classeur de production n’ont été modifiés.
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.7 | 2026-07-28 | Validation Apps Script de l’exposition serveur : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre sans déploiement utilisateur |
 | 1.0.6 | 2026-07-28 | Exposition serveur sécurisée intégrée sur `develop` par la PR #53 ; composition côté serveur, erreurs nettoyées et quatre tests ajoutés ; validation Apps Script requise |
 | 1.0.5 | 2026-07-28 | Validation Apps Script du raccordement fonctionnel : suite cumulative 311/311 réussie, 0 échec ; exposition serveur autorisée à poursuivre sans déploiement utilisateur |
 | 1.0.4 | 2026-07-28 | Raccordement au catalogue Analytics et au service d’écriture intégré sur `develop` par la PR #52 ; refus avant lecture Sheets et 17/17 tests ciblés réussis ; validation Apps Script requise |
