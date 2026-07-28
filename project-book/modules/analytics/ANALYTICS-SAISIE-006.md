@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-006 |
-| **Version** | 1.0.0 |
-| **Statut** | Intégré sur `develop` — validation Apps Script requise |
+| **Version** | 1.0.1 |
+| **Statut** | Validé sur `develop` — déploiement Web de recette autorisé |
 | **Nature** | Spécification d’incrément et état d’implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-29 |
@@ -60,19 +60,20 @@ Quatre scénarios cumulatifs vérifient :
 3. la route et la composition de recette distinctes ;
 4. la séparation des endpoints client de recette et de production.
 
-La syntaxe JavaScript est valide. La suite cumulative Apps Script attendue est
-de **333/333 tests réussis, 0 échec**.
+La syntaxe JavaScript est valide. La suite cumulative Apps Script exécutée le
+29 juillet 2026 est concluante : **333/333 tests réussis, 0 échec**.
 
 ## 5. Déploiement et recette
 
-Aucun déploiement Web de recette n’est créé avant la validation cumulative.
+Aucun déploiement Web de recette n’a été créé pendant la validation cumulative.
 
-Après validation, une nouvelle version Apps Script et un déploiement Web
-distinct doivent être créés. Le déploiement existant et `main` restent
+La validation **333/333** autorise désormais la création d’une nouvelle version
+Apps Script et d’un déploiement Web distinct. Le déploiement existant et `main` restent
 inchangés. La recette ne doit être exécutée qu’une fois sur la date réservée.
 
 ## 6. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-07-29 | Validation cumulative Apps Script : 333/333 réussis, 0 échec ; déploiement Web de recette isolé autorisé |
 | 1.0.0 | 2026-07-29 | Protections et route de recette mobile intégrées sur `develop` ; validation cumulative 333/333 requise |
