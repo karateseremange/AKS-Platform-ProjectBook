@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.42 |
+| **Version** | 1.2.43 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Contrat d’écriture publié — interface utilisateur à poursuivre**.
+**Navigation mobile intégrée sur `develop` — validation Apps Script requise**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -618,7 +618,9 @@ L’implémentation du contrat a été fusionnée sur `develop` par la PR applic
 
 La recette d’écriture sur la copie `[RECETTE] Analytics Baby 2026-2027` est également concluante : le brouillon est exclu des rapports, la séance `SEA-96ADF8B7FE53` est clôturée en version 2 et les deux présences sont relues par Analytics. Le contrat d’écriture est publié sur `main` par la PR applicative #49, commit `6cfec0ca1378226223a48464dc6971a685b4cfb5`.
 
-Aucun déploiement utilisateur n’est réalisé à ce stade. La publication du socle d’accès et de l’exposition serveur, puis le développement de l’interface mobile constituent la suite du chantier.
+`ANALYTICS-SAISIE-003` est intégré sur `develop` par la PR applicative #58, commit `c7adbe52a8b30a55804b8f1867842f4e22ec2d9d`. Il ajoute la route `?app=attendance`, l’identité active, les cours autorisés, le choix de date, l’effectif éligible et les séances récentes. Les 6/6 tests ciblés réussissent ; la validation cumulative Apps Script 321/321 reste requise avant de poursuivre vers la saisie rapide.
+
+Aucun déploiement utilisateur n’est réalisé à ce stade. La saisie mobile des statuts, la sauvegarde et la clôture constituent la suite du chantier.
 
 # 11. AKS Calendar — Module suivant
 
