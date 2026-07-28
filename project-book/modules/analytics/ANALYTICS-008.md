@@ -8,7 +8,7 @@
 | **Nature** | Bilan d’implémentation et procès-verbal de recette |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
-| **Version du produit** | V1.2 |
+| **Version du produit** | V1.1 |
 
 ---
 
