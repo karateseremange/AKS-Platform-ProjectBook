@@ -265,7 +265,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.2.51 | 2026-07-28 | ANALYTICS-SAISIE-004 intégré sur `develop` par la PR applicative #59, commit `3ddda0c5` ; saisie rapide, brouillon reprenable et 4/4 tests ciblés réussis ; validation 325/325 requise |
+| 1.2.51 | 2026-07-28 | ANALYTICS-SAISIE-004 intégré sur `develop` par la PR applicatives #59 et #60, commit final `3a15d65e` ; saisie rapide, brouillon reprenable et séance clôturée en lecture seule et 4/4 tests ciblés réussis ; validation 325/325 requise |
 | 1.2.50 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-003 : suite cumulative 321/321 réussie, 0 échec ; saisie rapide des statuts autorisée à poursuivre |
 | 1.2.49 | 2026-07-28 | ANALYTICS-SAISIE-003 intégré sur `develop` par la PR applicative #58, commit `c7adbe52` ; route, cours autorisés et séances récentes ; 6/6 tests ciblés réussis, validation 321/321 requise |
 | 1.2.48 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie sur la copie Analytics Baby : refus `ACCESS_DENIED`, identité serveur, un cours autorisé, séance clôturée en version 2 et deux présences enregistrées |
