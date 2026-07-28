@@ -620,10 +620,10 @@ La recette d’écriture sur la copie `[RECETTE] Analytics Baby 2026-2027` est �
 
 `ANALYTICS-SAISIE-003` est intégré sur `develop` par la PR applicative #58, commit `c7adbe52a8b30a55804b8f1867842f4e22ec2d9d`. Il ajoute la route `?app=attendance`, l’identité active, les cours autorisés, le choix de date, l’effectif éligible et les séances récentes. Les 6/6 tests ciblés réussissent. La validation cumulative Apps Script du 28 juillet 2026 est également concluante : **321/321 tests réussis, 0 échec**. La saisie rapide des statuts est autorisée à poursuivre sur `develop`.
 
-`ANALYTICS-SAISIE-004` est intégré sur `develop` par la PR applicative #59,
-commit `3ddda0c5574bef2c5ece0e5faaf54d5120ffc8ea`. Il ajoute le roster éligible
+`ANALYTICS-SAISIE-004` est intégré sur `develop` par les PR applicatives #59 et #60,
+commit final `3a15d65e4b914ea684e5fcf15bf6e48203c77827`. Il ajoute le roster éligible
 nettoyé, les quatre statuts tactiles, la création d’un brouillon et sa reprise
-avec contrôle de version. Les 4/4 tests ciblés réussissent. La validation
+avec contrôle de version. Une séance clôturée reste en lecture seule. Les 4/4 tests ciblés réussissent. La validation
 cumulative Apps Script **325/325** reste requise.
 
 Aucun déploiement utilisateur n’est réalisé à ce stade. La clôture, la confirmation

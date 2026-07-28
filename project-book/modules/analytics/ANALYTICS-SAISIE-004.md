@@ -37,7 +37,7 @@ fournit ni rôle, ni autorisation, ni identifiant de classeur.
 
 La réponse du serveur masque les adresses électroniques et les métadonnées
 techniques de modification. Elle ne retourne que les informations nécessaires
-à la saisie et à la reprise sûre du brouillon.
+à la saisie et à la reprise sûre du brouillon. Une séance clôturée reste explicitement en lecture seule.
 
 ## 4. Exclusions
 
@@ -47,8 +47,8 @@ clôture, la confirmation et la recette mobile relèvent de l’incrément suiva
 
 ## 5. Validation technique
 
-L’implémentation est fusionnée sur `develop` par la PR applicative #59, commit
-`3ddda0c5574bef2c5ece0e5faaf54d5120ffc8ea`.
+L’implémentation est fusionnée sur `develop` par les PR applicatives #59 et #60, commit final
+`3a15d65e4b914ea684e5fcf15bf6e48203c77827`.
 
 Les quatre tests ciblés réussissent. Ils contrôlent le roster nettoyé, la reprise
 versionnée, les quatre statuts tactiles et la sauvegarde par l’API serveur. La
