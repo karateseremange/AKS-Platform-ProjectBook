@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.5 |
+| **Version** | 1.0.6 |
 | **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -313,13 +313,20 @@ Les 17 tests ciblés réussissent. La validation cumulative Apps Script exécut�
 Le raccordement est ainsi autorisé à poursuivre vers l’exposition serveur, sans
 préjuger de la recette des futures routes utilisateur.
 
-Aucun registre réel, aucune route utilisateur, aucun déploiement Web et aucun
+L’exposition serveur sécurisée est intégrée sur `develop` par la PR applicative #53,
+commit `d67bc1c241d6dccc2c94b74c29759752aab6e4b0`. Elle expose uniquement le
+contexte autorisé et l’enregistrement par lot, compose toutes les dépendances côté
+serveur et masque les erreurs internes. Quatre tests ciblés sont ajoutés à la suite
+cumulative ; leur validation Apps Script reste requise avant recette fonctionnelle.
+
+Aucun registre réel, aucune interface utilisateur, aucun déploiement Web et aucun
 classeur de production n’ont été modifiés.
 
 ## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.6 | 2026-07-28 | Exposition serveur sécurisée intégrée sur `develop` par la PR #53 ; composition côté serveur, erreurs nettoyées et quatre tests ajoutés ; validation Apps Script requise |
 | 1.0.5 | 2026-07-28 | Validation Apps Script du raccordement fonctionnel : suite cumulative 311/311 réussie, 0 échec ; exposition serveur autorisée à poursuivre sans déploiement utilisateur |
 | 1.0.4 | 2026-07-28 | Raccordement au catalogue Analytics et au service d’écriture intégré sur `develop` par la PR #52 ; refus avant lecture Sheets et 17/17 tests ciblés réussis ; validation Apps Script requise |
 | 1.0.3 | 2026-07-28 | Validation Apps Script cumulative réussie : 309/309 tests, 0 échec ; socle autorisé au raccordement fonctionnel, sans déploiement utilisateur |
