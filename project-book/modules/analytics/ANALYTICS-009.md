@@ -4,7 +4,7 @@
 |---|---|
 | **Document ID** | ANALYTICS-009 |
 | **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Statut** | Validé |
 | **Nature** | Guide d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
