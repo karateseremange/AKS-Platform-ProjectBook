@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.45 |
+| **Version** | 1.2.46 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Saisie rapide intégrée sur `develop` — validation Apps Script requise**.
+**Saisie rapide validée sur `develop` — clôture mobile à poursuivre**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -624,7 +624,8 @@ La recette d’écriture sur la copie `[RECETTE] Analytics Baby 2026-2027` est �
 commit final `3a15d65e4b914ea684e5fcf15bf6e48203c77827`. Il ajoute le roster éligible
 nettoyé, les quatre statuts tactiles, la création d’un brouillon et sa reprise
 avec contrôle de version. Une séance clôturée reste en lecture seule. Les 4/4 tests ciblés réussissent. La validation
-cumulative Apps Script **325/325** reste requise.
+cumulative Apps Script du 28 juillet 2026 est concluante : **325/325 tests réussis,
+0 échec**. La clôture mobile, sa confirmation et sa recette sont autorisées à poursuivre.
 
 Aucun déploiement utilisateur n’est réalisé à ce stade. La clôture, la confirmation
 et la recette mobile constituent la suite du chantier.
