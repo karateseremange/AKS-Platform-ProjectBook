@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.47 |
+| Version | 1.2.48 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-28 |
@@ -164,7 +164,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-008 | Bilan d’implémentation et procès-verbal de recette | Validé | 1.0.1 | ANALYTICS-001 à ANALYTICS-007 |
 | ANALYTICS-009 | Guide d’alimentation Google Sheets V1.2.0 | Validé | 1.0.0 | ANALYTICS-005, ANALYTICS-008, implémentation V1.2.0 |
 | ANALYTICS-SAISIE-001 | Cadrage fonctionnel et UX de la saisie des présences | Validé | 1.0.0 | ANALYTICS-001 à ANALYTICS-009, SECURITY-001, UX-001 |
-| ACCESS-001 | Rôles, capacités et affectations Analytics | Exposition serveur validée sur `develop` — recette fonctionnelle à poursuivre | 1.0.7 | ANALYTICS-SAISIE-001, SECURITY-001, CONFIG-001, LOG-001, AUDIT-001, API-001 |
+| ACCESS-001 | Rôles, capacités et affectations Analytics | Exposition et recette serveur validées — publication applicative autorisée | 1.0.8 | ANALYTICS-SAISIE-001, SECURITY-001, CONFIG-001, LOG-001, AUDIT-001, API-001 |
 | ANALYTICS-SAISIE-002 | Contrat d’écriture des séances et présences | Implémentation et recette validées — publiée sur `main` | 1.1.2 | ANALYTICS-SAISIE-001, ACCESS-001, ANALYTICS-009, SECURITY-001, AUDIT-001, LOG-001, API-001, ERROR-001 |
 
 Ordre produit validé après la publication de la V1.1 :
@@ -263,6 +263,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.48 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie sur la copie Analytics Baby : refus `ACCESS_DENIED`, identité serveur, un cours autorisé, séance clôturée en version 2 et deux présences enregistrées |
 | 1.2.47 | 2026-07-28 | Validation Apps Script de l’exposition serveur ACCESS-001 : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre |
 | 1.2.46 | 2026-07-28 | Exposition serveur sécurisée ACCESS-001 intégrée par la PR applicative #53, commit `d67bc1c2` ; quatre tests ajoutés, validation Apps Script 315/315 requise |
 | 1.2.45 | 2026-07-28 | Validation Apps Script du raccordement ACCESS-001 : suite cumulative 311/311 réussie, 0 échec ; exposition serveur autorisée à poursuivre |
