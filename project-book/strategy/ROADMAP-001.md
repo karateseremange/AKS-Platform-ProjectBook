@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.48 |
+| **Version** | 1.2.49 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Clôture mobile validée sur `develop` — recette fonctionnelle mobile autorisée**.
+**Recette mobile isolée intégrée sur `develop` — validation Apps Script requise**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -632,7 +632,7 @@ commit `6c67719b870a91bb25798e5b6334e7f4b076ee33`. Il ajoute le blocage d’une
 clôture incomplète, la confirmation explicite, la commande serveur versionnée et
 le retour en lecture seule après succès. Les 4/4 tests ciblés réussissent. La validation cumulative Apps Script du 28 juillet 2026 est concluante : **329/329 tests réussis, 0 échec**. Le correctif de l’assertion de test obsolète est intégré par la PR applicative #62, commit `e49047c9`, sans modification du comportement applicatif.
 
-Aucun déploiement utilisateur n’est réalisé à ce stade. La recette mobile sur une copie contrôlée constitue la suite du chantier.
+Aucun déploiement utilisateur n’est réalisé à ce stade. `ANALYTICS-SAISIE-006` est intégré sur `develop` par la PR applicative #63, commit `0c78284cdf492ca8275b60aa317618c09087042b`. Il ajoute une route de recette distincte, une composition serveur dédiée et des verrous cumulatifs sur l’identité `karate.seremange@gmail.com`, le cours `BABY`, la saison `2026-2027`, la date `2026-09-19` et le classeur `[RECETTE] Analytics Baby 2026-2027`. Quatre tests cumulatifs portent la suite attendue à **333/333 réussis, 0 échec**. Le déploiement Web de recette ne sera créé qu’après cette validation.
 
 # 11. AKS Calendar — Module suivant
 
