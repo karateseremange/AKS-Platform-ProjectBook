@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.27 |
+| **Version** | 1.2.28 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -116,12 +116,14 @@ WEB-001 — Point d’accès WordPress à AKS Platform
         ↓
 AKS Platform v1.2.0 — AKS Analytics
         ↓
+ANALYTICS-SAISIE — Saisie des présences et contrôle d’accès
+        ↓
 AKS Calendar — Intégration Google Calendar
         ↓
 Modules futurs priorisés selon la valeur métier
 ```
 
-Cette séquence est la trajectoire de référence au 18 juillet 2026.
+Cette séquence est la trajectoire de référence au 28 juillet 2026.
 
 ---
 
@@ -473,7 +475,8 @@ WEB-001 a été validé le 25 juillet 2026 après mise en place du menu « Servi
 
 ## 8.2 Positionnement
 
-WEB-001 sera réalisé après la publication officielle de la V1.1 sur `main` et avant le démarrage du développement d’AKS Analytics.
+WEB-001 a été réalisé après la publication officielle de la V1.1 sur `main` et
+avant le développement d’AKS Analytics.
 
 Son inscription dans la roadmap ne modifie pas le périmètre fonctionnel de la V1.1 et ne bloque pas sa publication.
 
@@ -577,7 +580,37 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ---
 
-# 10. AKS Calendar — Module suivant
+# 10. ANALYTICS-SAISIE — Interface de saisie des présences
+
+## 10.1 Statut
+
+**Engagé**.
+
+Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
+AKS Calendar.
+
+## 10.2 Objectif
+
+Permettre aux administrateurs, professeurs et assistants AFA explicitement
+autorisés de saisir rapidement les présences depuis un téléphone ou une tablette,
+avec contrôle systématique des droits côté serveur.
+
+Le premier contrat d’écriture reste celui réellement consommé par la V1.2.0 :
+`Configuration`, `Licenciés`, `Séances` et `Présences`.
+
+## 10.3 Décisions structurantes
+
+- une séance possède les états `BROUILLON` et `CLÔTURÉE` ;
+- les assistants AFA saisissent uniquement les cours explicitement autorisés ;
+- un professeur peut corriger avant clôture ;
+- après clôture, la correction est réservée par défaut à l’administrateur ;
+- la saisie est enregistrée par lot avec verrouillage contre les écritures
+  concurrentes ;
+- les rôles et affectations sont toujours contrôlés côté serveur.
+
+Le cadrage détaillé est défini dans `ANALYTICS-SAISIE-001`.
+
+# 11. AKS Calendar — Module suivant
 
 ## 10.1 Statut
 
@@ -605,7 +638,7 @@ Un développement interne complet ne pourra être envisagé que si des besoins n
 
 ---
 
-# 11. Backlog produit après AKS Calendar
+# 12. Backlog produit après AKS Calendar
 
 Les modules ou évolutions futures restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés.
 
@@ -625,7 +658,7 @@ Chaque candidat devra être évalué selon la valeur, les risques, les dépendan
 
 ---
 
-# 12. Jalons de version
+# 13. Jalons de version
 
 Chaque version suit au minimum les jalons suivants :
 
@@ -643,7 +676,7 @@ Le passage d’un jalon au suivant dépend de la validation des résultats atten
 
 ---
 
-# 13. Gestion des écarts
+# 14. Gestion des écarts
 
 Un écart à la roadmap doit être documenté lorsqu’il concerne :
 
@@ -666,7 +699,7 @@ La décision doit indiquer si l’écart est :
 
 ---
 
-# 14. Indicateurs de pilotage
+# 15. Indicateurs de pilotage
 
 Le suivi de la roadmap repose au minimum sur :
 
@@ -683,7 +716,7 @@ Ces indicateurs servent au pilotage et ne remplacent pas la validation fonctionn
 
 ---
 
-# 15. Règles de branches et de publication
+# 16. Règles de branches et de publication
 
 Pour le dépôt applicatif :
 
@@ -701,7 +734,7 @@ Pour le Project Book :
 
 ---
 
-# 16. Résultat attendu
+# 17. Résultat attendu
 
 ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes :
 
@@ -716,7 +749,9 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - comment une modification de trajectoire est-elle décidée ?
 - quel est l’état de consolidation documentaire de la V1.1 ?
 
-La trajectoire officielle évolue : WEB-001 et AKS Analytics sont publiés ; la V1.2.0 est la version stable et le prochain chantier fonctionnel est AKS Calendar :
+La trajectoire officielle évolue : WEB-001 et AKS Analytics sont publiés ; la
+V1.2.0 est la version stable et le prochain chantier fonctionnel est
+ANALYTICS-SAISIE :
 
 ```text
 AKS Platform v1.0.0
@@ -726,6 +761,8 @@ AKS Platform v1.1.0 — Consolidation publiée
 WEB-001 — Point d’accès WordPress publié
         ↓
 AKS Platform v1.2.0 — AKS Analytics publié
+        ↓
+ANALYTICS-SAISIE — chantier engagé
         ↓
 AKS Calendar
 ```

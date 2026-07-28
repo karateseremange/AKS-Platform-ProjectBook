@@ -3,12 +3,12 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-008 |
-| **Version** | 1.0.0 |
+| **Version** | 1.0.1 |
 | **Statut** | Validé |
 | **Nature** | Bilan d’implémentation et procès-verbal de recette |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
-| **Version du produit** | V1.1 |
+| **Version du produit** | V1.2.0 |
 
 ---
 
@@ -154,7 +154,9 @@ La recette a confirmé :
 
 ## 9. Validation automatisée
 
-La suite cumulative AKS Platform V1.1 a été exécutée après correction :
+La suite cumulative d’AKS Platform utilisée pour valider la V1.2.0 a été exécutée
+après correction. Son point d’entrée technique conserve le nom historique
+`AKS_runValidationSuiteV11` :
 
 ```text
 RÉSULTAT: 273/273 réussis, 0 échec(s).
@@ -237,6 +239,7 @@ Elle n’autorise pas à elle seule la création d’un tag ou la publication d�
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-07-28 | Alignement de la version produit et de la désignation de la suite cumulative avec la publication V1.2.0 |
 | 1.0.0 | 2026-07-28 | Création du bilan d’implémentation et procès-verbal de recette de l’incrément AKS Analytics |
 
 ---
