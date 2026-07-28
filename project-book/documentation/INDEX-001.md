@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.39 |
+| Version | 1.2.40 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-28 |
@@ -165,7 +165,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-009 | Guide d’alimentation Google Sheets V1.2.0 | Validé | 1.0.0 | ANALYTICS-005, ANALYTICS-008, implémentation V1.2.0 |
 | ANALYTICS-SAISIE-001 | Cadrage fonctionnel et UX de la saisie des présences | Validé | 1.0.0 | ANALYTICS-001 à ANALYTICS-009, SECURITY-001, UX-001 |
 | ACCESS-001 | Rôles, capacités et affectations Analytics | Validé | 1.0.1 | ANALYTICS-SAISIE-001, SECURITY-001, CONFIG-001, LOG-001, AUDIT-001, API-001 |
-| ANALYTICS-SAISIE-002 | Contrat d’écriture des séances et présences | Implémenté sur `develop` — recette Apps Script requise | 1.1.0 | ANALYTICS-SAISIE-001, ACCESS-001, ANALYTICS-009, SECURITY-001, AUDIT-001, LOG-001, API-001, ERROR-001 |
+| ANALYTICS-SAISIE-002 | Contrat d’écriture des séances et présences | Validation Apps Script réussie — recette d’écriture requise | 1.1.1 | ANALYTICS-SAISIE-001, ACCESS-001, ANALYTICS-009, SECURITY-001, AUDIT-001, LOG-001, API-001, ERROR-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -263,6 +263,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.40 | 2026-07-28 | Référencement de la validation Apps Script d’ANALYTICS-SAISIE-002 : 290/290 tests réussis, 0 échec |
 | 1.2.39 | 2026-07-28 | Référencement de l’implémentation d’ANALYTICS-SAISIE-002 sur `develop`, de ses tests locaux et de la recette Apps Script encore requise |
 | 1.2.38 | 2026-07-28 | Validation d’ANALYTICS-SAISIE-002 et référencement du contrat d’écriture sécurisé comme référence de développement |
 | 1.2.34 | 2026-07-28 | Engagement d’ANALYTICS-SAISIE avant Calendar, référencement d’ANALYTICS-SAISIE-001 et alignement d’ANALYTICS-008 et ROADMAP-001 |
