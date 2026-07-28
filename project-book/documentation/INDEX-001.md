@@ -142,7 +142,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
-| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-008` | Publié en V1.2.0 — exploitation conditionnée à des sources réelles exploitables |
+| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009` | Publié en V1.2.0 — exploitation conditionnée à des sources réelles exploitables |
 | AKS Calendar | `project-book/modules/calendar/` | À créer | Planifié |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
