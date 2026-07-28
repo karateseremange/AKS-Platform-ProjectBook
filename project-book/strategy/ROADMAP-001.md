@@ -8,7 +8,7 @@
 | **Version** | 1.2.49 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-28 |
+| **Dernière mise à jour** | 2026-07-29 |
 
 ---
 
