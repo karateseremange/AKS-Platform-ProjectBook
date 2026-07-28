@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-002 |
-| **Version** | 1.1.1 |
-| **Statut** | Validation Apps Script réussie — recette d’écriture requise |
+| **Version** | 1.1.2 |
+| **Statut** | Implémentation et recette validées — publiée sur `main` |
 | **Nature** | Spécification fonctionnelle, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -296,6 +296,7 @@ Le Product Owner a validé les huit décisions suivantes le 28 juillet 2026. Ell
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.2 | 2026-07-28 | Suite cumulative 291/291 réussie ; recette d’écriture conclue sur la copie Baby 2026-2027 ; correctif Europe/Paris validé ; publication applicative sur `main` par la PR #49, commit `6cfec0ca1378226223a48464dc6971a685b4cfb5` |
 | 1.1.1 | 2026-07-28 | Suite cumulative exécutée dans Apps Script : 290/290 tests réussis, 0 échec ; recette d’écriture sur copies de classeurs encore requise |
 | 1.1.0 | 2026-07-28 | Contrat implémenté sur `develop` par la PR applicative #46, commit `261d308873ecfc5be90f18a674125b0f40367864` ; tests locaux réussis ; recette Apps Script encore requise |
 | 1.0.1 | 2026-07-28 | Validation par le Product Owner des huit décisions structurantes ; contrat prêt à développer |
@@ -324,13 +325,17 @@ n’est pas raccordé.
 - tests du service d’écriture : 15/15 ;
 - tests du fournisseur Sheets : 15/15 ;
 - contrôle syntaxique des fichiers modifiés : réussi ;
-- suite cumulative exécutée dans Apps Script le 28 juillet 2026 :
-  290/290 tests réussis, 0 échec ;
-- aucun déploiement Apps Script ni aucune écriture dans un classeur réel.
+- suite cumulative exécutée dans Apps Script le 28 juillet 2026 après correction du fuseau Europe/Paris : 291/291 tests réussis, 0 échec ;
+- recette exécutée sur la copie `[RECETTE] Analytics Baby 2026-2027` (`1iU9Q98uGtlmrEq8-ip5sO6HmW_uThbBYOwacw8iVOH4`) ;
+- séance `SEA-96ADF8B7FE53` du 5 septembre 2026 reprise puis clôturée en version 2 sans duplication ;
+- deux licenciés synthétiques utilisés, aucun licencié réel requis ;
+- brouillon confirmé exclu des rapports (`draftExcluded = true`) ;
+- deux présences clôturées confirmées relues par Analytics (`closedAttendanceCount = 2`) ;
+- publication applicative sur `main` par la PR #49, commit `6cfec0ca1378226223a48464dc6971a685b4cfb5` ;
+- aucun déploiement Apps Script ni aucune écriture dans un classeur de production.
 
-### 19.2 Validation restant à produire
+### 19.2 Conclusion de recette
 
-Avant publication sur `main` et déploiement, une recette contrôlée doit utiliser
-des copies de classeurs Analytics pour vérifier l’ajout des colonnes, la
-sauvegarde d’un brouillon, son exclusion des rapports, la clôture et la lecture
-de la séance clôturée.
+La recette est concluante. Elle a validé l’ajout compatible des colonnes techniques, la sauvegarde d’un brouillon, son exclusion des rapports, la reprise sûre après l’arrêt provoqué par le défaut de normalisation UTC, la clôture en version 2 et la lecture des deux présences clôturées.
+
+Le contrat d’écriture est publié sur `main`. Cette clôture ne signifie pas que l’interface de saisie est disponible : le raccordement du service d’autorisation commun issu d’`ACCESS-001`, l’exposition serveur et l’interface mobile restent à développer et à valider avant tout déploiement utilisateur.
