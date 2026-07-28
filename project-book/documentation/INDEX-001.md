@@ -9,7 +9,7 @@
 | Version | 1.2.55 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-28 |
+| Dernière mise à jour | 2026-07-29 |
 | Version du produit | V1.2 |
 
 ---
