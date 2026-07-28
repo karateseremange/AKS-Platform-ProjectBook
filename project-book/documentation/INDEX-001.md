@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.49 |
+| Version | 1.2.50 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-28 |
@@ -166,7 +166,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-SAISIE-001 | Cadrage fonctionnel et UX de la saisie des présences | Validé | 1.0.0 | ANALYTICS-001 à ANALYTICS-009, SECURITY-001, UX-001 |
 | ACCESS-001 | Rôles, capacités et affectations Analytics | Exposition et recette serveur validées — publication applicative autorisée | 1.0.8 | ANALYTICS-SAISIE-001, SECURITY-001, CONFIG-001, LOG-001, AUDIT-001, API-001 |
 | ANALYTICS-SAISIE-002 | Contrat d’écriture des séances et présences | Implémentation et recette validées — publiée sur `main` | 1.1.2 | ANALYTICS-SAISIE-001, ACCESS-001, ANALYTICS-009, SECURITY-001, AUDIT-001, LOG-001, API-001, ERROR-001 |
-| ANALYTICS-SAISIE-003 | Route et navigation mobile des présences | Intégrée sur `develop` — validation Apps Script requise | 1.0.0 | ANALYTICS-SAISIE-001, ANALYTICS-SAISIE-002, ACCESS-001, UX-001, API-001 |
+| ANALYTICS-SAISIE-003 | Route et navigation mobile des présences | Validée sur `develop` — saisie rapide autorisée à poursuivre | 1.0.1 | ANALYTICS-SAISIE-001, ANALYTICS-SAISIE-002, ACCESS-001, UX-001, API-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -264,6 +264,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.50 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-003 : suite cumulative 321/321 réussie, 0 échec ; saisie rapide des statuts autorisée à poursuivre |
 | 1.2.49 | 2026-07-28 | ANALYTICS-SAISIE-003 intégré sur `develop` par la PR applicative #58, commit `c7adbe52` ; route, cours autorisés et séances récentes ; 6/6 tests ciblés réussis, validation 321/321 requise |
 | 1.2.48 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie sur la copie Analytics Baby : refus `ACCESS_DENIED`, identité serveur, un cours autorisé, séance clôturée en version 2 et deux présences enregistrées |
 | 1.2.47 | 2026-07-28 | Validation Apps Script de l’exposition serveur ACCESS-001 : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre |
