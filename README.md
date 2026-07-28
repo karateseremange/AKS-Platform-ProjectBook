@@ -55,6 +55,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
 - [V1.1.0 — Note de publication](releases/V1.1.0.md)
+- [V1.2.0 — Note de publication en préparation](releases/V1.2.0.md)
 
 ## Vision et stratégie
 
@@ -148,8 +149,13 @@ Les développements doivent respecter les règles suivantes :
 
 # État du Project Book
 
-La version **V1.1.0**, publiée le 25 juillet 2026, constitue la référence stable
+La version **V1.1.0**, publiée le 25 juillet 2026, reste la référence stable
 documentée. La publication applicative correspond au tag `v1.1.0` et au commit
 `397d8aedbb73707a898d439e9ab7747f9e396f99`.
+
+La **V1.2.0** est en préparation sur `develop`. Son périmètre AKS Analytics est
+implémenté, testé et documenté, mais elle ne deviendra une version publiée qu’après
+le contrôle de prépublication, la fusion applicative vers `main` et la création du
+tag `v1.2.0` conformément à `RELEASE-001`.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).
