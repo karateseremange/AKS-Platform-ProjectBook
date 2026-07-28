@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-003 |
-| **Version** | 1.0.0 |
-| **Statut** | Implémentation intégrée sur `develop` — validation Apps Script requise |
+| **Version** | 1.0.1 |
+| **Statut** | Validé sur `develop` — saisie rapide autorisée à poursuivre |
 | **Nature** | Spécification d’incrément et état d’implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -54,12 +54,17 @@ le périmètre, le nettoyage de la réponse, le parcours cours/séance, les reto
 accessibles et les cibles mobiles. La syntaxe Apps Script des fichiers modifiés
 est valide.
 
-La suite cumulative Apps Script attendue est **321/321 tests réussis, 0 échec**.
-Aucune publication sur `main` ni aucun déploiement utilisateur ne sont autorisés
-avant cette validation.
+La suite cumulative Apps Script exécutée le 28 juillet 2026 est concluante :
+**321/321 tests réussis, 0 échec**. La navigation mobile en lecture seule est donc
+validée sans régression et l’incrément de saisie rapide des statuts est autorisé à
+poursuivre sur `develop`.
+
+Aucune publication sur `main` ni aucun déploiement utilisateur n’est réalisé à ce
+stade.
 
 ## 6. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-07-28 | Validation cumulative Apps Script : 321/321 tests réussis, 0 échec ; saisie rapide autorisée à poursuivre |
 | 1.0.0 | 2026-07-28 | Route et navigation mobile intégrées sur `develop` ; 6/6 tests ciblés réussis ; validation cumulative 321/321 requise |
