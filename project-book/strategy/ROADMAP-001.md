@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.33 |
+| **Version** | 1.2.34 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -616,9 +616,10 @@ La spécification `ACCESS-001` formalise les rôles, capacités, affectations pa
 
 L’implémentation du contrat a été fusionnée sur `develop` par la PR applicative
 #46. Les tests locaux du service d’écriture (15/15) et du fournisseur Sheets
-(15/15) sont réussis. L’incrément reste en attente de la suite cumulative dans
-Apps Script et d’une recette sur des copies de classeurs ; il ne doit pas encore
-être publié sur `main` ni déployé.
+(15/15) sont réussis. La suite cumulative exécutée dans Apps Script le 28 juillet
+2026 est également concluante : 290/290 tests réussis, 0 échec. L’incrément reste
+en attente d’une recette d’écriture sur des copies de classeurs ; il ne doit pas
+encore être publié sur `main` ni déployé.
 
 # 11. AKS Calendar — Module suivant
 
