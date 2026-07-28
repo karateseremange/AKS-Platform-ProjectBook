@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.32 |
+| Version | 1.2.33 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-28 |
@@ -162,7 +162,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-006 | Stratégie de validation, jeux d’essai et recette d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-005, ADMIN-004, CONFIG-001, LOG-001, SECURITY-001, STORAGE-001, UI-001, UX-001 |
 | ANALYTICS-007 | Catalogue des indicateurs et règles de calcul | Référence de développement | 1.0.0 | ANALYTICS-001 à ANALYTICS-006 |
 | ANALYTICS-008 | Bilan d’implémentation et procès-verbal de recette | Validé | 1.0.0 | ANALYTICS-001 à ANALYTICS-007 |
-| ANALYTICS-009 | Guide d’alimentation Google Sheets V1.2.0 | En revue | 1.0.0 | ANALYTICS-005, ANALYTICS-008, implémentation V1.2.0 |
+| ANALYTICS-009 | Guide d’alimentation Google Sheets V1.2.0 | Validé | 1.0.0 | ANALYTICS-005, ANALYTICS-008, implémentation V1.2.0 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -259,6 +259,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.33 | 2026-07-28 | Validation d’ANALYTICS-009 comme guide d’exploitation officiel de la V1.2.0 |
 | 1.2.32 | 2026-07-28 | Référencement d’ANALYTICS-009, guide d’alimentation Google Sheets conforme à l’implémentation V1.2.0 et explicitation de l’écart avec la structure cible d’ANALYTICS-005 |
 | 1.2.31 | 2026-07-28 | Clôture de la publication applicative V1.2.0 : PR #41 fusionnée, commit `47bb3ca8`, tag `v1.2.0`, et alignement de la note de version, de ROADMAP-001 et du README |
 | 1.2.30 | 2026-07-28 | Préparation documentaire de la V1.2.0 dédiée à AKS Analytics, référencement de la note de publication et alignement de ROADMAP-001 et du README sans création de tag ni publication sur main |
