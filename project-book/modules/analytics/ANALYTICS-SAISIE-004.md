@@ -1,0 +1,65 @@
+# ANALYTICS-SAISIE-004 — Saisie rapide et brouillon reprenable
+
+| Propriété | Valeur |
+|---|---|
+| **Document ID** | ANALYTICS-SAISIE-004 |
+| **Version** | 1.0.0 |
+| **Statut** | Intégré sur `develop` — validation Apps Script requise |
+| **Nature** | Spécification d’incrément et état d’implémentation |
+| **Propriétaire** | Product Owner |
+| **Dernière mise à jour** | 2026-07-28 |
+| **Version du produit** | Post-V1.2.0 |
+
+---
+
+## 1. Objet
+
+Cet incrément ajoute la saisie mobile rapide des statuts de présence et
+l’enregistrement sécurisé d’un brouillon reprenable pour la date sélectionnée.
+
+## 2. Périmètre livré
+
+- roster limité aux licenciés éligibles à la date sélectionnée ;
+- libellé utile et identifiant interne, sans donnée individuelle superflue ;
+- statuts `PRESENT`, `ABSENT`, `EXCUSE` et `NON_RENSEIGNE` ;
+- contrôles tactiles accessibles avec état sélectionné annoncé ;
+- création d’un brouillon incomplet autorisée ;
+- reprise du brouillon de la même date avec restauration des statuts ;
+- contrôle optimiste par identifiant de séance et version ;
+- clé de soumission distincte pour chaque enregistrement.
+
+## 3. Sécurité
+
+Le contrôle `ATTENDANCE_READ` reste exécuté avant toute lecture Sheets. La
+sauvegarde passe exclusivement par `AKS_saveAttendanceBatch`, qui recompose
+l’identité, les droits, le dépôt et le verrou côté serveur. Le navigateur ne
+fournit ni rôle, ni autorisation, ni identifiant de classeur.
+
+La réponse du serveur masque les adresses électroniques et les métadonnées
+techniques de modification. Elle ne retourne que les informations nécessaires
+à la saisie et à la reprise sûre du brouillon.
+
+## 4. Exclusions
+
+Cet incrément ne clôture pas une séance, ne corrige pas une séance clôturée,
+n’installe pas le registre réel et ne crée aucun déploiement utilisateur. La
+clôture, la confirmation et la recette mobile relèvent de l’incrément suivant.
+
+## 5. Validation technique
+
+L’implémentation est fusionnée sur `develop` par la PR applicative #59, commit
+`3ddda0c5574bef2c5ece0e5faaf54d5120ffc8ea`.
+
+Les quatre tests ciblés réussissent. Ils contrôlent le roster nettoyé, la reprise
+versionnée, les quatre statuts tactiles et la sauvegarde par l’API serveur. La
+syntaxe JavaScript des fichiers modifiés est valide.
+
+La suite cumulative Apps Script attendue est **325/325 tests réussis, 0 échec**.
+Aucune publication sur `main`, aucun déploiement Web et aucune modification de
+classeur réel ne sont réalisés à ce stade.
+
+## 6. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 1.0.0 | 2026-07-28 | Saisie rapide et brouillon reprenable intégrés sur `develop` ; 4/4 tests ciblés réussis ; validation cumulative 325/325 requise |
