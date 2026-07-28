@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-002 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -279,7 +279,9 @@ Les tests couvrent au minimum :
 - mode hors connexion ;
 - plusieurs séances du même cours le même jour dans le premier incrément.
 
-## 17. Décisions soumises à validation
+## 17. Décisions validées
+
+Le Product Owner a validé les huit décisions suivantes le 28 juillet 2026. Elles constituent la référence obligatoire de l’implémentation.
 
 1. séparer `État` de séance et `État saisie` ;
 2. ajouter les colonnes techniques optionnelles sans migrer le contrat V1.2.0 ;
@@ -294,4 +296,5 @@ Les tests couvrent au minimum :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-07-28 | Validation par le Product Owner des huit décisions structurantes ; contrat prêt à développer |
 | 1.0.0 | 2026-07-28 | Première spécification du contrat d’écriture soumise à validation |
