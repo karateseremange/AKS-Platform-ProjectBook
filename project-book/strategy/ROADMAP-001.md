@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Recette mobile isolée validée sur `develop` — déploiement Web de recette autorisé**.
+**Recette mobile en cours — correctifs validés sur `develop`, dernier contrôle de lecture seule autorisé**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -632,7 +632,7 @@ commit `6c67719b870a91bb25798e5b6334e7f4b076ee33`. Il ajoute le blocage d’une
 clôture incomplète, la confirmation explicite, la commande serveur versionnée et
 le retour en lecture seule après succès. Les 4/4 tests ciblés réussissent. La validation cumulative Apps Script du 28 juillet 2026 est concluante : **329/329 tests réussis, 0 échec**. Le correctif de l’assertion de test obsolète est intégré par la PR applicative #62, commit `e49047c9`, sans modification du comportement applicatif.
 
-Aucun déploiement utilisateur n’est réalisé à ce stade. `ANALYTICS-SAISIE-006` est intégré sur `develop` par la PR applicative #63, commit `0c78284cdf492ca8275b60aa317618c09087042b`. Il ajoute une route de recette distincte, une composition serveur dédiée et des verrous cumulatifs sur l’identité `karate.seremange@gmail.com`, le cours `BABY`, la saison `2026-2027`, la date `2026-09-19` et le classeur `[RECETTE] Analytics Baby 2026-2027`. Quatre tests cumulatifs portent la suite à **333/333 réussis, 0 échec**. La validation cumulative Apps Script du 29 juillet 2026 est concluante : **333/333 tests réussis, 0 échec**. Le déploiement Web de recette isolé est désormais autorisé ; sa recette navigateur reste à exécuter avant toute publication.
+Aucun déploiement utilisateur n’est réalisé à ce stade. `ANALYTICS-SAISIE-006` est intégré sur `develop` par la PR applicative #63, commit `0c78284cdf492ca8275b60aa317618c09087042b`. Il ajoute une route de recette distincte, une composition serveur dédiée et des verrous cumulatifs sur l’identité `karate.seremange@gmail.com`, le cours `BABY`, la saison `2026-2027`, la date `2026-09-19` et le classeur `[RECETTE] Analytics Baby 2026-2027`. Quatre tests cumulatifs portent la suite à **333/333 réussis, 0 échec**. La validation cumulative Apps Script du 29 juillet 2026 est concluante : **333/333 tests réussis, 0 échec**. Le déploiement Web de recette isolé a validé l’ouverture, le brouillon, sa reprise et la clôture. Les correctifs d’affichage de confirmation (PR #64, commit `c81eca83`) et d’ouverture d’une séance clôturée en lecture seule (PR #65, commit `6f3e8f05`) ont chacun conservé une suite cumulative concluante à **333/333 tests réussis, 0 échec**. Le dernier contrôle navigateur de lecture seule doit encore être repris avant toute publication.
 
 # 11. AKS Calendar — Module suivant
 
