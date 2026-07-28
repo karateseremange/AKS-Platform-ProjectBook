@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.1 |
+| **Version** | 1.0.2 |
 | **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -293,9 +293,21 @@ Le Product Owner valide le 28 juillet 2026 :
    mécanisme d’amorçage et de récupération ;
 6. le report de l’administration graphique des droits à un incrément ultérieur.
 
-## 18. Historique
+## 18. État de l’implémentation
+
+Le premier incrément du socle commun est fusionné sur la branche applicative
+`develop` par la PR #51, commit `9d5a4e981840e313b11642dc951695b65f1d193d`.
+Il comprend le registre central `access/1.0`, le calcul serveur des capacités,
+l’amorçage sécurisé depuis la liste administrative embarquée, la protection du
+dernier administrateur et 18 tests automatisés.
+
+La validation Apps Script cumulative reste obligatoire avant raccordement aux
+routes de saisie. Aucun registre réel, aucune route utilisateur, aucun déploiement
+Web et aucun classeur de production n’ont été modifiés.
+
+## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.0.1 | 2026-07-28 | Validation par le Product Owner des rôles, droits de clôture, registre central, mécanisme de récupération et report de l’interface de gestion |
+| 1.0.2 | 2026-07-28 | Socle ACCESS-001 intégré sur `develop` par la PR #51 ; 18/18 tests locaux réussis ; validation Apps Script requise avant raccordement |\n| 1.0.1 | 2026-07-28 | Validation par le Product Owner des rôles, droits de clôture, registre central, mécanisme de récupération et report de l’interface de gestion |
 | 1.0.0 | 2026-07-28 | Première spécification soumise à validation du Product Owner |

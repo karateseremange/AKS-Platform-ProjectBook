@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.35 |
+| **Version** | 1.2.36 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -610,7 +610,7 @@ Le premier contrat d’écriture reste celui réellement consommé par la V1.2.0
 
 Le cadrage détaillé est défini dans `ANALYTICS-SAISIE-001`.
 
-La spécification `ACCESS-001` formalise les rôles, capacités, affectations par cours et saison, le refus fermé côté serveur et la migration compatible depuis la liste administrative V1.2.0. Ses six décisions structurantes ont été validées par le Product Owner le 28 juillet 2026 ; elle constitue désormais la référence de l’implémentation.
+La spécification `ACCESS-001` formalise les rôles, capacités, affectations par cours et saison, le refus fermé côté serveur et la migration compatible depuis la liste administrative V1.2.0. Ses six décisions structurantes ont été validées par le Product Owner le 28 juillet 2026. Son premier socle est intégré sur `develop` par la PR applicative #51 : registre central, capacités serveur, amorçage historique sécurisé et 18 tests locaux réussis. La validation cumulative Apps Script reste requise avant raccordement.
 
 `ANALYTICS-SAISIE-002` spécifie le contrat d’écriture sécurisé des séances et présences. Ses huit décisions structurantes ont été validées par le Product Owner le 28 juillet 2026. Le contrat est la référence de développement : séparation des états, écriture par lot, brouillons exclus des rapports, contrôle de version, idempotence, verrouillage, motif de correction après clôture et limitation initiale à une séance par cours et par date.
 
@@ -618,7 +618,7 @@ L’implémentation du contrat a été fusionnée sur `develop` par la PR applic
 
 La recette d’écriture sur la copie `[RECETTE] Analytics Baby 2026-2027` est également concluante : le brouillon est exclu des rapports, la séance `SEA-96ADF8B7FE53` est clôturée en version 2 et les deux présences sont relues par Analytics. Le contrat d’écriture est publié sur `main` par la PR applicative #49, commit `6cfec0ca1378226223a48464dc6971a685b4cfb5`.
 
-Aucun déploiement utilisateur n’est réalisé à ce stade. Le raccordement du service commun d’autorisation issu d’`ACCESS-001`, l’exposition serveur et l’interface mobile constituent la suite du chantier.
+Aucun déploiement utilisateur n’est réalisé à ce stade. La validation Apps Script du socle `ACCESS-001`, puis son raccordement au fournisseur de cours et au service d’écriture, l’exposition serveur et l’interface mobile constituent la suite du chantier.
 
 # 11. AKS Calendar — Module suivant
 
