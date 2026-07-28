@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.1 |
+| **Version** | 1.0.8 |
 | **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -293,9 +293,57 @@ Le Product Owner valide le 28 juillet 2026 :
    mécanisme d’amorçage et de récupération ;
 6. le report de l’administration graphique des droits à un incrément ultérieur.
 
-## 18. Historique
+## 18. État de l’implémentation
+
+Le premier incrément du socle commun est fusionné sur la branche applicative
+`develop` par la PR #51, commit `9d5a4e981840e313b11642dc951695b65f1d193d`.
+Il comprend le registre central `access/1.0`, le calcul serveur des capacités,
+l’amorçage sécurisé depuis la liste administrative embarquée, la protection du
+dernier administrateur et 18 tests automatisés.
+
+La validation Apps Script cumulative a été exécutée avec succès le 28 juillet 2026 : **309/309 tests réussis, 0 échec**.
+
+Le raccordement au fournisseur de cours et au service d’écriture des présences est
+intégré sur `develop` par la PR applicative #52, commit
+`9375b1be609870848584a73e802a5d47502c5c8c`. Le registre central est composé
+automatiquement côté serveur, le catalogue provient des classeurs Analytics
+configurés et une identité non autorisée est refusée avant toute lecture Sheets.
+Les 17 tests ciblés réussissent. La validation cumulative Apps Script exécutée le
+28 juillet 2026 est également concluante : **311/311 tests réussis, 0 échec**.
+Le raccordement est ainsi autorisé à poursuivre vers l’exposition serveur, sans
+préjuger de la recette des futures routes utilisateur.
+
+L’exposition serveur sécurisée est intégrée sur `develop` par la PR applicative #53,
+commit `d67bc1c241d6dccc2c94b74c29759752aab6e4b0`. Elle expose uniquement le
+contexte autorisé et l’enregistrement par lot, compose toutes les dépendances côté
+serveur et masque les erreurs internes. Quatre tests ciblés sont ajoutés à la suite
+cumulative. Leur validation Apps Script exécutée le 28 juillet 2026 est concluante :
+**315/315 tests réussis, 0 échec**. L’exposition serveur est ainsi autorisée à
+poursuivre vers sa recette fonctionnelle, sans déploiement utilisateur.
+
+La recette fonctionnelle serveur a été exécutée avec succès le 28 juillet 2026 sur
+le classeur isolé `[RECETTE] Analytics Baby 2026-2027` (identifiant
+`1iU9Q98uGtlmrEq8-ip5sO6HmW_uThbBYOwacw8iVOH4`). Elle confirme l’identité
+serveur `karate.seremange@gmail.com`, le refus réel d’une écriture non autorisée
+avec `ACCESS_DENIED`, un périmètre limité au seul cours autorisé et le cycle
+complet de la séance `SEA-3B8F53F4970F` du 12 septembre 2026 : clôture en
+version 2, deux licenciés éligibles et deux présences enregistrées. Le banc de
+recette est intégré par les PR applicatives #54 et #55, commit final
+`33c6c068`. Aucun classeur de production n’a été modifié.
+
+Aucun registre réel, aucune interface utilisateur, aucun déploiement Web et aucun
+classeur de production n’ont été modifiés.
+
+## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.8 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie : refus d’écriture non autorisée, identité serveur, périmètre BABY unique et séance clôturée avec 2 présences ; publication sur `main` autorisée |
+| 1.0.7 | 2026-07-28 | Validation Apps Script de l’exposition serveur : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre sans déploiement utilisateur |
+| 1.0.6 | 2026-07-28 | Exposition serveur sécurisée intégrée sur `develop` par la PR #53 ; composition côté serveur, erreurs nettoyées et quatre tests ajoutés ; validation Apps Script requise |
+| 1.0.5 | 2026-07-28 | Validation Apps Script du raccordement fonctionnel : suite cumulative 311/311 réussie, 0 échec ; exposition serveur autorisée à poursuivre sans déploiement utilisateur |
+| 1.0.4 | 2026-07-28 | Raccordement au catalogue Analytics et au service d’écriture intégré sur `develop` par la PR #52 ; refus avant lecture Sheets et 17/17 tests ciblés réussis ; validation Apps Script requise |
+| 1.0.3 | 2026-07-28 | Validation Apps Script cumulative réussie : 309/309 tests, 0 échec ; socle autorisé au raccordement fonctionnel, sans déploiement utilisateur |
+| 1.0.2 | 2026-07-28 | Socle ACCESS-001 intégré sur `develop` par la PR #51 ; 18/18 tests locaux réussis ; validation Apps Script requise avant raccordement |
 | 1.0.1 | 2026-07-28 | Validation par le Product Owner des rôles, droits de clôture, registre central, mécanisme de récupération et report de l’interface de gestion |
 | 1.0.0 | 2026-07-28 | Première spécification soumise à validation du Product Owner |
