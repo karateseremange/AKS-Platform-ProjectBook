@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.7 |
+| **Version** | 1.0.8 |
 | **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -321,6 +321,16 @@ cumulative. Leur validation Apps Script exécutée le 28 juillet 2026 est conclu
 **315/315 tests réussis, 0 échec**. L’exposition serveur est ainsi autorisée à
 poursuivre vers sa recette fonctionnelle, sans déploiement utilisateur.
 
+La recette fonctionnelle serveur a été exécutée avec succès le 28 juillet 2026 sur
+le classeur isolé `[RECETTE] Analytics Baby 2026-2027` (identifiant
+`1iU9Q98uGtlmrEq8-ip5sO6HmW_uThbBYOwacw8iVOH4`). Elle confirme l’identité
+serveur `karate.seremange@gmail.com`, le refus réel d’une écriture non autorisée
+avec `ACCESS_DENIED`, un périmètre limité au seul cours autorisé et le cycle
+complet de la séance `SEA-3B8F53F4970F` du 12 septembre 2026 : clôture en
+version 2, deux licenciés éligibles et deux présences enregistrées. Le banc de
+recette est intégré par les PR applicatives #54 et #55, commit final
+`33c6c068`. Aucun classeur de production n’a été modifié.
+
 Aucun registre réel, aucune interface utilisateur, aucun déploiement Web et aucun
 classeur de production n’ont été modifiés.
 
@@ -328,6 +338,7 @@ classeur de production n’ont été modifiés.
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.8 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie : refus d’écriture non autorisée, identité serveur, périmètre BABY unique et séance clôturée avec 2 présences ; publication sur `main` autorisée |
 | 1.0.7 | 2026-07-28 | Validation Apps Script de l’exposition serveur : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre sans déploiement utilisateur |
 | 1.0.6 | 2026-07-28 | Exposition serveur sécurisée intégrée sur `develop` par la PR #53 ; composition côté serveur, erreurs nettoyées et quatre tests ajoutés ; validation Apps Script requise |
 | 1.0.5 | 2026-07-28 | Validation Apps Script du raccordement fonctionnel : suite cumulative 311/311 réussie, 0 échec ; exposition serveur autorisée à poursuivre sans déploiement utilisateur |
