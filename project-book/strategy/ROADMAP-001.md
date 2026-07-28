@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.46 |
+| **Version** | 1.2.47 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Saisie rapide validée sur `develop` — clôture mobile à poursuivre**.
+**Clôture mobile intégrée sur `develop` — validation Apps Script requise**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -627,8 +627,15 @@ avec contrôle de version. Une séance clôturée reste en lecture seule. Les 4/
 cumulative Apps Script du 28 juillet 2026 est concluante : **325/325 tests réussis,
 0 échec**. La clôture mobile, sa confirmation et sa recette sont autorisées à poursuivre.
 
-Aucun déploiement utilisateur n’est réalisé à ce stade. La clôture, la confirmation
-et la recette mobile constituent la suite du chantier.
+`ANALYTICS-SAISIE-005` est intégré sur `develop` par la PR applicative #61,
+commit `6c67719b870a91bb25798e5b6334e7f4b076ee33`. Il ajoute le blocage d’une
+clôture incomplète, la confirmation explicite, la commande serveur versionnée et
+le retour en lecture seule après succès. Les 4/4 tests ciblés réussissent. La
+validation cumulative Apps Script attendue est de **329/329 tests réussis, 0
+échec**.
+
+Aucun déploiement utilisateur n’est réalisé à ce stade. La validation Apps
+Script puis la recette mobile constituent la suite du chantier.
 
 # 11. AKS Calendar — Module suivant
 

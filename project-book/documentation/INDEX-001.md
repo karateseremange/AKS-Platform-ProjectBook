@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.52 |
+| Version | 1.2.53 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-28 |
@@ -142,11 +142,11 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
-| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-004`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
+| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | À créer | Planifié |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
-| Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-004` | Saisie rapide validée sur `develop` ; clôture mobile à poursuivre |
+| Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005` | Clôture mobile intégrée sur `develop` ; validation Apps Script requise |
 | Licenciés | À créer | À créer | Futur |
 | Communication | À créer | À créer | Futur |
 
@@ -168,6 +168,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-SAISIE-002 | Contrat d’écriture des séances et présences | Implémentation et recette validées — publiée sur `main` | 1.1.2 | ANALYTICS-SAISIE-001, ACCESS-001, ANALYTICS-009, SECURITY-001, AUDIT-001, LOG-001, API-001, ERROR-001 |
 | ANALYTICS-SAISIE-003 | Route et navigation mobile des présences | Validée sur `develop` — saisie rapide autorisée à poursuivre | 1.0.1 | ANALYTICS-SAISIE-001, ANALYTICS-SAISIE-002, ACCESS-001, UX-001, API-001 |
 | ANALYTICS-SAISIE-004 | Saisie rapide et brouillon reprenable | Validé sur `develop` — clôture mobile autorisée à poursuivre | 1.0.1 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-003, ACCESS-001, UX-001, API-001 |
+| ANALYTICS-SAISIE-005 | Clôture mobile sécurisée | Intégré sur `develop` — validation Apps Script requise | 1.0.0 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-004, ACCESS-001, UX-001, API-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -265,6 +266,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.53 | 2026-07-28 | ANALYTICS-SAISIE-005 intégré sur `develop` par la PR applicative #61, commit `6c67719b` ; clôture mobile sécurisée et 4/4 tests ciblés réussis ; validation 329/329 requise |
 | 1.2.52 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-004 : suite cumulative 325/325 réussie, 0 échec ; clôture mobile autorisée à poursuivre |
 | 1.2.51 | 2026-07-28 | ANALYTICS-SAISIE-004 intégré sur `develop` par la PR applicatives #59 et #60, commit final `3a15d65e` ; saisie rapide, brouillon reprenable et séance clôturée en lecture seule et 4/4 tests ciblés réussis ; validation 325/325 requise |
 | 1.2.50 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-003 : suite cumulative 321/321 réussie, 0 échec ; saisie rapide des statuts autorisée à poursuivre |
