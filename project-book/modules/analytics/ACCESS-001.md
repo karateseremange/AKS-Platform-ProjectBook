@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -281,20 +281,21 @@ pas dépendre du compte réel exécutant la suite.
 - authentification multifacteur développée par AKS ;
 - interface graphique d’administration des droits dans ce premier incrément.
 
-## 17. Décisions soumises à validation
+## 17. Décisions validées
 
-1. confirmer le catalogue des quatre rôles ;
-2. confirmer qu’un professeur peut clôturer un brouillon de ses cours ;
-3. confirmer qu’un assistant AFA ne clôture pas une séance dans le premier
-   incrément ;
-4. confirmer le registre central versionné plutôt qu’une configuration par classeur ;
-5. confirmer la conservation temporaire de la liste administrateur embarquée comme
+Le Product Owner valide le 28 juillet 2026 :
+
+1. le catalogue des quatre rôles ;
+2. la clôture d’un brouillon par un professeur sur ses cours ;
+3. l’interdiction de clôture pour un assistant AFA dans le premier incrément ;
+4. le registre central versionné plutôt qu’une configuration par classeur ;
+5. la conservation temporaire de la liste administrateur embarquée comme
    mécanisme d’amorçage et de récupération ;
-6. confirmer que l’administration graphique des droits sera réalisée dans un
-   incrément ultérieur.
+6. le report de l’administration graphique des droits à un incrément ultérieur.
 
 ## 18. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-07-28 | Validation par le Product Owner des rôles, droits de clôture, registre central, mécanisme de récupération et report de l’interface de gestion |
 | 1.0.0 | 2026-07-28 | Première spécification soumise à validation du Product Owner |
