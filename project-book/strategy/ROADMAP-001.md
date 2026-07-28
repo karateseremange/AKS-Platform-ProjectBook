@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.30 |
+| **Version** | 1.2.32 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -611,6 +611,8 @@ Le premier contrat d’écriture reste celui réellement consommé par la V1.2.0
 Le cadrage détaillé est défini dans `ANALYTICS-SAISIE-001`.
 
 La spécification `ACCESS-001` formalise les rôles, capacités, affectations par cours et saison, le refus fermé côté serveur et la migration compatible depuis la liste administrative V1.2.0. Ses six décisions structurantes ont été validées par le Product Owner le 28 juillet 2026 ; elle constitue désormais la référence de l’implémentation.
+
+`ANALYTICS-SAISIE-002` spécifie le contrat d’écriture sécurisé des séances et présences. Ses huit décisions structurantes ont été validées par le Product Owner le 28 juillet 2026. Le contrat est la référence de développement : séparation des états, écriture par lot, brouillons exclus des rapports, contrôle de version, idempotence, verrouillage, motif de correction après clôture et limitation initiale à une séance par cours et par date.
 
 # 11. AKS Calendar — Module suivant
 
