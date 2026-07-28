@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.47 |
+| **Version** | 1.2.48 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Clôture mobile intégrée sur `develop` — validation Apps Script requise**.
+**Clôture mobile validée sur `develop` — recette fonctionnelle mobile autorisée**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -630,12 +630,9 @@ cumulative Apps Script du 28 juillet 2026 est concluante : **325/325 tests réus
 `ANALYTICS-SAISIE-005` est intégré sur `develop` par la PR applicative #61,
 commit `6c67719b870a91bb25798e5b6334e7f4b076ee33`. Il ajoute le blocage d’une
 clôture incomplète, la confirmation explicite, la commande serveur versionnée et
-le retour en lecture seule après succès. Les 4/4 tests ciblés réussissent. La
-validation cumulative Apps Script attendue est de **329/329 tests réussis, 0
-échec**.
+le retour en lecture seule après succès. Les 4/4 tests ciblés réussissent. La validation cumulative Apps Script du 28 juillet 2026 est concluante : **329/329 tests réussis, 0 échec**. Le correctif de l’assertion de test obsolète est intégré par la PR applicative #62, commit `e49047c9`, sans modification du comportement applicatif.
 
-Aucun déploiement utilisateur n’est réalisé à ce stade. La validation Apps
-Script puis la recette mobile constituent la suite du chantier.
+Aucun déploiement utilisateur n’est réalisé à ce stade. La recette mobile sur une copie contrôlée constitue la suite du chantier.
 
 # 11. AKS Calendar — Module suivant
 
