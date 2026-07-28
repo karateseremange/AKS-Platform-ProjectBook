@@ -573,7 +573,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 - suite cumulative **273/273** réussie ;
 - aucun défaut bloquant ou critique ouvert ;
 - bilan d’implémentation et procès-verbal de recette consignés dans `ANALYTICS-008` ;
-- code et documentation présents sur leurs branches `develop` respectives.
+- code applicatif publié sur `main` et documentation de clôture présente sur `develop`.
 
 ---
 
