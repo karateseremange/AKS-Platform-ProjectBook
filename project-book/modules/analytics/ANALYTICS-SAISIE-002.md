@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-002 |
-| **Version** | 1.1.0 |
-| **Statut** | Implémenté sur `develop` — recette Apps Script requise |
+| **Version** | 1.1.1 |
+| **Statut** | Validation Apps Script réussie — recette d’écriture requise |
 | **Nature** | Spécification fonctionnelle, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -296,6 +296,7 @@ Le Product Owner a validé les huit décisions suivantes le 28 juillet 2026. Ell
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.1 | 2026-07-28 | Suite cumulative exécutée dans Apps Script : 290/290 tests réussis, 0 échec ; recette d’écriture sur copies de classeurs encore requise |
 | 1.1.0 | 2026-07-28 | Contrat implémenté sur `develop` par la PR applicative #46, commit `261d308873ecfc5be90f18a674125b0f40367864` ; tests locaux réussis ; recette Apps Script encore requise |
 | 1.0.1 | 2026-07-28 | Validation par le Product Owner des huit décisions structurantes ; contrat prêt à développer |
 | 1.0.0 | 2026-07-28 | Première spécification du contrat d’écriture soumise à validation |
@@ -323,12 +324,13 @@ n’est pas raccordé.
 - tests du service d’écriture : 15/15 ;
 - tests du fournisseur Sheets : 15/15 ;
 - contrôle syntaxique des fichiers modifiés : réussi ;
+- suite cumulative exécutée dans Apps Script le 28 juillet 2026 :
+  290/290 tests réussis, 0 échec ;
 - aucun déploiement Apps Script ni aucune écriture dans un classeur réel.
 
 ### 19.2 Validation restant à produire
 
-Avant publication sur `main` et déploiement, la suite cumulative doit être
-exécutée dans Apps Script. Une recette contrôlée doit ensuite utiliser des copies
-de classeurs Analytics pour vérifier l’ajout des colonnes, la sauvegarde d’un
-brouillon, son exclusion des rapports, la clôture et la lecture de la séance
-clôturée.
+Avant publication sur `main` et déploiement, une recette contrôlée doit utiliser
+des copies de classeurs Analytics pour vérifier l’ajout des colonnes, la
+sauvegarde d’un brouillon, son exclusion des rapports, la clôture et la lecture
+de la séance clôturée.
