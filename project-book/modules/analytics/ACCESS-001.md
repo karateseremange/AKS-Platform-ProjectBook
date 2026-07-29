@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.0.8 |
-| **Statut** | Validé |
+| **Version** | 1.1.0 |
+| **Statut** | Publié sur `main` et validé en production |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -334,10 +334,16 @@ recette est intégré par les PR applicatives #54 et #55, commit final
 Aucun registre réel, aucune interface utilisateur, aucun déploiement Web et aucun
 classeur de production n’ont été modifiés.
 
+Le modèle d’autorisation a ensuite été publié avec le parcours mobile de saisie
+des présences. La validation finale sur `main` est concluante à **333/333 tests
+réussis, 0 échec**. Le déploiement de production a confirmé l’accès au parcours
+autorisé et le retour fonctionnel vers le Centre de pilotage.
+
 ## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-29 | Modèle d’autorisation publié avec le parcours Présences et validé en production ; suite cumulative finale 333/333 réussie |
 | 1.0.8 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie : refus d’écriture non autorisée, identité serveur, périmètre BABY unique et séance clôturée avec 2 présences ; publication sur `main` autorisée |
 | 1.0.7 | 2026-07-28 | Validation Apps Script de l’exposition serveur : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre sans déploiement utilisateur |
 | 1.0.6 | 2026-07-28 | Exposition serveur sécurisée intégrée sur `develop` par la PR #53 ; composition côté serveur, erreurs nettoyées et quatre tests ajoutés ; validation Apps Script requise |

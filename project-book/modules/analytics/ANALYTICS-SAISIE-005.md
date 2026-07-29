@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-005 |
-| **Version** | 1.0.1 |
-| **Statut** | Validé sur `develop` — recette mobile autorisée |
+| **Version** | 1.1.0 |
+| **Statut** | Publié sur `main` et validé en production |
 | **Nature** | Spécification d’incrément et état d’implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -55,9 +55,14 @@ en lecture seule. La syntaxe JavaScript des fichiers modifiés est valide.
 
 La suite cumulative Apps Script exécutée le 28 juillet 2026 est concluante : **329/329 tests réussis, 0 échec**. Elle confirme la clôture mobile sécurisée et l’absence de régression après le correctif de l’assertion de test obsolète intégré par la PR applicative #62, commit `e49047c9`. Aucun déploiement Web ni classeur réel n’est modifié à ce stade.
 
+La recette isolée a ensuite validé la clôture confirmée et le retour en lecture
+seule. L’incrément a été publié sur `main`, puis validé dans le déploiement de
+production avec la suite cumulative **333/333 tests réussis, 0 échec**.
+
 ## 6. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-29 | Clôture confirmée et lecture seule incluses dans le parcours mobile publié et validé en production ; suite cumulative finale 333/333 réussie |
 | 1.0.1 | 2026-07-28 | Validation Apps Script concluante : 329/329 tests réussis, 0 échec ; recette mobile autorisée |
 | 1.0.0 | 2026-07-28 | Clôture mobile sécurisée intégrée sur `develop` ; 4/4 tests ciblés réussis ; validation cumulative 329/329 requise |
