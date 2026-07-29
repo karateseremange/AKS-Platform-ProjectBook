@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.53 |
+| **Version** | 1.2.54 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-29 |
+| **Dernière mise à jour** | 2026-07-30 |
 
 ---
 
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Parcours mobile publié sur `main` et validé en production**.
+**Publié — chantier terminé**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -632,7 +632,20 @@ commit `6c67719b870a91bb25798e5b6334e7f4b076ee33`. Il ajoute le blocage d’une
 clôture incomplète, la confirmation explicite, la commande serveur versionnée et
 le retour en lecture seule après succès. Les 4/4 tests ciblés réussissent. La validation cumulative Apps Script du 28 juillet 2026 est concluante : **329/329 tests réussis, 0 échec**. Le correctif de l’assertion de test obsolète est intégré par la PR applicative #62, commit `e49047c9`, sans modification du comportement applicatif.
 
-`ANALYTICS-SAISIE-006` est intégré sur `develop` par la PR applicative #63, commit `0c78284cdf492ca8275b60aa317618c09087042b`. Il ajoute une route de recette distincte, une composition serveur dédiée et des verrous cumulatifs sur l’identité `karate.seremange@gmail.com`, le cours `BABY`, la saison `2026-2027`, la date `2026-09-19` et le classeur `[RECETTE] Analytics Baby 2026-2027`. Quatre tests cumulatifs portent la suite à **333/333 réussis, 0 échec**. La validation cumulative Apps Script du 29 juillet 2026 est concluante : **333/333 tests réussis, 0 échec**. Le déploiement Web de recette isolé a validé l’ouverture, le brouillon, sa reprise et la clôture. Les correctifs d’affichage de confirmation (PR #64, commit `c81eca83`) et d’ouverture d’une séance clôturée en lecture seule (PR #65, commit `6f3e8f05`) ont chacun conservé une suite cumulative concluante à **333/333 tests réussis, 0 échec**. Le dernier contrôle navigateur est concluant : la séance clôturée s’affiche automatiquement, TEST Alpha reste `Présent`, TEST Beta reste `Absent`, les statuts sont en lecture seule, aucune commande d’écriture n’est proposée et aucun message `[object PointerEvent]` n’apparaît. La navigation limitée à la date `2026-09-19` est conforme au verrouillage volontaire de la recette isolée. Le parcours mobile complet — brouillon, reprise, clôture et lecture seule — est validé.
+`ANALYTICS-SAISIE-006` est intégré sur `develop` par la PR applicative #63,
+commit `0c78284cdf492ca8275b60aa317618c09087042b`. Il ajoute une route de
+recette distincte, une composition serveur dédiée et des verrous cumulatifs sur
+l’identité `karate.seremange@gmail.com`, le cours `BABY`, la saison
+`2026-2027`, une date réservée et le classeur
+`[RECETTE] Analytics Baby 2026-2027`. Quatre tests cumulatifs portent la suite
+à **333/333 réussis, 0 échec**.
+
+La date réservée a ensuite été déplacée au `2026-09-26` afin de documenter un
+nouveau cycle complet sans altérer les preuves précédentes. Cette adaptation,
+publiée par les PR applicatives #82 et #83, conserve une suite cumulative
+concluante à **333/333 tests réussis, 0 échec**. Le contrôle navigateur a validé
+l’ouverture, la saisie, le brouillon, sa reprise, la clôture et la lecture seule
+avec `TEST Alpha` et `TEST Beta`.
 
 La publication sur `main` a ensuite été réalisée. Le bouton de retour de la page
 Présences utilise désormais l’URL absolue du déploiement vers `?app=admin`,
@@ -643,17 +656,22 @@ de celle de production. Les PR applicatives #79 et #81 ont été validées sur
 été mis à jour et le contrôle navigateur final est concluant sur mobile :
 affichage du bouton et retour vers le Centre de pilotage conformes.
 
+Le guide utilisateur illustré `GUIDE-SAISIE-PRESENCES.md` documente l’accès
+depuis la rubrique **Modules**, la préparation d’une séance, la saisie, le
+brouillon, la reprise, la clôture et la lecture seule. Les données de recette y
+sont explicitement identifiées comme fictives.
+
 # 11. AKS Calendar — Module suivant
 
-## 10.1 Statut
+## 11.1 Statut
 
 **Planifié**.
 
-## 10.2 Objectif
+## 11.2 Objectif
 
 AKS Calendar doit proposer un calendrier partagé pour les professeurs et responsables du club en s’appuyant prioritairement sur Google Calendar.
 
-## 10.3 Périmètre prévisionnel
+## 11.3 Périmètre prévisionnel
 
 - intégration avec le compte Google du club ;
 - calendrier partagé ;
@@ -663,7 +681,7 @@ AKS Calendar doit proposer un calendrier partagé pour les professeurs et respon
 - administration depuis AKS Platform lorsque cela apporte une valeur concrète ;
 - journalisation des opérations importantes.
 
-## 10.4 Principe d’implémentation
+## 11.4 Principe d’implémentation
 
 Google Calendar est retenu comme moteur initial afin de couvrir l’essentiel des besoins avec un effort maîtrisé.
 
@@ -782,9 +800,9 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - comment une modification de trajectoire est-elle décidée ?
 - quel est l’état de consolidation documentaire de la V1.1 ?
 
-La trajectoire officielle évolue : WEB-001 et AKS Analytics sont publiés ; la
-V1.2.0 est la version stable et le prochain chantier fonctionnel est
-ANALYTICS-SAISIE :
+La trajectoire officielle évolue : WEB-001, AKS Analytics et le parcours de
+saisie des présences sont publiés ; la V1.2.0 reste la version stable et le
+prochain chantier fonctionnel est **AKS Calendar** :
 
 ```text
 AKS Platform v1.0.0
@@ -795,9 +813,9 @@ WEB-001 — Point d’accès WordPress publié
         ↓
 AKS Platform v1.2.0 — AKS Analytics publié
         ↓
-ANALYTICS-SAISIE — contrat d’écriture publié
+ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
-AKS Calendar
+AKS Calendar — prochain chantier planifié
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
