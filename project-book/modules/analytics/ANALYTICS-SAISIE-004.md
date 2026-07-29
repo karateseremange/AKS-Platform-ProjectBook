@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-004 |
-| **Version** | 1.0.1 |
-| **Statut** | Validé sur `develop` — clôture mobile autorisée à poursuivre |
+| **Version** | 1.1.0 |
+| **Statut** | Publié sur `main` et validé en production |
 | **Nature** | Spécification d’incrément et état d’implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -62,9 +62,15 @@ Aucune publication sur `main`, aucun déploiement Web et aucune modification de
 classeur réel ne sont réalisés à ce stade. La clôture mobile, sa confirmation et
 sa recette fonctionnelle sont autorisées à poursuivre.
 
+Le parcours complet a ensuite validé la création du brouillon, sa reprise
+versionnée et la conservation des statuts dans la recette isolée. L’incrément a
+été publié sur `main`, puis validé dans le déploiement de production avec la
+suite cumulative **333/333 tests réussis, 0 échec**.
+
 ## 6. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-29 | Brouillon et reprise versionnée inclus dans le parcours mobile publié et validé en production ; suite cumulative finale 333/333 réussie |
 | 1.0.1 | 2026-07-28 | Validation Apps Script : suite cumulative 325/325 réussie, 0 échec ; clôture mobile autorisée à poursuivre |
 | 1.0.0 | 2026-07-28 | Saisie rapide et brouillon reprenable intégrés sur `develop` ; 4/4 tests ciblés réussis ; validation cumulative 325/325 requise |
