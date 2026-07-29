@@ -21,8 +21,16 @@ Serémange. Il décrit le parcours validé sur ordinateur, tablette et télépho
 ## 3. Accéder au module
 
 1. ouvrir le Centre de pilotage AKS Platform avec un compte autorisé ;
-2. dans la rubrique **ANALYTICS**, sélectionner **Saisie des présences** ;
+2. dans la rubrique **Modules**, sélectionner **Saisie des présences** ;
 3. attendre le chargement complet de la page.
+
+Le module **Saisie des présences** est autonome. Il apparaît au même niveau que
+**Analytics** et **Questionnaire santé** ; il ne constitue pas une rubrique
+d'Analytics.
+
+![Centre de pilotage : accès à Saisie des présences depuis la rubrique Modules](../assets/presences/01-centre-pilotage.png)
+
+*Figure 1 — Accès au module Saisie des présences depuis la rubrique Modules.*
 
 Le bouton **Retour au Centre de pilotage** permet de revenir à l'accueil sans
 modifier les données.
@@ -66,6 +74,18 @@ Il faut vérifier l'alimentation des licenciés et leur affectation au cours. Il
 n'est pas nécessaire de créer préalablement la séance dans une autre feuille :
 elle est créée lors du premier enregistrement.
 
+![Production sans licencié éligible](../assets/presences/02-production-sans-licencie.png)
+
+*Figure 2 — En production, un cours peut être disponible sans licencié encore affecté.*
+
+![Sélection de la date avec le calendrier](../assets/presences/03-choisir-date.png)
+
+*Figure 3 — Le calendrier permet de choisir la date de la nouvelle séance.*
+
+![Recette avec les licenciés fictifs et l'historique](../assets/presences/04-recette-seance-disponible.png)
+
+*Figure 4 — Recette : deux licenciés fictifs sont disponibles pour la séance du 26/09/2026.*
+
 ## 5. Saisir les présences
 
 Pour chaque licencié, choisir un seul statut :
@@ -82,6 +102,10 @@ Avant d'enregistrer, contrôler :
 
 Sur téléphone ou tablette, faire défiler toute la liste avant de valider.
 
+![Saisie des statuts Présent et Absent](../assets/presences/05-saisie-statuts.png)
+
+*Figure 5 — Recette : TEST Alpha est présent et TEST Beta est absent.*
+
 ## 6. Enregistrer un brouillon
 
 Cliquer sur **Enregistrer le brouillon**.
@@ -95,6 +119,10 @@ que la séance n'est pas clôturée, il reste possible de :
 
 L'historique identifie la séance avec le statut **Brouillon**.
 
+![Confirmation du brouillon enregistré](../assets/presences/06-brouillon-enregistre.png)
+
+*Figure 6 — Recette : le brouillon est enregistré en version 1 et reste modifiable.*
+
 ## 7. Reprendre un brouillon
 
 1. ouvrir de nouveau le module ;
@@ -107,6 +135,10 @@ les choix avant toute modification ou clôture.
 
 Une actualisation complète du navigateur ne supprime pas le brouillon.
 
+![Historique après reprise du brouillon](../assets/presences/07-reprise-brouillon.png)
+
+*Figure 7 — Recette : après actualisation, la séance du 26/09/2026 reste au statut Brouillon.*
+
 ## 8. Clôturer la séance
 
 La clôture doit être réalisée uniquement lorsque tous les statuts sont vérifiés.
@@ -116,6 +148,10 @@ La clôture doit être réalisée uniquement lorsque tous les statuts sont véri
 3. choisir **Annuler** pour revenir à la saisie sans clôturer ;
 4. choisir **Confirmer la clôture** pour rendre la séance définitive.
 
+![Fenêtre de confirmation de clôture](../assets/presences/08-confirmer-cloture.png)
+
+*Figure 8 — La confirmation rappelle que la séance deviendra accessible en lecture seule.*
+
 Après confirmation :
 
 - un message indique que la séance est clôturée ;
@@ -123,6 +159,10 @@ Après confirmation :
 - les commandes de saisie sont désactivées ;
 - l'historique affiche le statut **Clôturée** ;
 - la séance reste consultable en lecture seule après rechargement de la page.
+
+![Séance clôturée et commandes désactivées](../assets/presences/09-seance-cloturee.png)
+
+*Figure 9 — Recette : la clôture persiste après actualisation et les commandes sont désactivées.*
 
 ## 9. Brouillon ou séance clôturée
 
