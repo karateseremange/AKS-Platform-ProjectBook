@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.48 |
+| Version | 1.2.58 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-28 |
+| Dernière mise à jour | 2026-07-29 |
 | Version du produit | V1.2 |
 
 ---
@@ -74,7 +74,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.41 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.52 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -142,11 +142,11 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
-| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001`, `ACCESS-001`, `ANALYTICS-SAISIE-002` | V1.2.0 publiée — contrat d’écriture des présences publié |
+| AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | À créer | Planifié |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
-| Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` | Contrat d’écriture publié ; interface à poursuivre |
+| Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Recette mobile isolée validée sur `develop` ; déploiement de recette autorisé |
 | Licenciés | À créer | À créer | Futur |
 | Communication | À créer | À créer | Futur |
 
@@ -166,6 +166,10 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-SAISIE-001 | Cadrage fonctionnel et UX de la saisie des présences | Validé | 1.0.0 | ANALYTICS-001 à ANALYTICS-009, SECURITY-001, UX-001 |
 | ACCESS-001 | Rôles, capacités et affectations Analytics | Exposition et recette serveur validées — publication applicative autorisée | 1.0.8 | ANALYTICS-SAISIE-001, SECURITY-001, CONFIG-001, LOG-001, AUDIT-001, API-001 |
 | ANALYTICS-SAISIE-002 | Contrat d’écriture des séances et présences | Implémentation et recette validées — publiée sur `main` | 1.1.2 | ANALYTICS-SAISIE-001, ACCESS-001, ANALYTICS-009, SECURITY-001, AUDIT-001, LOG-001, API-001, ERROR-001 |
+| ANALYTICS-SAISIE-003 | Route et navigation mobile des présences | Validée sur `develop` — saisie rapide autorisée à poursuivre | 1.0.1 | ANALYTICS-SAISIE-001, ANALYTICS-SAISIE-002, ACCESS-001, UX-001, API-001 |
+| ANALYTICS-SAISIE-004 | Saisie rapide et brouillon reprenable | Validé sur `develop` — clôture mobile autorisée à poursuivre | 1.0.1 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-003, ACCESS-001, UX-001, API-001 |
+| ANALYTICS-SAISIE-005 | Clôture mobile sécurisée | Validé sur `develop` — recette mobile autorisée | 1.0.1 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-004, ACCESS-001, UX-001, API-001 |
+| ANALYTICS-SAISIE-006 | Recette fonctionnelle mobile isolée | Recette fonctionnelle entièrement validée sur `develop` | 1.0.3 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-005, ACCESS-001, UX-001, API-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -263,6 +267,16 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.58 | 2026-07-29 | ANALYTICS-SAISIE-006 clôturé : parcours mobile complet brouillon, reprise, clôture et lecture seule validé sur la recette isolée ; restriction à la date réservée confirmée conforme |
+| 1.2.57 | 2026-07-29 | Recette mobile : brouillon, reprise et clôture validés ; correctifs PR #64 et #65 validés par 333/333 ; dernier contrôle navigateur de lecture seule autorisé |
+| 1.2.56 | 2026-07-29 | Validation Apps Script d’ANALYTICS-SAISIE-006 : suite cumulative 333/333 réussie, 0 échec ; déploiement Web de recette isolé autorisé |
+| 1.2.55 | 2026-07-29 | ANALYTICS-SAISIE-006 intégré sur `develop` par la PR applicative #63, commit `0c78284c` ; route et composition de recette isolées, cible/date/identité verrouillées ; validation 333/333 requise avant déploiement de recette |
+| 1.2.54 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-005 : suite cumulative 329/329 réussie, 0 échec ; correctif de test PR #62 confirmé ; recette mobile autorisée |
+| 1.2.53 | 2026-07-28 | ANALYTICS-SAISIE-005 intégré sur `develop` par la PR applicative #61, commit `6c67719b` ; clôture mobile sécurisée et 4/4 tests ciblés réussis ; validation 329/329 requise |
+| 1.2.52 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-004 : suite cumulative 325/325 réussie, 0 échec ; clôture mobile autorisée à poursuivre |
+| 1.2.51 | 2026-07-28 | ANALYTICS-SAISIE-004 intégré sur `develop` par la PR applicatives #59 et #60, commit final `3a15d65e` ; saisie rapide, brouillon reprenable et séance clôturée en lecture seule et 4/4 tests ciblés réussis ; validation 325/325 requise |
+| 1.2.50 | 2026-07-28 | Validation Apps Script d’ANALYTICS-SAISIE-003 : suite cumulative 321/321 réussie, 0 échec ; saisie rapide des statuts autorisée à poursuivre |
+| 1.2.49 | 2026-07-28 | ANALYTICS-SAISIE-003 intégré sur `develop` par la PR applicative #58, commit `c7adbe52` ; route, cours autorisés et séances récentes ; 6/6 tests ciblés réussis, validation 321/321 requise |
 | 1.2.48 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie sur la copie Analytics Baby : refus `ACCESS_DENIED`, identité serveur, un cours autorisé, séance clôturée en version 2 et deux présences enregistrées |
 | 1.2.47 | 2026-07-28 | Validation Apps Script de l’exposition serveur ACCESS-001 : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre |
 | 1.2.46 | 2026-07-28 | Exposition serveur sécurisée ACCESS-001 intégrée par la PR applicative #53, commit `d67bc1c2` ; quatre tests ajoutés, validation Apps Script 315/315 requise |

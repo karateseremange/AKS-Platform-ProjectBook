@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.42 |
+| **Version** | 1.2.52 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-28 |
+| **Dernière mise à jour** | 2026-07-29 |
 
 ---
 
@@ -584,7 +584,7 @@ Le modèle métier, l’orchestration, les interfaces, les contrats de sources, 
 
 ## 10.1 Statut
 
-**Contrat d’écriture publié — interface utilisateur à poursuivre**.
+**Recette fonctionnelle mobile isolée terminée et validée sur `develop` — prépublication autorisée**.
 
 Le Product Owner a validé le 28 juillet 2026 la priorité de ce chantier avant
 AKS Calendar.
@@ -618,7 +618,21 @@ L’implémentation du contrat a été fusionnée sur `develop` par la PR applic
 
 La recette d’écriture sur la copie `[RECETTE] Analytics Baby 2026-2027` est également concluante : le brouillon est exclu des rapports, la séance `SEA-96ADF8B7FE53` est clôturée en version 2 et les deux présences sont relues par Analytics. Le contrat d’écriture est publié sur `main` par la PR applicative #49, commit `6cfec0ca1378226223a48464dc6971a685b4cfb5`.
 
-Aucun déploiement utilisateur n’est réalisé à ce stade. La publication du socle d’accès et de l’exposition serveur, puis le développement de l’interface mobile constituent la suite du chantier.
+`ANALYTICS-SAISIE-003` est intégré sur `develop` par la PR applicative #58, commit `c7adbe52a8b30a55804b8f1867842f4e22ec2d9d`. Il ajoute la route `?app=attendance`, l’identité active, les cours autorisés, le choix de date, l’effectif éligible et les séances récentes. Les 6/6 tests ciblés réussissent. La validation cumulative Apps Script du 28 juillet 2026 est également concluante : **321/321 tests réussis, 0 échec**. La saisie rapide des statuts est autorisée à poursuivre sur `develop`.
+
+`ANALYTICS-SAISIE-004` est intégré sur `develop` par les PR applicatives #59 et #60,
+commit final `3a15d65e4b914ea684e5fcf15bf6e48203c77827`. Il ajoute le roster éligible
+nettoyé, les quatre statuts tactiles, la création d’un brouillon et sa reprise
+avec contrôle de version. Une séance clôturée reste en lecture seule. Les 4/4 tests ciblés réussissent. La validation
+cumulative Apps Script du 28 juillet 2026 est concluante : **325/325 tests réussis,
+0 échec**. La clôture mobile, sa confirmation et sa recette sont autorisées à poursuivre.
+
+`ANALYTICS-SAISIE-005` est intégré sur `develop` par la PR applicative #61,
+commit `6c67719b870a91bb25798e5b6334e7f4b076ee33`. Il ajoute le blocage d’une
+clôture incomplète, la confirmation explicite, la commande serveur versionnée et
+le retour en lecture seule après succès. Les 4/4 tests ciblés réussissent. La validation cumulative Apps Script du 28 juillet 2026 est concluante : **329/329 tests réussis, 0 échec**. Le correctif de l’assertion de test obsolète est intégré par la PR applicative #62, commit `e49047c9`, sans modification du comportement applicatif.
+
+Aucun déploiement utilisateur n’est réalisé à ce stade. `ANALYTICS-SAISIE-006` est intégré sur `develop` par la PR applicative #63, commit `0c78284cdf492ca8275b60aa317618c09087042b`. Il ajoute une route de recette distincte, une composition serveur dédiée et des verrous cumulatifs sur l’identité `karate.seremange@gmail.com`, le cours `BABY`, la saison `2026-2027`, la date `2026-09-19` et le classeur `[RECETTE] Analytics Baby 2026-2027`. Quatre tests cumulatifs portent la suite à **333/333 réussis, 0 échec**. La validation cumulative Apps Script du 29 juillet 2026 est concluante : **333/333 tests réussis, 0 échec**. Le déploiement Web de recette isolé a validé l’ouverture, le brouillon, sa reprise et la clôture. Les correctifs d’affichage de confirmation (PR #64, commit `c81eca83`) et d’ouverture d’une séance clôturée en lecture seule (PR #65, commit `6f3e8f05`) ont chacun conservé une suite cumulative concluante à **333/333 tests réussis, 0 échec**. Le dernier contrôle navigateur est concluant : la séance clôturée s’affiche automatiquement, TEST Alpha reste `Présent`, TEST Beta reste `Absent`, les statuts sont en lecture seule, aucune commande d’écriture n’est proposée et aucun message `[object PointerEvent]` n’apparaît. La navigation limitée à la date `2026-09-19` est conforme au verrouillage volontaire de la recette isolée. Le parcours mobile complet — brouillon, reprise, clôture et lecture seule — est validé. La prépublication d’ANALYTICS-SAISIE est autorisée ; `main`, le déploiement de production et les classeurs de production restent inchangés.
 
 # 11. AKS Calendar — Module suivant
 
