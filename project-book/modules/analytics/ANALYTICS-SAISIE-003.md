@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ANALYTICS-SAISIE-003 |
-| **Version** | 1.0.1 |
-| **Statut** | Validé sur `develop` — saisie rapide autorisée à poursuivre |
+| **Version** | 1.1.0 |
+| **Statut** | Publié sur `main` et validé en production |
 | **Nature** | Spécification d’incrément et état d’implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-28 |
@@ -62,9 +62,36 @@ poursuivre sur `develop`.
 Aucune publication sur `main` ni aucun déploiement utilisateur n’est réalisé à ce
 stade.
 
-## 6. Historique
+## 6. Publication et validation en production
+
+Le parcours mobile a été publié sur `main`. Après le déploiement de production,
+le bouton de retour vers le Centre de pilotage a été corrigé afin d’utiliser une
+URL absolue du déploiement Web, transmise par
+`viewModel.navigation.homeTarget`, selon le même contrat que le module
+Analytics.
+
+La composition serveur de production reste distincte de celle de la recette.
+Le bouton conserve la cible `?app=admin`, interdit tout lien relatif vers
+`userCodeAppPanel` et reprend la présentation visuelle des boutons de
+Paramétrages, Journaux et Analytics.
+
+Les preuves finales sont les suivantes :
+
+- suite cumulative sur `develop` : **333/333 tests réussis, 0 échec** ;
+- publication applicative vers `main` : PR
+  [#79](https://github.com/karateseremange/AKS-Platform/pull/79), commit
+  `4cad3c44` ;
+- harmonisation visuelle : PR
+  [#81](https://github.com/karateseremange/AKS-Platform/pull/81), commit
+  `8cee161c` ;
+- suite cumulative finale sur `main` : **333/333 tests réussis, 0 échec** ;
+- validation navigateur en production : bouton visible, adapté au mobile et
+  retour vers le Centre de pilotage fonctionnel.
+
+## 7. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-07-29 | Publication sur `main`, URL absolue de retour alignée sur Analytics, composition production/recette séparée, bouton harmonisé et validation en production après 333/333 tests |
 | 1.0.1 | 2026-07-28 | Validation cumulative Apps Script : 321/321 tests réussis, 0 échec ; saisie rapide autorisée à poursuivre |
 | 1.0.0 | 2026-07-28 | Route et navigation mobile intégrées sur `develop` ; 6/6 tests ciblés réussis ; validation cumulative 321/321 requise |
