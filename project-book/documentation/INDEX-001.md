@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.59 |
+| Version | 1.2.60 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-29 |
+| Dernière mise à jour | 2026-07-30 |
 | Version du produit | V1.2 |
 
 ---
@@ -267,6 +267,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.60 | 2026-07-30 | Clôture complète du parcours Présences : guide utilisateur illustré publié, date de recette déplacée au 26/09/2026 et validée par 333/333 tests, statut terminé et AKS Calendar confirmé comme prochain chantier |
 | 1.2.59 | 2026-07-29 | Clôture de la publication du parcours Présences : URL absolue de retour, séparation production/recette, harmonisation visuelle, 333/333 tests sur `main` et validation navigateur en production |
 | 1.2.58 | 2026-07-29 | ANALYTICS-SAISIE-006 clôturé : parcours mobile complet brouillon, reprise, clôture et lecture seule validé sur la recette isolée ; restriction à la date réservée confirmée conforme |
 | 1.2.57 | 2026-07-29 | Recette mobile : brouillon, reprise et clôture validés ; correctifs PR #64 et #65 validés par 333/333 ; dernier contrôle navigateur de lecture seule autorisé |
