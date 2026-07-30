@@ -6,8 +6,8 @@
 |---|---|
 | Document ID | CALENDAR-001 |
 | Titre | Cadrage fonctionnel et architectural d’AKS Calendar |
-| Version | 1.0.0 |
-| Statut | En revue |
+| Version | 1.0.1 |
+| Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-30 |
 | Version du produit | Post-V1.2.0 |
@@ -162,4 +162,5 @@ Les décisions avancées restent des pistes possibles, mais ne bloquent ni la va
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-07-30 | Cadrage validé par le Product Owner ; socle autorisé à passer à CALENDAR-002 |
 | 1.0.0 | 2026-07-30 | Cadrage initial simplifié après clôture du questionnaire métier ; séparation du socle et des évolutions éventuelles |
