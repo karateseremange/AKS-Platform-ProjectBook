@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.61 |
+| Version | 1.2.62 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-30 |
@@ -143,7 +143,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
-| AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` | Cadrage en revue |
+| AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` | Cadrage validé — CALENDAR-002 autorisé |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -154,7 +154,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
-| CALENDAR-001 | Cadrage fonctionnel et architectural d’AKS Calendar | En revue | 1.0.0 | ROADMAP-001, ARCH-001, SECURITY-001, CONFIG-001, LOG-001, UI-001, UX-001 |
+| CALENDAR-001 | Cadrage fonctionnel et architectural d’AKS Calendar | Validé | 1.0.1 | ROADMAP-001, ARCH-001, SECURITY-001, CONFIG-001, LOG-001, UI-001, UX-001 |
 
 ### 9.2 Documents AKS Analytics
 
@@ -273,6 +273,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.62 | 2026-07-30 | Validation de CALENDAR-001 et autorisation de démarrer CALENDAR-002 |
 | 1.2.61 | 2026-07-30 | Création de CALENDAR-001 : cadrage simplifié du socle Google Calendar, séparation des calendriers Public, Encadrement, Administration / Comité et Propositions, et report des mécanismes avancés |
 | 1.2.60 | 2026-07-30 | Clôture complète du parcours Présences : guide utilisateur illustré publié, date de recette déplacée au 26/09/2026 et validée par 333/333 tests, statut terminé et AKS Calendar confirmé comme prochain chantier |
 | 1.2.59 | 2026-07-29 | Clôture de la publication du parcours Présences : URL absolue de retour, séparation production/recette, harmonisation visuelle, 333/333 tests sur `main` et validation navigateur en production |
