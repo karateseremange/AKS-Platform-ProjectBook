@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.54 |
+| **Version** | 1.2.56 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-30 |
@@ -665,7 +665,9 @@ sont explicitement identifiées comme fictives.
 
 ## 11.1 Statut
 
-**Planifié**.
+**Cadrage validé — CALENDAR-002 autorisé**.
+
+Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. Le document `CALENDAR-001` définit le socle Google Calendar, les quatre calendriers, les audiences, le circuit de proposition et les exclusions. Les mécanismes avancés issus du questionnaire métier sont différés afin de préserver une mise en œuvre simple.
 
 ## 11.2 Objectif
 
@@ -686,6 +688,8 @@ AKS Calendar doit proposer un calendrier partagé pour les professeurs et respon
 Google Calendar est retenu comme moteur initial afin de couvrir l’essentiel des besoins avec un effort maîtrisé.
 
 Un développement interne complet ne pourra être envisagé que si des besoins non couverts justifient clairement son coût et sa maintenance.
+
+L’ordre de réalisation retenu est : `CALENDAR-001` pour le cadrage, `CALENDAR-002` pour la mise en place et la recette Google Calendar, puis `CALENDAR-003` pour la publication du calendrier Public sur WordPress et le guide utilisateur.
 
 ---
 
