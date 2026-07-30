@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.55 |
+| **Version** | 1.2.56 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-30 |
@@ -665,9 +665,9 @@ sont explicitement identifiées comme fictives.
 
 ## 11.1 Statut
 
-**Cadrage en revue**.
+**Cadrage validé — CALENDAR-002 autorisé**.
 
-Le document `CALENDAR-001` définit le socle Google Calendar, les quatre calendriers, les audiences, le circuit de proposition et les exclusions. Les mécanismes avancés issus du questionnaire métier sont différés afin de préserver une mise en œuvre simple.
+Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. Le document `CALENDAR-001` définit le socle Google Calendar, les quatre calendriers, les audiences, le circuit de proposition et les exclusions. Les mécanismes avancés issus du questionnaire métier sont différés afin de préserver une mise en œuvre simple.
 
 ## 11.2 Objectif
 
