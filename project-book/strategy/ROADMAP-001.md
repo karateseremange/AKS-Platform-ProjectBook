@@ -661,13 +661,13 @@ depuis la rubrique **Modules**, la préparation d’une séance, la saisie, le
 brouillon, la reprise, la clôture et la lecture seule. Les données de recette y
 sont explicitement identifiées comme fictives.
 
-# 11. AKS Calendar — Module suivant
+# 11. AKS Calendar — Socle opérationnel
 
 ## 11.1 Statut
 
-**Configuration et recette Google Calendar validées — CALENDAR-003 autorisé**.
+**Socle Google Calendar et publication WordPress validés — chantier terminé**.
 
-Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. La configuration et la recette `CALENDAR-002` ont été achevées le 31 juillet 2026 : quatre calendriers officiels sont opérationnels, les droits internes ont été contrôlés, le circuit Propositions vers Public a été testé et les données temporaires ont été supprimées. `CALENDAR-003` est autorisé pour la publication de `AKS - Public` sur WordPress et la création du guide utilisateur. Les mécanismes avancés issus du questionnaire métier restent différés.
+Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. La configuration et la recette `CALENDAR-002` ont été achevées le 31 juillet 2026 : quatre calendriers officiels sont opérationnels, les droits internes ont été contrôlés, le circuit Propositions vers Public a été testé et les données temporaires ont été supprimées. `CALENDAR-003` a ensuite publié `AKS - Public` sur WordPress à l’adresse https://karate-seremange.fr/calendrier-aks/, validé l’affichage sur ordinateur et mobile, les abonnements Google Agenda et iCal, l’entrée du menu Services en ligne et le guide utilisateur. Le socle AKS Calendar est terminé. Les mécanismes avancés restent différés.
 
 ## 11.2 Objectif
 
@@ -689,7 +689,7 @@ Google Calendar est retenu comme moteur initial afin de couvrir l’essentiel de
 
 Un développement interne complet ne pourra être envisagé que si des besoins non couverts justifient clairement son coût et sa maintenance.
 
-L’ordre de réalisation retenu est : `CALENDAR-001` pour le cadrage, `CALENDAR-002` pour la mise en place et la recette Google Calendar, puis `CALENDAR-003` pour la publication du calendrier Public sur WordPress et le guide utilisateur.
+L’ordre de réalisation a été achevé : `CALENDAR-001` pour le cadrage, `CALENDAR-002` pour la mise en place et la recette Google Calendar, puis `CALENDAR-003` pour la publication du calendrier Public sur WordPress et le guide utilisateur. Aucun développement applicatif n’a été nécessaire.
 
 ---
 
