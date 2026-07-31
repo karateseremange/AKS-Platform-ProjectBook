@@ -275,6 +275,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.64 | 2026-07-31 | CALENDAR-003 validé : calendrier Public publié sur WordPress, affichages ordinateur et mobile, abonnements Google Agenda et iCal, menu Services en ligne et guide utilisateur validés ; socle AKS Calendar clôturé |
 | 1.2.63 | 2026-07-31 | CALENDAR-002 validé : quatre calendriers configurés, droits internes et circuit Propositions vers Public testés, données temporaires supprimées et CALENDAR-003 autorisé |
 | 1.2.62 | 2026-07-30 | Validation de CALENDAR-001 et autorisation de démarrer CALENDAR-002 |
 | 1.2.61 | 2026-07-30 | Création de CALENDAR-001 : cadrage simplifié du socle Google Calendar, séparation des calendriers Public, Encadrement, Administration / Comité et Propositions, et report des mécanismes avancés |
