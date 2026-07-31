@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.56 |
+| **Version** | 1.2.57 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-30 |
+| **Dernière mise à jour** | 2026-07-31 |
 
 ---
 
@@ -665,9 +665,9 @@ sont explicitement identifiées comme fictives.
 
 ## 11.1 Statut
 
-**Cadrage validé — CALENDAR-002 autorisé**.
+**Configuration et recette Google Calendar validées — CALENDAR-003 autorisé**.
 
-Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. Le document `CALENDAR-001` définit le socle Google Calendar, les quatre calendriers, les audiences, le circuit de proposition et les exclusions. Les mécanismes avancés issus du questionnaire métier sont différés afin de préserver une mise en œuvre simple.
+Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. La configuration et la recette `CALENDAR-002` ont été achevées le 31 juillet 2026 : quatre calendriers officiels sont opérationnels, les droits internes ont été contrôlés, le circuit Propositions vers Public a été testé et les données temporaires ont été supprimées. `CALENDAR-003` est autorisé pour la publication de `AKS - Public` sur WordPress et la création du guide utilisateur. Les mécanismes avancés issus du questionnaire métier restent différés.
 
 ## 11.2 Objectif
 
@@ -819,7 +819,7 @@ AKS Platform v1.2.0 — AKS Analytics publié
         ↓
 ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
-AKS Calendar — prochain chantier planifié
+AKS Calendar — socle Google Calendar configuré et testé
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
