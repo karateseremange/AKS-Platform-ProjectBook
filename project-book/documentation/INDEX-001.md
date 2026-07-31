@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.63 |
+| Version | 1.2.64 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-07-31 |
@@ -143,7 +143,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
-| AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001`, `CALENDAR-002` | Configuration et recette validées — CALENDAR-003 autorisé |
+| AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-003` | Socle Google Calendar et publication WordPress opérationnels |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -156,6 +156,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |----|-------|--------|---------|-------------------------|
 | CALENDAR-001 | Cadrage fonctionnel et architectural d’AKS Calendar | Validé | 1.0.1 | ROADMAP-001, ARCH-001, SECURITY-001, CONFIG-001, LOG-001, UI-001, UX-001 |
 | CALENDAR-002 | Configuration et recette du socle Google Calendar | Validé | 1.0.0 | CALENDAR-001, SECURITY-001 |
+| CALENDAR-003 | Publication WordPress et guide utilisateur d’AKS Calendar | Validé | 1.0.0 | CALENDAR-001, CALENDAR-002, WEB-001, SECURITY-001 |
 
 ### 9.2 Documents AKS Analytics
 
