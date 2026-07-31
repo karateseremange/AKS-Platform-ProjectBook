@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.57 |
+| **Version** | 1.2.58 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-07-31 |
@@ -804,9 +804,10 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - comment une modification de trajectoire est-elle décidée ?
 - quel est l’état de consolidation documentaire de la V1.1 ?
 
-La trajectoire officielle évolue : WEB-001, AKS Analytics et le parcours de
-saisie des présences sont publiés ; la V1.2.0 reste la version stable et le
-prochain chantier fonctionnel est **AKS Calendar** :
+La trajectoire officielle est à jour : WEB-001, AKS Analytics, le parcours de
+saisie des présences et le socle AKS Calendar sont publiés ou opérationnels ;
+la V1.2.0 reste la version applicative stable. Le prochain chantier métier sera
+sélectionné dans le backlog par décision du Product Owner :
 
 ```text
 AKS Platform v1.0.0
@@ -819,7 +820,7 @@ AKS Platform v1.2.0 — AKS Analytics publié
         ↓
 ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
-AKS Calendar — socle Google Calendar configuré et testé
+AKS Calendar — socle Google Calendar et publication WordPress opérationnels
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
