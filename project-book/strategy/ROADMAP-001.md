@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.59 |
+| **Version** | 1.2.60 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-01 |
@@ -693,7 +693,32 @@ L’ordre de réalisation a été achevé : `CALENDAR-001` pour le cadrage, `CAL
 
 ---
 
-# 12. Backlog produit après AKS Calendar
+# 12. Prépublication AKS Platform V1.3.0 — AKS Calendar
+
+## 12.1 Statut
+
+**Prête à publier**.
+
+La V1.3.0 regroupe le socle AKS Calendar déjà opérationnel et documenté dans `CALENDAR-001` à `CALENDAR-004`. Elle n’introduit aucun nouveau code applicatif : la valeur livrée repose sur Google Calendar et WordPress.
+
+## 12.2 Critères de sortie validés
+
+- quatre calendriers Google officiels configurés et testés ;
+- droits de consultation et de modification contrôlés ;
+- circuit Propositions vers Public validé ;
+- calendrier public publié sur WordPress et testé sur ordinateur et mobile ;
+- abonnement Google Agenda et téléchargement iCal validés ;
+- page protégée donnant accès aux trois calendriers internes ;
+- double contrôle d’accès WordPress et Google Agenda validé ;
+- guide utilisateur et procès-verbaux de recette documentés ;
+- aucun changement applicatif requis ;
+- branches applicatives réalignées avant publication.
+
+La publication reste conditionnée à la fusion documentaire de `develop` vers `main` et à la création du tag `v1.3.0` conformément à `RELEASE-001`.
+
+---
+
+# 13. Backlog produit après AKS Calendar
 
 Les modules ou évolutions futures restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés.
 
@@ -713,7 +738,7 @@ Chaque candidat devra être évalué selon la valeur, les risques, les dépendan
 
 ---
 
-# 13. Jalons de version
+# 14. Jalons de version
 
 Chaque version suit au minimum les jalons suivants :
 
@@ -731,7 +756,7 @@ Le passage d’un jalon au suivant dépend de la validation des résultats atten
 
 ---
 
-# 14. Gestion des écarts
+# 15. Gestion des écarts
 
 Un écart à la roadmap doit être documenté lorsqu’il concerne :
 
@@ -754,7 +779,7 @@ La décision doit indiquer si l’écart est :
 
 ---
 
-# 15. Indicateurs de pilotage
+# 16. Indicateurs de pilotage
 
 Le suivi de la roadmap repose au minimum sur :
 
@@ -771,7 +796,7 @@ Ces indicateurs servent au pilotage et ne remplacent pas la validation fonctionn
 
 ---
 
-# 16. Règles de branches et de publication
+# 17. Règles de branches et de publication
 
 Pour le dépôt applicatif :
 
@@ -789,7 +814,7 @@ Pour le Project Book :
 
 ---
 
-# 17. Résultat attendu
+# 18. Résultat attendu
 
 ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes :
 
