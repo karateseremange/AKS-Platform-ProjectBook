@@ -6,11 +6,11 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.65 |
+| Version | 1.2.66 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-01 |
-| Version du produit | V1.2 |
+| Version du produit | V1.3 |
 
 ---
 
@@ -245,7 +245,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 
 ---
 
-# 14. Matrice de couverture V1.2
+# 14. Matrice de couverture V1.3
 
 | Domaine | Documents principaux | Couverture |
 |---------|----------------------|------------|
@@ -256,6 +256,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001 | Complète |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
+| AKS Calendar | CALENDAR-001 à CALENDAR-004 | Socle Google Calendar, publication publique et accès internes WordPress validés ; prêt pour publication V1.3.0 |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -276,6 +277,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.66 | 2026-08-01 | Préparation de la V1.3.0 : référencement de la note de publication AKS Calendar, alignement de la matrice de couverture et statut prêt à publier, sans fusion sur main ni création de tag |
 | 1.2.65 | 2026-08-01 | CALENDAR-004 validé : page WordPress protégée, accès aux trois calendriers internes, recette de sécurité et menu Services en ligne validés ; clôture complète du socle AKS Calendar |
 | 1.2.64 | 2026-07-31 | CALENDAR-003 validé : calendrier Public publié sur WordPress, affichages ordinateur et mobile, abonnements Google Agenda et iCal, menu Services en ligne et guide utilisateur validés ; socle AKS Calendar clôturé |
 | 1.2.63 | 2026-07-31 | CALENDAR-002 validé : quatre calendriers configurés, droits internes et circuit Propositions vers Public testés, données temporaires supprimées et CALENDAR-003 autorisé |
