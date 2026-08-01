@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.58 |
+| **Version** | 1.2.59 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-31 |
+| **Dernière mise à jour** | 2026-08-01 |
 
 ---
 
@@ -665,9 +665,9 @@ sont explicitement identifiées comme fictives.
 
 ## 11.1 Statut
 
-**Socle Google Calendar et publication WordPress validés — chantier terminé**.
+**Socle Google Calendar, publication publique et accès internes WordPress validés — chantier terminé**.
 
-Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. La configuration et la recette `CALENDAR-002` ont été achevées le 31 juillet 2026 : quatre calendriers officiels sont opérationnels, les droits internes ont été contrôlés, le circuit Propositions vers Public a été testé et les données temporaires ont été supprimées. `CALENDAR-003` a ensuite publié `AKS - Public` sur WordPress à l’adresse https://karate-seremange.fr/calendrier-aks/, validé l’affichage sur ordinateur et mobile, les abonnements Google Agenda et iCal, l’entrée du menu Services en ligne et le guide utilisateur. Le socle AKS Calendar est terminé. Les mécanismes avancés restent différés.
+Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. La configuration et la recette `CALENDAR-002` ont été achevées le 31 juillet 2026 : quatre calendriers officiels sont opérationnels, les droits internes ont été contrôlés, le circuit Propositions vers Public a été testé et les données temporaires ont été supprimées. `CALENDAR-003` a ensuite publié `AKS - Public` sur WordPress à l’adresse https://karate-seremange.fr/calendrier-aks/, validé l’affichage sur ordinateur et mobile, les abonnements Google Agenda et iCal, l’entrée du menu Services en ligne et le guide utilisateur. `CALENDAR-004` complète le dispositif le 1er août 2026 avec une page WordPress protégée donnant accès aux trois calendriers internes ; la recette confirme le filtre WordPress, la connexion Google et le contrôle effectif des droits par Google Calendar. Le socle AKS Calendar est désormais complètement terminé. Les mécanismes avancés restent différés.
 
 ## 11.2 Objectif
 
@@ -689,7 +689,7 @@ Google Calendar est retenu comme moteur initial afin de couvrir l’essentiel de
 
 Un développement interne complet ne pourra être envisagé que si des besoins non couverts justifient clairement son coût et sa maintenance.
 
-L’ordre de réalisation a été achevé : `CALENDAR-001` pour le cadrage, `CALENDAR-002` pour la mise en place et la recette Google Calendar, puis `CALENDAR-003` pour la publication du calendrier Public sur WordPress et le guide utilisateur. Aucun développement applicatif n’a été nécessaire.
+L’ordre de réalisation a été achevé : `CALENDAR-001` pour le cadrage, `CALENDAR-002` pour la mise en place et la recette Google Calendar, `CALENDAR-003` pour la publication du calendrier Public sur WordPress et le guide utilisateur, puis `CALENDAR-004` pour l’accès protégé aux trois calendriers internes depuis le site. Aucun développement applicatif n’a été nécessaire.
 
 ---
 
@@ -820,7 +820,7 @@ AKS Platform v1.2.0 — AKS Analytics publié
         ↓
 ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
-AKS Calendar — socle Google Calendar et publication WordPress opérationnels
+AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
