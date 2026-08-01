@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.54 |
+| **Version** | 1.2.60 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-30 |
+| **Dernière mise à jour** | 2026-08-01 |
 
 ---
 
@@ -661,11 +661,13 @@ depuis la rubrique **Modules**, la préparation d’une séance, la saisie, le
 brouillon, la reprise, la clôture et la lecture seule. Les données de recette y
 sont explicitement identifiées comme fictives.
 
-# 11. AKS Calendar — Module suivant
+# 11. AKS Calendar — Socle opérationnel
 
 ## 11.1 Statut
 
-**Planifié**.
+**Socle Google Calendar, publication publique et accès internes WordPress validés — chantier terminé**.
+
+Le Product Owner a validé `CALENDAR-001` le 30 juillet 2026. La configuration et la recette `CALENDAR-002` ont été achevées le 31 juillet 2026 : quatre calendriers officiels sont opérationnels, les droits internes ont été contrôlés, le circuit Propositions vers Public a été testé et les données temporaires ont été supprimées. `CALENDAR-003` a ensuite publié `AKS - Public` sur WordPress à l’adresse https://karate-seremange.fr/calendrier-aks/, validé l’affichage sur ordinateur et mobile, les abonnements Google Agenda et iCal, l’entrée du menu Services en ligne et le guide utilisateur. `CALENDAR-004` complète le dispositif le 1er août 2026 avec une page WordPress protégée donnant accès aux trois calendriers internes ; la recette confirme le filtre WordPress, la connexion Google et le contrôle effectif des droits par Google Calendar. Le socle AKS Calendar est désormais complètement terminé. Les mécanismes avancés restent différés.
 
 ## 11.2 Objectif
 
@@ -687,9 +689,36 @@ Google Calendar est retenu comme moteur initial afin de couvrir l’essentiel de
 
 Un développement interne complet ne pourra être envisagé que si des besoins non couverts justifient clairement son coût et sa maintenance.
 
+L’ordre de réalisation a été achevé : `CALENDAR-001` pour le cadrage, `CALENDAR-002` pour la mise en place et la recette Google Calendar, `CALENDAR-003` pour la publication du calendrier Public sur WordPress et le guide utilisateur, puis `CALENDAR-004` pour l’accès protégé aux trois calendriers internes depuis le site. Aucun développement applicatif n’a été nécessaire.
+
 ---
 
-# 12. Backlog produit après AKS Calendar
+# 12. Prépublication AKS Platform V1.3.0 — AKS Calendar
+
+## 12.1 Statut
+
+**Prête à publier**.
+
+La V1.3.0 regroupe le socle AKS Calendar déjà opérationnel et documenté dans `CALENDAR-001` à `CALENDAR-004`. Elle n’introduit aucun nouveau code applicatif : la valeur livrée repose sur Google Calendar et WordPress.
+
+## 12.2 Critères de sortie validés
+
+- quatre calendriers Google officiels configurés et testés ;
+- droits de consultation et de modification contrôlés ;
+- circuit Propositions vers Public validé ;
+- calendrier public publié sur WordPress et testé sur ordinateur et mobile ;
+- abonnement Google Agenda et téléchargement iCal validés ;
+- page protégée donnant accès aux trois calendriers internes ;
+- double contrôle d’accès WordPress et Google Agenda validé ;
+- guide utilisateur et procès-verbaux de recette documentés ;
+- aucun changement applicatif requis ;
+- branches applicatives réalignées avant publication.
+
+La publication reste conditionnée à la fusion documentaire de `develop` vers `main` et à la création du tag `v1.3.0` conformément à `RELEASE-001`.
+
+---
+
+# 13. Backlog produit après AKS Calendar
 
 Les modules ou évolutions futures restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés.
 
@@ -709,7 +738,7 @@ Chaque candidat devra être évalué selon la valeur, les risques, les dépendan
 
 ---
 
-# 13. Jalons de version
+# 14. Jalons de version
 
 Chaque version suit au minimum les jalons suivants :
 
@@ -727,7 +756,7 @@ Le passage d’un jalon au suivant dépend de la validation des résultats atten
 
 ---
 
-# 14. Gestion des écarts
+# 15. Gestion des écarts
 
 Un écart à la roadmap doit être documenté lorsqu’il concerne :
 
@@ -750,7 +779,7 @@ La décision doit indiquer si l’écart est :
 
 ---
 
-# 15. Indicateurs de pilotage
+# 16. Indicateurs de pilotage
 
 Le suivi de la roadmap repose au minimum sur :
 
@@ -767,7 +796,7 @@ Ces indicateurs servent au pilotage et ne remplacent pas la validation fonctionn
 
 ---
 
-# 16. Règles de branches et de publication
+# 17. Règles de branches et de publication
 
 Pour le dépôt applicatif :
 
@@ -785,7 +814,7 @@ Pour le Project Book :
 
 ---
 
-# 17. Résultat attendu
+# 18. Résultat attendu
 
 ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes :
 
@@ -800,9 +829,10 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 - comment une modification de trajectoire est-elle décidée ?
 - quel est l’état de consolidation documentaire de la V1.1 ?
 
-La trajectoire officielle évolue : WEB-001, AKS Analytics et le parcours de
-saisie des présences sont publiés ; la V1.2.0 reste la version stable et le
-prochain chantier fonctionnel est **AKS Calendar** :
+La trajectoire officielle est à jour : WEB-001, AKS Analytics, le parcours de
+saisie des présences et le socle AKS Calendar sont publiés ou opérationnels ;
+la V1.2.0 reste la version applicative stable. Le prochain chantier métier sera
+sélectionné dans le backlog par décision du Product Owner :
 
 ```text
 AKS Platform v1.0.0
@@ -815,7 +845,7 @@ AKS Platform v1.2.0 — AKS Analytics publié
         ↓
 ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
-AKS Calendar — prochain chantier planifié
+AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.

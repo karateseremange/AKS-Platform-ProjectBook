@@ -56,6 +56,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
 - [V1.1.0 — Note de publication](releases/V1.1.0.md)
 - [V1.2.0 — Note de publication](releases/V1.2.0.md)
+- [V1.3.0 — Note de prépublication](releases/V1.3.0.md)
 
 ## Vision et stratégie
 
@@ -156,5 +157,7 @@ stable. Elle correspond au tag `v1.2.0` et au commit
 Cette version introduit AKS Analytics. Son périmètre, ses limites et ses preuves
 de validation sont consignés dans la [note de publication V1.2.0](releases/V1.2.0.md)
 et dans `ANALYTICS-008`.
+
+La **V1.3.0** est prête à être publiée. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).
