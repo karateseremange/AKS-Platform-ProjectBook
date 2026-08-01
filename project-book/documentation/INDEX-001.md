@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.64 |
+| Version | 1.2.65 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-07-31 |
+| Dernière mise à jour | 2026-08-01 |
 | Version du produit | V1.2 |
 
 ---
@@ -74,7 +74,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.57 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.59 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -143,7 +143,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | Module | Dossier | Document d'entrée | État |
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
-| AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-003` | Socle Google Calendar et publication WordPress opérationnels |
+| AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -157,6 +157,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | CALENDAR-001 | Cadrage fonctionnel et architectural d’AKS Calendar | Validé | 1.0.1 | ROADMAP-001, ARCH-001, SECURITY-001, CONFIG-001, LOG-001, UI-001, UX-001 |
 | CALENDAR-002 | Configuration et recette du socle Google Calendar | Validé | 1.0.0 | CALENDAR-001, SECURITY-001 |
 | CALENDAR-003 | Publication WordPress et guide utilisateur d’AKS Calendar | Validé | 1.0.0 | CALENDAR-001, CALENDAR-002, WEB-001, SECURITY-001 |
+| CALENDAR-004 | Accès protégé aux calendriers internes depuis WordPress | Validé | 1.0.0 | CALENDAR-002, CALENDAR-003, WEB-001, SECURITY-001 |
 
 ### 9.2 Documents AKS Analytics
 
@@ -275,6 +276,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.65 | 2026-08-01 | CALENDAR-004 validé : page WordPress protégée, accès aux trois calendriers internes, recette de sécurité et menu Services en ligne validés ; clôture complète du socle AKS Calendar |
 | 1.2.64 | 2026-07-31 | CALENDAR-003 validé : calendrier Public publié sur WordPress, affichages ordinateur et mobile, abonnements Google Agenda et iCal, menu Services en ligne et guide utilisateur validés ; socle AKS Calendar clôturé |
 | 1.2.63 | 2026-07-31 | CALENDAR-002 validé : quatre calendriers configurés, droits internes et circuit Propositions vers Public testés, données temporaires supprimées et CALENDAR-003 autorisé |
 | 1.2.62 | 2026-07-30 | Validation de CALENDAR-001 et autorisation de démarrer CALENDAR-002 |
