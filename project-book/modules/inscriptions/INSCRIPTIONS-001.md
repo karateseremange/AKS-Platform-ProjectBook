@@ -6,7 +6,7 @@
 |---|---|
 | Document ID | INSCRIPTIONS-001 |
 | Titre | Cadrage fonctionnel d’AKS Inscriptions |
-| Version | 1.0.0 |
+| Version | 1.0.1 |
 | Statut | En revue |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-02 |
@@ -82,6 +82,29 @@ Le cours féminin et le Body Karaté n’exigent pas de calcul de répartition :
 - aucune API SIKADA n’est connue à ce jour.
 
 Les anciens fichiers restent des sources d’apprentissage métier. Leur remise à niveau exhaustive n’est pas un préalable à AKS Inscriptions.
+
+## 3.4 Transition depuis Google Forms
+
+Tant que les formulaires publics d’AKS Inscriptions ne sont pas développés, testés et mis en production, les Google Forms existants restent les outils officiels de préinscription.
+
+Cette continuité concerne les trois parcours :
+
+- Karaté classique ;
+- Cours féminin ;
+- Body Karaté.
+
+Toutes les réponses recueillies pendant cette période transitoire doivent pouvoir être reprises dans AKS Inscriptions sans ressaisie manuelle. L’import doit :
+
+- conserver la source, la date de réception et les informations utiles de chaque réponse ;
+- normaliser les données sans écraser silencieusement la valeur reçue ;
+- détecter les doublons et les correspondances ambiguës ;
+- pouvoir être relancé sans recréer un dossier déjà importé ;
+- rapprocher, après contrôle administratif, la préinscription d’un licencié existant ou créer un nouvel identifiant interne ;
+- créer ou compléter le dossier saisonnier correspondant ;
+- prendre en charge les réponses déjà présentes et celles reçues jusqu’à la bascule ;
+- produire un rapport de contrôle avant toute activation opérationnelle.
+
+La mise en service future des formulaires AKS Platform ne peut intervenir qu’après validation de la reprise complète des Google Forms. Aucun dossier recueilli pendant la transition ne doit être perdu, ignoré ou recréé en double.
 
 # 4. Publics et parcours d’entrée
 
@@ -399,7 +422,7 @@ AKS Inscriptions est la future source de vérité des personnes gérées par le 
 
 Les responsabilités initiales sont séparées ainsi :
 
-- les formulaires publics recueillent les demandes et restent des sources externes d’entrée ;
+- les Google Forms restent les sources opérationnelles officielles d’entrée pendant la transition, puis les formulaires AKS Platform prendront le relais après reprise validée ;
 - AKS Inscriptions contrôle, normalise et conserve la version métier du dossier ;
 - SIKADA reste la source fédérale de création et d’état des licences ;
 - AKS Inscriptions importe uniquement les données fédérales nécessaires après validation ;
@@ -415,7 +438,7 @@ Le support de stockage et les contrats techniques détaillés ne sont pas décid
 Le périmètre fonctionnel engagé couvre :
 
 - le référentiel Licencié et les dossiers saisonniers ;
-- la reprise contrôlée des trois parcours de préinscription ;
+- la reprise contrôlée, complète et relançable des réponses Google Forms des trois parcours de préinscription ;
 - le contrôle et la correction des données ;
 - l’affectation et la capacité des cours ;
 - les confirmations par courriel ;
@@ -451,7 +474,7 @@ Le socle documentaire respecte `STD-001` :
 
 Les besoins spécialisés pourront ensuite être documentés à partir de `INSCRIPTIONS-007`, sans remplacer le socle :
 
-7. reprise et normalisation des préinscriptions ;
+7. import idempotent, reprise et normalisation des réponses Google Forms des trois parcours ;
 8. contrôle, doublons, capacités et affectation aux cours ;
 9. confirmations et notifications ;
 10. inscription physique, pièces et formalités ;
@@ -472,7 +495,7 @@ Avant l’implémentation, il reste à fixer :
 - les règles de conservation, archivage et suppression ;
 - les règles précises de calcul des cotisations, remises, échéances et aides ;
 - les modalités de gestion d’un renouvellement et de rapprochement avec un licencié existant ;
-- le comportement en cas de doublon entre plusieurs formulaires ;
+- les clés de rapprochement et le comportement détaillé en cas de doublon entre plusieurs formulaires ;
 - le format d’un futur export SIKADA contenant le produit ou le style Body Karaté.
 
 Ces points sont des entrées des incréments suivants. Ils n’invalident pas la décision de créer un module unique.
@@ -489,6 +512,7 @@ Le cadrage est validable lorsque :
 - les principes de suivi des places, pièces, règlements et formalités sont posés ;
 - la décision médicale du club pour les nouveaux licenciés est consignée ;
 - l’import SIKADA manuel contrôlé est cadré ;
+- la transition depuis les trois Google Forms et la reprise sans perte ni doublon sont cadrées ;
 - les rôles, protections des données et dépendances sont identifiés ;
 - les exclusions et informations ouvertes sont explicites ;
 - `INDEX-001`, `ROADMAP-001` et le `README.md` sont alignés ;
@@ -507,9 +531,11 @@ Le cadrage est validable lorsque :
 9. SIKADA reste la source fédérale ; le numéro de licence est importé après création et ne devient pas l’identifiant interne.
 10. Aucun paiement en ligne ni espace licencié n’est inclus dans le périmètre initial.
 11. Analytics et Présences consommeront uniquement les licenciés activés selon un état métier validé.
+12. Les trois Google Forms restent officiels jusqu’à la mise en production des formulaires AKS Platform ; toutes leurs réponses seront reprises par un import relançable, contrôlé et sans doublon.
 
 # 24. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-02 | Ajout de la transition Google Forms : maintien opérationnel des trois sources et reprise complète, contrôlée, relançable et sans doublon dans AKS Inscriptions |
 | 1.0.0 | 2026-08-02 | Cadrage initial issu de l’audit des formulaires, classeurs, documents FFKDA et export SIKADA, puis des décisions validées par le Product Owner |
