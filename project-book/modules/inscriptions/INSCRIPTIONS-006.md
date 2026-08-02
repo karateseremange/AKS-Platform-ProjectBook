@@ -358,7 +358,7 @@ Chaque extension d’autorisation exige les preuves correspondant à son niveau 
 - les preuves avant/après et les ressources inchangées sont exigées ;
 - les prérequis bloquants sont clairement distingués des éléments déjà disponibles ;
 - le premier incrément reste borné à la matérialisation et à l’exécution des jeux sans écriture, avec une preuve cumulative à 341/341 et un bilan séparant explicitement réussites, résultats partiels et blocages ;
-- aucun code, classeur, dossier, compte, accès ou déploiement réel n’est modifié.
+- aucune donnée métier réelle n’est lue ou écrite et aucune ressource Google métier réelle (classeur, formulaire, dossier, compte, accès, partage ou déploiement) n’est modifiée.
 
 ## 22. Décisions structurantes
 
