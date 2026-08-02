@@ -34,7 +34,9 @@ project-book/
 ├── administration/
 ├── ux/
 ├── modules/
-│   └── analytics/
+│   ├── analytics/
+│   ├── calendar/
+│   └── inscriptions/
 ├── documentation/
 └── release/
 ```
@@ -98,6 +100,8 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 Les spécifications des modules métier sont regroupées dans le dossier [`project-book/modules/`](project-book/modules/).
 
 - [AKS Analytics](project-book/modules/analytics/) — premier nouveau module métier de la phase suivant la consolidation V1.1.
+- [AKS Calendar](project-book/modules/calendar/) — socle Google Calendar publié en V1.3.0.
+- [AKS Inscriptions](project-book/modules/inscriptions/) — chantier fonctionnel engagé après la V1.3.0.
 
 Le module historique **Questionnaire Santé** reste la première capacité métier livrée en V1.0.0. Les prochains modules sont intégrés progressivement selon `ROADMAP-001`.
 
@@ -158,6 +162,8 @@ Cette version introduit AKS Analytics. Son périmètre, ses limites et ses preuv
 de validation sont consignés dans la [note de publication V1.2.0](releases/V1.2.0.md)
 et dans `ANALYTICS-008`.
 
-La **V1.3.0** est prête à être publiée. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version.
+La **V1.3.0** a été publiée le 1er août 2026. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version. Le tag documentaire `v1.3.0` pointe sur le commit `647ae45a501bf14c1f3463fbca480945993bc515`.
+
+Le chantier suivant est **AKS Inscriptions**. Son cadrage fonctionnel initial est préparé dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md), sans code applicatif à ce stade.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).

@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.60 |
+| **Version** | 1.2.61 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-01 |
+| **Dernière mise à jour** | 2026-08-02 |
 
 ---
 
@@ -119,6 +119,8 @@ AKS Platform v1.2.0 — AKS Analytics
 ANALYTICS-SAISIE — Saisie des présences et contrôle d’accès
         ↓
 AKS Calendar — Intégration Google Calendar
+        ↓
+AKS Inscriptions — Gestion des licenciés et des inscriptions
         ↓
 Modules futurs priorisés selon la valeur métier
 ```
@@ -693,13 +695,13 @@ L’ordre de réalisation a été achevé : `CALENDAR-001` pour le cadrage, `CAL
 
 ---
 
-# 12. Prépublication AKS Platform V1.3.0 — AKS Calendar
+# 12. Publication AKS Platform V1.3.0 — AKS Calendar
 
 ## 12.1 Statut
 
-**Prête à publier**.
+**Publiée le 1er août 2026**.
 
-La V1.3.0 regroupe le socle AKS Calendar déjà opérationnel et documenté dans `CALENDAR-001` à `CALENDAR-004`. Elle n’introduit aucun nouveau code applicatif : la valeur livrée repose sur Google Calendar et WordPress.
+La V1.3.0 regroupe le socle AKS Calendar opérationnel et documenté dans `CALENDAR-001` à `CALENDAR-004`. Elle n’introduit aucun nouveau code applicatif : la valeur livrée repose sur Google Calendar et WordPress. Le tag documentaire `v1.3.0` pointe sur le commit de publication `647ae45a501bf14c1f3463fbca480945993bc515`.
 
 ## 12.2 Critères de sortie validés
 
@@ -714,27 +716,41 @@ La V1.3.0 regroupe le socle AKS Calendar déjà opérationnel et documenté dans
 - aucun changement applicatif requis ;
 - branches applicatives réalignées avant publication.
 
-La publication reste conditionnée à la fusion documentaire de `develop` vers `main` et à la création du tag `v1.3.0` conformément à `RELEASE-001`.
+La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vérifiées. La V1.3.0 est clôturée.
 
 ---
 
-# 13. Backlog produit après AKS Calendar
+# 13. AKS Inscriptions — Chantier engagé
 
-Les modules ou évolutions futures restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés.
+## 13.1 Statut
 
-Ils pourront notamment concerner :
+**Engagé — cadrage fonctionnel en revue**.
 
-- la gestion des licenciés ;
-- les inscriptions ;
-- les grades et passages de grade ;
-- les documents associatifs ;
-- les communications ;
-- les tableaux de bord métier ;
-- d’autres intégrations externes.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` formalise le cadrage fonctionnel avant tout développement applicatif.
 
-Leur ordre n’est pas fixé par le présent document.
+## 13.2 Objectif
 
-Chaque candidat devra être évalué selon la valeur, les risques, les dépendances et l’effort de maintenance.
+AKS Inscriptions doit remplacer progressivement les recopies et suivis répartis entre formulaires Google, classeurs Excel et documents de travail par un référentiel commun des licenciés et des dossiers saisonniers.
+
+Le parcours couvre la préinscription ouverte toute la saison, le contrôle des données, l’affectation au cours, les capacités et listes d’attente, la confirmation, l’inscription physique, les pièces, règlements et aides, la préparation SIKADA, l’import des numéros FFK puis l’activation vers Analytics et Présences.
+
+## 13.3 Principes validés
+
+- trois formulaires publics alimentent un seul module ;
+- la personne possède un identifiant interne stable et un dossier par saison ;
+- le numéro FFK est renseigné après création dans SIKADA et n’est pas l’identifiant interne ;
+- la préinscription reste obligatoire pour toute nouvelle inscription et ouverte toute la saison ;
+- les places restent limitées par cours et une liste d’attente est prévue ;
+- le paiement en ligne et l’espace licencié sont exclus du périmètre initial ;
+- aucun code n’est écrit avant validation du cadrage fonctionnel.
+
+## 13.4 Prochain jalon
+
+Le prochain jalon est la validation formelle d’`INSCRIPTIONS-001`, puis la définition du modèle métier détaillé et des contrats de données conformément à `STD-001`.
+
+## 13.5 Backlog restant
+
+Les autres modules ou évolutions restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés. Ils pourront notamment concerner les grades et passages de grade, les documents associatifs, les communications, les tableaux de bord métier et d’autres intégrations externes.
 
 ---
 
@@ -831,8 +847,8 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 
 La trajectoire officielle est à jour : WEB-001, AKS Analytics, le parcours de
 saisie des présences et le socle AKS Calendar sont publiés ou opérationnels ;
-la V1.2.0 reste la version applicative stable. Le prochain chantier métier sera
-sélectionné dans le backlog par décision du Product Owner :
+la V1.2.0 reste la version applicative stable. AKS Inscriptions est le chantier
+métier engagé après la publication documentaire de la V1.3.0 :
 
 ```text
 AKS Platform v1.0.0
@@ -846,6 +862,16 @@ AKS Platform v1.2.0 — AKS Analytics publié
 ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
+        ↓
+AKS Inscriptions — cadrage fonctionnel en revue, aucun code applicatif
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
+
+---
+
+# 19. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 1.2.61 | 2026-08-02 | Publication V1.3.0 alignée sur l’état réel et engagement d’AKS Inscriptions avec INSCRIPTIONS-001 comme premier incrément documentaire |
