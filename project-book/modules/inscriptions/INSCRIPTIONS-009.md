@@ -68,11 +68,11 @@ Chaque entrée du journal contient uniquement :
 | `schemaVersion` | Valeur explicite `inscriptions-command/1.0` |
 | `commandId` | Identifiant technique immuable |
 | `idempotencyKey` | Clé unique dans la portée autorisée |
-| `payloadFingerprint` | Empreinte canonique ; jamais le contenu métier complet |
+| `payloadFingerprint` | Empreinte canonique du contenu utile ; jamais le contenu métier complet |
 | `actor` | Identité technique normalisée |
-| `action` | Action Inscriptions autorisée |
-| `target` | Cible technique minimisée |
-| `scope` | Module, saison, section et cours lorsque requis |
+| `action` | Type d’action Inscriptions autorisée ; composante de l’identité idempotente |
+| `target` | Cible technique minimisée ; composante de l’identité idempotente |
+| `scope` | Module, saison, section et cours lorsque requis ; composante de l’identité idempotente |
 | `correlationId` | Identifiant commun au journal, au dépôt et à l’audit |
 | `status` | État fermé défini au § 6 |
 | `attemptCount` | Nombre de tentatives contrôlé |
@@ -107,10 +107,10 @@ Toute autre transition est refusée. Une version attendue différente de la vers
 
 ## 7. Idempotence et reprise
 
-La première exécution réserve la clé avec l’empreinte canonique de la commande. Ensuite :
+La première exécution réserve la clé avec une identité idempotente composée de `action`, `target`, `scope` et `payloadFingerprint`. Ces quatre composantes sont normalisées et comparées ensemble ; l’empreinte seule ne suffit jamais à identifier la commande. Ensuite :
 
-- même clé et même empreinte : consultation ou reprise de l’entrée existante ;
-- même clé et empreinte différente : `INSCRIPTIONS_IDEMPOTENCY_CONFLICT`, sans mutation ;
+- même clé et identité idempotente strictement identique : consultation ou reprise de l’entrée existante ;
+- même clé avec `action`, `target`, `scope` ou `payloadFingerprint` différent : `INSCRIPTIONS_IDEMPOTENCY_CONFLICT`, sans mutation ;
 - commande déjà `CONFIRMEE` : aucun nouveau commit, résultat immuable ;
 - commande `INTENTION` : reprise avant mutation ;
 - commande `EN_COURS` ou `ECHEC_RECUPERABLE` : réconciliation obligatoire avec le dépôt injecté avant toute décision ;
@@ -119,6 +119,19 @@ La première exécution réserve la clé avec l’empreinte canonique de la comm
 - résultat ambigu ou invérifiable : `ECHEC_RECUPERABLE` ou `ECHEC_FINAL`, jamais succès.
 
 L’autorisation est recalculée côté serveur à chaque exécution ou reprise. Un droit ancien enregistré dans le journal ne vaut jamais autorisation actuelle.
+
+### 7.1 Politique de tentatives
+
+Le nombre maximal de tentatives de mutation est fixé à **3**, tentative initiale comprise.
+
+- `attemptCount` vaut `0` lors de la réservation en `INTENTION` ;
+- il est incrémenté atomiquement immédiatement avant chaque transition vers `EN_COURS` autorisant une tentative de commit ;
+- une consultation, un rejeu déjà `CONFIRMEE` ou une réconciliation concluant que le dépôt a déjà appliqué le résultat n’incrémente pas le compteur ;
+- après un échec récupérable, une nouvelle tentative n’est autorisée que si `attemptCount < 3` et après réconciliation du dépôt ;
+- l’échec de la troisième tentative fait passer la commande en `ECHEC_FINAL` ;
+- un résultat ambigu ou invérifiable passe en `ECHEC_RECUPERABLE` s’il reste une tentative, sinon en `ECHEC_FINAL`.
+
+Le plafond est une règle du contrat et ne peut pas être relevé silencieusement par un adaptateur. Toute reprise administrative d’une commande en `ECHEC_FINAL` exige une décision explicite hors de ce cycle automatique.
 
 ## 8. Ordre obligatoire
 
@@ -144,15 +157,15 @@ Les tests automatisés démontrent au minimum :
 - le refus des états ou transitions inconnus ;
 - l’incrément optimiste de version et le refus d’une mise à jour concurrente ;
 - la réservation unique d’une clé idempotente ;
-- le rejeu identique sans nouveau commit ;
-- le conflit de même clé avec une empreinte différente ;
+- le rejeu avec les mêmes `action`, `target`, `scope` et `payloadFingerprint` sans nouveau commit ;
+- le conflit de même clé lorsque l’une de ces quatre composantes diffère ;
 - la reprise après interruption en `INTENTION` ;
 - la reprise après interruption en `EN_COURS` avant commit ;
 - la réconciliation après commit mais avant audit final ;
 - la reconstruction du service avec un nouveau moteur utilisant le même double de journal ;
 - le recalcul de l’autorisation lors d’une reprise ;
 - l’absence de confirmation si contrôle ou audit final échoue ;
-- le passage contrôlé vers `ECHEC_RECUPERABLE` puis `ECHEC_FINAL` ;
+- le comptage atomique des tentatives, l’absence d’incrément lors d’une simple réconciliation et le passage en `ECHEC_FINAL` après l’échec de la troisième tentative ;
 - la corrélation identique dans le journal, le dépôt et l’audit ;
 - l’absence d’API Google dans le chemin testé ;
 - la réussite de la suite cumulative Apps Script.
@@ -216,7 +229,7 @@ L’incrément sera validable lorsque :
 
 1. Le journal de commandes est une dépendance injectée du domaine.
 2. La clé idempotente est réservée avant toute mutation.
-3. L’empreinte remplace le contenu métier complet dans le journal.
+3. L’identité idempotente compare ensemble l’action, la cible, la portée et l’empreinte, laquelle remplace le contenu métier complet dans le journal.
 4. Une reprise recalcule toujours l’autorisation.
 5. Une commande `EN_COURS` est réconciliée avec le dépôt avant tout nouveau commit.
 6. Seuls contrôle, audit final et journal confirmé permettent d’annoncer le succès.
