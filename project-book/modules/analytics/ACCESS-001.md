@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.2.0 |
+| **Version** | 1.2.1 |
 | **Statut** | Socle v1.1.0 validé en production — extension transverse en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -32,7 +32,8 @@ nouvelle exposition de données privées ou écriture dans les référentiels m�
 - Une adresse reçue du navigateur n’est jamais une preuve d’identité.
 - Tout accès est refusé si l’identité, le registre, le rôle, l’affectation ou la
   capacité requise est absent, inactif, invalide ou ambigu.
-- L’autorisation est évaluée à chaque appel serveur, par capacité et par cours.
+- L’autorisation est évaluée à chaque appel serveur, par capacité et selon les
+  périmètres applicables : module, saison, section et cours.
 - Le client peut masquer une commande, mais le serveur reste seul décisionnaire.
 - Les droits suivent le moindre privilège et aucune affectation n’est implicite.
 - Une modification du registre d’accès est une action administrative auditée.
@@ -160,7 +161,8 @@ Pour chaque appel, le serveur exécute dans cet ordre :
 10. autoriser ou refuser, puis journaliser selon la sensibilité.
 
 Une absence d’adresse, un doublon de compte, un registre illisible, une version non
-supportée ou une configuration de cours incohérente entraîne un refus.
+supportée ou une configuration de module, saison, section ou cours incohérente
+entraîne un refus.
 
 ## 9. Registre et paramétrage
 
@@ -207,9 +209,13 @@ Le service commun expose ou devra exposer conceptuellement :
 
 - `getCurrentIdentity()` ;
 - `listAuthorizedCourses(capability)` ;
-- `hasCapability(capability, courseCode, season)` ;
-- `assertCapability(capability, courseCode, season)` ;
+- `hasCapability(capability, scope)` ;
+- `assertCapability(capability, scope)` ;
 - `getEffectiveAccessContext()`.
+
+Le paramètre conceptuel `scope` porte le module et, selon la capacité, la saison,
+la section et le cours. Les fonctions historiques centrées sur les cours peuvent
+être conservées comme adaptateurs de compatibilité pour Présences.
 
 Le contexte effectif comprend également les modules accessibles. Chaque entrée de
 navigation déclare une capacité minimale et ne peut plus utiliser une valeur
@@ -230,8 +236,9 @@ Doivent être audités :
 - correction d’une séance clôturée ;
 - modification laissant un nombre insuffisant d’administrateurs.
 
-Chaque événement comporte au minimum acteur, action, cible, cours/saison si
-applicable, résultat, date et identifiant de corrélation. Les adresses peuvent être
+Chaque événement comporte au minimum acteur, action, cible, module et, si
+applicable, saison, section et cours, résultat, date et identifiant de corrélation.
+Les adresses peuvent être
 conservées lorsqu’elles sont nécessaires à la preuve d’accès, sans copier le registre
 complet dans les journaux.
 
@@ -242,9 +249,10 @@ complet dans les journaux.
 | `ACCESS_AUTH_REQUIRED` | Compte Google non identifié |
 | `ACCESS_DENIED` | Opération non autorisée |
 | `ACCESS_REGISTRY_INVALID` | Configuration d’accès indisponible |
+| `ACCESS_MODULE_DENIED` | Module non autorisé |
 | `ACCESS_COURSE_DENIED` | Cours non autorisé |
 | `ACCESS_CAPABILITY_DENIED` | Capacité non autorisée |
-| `ACCESS_SCOPE_INVALID` | Saison ou cours incohérent |
+| `ACCESS_SCOPE_INVALID` | Module, saison, section ou cours incohérent |
 
 Le message public reste générique. Les détails techniques sont réservés aux journaux
 corrélés.
@@ -269,6 +277,12 @@ corrélés.
 | Administrateur corrigeant une séance clôturée | Autorisation et audit |
 | Utilisateur cumulant professeur et consultation | Union limitée aux affectations |
 | Affectation hors saison | Refus |
+| Module absent ou non autorisé | Module masqué et route refusée |
+| Utilisateur avec `ANALYTICS_READ` | Consultation Analytics autorisée, prévisualisation et publication refusées |
+| Utilisateur sans `ANALYTICS_READ` ouvrant l’URL directe | Refus serveur |
+| Analyse Inscriptions sans `INSCRIPTIONS_APPLY_IMPORT` | Analyse autorisée, application refusée |
+| Affectation limitée à une section | Refus pour toute autre section |
+| Portée module, saison, section ou cours absente alors qu’elle est requise | Entrée invalide et refus fermé |
 | Cours client falsifié | Refus serveur |
 | Capacité client falsifiée | Ignorée, décision recalculée |
 | Registre illisible ou version inconnue | Refus fermé |
@@ -284,14 +298,16 @@ pas dépendre du compte réel exécutant la suite.
 `ACCESS-001` est prêt pour l’implémentation lorsque :
 
 1. le catalogue des rôles et capacités est validé ;
-2. les affectations sont définies par cours et saison ;
+2. les affectations sont définies par module et, selon la capacité, par saison,
+   section et cours ;
 3. les assistants AFA ne disposent que des droits validés ;
 4. le calcul serveur refuse toute information insuffisante ;
 5. le registre central et sa validation sont définis ;
 6. la compatibilité avec `AKS.Admin.Access` est garantie ;
 7. le dernier administrateur ne peut pas être retiré ;
 8. les actions sensibles sont auditables ;
-9. la matrice de tests couvre les refus et cumuls de rôles ;
+9. la matrice de tests couvre les refus, les cumuls de rôles, les capacités
+   Analytics et Inscriptions et tous les périmètres applicables ;
 10. aucun classeur Analytics ne devient une source d’autorisation.
 
 ## 16. Hors périmètre
@@ -382,6 +398,7 @@ l’interface Habilitations ne sont pas encore implémentées ni déployées.
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-08-02 | Généralisation complète du calcul d’accès, des codes d’erreur, des tests et des critères d’acceptation aux périmètres module, saison, section et cours |
 | 1.2.0 | 2026-08-02 | Extension transverse cadrée pour Analytics, Inscriptions, Présences et administration ; ajout d’ANALYTICS_READ, des capacités Inscriptions et des périmètres par module |
 | 1.1.0 | 2026-07-29 | Modèle d’autorisation publié avec le parcours Présences et validé en production ; suite cumulative finale 333/333 réussie |
 | 1.0.8 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie : refus d’écriture non autorisée, identité serveur, périmètre BABY unique et séance clôturée avec 2 présences ; publication sur `main` autorisée |
