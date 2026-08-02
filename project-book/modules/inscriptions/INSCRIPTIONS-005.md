@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-005 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Architecture technique et contrats d’intégration |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -350,4 +350,5 @@ Chaque incrément conserve la suite cumulative et ne rend pas opérationnelle un
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-02 | Validation des contrats techniques et ouverture d’INSCRIPTIONS-006 consacré aux jeux d’essai et à la recette cumulative |
 | 1.0.0 | 2026-08-02 | Création des contrats techniques : stockage, schéma, séquences, concurrence, idempotence, audit et intégrations externes |
