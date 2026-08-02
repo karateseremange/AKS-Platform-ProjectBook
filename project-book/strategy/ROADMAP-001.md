@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.63 |
+| **Version** | 1.2.64 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -724,9 +724,9 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — cadrage et modèle métier validés, services et reprise Google Forms en revue**.
+**Engagé — services et reprise Google Forms validés, interfaces et accès privés en revue**.
 
-Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé et `INSCRIPTIONS-002` le modèle métier validé. `INSCRIPTIONS-003` définit les services, transitions et contrats de reprise transitoire des trois Google Forms avant tout développement applicatif.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé et `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés. `INSCRIPTIONS-004` cadre l’interface de contrôle et étend `ACCESS-001` en socle commun pour Inscriptions, Analytics, Présences et les futurs modules privés.
 
 ## 13.2 Objectif
 
@@ -745,10 +745,14 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 - les places restent limitées par cours et une liste d’attente est prévue ;
 - le paiement en ligne et l’espace licencié sont exclus du périmètre initial ;
 - aucun code n’est écrit avant validation du cadrage fonctionnel.
+- Google authentifie les utilisateurs privés et AKS Platform autorise chaque module et chaque action ;
+- les rôles généraux et les capacités propres aux modules sont distincts et cumulables ;
+- l’accès privé à Analytics est contrôlé côté serveur et complété par les partages Google Drive ;
+- les trois Google Forms restent les interfaces publiques transitoires.
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-003`, avant l’ouverture d’`INSCRIPTIONS-004` consacré aux interfaces publiques et administratives.
+Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-004`, consacré à l’interface administrative Inscriptions et au socle commun des accès privés. `INSCRIPTIONS-005` définira ensuite les contrats techniques, le stockage, les identifiants et les intégrations externes.
 
 ## 13.5 Backlog restant
 
@@ -865,7 +869,7 @@ ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
         ↓
-AKS Inscriptions — cadrage et modèle métier validés, services et reprise Google Forms en revue, aucun code applicatif
+AKS Inscriptions — services et reprise Google Forms validés, interfaces et accès privés transverses en revue, aucun code applicatif
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
@@ -876,6 +880,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.64 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et ouverture d’INSCRIPTIONS-004 : interface de contrôle, habilitations centralisées et accès privé Analytics via ACCESS-001 |
 | 1.2.63 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et ouverture d’INSCRIPTIONS-003 : services, transitions et reprise contrôlée des trois Google Forms officiels 2026–2027 |
 | 1.2.62 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et ouverture d’INSCRIPTIONS-002 : modèle métier, distinction identifiant AKS/numéro FFKDA, états indépendants et intégrations Google Forms, SIKADA, Analytics et Body Karaté |
 | 1.2.61 | 2026-08-02 | Publication V1.3.0 alignée sur l’état réel et engagement d’AKS Inscriptions avec INSCRIPTIONS-001 comme premier incrément documentaire |

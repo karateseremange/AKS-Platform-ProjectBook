@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-003 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Services métier et contrat de reprise transitoire |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -311,4 +311,5 @@ L’interface de contrôle relève d’`INSCRIPTIONS-004`. Les contrats externes
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-02 | Validation du contrat et ouverture d’INSCRIPTIONS-004 consacré aux interfaces et aux accès privés transverses |
 | 1.0.0 | 2026-08-02 | Création des services, commandes, transitions et contrats de reprise versionnés des trois Google Forms 2026–2027 |

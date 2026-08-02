@@ -1,27 +1,28 @@
-# ACCESS-001 — Rôles, capacités et affectations Analytics
+# ACCESS-001 — Rôles, capacités et habilitations privées d’AKS Platform
 
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | ACCESS-001 |
-| **Version** | 1.1.0 |
-| **Statut** | Publié sur `main` et validé en production |
+| **Version** | 1.2.1 |
+| **Statut** | Socle v1.1.0 validé en production — extension transverse en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-28 |
-| **Version du produit** | Post-V1.2.0 |
+| **Dernière mise à jour** | 2026-08-02 |
+| **Version du produit** | Post-V1.3.0 |
 
 ---
 
 ## 1. Objet
 
-Ce document définit le modèle d’autorisation requis par l’interface de saisie des
-présences d’AKS Analytics. Il fixe les identités, rôles, capacités, affectations aux
-cours, règles de calcul des droits, exigences de configuration, contrôles serveur,
-migration depuis l’accès administratif V1.2.0 et matrice de validation.
+Ce document définit le modèle commun d’autorisation des espaces privés d’AKS
+Platform. Son socle initial protège la saisie des présences d’AKS Analytics. Son
+extension transverse couvre également Analytics en consultation, AKS Inscriptions,
+le Centre de pilotage et les futurs modules privés, sans recréer de registre propre
+à chaque module.
 
 Il applique `SECURITY-001`, `CONFIG-001`, `LOG-001`, `AUDIT-001`,
-`API-001` et `ANALYTICS-SAISIE-001`. Il précède toute écriture dans les
-classeurs Analytics.
+`API-001`, `ANALYTICS-SAISIE-001` et `INSCRIPTIONS-004`. Il précède toute
+nouvelle exposition de données privées ou écriture dans les référentiels métier.
 
 ## 2. Principes directeurs
 
@@ -31,7 +32,8 @@ classeurs Analytics.
 - Une adresse reçue du navigateur n’est jamais une preuve d’identité.
 - Tout accès est refusé si l’identité, le registre, le rôle, l’affectation ou la
   capacité requise est absent, inactif, invalide ou ambigu.
-- L’autorisation est évaluée à chaque appel serveur, par capacité et par cours.
+- L’autorisation est évaluée à chaque appel serveur, par capacité et selon les
+  périmètres applicables : module, saison, section et cours.
 - Le client peut masquer une commande, mais le serveur reste seul décisionnaire.
 - Les droits suivent le moindre privilège et aucune affectation n’est implicite.
 - Une modification du registre d’accès est une action administrative auditée.
@@ -46,7 +48,7 @@ Un compte d’accès contient au minimum :
 | `displayName` | Libellé d’administration facultatif |
 | `status` | `ACTIVE` ou `INACTIVE` |
 | `roles` | Ensemble non vide de rôles connus |
-| `assignments` | Affectations explicites aux cours et capacités complémentaires |
+| `assignments` | Affectations explicites aux modules, saisons, sections, cours et capacités complémentaires |
 | `validFrom` | Date facultative de début de validité |
 | `validUntil` | Date facultative de fin de validité |
 | `updatedAt` | Horodatage de la dernière modification |
@@ -60,14 +62,14 @@ désactivation est préférée à la suppression afin de préserver la traçabil
 
 | Rôle | Finalité |
 |---|---|
-| `ADMINISTRATEUR` | Administration globale, tous les cours et opérations sensibles |
+| `ADMINISTRATEUR` | Administration globale des modules et opérations sensibles |
 | `PROFESSEUR` | Saisie et consultation des cours auxquels la personne est affectée |
 | `ASSISTANT_AFA` | Saisie limitée aux cours explicitement affectés |
 | `CONSULTATION` | Lecture seule sur le périmètre explicitement affecté |
 
 Une personne peut cumuler plusieurs rôles. Les capacités effectives sont l’union
 des capacités accordées par ses rôles actifs, limitée par ses affectations actives.
-Le cumul ne permet jamais de dépasser le périmètre de cours autorisé, sauf pour
+Le cumul ne permet jamais de dépasser le périmètre autorisé, sauf pour
 l’administrateur dont le périmètre est global.
 
 ## 5. Catalogue des capacités
@@ -82,8 +84,15 @@ l’administrateur dont le périmètre est global.
 | `SESSION_CLOSE` | Clôturer une séance complète |
 | `ATTENDANCE_CORRECT_CLOSED` | Corriger une séance clôturée |
 | `ACCESS_MANAGE` | Gérer comptes, rôles et affectations |
+| `ANALYTICS_READ` | Consulter les rapports privés autorisés |
 | `ANALYTICS_PREVIEW` | Prévisualiser les rapports |
 | `ANALYTICS_PUBLISH` | Publier les rapports |
+| `INSCRIPTIONS_READ` | Consulter les dossiers d’inscription autorisés |
+| `INSCRIPTIONS_ANALYZE_IMPORT` | Analyser une source sans écriture métier |
+| `INSCRIPTIONS_CONTROL` | Contrôler anomalies et correspondances |
+| `INSCRIPTIONS_WRITE` | Corriger les données administratives autorisées |
+| `INSCRIPTIONS_APPLY_IMPORT` | Appliquer un lot validé |
+| `INSCRIPTIONS_ACTIVATE` | Activer un dossier vers les outils opérationnels |
 | `AUDIT_READ` | Consulter les événements d’audit autorisés |
 
 Aucune capacité inconnue n’est ignorée silencieusement : elle invalide l’entrée de
@@ -101,6 +110,7 @@ registre concernée et produit un refus fermé.
 | `SESSION_CLOSE` | Globale | Affectation | Non par défaut | Non |
 | `ATTENDANCE_CORRECT_CLOSED` | Globale | Non | Non | Non |
 | `ACCESS_MANAGE` | Globale | Non | Non | Non |
+| `ANALYTICS_READ` | Globale | Non par défaut | Non | Selon affectation dédiée |
 | `ANALYTICS_PREVIEW` | Globale | Non par défaut | Non | Selon affectation dédiée |
 | `ANALYTICS_PUBLISH` | Globale | Non | Non | Non |
 | `AUDIT_READ` | Globale | Non | Non | Non |
@@ -110,20 +120,30 @@ elle figure dans le catalogue et ne contredit pas une interdiction structurelle.
 Dans le premier incrément, un assistant AFA ne reçoit ni `SESSION_CLOSE` ni
 `ATTENDANCE_CORRECT_CLOSED`.
 
-## 7. Affectations aux cours
+Les capacités Inscriptions n’accordent aucun droit par défaut aux rôles
+`PROFESSEUR`, `ASSISTANT_AFA` ou `CONSULTATION`. Elles nécessitent une
+affectation explicite. L’administrateur conserve le périmètre global sous réserve
+d’un registre valide.
+
+## 7. Affectations et périmètres
 
 Une affectation contient :
 
+- le module concerné ;
 - le code stable du cours ;
+- la section lorsqu’elle est pertinente ;
 - la saison ou `*` lorsque la portée est explicitement globale ;
 - le statut `ACTIVE` ou `INACTIVE` ;
 - les rôles applicables à cette affectation ;
 - les capacités complémentaires éventuelles ;
 - une période de validité facultative.
 
-Les codes de cours doivent provenir du registre Analytics existant. Un libellé
-affiché n’est jamais utilisé comme identifiant d’autorisation. Une affectation vers
-un cours absent, désactivé ou hors saison ne donne aucun droit.
+Le cours et la section peuvent être omis uniquement lorsque la capacité possède
+explicitement un périmètre global ou par module. Une portée absente n’est jamais
+interprétée comme globale. Les codes doivent provenir des catalogues applicatifs ;
+un libellé affiché n’est jamais utilisé comme identifiant d’autorisation. Une
+affectation vers un module, une section ou un cours absent, désactivé ou hors saison
+ne donne aucun droit.
 
 ## 8. Calcul de l’autorisation effective
 
@@ -134,14 +154,15 @@ Pour chaque appel, le serveur exécute dans cet ordre :
 3. trouver exactement un compte actif correspondant ;
 4. vérifier sa période de validité ;
 5. résoudre ses rôles connus ;
-6. résoudre le cours et la saison depuis la configuration serveur ;
-7. vérifier une affectation active, sauf périmètre administrateur global ;
+6. résoudre le module, la saison, la section et le cours pertinents depuis la configuration serveur ;
+7. vérifier une affectation active et cohérente, sauf périmètre administrateur global ;
 8. calculer les capacités effectives ;
 9. vérifier la capacité demandée et l’état de la ressource ;
 10. autoriser ou refuser, puis journaliser selon la sensibilité.
 
 Une absence d’adresse, un doublon de compte, un registre illisible, une version non
-supportée ou une configuration de cours incohérente entraîne un refus.
+supportée ou une configuration de module, saison, section ou cours incohérente
+entraîne un refus.
 
 ## 9. Registre et paramétrage
 
@@ -184,13 +205,21 @@ La migration respecte les règles suivantes :
 
 ## 11. Frontière serveur
 
-Le futur service commun expose conceptuellement :
+Le service commun expose ou devra exposer conceptuellement :
 
 - `getCurrentIdentity()` ;
 - `listAuthorizedCourses(capability)` ;
-- `hasCapability(capability, courseCode, season)` ;
-- `assertCapability(capability, courseCode, season)` ;
+- `hasCapability(capability, scope)` ;
+- `assertCapability(capability, scope)` ;
 - `getEffectiveAccessContext()`.
+
+Le paramètre conceptuel `scope` porte le module et, selon la capacité, la saison,
+la section et le cours. Les fonctions historiques centrées sur les cours peuvent
+être conservées comme adaptateurs de compatibilité pour Présences.
+
+Le contexte effectif comprend également les modules accessibles. Chaque entrée de
+navigation déclare une capacité minimale et ne peut plus utiliser une valeur
+`authorized: true` codée en dur.
 
 Le contexte retourné au client est minimal : identité affichable, cours accessibles
 et capacités utiles à l’écran courant. Le registre complet, les autres utilisateurs
@@ -207,8 +236,9 @@ Doivent être audités :
 - correction d’une séance clôturée ;
 - modification laissant un nombre insuffisant d’administrateurs.
 
-Chaque événement comporte au minimum acteur, action, cible, cours/saison si
-applicable, résultat, date et identifiant de corrélation. Les adresses peuvent être
+Chaque événement comporte au minimum acteur, action, cible, module et, si
+applicable, saison, section et cours, résultat, date et identifiant de corrélation.
+Les adresses peuvent être
 conservées lorsqu’elles sont nécessaires à la preuve d’accès, sans copier le registre
 complet dans les journaux.
 
@@ -219,9 +249,10 @@ complet dans les journaux.
 | `ACCESS_AUTH_REQUIRED` | Compte Google non identifié |
 | `ACCESS_DENIED` | Opération non autorisée |
 | `ACCESS_REGISTRY_INVALID` | Configuration d’accès indisponible |
+| `ACCESS_MODULE_DENIED` | Module non autorisé |
 | `ACCESS_COURSE_DENIED` | Cours non autorisé |
 | `ACCESS_CAPABILITY_DENIED` | Capacité non autorisée |
-| `ACCESS_SCOPE_INVALID` | Saison ou cours incohérent |
+| `ACCESS_SCOPE_INVALID` | Module, saison, section ou cours incohérent |
 
 Le message public reste générique. Les détails techniques sont réservés aux journaux
 corrélés.
@@ -246,6 +277,12 @@ corrélés.
 | Administrateur corrigeant une séance clôturée | Autorisation et audit |
 | Utilisateur cumulant professeur et consultation | Union limitée aux affectations |
 | Affectation hors saison | Refus |
+| Module absent ou non autorisé | Module masqué et route refusée |
+| Utilisateur avec `ANALYTICS_READ` | Consultation Analytics autorisée, prévisualisation et publication refusées |
+| Utilisateur sans `ANALYTICS_READ` ouvrant l’URL directe | Refus serveur |
+| Analyse Inscriptions sans `INSCRIPTIONS_APPLY_IMPORT` | Analyse autorisée, application refusée |
+| Affectation limitée à une section | Refus pour toute autre section |
+| Portée module, saison, section ou cours absente alors qu’elle est requise | Entrée invalide et refus fermé |
 | Cours client falsifié | Refus serveur |
 | Capacité client falsifiée | Ignorée, décision recalculée |
 | Registre illisible ou version inconnue | Refus fermé |
@@ -261,14 +298,16 @@ pas dépendre du compte réel exécutant la suite.
 `ACCESS-001` est prêt pour l’implémentation lorsque :
 
 1. le catalogue des rôles et capacités est validé ;
-2. les affectations sont définies par cours et saison ;
+2. les affectations sont définies par module et, selon la capacité, par saison,
+   section et cours ;
 3. les assistants AFA ne disposent que des droits validés ;
 4. le calcul serveur refuse toute information insuffisante ;
 5. le registre central et sa validation sont définis ;
 6. la compatibilité avec `AKS.Admin.Access` est garantie ;
 7. le dernier administrateur ne peut pas être retiré ;
 8. les actions sensibles sont auditables ;
-9. la matrice de tests couvre les refus et cumuls de rôles ;
+9. la matrice de tests couvre les refus, les cumuls de rôles, les capacités
+   Analytics et Inscriptions et tous les périmètres applicables ;
 10. aucun classeur Analytics ne devient une source d’autorisation.
 
 ## 16. Hors périmètre
@@ -278,8 +317,11 @@ pas dépendre du compte réel exécutant la suite.
 - délégation temporaire complexe ;
 - rôles personnalisables librement ;
 - gestion des groupes Google ;
-- authentification multifacteur développée par AKS ;
-- interface graphique d’administration des droits dans ce premier incrément.
+- authentification multifacteur développée par AKS.
+
+L’interface graphique d’administration, initialement reportée, est désormais cadrée
+par `INSCRIPTIONS-004`. Elle reste hors du socle v1.1.0 effectivement publié tant
+qu’un incrément applicatif et sa recette n’ont pas été validés.
 
 ## 17. Décisions validées
 
@@ -292,6 +334,15 @@ Le Product Owner valide le 28 juillet 2026 :
 5. la conservation temporaire de la liste administrateur embarquée comme
    mécanisme d’amorçage et de récupération ;
 6. le report de l’administration graphique des droits à un incrément ultérieur.
+
+Le Product Owner valide le 2 août 2026 pour l’extension transverse :
+
+7. l’utilisation d’`ACCESS-001` par Inscriptions, Analytics, Présences et les futurs modules privés ;
+8. la séparation entre rôles généraux et capacités propres aux modules ;
+9. l’ajout d’`ANALYTICS_READ` distinct de la prévisualisation et de la publication ;
+10. l’extension des périmètres aux modules, saisons, sections et cours ;
+11. l’administration centralisée des habilitations selon `INSCRIPTIONS-004` ;
+12. le maintien temporaire de la récupération administrateur historique jusqu’à recette complète.
 
 ## 18. État de l’implémentation
 
@@ -339,10 +390,16 @@ des présences. La validation finale sur `main` est concluante à **333/333 test
 réussis, 0 échec**. Le déploiement de production a confirmé l’accès au parcours
 autorisé et le retour fonctionnel vers le Centre de pilotage.
 
+L’extension transverse v1.2.0 est uniquement cadrée dans la documentation. Les
+capacités Analytics et Inscriptions ajoutées au contrat, la navigation calculée et
+l’interface Habilitations ne sont pas encore implémentées ni déployées.
+
 ## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-08-02 | Généralisation complète du calcul d’accès, des codes d’erreur, des tests et des critères d’acceptation aux périmètres module, saison, section et cours |
+| 1.2.0 | 2026-08-02 | Extension transverse cadrée pour Analytics, Inscriptions, Présences et administration ; ajout d’ANALYTICS_READ, des capacités Inscriptions et des périmètres par module |
 | 1.1.0 | 2026-07-29 | Modèle d’autorisation publié avec le parcours Présences et validé en production ; suite cumulative finale 333/333 réussie |
 | 1.0.8 | 2026-07-28 | Recette fonctionnelle serveur ACCESS-001 réussie : refus d’écriture non autorisée, identité serveur, périmètre BABY unique et séance clôturée avec 2 présences ; publication sur `main` autorisée |
 | 1.0.7 | 2026-07-28 | Validation Apps Script de l’exposition serveur : suite cumulative 315/315 réussie, 0 échec ; recette fonctionnelle autorisée à poursuivre sans déploiement utilisateur |
