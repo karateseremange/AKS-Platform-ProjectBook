@@ -3,7 +3,7 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-002 |
-| **Version** | 1.0.1 |
+| **Version** | 1.0.2 |
 | **Statut** | Validé |
 | **Nature** | Modèle métier du module |
 | **Propriétaire** | Product Owner |
@@ -62,7 +62,7 @@ Son identifiant canonique suit le format `LIC-000001`.
 - il est non signifiant et ne contient ni année de naissance, ni cours, ni numéro fédéral ;
 - il n’est jamais réutilisé après fusion, archivage ou suppression logique ;
 - il ne change pas lors d’un renouvellement, d’un changement de cours ou d’une nouvelle section ;
-- les détails d’allocation et de concurrence seront définis dans `INSCRIPTIONS-003`.
+- les détails d’allocation et de concurrence sont définis dans `INSCRIPTIONS-005`.
 
 ### 4.2 Attributs durables
 
@@ -402,5 +402,6 @@ Le modèle applique `SECURITY-001`, `STORAGE-001`, `LOG-001` et `AUDIT-001` : mi
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.2 | 2026-08-02 | Correction de la référence d’allocation des identifiants : contrat technique porté par `INSCRIPTIONS-005` |
 | 1.0.1 | 2026-08-02 | Validation formelle du modèle métier après fusion de la PR #90 dans `develop` et ouverture des services et contrats de reprise `INSCRIPTIONS-003` |
 | 1.0.0 | 2026-08-02 | Création du modèle métier : référentiel stable, dossiers saisonniers, états indépendants, imports Google Forms et SIKADA, format FFKDA réel et dépendances Analytics/Body Karaté |
