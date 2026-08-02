@@ -292,7 +292,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.2.76 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : deuxième incrément borné aux capacités Inscriptions d’ACCESS-001, aux périmètres explicites et à l’audit obligatoire sans écriture métier |
+| 1.2.76 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : deuxième incrément borné aux capacités Inscriptions d’ACCESS-001, à une matrice de périmètres fermée et à un cycle d’audit en deux temps sans écriture métier |
 | 1.2.75 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle applicatif sans écriture : PR #85 fusionnée sur `develop`, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
 | 1.2.74 | 2026-08-02 | Validation d’INSCRIPTIONS-005 et référencement d’INSCRIPTIONS-006 : jeux d’or, niveaux de validation, recette isolée, concurrence, restauration et preuves cumulatives |
 | 1.2.73 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et référencement d’INSCRIPTIONS-005 : stockage privé, schéma, séquences, idempotence durable, audit fonctionnel et intégrations externes |
