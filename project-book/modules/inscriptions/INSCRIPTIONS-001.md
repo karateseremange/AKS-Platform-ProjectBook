@@ -6,8 +6,8 @@
 |---|---|
 | Document ID | INSCRIPTIONS-001 |
 | Titre | Cadrage fonctionnel d’AKS Inscriptions |
-| Version | 1.0.1 |
-| Statut | En revue |
+| Version | 1.0.2 |
+| Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-02 |
 | Version du produit | Post-V1.3.0 |
@@ -537,5 +537,6 @@ Le cadrage est validable lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.2 | 2026-08-02 | Validation formelle du cadrage après fusion de la PR #89 dans `develop` et ouverture du modèle métier `INSCRIPTIONS-002` |
 | 1.0.1 | 2026-08-02 | Ajout de la transition Google Forms : maintien opérationnel des trois sources et reprise complète, contrôlée, relançable et sans doublon dans AKS Inscriptions |
 | 1.0.0 | 2026-08-02 | Cadrage initial issu de l’audit des formulaires, classeurs, documents FFKDA et export SIKADA, puis des décisions validées par le Product Owner |
