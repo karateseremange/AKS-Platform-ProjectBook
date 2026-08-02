@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-002 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Modèle métier du module |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -402,4 +402,5 @@ Le modèle applique `SECURITY-001`, `STORAGE-001`, `LOG-001` et `AUDIT-001` : mi
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-02 | Validation formelle du modèle métier après fusion de la PR #90 dans `develop` et ouverture des services et contrats de reprise `INSCRIPTIONS-003` |
 | 1.0.0 | 2026-08-02 | Création du modèle métier : référentiel stable, dossiers saisonniers, états indépendants, imports Google Forms et SIKADA, format FFKDA réel et dépendances Analytics/Body Karaté |
