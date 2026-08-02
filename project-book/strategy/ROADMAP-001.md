@@ -752,7 +752,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-006`, consacré aux jeux d’or, aux niveaux de validation, aux protections de recette et aux preuves cumulatives. La validation des jeux sans écriture pourra autoriser un premier incrément applicatif limité aux modèles purs, adaptateurs, dépôts en mémoire et tests ; aucune application réelle de lot ne sera autorisée avant la levée des prérequis bloquants.
+Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-006`, consacré aux jeux d’or, aux niveaux de validation, aux protections de recette et aux preuves cumulatives. Sa validation documentaire pourra autoriser un premier incrément applicatif limité à la matérialisation et à l’exécution future des jeux sans écriture, avec les modèles purs, adaptateurs et dépôts en mémoire nécessaires ; elle ne constituera pas encore une preuve de réussite de ces jeux. Aucune application réelle de lot ne sera autorisée avant la levée des prérequis bloquants.
 
 ## 13.5 Backlog restant
 
