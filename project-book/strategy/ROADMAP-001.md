@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.61 |
+| **Version** | 1.2.62 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -724,9 +724,9 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — cadrage fonctionnel en revue**.
+**Engagé — cadrage fonctionnel validé, modèle métier en revue**.
 
-Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` formalise le cadrage fonctionnel avant tout développement applicatif.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue désormais le cadrage fonctionnel validé. `INSCRIPTIONS-002` définit le modèle métier détaillé avant tout développement applicatif.
 
 ## 13.2 Objectif
 
@@ -739,6 +739,8 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 - trois formulaires publics alimentent un seul module ;
 - la personne possède un identifiant interne stable et un dossier par saison ;
 - le numéro FFK est renseigné après création dans SIKADA et n’est pas l’identifiant interne ;
+- le numéro FFKDA est stocké comme texte selon le format actuel observé `8 chiffres + 1 lettre` ;
+- les états administratif, de place, fédéral et d’activation sont suivis séparément ;
 - la préinscription reste obligatoire pour toute nouvelle inscription et ouverte toute la saison ;
 - les places restent limitées par cours et une liste d’attente est prévue ;
 - le paiement en ligne et l’espace licencié sont exclus du périmètre initial ;
@@ -746,7 +748,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la validation formelle d’`INSCRIPTIONS-001`, puis la définition du modèle métier détaillé et des contrats de données conformément à `STD-001`.
+Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-002`, avant l’ouverture d’`INSCRIPTIONS-003` consacré aux services, commandes et transitions.
 
 ## 13.5 Backlog restant
 
@@ -863,7 +865,7 @@ ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
         ↓
-AKS Inscriptions — cadrage fonctionnel en revue, aucun code applicatif
+AKS Inscriptions — cadrage validé et modèle métier en revue, aucun code applicatif
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
@@ -874,4 +876,5 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.62 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et ouverture d’INSCRIPTIONS-002 : modèle métier, distinction identifiant AKS/numéro FFKDA, états indépendants et intégrations Google Forms, SIKADA, Analytics et Body Karaté |
 | 1.2.61 | 2026-08-02 | Publication V1.3.0 alignée sur l’état réel et engagement d’AKS Inscriptions avec INSCRIPTIONS-001 comme premier incrément documentaire |
