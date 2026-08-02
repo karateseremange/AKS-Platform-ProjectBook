@@ -164,6 +164,6 @@ et dans `ANALYTICS-008`.
 
 La **V1.3.0** a été publiée le 1er août 2026. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version. Le tag documentaire `v1.3.0` pointe sur le commit `647ae45a501bf14c1f3463fbca480945993bc515`.
 
-Le chantier suivant est **AKS Inscriptions**. Son cadrage fonctionnel est validé dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md) et son modèle métier est en revue dans [`INSCRIPTIONS-002`](project-book/modules/inscriptions/INSCRIPTIONS-002.md), sans code applicatif à ce stade.
+Le chantier suivant est **AKS Inscriptions**. Son cadrage fonctionnel et son modèle métier sont validés dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md) et [`INSCRIPTIONS-002`](project-book/modules/inscriptions/INSCRIPTIONS-002.md). Les services, transitions et contrats de reprise des trois Google Forms sont en revue dans [`INSCRIPTIONS-003`](project-book/modules/inscriptions/INSCRIPTIONS-003.md), sans code applicatif à ce stade.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).
