@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.69 |
+| **Version** | 1.2.70 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-02 |
+| **Dernière mise à jour** | 2026-08-03 |
 
 ---
 
@@ -724,9 +724,11 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — deuxième incrément accès et audit validé**.
+**Engagé — troisième incrément journal et reprise en revue**.
 
 Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit et valide les jeux d’essai ainsi que la recette cumulative. Son premier incrément applicatif sans écriture est intégré sur `develop` par la PR #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`, avec **341/341 tests réussis**. Le deuxième incrément défini par `INSCRIPTIONS-008` est intégré par la PR applicative [#87](https://github.com/karateseremange/AKS-Platform/pull/87), commit de fusion `ceda8b322715f77399bf8e7eda80c8e2b046daaa`. Après `clasp push` contrôlé, la suite Apps Script exécutée le 2 août 2026 atteint **360/360 tests réussis, 0 échec** ; les seize jeux produisent **13 réussites, 1 résultat partiel et 2 blocages attendus**. Aucun déploiement, registre réel ou accès à une donnée métier Google n’a été introduit.
+
+Le troisième incrément proposé par `INSCRIPTIONS-009` borne la prochaine étape au journal de commandes injectable, aux transitions fermées, à l’idempotence et à la reprise après reconstruction du service. Il reste sans API Google ni donnée réelle et ne change aucun statut de jeu d’or avant preuve.
 
 ## 13.2 Objectif
 
@@ -752,7 +754,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est le cadrage documentaire d’un troisième incrément borné. Son périmètre devra être choisi et validé avant tout nouveau code, en tenant compte des prérequis encore ouverts : SIKADA, Analytics/`BODY_KARATE`, stockage Google, restauration réelle et interfaces. Jusqu’à cette validation, aucune application réelle de lot, lecture ou écriture métier Google ni nouveau déploiement n’est autorisé.
+La prochaine décision porte sur la validation d’`INSCRIPTIONS-009`. Tant que ce cadrage n’est pas validé, aucun code du troisième incrément n’est autorisé. Même après validation, l’incrément restera limité à des dépendances injectées sans API Google. SIKADA, Analytics/`BODY_KARATE`, stockage Google réel, restauration réelle, interfaces, application de lot et déploiement demeurent séparés et interdits.
 
 ## 13.5 Backlog restant
 
@@ -880,6 +882,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.70 | 2026-08-03 | Ouverture d’INSCRIPTIONS-009 : troisième incrément proposé pour journaliser, rejouer et reprendre les commandes avec dépendances injectées, sans API Google ni changement des jeux d’or |
 | 1.2.69 | 2026-08-02 | Validation d’INSCRIPTIONS-008 : PR applicative #87 fusionnée, suite Apps Script 360/360, 13 jeux d’or réussis, 1 partiel et 2 bloqués, sans déploiement ni donnée Google réelle ; prochain incrément à cadrer |
 | 1.2.68 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : second incrément borné aux capacités Inscriptions d’ACCESS-001, à une matrice de périmètres fermée et à un cycle d’audit en deux temps sans écriture métier |
 | 1.2.67 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle sans écriture : PR applicative #85 fusionnée, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
