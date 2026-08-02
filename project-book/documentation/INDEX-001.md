@@ -271,7 +271,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006 | Stratégie validée ; premier socle sans écriture intégré sur `develop` ; 341/341 tests réussis ; 12 jeux réussis, 2 partiels et 2 bloqués |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 | Premier socle sans écriture validé à 341/341 ; deuxième incrément accès et audit en revue ; 12 jeux réussis, 2 partiels et 2 bloqués |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
