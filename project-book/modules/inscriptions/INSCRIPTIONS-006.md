@@ -98,7 +98,7 @@ Une mise à jour conjointe du code et de l’oracle exige une revue explicite : 
 
 | ID | Scénario | Oracle essentiel |
 |---|---|---|
-| `INS-GOLD-001` | Import nominal Karaté classique | Dossier complet conforme, aucune donnée inventée |
+| `INS-GOLD-001` | Import nominal Karaté classique | Dossier créé sans donnée inventée dans les états initiaux `RECUE`, `A_EVALUER`, `NON_PREPARE` et `INACTIF` |
 | `INS-GOLD-002` | Formulaire féminin avec champs structurellement absents | Champs marqués `INCONNU`, jamais convertis en `NON` |
 | `INS-GOLD-003` | Body Karaté synthétique | Réponses spécifiques présentes et contrôlées |
 | `INS-GOLD-004` | Valeurs absentes, invalides et conversion `Africa/Ceuta` vers `Europe/Paris` | Normalisation déterministe et erreurs explicites |
@@ -153,7 +153,7 @@ Les scénarios d’allocation utilisent plusieurs commandes concurrentes et couv
 - `LIC-000001` global ;
 - `RSP-000001` global ;
 - `INS-2026-000001` par année de début de saison ;
-- `IMP-2026-FORMS-000001` ou équivalent par année et type d’import.
+- `IMP-2026-000001` par année de début de saison, le type d’import appartenant à la portée de séquence.
 
 Les tests démontrent :
 
@@ -189,9 +189,9 @@ Une écriture sensible réussie sans événement d’audit persistant conforme c
 
 ### 12.1 SIKADA
 
-La fixture de référence conserve un échantillon anonymisé Windows-1252 avec les 12 en-têtes exacts observés. Elle couvre les cellules tabulées, guillemets, enveloppes `="..."`, caractères accentués, lignes incomplètes, colonnes supplémentaires, formule hostile et contenu ne correspondant pas au format attendu.
+La fixture de référence devra être créée à partir d’un échantillon Windows-1252 anonymisé et sécurisé comportant les 12 en-têtes exacts observés. Elle devra couvrir les cellules tabulées, guillemets, enveloppes `="..."`, caractères accentués, lignes incomplètes, colonnes supplémentaires, formule hostile et contenu ne correspondant pas au format attendu.
 
-Tant que cet échantillon n’est pas sécurisé, le contrat colonne par colonne reste un prérequis bloquant.
+Tant que cet échantillon n’est pas obtenu, anonymisé, sécurisé et versionné, la fixture n’existe pas et le contrat colonne par colonne reste un prérequis bloquant.
 
 ### 12.2 Questionnaire santé
 
@@ -319,7 +319,9 @@ Ces prérequis restent des écarts ouverts tant qu’une preuve contrôlable n�
 
 ## 20. Autorisation des incréments applicatifs
 
-La validation des jeux d’or sans écriture peut autoriser le premier incrément applicatif limité aux constantes, modèles purs, normalisations, adaptateurs, dépôts en mémoire et tests.
+La validation documentaire d’`INSCRIPTIONS-006` autorise uniquement le premier incrément applicatif chargé de matérialiser les fixtures et oracles versionnés, les tests sans écriture et le minimum de constantes, modèles purs, normalisations, adaptateurs et dépôts en mémoire nécessaire à leur exécution.
+
+Cette validation documentaire ne constitue pas une preuve d’exécution. La réussite automatisée future des jeux sans écriture devra être enregistrée séparément avant d’autoriser un incrément dépassant ce périmètre initial.
 
 Elle n’autorise pas :
 
@@ -346,7 +348,7 @@ Chaque extension d’autorisation exige les preuves correspondant à son niveau 
 - la remise à zéro et la restauration sont reproductibles ;
 - les preuves avant/après et les ressources inchangées sont exigées ;
 - les prérequis bloquants sont clairement distingués des éléments déjà disponibles ;
-- l’autorisation du premier incrément applicatif reste bornée aux jeux sans écriture ;
+- l’autorisation documentaire du premier incrément reste bornée à la matérialisation et à l’exécution future des jeux sans écriture, sans présenter ces jeux comme déjà réussis ;
 - aucun code, classeur, dossier, compte, accès ou déploiement réel n’est modifié.
 
 ## 22. Décisions structurantes
@@ -359,7 +361,7 @@ Chaque extension d’autorisation exige les preuves correspondant à son niveau 
 6. La concurrence réelle est orchestrée dans une campagne dédiée.
 7. L’audit fonctionnel persistant fait partie du résultat attendu.
 8. La restauration est une preuve obligatoire et non une simple procédure déclarée.
-9. Un premier incrément applicatif peut commencer avec les jeux sans écriture validés.
+9. La validation documentaire autorise un premier incrément applicatif borné à la matérialisation et à l’exécution des jeux sans écriture ; leur réussite automatisée constituera une preuve ultérieure distincte.
 10. Aucune application de lot réel n’est autorisée avant la levée de tous les prérequis bloquants.
 
 ## 23. Historique
