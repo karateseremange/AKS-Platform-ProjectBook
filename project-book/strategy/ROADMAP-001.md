@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.66 |
+| **Version** | 1.2.67 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -724,9 +724,9 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — contrats techniques validés, jeux d’essai et recette cumulative en revue**.
+**Engagé — stratégie de recette validée et premier socle sans écriture intégré sur `develop`**.
 
-Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit les jeux d’essai et la recette cumulative ; cette stratégie reste en revue et aucun de ces contrats documentaires n’est encore implémenté.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit et valide les jeux d’essai ainsi que la recette cumulative. Son premier incrément applicatif sans écriture est intégré sur `develop` par la PR #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. La suite Apps Script exécutée le 2 août 2026 atteint **341/341 tests réussis, 0 échec** ; les seize jeux produisent 12 réussites, 2 résultats partiels et 2 blocages attendus.
 
 ## 13.2 Objectif
 
@@ -752,7 +752,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-006`, consacré aux jeux d’or, aux niveaux de validation, aux protections de recette et aux preuves cumulatives. Sa validation documentaire pourra autoriser un premier incrément applicatif limité à la matérialisation et à l’exécution future des jeux sans écriture, avec les modèles purs, adaptateurs et dépôts en mémoire nécessaires ; elle ne constituera pas encore une preuve de réussite de ces jeux. Aucune application réelle de lot ne sera autorisée avant la levée des prérequis bloquants.
+Le prochain jalon est de définir puis d’autoriser un second incrément applicatif borné à partir des écarts réellement observés. La priorité d’analyse porte sur les capacités Inscriptions d’`ACCESS-001` et le support d’audit obligatoire, sans écriture Google réelle. Les blocages SIKADA, Analytics/`BODY_KARATE` et restauration Google restent ouverts. Aucune application réelle de lot n’est autorisée avant leur levée et la production des preuves de recette correspondantes.
 
 ## 13.5 Backlog restant
 
@@ -869,7 +869,7 @@ ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
         ↓
-AKS Inscriptions — contrats techniques validés, jeux d’essai et recette cumulative en revue, aucun code applicatif
+AKS Inscriptions — stratégie de recette validée, premier socle sans écriture intégré sur develop, 341/341 tests réussis
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
@@ -880,6 +880,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.67 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle sans écriture : PR applicative #85 fusionnée, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
 | 1.2.66 | 2026-08-02 | Validation d’INSCRIPTIONS-005 et ouverture d’INSCRIPTIONS-006 : jeux d’or, niveaux de validation, recette isolée, concurrence, restauration et preuves cumulatives |
 | 1.2.65 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et ouverture d’INSCRIPTIONS-005 : stockage, schéma, identifiants, concurrence, idempotence durable et intégrations externes |
 | 1.2.64 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et ouverture d’INSCRIPTIONS-004 : interface de contrôle, habilitations centralisées et accès privé Analytics via ACCESS-001 |

@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-006 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Stratégie de validation, jeux d’or et recette cumulative |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -319,9 +319,18 @@ Ces prérequis restent des écarts ouverts tant qu’une preuve contrôlable n�
 
 ## 20. Autorisation des incréments applicatifs
 
-La validation documentaire d’`INSCRIPTIONS-006` autorise uniquement le premier incrément applicatif chargé de matérialiser les fixtures et oracles versionnés, les tests sans écriture et le minimum de constantes, modèles purs, normalisations, adaptateurs et dépôts en mémoire nécessaire à leur exécution.
+La validation documentaire d’`INSCRIPTIONS-006` a autorisé le premier incrément applicatif chargé de matérialiser les fixtures et oracles versionnés, les tests sans écriture et le minimum de constantes, modèles purs, normalisations, adaptateurs et dépôts en mémoire nécessaire à leur exécution.
 
-Cette validation documentaire ne constitue pas une preuve d’exécution. La réussite automatisée future des jeux sans écriture devra être enregistrée séparément avant d’autoriser un incrément dépassant ce périmètre initial.
+Ce premier incrément est intégré sur `develop` par la PR applicative #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. Son code a été synchronisé dans le projet Apps Script pour exécuter la validation cumulative. Les tests ne lisent ni n’écrivent aucune donnée métier ou cible Google réelle, n’activent aucune interface Inscriptions et ne créent aucun déploiement de production.
+
+La suite cumulative exécutée dans Apps Script le 2 août 2026 sur le commit de tête validé `21ae32f` est concluante : **341/341 tests réussis, 0 échec**. Les seize jeux produisent les résultats contrôlés suivants :
+
+- 12 réussis : `INS-GOLD-001` à `010`, `012` et `014` ;
+- 2 partiels : `INS-GOLD-011` et `016` ;
+- 2 bloqués : `INS-GOLD-013` et `015` ;
+- 0 échec d’oracle.
+
+Les résultats partiels et bloqués ne sont pas comptabilisés comme des réussites. Ils conservent respectivement les écarts liés aux capacités Inscriptions d’`ACCESS-001`, à la restauration Google réelle, à la fixture SIKADA anonymisée et au pont Analytics incluant `BODY_KARATE`.
 
 Elle n’autorise pas :
 
@@ -348,8 +357,8 @@ Chaque extension d’autorisation exige les preuves correspondant à son niveau 
 - la remise à zéro et la restauration sont reproductibles ;
 - les preuves avant/après et les ressources inchangées sont exigées ;
 - les prérequis bloquants sont clairement distingués des éléments déjà disponibles ;
-- l’autorisation documentaire du premier incrément reste bornée à la matérialisation et à l’exécution future des jeux sans écriture, sans présenter ces jeux comme déjà réussis ;
-- aucun code, classeur, dossier, compte, accès ou déploiement réel n’est modifié.
+- le premier incrément reste borné à la matérialisation et à l’exécution des jeux sans écriture, avec une preuve cumulative à 341/341 et un bilan séparant explicitement réussites, résultats partiels et blocages ;
+- aucune donnée métier réelle n’est lue ou écrite et aucune ressource Google métier réelle (classeur, formulaire, dossier, compte, accès, partage ou déploiement) n’est modifiée.
 
 ## 22. Décisions structurantes
 
@@ -361,11 +370,12 @@ Chaque extension d’autorisation exige les preuves correspondant à son niveau 
 6. La concurrence réelle est orchestrée dans une campagne dédiée.
 7. L’audit fonctionnel persistant fait partie du résultat attendu.
 8. La restauration est une preuve obligatoire et non une simple procédure déclarée.
-9. La validation documentaire autorise un premier incrément applicatif borné à la matérialisation et à l’exécution des jeux sans écriture ; leur réussite automatisée constituera une preuve ultérieure distincte.
+9. Le premier incrément applicatif reste borné à la matérialisation et à l’exécution des jeux sans écriture ; sa preuve automatisée à 341/341 est enregistrée séparément des futures recettes Google réelles.
 10. Aucune application de lot réel n’est autorisée avant la levée de tous les prérequis bloquants.
 
 ## 23. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-02 | Validation de la stratégie et enregistrement du premier socle sans écriture : PR applicative #85 fusionnée, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
 | 1.0.0 | 2026-08-02 | Création de la stratégie de validation cumulative, des seize jeux d’or, des protections de recette et des critères d’autorisation progressive |
