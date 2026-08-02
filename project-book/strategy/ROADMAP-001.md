@@ -726,7 +726,7 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 **Engagé — deuxième incrément accès et audit en revue**.
 
-Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit et valide les jeux d’essai ainsi que la recette cumulative. Son premier incrément applicatif sans écriture est intégré sur `develop` par la PR #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. La suite Apps Script exécutée le 2 août 2026 atteint **341/341 tests réussis, 0 échec** ; les seize jeux produisent 12 réussites, 2 résultats partiels et 2 blocages attendus. `INSCRIPTIONS-008` ouvre le deuxième incrément borné aux capacités Inscriptions d’`ACCESS-001`, aux périmètres explicites et à l’audit obligatoire avant commit, toujours sans écriture métier Google réelle.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit et valide les jeux d’essai ainsi que la recette cumulative. Son premier incrément applicatif sans écriture est intégré sur `develop` par la PR #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. La suite Apps Script exécutée le 2 août 2026 atteint **341/341 tests réussis, 0 échec** ; les seize jeux produisent 12 réussites, 2 résultats partiels et 2 blocages attendus. `INSCRIPTIONS-008` ouvre le deuxième incrément borné aux capacités Inscriptions d’`ACCESS-001`, à une matrice de périmètres fermée et à un cycle d’audit en deux temps, toujours sans écriture métier Google réelle.
 
 ## 13.2 Objectif
 
@@ -752,7 +752,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la revue puis la validation d’`INSCRIPTIONS-008`. Ce document borne le deuxième incrément applicatif à l’ajout des six capacités Inscriptions dans `ACCESS-001`, aux périmètres explicites module/saison/section/cours et à un support de commande auditée où l’audit obligatoire précède tout commit. Après validation documentaire, une PR applicative brouillon pourra implémenter ce périmètre avec des dépôts injectés et des tests sans API Google réelle. Les blocages SIKADA, Analytics/`BODY_KARATE` et restauration Google restent ouverts. Aucune application réelle de lot n’est autorisée.
+Le prochain jalon est la revue puis la validation d’`INSCRIPTIONS-008`. Ce document borne le deuxième incrément applicatif à l’ajout des six capacités Inscriptions dans `ACCESS-001`, aux périmètres explicites module/saison/section/cours et à un support de commande auditée où une intention non concluante précède le commit et où le résultat n’est confirmé qu’après contrôle. Après validation documentaire, une PR applicative brouillon pourra implémenter ce périmètre avec des dépôts injectés et des tests sans API Google réelle. Les blocages SIKADA, Analytics/`BODY_KARATE` et restauration Google restent ouverts. Aucune application réelle de lot n’est autorisée.
 
 ## 13.5 Backlog restant
 
@@ -880,7 +880,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.2.68 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : second incrément borné aux capacités Inscriptions d’ACCESS-001, aux périmètres explicites et à l’audit obligatoire sans écriture métier |
+| 1.2.68 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : second incrément borné aux capacités Inscriptions d’ACCESS-001, à une matrice de périmètres fermée et à un cycle d’audit en deux temps sans écriture métier |
 | 1.2.67 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle sans écriture : PR applicative #85 fusionnée, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
 | 1.2.66 | 2026-08-02 | Validation d’INSCRIPTIONS-005 et ouverture d’INSCRIPTIONS-006 : jeux d’or, niveaux de validation, recette isolée, concurrence, restauration et preuves cumulatives |
 | 1.2.65 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et ouverture d’INSCRIPTIONS-005 : stockage, schéma, identifiants, concurrence, idempotence durable et intégrations externes |
