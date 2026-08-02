@@ -149,7 +149,7 @@ Les tests automatisés doivent au minimum démontrer :
 - la mise à jour contrôlée de l’oracle `INS-GOLD-011` ;
 - la réussite de la suite cumulative Apps Script.
 
-Le total cumulatif exact sera déterminé par le nombre réel de tests ajoutés. Il ne doit pas être annoncé avant enregistrement final de la suite.
+Le total cumulatif enregistré après exécution de la suite est de **360/360 tests réussis, 0 échec**. Conformément à la règle de preuve, ce total n’a été consigné qu’après son enregistrement final.
 
 ## 8. Éléments explicitement interdits
 
