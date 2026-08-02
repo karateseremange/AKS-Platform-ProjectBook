@@ -99,8 +99,9 @@ Le format actuellement observé du numéro FFKDA est `8 chiffres + 1 lettre`. La
 | Type | Format | Portée de séquence |
 |---|---|---|
 | Licencié | `LIC-000001` | Globale et permanente |
+| Responsable légal | `RSP-000001` | Globale et permanente |
 | Dossier | `INS-2026-000001` | Année de début de saison |
-| Lot d’import | `IMP-2026-000001` | Année de début de saison ; le type d’import reste un attribut distinct |
+| Lot d’import | `IMP-2026-000001` | Année de début de saison et type d’import |
 
 L’onglet `Sequences` conserve au minimum `sequence_type`, `scope_key`, `last_value`, `row_version`, `updated_at` et `updated_by`.
 
@@ -322,7 +323,7 @@ Chaque incrément conserve la suite cumulative et ne rend pas opérationnelle un
 
 - le support de chaque type de donnée est explicite ;
 - les onglets et invariants du référentiel sont définis ;
-- les formats et portées des trois identifiants sont fixés ;
+- les formats et portées des quatre identifiants sont fixés ;
 - l’allocation concurrente n’utilise ni maximum ni nombre de lignes ;
 - l’idempotence repose sur une preuve persistante ;
 - une interruption reste détectable et récupérable ;
