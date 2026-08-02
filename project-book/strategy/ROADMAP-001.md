@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.64 |
+| **Version** | 1.2.65 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -724,9 +724,9 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — services et reprise Google Forms validés, interfaces et accès privés en revue**.
+**Engagé — interfaces et accès privés validés, contrats techniques en revue**.
 
-Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé et `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés. `INSCRIPTIONS-004` cadre l’interface de contrôle et étend `ACCESS-001` en socle commun pour Inscriptions, Analytics, Présences et les futurs modules privés.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, et `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés. `INSCRIPTIONS-005` définit le stockage, les identifiants, l’idempotence, l’audit et les intégrations ; ces contrats restent en revue et ne sont pas implémentés.
 
 ## 13.2 Objectif
 
@@ -752,7 +752,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-004`, consacré à l’interface administrative Inscriptions et au socle commun des accès privés. `INSCRIPTIONS-005` définira ensuite les contrats techniques, le stockage, les identifiants et les intégrations externes.
+Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-005`, consacré aux contrats techniques, au stockage, aux identifiants, à l’idempotence durable, à l’audit et aux intégrations externes. `INSCRIPTIONS-006` définira ensuite les jeux d’essai et la recette cumulative avant tout premier incrément applicatif.
 
 ## 13.5 Backlog restant
 
@@ -869,7 +869,7 @@ ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
         ↓
-AKS Inscriptions — services et reprise Google Forms validés, interfaces et accès privés transverses en revue, aucun code applicatif
+AKS Inscriptions — interfaces et accès privés validés, contrats techniques et intégrations en revue, aucun code applicatif
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
@@ -880,6 +880,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.65 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et ouverture d’INSCRIPTIONS-005 : stockage, schéma, identifiants, concurrence, idempotence durable et intégrations externes |
 | 1.2.64 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et ouverture d’INSCRIPTIONS-004 : interface de contrôle, habilitations centralisées et accès privé Analytics via ACCESS-001 |
 | 1.2.63 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et ouverture d’INSCRIPTIONS-003 : services, transitions et reprise contrôlée des trois Google Forms officiels 2026–2027 |
 | 1.2.62 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et ouverture d’INSCRIPTIONS-002 : modèle métier, distinction identifiant AKS/numéro FFKDA, états indépendants et intégrations Google Forms, SIKADA, Analytics et Body Karaté |
