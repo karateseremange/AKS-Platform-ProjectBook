@@ -187,9 +187,10 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
 | INSCRIPTIONS-001 | Cadrage fonctionnel d’AKS Inscriptions | Validé | 1.0.2 | ROADMAP-001, STD-001, SECURITY-001, STORAGE-001, NOTIF-001, ANALYTICS-001, ANALYTICS-SAISIE-001 |
-| INSCRIPTIONS-002 | Modèle métier d’AKS Inscriptions | Validé | 1.0.1 | INSCRIPTIONS-001, ANALYTICS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001 |
+| INSCRIPTIONS-002 | Modèle métier d’AKS Inscriptions | Validé | 1.0.2 | INSCRIPTIONS-001, ANALYTICS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001 |
 | INSCRIPTIONS-003 | Services, transitions et reprise Google Forms | Validé | 1.0.1 | INSCRIPTIONS-001, INSCRIPTIONS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
-| INSCRIPTIONS-004 | Interfaces et accès privés d’AKS Platform | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-003, ACCESS-001, ADMIN-002, SECURITY-001, UI-001, UX-001 |\n| INSCRIPTIONS-005 | Contrats techniques, stockage et intégrations | En revue | 1.0.0 | INSCRIPTIONS-001 à INSCRIPTIONS-004, CONFIG-001, ACCESS-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
+| INSCRIPTIONS-004 | Interfaces et accès privés d’AKS Platform | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-003, ACCESS-001, ADMIN-002, SECURITY-001, UI-001, UX-001 |
+| INSCRIPTIONS-005 | Contrats techniques, stockage et intégrations | En revue | 1.0.0 | INSCRIPTIONS-001 à INSCRIPTIONS-004, CONFIG-001, ACCESS-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -289,7 +290,8 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.2.73 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et référencement d’INSCRIPTIONS-005 : stockage privé, schéma, séquences, idempotence durable, audit fonctionnel et intégrations externes |\n| 1.2.72 | 2026-08-02 | Correction du catalogue général AKS Inscriptions : référencement d’INSCRIPTIONS-001 à INSCRIPTIONS-004 et alignement de l’état sur la validation d’INSCRIPTIONS-003 |
+| 1.2.73 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et référencement d’INSCRIPTIONS-005 : stockage privé, schéma, séquences, idempotence durable, audit fonctionnel et intégrations externes |
+| 1.2.72 | 2026-08-02 | Correction du catalogue général AKS Inscriptions : référencement d’INSCRIPTIONS-001 à INSCRIPTIONS-004 et alignement de l’état sur la validation d’INSCRIPTIONS-003 |
 | 1.2.71 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et référencement d’INSCRIPTIONS-004 ; extension transverse d’ACCESS-001 pour Inscriptions, Analytics, Présences et administration privée |
 | 1.2.70 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et référencement d’INSCRIPTIONS-003 : services, transitions, adaptateurs versionnés et reprise contrôlée des trois Google Forms 2026–2027 |
 | 1.2.69 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et référencement d’INSCRIPTIONS-002 : modèle licencié, dossier saisonnier, états indépendants, imports Google Forms/SIKADA et écarts Analytics/Body Karaté |
