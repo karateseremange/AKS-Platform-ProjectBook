@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.77 |
+| Version | 1.2.78 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-08-02 |
+| Dernière mise à jour | 2026-08-03 |
 | Version du produit | Post-V1.3 |
 
 ---
@@ -146,7 +146,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` | Deux incréments sans écriture métier validés ; suite cumulative 360/360 |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008`, `INSCRIPTIONS-009` | Deux incréments validés ; troisième incrément journal et reprise en revue |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -193,6 +193,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | INSCRIPTIONS-005 | Contrats techniques, stockage et intégrations | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-004, CONFIG-001, ACCESS-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
 | INSCRIPTIONS-006 | Jeux d’essai et stratégie de recette cumulative | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-005, ACCESS-001, CONFIG-001, LOG-001, AUDIT-001, SECURITY-001, ERROR-001 |
 | INSCRIPTIONS-008 | Deuxième incrément : accès et audit sans écriture métier | Validé | 1.1.0 | INSCRIPTIONS-004 à INSCRIPTIONS-006, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-009 | Troisième incrément : journal de commandes et reprise sans Google | En revue | 1.0.0 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -271,7 +272,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 | Deuxième incrément validé : 360/360 tests, 13 jeux réussis, 1 partiel et 2 bloqués ; aucune donnée Google réelle ni déploiement |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008, INSCRIPTIONS-009 | Deuxième incrément validé à 360/360 ; troisième incrément journal et reprise en revue, toujours sans donnée Google réelle ni déploiement |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -292,6 +293,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.78 | 2026-08-03 | Référencement d’INSCRIPTIONS-009 : troisième incrément proposé pour le journal de commandes injectable, l’idempotence et la reprise après interruption sans API Google |
 | 1.2.77 | 2026-08-02 | Validation d’INSCRIPTIONS-008 : PR applicative #87 fusionnée sur `develop`, 360/360 tests réussis, 13 jeux d’or réussis, 1 partiel et 2 bloqués, sans déploiement ni donnée Google réelle |
 | 1.2.76 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : deuxième incrément borné aux capacités Inscriptions d’ACCESS-001, à une matrice de périmètres fermée et à un cycle d’audit en deux temps sans écriture métier |
 | 1.2.75 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle applicatif sans écriture : PR #85 fusionnée sur `develop`, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
