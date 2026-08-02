@@ -321,7 +321,7 @@ Ces prérequis restent des écarts ouverts tant qu’une preuve contrôlable n�
 
 La validation documentaire d’`INSCRIPTIONS-006` a autorisé le premier incrément applicatif chargé de matérialiser les fixtures et oracles versionnés, les tests sans écriture et le minimum de constantes, modèles purs, normalisations, adaptateurs et dépôts en mémoire nécessaire à leur exécution.
 
-Ce premier incrément est intégré sur `develop` par la PR applicative #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. Il ne lit et n’écrit aucune ressource Google réelle, n’active aucune interface Inscriptions et ne crée aucun déploiement de production.
+Ce premier incrément est intégré sur `develop` par la PR applicative #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. Son code a été synchronisé dans le projet Apps Script pour exécuter la validation cumulative. Les tests ne lisent ni n’écrivent aucune donnée métier ou cible Google réelle, n’activent aucune interface Inscriptions et ne créent aucun déploiement de production.
 
 La suite cumulative exécutée dans Apps Script le 2 août 2026 sur le commit de tête validé `21ae32f` est concluante : **341/341 tests réussis, 0 échec**. Les seize jeux produisent les résultats contrôlés suivants :
 
