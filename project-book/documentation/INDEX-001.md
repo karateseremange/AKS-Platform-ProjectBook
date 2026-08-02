@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.75 |
+| Version | 1.2.76 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-02 |
@@ -76,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.66 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.68 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -146,7 +146,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006` | Stratégie de recette validée ; premier socle sans écriture intégré sur `develop` et validé par 341/341 tests |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` | Premier socle validé par 341/341 tests ; deuxième incrément accès et audit en revue |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -192,6 +192,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | INSCRIPTIONS-004 | Interfaces et accès privés d’AKS Platform | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-003, ACCESS-001, ADMIN-002, SECURITY-001, UI-001, UX-001 |
 | INSCRIPTIONS-005 | Contrats techniques, stockage et intégrations | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-004, CONFIG-001, ACCESS-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
 | INSCRIPTIONS-006 | Jeux d’essai et stratégie de recette cumulative | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-005, ACCESS-001, CONFIG-001, LOG-001, AUDIT-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-008 | Deuxième incrément : accès et audit sans écriture métier | En revue | 1.0.0 | INSCRIPTIONS-004 à INSCRIPTIONS-006, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -270,7 +271,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006 | Stratégie validée ; premier socle sans écriture intégré sur `develop` ; 341/341 tests réussis ; 12 jeux réussis, 2 partiels et 2 bloqués |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 | Premier socle sans écriture validé à 341/341 ; deuxième incrément accès et audit en revue ; 12 jeux réussis, 2 partiels et 2 bloqués |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -291,6 +292,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.76 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : deuxième incrément borné aux capacités Inscriptions d’ACCESS-001, à une matrice de périmètres fermée et à un cycle d’audit en deux temps sans écriture métier |
 | 1.2.75 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle applicatif sans écriture : PR #85 fusionnée sur `develop`, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
 | 1.2.74 | 2026-08-02 | Validation d’INSCRIPTIONS-005 et référencement d’INSCRIPTIONS-006 : jeux d’or, niveaux de validation, recette isolée, concurrence, restauration et preuves cumulatives |
 | 1.2.73 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et référencement d’INSCRIPTIONS-005 : stockage privé, schéma, séquences, idempotence durable, audit fonctionnel et intégrations externes |
