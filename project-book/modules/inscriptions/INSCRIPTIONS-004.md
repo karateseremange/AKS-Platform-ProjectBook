@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-004 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Interfaces métier et extension transverse des habilitations |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -335,4 +335,4 @@ Les contrats techniques et intégrations relèvent d’`INSCRIPTIONS-005`. La re
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.0.0 | 2026-08-02 | Création du contrat d’interface Inscriptions et du cadrage transverse des accès privés Analytics, Présences et administration |
+| 1.0.1 | 2026-08-02 | Validation du contrat d’interface et ouverture d’INSCRIPTIONS-005 consacré aux contrats techniques, au stockage et aux intégrations |\n| 1.0.0 | 2026-08-02 | Création du contrat d’interface Inscriptions et du cadrage transverse des accès privés Analytics, Présences et administration |
