@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.67 |
+| Version | 1.2.68 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-02 |
@@ -186,7 +186,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
-| INSCRIPTIONS-001 | Cadrage fonctionnel d’AKS Inscriptions | En revue | 1.0.0 | ROADMAP-001, STD-001, SECURITY-001, STORAGE-001, NOTIF-001, ANALYTICS-001, ANALYTICS-SAISIE-001 |
+| INSCRIPTIONS-001 | Cadrage fonctionnel d’AKS Inscriptions | En revue | 1.0.1 | ROADMAP-001, STD-001, SECURITY-001, STORAGE-001, NOTIF-001, ANALYTICS-001, ANALYTICS-SAISIE-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -286,6 +286,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.68 | 2026-08-02 | Alignement d’INSCRIPTIONS-001 en version 1.0.1 : maintien transitoire des trois Google Forms et reprise complète, contrôlée, relançable et sans doublon de leurs réponses |
 | 1.2.67 | 2026-08-02 | Ouverture du chantier AKS Inscriptions : création et référencement d’INSCRIPTIONS-001, alignement de ROADMAP-001 en version 1.2.61 et correction du statut publié de la V1.3.0 |
 | 1.2.66 | 2026-08-01 | Préparation de la V1.3.0 : référencement de la note de publication AKS Calendar, alignement de la matrice de couverture et statut prêt à publier, sans fusion sur main ni création de tag |
 | 1.2.65 | 2026-08-01 | CALENDAR-004 validé : page WordPress protégée, accès aux trois calendriers internes, recette de sécurité et menu Services en ligne validés ; clôture complète du socle AKS Calendar |
