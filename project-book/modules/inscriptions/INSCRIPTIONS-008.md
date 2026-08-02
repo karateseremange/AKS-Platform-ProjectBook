@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-008 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.1.0 |
+| **Statut** | Validé |
 | **Nature** | Autorisation d’un incrément applicatif borné |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -31,7 +31,7 @@ Le socle existant fournit déjà :
 - le premier moteur Inscriptions pur et ses seize jeux d’or ;
 - une validation cumulative à **341/341 tests réussis, 0 échec**.
 
-Le scénario `INS-GOLD-011` reste partiel parce que les capacités Inscriptions et leurs périmètres ne sont pas encore implémentés. `INS-GOLD-012` démontre déjà en mémoire qu’un échec d’audit interdit le commit, mais ce comportement doit devenir un contrat réutilisable du module.
+Au démarrage de l’incrément, le scénario `INS-GOLD-011` restait partiel parce que les capacités Inscriptions et leurs périmètres n’étaient pas encore implémentés. `INS-GOLD-012` démontrait déjà en mémoire qu’un échec d’audit interdit le commit ; ce comportement est désormais porté par un contrat réutilisable du module.
 
 ## 3. Périmètre autorisé
 
@@ -171,12 +171,12 @@ Cet incrément n’autorise pas :
 
 Après implémentation et validation :
 
-- `INS-GOLD-011` peut passer de `PARTIEL` à `REUSSI` ;
-- `INS-GOLD-012` reste `REUSSI` et doit être renforcé par le support réutilisable ;
+- `INS-GOLD-011` passe de `PARTIEL` à `REUSSI` ;
+- `INS-GOLD-012` reste `REUSSI` et est renforcé par le support réutilisable ;
 - `INS-GOLD-016` reste `PARTIEL` ;
 - `INS-GOLD-013` et `INS-GOLD-015` restent `BLOQUE`.
 
-Le bilan cible devient donc au mieux **13 réussis, 1 partiel, 2 bloqués, 0 échec**, sous réserve de l’exécution réelle des tests. Cette cible n’est pas une preuve anticipée.
+Le bilan validé est donc **13 réussis, 1 partiel, 2 bloqués, 0 échec**.
 
 ## 10. Critères d’acceptation
 
@@ -193,11 +193,13 @@ L’incrément sera validable lorsque :
 - la suite cumulative Apps Script réussit sans échec ;
 - aucun déploiement n’est créé.
 
-## 11. Prochaines étapes après validation
+## 11. Résultat de validation et suites
 
-La validation de ce document autorisera une branche applicative dédiée et une PR brouillon vers `develop`.
+L’incrément a été implémenté par la PR applicative [#87](https://github.com/karateseremange/AKS-Platform/pull/87), fusionnée dans `develop` au commit `ceda8b322715f77399bf8e7eda80c8e2b046daaa`. Le commit applicatif validé `045e0194e1b63ba6a3183038368f0796c6f45a12` a été synchronisé dans Apps Script par `clasp push`.
 
-Les travaux SIKADA, Analytics/`BODY_KARATE`, stockage Google, restauration réelle et interfaces demeureront des incréments séparés soumis à leurs propres prérequis et preuves.
+La fonction `AKS_runValidationSuiteV11` a produit le 2 août 2026 le résultat réel **360/360 tests réussis, 0 échec**. Les suites ciblées locales étaient également concluantes : **18/18 ACCESS-001**, **8/8 jeux d’or** et **19/19 INSCRIPTIONS-008**. Aucun déploiement n’a été créé et aucune donnée métier ou ressource Google réelle n’a été lue ou écrite.
+
+Les travaux SIKADA, Analytics/`BODY_KARATE`, stockage Google, restauration réelle et interfaces demeurent des incréments séparés soumis à leurs propres prérequis et preuves.
 
 ## 12. Décisions structurantes
 
@@ -213,4 +215,5 @@ Les travaux SIKADA, Analytics/`BODY_KARATE`, stockage Google, restauration réel
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-08-02 | Validation de l’incrément : PR applicative #87 fusionnée sur `develop`, 360/360 tests Apps Script réussis, 13 jeux d’or réussis, 1 partiel et 2 bloqués, sans déploiement ni donnée Google réelle |
 | 1.0.0 | 2026-08-02 | Création du contrat bornant le deuxième incrément applicatif aux capacités Inscriptions d’ACCESS-001 et au support d’audit obligatoire sans écriture métier |
