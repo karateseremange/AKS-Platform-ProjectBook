@@ -880,7 +880,8 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.2.65 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et ouverture d’INSCRIPTIONS-005 : stockage, schéma, identifiants, concurrence, idempotence durable et intégrations externes |\n| 1.2.64 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et ouverture d’INSCRIPTIONS-004 : interface de contrôle, habilitations centralisées et accès privé Analytics via ACCESS-001 |
+| 1.2.65 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et ouverture d’INSCRIPTIONS-005 : stockage, schéma, identifiants, concurrence, idempotence durable et intégrations externes |
+| 1.2.64 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et ouverture d’INSCRIPTIONS-004 : interface de contrôle, habilitations centralisées et accès privé Analytics via ACCESS-001 |
 | 1.2.63 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et ouverture d’INSCRIPTIONS-003 : services, transitions et reprise contrôlée des trois Google Forms officiels 2026–2027 |
 | 1.2.62 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et ouverture d’INSCRIPTIONS-002 : modèle métier, distinction identifiant AKS/numéro FFKDA, états indépendants et intégrations Google Forms, SIKADA, Analytics et Body Karaté |
 | 1.2.61 | 2026-08-02 | Publication V1.3.0 alignée sur l’état réel et engagement d’AKS Inscriptions avec INSCRIPTIONS-001 comme premier incrément documentaire |
