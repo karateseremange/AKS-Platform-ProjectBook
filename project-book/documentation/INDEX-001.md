@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.69 |
+| Version | 1.2.70 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-02 |
@@ -146,7 +146,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-002` | Cadrage validé et modèle métier en revue — aucun code applicatif |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-003` | Cadrage et modèle métier validés ; services et reprise Google Forms en revue — aucun code applicatif |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -187,7 +187,8 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ID | Titre | Statut | Version | Dépendances principales |
 |----|-------|--------|---------|-------------------------|
 | INSCRIPTIONS-001 | Cadrage fonctionnel d’AKS Inscriptions | Validé | 1.0.2 | ROADMAP-001, STD-001, SECURITY-001, STORAGE-001, NOTIF-001, ANALYTICS-001, ANALYTICS-SAISIE-001 |
-| INSCRIPTIONS-002 | Modèle métier d’AKS Inscriptions | En revue | 1.0.0 | INSCRIPTIONS-001, ANALYTICS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001 |
+| INSCRIPTIONS-002 | Modèle métier d’AKS Inscriptions | Validé | 1.0.1 | INSCRIPTIONS-001, ANALYTICS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001 |
+| INSCRIPTIONS-003 | Services, transitions et reprise Google Forms | En revue | 1.0.0 | INSCRIPTIONS-001, INSCRIPTIONS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -266,7 +267,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-002 | Cadrage validé et modèle métier en revue ; aucun code applicatif |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-003 | Cadrage et modèle métier validés ; services et reprise Google Forms en revue ; aucun code applicatif |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -287,6 +288,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.70 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et référencement d’INSCRIPTIONS-003 : services, transitions, adaptateurs versionnés et reprise contrôlée des trois Google Forms 2026–2027 |
 | 1.2.69 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et référencement d’INSCRIPTIONS-002 : modèle licencié, dossier saisonnier, états indépendants, imports Google Forms/SIKADA et écarts Analytics/Body Karaté |
 | 1.2.68 | 2026-08-02 | Alignement d’INSCRIPTIONS-001 en version 1.0.1 : maintien transitoire des trois Google Forms et reprise complète, contrôlée, relançable et sans doublon de leurs réponses |
 | 1.2.67 | 2026-08-02 | Ouverture du chantier AKS Inscriptions : création et référencement d’INSCRIPTIONS-001, alignement de ROADMAP-001 en version 1.2.61 et correction du statut publié de la V1.3.0 |

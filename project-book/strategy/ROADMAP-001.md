@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.62 |
+| **Version** | 1.2.63 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-02 |
@@ -724,9 +724,9 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — cadrage fonctionnel validé, modèle métier en revue**.
+**Engagé — cadrage et modèle métier validés, services et reprise Google Forms en revue**.
 
-Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue désormais le cadrage fonctionnel validé. `INSCRIPTIONS-002` définit le modèle métier détaillé avant tout développement applicatif.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé et `INSCRIPTIONS-002` le modèle métier validé. `INSCRIPTIONS-003` définit les services, transitions et contrats de reprise transitoire des trois Google Forms avant tout développement applicatif.
 
 ## 13.2 Objectif
 
@@ -748,7 +748,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-002`, avant l’ouverture d’`INSCRIPTIONS-003` consacré aux services, commandes et transitions.
+Le prochain jalon est la revue puis la validation formelle d’`INSCRIPTIONS-003`, avant l’ouverture d’`INSCRIPTIONS-004` consacré aux interfaces publiques et administratives.
 
 ## 13.5 Backlog restant
 
@@ -865,7 +865,7 @@ ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
         ↓
-AKS Inscriptions — cadrage validé et modèle métier en revue, aucun code applicatif
+AKS Inscriptions — cadrage et modèle métier validés, services et reprise Google Forms en revue, aucun code applicatif
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
@@ -876,5 +876,6 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.63 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et ouverture d’INSCRIPTIONS-003 : services, transitions et reprise contrôlée des trois Google Forms officiels 2026–2027 |
 | 1.2.62 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et ouverture d’INSCRIPTIONS-002 : modèle métier, distinction identifiant AKS/numéro FFKDA, états indépendants et intégrations Google Forms, SIKADA, Analytics et Body Karaté |
 | 1.2.61 | 2026-08-02 | Publication V1.3.0 alignée sur l’état réel et engagement d’AKS Inscriptions avec INSCRIPTIONS-001 comme premier incrément documentaire |
