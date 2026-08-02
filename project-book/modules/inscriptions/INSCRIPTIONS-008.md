@@ -48,7 +48,7 @@ Le deuxième incrément autorise uniquement :
 3. la validation fermée des périmètres absents, inconnus, ambigus, expirés ou incohérents ;
 4. un fournisseur de catalogue Inscriptions injecté et fictif pour les tests ;
 5. une garde serveur vérifiée avant tout appel au dépôt injecté ;
-6. une commande auditée en mémoire qui prépare, audite puis commit uniquement si l’audit obligatoire réussit ;
+6. une commande auditée en mémoire qui réserve une intention d’audit, commit, contrôle puis confirme le résultat uniquement si chaque étape obligatoire réussit ;
 7. la minimisation de l’événement d’audit ;
 8. les tests unitaires, de contrat et d’intégration correspondants ;
 9. la mise à jour de `INS-GOLD-011` de `PARTIEL` à `REUSSI` si toutes les preuves sont obtenues ;
@@ -63,12 +63,26 @@ Les règles suivantes sont obligatoires :
 - les capacités Présences existantes conservent leur comportement ;
 - les comptes et affectations `access/1.0` existants restent lisibles ou font l’objet d’une migration pure et testée ;
 - une capacité Inscriptions exige le module `INSCRIPTIONS` ;
-- une saison doit respecter `AAAA-AAAA+1` ou `*` lorsque le contrat autorise explicitement une portée globale ;
-- une section appartient à un catalogue injecté ;
-- un cours, lorsqu’il est requis, appartient à la section et à la saison autorisées ;
-- une valeur inconnue invalide l’affectation concernée ;
+- la requête porte toujours une saison concrète au format `AAAA-AAAA+1` ; `*` n’est accepté que dans une affectation globale explicitement autorisée et doit couvrir la saison concrète demandée ;
+- une section est obligatoire pour les six capacités et appartient au catalogue injecté de la saison ;
+- `courseCode` respecte la matrice normative ci-dessous ; lorsqu’il est présent, il appartient obligatoirement à la section et à la saison autorisées ;
+- une dimension obligatoire absente, une dimension interdite présente ou une valeur inconnue invalide l’affectation concernée ;
 - l’administrateur conserve le comportement global existant sans élargir les droits des autres rôles ;
 - aucune capacité sensible Inscriptions n’est accordée implicitement à `PROFESSEUR`, `ASSISTANT_AFA` ou `CONSULTATION`.
+
+
+### 4.1 Dimensions obligatoires par capacité
+
+| Capacité | Module | Saison demandée | Section | `courseCode` |
+|---|---|---|---|---|
+| `INSCRIPTIONS_READ` | `INSCRIPTIONS`, obligatoire | Concrète, obligatoire | Obligatoire | Facultatif ; absent = lecture limitée à toute la section autorisée |
+| `INSCRIPTIONS_ANALYZE_IMPORT` | `INSCRIPTIONS`, obligatoire | Concrète, obligatoire | Obligatoire | Interdit ; l’analyse porte sur une source de section |
+| `INSCRIPTIONS_CONTROL` | `INSCRIPTIONS`, obligatoire | Concrète, obligatoire | Obligatoire | Facultatif ; présent = contrôle limité au cours |
+| `INSCRIPTIONS_WRITE` | `INSCRIPTIONS`, obligatoire | Concrète, obligatoire | Obligatoire | Facultatif pour une donnée de dossier ; obligatoire pour une affectation liée à un cours |
+| `INSCRIPTIONS_APPLY_IMPORT` | `INSCRIPTIONS`, obligatoire | Concrète, obligatoire | Obligatoire | Interdit ; le lot validé conserve son propre détail de cours |
+| `INSCRIPTIONS_ACTIVATE` | `INSCRIPTIONS`, obligatoire | Concrète, obligatoire | Obligatoire | Obligatoire ; l’activation cible un cours opérationnel déterminé |
+
+L’absence de `courseCode` n’élargit jamais une autorisation au-delà de la saison et de la section obligatoires. Une affectation `*` peut couvrir une saison concrète demandée, mais une requête ne peut jamais utiliser `*` comme saison d’exécution.
 
 ## 5. Matrice minimale d’autorisation
 
@@ -89,24 +103,27 @@ Les règles suivantes sont obligatoires :
 
 ## 6. Contrat de commande auditée
 
-Une commande sensible suit strictement l’ordre :
+Le support en mémoire modélise, sans écriture Google réelle, le cycle validé par `INSCRIPTIONS-005` : intention durable, mutation, contrôle, audit du résultat puis confirmation. Une commande sensible suit strictement l’ordre :
 
 1. autoriser l’acteur et le périmètre ;
-2. valider la commande ;
+2. valider la commande et sa clé idempotente ;
 3. préparer les changements sans les publier ;
-4. construire un événement d’audit minimisé ;
-5. persister l’audit obligatoire ;
-6. commit du dépôt injecté ;
-7. retourner un résultat immuable et corrélable.
+4. construire et persister une intention d’audit minimisée portant le résultat `INTENTION` ;
+5. commit du dépôt injecté ;
+6. relire et contrôler le résultat ainsi que les invariants ;
+7. persister l’issue d’audit `REUSSI` ou `ECHEC` avec le même identifiant de corrélation ;
+8. confirmer la commande et retourner un résultat immuable uniquement après la réussite des contrôles et de l’audit final.
 
-Si l’autorisation, la validation, la préparation ou l’audit échoue, le commit n’est jamais appelé.
+L’intention préalable ne peut jamais porter `REUSSI` ni laisser entendre que le commit est confirmé. Si l’autorisation, la validation, la préparation ou la persistance de cette intention échoue, le commit n’est jamais appelé.
 
-L’événement d’audit contient uniquement :
+Si le commit, la relecture, le contrôle ou l’audit final échoue, aucun succès n’est retourné et la commande n’est pas confirmée. L’échec est enregistré lorsque le support d’audit reste disponible ; l’état demeure récupérable conformément à `INSCRIPTIONS-005`. Le futur adaptateur persistant devra en outre conserver l’intention de commande et les états `INTENTION`, `EN_COURS`, `CONFIRMEE`, `ECHEC_RECUPERABLE` ou `ECHEC_FINAL` prévus par ce contrat. Le présent incrément ne simule pas une annulation transactionnelle que Google Sheets ne garantit pas.
+
+Chaque événement d’audit contient uniquement :
 
 - l’acteur technique ;
 - l’action ;
 - la cible technique minimisée ;
-- le résultat ;
+- le résultat `INTENTION`, `REUSSI` ou `ECHEC` ;
 - la date ;
 - le motif lorsqu’il est obligatoire ;
 - l’identifiant de corrélation.
@@ -126,7 +143,7 @@ Les tests automatisés doivent au minimum démontrer :
 - l’absence d’octroi implicite aux rôles non administrateurs ;
 - la réussite d’une lecture Inscriptions autorisée avec dépôt injecté ;
 - l’absence de commit si l’audit échoue ;
-- l’ordre `prepare → audit → commit` lorsque la commande réussit ;
+- l’ordre `prepare → audit(INTENTION) → commit → contrôle → audit(résultat) → confirmation` lorsque la commande réussit ;
 - la minimisation de l’audit ;
 - l’absence d’API Google dans le nouveau chemin exécutable testé ;
 - la mise à jour contrôlée de l’oracle `INS-GOLD-011` ;
@@ -169,7 +186,7 @@ L’incrément sera validable lorsque :
 - aucune régression des parcours Présences n’est observée ;
 - les six capacités et leurs périmètres sont testés ;
 - le refus précède tout accès au dépôt ;
-- aucun commit n’est possible sans audit obligatoire réussi ;
+- aucun commit n’est possible sans intention d’audit persistée, et aucun succès n’est confirmé sans contrôle ni audit final réussi ;
 - les événements d’audit sont minimisés ;
 - aucune API Google réelle n’est appelée par les nouveaux tests ;
 - `INS-GOLD-011` ne devient réussi qu’après preuve ;
@@ -188,7 +205,7 @@ Les travaux SIKADA, Analytics/`BODY_KARATE`, stockage Google, restauration réel
 2. Les capacités Inscriptions sont explicites et ne créent aucun nouveau rôle.
 3. Une portée absente n’est jamais globale.
 4. L’autorisation précède tout accès au dépôt.
-5. L’audit obligatoire précède le commit métier.
+5. Une intention d’audit non concluante précède le commit ; le résultat d’audit et la confirmation ne suivent qu’après contrôle.
 6. Le deuxième incrément reste sans donnée ni ressource Google réelle.
 7. Un statut de jeu d’or ne change qu’après exécution probante.
 
