@@ -178,7 +178,7 @@ Le diff applicatif reste limité au service de journal et reprise injecté, à s
 
 Cet incrément renforce la preuve de `INS-GOLD-009` et `INS-GOLD-012`, déjà réussis. Il ne change artificiellement aucun statut.
 
-Le bilan attendu reste donc :
+Le bilan validé reste donc :
 
 - **13 réussis** ;
 - **1 partiel** : `INS-GOLD-016`, tant qu’aucune restauration Google réelle n’est prouvée ;
@@ -227,7 +227,7 @@ L’incrément est validé sur les preuves suivantes :
 - `SECURITY-001` — refus fermé et minimisation ;
 - `ERROR-001` — erreurs contrôlées.
 
-## 14. Décisions structurantes proposées
+## 14. Décisions structurantes validées
 
 1. Le journal de commandes est une dépendance injectée du domaine.
 2. La clé idempotente est réservée avant toute mutation.
