@@ -3,9 +3,9 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-009 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
-| **Nature** | Autorisation d’un incrément applicatif borné |
+| **Version** | 1.1.0 |
+| **Statut** | Validé |
+| **Nature** | Contrat et validation d’un incrément applicatif borné |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-03 |
 | **Version du produit** | Post-V1.3.0 |
@@ -149,7 +149,7 @@ Une nouvelle commande suit l’ordre :
 
 Une reprise commence par le chargement du journal, recalcule l’autorisation, puis réconcilie l’état enregistré avec le dépôt avant tout nouveau commit.
 
-## 9. Tests obligatoires
+## 9. Tests et preuves de validation
 
 Les tests automatisés démontrent au minimum :
 
@@ -170,13 +170,15 @@ Les tests automatisés démontrent au minimum :
 - l’absence d’API Google dans le chemin testé ;
 - la réussite de la suite cumulative Apps Script.
 
-Le nombre de nouveaux tests et le futur total cumulatif seront enregistrés seulement après implémentation et exécution probante.
+L’implémentation applicative est intégrée sur `develop` par la [PR #88](https://github.com/karateseremange/AKS-Platform/pull/88), commit de fusion `b870d6f425e52c1ec63f1bb5ce1b5214296c8465`. Elle ajoute **20 tests ciblés**, tous réussis. Après synchronisation contrôlée par `clasp push` de la tête testée `0ee4bb7b7d37a6f84dea38dc57edccf732053782`, `AKS_runValidationSuiteV11` a produit le 3 août 2026 la preuve cumulative réelle de **380/380 tests réussis, 0 échec**.
+
+Le diff applicatif reste limité au service de journal et reprise injecté, à ses tests et à leur intégration dans la suite V11. Aucun adaptateur Google, stockage métier réel, interface ou déploiement n’a été introduit.
 
 ## 10. Effet sur les jeux d’or
 
 Cet incrément renforce la preuve de `INS-GOLD-009` et `INS-GOLD-012`, déjà réussis. Il ne change artificiellement aucun statut.
 
-Le bilan attendu reste donc :
+Le bilan validé reste donc :
 
 - **13 réussis** ;
 - **1 partiel** : `INS-GOLD-016`, tant qu’aucune restauration Google réelle n’est prouvée ;
@@ -201,7 +203,7 @@ Cet incrément n’autorise pas :
 
 ## 12. Critères d’acceptation
 
-L’incrément sera validable lorsque :
+L’incrément est validé sur les preuves suivantes :
 
 - le diff applicatif reste limité au journal injectable, à l’orchestrateur de reprise, aux fixtures et aux tests ;
 - le cycle validé par `INSCRIPTIONS-008` reste inchangé pour une commande nominale ;
@@ -225,7 +227,7 @@ L’incrément sera validable lorsque :
 - `SECURITY-001` — refus fermé et minimisation ;
 - `ERROR-001` — erreurs contrôlées.
 
-## 14. Décisions structurantes proposées
+## 14. Décisions structurantes validées
 
 1. Le journal de commandes est une dépendance injectée du domaine.
 2. La clé idempotente est réservée avant toute mutation.
@@ -240,4 +242,5 @@ L’incrément sera validable lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-08-03 | Validation de l’implémentation : PR applicative #88 fusionnée sur `develop`, 20/20 tests ciblés et suite cumulative Apps Script 380/380, sans API Google réelle ni déploiement |
 | 1.0.0 | 2026-08-03 | Création du contrat bornant le troisième incrément au journal de commandes injectable, à l’idempotence durable simulée et à la reprise après interruption sans API Google |
