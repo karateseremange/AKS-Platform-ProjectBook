@@ -247,7 +247,7 @@ La campagne réelle démontre au minimum :
 7. reprise d’une commande technique fictive interrompue avant commit ;
 8. réconciliation sans double commit après interruption simulée ;
 9. corrélation identique entre journal et audit commun ;
-10. absence de modification hors des trois onglets autorisés ;
+10. absence de modification hors des trois onglets autorisés dans le classeur Inscriptions, le support d’audit commun constituant une preuve externe attendue ;
 11. remise du classeur dans son état initial technique ;
 12. preuve avant/après par empreintes et versions.
 
@@ -311,7 +311,7 @@ L’incrément sera validable lorsque :
 
 - le diff applicatif reste limité au schéma technique, aux gardes, adaptateurs, compositions de recette et tests ;
 - la garde refuse toute cible non explicitement marquée `RECETTE` avant mutation ;
-- seuls `Metadata`, `Sequences` et `Commandes` sont créés ou modifiés ;
+- seuls `Metadata`, `Sequences` et `Commandes` sont créés ou modifiés dans le classeur Inscriptions ;
 - le journal persistant respecte `INSCRIPTIONS-009` ;
 - les séquences respectent `INSCRIPTIONS-005` ;
 - le verrou réel protège les réservations et mises à jour ;
