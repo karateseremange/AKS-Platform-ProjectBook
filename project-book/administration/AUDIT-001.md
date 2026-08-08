@@ -2,10 +2,10 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.1.1 |
-| **Statut** | Validé |
+| **Version** | 1.2.0 |
+| **Statut** | Cadrage proposé — revue requise avant implémentation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-07-24 |
+| **Dernière mise à jour** | 2026-08-08 |
 
 ---
 
@@ -291,3 +291,213 @@ Les modules métier complètent ce document en identifiant leurs propres actions
 L’audit fournit une traçabilité fonctionnelle fiable des actions sensibles réalisées dans AKS Platform.
 
 Il complète la journalisation technique sans la dupliquer, contribue à la sécurité et à la responsabilité des opérations, et doit rester centralisé, proportionné et respectueux des données personnelles.
+
+---
+
+# 18. Incrément persistant commun proposé
+
+Le présent cadrage propose un premier incrément applicatif transverse matérialisant le service commun `AKS.Core.Audit` attendu par les modules sensibles.
+
+Cet incrément répond au prérequis explicite d’`INSCRIPTIONS-010`. Il ne constitue pas une autorisation de recette Google tant que son implémentation, ses tests et sa propre recette isolée ne sont pas validés. La suite cumulative de la PR applicative Inscriptions atteint **412/412 tests réussis, 0 échec**, mais cette preuve automatique ne démontre pas encore la persistance réelle de l’audit.
+
+Le service d’audit s’appuie sur les composants communs d’AKS Core et réutilise les conventions de corrélation, de masquage et d’erreur de la plateforme. Il ne doit toutefois pas déléguer sa garantie de preuve au fournisseur de `LOG-001`, dont le contrat isole volontairement les pannes afin de préserver le traitement appelant.
+
+## 18.1 Périmètre autorisé
+
+Le premier incrément autorise uniquement :
+
+1. un contrat public minimal `AKS.Core.Audit` ;
+2. un modèle d’événement d’audit versionné et immuable ;
+3. un support persistant commun distinct de `AKS_Logs` ;
+4. une écriture append-only sous verrou ;
+5. une relecture exacte après écriture ;
+6. la résolution serveur de l’environnement, de l’acteur technique et de l’horodatage ;
+7. la minimisation et le masquage avant persistance ;
+8. la corrélation avec `LOG-001` et les commandes métier ;
+9. un comportement d’échec fermé pour les actions déclarées critiques ;
+10. des tests automatiques sur ports injectés, sans API Google ;
+11. une recette Google explicite sur une ressource isolée et des données fictives ;
+12. le raccordement ultérieur d’`INSCRIPTIONS-010` par injection du port commun.
+
+Sont exclus de cet incrément : la production, une interface de consultation, l’export, la purge automatique, une reprise différée, la modification d’une preuve existante et tout audit autonome propre à un module.
+
+## 18.2 Support physique
+
+Le support Google porte le schéma `aks-audit/1.0` et utilise un onglet dédié `AKS_Audit`, distinct de `AKS_Logs`.
+
+Cette séparation est obligatoire afin que :
+
+- la purge à 90 jours de `LOG-001` ne puisse pas supprimer une preuve d’audit ;
+- les droits et opérations propres à l’audit restent distinguables ;
+- l’absence, l’incohérence ou l’altération du support soit détectée avant toute action critique ;
+- un module métier ne puisse pas écrire directement dans la feuille.
+
+Le support de recette doit se trouver dans une ressource explicitement marquée `RECETTE`. Aucune ressource de production n’est autorisée dans ce premier incrément.
+
+L’identification du support ne repose jamais sur une valeur transmise par le client. Le service résout côté serveur, conformément à `CONFIG-001`, les clés `audit.environment`, `audit.spreadsheetId` et `audit.schemaVersion`, puis vérifie respectivement `RECETTE`, l’identifiant exact du classeur ouvert et `aks-audit/1.0` avant toute lecture ou écriture. Une clé absente, dupliquée, inconnue ou incohérente provoque un refus fermé.
+
+## 18.3 Schéma minimal `aks-audit/1.0`
+
+Les colonnes sont figées dans l’ordre suivant :
+
+`schema_version`, `audit_id`, `occurred_at`, `environment`, `actor_type`, `actor_id`, `action`, `module`, `target_type`, `target_id`, `result`, `reason_code`, `correlation_id`, `metadata_json`, `created_at`, `created_by`.
+
+Les règles suivantes s’appliquent :
+
+- `schema_version` vaut exactement `aks-audit/1.0` ;
+- `audit_id` est unique, non réutilisable et résolu côté serveur ;
+- `occurred_at` décrit l’événement et `created_at` la persistance de la preuve ;
+- `environment` est résolu côté serveur et vaut `RECETTE` dans cet incrément ;
+- `actor_type` appartient à un catalogue fermé : `USER`, `ADMIN`, `SERVICE` ou `SYSTEM` ;
+- `actor_id` provient de l’identité fonctionnelle déjà autorisée ou de l’identité de service injectée ;
+- `action`, `module`, `target_type`, `result` et `reason_code` appartiennent à des catalogues contrôlés ;
+- `target_id` est omis ou pseudonymisé lorsque l’identifiant métier n’est pas nécessaire à la preuve ;
+- `result` appartient à `INTENTION`, `REUSSI`, `ECHEC`, `REFUSE` ou `ANNULE` ;
+- `correlation_id` est obligatoire et permet le rapprochement avec les journaux et commandes ;
+- `metadata_json` contient uniquement des métadonnées minimisées, masquées et sérialisées de manière déterministe ;
+- `created_by` est une identité technique injectée côté serveur et ne peut pas provenir de l’appelant.
+
+Aucun secret, jeton, contenu médical, coordonnée, règlement, payload métier complet ou valeur libre non contrôlée n’est autorisé.
+
+## 18.4 Contrat du port commun
+
+Le port commun expose conceptuellement une seule opération d’écriture :
+
+```text
+AKS.Core.Audit.record(event) -> persistedProof
+```
+
+L’appelant fournit uniquement les éléments fonctionnels autorisés. Le service commun :
+
+1. valide le contrat et les catalogues ;
+2. résout les métadonnées techniques côté serveur ;
+3. minimise et masque les données ;
+4. construit un événement immuable ;
+5. obtient le verrou applicatif ;
+6. vérifie le support et le schéma ;
+7. ajoute une seule ligne ;
+8. relit la ligne persistée ;
+9. compare cellule par cellule la preuve attendue et la preuve relue ;
+10. retourne une preuve immuable ou lève une erreur contrôlée.
+
+Une réussite apparente du fournisseur, l’existence d’une ligne ou la seule égalité de l’identifiant ne suffisent pas. Toute divergence de contenu produit un échec d’audit.
+
+## 18.5 Verrouillage et intégrité
+
+- l’écriture utilise `LockService.getScriptLock()` derrière un port injecté ;
+- l’attente est bornée et l’absence de verrou provoque un échec contrôlé ;
+- le verrou est toujours libéré dans un bloc `finally` ;
+- l’unicité de `audit_id` est vérifiée sous verrou avant ajout ;
+- le support est append-only pour les consommateurs ;
+- aucune API publique de modification ou suppression d’une preuve n’est exposée ;
+- une ligne partiellement écrite ou relue avec divergence est considérée comme non probante ;
+- l’échec est journalisé techniquement selon `LOG-001`, sans masquer l’échec fonctionnel retourné au service appelant.
+
+## 18.6 Criticité et échec fermé
+
+Chaque appel indique une criticité issue d’un catalogue contrôlé : `CRITICAL` ou `STANDARD`.
+
+Pour `CRITICAL` :
+
+- l’absence du service, du support, du verrou ou de la preuve persistée interdit de confirmer l’action ;
+- le code appelant reçoit une erreur contrôlée ;
+- aucune réussite métier ne peut être retournée sans preuve d’audit complète ;
+- la reprise éventuelle doit être explicitement conçue dans un incrément ultérieur.
+
+Pour `STANDARD`, le comportement ne peut être dégradé silencieusement : toute poursuite malgré l’échec doit être autorisée par un contrat métier documenté. Aucun cas `STANDARD` dégradé n’est autorisé par le présent incrément.
+
+## 18.7 Cycle corrélé
+
+Une action critique peut produire plusieurs preuves partageant le même `correlation_id` :
+
+- `INTENTION` avant la mutation ;
+- `REUSSI` après confirmation de la mutation ;
+- `ECHEC`, `REFUSE` ou `ANNULE` lorsque l’action n’aboutit pas.
+
+Le document métier définit les étapes obligatoires de son cycle. Pour `INSCRIPTIONS-010`, les événements `INTENTION`, `REUSSI` et `ECHEC` restent ceux déjà imposés. Le port commun n’invente pas la décision métier et ne modifie pas le journal de commandes.
+
+## 18.8 Conservation
+
+Le premier incrément ne met en œuvre aucune purge automatique des preuves d’audit.
+
+Avant toute ouverture en production, une durée de conservation, une procédure d’archivage et une purge auditée devront être validées. Elles devront respecter `STORAGE-001`, empêcher toute action du mécanisme de purge de `LOG-001` sur `AKS_Audit` et fournir une preuve avant/après.
+
+En recette, le nettoyage est une opération explicite, limitée aux données fictives créées par la campagne, exécutée sous verrou et vérifiée par empreinte. Il ne constitue pas une politique de conservation de production.
+
+## 18.9 Validation automatique
+
+Les tests automatiques doivent démontrer au minimum :
+
+- validation stricte du schéma et des catalogues ;
+- résolution serveur des identités et horodatages techniques ;
+- minimisation et masquage avant appel du dépôt ;
+- immutabilité de l’événement et de la preuve retournée ;
+- unicité de l’identifiant ;
+- obtention et libération du verrou ;
+- relecture exacte après écriture ;
+- refus d’une écriture volontairement altérée mais structurellement valide ;
+- propagation de l’échec pour une action critique ;
+- corrélation identique entre les preuves d’un même cycle ;
+- absence d’appel à `SpreadsheetApp`, `DriveApp` ou `LockService` dans les tests de domaine ;
+- absence de dépendance à un service d’audit propre à Inscriptions.
+
+Les nouveaux cas sont raccordés à `AKS_runValidationSuiteV11`. Aucun total n’est inscrit dans ce document avant exécution probante dans Apps Script.
+
+## 18.10 Recette Google isolée
+
+La recette réelle doit démontrer :
+
+1. le refus d’un environnement ou d’un support non marqué `RECETTE` ;
+2. le refus d’un schéma ou d’un en-tête incohérent ;
+3. l’écriture unique sous concurrence ;
+4. la relecture exacte de toutes les colonnes ;
+5. le refus d’une preuve altérée ;
+6. l’échec fermé d’une action critique lorsque le support est indisponible ;
+7. la corrélation d’un cycle `INTENTION` puis `REUSSI` ou `ECHEC` ;
+8. l’absence de modification d’`AKS_Logs` et de toute donnée métier ;
+9. la remise du support de recette dans son état initial ;
+10. une preuve avant/après par en-têtes, nombre de lignes et empreinte.
+
+Les fonctions de recette sont nommées explicitement, exclues de la suite cumulative, inaccessibles depuis les routes publiques et administratives, et exigent une confirmation technique avant mutation.
+
+## 18.11 Codes d’erreur minimaux
+
+| Code | Signification |
+|---|---|
+| `AUDIT_REQUIRED` | Port commun absent pour une action qui l’exige |
+| `AUDIT_EVENT_INVALID` | Événement ou catalogue non conforme |
+| `AUDIT_RECIPE_REQUIRED` | Environnement différent de `RECETTE` |
+| `AUDIT_SCHEMA_MISMATCH` | Support, version ou en-tête incompatible |
+| `AUDIT_LOCK_TIMEOUT` | Verrou non obtenu dans le délai autorisé |
+| `AUDIT_DUPLICATE` | Identifiant d’audit déjà présent |
+| `AUDIT_PERSISTENCE_FAILED` | Écriture ou relecture impossible |
+| `AUDIT_PROOF_MISMATCH` | Preuve relue différente de la preuve attendue |
+| `AUDIT_RECIPE_PROOF_INCOMPLETE` | État initial non restauré ou preuve avant/après insuffisante |
+
+Les messages publics restent génériques et corrélables. Les détails techniques sont confiés à `LOG-001` après masquage.
+
+## 18.12 Critères d’acceptation de l’incrément
+
+L’implémentation ne pourra être déclarée conforme que lorsque :
+
+- `AKS.Core.Audit` est le seul point d’entrée commun ;
+- le support `AKS_Audit` est distinct de `AKS_Logs` et conforme à `aks-audit/1.0` ;
+- les écritures sont verrouillées, append-only et intégralement relues ;
+- une altération persistée est détectée ;
+- les identités techniques sont résolues côté serveur ;
+- les données sont minimisées et masquées avant persistance ;
+- une action critique échoue fermée sans preuve ;
+- les tests ciblés et la suite cumulative réussissent sans échec ;
+- la recette Google isolée réussit et restaure son état initial ;
+- aucune donnée réelle, route, interface, production, export ou purge automatique n’est introduite ;
+- `INSCRIPTIONS-010` consomme ensuite ce port par injection sans créer de service parallèle.
+
+---
+
+# 19. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 1.2.0 | 2026-08-08 | Proposition du premier incrément persistant commun : `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, schéma `aks-audit/1.0`, écriture verrouillée append-only, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans production, consultation, export ni purge automatique |
+| 1.1.1 | 2026-07-24 | Normalisation du statut documentaire vers le statut officiel Validé |
+| 1.1.0 | 2026-07-19 | Consolidation des principes transverses d’audit et de traçabilité des actions sensibles |
