@@ -2,7 +2,7 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.2.0 |
+| **Version** | 1.2.1 |
 | **Statut** | Cadrage proposé — revue requise avant implémentation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-08 |
@@ -336,6 +336,18 @@ Le support de recette doit se trouver dans une ressource explicitement marquée 
 
 L’identification du support ne repose jamais sur une valeur transmise par le client. Le service résout côté serveur, conformément à `CONFIG-001`, les clés `audit.environment`, `audit.spreadsheetId` et `audit.schemaVersion`, puis vérifie respectivement `RECETTE`, l’identifiant exact du classeur ouvert et `aks-audit/1.0` avant toute lecture ou écriture. Une clé absente, dupliquée, inconnue ou incohérente provoque un refus fermé.
 
+### 18.2.1 Définitions `CONFIG-001`
+
+Les trois clés sont inscrites au registre central de configuration. Elles ne disposent d’aucune valeur par défaut : leur absence doit rester visible et produire un refus fermé.
+
+| Clé | Type | Portée | Obligatoire | Défaut | Validation | Sensible | Administrable |
+|---|---|---|---|---|---|---|---|
+| `audit.environment` | Énumération | Environnement | Oui | Aucune | Valeur exacte `RECETTE` ; toute autre valeur est refusée dans cet incrément | Non | Non |
+| `audit.spreadsheetId` | Identifiant Google Sheets sous forme de texte | Environnement | Oui | Aucune | Texte non vide au format d’identifiant Google ; doit correspondre exactement au classeur ouvert et marqué `RECETTE` | Oui — valeur technique restreinte et masquée dans les sorties publiques | Non |
+| `audit.schemaVersion` | Version de schéma sous forme de texte | Environnement | Oui | Aucune | Valeur exacte `aks-audit/1.0` | Non | Non |
+
+Ces valeurs sont configurées uniquement par le circuit technique contrôlé de recette. Elles ne sont ni héritées d’une portée plus générale, ni modifiables depuis l’interface d’administration, ni acceptées depuis une requête cliente. Toute évolution de type, portée, validation, sensibilité ou administrabilité exige une nouvelle version de ce contrat.
+
 ## 18.3 Schéma minimal `aks-audit/1.0`
 
 Les colonnes sont figées dans l’ordre suivant :
@@ -349,13 +361,40 @@ Les règles suivantes s’appliquent :
 - `occurred_at` décrit l’événement et `created_at` la persistance de la preuve ;
 - `environment` est résolu côté serveur et vaut `RECETTE` dans cet incrément ;
 - `actor_type` appartient à un catalogue fermé : `USER`, `ADMIN`, `SERVICE` ou `SYSTEM` ;
-- `actor_id` provient de l’identité fonctionnelle déjà autorisée ou de l’identité de service injectée ;
+- `actor_id` ne peut jamais être fourni librement par l’appelant : pour `USER` et `ADMIN`, il est résolu après autorisation depuis le contexte d’identité serveur ; pour `SERVICE` et `SYSTEM`, il provient d’une identité technique injectée côté serveur ; toute identité absente, non autorisée ou incohérente provoque un refus fermé ;
 - `action`, `module`, `target_type`, `result` et `reason_code` appartiennent à des catalogues contrôlés ;
 - `target_id` est omis ou pseudonymisé lorsque l’identifiant métier n’est pas nécessaire à la preuve ;
 - `result` appartient à `INTENTION`, `REUSSI`, `ECHEC`, `REFUSE` ou `ANNULE` ;
 - `correlation_id` est obligatoire et permet le rapprochement avec les journaux et commandes ;
 - `metadata_json` contient uniquement des métadonnées minimisées, masquées et sérialisées de manière déterministe ;
 - `created_by` est une identité technique injectée côté serveur et ne peut pas provenir de l’appelant.
+
+### 18.3.1 Catalogues fermés initiaux
+
+Le registre figé `AKS.Core.Audit.Catalogs` constitue l’emplacement applicatif unique des catalogues du schéma `aks-audit/1.0`. Pour le premier raccordement d’`INSCRIPTIONS-010`, ses valeurs initiales sont :
+
+| Champ | Valeurs autorisées |
+|---|---|
+| `action` | `DOSSIER_CREATE`, `DOSSIER_UPDATE` |
+| `module` | `INSCRIPTIONS` |
+| `target_type` | `DOSSIER` |
+| `reason_code` | chaîne vide, `INSCRIPTIONS_COMMAND_FAILED`, `INSCRIPTIONS_CONTROL_FAILED`, `INSCRIPTIONS_ATTEMPTS_EXHAUSTED`, `INSCRIPTIONS_RECOVERY_ABSENT`, `INSCRIPTIONS_RECONCILIATION_AMBIGUOUS`, `UNEXPECTED_ERROR` |
+
+Les catalogues `actor_type`, `result` et `criticality` restent ceux définis dans les sections 18.3 et 18.6. Une valeur inconnue n’est jamais persistée : une erreur technique non répertoriée est réduite à `UNEXPECTED_ERROR`, sans message libre ni détail sensible. Toute extension d’un catalogue exige une évolution documentée d’`AUDIT-001`, une mise à jour explicite du registre figé et des tests positifs et négatifs.
+
+### 18.3.2 Représentation canonique des cellules
+
+Les seize cellules sont comparées sous leur représentation canonique, sans conversion implicite par le support :
+
+- toutes les cellules du schéma sont persistées comme textes ;
+- `occurred_at` et `created_at` utilisent UTC au format ISO 8601 avec millisecondes, exactement `YYYY-MM-DDTHH:mm:ss.sssZ` ;
+- les champs textuels obligatoires sont normalisés selon leur catalogue puis refusés s’ils sont vides ;
+- un `target_id` ou un `reason_code` absent est représenté par la chaîne vide `""`, jamais par `null`, `undefined` ou une cellule physiquement absente ;
+- `metadata_json` contient toujours un objet JSON compact ; l’absence de métadonnée vaut exactement `{}` ;
+- les clés de chaque objet de `metadata_json` sont triées récursivement dans l’ordre lexicographique ; l’ordre des tableaux est conservé ; aucun espace non significatif n’est émis ;
+- les booléens sont les littéraux JSON `true` ou `false`, les nombres utilisent leur écriture JSON finie sans format local, et les valeurs `NaN`, infinies, `undefined` ou fonctions sont refusées ;
+- une date admise dans `metadata_json` est convertie au même format UTC ISO 8601 ; `null` n’est conservé que si le contrat de métadonnée l’autorise explicitement ;
+- la comparaison après relecture porte sur les seize textes canoniques dans l’ordre figé des colonnes.
 
 Aucun secret, jeton, contenu médical, coordonnée, règlement, payload métier complet ou valeur libre non contrôlée n’est autorisé.
 
@@ -484,7 +523,7 @@ L’implémentation ne pourra être déclarée conforme que lorsque :
 - le support `AKS_Audit` est distinct de `AKS_Logs` et conforme à `aks-audit/1.0` ;
 - les écritures sont verrouillées, append-only et intégralement relues ;
 - une altération persistée est détectée ;
-- les identités techniques sont résolues côté serveur ;
+- les identités fonctionnelles et techniques sont résolues ou injectées côté serveur après autorisation et aucune valeur libre de l’appelant ne peut alimenter `actor_id` ou `created_by` ;
 - les données sont minimisées et masquées avant persistance ;
 - une action critique échoue fermée sans preuve ;
 - les tests ciblés et la suite cumulative réussissent sans échec ;
@@ -498,6 +537,7 @@ L’implémentation ne pourra être déclarée conforme que lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-08-08 | Précision du contrat implémentable : provenance serveur obligatoire d’`actor_id`, catalogues fermés initiaux, représentation canonique des seize cellules et définitions complètes des trois clés `CONFIG-001` |
 | 1.2.0 | 2026-08-08 | Proposition du premier incrément persistant commun : `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, schéma `aks-audit/1.0`, écriture verrouillée append-only, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans production, consultation, export ni purge automatique |
 | 1.1.1 | 2026-07-24 | Normalisation du statut documentaire vers le statut officiel Validé |
 | 1.1.0 | 2026-07-19 | Consolidation des principes transverses d’audit et de traçabilité des actions sensibles |
