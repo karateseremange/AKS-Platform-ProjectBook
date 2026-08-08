@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.81 |
+| Version | 1.2.82 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-08 |
@@ -76,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.73 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.74 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -123,7 +123,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
-| AUDIT-001 | Audit et traçabilité | Validé | 1.1.1 | SECURITY-001, LOG-001 |
+| AUDIT-001 | Audit et traçabilité — premier incrément persistant commun proposé, revue requise avant implémentation | Cadrage proposé | 1.2.0 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001 |
 
 ---
 
@@ -146,7 +146,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010` | Quatre incréments cadrés et validés ; implémentation d’INSCRIPTIONS-010 autorisée après 380/380 |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010` | PR applicative #89 en brouillon, 412/412 tests réussis ; recette Google suspendue au port d’audit persistant commun |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -294,6 +294,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.82 | 2026-08-08 | Proposition du cadrage persistant d’AUDIT-001 : port commun `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, écriture verrouillée, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans implémentation ni production |
 | 1.2.81 | 2026-08-08 | Validation documentaire d’INSCRIPTIONS-010 1.0.1 et autorisation de son implémentation bornée ; référence maintenue à 380/380 et bilan 13/1/2 jusqu’aux futures preuves, sans donnée nominative, application de lot, production ni déploiement |
 | 1.2.80 | 2026-08-03 | Référencement d’INSCRIPTIONS-010 : quatrième incrément proposé pour la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative, application de lot ni déploiement |
 | 1.2.79 | 2026-08-03 | Validation d’INSCRIPTIONS-009 : PR applicative #88 fusionnée, 20/20 tests ciblés et suite Apps Script 380/380, bilan des jeux d’or inchangé à 13 réussis, 1 partiel et 2 bloqués, sans adaptateur Google ni déploiement |
