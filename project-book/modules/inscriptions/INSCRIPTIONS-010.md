@@ -108,9 +108,11 @@ L’unicité porte sur `sequence_type + scope_key`. `last_value` et `row_version
 
 Les en-têtes sont figés dans cet ordre :
 
-`schema_version`, `command_id`, `idempotency_key`, `payload_fingerprint`, `actor`, `action`, `target_type`, `target_id`, `module`, `season`, `section`, `course_code`, `correlation_id`, `status`, `attempt_count`, `created_at`, `updated_at`, `row_version`, `failure_code`.
+`schema_version`, `command_id`, `idempotency_key`, `payload_fingerprint`, `actor`, `action`, `target_type`, `target_id`, `module`, `season`, `section`, `course_code`, `correlation_id`, `status`, `attempt_count`, `created_at`, `created_by`, `updated_at`, `updated_by`, `row_version`, `failure_code`.
 
 Aucun contenu métier complet n’est sérialisé dans une cellule. Les objets `target` et `scope` sont projetés dans des colonnes techniques déterministes.
+
+`actor` identifie l’auteur fonctionnel ayant initié la commande. `created_by` et `updated_by` portent les métadonnées techniques exigées par `INSCRIPTIONS-005` pour les objets modifiables : `created_by` est figé lors de la réservation, tandis que `updated_by` est actualisé à chaque sauvegarde. Ces deux colonnes ne remplacent jamais `actor`.
 
 ## 6. Garde d’environnement obligatoire
 
