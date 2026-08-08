@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.82 |
+| Version | 1.2.83 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-08 |
@@ -123,7 +123,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
-| AUDIT-001 | Audit et traçabilité — premier incrément persistant commun proposé, revue requise avant implémentation | Cadrage proposé | 1.2.0 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001 |
+| AUDIT-001 | Audit et traçabilité — premier incrément persistant commun proposé, contrat précisé après revue | Cadrage proposé | 1.2.1 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001 |
 
 ---
 
@@ -269,7 +269,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001 | Complète |
+| Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001 | Socle validé — audit persistant en cadrage |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -294,6 +294,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.83 | 2026-08-08 | Précision d’AUDIT-001 après revue (identités serveur, catalogues initiaux, cellules canoniques et paramètres CONFIG-001) et correction du statut global du domaine Administration |
 | 1.2.82 | 2026-08-08 | Proposition du cadrage persistant d’AUDIT-001 : port commun `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, écriture verrouillée, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans implémentation ni production |
 | 1.2.81 | 2026-08-08 | Validation documentaire d’INSCRIPTIONS-010 1.0.1 et autorisation de son implémentation bornée ; référence maintenue à 380/380 et bilan 13/1/2 jusqu’aux futures preuves, sans donnée nominative, application de lot, production ni déploiement |
 | 1.2.80 | 2026-08-03 | Référencement d’INSCRIPTIONS-010 : quatrième incrément proposé pour la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative, application de lot ni déploiement |
