@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.79 |
+| Version | 1.2.81 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-08-03 |
+| Dernière mise à jour | 2026-08-08 |
 | Version du produit | Post-V1.3 |
 
 ---
@@ -76,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.71 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.73 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -146,7 +146,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008`, `INSCRIPTIONS-009` | Trois incréments validés ; suite cumulative 380/380 |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010` | Quatre incréments cadrés et validés ; implémentation d’INSCRIPTIONS-010 autorisée après 380/380 |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -194,6 +194,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | INSCRIPTIONS-006 | Jeux d’essai et stratégie de recette cumulative | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-005, ACCESS-001, CONFIG-001, LOG-001, AUDIT-001, SECURITY-001, ERROR-001 |
 | INSCRIPTIONS-008 | Deuxième incrément : accès et audit sans écriture métier | Validé | 1.1.0 | INSCRIPTIONS-004 à INSCRIPTIONS-006, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
 | INSCRIPTIONS-009 | Troisième incrément : journal de commandes et reprise sans Google | Validé | 1.1.0 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-010 | Quatrième incrément : persistance technique en recette contrôlée | Validé | 1.0.1 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, INSCRIPTIONS-009, CONFIG-001, ACCESS-001, AUDIT-001, STORAGE-001, SECURITY-001, ERROR-001 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -272,7 +273,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008, INSCRIPTIONS-009 | Troisième incrément validé : 380/380 tests, 13 jeux réussis, 1 partiel et 2 bloqués ; aucun adaptateur Google, stockage métier réel ni déploiement |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010 | Quatrième incrément documenté et validé ; implémentation bornée autorisée, référence maintenue à 380/380 et bilan à 13 réussis, 1 partiel et 2 bloqués jusqu’aux futures preuves |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -293,6 +294,8 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.81 | 2026-08-08 | Validation documentaire d’INSCRIPTIONS-010 1.0.1 et autorisation de son implémentation bornée ; référence maintenue à 380/380 et bilan 13/1/2 jusqu’aux futures preuves, sans donnée nominative, application de lot, production ni déploiement |
+| 1.2.80 | 2026-08-03 | Référencement d’INSCRIPTIONS-010 : quatrième incrément proposé pour la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative, application de lot ni déploiement |
 | 1.2.79 | 2026-08-03 | Validation d’INSCRIPTIONS-009 : PR applicative #88 fusionnée, 20/20 tests ciblés et suite Apps Script 380/380, bilan des jeux d’or inchangé à 13 réussis, 1 partiel et 2 bloqués, sans adaptateur Google ni déploiement |
 | 1.2.78 | 2026-08-03 | Référencement d’INSCRIPTIONS-009 : troisième incrément proposé pour le journal de commandes injectable, l’idempotence et la reprise après interruption sans API Google |
 | 1.2.77 | 2026-08-02 | Validation d’INSCRIPTIONS-008 : PR applicative #87 fusionnée sur `develop`, 360/360 tests réussis, 13 jeux d’or réussis, 1 partiel et 2 bloqués, sans déploiement ni donnée Google réelle |
