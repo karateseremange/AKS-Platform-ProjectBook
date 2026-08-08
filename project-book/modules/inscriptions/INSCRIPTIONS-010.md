@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-010 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.0.1 |
+| **Statut** | Validé |
 | **Nature** | Autorisation d’un incrément applicatif borné |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-03 |
+| **Dernière mise à jour** | 2026-08-08 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -281,7 +281,7 @@ Cet incrément renforce les preuves techniques de :
 
 Ces trois jeux sont déjà réussis. Leur statut ne change pas artificiellement.
 
-Le bilan attendu reste :
+Le bilan validé reste :
 
 - **13 réussis** ;
 - **1 partiel** : `INS-GOLD-016`, car la campagne ne constitue pas encore une restauration Google complète du référentiel ;
@@ -309,7 +309,7 @@ Cet incrément n’autorise pas :
 
 ## 16. Critères d’acceptation
 
-L’incrément sera validable lorsque :
+L’implémentation de l’incrément sera validable lorsque :
 
 - le diff applicatif reste limité au schéma technique, aux gardes, adaptateurs, compositions de recette et tests ;
 - la garde refuse toute cible non explicitement marquée `RECETTE` avant mutation ;
@@ -340,7 +340,7 @@ L’incrément sera validable lorsque :
 - `SECURITY-001` — refus fermé et minimisation ;
 - `ERROR-001` — erreurs contrôlées.
 
-## 18. Décisions structurantes proposées
+## 18. Décisions structurantes validées
 
 1. La première persistance Google reste limitée à trois onglets techniques de recette.
 2. Les données nominatives et les objets métier restent interdits.
@@ -355,4 +355,5 @@ L’incrément sera validable lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-08 | Validation documentaire du périmètre et autorisation de l’implémentation applicative bornée, sous réserve des critères d’acceptation et sans anticiper de preuve de test, de recette Google ni de déploiement |
 | 1.0.0 | 2026-08-03 | Création du contrat bornant le quatrième incrément à la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative ni application de lot |
