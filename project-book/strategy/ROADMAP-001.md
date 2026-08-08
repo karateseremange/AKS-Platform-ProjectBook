@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.74 |
+| **Version** | 1.2.75 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-08 |
@@ -756,7 +756,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la revue puis la validation documentaire du premier incrément persistant d’`AUDIT-001`. Son implémentation devra rester transverse et distincte de la PR #89, réussir ses tests ciblés et cumulatifs, puis démontrer sa persistance dans une recette Google isolée. Après seulement, `INSCRIPTIONS-010` pourra consommer le port commun et engager sa propre campagne de recette sur des données techniques fictives. SIKADA, Analytics/`BODY_KARATE`, données nominatives, référentiel métier complet, restauration complète, interfaces, application de lot, production et déploiement demeurent séparés et interdits.
+Le prochain jalon est la revue puis la validation documentaire du premier incrément persistant d’`AUDIT-001`. Le contrat précise désormais la provenance serveur des identités, les catalogues fermés initiaux, la représentation canonique des cellules et les trois paramètres de recette selon `CONFIG-001`. Son implémentation devra rester transverse et distincte de la PR #89, réussir ses tests ciblés et cumulatifs, puis démontrer sa persistance dans une recette Google isolée. Après seulement, `INSCRIPTIONS-010` pourra consommer le port commun et engager sa propre campagne de recette sur des données techniques fictives. SIKADA, Analytics/`BODY_KARATE`, données nominatives, référentiel métier complet, restauration complète, interfaces, application de lot, production et déploiement demeurent séparés et interdits.
 
 ## 13.5 Backlog restant
 
@@ -884,6 +884,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.75 | 2026-08-08 | Précision du cadrage d’AUDIT-001 après revue : identités résolues côté serveur, catalogues fermés initiaux, cellules canoniques et paramètres CONFIG-001 complets ; aucune implémentation ni recette réalisée |
 | 1.2.74 | 2026-08-08 | Proposition du premier incrément persistant d’AUDIT-001 comme prérequis à la recette d’INSCRIPTIONS-010 ; la PR applicative #89 reste en brouillon après 412/412, sans recette Google, production ni déploiement |
 | 1.2.73 | 2026-08-08 | Validation documentaire d’INSCRIPTIONS-010 et autorisation de son implémentation bornée ; référence maintenue à 380/380 et bilan 13/1/2 jusqu’aux futures preuves, sans donnée nominative, application de lot, production ni déploiement |
 | 1.2.72 | 2026-08-03 | Ouverture d’INSCRIPTIONS-010 : quatrième incrément proposé pour la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative, application de lot ni déploiement |
