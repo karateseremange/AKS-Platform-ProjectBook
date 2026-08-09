@@ -3,11 +3,11 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-010 |
-| **Version** | 1.0.1 |
-| **Statut** | Validé |
-| **Nature** | Autorisation d’un incrément applicatif borné |
+| **Version** | 1.1.0 |
+| **Statut** | Validé — implémentation et recette technique concluantes, fusion applicative en attente |
+| **Nature** | Bilan d’implémentation et de recette d’un incrément applicatif borné |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-08 |
+| **Dernière mise à jour** | 2026-08-09 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -19,6 +19,8 @@ Le présent document définit et borne le quatrième incrément applicatif d’A
 L’incrément prépare la première persistance Google exclusivement dans un environnement de recette isolé. Il matérialise un schéma physique technique minimal, une garde d’environnement et des adaptateurs persistants pour les séquences et le journal de commandes. L’audit fonctionnel reste produit par le service commun conforme à `AUDIT-001` au moyen d’un port injecté.
 
 Il ne persiste aucune donnée nominative, ne crée aucun licencié, responsable, dossier saisonnier, affectation, formalité, règlement, lot ou ligne d’import et n’autorise aucune écriture de production.
+
+L’implémentation applicative est portée par la PR AKS-Platform #89. La tête finale recettée est `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`. La recette réelle est détaillée dans `INSCRIPTIONS-010-RECETTE`.
 
 ## 2. Question traitée
 
@@ -36,7 +38,7 @@ Cette responsabilité est distincte :
 
 ## 3. Point de départ vérifié
 
-Le socle validé fournit déjà :
+Le socle validé fournissait déjà :
 
 - un moteur métier pur et seize jeux d’or ;
 - les six capacités Inscriptions et leurs périmètres fermés ;
@@ -49,7 +51,7 @@ Le socle validé fournit déjà :
 - un bilan de **13 jeux réussis, 1 partiel et 2 bloqués** ;
 - un manifeste Apps Script déjà aligné sur `Europe/Paris`.
 
-Il ne fournit pas encore d’adaptateur Google persistant, de verrou réel de recette ni de preuve de concurrence sur Google Sheets.
+Au démarrage d’INSCRIPTIONS-010, il ne fournissait pas encore d’adaptateur Google persistant, de verrou réel de recette ni de preuve Google réelle de persistance. Ces éléments ont depuis été implémentés et recettés sur une ressource isolée.
 
 ## 4. Périmètre autorisé
 
@@ -188,6 +190,8 @@ Sous verrou applicatif, une allocation :
 
 Le maximum des identifiants existants, le nombre de lignes, une formule Sheets ou un cache ne peuvent jamais déterminer la prochaine valeur. Une valeur consommée n’est jamais décrémentée ni réattribuée.
 
+La recette du 9 août 2026 a mis en évidence une interprétation automatique de la chaîne `"2026"` comme nombre par Google Sheets. Le contrôle de relecture stricte a refusé cette dérive. L’adaptateur a été corrigé dans le commit `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06` afin de forcer les valeurs chaîne au format texte lors des écritures contrôlées.
+
 ## 9. Verrouillage et concurrence
 
 - seul un verrou applicatif fourni par `LockService.getScriptLock()` est autorisé ;
@@ -196,7 +200,7 @@ Le maximum des identifiants existants, le nombre de lignes, une formule Sheets o
 - le verrou est libéré dans un bloc `finally` ;
 - aucune API Google n’est appelée avant la garde d’environnement, sauf les lectures minimales nécessaires pour identifier et contrôler la ressource ;
 - les tests automatiques utilisent un port de verrou injecté ;
-- la concurrence réelle est exécutée uniquement dans la campagne de recette dédiée.
+- la concurrence réelle est exécutée uniquement dans une campagne de recette dédiée lorsqu’une preuve Google simultanée est requise.
 
 ## 10. Audit fonctionnel commun
 
@@ -207,6 +211,8 @@ Les événements `INTENTION`, `REUSSI` et `ECHEC` sont transmis au port commun d
 Chaque événement reste minimisé et corrélé. Il ne contient ni registre d’accès, ni dossier, ni coordonnées, ni réponse médicale, ni règlement.
 
 Une commande sensible n’est jamais déclarée `CONFIRMEE` lorsque l’audit obligatoire échoue.
+
+Le prérequis transverse a été levé par l’intégration d’AUDIT-001 dans `develop` au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`, puis par le réalignement de la branche INSCRIPTIONS-010.
 
 ## 11. Séparation des tests automatiques et de la recette Google
 
@@ -222,6 +228,8 @@ Une commande sensible n’est jamais déclarée `CONFIRMEE` lorsque l’audit ob
 
 Elle ne doit appeler ni `SpreadsheetApp`, ni `DriveApp`, ni `LockService`, ni une ressource Google réelle.
 
+La suite finale exécutée sur la tête `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06` atteint **455/455 tests réussis, 0 échec**.
+
 ### 11.2 Recette explicite
 
 Les fonctions utilisant Google réellement :
@@ -234,11 +242,11 @@ Les fonctions utilisant Google réellement :
 - produisent un rapport minimisé et un identifiant de corrélation ;
 - restaurent l’état initial ou signalent explicitement l’écart.
 
-Le nombre de nouveaux tests et le futur total cumulatif ne seront enregistrés qu’après implémentation et exécution probante.
+La campagne réelle a été exécutée sur le classeur isolé `[RECETTE] AKS Inscriptions`. Elle a validé l’initialisation du schéma, l’allocation de `INS-2026-000001`, la persistance de la commande fictive `CMD-RECETTE-010-001` et sa relecture stricte. Les détails et limites de preuve sont consignés dans `INSCRIPTIONS-010-RECETTE`.
 
 ## 12. Campagne de recette minimale
 
-La campagne réelle démontre au minimum :
+Le cadrage initial prévoyait les scénarios suivants :
 
 1. refus d’un environnement absent, inconnu ou `PRODUCTION` ;
 2. refus d’un mauvais identifiant, marqueur, fuseau, schéma ou en-tête ;
@@ -252,6 +260,8 @@ La campagne réelle démontre au minimum :
 10. absence de modification hors des trois onglets autorisés dans le classeur Inscriptions, le support d’audit commun constituant une preuve externe attendue ;
 11. remise du classeur dans son état initial technique ;
 12. preuve avant/après par empreintes et versions.
+
+La campagne du 9 août 2026 est concluante pour le périmètre réellement exécuté, mais elle ne doit pas être présentée comme une exécution Google réelle de tous les scénarios ci-dessus. Les collisions simultanées, conflits de version provoqués réellement dans Sheets, interruptions et réconciliations restent couverts par les tests injectés lorsqu’ils existent et nécessiteraient une campagne Google dédiée pour constituer une preuve réelle distincte.
 
 La campagne ne crée aucun objet métier et ne promeut aucun statut de jeu d’or à elle seule.
 
@@ -309,7 +319,7 @@ Cet incrément n’autorise pas :
 
 ## 16. Critères d’acceptation
 
-L’implémentation de l’incrément sera validable lorsque :
+Les critères applicables au périmètre réellement livré sont satisfaits :
 
 - le diff applicatif reste limité au schéma technique, aux gardes, adaptateurs, compositions de recette et tests ;
 - la garde refuse toute cible non explicitement marquée `RECETTE` avant mutation ;
@@ -319,13 +329,14 @@ L’implémentation de l’incrément sera validable lorsque :
 - le verrou réel protège les réservations et mises à jour ;
 - l’audit utilise le service commun et reste obligatoire ;
 - les tests automatiques n’appellent aucune API Google ;
-- la suite ciblée réussit ;
-- la suite cumulative Apps Script réussit sans échec ;
-- la campagne Google explicite réussit sur une ressource isolée ;
-- les preuves avant/après et la remise à zéro sont complètes ;
+- la suite cumulative Apps Script réussit avec **455/455, 0 échec** ;
+- la campagne Google explicite réussit sur une ressource isolée pour les preuves exécutées ;
+- l’anomalie de typage Sheets détectée en recette est corrigée ;
 - le bilan des jeux d’or reste honnêtement séparé des preuves obtenues ;
 - aucune donnée nominative, application de lot, interface ou production n’est introduite ;
 - aucun déploiement n’est créé.
+
+Les scénarios Google réels de concurrence simultanée, interruption et réconciliation restent explicitement hors des preuves exécutées dans cette campagne et ne sont pas déclarés réussis par anticipation.
 
 ## 17. Dépendances
 
@@ -338,7 +349,8 @@ L’implémentation de l’incrément sera validable lorsque :
 - `AUDIT-001` — audit fonctionnel commun ;
 - `STORAGE-001` — stockage et protection ;
 - `SECURITY-001` — refus fermé et minimisation ;
-- `ERROR-001` — erreurs contrôlées.
+- `ERROR-001` — erreurs contrôlées ;
+- `INSCRIPTIONS-010-RECETTE` — procès-verbal détaillé de la campagne réelle du 9 août 2026.
 
 ## 18. Décisions structurantes validées
 
@@ -350,10 +362,13 @@ L’implémentation de l’incrément sera validable lorsque :
 6. Les tests automatiques restent sans Google ; la recette Google est explicite et séparée.
 7. Une preuve technique persistante ne lève ni SIKADA, ni Analytics/`BODY_KARATE`, ni la restauration complète.
 8. Aucun total de tests ou statut de jeu d’or n’est annoncé avant preuve.
+9. Une conversion automatique de type par Google Sheets est considérée comme une altération si la relecture stricte ne correspond pas au type attendu.
+10. INSCRIPTIONS-010 reste strictement interne et editor-only ; aucun déploiement Web App de test n’est requis tant qu’aucune route ni interface n’est exposée.
 
 ## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-08-09 | Implémentation et recette technique consignées : AUDIT-001 intégré, branche applicative réalignée, 455/455 tests cumulés, schéma Google isolé validé, anomalie de typage Sheets détectée et corrigée dans `0da406b`, séquence `INS-2026-000001` et commande fictive relues strictement ; limites de concurrence/récupération réelles conservées explicitement |
 | 1.0.1 | 2026-08-08 | Validation documentaire du périmètre et autorisation de l’implémentation applicative bornée, sous réserve des critères d’acceptation et sans anticiper de preuve de test, de recette Google ni de déploiement |
 | 1.0.0 | 2026-08-03 | Création du contrat bornant le quatrième incrément à la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative ni application de lot |

@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.84 |
+| Version | 1.2.85 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-09 |
@@ -76,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.76 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.77 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -147,7 +147,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010` | PR applicative #89 en brouillon, 412/412 tests sur sa tête ; prérequis d’audit persistant commun désormais validé, raccordement et recette Google à reprendre après intégration d’AUDIT-001 |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010`, `INSCRIPTIONS-010-RECETTE` | PR applicative #89 en brouillon sur `0da406b` ; AUDIT-001 intégré ; **455/455 tests**, recette Google isolée concluante pour le périmètre exécuté ; validation documentaire #103 en cours avant revue applicative |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -195,7 +195,8 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | INSCRIPTIONS-006 | Jeux d’essai et stratégie de recette cumulative | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-005, ACCESS-001, CONFIG-001, LOG-001, AUDIT-001, SECURITY-001, ERROR-001 |
 | INSCRIPTIONS-008 | Deuxième incrément : accès et audit sans écriture métier | Validé | 1.1.0 | INSCRIPTIONS-004 à INSCRIPTIONS-006, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
 | INSCRIPTIONS-009 | Troisième incrément : journal de commandes et reprise sans Google | Validé | 1.1.0 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
-| INSCRIPTIONS-010 | Quatrième incrément : persistance technique en recette contrôlée | Validé | 1.0.1 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, INSCRIPTIONS-009, CONFIG-001, ACCESS-001, AUDIT-001, STORAGE-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-010 | Quatrième incrément : persistance technique en recette contrôlée | Validé — implémentation et recette technique concluantes, fusion applicative en attente | 1.1.0 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, INSCRIPTIONS-009, CONFIG-001, ACCESS-001, AUDIT-001, STORAGE-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-010-RECETTE | Procès-verbal de recette de la persistance technique INSCRIPTIONS-010 | En revue | 1.0.0 | INSCRIPTIONS-010, AUDIT-001, CONFIG-001, AKS-Platform #89 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -270,11 +271,11 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Socle validé — audit persistant commun implémenté et recette isolée concluante sur la PR #90 ; fusion applicative encore soumise à validation |
+| Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Socle validé — audit persistant commun intégré dans `develop`, recette isolée concluante |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010 | Quatrième incrément documenté et implémentation en brouillon ; prérequis audit commun levé par la recette AUDIT-001, raccordement et recette Google d’INSCRIPTIONS-010 à reprendre |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010, INSCRIPTIONS-010-RECETTE | Quatrième incrément implémenté et recetté techniquement sur ressource isolée : 455/455 ; anomalie de typage Sheets corrigée ; PR #89 encore en brouillon en attente de validation documentaire #103 et revue applicative |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -295,6 +296,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.85 | 2026-08-09 | Référencement de la recette réelle INSCRIPTIONS-010 : tête applicative `0da406b`, 455/455 tests, schéma Google isolé et persistance séquence/commande validés, anomalie de typage Sheets détectée et corrigée ; ajout d’INSCRIPTIONS-010-RECETTE et maintien explicite des limites de concurrence/interruption non exécutées réellement |
 | 1.2.84 | 2026-08-09 | Validation du premier socle persistant AUDIT-001 : PR applicative #90 testée sur `11e36134`, recette Google isolée concluante, deux preuves corrélées persistées, configuration restaurée, suite cumulative 423/423 ; référencement du PV AUDIT-001-RECETTE et levée du prérequis audit pour la suite d’INSCRIPTIONS-010 |
 | 1.2.83 | 2026-08-08 | Précision d’AUDIT-001 après revue (identités serveur, catalogues initiaux, cellules canoniques et paramètres CONFIG-001) et correction du statut global du domaine Administration |
 | 1.2.82 | 2026-08-08 | Proposition du cadrage persistant d’AUDIT-001 : port commun `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, écriture verrouillée, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans implémentation ni production |

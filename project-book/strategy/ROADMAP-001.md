@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.76 |
+| **Version** | 1.2.77 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -376,7 +376,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | LOG-001 | Journalisation — socle structuré, persistance durable dans `AKS_Logs`, conservation à 90 jours, purge contrôlée et consultation administrative en lecture seule validés (106/106 tests) ; chantier fonctionnellement terminé | Validé |
 | UX-001 | Expérience utilisateur — fondations administratives communes, retours d’action du Paramétrage, consultation des Journaux et présentation compréhensible des événements validés (121/121 tests) ; chantier fonctionnellement terminé | Validé |
 | SECURITY-001 | Sécurité | Validé |
-| AUDIT-001 | Audit et traçabilité — premier incrément persistant commun implémenté par la PR #90, recette Google isolée concluante et suite cumulative 423/423 ; intégration dans `develop` encore soumise à validation explicite | Validé |
+| AUDIT-001 | Audit et traçabilité — premier incrément persistant commun intégré dans `develop` par la PR #90 au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`, recette Google isolée concluante et suite cumulative 423/423 | Validé |
 | NOTIF-001 | Notifications | Validé |
 | API-001 | Interfaces internes | Validé |
 | ERROR-001 | Gestion des erreurs | Validé |
@@ -722,15 +722,19 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — quatrième incrément implémenté en PR brouillon ; prérequis d’audit persistant commun validé, raccordement et recette Google à reprendre**.
+**Engagé — quatrième incrément implémenté et recette technique concluante ; PR applicative #89 en brouillon dans l’attente de la validation documentaire et de la revue**.
 
 Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit et valide les jeux d’essai ainsi que la recette cumulative. Son premier incrément applicatif sans écriture est intégré sur `develop` par la PR #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`, avec **341/341 tests réussis**. Le deuxième incrément défini par `INSCRIPTIONS-008` est intégré par la PR applicative [#87](https://github.com/karateseremange/AKS-Platform/pull/87), commit de fusion `ceda8b322715f77399bf8e7eda80c8e2b046daaa`. Après `clasp push` contrôlé, la suite Apps Script exécutée le 2 août 2026 atteint **360/360 tests réussis, 0 échec** ; les seize jeux produisent **13 réussites, 1 résultat partiel et 2 blocages attendus**. Aucun déploiement, registre réel ou accès à une donnée métier Google n’a été introduit.
 
 Le troisième incrément défini par `INSCRIPTIONS-009` est intégré par la PR applicative [#88](https://github.com/karateseremange/AKS-Platform/pull/88), commit de fusion `b870d6f425e52c1ec63f1bb5ce1b5214296c8465`. Ses **20 tests ciblés** réussissent. Après synchronisation contrôlée de la tête `0ee4bb7b7d37a6f84dea38dc57edccf732053782`, la suite Apps Script exécutée le 3 août 2026 atteint **380/380 tests réussis, 0 échec**. Le bilan des jeux d’or reste **13 réussis, 1 partiel et 2 bloqués**. Aucun adaptateur Google, stockage métier réel, interface ou déploiement n’a été introduit.
 
-Le quatrième incrément validé par `INSCRIPTIONS-010` borne la prochaine étape à une persistance Google exclusivement technique et isolée en recette : garde d’environnement, schéma `Metadata`/`Sequences`/`Commandes`, verrou réel, journal et séquences persistants, avec audit commun AKS Core. Il interdit toute donnée nominative, tout objet métier, toute application de lot, interface, ressource de production ou déploiement. Son implémentation est portée par la PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89), toujours en brouillon. Les **32/32 tests ciblés** et la suite Apps Script **412/412, 0 échec** sont réussis sur la tête `f2aa2e34498b4da3c91131480ff6e40045b8a415`. Aucun accès Google métier, aucune recette, version ni aucun déploiement n’a encore été réalisé pour cette PR.
+Le quatrième incrément défini par `INSCRIPTIONS-010 1.1.0` réalise une persistance Google exclusivement technique et isolée en recette : garde d’environnement, schéma `Metadata`/`Sequences`/`Commandes`, verrou réel, journal et séquences persistants, avec audit commun AKS Core. Il interdit toute donnée nominative, tout objet métier réel, toute application de lot, interface, ressource de production ou déploiement. Son implémentation est portée par la PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89), toujours en brouillon, sur la tête finale recettée `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`.
 
-Le prérequis transverse qui suspendait cette recette est désormais satisfait par `AUDIT-001` : la PR applicative #90, tête `11e36134ba291e22c92378c4610cdaf3265a68c8`, implémente le port commun persistant. Sa recette Google isolée du 9 août 2026 est concluante avec **2 preuves corrélées persistées**, restauration de la configuration temporaire, contrôle visuel des **3 lignes** du support et suite cumulative **423/423 réussie, 0 échec**. La PR #90 reste cependant en brouillon et doit être intégrée à `develop` avant le raccordement final de la PR #89.
+Le prérequis transverse `AUDIT-001` a été intégré dans `develop` par la PR applicative #90 au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`. La branche #89 a ensuite été réalignée sur ce socle, puis synchronisée dans Apps Script. La suite cumulative finale atteint **455/455 tests réussis, 0 échec**.
+
+La recette Google Sheets isolée du 9 août 2026 sur `[RECETTE] AKS Inscriptions` est concluante pour le périmètre réellement exécuté. Le schéma `inscriptions-recipe-tech/1.0` a été créé avec `Metadata`, `Sequences` et `Commandes` dans le fuseau `Europe/Paris`. Une première allocation a révélé que Sheets convertissait automatiquement la chaîne `scope_key = "2026"` en valeur numérique ; la relecture stricte a refusé cette altération. La correction du commit `0da406b` force désormais les valeurs chaîne au format texte lors des écritures contrôlées. Après correction, la séquence `INS-2026-000001` et la commande fictive `CMD-RECETTE-010-001` ont été persistées et relues conformément au contrat.
+
+La campagne ne doit pas être interprétée comme une preuve Google réelle de tous les scénarios de concurrence et de reprise du cadrage initial. Les collisions simultanées, conflits de version provoqués réellement dans Sheets, interruptions et réconciliations restent couverts par les tests injectés lorsqu’ils existent et nécessiteraient une campagne dédiée pour constituer une preuve réelle distincte. Le détail est consigné dans `INSCRIPTIONS-010-RECETTE`.
 
 ## 13.2 Objectif
 
@@ -748,7 +752,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 - la préinscription reste obligatoire pour toute nouvelle inscription et ouverte toute la saison ;
 - les places restent limitées par cours et une liste d’attente est prévue ;
 - le paiement en ligne et l’espace licencié sont exclus du périmètre initial ;
-- aucun code n’est écrit avant validation du cadrage fonctionnel.
+- aucun code n’est écrit avant validation du cadrage fonctionnel ;
 - Google authentifie les utilisateurs privés et AKS Platform autorise chaque module et chaque action ;
 - les rôles généraux et les capacités propres aux modules sont distincts et cumulables ;
 - l’accès privé à Analytics est contrôlé côté serveur et complété par les partages Google Drive ;
@@ -756,7 +760,9 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est l’intégration du socle `AUDIT-001` validé dans `develop`, puis la reprise de la PR applicative #89 afin qu’`INSCRIPTIONS-010` consomme le port commun `AKS.Core.Audit` sans service parallèle. Une nouvelle validation cumulative devra alors être exécutée sur la tête raccordée, suivie de la campagne Google isolée d’`INSCRIPTIONS-010` sur des données techniques fictives. Si une fonctionnalité observable via le Web App est introduite dans un incrément ultérieur, elle devra en plus faire l’objet d’un déploiement Web App de test et d’une recette utilisateur avant validation finale et fusion dans `develop`.
+Le prochain jalon est la clôture documentaire de la PR Project Book #103, puis, uniquement après validation explicite du Product Owner, le passage de la PR applicative #89 en prête pour revue et sa fusion éventuelle dans `develop`.
+
+INSCRIPTIONS-010 reste strictement interne et editor-only : aucun déploiement Web App de test n’est requis pour cet incrément. Si une fonctionnalité observable via le Web App est introduite dans un incrément ultérieur, elle devra faire l’objet d’un déploiement Web App de test et d’une recette utilisateur avant validation finale et fusion dans `develop`.
 
 SIKADA, Analytics/`BODY_KARATE`, données nominatives, référentiel métier complet, restauration complète, interfaces, application de lot, production et déploiement demeurent séparés et interdits dans ce quatrième incrément.
 
@@ -875,7 +881,7 @@ ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
         ↓
-AKS Inscriptions — quatrième incrément en PR #89 ; audit persistant commun validé par la PR #90 à 423/423, raccordement puis recette Google à reprendre
+AKS Inscriptions — quatrième incrément recetté techniquement à 455/455 ; PR #89 en brouillon, validation documentaire #103 puis revue/fusion applicative à décider
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
@@ -886,6 +892,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.77 | 2026-08-09 | INSCRIPTIONS-010 réaligné sur AUDIT-001 intégré : tête applicative `0da406b`, suite finale 455/455, recette Google isolée concluante pour le schéma, une séquence et une commande fictive ; anomalie de typage Sheets détectée puis corrigée ; limites des scénarios Google de concurrence/interruption conservées, PR #89 toujours en brouillon avant validation documentaire #103 et revue |
 | 1.2.76 | 2026-08-09 | Validation du premier socle persistant commun AUDIT-001 : PR applicative #90 sur `11e36134`, recette Google isolée concluante, deux preuves corrélées persistées, configuration restaurée et suite cumulative 423/423 ; prérequis audit d’INSCRIPTIONS-010 levé, raccordement et recette de la PR #89 deviennent le prochain jalon après intégration de #90 |
 | 1.2.75 | 2026-08-08 | Précision du cadrage d’AUDIT-001 après revue : identités résolues côté serveur, catalogues fermés initiaux, cellules canoniques et paramètres CONFIG-001 complets ; aucune implémentation ni recette réalisée |
 | 1.2.74 | 2026-08-08 | Proposition du premier incrément persistant d’AUDIT-001 comme prérequis à la recette d’INSCRIPTIONS-010 ; la PR applicative #89 reste en brouillon après 412/412, sans recette Google, production ni déploiement |
