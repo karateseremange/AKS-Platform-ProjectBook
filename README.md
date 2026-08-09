@@ -90,6 +90,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [CONFIG-001 — Paramétrage centralisé](project-book/administration/CONFIG-001.md)
 - [LOG-001 — Journalisation](project-book/administration/LOG-001.md)
 - [AUDIT-001 — Audit et traçabilité](project-book/administration/AUDIT-001.md)
+- [AUDIT-001-RECETTE — Procès-verbal de recette du socle persistant](project-book/administration/AUDIT-001-RECETTE.md)
 
 ## Expérience utilisateur
 
@@ -172,6 +173,10 @@ Le deuxième incrément est validé dans [`INSCRIPTIONS-008`](project-book/modul
 
 Le troisième incrément est validé dans [`INSCRIPTIONS-009`](project-book/modules/inscriptions/INSCRIPTIONS-009.md). La PR applicative [#88](https://github.com/karateseremange/AKS-Platform/pull/88) est fusionnée sur `develop` au commit `b870d6f425e52c1ec63f1bb5ce1b5214296c8465`. Son journal de commandes injectable, ses transitions fermées, l’idempotence et la reprise après reconstruction du service ajoutent **20 tests ciblés**. Après synchronisation contrôlée de la tête testée `0ee4bb7b7d37a6f84dea38dc57edccf732053782`, la suite Apps Script atteint **380/380 tests réussis, 0 échec**. Le bilan reste **13 jeux d’or réussis, 1 partiel et 2 bloqués**. Aucun adaptateur Google, stockage métier réel, interface ou déploiement n’a été introduit.
 
-Le quatrième incrément est validé dans [`INSCRIPTIONS-010`](project-book/modules/inscriptions/INSCRIPTIONS-010.md) en version 1.0.1. Son implémentation applicative bornée est autorisée : première persistance Google strictement limitée à une recette isolée, garde d’environnement, schéma technique `Metadata`/`Sequences`/`Commandes`, verrou réel et adaptateurs persistants du journal et des séquences, avec audit commun AKS Core. Toute donnée nominative, tout objet métier, toute application de lot, interface, production ou déploiement restent interdits. La référence demeure **380/380 tests** et le bilan **13/1/2** jusqu’à de nouvelles preuves.
+Le quatrième incrément est validé dans [`INSCRIPTIONS-010`](project-book/modules/inscriptions/INSCRIPTIONS-010.md) en version 1.0.1. Son implémentation applicative est portée par la PR #89, toujours en brouillon. Les **32/32 tests ciblés** et la suite cumulative **412/412, 0 échec** sont réussis sur la tête `f2aa2e34498b4da3c91131480ff6e40045b8a415`. Sa recette Google était suspendue à l’existence d’un port commun d’audit réellement persistant.
+
+Ce prérequis transverse est désormais levé : le premier socle persistant commun [`AUDIT-001`](project-book/administration/AUDIT-001.md) est implémenté par la PR applicative #90 sur la tête `11e36134ba291e22c92378c4610cdaf3265a68c8`. Sa recette isolée Google Sheets est concluante : deux preuves corrélées `INTENTION → REUSSI` ont été persistées, la configuration temporaire a été restaurée et la suite cumulative atteint **423/423 tests réussis, 0 échec**. Les preuves détaillées sont consignées dans [`AUDIT-001-RECETTE`](project-book/administration/AUDIT-001-RECETTE.md). La PR #90 reste en brouillon et n’est pas fusionnée.
+
+La prochaine étape est l’intégration validée d’AUDIT-001 dans `develop`, puis le raccordement de la PR #89 au port commun et sa propre campagne de recette technique sur données fictives. Toute fonctionnalité observable ou utilisable depuis le Web App devra être validée sur un déploiement de test avant validation finale et fusion dans `develop` ; les incréments strictement internes peuvent utiliser une recette technique réelle adaptée lorsqu’aucune route ou interface Web App n’est exposée.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).
