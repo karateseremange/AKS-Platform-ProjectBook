@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.89 |
+| **Version** | 1.2.90 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -780,7 +780,7 @@ Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante t
 
 Les validations locales réussissent à 193/193 pour la syntaxe des fichiers `.gs`, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative réelle a réussi à **477/477 tests, 0 échec**. Le recomptage confirme 477 fonctions uniques ; la valeur préparatoire 478 provenait d’un inventaire statique erroné.
 
-Le modèle intégré ajoute une affectation transverse `ACCESS` compatible avec `access/1.0` et rend `ACCESS_MANAGE` explicitement attribuable. Le protocole interne de précontrôle, application sous verrou et restauration exacte est intégré par la [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95), au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). La tête `be7323a` a été synchronisée avec 229 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **495/495 tests, 0 échec**. Aucune des trois fonctions de recette n'a été exécutée. Le précontrôle, la mutation réversible en recette et l'amorçage réel restent des décisions distinctes soumises à leurs propres autorisations.
+Le modèle intégré ajoute une affectation transverse `ACCESS` compatible avec `access/1.0` et rend `ACCESS_MANAGE` explicitement attribuable. Le protocole interne de précontrôle, application sous verrou et restauration exacte est intégré par la [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95), au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). La tête `be7323a` a été synchronisée avec 229 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **495/495 tests, 0 échec**. Le précontrôle en lecture seule a ensuite réussi et confirmé un registre absent sans écriture. Le rôle initial cible est `ADMINISTRATEUR`, avec la seule habilitation ajoutée `ACCESS_MANAGE`; le correctif correspondant est en revue. L'application, la restauration et l'amorçage réel restent des décisions distinctes soumises à leurs propres autorisations.
 
 La réalisation est officiellement découpée en six incréments :
 
@@ -953,6 +953,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.90 | 2026-08-09 | Précontrôle ACCESS-002-02 réussi sans écriture ; modèle initial `ADMINISTRATEUR + ACCESS_MANAGE` confirmé, correctif applicatif en revue et mutation toujours non autorisée |
 | 1.2.89 | 2026-08-09 | Protocole réversible ACCESS-002-02 intégré par la PR applicative #95 au commit `bbedf0a`, tête `be7323a` synchronisée avec 229 fichiers et campagne isolée 495/495, sans exécution des fonctions de recette ni mutation réelle |
 | 1.2.88 | 2026-08-09 | Prérequis explicite d’ACCESS-002-02 intégré par la PR applicative #94 au commit `e800bdb`, tête `c4998c2` validée en recette à 484/484 et protocole du prochain lot réversible préparé, sans registre, compte ou donnée réelle |
 | 1.2.87 | 2026-08-09 | ACCESS-002-02 cadré en version 0.1.0 : écart entre rôle historique et habilitation explicite identifié, affectation transverse `ACCESS` proposée et séquence implémentation/recette/amorçage bornée, sans modification réelle |

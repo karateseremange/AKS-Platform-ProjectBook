@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.2 |
-| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; protocole réversible ACCESS-002-02 intégré |
+| **Version** | 0.4.3 |
+| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; précontrôle ACCESS-002-02 réussi et correctif du rôle initial en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -337,7 +337,7 @@ Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides
 
 `ACCESS-002-02 — Amorçage et migration` est cadré dans [`ACCESS-002-02`](ACCESS-002-02.md). Le prérequis qui matérialise `ACCESS_MANAGE` comme habilitation transverse explicite est intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8). Le protocole interne de précontrôle, application et restauration réversible est ensuite intégré par la [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95), au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). La tête testée `be7323a` a été synchronisée avec 229 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **495/495 tests, 0 échec**.
 
-Les trois fonctions de recette n'ont pas été exécutées. Leur présence et la campagne 495/495 n'autorisent aucune mutation : le précontrôle doit d'abord être autorisé et examiné séparément ; l'identité de test, l'identité de refus, le registre de recette et l'application suivie de la restauration devront recevoir une autorisation explicite distincte. L'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
+Le précontrôle en lecture seule a ensuite réussi sur la cible isolée : registre absent, zéro compte avant, un compte proposé et `writePerformed:false`. Il a permis d'identifier avant toute mutation un écart entre le rôle `CONSULTATION` proposé par le code et le rôle descriptif `ADMINISTRATEUR` validé. Le Product Owner a confirmé `ADMINISTRATEUR + ACCESS_MANAGE`, sans `SUPER_ADMIN`, exception d'adresse ni autre capacité attribuée par la recette. Le correctif est en revue ; l'application et la restauration restent non exécutées et non autorisées. L'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
 
 ---
 
@@ -345,6 +345,7 @@ Les trois fonctions de recette n'ont pas été exécutées. Leur présence et la
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.3 | 2026-08-09 | Précontrôle ACCESS-002-02 réussi sans écriture ; choix `ADMINISTRATEUR + ACCESS_MANAGE` confirmé et correctif applicatif préparé avec une habilitation ACCESS unique, sans `SUPER_ADMIN`, exception d'adresse ni autre capacité |
 | 0.4.2 | 2026-08-09 | Protocole réversible ACCESS-002-02 intégré au commit applicatif `bbedf0a`, tête `be7323a` synchronisée avec 229 fichiers et campagne isolée 495/495 consignée, sans exécution des fonctions de recette ni mutation réelle |
 | 0.4.1 | 2026-08-09 | Prérequis explicite d’ACCESS-002-02 intégré au commit applicatif `e800bdb`, campagne isolée 484/484 consignée et prochain lot de recette réversible borné au précontrôle, à la sauvegarde et à la restauration, sans mutation réelle |
 | 0.4.0 | 2026-08-09 | ACCESS-002-02 proposé : prérequis d’habilitation transverse explicite identifié, modèle `ACCESS` compatible avec `access/1.0` cadré et phases d’implémentation, recette réversible et amorçage réel séparées, sans mutation |
