@@ -2,7 +2,7 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.3.2 |
+| **Version** | 1.3.3 |
 | **Statut** | Validé — socle persistant ; extension ACCESS en PR brouillon |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -570,7 +570,7 @@ L’extension et son correctif de compatibilité sont publiés dans la [PR appli
 
 Le correctif utilise un seul verrou partagé par ACCESS et AUDIT. La voie « verrou déjà détenu » exige `hasLock()`, n’acquiert pas un second verrou et ne libère jamais celui de la commande appelante. L’autorisation d’audit accepte les gestionnaires reconnus par la compatibilité transitoire `access/1.0` ou `AKS.Admin.Access` ; un appelant refusé ne peut persister que l’événement ACCESS `USER/REFUSE` strictement borné.
 
-Les contrôles locaux réussissent à **46/46 pour la suite complète AUDIT-001**, dont la persistance d’une preuve ACCESS minimisée, le refus de métadonnées incohérentes et le cycle complet ACCESS avec le même verrou injecté. ACCESS-002-01 atteint parallèlement **19/19** et la syntaxe **193/193 fichiers `.gs`**. La suite cumulative préparée contient **478 fonctions uniques**. Ces résultats ne remplacent pas la campagne cumulative Apps Script : la dernière référence réelle demeure **455/455 tests réussis, 0 échec**.
+Les contrôles locaux réussissent à **46/46 pour la suite complète AUDIT-001**, dont la persistance d’une preuve ACCESS minimisée, le refus de métadonnées incohérentes et le cycle complet ACCESS avec le même verrou injecté. ACCESS-002-01 atteint parallèlement **19/19** et la syntaxe **193/193 fichiers `.gs`**. Après synchronisation de 226 fichiers de la tête `84ea68f` dans le projet Apps Script isolé de recette, la suite cumulative réelle réussit à **477/477 tests, 0 échec**. Le recomptage confirme 477 fonctions uniques ; la valeur préparatoire 478 était erronée.
 
 Aucune preuve n’a été écrite dans une ressource Google réelle pour ce lot, aucun registre ou compte réel n’a été modifié et aucun déploiement n’a été effectué.
 
@@ -580,6 +580,7 @@ Aucune preuve n’a été écrite dans une ressource Google réelle pour ce lot,
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.3 | 2026-08-09 | Recette cumulative réelle de l’extension ACCESS consignée sur la tête `84ea68f` : 226 fichiers synchronisés dans Apps Script isolé, 477/477 tests réussis sans échec et inventaire préparatoire 478 corrigé |
 | 1.3.2 | 2026-08-09 | Correctif ACCESS documenté : verrou ACCESS/AUDIT partagé sans acquisition imbriquée, autorisation alignée sur la compatibilité transitoire, refus `USER/REFUSE` bornés et suite AUDIT complète raccordée ; validations locales 46/46 et syntaxe 193/193, sans preuve Google réelle |
 | 1.3.1 | 2026-08-09 | Extension documentée du catalogue persistant pour ACCESS-002-01 : action, module, cible, codes motif et métadonnées fermées ; preuves corrélées obligatoires avant/après, restauration sur échec final et validation locale ciblée 9/9 sans donnée réelle |
 | 1.3.0 | 2026-08-09 | Validation de l’implémentation et de la recette isolée du premier socle persistant commun : PR #90, deux preuves corrélées persistées, configuration restaurée et suite cumulative 423/423 ; prérequis audit d’INSCRIPTIONS-010 levé |

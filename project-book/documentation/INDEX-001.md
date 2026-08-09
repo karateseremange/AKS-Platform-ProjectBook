@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.92 |
+| Version | 1.2.93 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-09 |
@@ -298,6 +298,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.93 | 2026-08-09 | Recette Apps Script isolée d’ACCESS-002-01 référencée : ACCESS-002-01 passe en 0.4.1, ACCESS-002 en 0.3.5, AUDIT-001 en 1.3.3 et ROADMAP-001 en 1.2.85 ; tête `84ea68f`, 226 fichiers synchronisés et suite cumulative réelle 477/477 sans échec ; inventaire préparatoire 478 corrigé |
 | 1.2.92 | 2026-08-09 | Cinquième lot ACCESS-002-01 documenté : ACCESS-002-01 passe en 0.4.0, ACCESS-002 en 0.3.4, AUDIT-001 en 1.3.2 et ROADMAP-001 en 1.2.84 ; verrou partagé et autorisation d’audit corrigés, validations locales 193/193, 19/19 et 46/46, suite cumulative préparée à 478 fonctions uniques sans nouvelle exécution Apps Script |
 | 1.2.91 | 2026-08-09 | Quatrième lot ACCESS-002-01 documenté : ACCESS-002-01 passe en 0.3.0, ACCESS-002 en 0.3.3, AUDIT-001 en 1.3.1 et ROADMAP-001 en 1.2.83 ; preuves persistantes corrélées, refus/restaurations et catalogues ACCESS couverts localement à 19/19 et 9/9, référence cumulative maintenue à 455/455 |
 | 1.2.90 | 2026-08-09 | Troisième lot ACCESS-002-01 documenté : ACCESS-002-01 passe en 0.2.0, ACCESS-002 en 0.3.2 et ROADMAP-001 en 1.2.82 ; écriture atomique et validations couvertes localement à 15/15 sans mutation réelle, référence cumulative maintenue à 455/455 |

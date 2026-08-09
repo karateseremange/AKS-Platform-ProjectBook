@@ -4,7 +4,7 @@
 |---|---|
 | **Document ID** | ACCESS-002-01 |
 | **Titre** | Socle d’administration des utilisateurs et habilitations |
-| **Version** | 0.4.0 |
+| **Version** | 0.4.1 |
 | **Statut** | En cours — cinq lots applicatifs publiés en PR brouillon |
 | **Nature** | Suivi d’implémentation et de validation |
 | **Propriétaire** | Product Owner |
@@ -89,7 +89,7 @@ Le commit applicatif [`84ea68f`](https://github.com/karateseremange/AKS-Platform
 - nettoie la déclaration dupliquée détectée dans le test de restauration après échec d’audit ;
 - valide le cycle ACCESS → AUDIT avec un seul faux verrou partagé, acquis et libéré une seule fois.
 
-Ce lot corrige les incompatibilités détectées pendant la revue finale du chemin Apps Script réel. Il ne synchronise pas le projet Apps Script et ne modifie aucune ressource réelle.
+Ce lot corrige les incompatibilités détectées pendant la revue finale du chemin Apps Script réel. Il a ensuite été synchronisé dans le projet Apps Script isolé lié à `[RECETTE] AKS Inscriptions`, sans déploiement ni modification de la production.
 
 ---
 
@@ -105,7 +105,7 @@ Les contrôles locaux réalisés sur la tête applicative `84ea68f` sont conclua
 | Inscriptions ciblés | 9/9 |
 | Syntaxe des fichiers `.gs` | 193/193 |
 
-Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Script. La dernière référence cumulative effectivement exécutée reste **455/455 tests réussis, 0 échec**. La suite préparée contient **478 fonctions de test uniques** après suppression des doublons, mais elle n’est pas présentée comme réussie tant qu’une campagne Apps Script réelle ne l’a pas prouvé.
+La tête applicative `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec **226 fichiers**. La campagne cumulative réelle a ensuite réussi à **477/477 tests, 0 échec**. Le recomptage selon la construction effective de la suite confirme 477 objets de test, 477 noms uniques et 477 fonctions uniques ; la valeur préparatoire 478 provenait d’un inventaire statique erroné et non d’un test manquant.
 
 ---
 
@@ -118,6 +118,7 @@ Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Scr
 - `AKS.Admin.Access` reste le mécanisme historique en place ;
 - aucun registre réel ni Script Property n’a été migré ou modifié ;
 - aucune commande d’écriture n’a été exécutée contre le registre réel ;
+- seule la ressource Apps Script isolée de recette a été synchronisée ;
 - aucune modification n’a été apportée à `main` ;
 - aucun déploiement ni changement de production n’a été réalisé ;
 - `ACCESS-002-02` et `INSCRIPTIONS-011` ne sont pas engagés.
@@ -128,9 +129,9 @@ Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Scr
 
 L’incrément reste ouvert. Il doit encore fournir notamment :
 
-1. la synchronisation contrôlée de la branche de recette Apps Script ;
-2. la nouvelle campagne cumulative réelle dans Apps Script ;
-3. la consolidation des preuves et la clôture documentaire de l’incrément.
+1. la revue finale des PR applicative et documentaire ;
+2. la consolidation des preuves et la clôture documentaire de l’incrément ;
+3. la préparation de l’incrément `ACCESS-002-02`, sans amorçage réel tant qu’il n’est pas explicitement autorisé.
 
 La migration du premier compte gestionnaire réel reste réservée à `ACCESS-002-02`.
 
@@ -140,6 +141,7 @@ La migration du premier compte gestionnaire réel reste réservée à `ACCESS-00
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.1 | 2026-08-09 | Recette Apps Script isolée consignée sur la tête `84ea68f` : 226 fichiers synchronisés, suite cumulative réelle 477/477 sans échec ; correction de l’inventaire préparatoire 478 après recomptage de 477 objets, noms et fonctions uniques |
 | 0.4.0 | 2026-08-09 | Documentation du cinquième lot correctif : verrou ACCESS/AUDIT réellement partagé, autorisation d’audit alignée, refus ACCESS bornés, suites AUDIT et cumulative nettoyées ; syntaxe 193/193, ACCESS-002-01 19/19, AUDIT-001 46/46 et inventaire cumulatif préparé à 478 fonctions uniques, sans exécution Apps Script réelle |
 | 0.3.0 | 2026-08-09 | Documentation du quatrième lot : audit persistant obligatoire avant mutation, preuves avant/après corrélées, refus et restaurations audités, restauration sur échec de preuve finale et métadonnées minimisées ; tests locaux ACCESS-002-01 portés à 19/19 et AUDIT-001 ciblé à 9/9, sans mutation réelle |
 | 0.2.0 | 2026-08-09 | Documentation du troisième lot : validation stricte, écriture verrouillée avec révision optimiste, relecture, restauration vérifiée, métadonnées serveur, protection du dernier gestionnaire et réactivation sûre ; tests locaux ACCESS-002-01 portés à 15/15, sans mutation réelle |
