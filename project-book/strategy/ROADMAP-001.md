@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.80 |
+| **Version** | 1.2.81 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -774,7 +774,11 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` est engagé et son cadrage est validé en version 0.3.0.
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` est engagé. Son cadrage est validé et `ACCESS-002-01` est en cours dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93).
+
+Les deux premiers lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, puis introduisent une façade administrative strictement en lecture seule, protégée côté serveur et retournant une vue immuable. Le rôle `ADMINISTRATEUR` historique et le bootstrap restent temporairement acceptés pour éviter toute rupture avant migration. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
+
+Les tests locaux ciblés réussissent à 18/18 pour ACCESS-001, 6/6 pour ACCESS-002-01 et 9/9 pour Inscriptions ciblés. Ils ne constituent pas une nouvelle exécution cumulative Apps Script : la référence réelle demeure **455/455 tests réussis, 0 échec**.
 
 La réalisation est officiellement découpée en six incréments :
 
@@ -947,6 +951,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.81 | 2026-08-09 | ACCESS-002-01 engagé dans la PR applicative brouillon #93 : catalogue `ANALYTICS_READ` compatible et API administrative de lecture protégée publiés ; tests locaux ciblés documentés sans remplacer la référence cumulative réelle 455/455 ; aucune migration, donnée réelle, production ou `main` touchée |
 | 1.2.80 | 2026-08-09 | Finalisation du cadrage ACCESS-002 0.3.0 : découpage officiel en six incréments ACCESS-002-01 à ACCESS-002-06, amorçage de `aserridj@gmail.com` comme premier gestionnaire sans rôle SUPER_ADMIN, règles de séquencement et backlog ACCESS différé consignés avant INSCRIPTIONS-011 |
 | 1.2.79 | 2026-08-09 | Engagement du cadrage ACCESS-002 comme chantier transverse prioritaire avant INSCRIPTIONS-011 : administration des comptes Google, rôles, modules, cours et capacités ; confirmation qu’un rôle n’accorde aucun module implicitement et qu’un professeur peut n’avoir aucun accès Présences ; correction de la trajectoire après clôture d’INSCRIPTIONS-010 |
 | 1.2.78 | 2026-08-09 | Clôture d’INSCRIPTIONS-010 après validation et fusion de la PR applicative #89 dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ; suite finale 455/455 et recette Google isolée conservées ; prochain incrément à cadrer séparément, SIKADA restant bloqué faute de fixture anonymisée validée |
