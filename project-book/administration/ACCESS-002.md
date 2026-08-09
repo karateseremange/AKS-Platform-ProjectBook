@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.2 |
-| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; protocole réversible ACCESS-002-02 intégré |
+| **Version** | 0.4.6 |
+| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; correctif fonctionnel ACCESS-002-02 validé en recette |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -226,7 +226,7 @@ ACCESS-002 est réalisé en six incréments, chacun testable et documentable ind
 | Incrément | Objectif | Résultat attendu |
 |---|---|---|
 | **ACCESS-002-01** | Socle d’administration | API serveur sécurisée de lecture, validation et modification du registre ; normalisation, atomicité, contrôles, temporalité, protection du dernier gestionnaire et audit avant/après |
-| **ACCESS-002-02** | Amorçage et migration | `aserridj@gmail.com` devient le premier gestionnaire ACCESS-002 réel ; recette d’accès/refus/audit concluante ; mécanisme historique conservé en secours |
+| **ACCESS-002-02** | Amorçage et migration | `aserridj@gmail.com` devient le premier gestionnaire ACCESS-002 réel ; rôle `ADMINISTRATEUR` descriptif, `ACCESS_MANAGE` explicite ; recette d’accès/refus/audit concluante ; bootstrap historique limité au registre absent |
 | **ACCESS-002-03** | Administration des utilisateurs | Liste, recherche, filtres, création, activation/désactivation et vue « Qui a accès à quoi ? » |
 | **ACCESS-002-04** | Fiche et habilitations | UX validée, multi-rôle, modules, cours, capacités, dates, synthèse, commentaire, confirmation sensible et historique |
 | **ACCESS-002-05** | Portail privé et Mes accès | Navigation personnalisée selon les droits effectifs et consultation des propres accès |
@@ -331,13 +331,15 @@ ACCESS-002 est terminé lorsque les six incréments sont validés, le registre e
 
 `ACCESS-002-01` est clôturé après fusion de la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93) dans `develop`, au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). Les cinq lots intégrés couvrent : ajout compatible de `ANALYTICS_READ` au catalogue des capacités, façade administrative en lecture seule protégée côté serveur, validation stricte et écriture atomique avec verrou, révision optimiste, relecture et restauration vérifiée, audit persistant obligatoire avant/après avec corrélation, puis correction du verrou partagé ACCESS/AUDIT, de l’autorisation d’audit et du raccordement des suites.
 
-La compatibilité `access/1.0`, le rôle `ADMINISTRATEUR` historique et le bootstrap sont volontairement conservés pendant cette transition. La commande d’écriture exige désormais une preuve persistante avant mutation et restaure l’état précédent si la preuve finale échoue. ACCESS et AUDIT partagent un seul verrou de script sans acquisition imbriquée ; la voie d’audit sous verrou vérifie sa détention et ne le libère pas. L’implémentation reste couverte par dépendances injectées et n’a provoqué aucune mutation réelle, migration du registre, modification de compte ou suppression d’`AKS.Admin.Access`. Le détail et les preuves disponibles sont consignés dans [`ACCESS-002-01`](ACCESS-002-01.md).
+La compatibilité du schéma `access/1.0` et le bootstrap historique sont volontairement conservés pendant cette transition. Le rôle `ADMINISTRATEUR` reste une fonction descriptive, sans héritage automatique de capacités dès qu'un registre existe. La commande d’écriture exige désormais une preuve persistante avant mutation et restaure l’état précédent si la preuve finale échoue. ACCESS et AUDIT partagent un seul verrou de script sans acquisition imbriquée ; la voie d’audit sous verrou vérifie sa détention et ne le libère pas. L’implémentation reste couverte par dépendances injectées et n’a provoqué aucune mutation réelle, migration du registre, modification de compte ou suppression d’`AKS.Admin.Access`. Le détail et les preuves disponibles sont consignés dans [`ACCESS-002-01`](ACCESS-002-01.md).
 
 Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative a réussi à **477/477 tests, 0 échec**. Le recomptage de la suite confirme 477 fonctions uniques ; la valeur préparatoire 478 était un inventaire statique erroné.
 
 `ACCESS-002-02 — Amorçage et migration` est cadré dans [`ACCESS-002-02`](ACCESS-002-02.md). Le prérequis qui matérialise `ACCESS_MANAGE` comme habilitation transverse explicite est intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8). Le protocole interne de précontrôle, application et restauration réversible est ensuite intégré par la [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95), au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). La tête testée `be7323a` a été synchronisée avec 229 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **495/495 tests, 0 échec**.
 
-Les trois fonctions de recette n'ont pas été exécutées. Leur présence et la campagne 495/495 n'autorisent aucune mutation : le précontrôle doit d'abord être autorisé et examiné séparément ; l'identité de test, l'identité de refus, le registre de recette et l'application suivie de la restauration devront recevoir une autorisation explicite distincte. L'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
+Le précontrôle en lecture seule a ensuite réussi sur la cible isolée : registre absent, zéro compte avant, un compte proposé et `writePerformed:false`. Il a permis d'identifier avant toute mutation un écart entre le rôle `CONSULTATION` proposé par le code et le rôle descriptif `ADMINISTRATEUR` validé. Le Product Owner a confirmé `ADMINISTRATEUR + ACCESS_MANAGE`, sans `SUPER_ADMIN`, exception d'adresse ni autre capacité attribuée par la recette. La première tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** puis validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore implicitement toutes les capacités au rôle. La fusion a été bloquée avant mutation.
+
+Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet héritage dès qu'un registre existe, conserve le bootstrap historique uniquement lorsque le registre est absent et vérifie les droits effectifs du compte amorcé. Les suites ciblées ACCESS réussissent à **57/57**, Inscriptions à **19/19**, le cycle Audit–registre ACCESS à **1/1** et la syntaxe à **196/196**. La tête corrigée a été synchronisée avec **229 fichiers** dans la recette Apps Script isolée, puis la suite cumulative réelle a réussi à **497/497 tests, 0 échec**. L'application et la restauration restent non exécutées et non autorisées ; l'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
 
 ---
 
@@ -345,6 +347,10 @@ Les trois fonctions de recette n'ont pas été exécutées. Leur présence et la
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.6 | 2026-08-09 | Correctif fonctionnel de la PR #96 validé sur la tête `747c9a3` : 229 fichiers synchronisés et campagne cumulative réelle 497/497, sans application, restauration ni mutation du registre |
+| 0.4.5 | 2026-08-09 | Revue finale de la PR #96 bloquée malgré 496/496 : retrait préparé des droits implicites `ADMINISTRATEUR`, bootstrap limité au registre absent, validations ciblées locales concluantes et suite cumulative portée à 497 tests uniques avant nouvelle recette Apps Script |
+| 0.4.4 | 2026-08-09 | Correctif ACCESS-002-02 de la PR applicative #96 synchronisé sur la tête `395de24` avec 229 fichiers et campagne cumulative réelle 496/496, sans application, restauration ni mutation du registre |
+| 0.4.3 | 2026-08-09 | Précontrôle ACCESS-002-02 réussi sans écriture ; choix `ADMINISTRATEUR + ACCESS_MANAGE` confirmé et correctif applicatif préparé avec une habilitation ACCESS unique, sans `SUPER_ADMIN`, exception d'adresse ni autre capacité |
 | 0.4.2 | 2026-08-09 | Protocole réversible ACCESS-002-02 intégré au commit applicatif `bbedf0a`, tête `be7323a` synchronisée avec 229 fichiers et campagne isolée 495/495 consignée, sans exécution des fonctions de recette ni mutation réelle |
 | 0.4.1 | 2026-08-09 | Prérequis explicite d’ACCESS-002-02 intégré au commit applicatif `e800bdb`, campagne isolée 484/484 consignée et prochain lot de recette réversible borné au précontrôle, à la sauvegarde et à la restauration, sans mutation réelle |
 | 0.4.0 | 2026-08-09 | ACCESS-002-02 proposé : prérequis d’habilitation transverse explicite identifié, modèle `ACCESS` compatible avec `access/1.0` cadré et phases d’implémentation, recette réversible et amorçage réel séparées, sans mutation |
