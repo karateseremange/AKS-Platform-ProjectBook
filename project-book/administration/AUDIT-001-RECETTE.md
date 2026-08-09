@@ -3,7 +3,7 @@
 | **Document ID** | AUDIT-001-RECETTE |
 | **Titre** | Procès-verbal de recette du socle persistant AUDIT-001 |
 | **Version** | 1.0.0 |
-| **Statut** | Validé |
+| **Statut** | En revue |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
 | **Version du produit** | Post-V1.3 |
