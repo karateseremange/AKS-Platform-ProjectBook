@@ -4,7 +4,7 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.3.1 |
+| **Version** | 0.3.2 |
 | **Statut** | Réalisation engagée — ACCESS-002-01 en cours |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -329,11 +329,11 @@ ACCESS-002 est terminé lorsque les six incréments sont validés, le registre e
 
 ## 21. État de réalisation
 
-`ACCESS-002-01` est engagé dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Deux premiers lots sont publiés : ajout compatible de `ANALYTICS_READ` au catalogue des capacités, puis façade administrative en lecture seule protégée côté serveur, avec réponse normalisée et immuable.
+`ACCESS-002-01` est engagé dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Trois lots sont publiés : ajout compatible de `ANALYTICS_READ` au catalogue des capacités, façade administrative en lecture seule protégée côté serveur, puis validation stricte et écriture atomique avec verrou, révision optimiste, relecture et restauration vérifiée.
 
-La compatibilité `access/1.0`, le rôle `ADMINISTRATEUR` historique et le bootstrap sont volontairement conservés pendant cette transition. Aucune écriture administrative, migration du registre, modification de compte réel ou suppression d’`AKS.Admin.Access` n’est encore réalisée. Le détail et les preuves disponibles sont consignés dans [`ACCESS-002-01`](ACCESS-002-01.md).
+La compatibilité `access/1.0`, le rôle `ADMINISTRATEUR` historique et le bootstrap sont volontairement conservés pendant cette transition. La commande d’écriture est couverte par dépendances injectées et n’a provoqué aucune mutation réelle, migration du registre, modification de compte ou suppression d’`AKS.Admin.Access`. Le détail et les preuves disponibles sont consignés dans [`ACCESS-002-01`](ACCESS-002-01.md).
 
-Les tests locaux ciblés atteignent 18/18 pour ACCESS-001, 6/6 pour ACCESS-002-01 et 9/9 pour Inscriptions ciblés. La référence cumulative réelle reste **455/455 tests réussis, 0 échec** jusqu’à une nouvelle exécution Apps Script.
+Les tests locaux ciblés atteignent 18/18 pour ACCESS-001, 15/15 pour ACCESS-002-01 et 9/9 pour Inscriptions ciblés. La référence cumulative réelle reste **455/455 tests réussis, 0 échec** jusqu’à une nouvelle exécution Apps Script.
 
 ---
 
@@ -341,6 +341,7 @@ Les tests locaux ciblés atteignent 18/18 pour ACCESS-001, 6/6 pour ACCESS-002-0
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.2 | 2026-08-09 | Troisième lot ACCESS-002-01 documenté : validation stricte et écriture atomique protégée avec révision, verrou, relecture, restauration, protection du dernier gestionnaire et réactivation sûre ; tests locaux 15/15, sans mutation réelle |
 | 0.3.1 | 2026-08-09 | Réalisation d’ACCESS-002-01 engagée : documentation des deux premiers lots applicatifs publiés dans la PR brouillon #93, compatibilité historique et exclusions maintenues, référence cumulative réelle conservée à 455/455 |
 | 0.3.0 | 2026-08-09 | Clôture de la conception : UX de la fiche validée, `aserridj@gmail.com` retenu comme premier gestionnaire sans rôle SUPER_ADMIN, stratégie d’amorçage/récupération validée et réalisation découpée en six incréments ACCESS-002-01 à ACCESS-002-06 |
 | 0.2.0 | 2026-08-09 | Consolidation des décisions Product Owner : multi-rôle essentiel, habilitations explicites, portail privé personnalisé, ACCESS_MANAGE multi-gestionnaires et auto-administration auditée, validité temporelle, identité Google, historique, vue globale, Mes accès et backlog différé |
