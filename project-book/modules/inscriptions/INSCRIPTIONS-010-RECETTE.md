@@ -2,8 +2,8 @@
 |-----------|--------|
 | **Document ID** | INSCRIPTIONS-010-RECETTE |
 | **Titre** | Procès-verbal de recette de la persistance technique INSCRIPTIONS-010 |
-| **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Version** | 1.1.0 |
+| **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
 | **Version du produit** | Post-V1.3 |
@@ -21,12 +21,13 @@ Aucune donnée nominative, aucun licencié réel, aucun responsable, aucun dossi
 # 2. Références applicatives
 
 - dépôt : `karateseremange/AKS-Platform` ;
-- branche : `agent/inscriptions-010-recipe-persistence` ;
+- branche de réalisation : `agent/inscriptions-010-recipe-persistence` ;
 - PR : `#89` — `Implémenter la persistance de recette Inscriptions` ;
 - tête finale exécutée : `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06` ;
-- base : `develop` ;
-- état au moment de la recette : PR ouverte, fusionnable et toujours en brouillon ;
-- prérequis transverse `AUDIT-001` : intégré dans la branche après réalignement sur `develop`.
+- cible : `develop` ;
+- état final : PR #89 fusionnée dans `develop` le 9 août 2026 ;
+- commit de fusion : `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ;
+- prérequis transverse `AUDIT-001` : intégré dans `develop` avant la fusion d’INSCRIPTIONS-010.
 
 # 3. Synchronisation Apps Script et non-régression
 
@@ -179,11 +180,15 @@ INSCRIPTIONS-010 est, dans cet incrément, strictement interne et editor-only : 
 
 Conformément à la règle actée lors d’AUDIT-001, aucun déploiement Web App de test n’est nécessaire pour valider ce socle technique interne. Toute évolution ultérieure observable depuis le Web App devra en revanche être recettée sur un déploiement de test avant validation finale et fusion dans `develop`.
 
-# 12. Suite proposée
+# 12. Clôture
 
-Après validation documentaire de ce procès-verbal :
+Le cycle INSCRIPTIONS-010 est clôturé pour le périmètre autorisé :
 
-1. mettre à jour définitivement l’état d’`INSCRIPTIONS-010` dans le Project Book ;
-2. passer la PR applicative #89 en prête pour revue uniquement sur validation explicite du Product Owner ;
-3. fusionner #89 dans `develop` uniquement après cette validation ;
-4. ne créer aucun tag, déploiement ou fusion vers `main` dans ce cycle.
+1. la recette Google isolée est concluante pour les preuves réellement exécutées ;
+2. la suite cumulative finale est **455/455 réussis, 0 échec** ;
+3. l’anomalie de typage Sheets est corrigée et documentée ;
+4. la PR documentaire #103 a été fusionnée dans `develop` du Project Book au commit `a4fdcb5c9f9ccae25deeabc8d0811f7cee212899` ;
+5. la PR applicative #89 a été fusionnée dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ;
+6. aucun tag, aucune fusion vers `main` et aucun déploiement n’ont été créés dans ce cycle.
+
+Le prochain incrément AKS Inscriptions doit faire l’objet d’un cadrage séparé. La fixture SIKADA demeure bloquée tant que l’échantillon anonymisé, sécurisé et versionné prévu par `INSCRIPTIONS-006` n’est pas disponible.
