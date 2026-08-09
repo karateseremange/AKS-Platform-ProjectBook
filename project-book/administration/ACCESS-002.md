@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.3.5 |
-| **Statut** | Réalisation engagée — ACCESS-002-01 en cours |
+| **Version** | 0.3.6 |
+| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; ACCESS-002-02 à préparer |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -329,11 +329,13 @@ ACCESS-002 est terminé lorsque les six incréments sont validés, le registre e
 
 ## 21. État de réalisation
 
-`ACCESS-002-01` est engagé dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Cinq lots sont publiés : ajout compatible de `ANALYTICS_READ` au catalogue des capacités, façade administrative en lecture seule protégée côté serveur, validation stricte et écriture atomique avec verrou, révision optimiste, relecture et restauration vérifiée, audit persistant obligatoire avant/après avec corrélation, puis correction du verrou partagé ACCESS/AUDIT, de l’autorisation d’audit et du raccordement des suites.
+`ACCESS-002-01` est clôturé après fusion de la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93) dans `develop`, au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). Les cinq lots intégrés couvrent : ajout compatible de `ANALYTICS_READ` au catalogue des capacités, façade administrative en lecture seule protégée côté serveur, validation stricte et écriture atomique avec verrou, révision optimiste, relecture et restauration vérifiée, audit persistant obligatoire avant/après avec corrélation, puis correction du verrou partagé ACCESS/AUDIT, de l’autorisation d’audit et du raccordement des suites.
 
 La compatibilité `access/1.0`, le rôle `ADMINISTRATEUR` historique et le bootstrap sont volontairement conservés pendant cette transition. La commande d’écriture exige désormais une preuve persistante avant mutation et restaure l’état précédent si la preuve finale échoue. ACCESS et AUDIT partagent un seul verrou de script sans acquisition imbriquée ; la voie d’audit sous verrou vérifie sa détention et ne le libère pas. L’implémentation reste couverte par dépendances injectées et n’a provoqué aucune mutation réelle, migration du registre, modification de compte ou suppression d’`AKS.Admin.Access`. Le détail et les preuves disponibles sont consignés dans [`ACCESS-002-01`](ACCESS-002-01.md).
 
 Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative a réussi à **477/477 tests, 0 échec**. Le recomptage de la suite confirme 477 fonctions uniques ; la valeur préparatoire 478 était un inventaire statique erroné.
+
+`ACCESS-002-02 — Amorçage et migration` constitue le prochain incrément à préparer séparément. Aucun amorçage ou changement réel n’est engagé par la présente clôture.
 
 ---
 
@@ -341,6 +343,7 @@ Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.6 | 2026-08-09 | ACCESS-002-01 clôturé après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` ; prochain incrément ACCESS-002-02 à préparer séparément, sans amorçage réel |
 | 0.3.5 | 2026-08-09 | Campagne Apps Script isolée d’ACCESS-002-01 consignée : tête `84ea68f`, 226 fichiers synchronisés et suite cumulative réelle 477/477 sans échec ; inventaire préparatoire 478 corrigé après recomptage |
 | 0.3.4 | 2026-08-09 | Cinquième lot correctif documenté : verrou ACCESS/AUDIT partagé sans acquisition imbriquée, autorisation d’audit alignée, refus ACCESS bornés et suites nettoyées ; validations locales 193/193, 19/19 et 46/46, suite cumulative préparée à 478 fonctions uniques sans exécution Apps Script réelle |
 | 0.3.3 | 2026-08-09 | Quatrième lot ACCESS-002-01 documenté : audit persistant obligatoire avant mutation, preuves corrélées, refus et restaurations tracés, restauration sur échec de preuve finale et métadonnées minimisées ; tests locaux 19/19 et AUDIT-001 ciblé 9/9, sans mutation réelle |
