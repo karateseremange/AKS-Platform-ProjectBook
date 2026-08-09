@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-01 |
 | **Titre** | Socle d’administration des utilisateurs et habilitations |
-| **Version** | 0.4.1 |
-| **Statut** | En cours — cinq lots applicatifs publiés en PR brouillon |
+| **Version** | 1.0.0 |
+| **Statut** | Validé — intégré dans `develop` |
 | **Nature** | Suivi d’implémentation et de validation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -17,11 +17,11 @@
 
 `ACCESS-002-01` réalise progressivement le socle serveur défini par `ACCESS-002` : administration sécurisée du registre, validation, modification atomique, temporalité, protection du dernier gestionnaire et audit avant/après.
 
-Le présent état documente les cinq premiers lots publiés dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Il ne clôt pas l’incrément.
+Les cinq lots applicatifs ont été fusionnés dans `develop` par la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93), au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). Le présent document clôt l’incrément.
 
 ---
 
-## 2. État applicatif publié
+## 2. État applicatif intégré
 
 ### 2.1 Lot 1 — catalogue de capacités compatible
 
@@ -89,7 +89,7 @@ Le commit applicatif [`84ea68f`](https://github.com/karateseremange/AKS-Platform
 - nettoie la déclaration dupliquée détectée dans le test de restauration après échec d’audit ;
 - valide le cycle ACCESS → AUDIT avec un seul faux verrou partagé, acquis et libéré une seule fois.
 
-Ce lot corrige les incompatibilités détectées pendant la revue finale du chemin Apps Script réel. Il a ensuite été synchronisé dans le projet Apps Script isolé lié à `[RECETTE] AKS Inscriptions`, sans déploiement ni modification de la production.
+Ce lot corrige les incompatibilités détectées pendant la revue finale du chemin Apps Script réel. Il a ensuite été synchronisé dans le projet Apps Script isolé lié à `[RECETTE] AKS Inscriptions`, sans déploiement ni modification de la production. La PR #93 a finalement été fusionnée dans `develop` au commit `91ba7e3`.
 
 ---
 
@@ -125,15 +125,11 @@ La tête applicative `84ea68f` a été synchronisée dans le projet Apps Script 
 
 ---
 
-## 5. Travaux restant dans ACCESS-002-01
+## 5. Clôture et suite
 
-L’incrément reste ouvert. Il doit encore fournir notamment :
+`ACCESS-002-01` est clôturé sur `develop`. Son périmètre autorisé est intégré, documenté et validé par la campagne cumulative 477/477.
 
-1. la revue finale des PR applicative et documentaire ;
-2. la consolidation des preuves et la clôture documentaire de l’incrément ;
-3. la préparation de l’incrément `ACCESS-002-02`, sans amorçage réel tant qu’il n’est pas explicitement autorisé.
-
-La migration du premier compte gestionnaire réel reste réservée à `ACCESS-002-02`.
+L’incrément suivant est `ACCESS-002-02 — Amorçage et migration`. Il reste à préparer séparément. La migration du premier compte gestionnaire réel, toute modification de compte ou registre réel et toute intervention en production restent exclues tant qu’elles ne sont pas explicitement autorisées.
 
 ---
 
@@ -141,6 +137,7 @@ La migration du premier compte gestionnaire réel reste réservée à `ACCESS-00
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-09 | Clôture d’ACCESS-002-01 après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` ; périmètre validé à 477/477, sans compte, registre réel, production ni `main` modifié |
 | 0.4.1 | 2026-08-09 | Recette Apps Script isolée consignée sur la tête `84ea68f` : 226 fichiers synchronisés, suite cumulative réelle 477/477 sans échec ; correction de l’inventaire préparatoire 478 après recomptage de 477 objets, noms et fonctions uniques |
 | 0.4.0 | 2026-08-09 | Documentation du cinquième lot correctif : verrou ACCESS/AUDIT réellement partagé, autorisation d’audit alignée, refus ACCESS bornés, suites AUDIT et cumulative nettoyées ; syntaxe 193/193, ACCESS-002-01 19/19, AUDIT-001 46/46 et inventaire cumulatif préparé à 478 fonctions uniques, sans exécution Apps Script réelle |
 | 0.3.0 | 2026-08-09 | Documentation du quatrième lot : audit persistant obligatoire avant mutation, preuves avant/après corrélées, refus et restaurations audités, restauration sur échec de preuve finale et métadonnées minimisées ; tests locaux ACCESS-002-01 portés à 19/19 et AUDIT-001 ciblé à 9/9, sans mutation réelle |

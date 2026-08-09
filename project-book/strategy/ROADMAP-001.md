@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.85 |
+| **Version** | 1.2.86 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -774,7 +774,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` est engagé. Son cadrage est validé et `ACCESS-002-01` est en cours dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93).
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` reste prioritaire. `ACCESS-002-01` est clôturé après fusion de la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93) dans `develop`, au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). `ACCESS-002-02 — Amorçage et migration` est le prochain incrément à préparer séparément.
 
 Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, introduisent une façade administrative de lecture protégée et immuable, établissent une écriture administrative strictement validée avec révision optimiste, verrou, relecture et restauration vérifiée, imposent un audit persistant corrélé avant/après, puis corrigent l’usage du verrou partagé ACCESS/AUDIT, l’autorisation d’audit et le raccordement des suites. Les refus et restaurations sont tracés, et un échec de preuve finale déclenche la restauration de l’état précédent. Le rôle `ADMINISTRATEUR` historique et le bootstrap restent temporairement acceptés pour éviter toute rupture avant migration. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
 
@@ -951,6 +951,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.86 | 2026-08-09 | ACCESS-002-01 clôturé après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` ; version finale 1.0.0, campagne 477/477 conservée et ACCESS-002-02 identifié comme prochain incrément à préparer |
 | 1.2.85 | 2026-08-09 | Recette Apps Script isolée du cinquième lot ACCESS-002-01 consignée sur la tête `84ea68f` : 226 fichiers synchronisés, suite cumulative réelle 477/477 sans échec et correction de l’inventaire préparatoire 478 |
 | 1.2.84 | 2026-08-09 | Cinquième lot correctif ACCESS-002-01 publié dans la PR applicative brouillon #93 : verrou ACCESS/AUDIT partagé sans acquisition imbriquée, autorisation d’audit alignée et suites nettoyées ; validations locales 193/193, 19/19 et AUDIT-001 46/46, inventaire cumulatif préparé à 478 fonctions uniques sans nouvelle exécution Apps Script |
 | 1.2.83 | 2026-08-09 | Quatrième lot ACCESS-002-01 publié dans la PR applicative brouillon #93 : audit persistant obligatoire avant mutation, preuves corrélées avant/après, refus et restaurations tracés, restauration sur échec final et catalogue AUDIT-001 étendu ; tests locaux 19/19 et AUDIT-001 ciblé 9/9, référence cumulative maintenue à 455/455 |
