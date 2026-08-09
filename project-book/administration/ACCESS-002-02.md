@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.4.0 |
-| **Statut** | En préparation — précontrôle réussi ; correctif du rôle initial en revue ; mutation non autorisée |
+| **Version** | 0.5.0 |
+| **Statut** | En préparation — correctif du rôle initial validé en recette et en revue ; mutation non autorisée |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -19,7 +19,7 @@
 
 L’incrément doit permettre à `aserridj@gmail.com` de disposer explicitement de `ACCESS_MANAGE`, vérifier les accès autorisés et refusés ainsi que les preuves d’audit, puis conserver l’ancien mécanisme `AKS.Admin.Access` comme filet temporaire de récupération.
 
-Le protocole applicatif réversible est intégré et validé dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. Le présent état n’autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
+Le protocole applicatif réversible est intégré et validé dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. Le correctif du rôle initial porté par la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a ensuite été synchronisé et validé à **496/496 tests, 0 échec**. Le présent état n'autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
 
 ## 2. Point de départ vérifié
 
@@ -28,6 +28,8 @@ Le protocole applicatif réversible est intégré et validé dans la recette App
 La [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95) a intégré le protocole réversible dans `develop` au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). Sa tête testée `be7323a` a été synchronisée avec **229 fichiers** dans le projet Apps Script isolé `[RECETTE] AKS Inscriptions`. La campagne cumulative réelle a réussi à **495/495 tests, 0 échec**. Les validations ciblées ont réussi à **19/19** pour ACCESS-002-01, **7/7** pour l'habilitation explicite et **11/11** pour le protocole réversible ; la syntaxe a été vérifiée sur **196/196 fichiers**.
 
 `AKS_preflightAccess002Recipe` a été exécutée avec succès : cible `RECETTE`, suffixe de script `eIRxs4`, registre absent, zéro compte avant et un compte proposé, avec `writePerformed:false`. `AKS_applyAccess002Recipe` et `AKS_restoreAccess002Recipe` n'ont pas été exécutées. Aucun registre, compte ou environnement de production n'a été modifié.
+
+La tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** dans le même projet Apps Script isolé. La campagne cumulative réelle a réussi à **496/496 tests, 0 échec**. Cette validation couvre le rôle descriptif `ADMINISTRATEUR`, l'unique affectation transverse `ACCESS` et l'unique capacité explicite `ACCESS_MANAGE`, sans exécuter les fonctions d'application ou de restauration.
 
 Le socle fournit déjà :
 
@@ -53,7 +55,7 @@ Le bootstrap et le rôle historique `ADMINISTRATEUR` restent acceptés comme voi
 
 Le lot intégré fournit trois fonctions éditeur internes, sans route Web ordinaire : précontrôle, application et restauration. Les paramètres de recette sont fournis à l'exécution, sans adresse, valeur de registre ni identifiant de projet codé en dur. L'application est sérialisée sous verrou de script ; une exécution concurrente échoue avant toute mutation et ne peut annuler un état validé par une autre exécution.
 
-Le précontrôle a révélé que la recette intégrée proposait encore `CONSULTATION + ACCESS_MANAGE`. Le Product Owner a confirmé le modèle cible `ADMINISTRATEUR + ACCESS_MANAGE`. Un correctif applicatif remplace le rôle descriptif, conserve une unique affectation `ACCESS` et n'ajoute aucune autre capacité. La mutation réversible demeure interdite jusqu'à intégration, synchronisation et validation cumulative de ce correctif.
+Le précontrôle a révélé que la recette intégrée proposait encore `CONSULTATION + ACCESS_MANAGE`. Le Product Owner a confirmé le modèle cible `ADMINISTRATEUR + ACCESS_MANAGE`. Le correctif applicatif en revue remplace le rôle descriptif, conserve une unique affectation `ACCESS` et n'ajoute aucune autre capacité. Sa tête `395de24` a été synchronisée et validée en recette à **496/496**. La mutation réversible demeure interdite jusqu'à intégration du correctif et autorisation explicite distincte.
 
 ## 4. Modèle compatible proposé
 
@@ -158,7 +160,8 @@ Le retour arrière restaure exactement l’état antérieur attendu, le relit, v
 3. le précontrôle, l'idempotence, la sauvegarde et la restauration sont intégrés au commit `bbedf0a` ;
 4. la tête `be7323a` est synchronisée avec **229 fichiers** dans le projet Apps Script isolé confirmé ;
 5. les validations ciblées réussissent à **19/19**, **7/7** et **11/11**, la syntaxe à **196/196** et la campagne cumulative à **495/495** ;
-6. aucune des trois fonctions de recette n'est exécutée pendant cette phase.
+6. le correctif du rôle initial est porté par la PR applicative #96, dont la tête `395de24` est synchronisée avec **229 fichiers** et validée à **496/496 tests, 0 échec** ;
+7. aucune fonction d'application ou de restauration n'est exécutée pendant cette phase.
 
 ### Phase B — recette isolée et réversible
 
@@ -258,7 +261,7 @@ Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preu
 | Contrôle | État avant exécution | Preuve attendue |
 |---|---|---|
 | Projet Apps Script isolé et `scriptId` confirmés | Confirmé pour la synchronisation du code | Nom et suffixe minimisé de l'identifiant à reconfirmer avant exécution |
-| Branche et commit applicatifs exacts | `develop` au commit `bbedf0a` ; tête testée `be7323a` | SHA complet |
+| Branche et commit applicatifs exacts | `develop` au commit `bbedf0a` ; correctif testé sur la tête `395de24` de la PR #96 | SHA complet |
 | Identité gestionnaire de recette autorisée | Configurée : `a***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Identité de refus autorisée | Configurée : `s***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Précontrôle sans écriture | Réussi : cible `RECETTE`, registre absent, 0 compte avant, 1 proposé, `writePerformed:false` | Résultat et horodatage |
@@ -268,7 +271,7 @@ Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preu
 | Refus non habilité | Non exécuté | Code d'erreur attendu |
 | Audit corrélé | Non exécuté | Identifiants de corrélation minimisés |
 | Restauration exacte | Non exécutée | Révision et empreinte après restauration |
-| Suite cumulative finale | 495/495, 0 échec | Résultat observé sur la tête `be7323a` |
+| Suite cumulative finale | 496/496, 0 échec | Résultat observé sur la tête `395de24` après synchronisation de 229 fichiers |
 
 Tant que la ligne « Mutation de recette explicitement autorisée » reste non autorisée, seules l'implémentation sans donnée réelle, les validations locales et la synchronisation de code vers le projet isolé sont permises.
 
@@ -276,6 +279,7 @@ Tant que la ligne « Mutation de recette explicitement autorisée » reste non a
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.5.0 | 2026-08-09 | Correctif `ADMINISTRATEUR + ACCESS_MANAGE` de la PR applicative #96 synchronisé sur sa tête `395de24` avec 229 fichiers et validé à 496/496, sans application, restauration ni mutation du registre |
 | 0.4.0 | 2026-08-09 | Précontrôle en lecture seule réussi ; décision confirmée pour `ADMINISTRATEUR + ACCESS_MANAGE`, sans `SUPER_ADMIN`, exception d'adresse ni autre habilitation ; correctif applicatif et test structurel préparés, application et restauration toujours non exécutées |
 | 0.3.0 | 2026-08-09 | Protocole réversible intégré par la PR applicative #95 au commit `bbedf0a` ; tête `be7323a` synchronisée avec 229 fichiers et validée à 495/495, sans exécution des fonctions de recette ni mutation réelle |
 | 0.2.0 | 2026-08-09 | Prérequis `ACCESS_MANAGE` explicite intégré par la PR applicative #94 au commit `e800bdb`, campagne isolée 484/484 consignée et protocole du prochain lot de recette réversible préparé, sans registre, compte ou donnée réelle |

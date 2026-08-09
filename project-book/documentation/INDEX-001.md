@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.99 |
+| Version | 1.3.0 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-09 |
@@ -121,9 +121,9 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-01 clôturé ; précontrôle ACCESS-002-02 réussi et correctif du rôle initial en revue | 0.4.3 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-01 clôturé ; correctif ACCESS-002-02 validé en recette et en revue | 0.4.4 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
-| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | En préparation — précontrôle réussi ; correctif du rôle initial en revue ; mutation non autorisée | 0.4.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 et #95, `e800bdb`, `bbedf0a` |
+| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | En préparation — correctif du rôle initial validé en recette et en revue ; mutation non autorisée | 0.5.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #96, `e800bdb`, `bbedf0a`, `395de24` |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
@@ -274,7 +274,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01, ACCESS-002-02, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Socle validé — ACCESS-002 0.4.3 en réalisation ; ACCESS-002-01 1.0.0 clôturé ; précontrôle ACCESS-002-02 réussi sans écriture et correctif `ADMINISTRATEUR + ACCESS_MANAGE` en revue, sans mutation du registre |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01, ACCESS-002-02, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Socle validé — ACCESS-002 0.4.4 en réalisation ; ACCESS-002-01 1.0.0 clôturé ; correctif `ADMINISTRATEUR + ACCESS_MANAGE` validé en recette à 496/496 et en revue, sans mutation du registre |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -299,6 +299,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.0 | 2026-08-09 | ACCESS-002-02 passé en 0.5.0 après synchronisation de 229 fichiers et validation réelle 496/496 de la tête `395de24` de la PR applicative #96 ; ACCESS-002 0.4.4 et ROADMAP-001 1.2.91 alignés, application et restauration non exécutées |
 | 1.2.99 | 2026-08-09 | ACCESS-002-02 passé en 0.4.0 après précontrôle réussi sans écriture et confirmation de `ADMINISTRATEUR + ACCESS_MANAGE` ; ACCESS-002 0.4.3 et ROADMAP-001 1.2.90 alignés, application et restauration non exécutées |
 | 1.2.98 | 2026-08-09 | ACCESS-002-02 passé en 0.3.0 après intégration du protocole réversible par la PR applicative #95 au commit `bbedf0a` et campagne isolée 495/495 ; ACCESS-002 0.4.2 et ROADMAP-001 1.2.89 alignés, sans exécution des fonctions de recette ni mutation réelle |
 | 1.2.97 | 2026-08-09 | ACCESS-002-02 passé en 0.2.0 après intégration du prérequis applicatif #94 au commit `e800bdb` et campagne isolée 484/484 ; ACCESS-002 0.4.1 et ROADMAP-001 1.2.88 alignés sur la préparation de la recette réversible, sans mutation réelle |
