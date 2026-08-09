@@ -3,7 +3,7 @@
 | **Document ID** | AUDIT-001-RECETTE |
 | **Titre** | Procès-verbal de recette du socle persistant AUDIT-001 |
 | **Version** | 1.0.0 |
-| **Statut** | En revue |
+| **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
 | **Version du produit** | Post-V1.3 |
@@ -12,7 +12,7 @@
 
 # 1. Objet
 
-Ce document consigne la recette réelle du premier incrément persistant commun défini par `AUDIT-001 1.2.1` et implémenté par la PR applicative AKS-Platform #90.
+Ce document consigne la recette réelle du premier incrément persistant commun défini par `AUDIT-001 1.3.0` et implémenté par la PR applicative AKS-Platform #90.
 
 La recette vérifie la persistance Google Sheets sur une ressource isolée de recette, la corrélation des preuves, la restauration de la configuration temporaire et la non-régression cumulative.
 
