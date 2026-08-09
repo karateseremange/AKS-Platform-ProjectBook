@@ -2,8 +2,8 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.3.3 |
-| **Statut** | Validé — socle persistant ; extension ACCESS en PR brouillon |
+| **Version** | 1.3.4 |
+| **Statut** | Validé — socle persistant et extension ACCESS intégrés dans `develop` |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
 
@@ -566,7 +566,7 @@ L’implémentation est déclarée conforme pour le périmètre de recette isol�
 
 ## 18.14 Extension ACCESS-002-01 — état de validation
 
-L’extension et son correctif de compatibilité sont publiés dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93), respectivement aux commits [`4647478`](https://github.com/karateseremange/AKS-Platform/commit/4647478bac0b9cbeff77687d24677338b64429dd) et [`84ea68f`](https://github.com/karateseremange/AKS-Platform/commit/84ea68f09b889b3caa2331122ef64d662f890c15).
+L’extension et son correctif de compatibilité ont été fusionnés dans `develop` par la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93), au commit de fusion [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8), après les commits [`4647478`](https://github.com/karateseremange/AKS-Platform/commit/4647478bac0b9cbeff77687d24677338b64429dd) et [`84ea68f`](https://github.com/karateseremange/AKS-Platform/commit/84ea68f09b889b3caa2331122ef64d662f890c15).
 
 Le correctif utilise un seul verrou partagé par ACCESS et AUDIT. La voie « verrou déjà détenu » exige `hasLock()`, n’acquiert pas un second verrou et ne libère jamais celui de la commande appelante. L’autorisation d’audit accepte les gestionnaires reconnus par la compatibilité transitoire `access/1.0` ou `AKS.Admin.Access` ; un appelant refusé ne peut persister que l’événement ACCESS `USER/REFUSE` strictement borné.
 
@@ -580,6 +580,7 @@ Aucune preuve n’a été écrite dans une ressource Google réelle pour ce lot,
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.4 | 2026-08-09 | Extension ACCESS-002-01 intégrée dans `develop` par la PR applicative #93 au commit de fusion `91ba7e3` ; validation 477/477 conservée et aucune donnée réelle modifiée |
 | 1.3.3 | 2026-08-09 | Recette cumulative réelle de l’extension ACCESS consignée sur la tête `84ea68f` : 226 fichiers synchronisés dans Apps Script isolé, 477/477 tests réussis sans échec et inventaire préparatoire 478 corrigé |
 | 1.3.2 | 2026-08-09 | Correctif ACCESS documenté : verrou ACCESS/AUDIT partagé sans acquisition imbriquée, autorisation alignée sur la compatibilité transitoire, refus `USER/REFUSE` bornés et suite AUDIT complète raccordée ; validations locales 46/46 et syntaxe 193/193, sans preuve Google réelle |
 | 1.3.1 | 2026-08-09 | Extension documentée du catalogue persistant pour ACCESS-002-01 : action, module, cible, codes motif et métadonnées fermées ; preuves corrélées obligatoires avant/après, restauration sur échec final et validation locale ciblée 9/9 sans donnée réelle |
