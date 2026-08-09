@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.87 |
+| **Version** | 1.2.88 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -774,13 +774,13 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` reste prioritaire. `ACCESS-002-01` est clôturé après fusion de la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93) dans `develop`, au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). `ACCESS-002-02 — Amorçage et migration` est proposé dans [`ACCESS-002-02`](../administration/ACCESS-002-02.md), sans implémentation ni amorçage réel.
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` reste prioritaire. `ACCESS-002-01` est clôturé après fusion de la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93) dans `develop`, au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). Le prérequis explicite d'`ACCESS-002-02` est intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8), sans amorçage réel.
 
 Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, introduisent une façade administrative de lecture protégée et immuable, établissent une écriture administrative strictement validée avec révision optimiste, verrou, relecture et restauration vérifiée, imposent un audit persistant corrélé avant/après, puis corrigent l’usage du verrou partagé ACCESS/AUDIT, l’autorisation d’audit et le raccordement des suites. Les refus et restaurations sont tracés, et un échec de preuve finale déclenche la restauration de l’état précédent. Le rôle `ADMINISTRATEUR` historique et le bootstrap restent temporairement acceptés pour éviter toute rupture avant migration. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
 
 Les validations locales réussissent à 193/193 pour la syntaxe des fichiers `.gs`, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative réelle a réussi à **477/477 tests, 0 échec**. Le recomptage confirme 477 fonctions uniques ; la valeur préparatoire 478 provenait d’un inventaire statique erroné.
 
-Le cadrage d’ACCESS-002-02 identifie un prérequis applicatif : `ACCESS_MANAGE` est encore accordé par compatibilité au bootstrap ou au rôle `ADMINISTRATEUR`, mais ne peut pas être enregistré comme habilitation explicite. Le modèle proposé ajoute une affectation transverse `ACCESS` compatible avec `access/1.0`. L’implémentation sans donnée réelle, la recette isolée réversible et l’amorçage réel constituent trois phases séparées ; les deux dernières nécessitent leurs autorisations propres.
+Le modèle intégré ajoute une affectation transverse `ACCESS` compatible avec `access/1.0` et rend `ACCESS_MANAGE` explicitement attribuable. La tête `c4998c2` a été synchronisée avec 227 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **484/484 tests, 0 échec**. Le prochain lot doit fournir uniquement le précontrôle, l'idempotence, la sauvegarde temporaire et la restauration vérifiée nécessaires à une recette réversible. L'exécution de cette recette et l'amorçage réel restent deux décisions distinctes soumises à leurs propres autorisations.
 
 La réalisation est officiellement découpée en six incréments :
 
@@ -953,6 +953,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.88 | 2026-08-09 | Prérequis explicite d’ACCESS-002-02 intégré par la PR applicative #94 au commit `e800bdb`, tête `c4998c2` validée en recette à 484/484 et protocole du prochain lot réversible préparé, sans registre, compte ou donnée réelle |
 | 1.2.87 | 2026-08-09 | ACCESS-002-02 cadré en version 0.1.0 : écart entre rôle historique et habilitation explicite identifié, affectation transverse `ACCESS` proposée et séquence implémentation/recette/amorçage bornée, sans modification réelle |
 | 1.2.86 | 2026-08-09 | ACCESS-002-01 clôturé après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` ; version finale 1.0.0, campagne 477/477 conservée et ACCESS-002-02 identifié comme prochain incrément à préparer |
 | 1.2.85 | 2026-08-09 | Recette Apps Script isolée du cinquième lot ACCESS-002-01 consignée sur la tête `84ea68f` : 226 fichiers synchronisés, suite cumulative réelle 477/477 sans échec et correction de l’inventaire préparatoire 478 |
