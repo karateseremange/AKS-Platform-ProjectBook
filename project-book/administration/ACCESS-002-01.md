@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-01 |
 | **Titre** | Socle d’administration des utilisateurs et habilitations |
-| **Version** | 0.3.0 |
-| **Statut** | En cours — quatre lots applicatifs publiés en PR brouillon |
+| **Version** | 0.4.0 |
+| **Statut** | En cours — cinq lots applicatifs publiés en PR brouillon |
 | **Nature** | Suivi d’implémentation et de validation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -17,7 +17,7 @@
 
 `ACCESS-002-01` réalise progressivement le socle serveur défini par `ACCESS-002` : administration sécurisée du registre, validation, modification atomique, temporalité, protection du dernier gestionnaire et audit avant/après.
 
-Le présent état documente les quatre premiers lots publiés dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Il ne clôt pas l’incrément.
+Le présent état documente les cinq premiers lots publiés dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Il ne clôt pas l’incrément.
 
 ---
 
@@ -77,20 +77,35 @@ Le commit applicatif [`4647478`](https://github.com/karateseremange/AKS-Platform
 
 L’échec de la preuve d’intention interdit la mutation. L’échec de la preuve finale ne permet jamais de confirmer silencieusement l’écriture : la restauration est exécutée et vérifiée avant retour d’une erreur contrôlée.
 
+### 2.5 Lot 5 — corrections de compatibilité avant campagne cumulative
+
+Le commit applicatif [`84ea68f`](https://github.com/karateseremange/AKS-Platform/commit/84ea68f09b889b3caa2331122ef64d662f890c15) :
+
+- partage un unique verrou de script entre ACCESS et AUDIT, sans acquisition imbriquée ni libération prématurée du verrou détenu par la commande ;
+- impose à la voie d’audit « verrou déjà détenu » de vérifier effectivement la détention du verrou et de ne jamais le libérer ;
+- aligne l’autorisation d’audit sur la compatibilité transitoire `access/1.0` et `AKS.Admin.Access` ;
+- permet de persister les refus ACCESS sous une action `USER/REFUSE` strictement bornée, sans ouvrir d’autre opération d’audit à un appelant non habilité ;
+- raccorde les trois nouveaux scénarios à la suite complète AUDIT-001 et supprime deux doublons de la suite cumulative ;
+- nettoie la déclaration dupliquée détectée dans le test de restauration après échec d’audit ;
+- valide le cycle ACCESS → AUDIT avec un seul faux verrou partagé, acquis et libéré une seule fois.
+
+Ce lot corrige les incompatibilités détectées pendant la revue finale du chemin Apps Script réel. Il ne synchronise pas le projet Apps Script et ne modifie aucune ressource réelle.
+
 ---
 
 ## 3. Validations disponibles
 
-Les contrôles locaux ciblés réalisés sur la tête applicative `4647478` sont concluants :
+Les contrôles locaux réalisés sur la tête applicative `84ea68f` sont concluants :
 
 | Périmètre | Résultat |
 |---|---:|
 | ACCESS-001 | 18/18 |
 | ACCESS-002-01 | 19/19 |
-| AUDIT-001 ciblé | 9/9 |
+| AUDIT-001 complet | 46/46 |
 | Inscriptions ciblés | 9/9 |
+| Syntaxe des fichiers `.gs` | 193/193 |
 
-Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Script. La dernière référence cumulative effectivement exécutée reste **455/455 tests réussis, 0 échec**. Les dix-neuf scénarios ACCESS-002-01 et les nouveaux contrôles AUDIT-001 sont intégrés à la suite cumulative, mais cette nouvelle suite n’est pas présentée comme exécutée tant qu’une campagne Apps Script réelle ne l’a pas prouvé.
+Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Script. La dernière référence cumulative effectivement exécutée reste **455/455 tests réussis, 0 échec**. La suite préparée contient **478 fonctions de test uniques** après suppression des doublons, mais elle n’est pas présentée comme réussie tant qu’une campagne Apps Script réelle ne l’a pas prouvé.
 
 ---
 
@@ -113,7 +128,7 @@ Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Scr
 
 L’incrément reste ouvert. Il doit encore fournir notamment :
 
-1. la validation de compatibilité finale de la branche applicative ;
+1. la synchronisation contrôlée de la branche de recette Apps Script ;
 2. la nouvelle campagne cumulative réelle dans Apps Script ;
 3. la consolidation des preuves et la clôture documentaire de l’incrément.
 
@@ -125,6 +140,7 @@ La migration du premier compte gestionnaire réel reste réservée à `ACCESS-00
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-09 | Documentation du cinquième lot correctif : verrou ACCESS/AUDIT réellement partagé, autorisation d’audit alignée, refus ACCESS bornés, suites AUDIT et cumulative nettoyées ; syntaxe 193/193, ACCESS-002-01 19/19, AUDIT-001 46/46 et inventaire cumulatif préparé à 478 fonctions uniques, sans exécution Apps Script réelle |
 | 0.3.0 | 2026-08-09 | Documentation du quatrième lot : audit persistant obligatoire avant mutation, preuves avant/après corrélées, refus et restaurations audités, restauration sur échec de preuve finale et métadonnées minimisées ; tests locaux ACCESS-002-01 portés à 19/19 et AUDIT-001 ciblé à 9/9, sans mutation réelle |
 | 0.2.0 | 2026-08-09 | Documentation du troisième lot : validation stricte, écriture verrouillée avec révision optimiste, relecture, restauration vérifiée, métadonnées serveur, protection du dernier gestionnaire et réactivation sûre ; tests locaux ACCESS-002-01 portés à 15/15, sans mutation réelle |
 | 0.1.0 | 2026-08-09 | Documentation des deux premiers lots applicatifs : catalogue `ANALYTICS_READ` compatible puis API administrative de lecture protégée et immuable ; exclusions et référence cumulative 455/455 conservées |
