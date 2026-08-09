@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.1.0 |
-| **Statut** | Proposé — cadrage à valider avant implémentation ou amorçage réel |
+| **Version** | 0.2.0 |
+| **Statut** | En préparation — prérequis explicite intégré ; recette réversible à implémenter avant exécution |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -23,7 +23,9 @@ Le présent état est exclusivement documentaire. Il n’autorise ni implémenta
 
 ## 2. Point de départ vérifié
 
-`ACCESS-002-01` est intégré dans `develop` au commit applicatif `91ba7e3`. La campagne Apps Script isolée de référence a réussi à **477/477 tests, 0 échec**.
+`ACCESS-002-01` est intégré dans `develop` au commit applicatif `91ba7e3`. Le prérequis permettant d'attribuer explicitement `ACCESS_MANAGE` a ensuite été intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8).
+
+La tête applicative `c4998c2` a été synchronisée avec **227 fichiers** dans le projet Apps Script isolé `[RECETTE] AKS Inscriptions`. La campagne cumulative réelle a réussi à **484/484 tests, 0 échec**. Aucun registre, compte ou environnement de production n'a été modifié.
 
 Le socle fournit déjà :
 
@@ -35,17 +37,19 @@ Le socle fournit déjà :
 - une restauration vérifiée lorsque la persistance ou la preuve finale échoue ;
 - la compatibilité temporaire avec le bootstrap et le rôle historique `ADMINISTRATEUR`.
 
-## 3. Écart technique à lever avant l’amorçage
+## 3. Prérequis applicatif intégré et reste à faire
 
-Dans l’état intégré, `ACCESS_MANAGE` appartient au catalogue des capacités, mais :
+Le lot intégré autorise désormais une affectation transverse `ACCESS` et calcule `ACCESS_MANAGE` depuis cette habilitation explicite. Il vérifie notamment :
 
-- l’autorisation administrative l’accorde encore par compatibilité au bootstrap ou au rôle `ADMINISTRATEUR` ;
-- les affectations du registre refusent actuellement `ACCESS_MANAGE` dans `extraCapabilities` ;
-- aucune affectation transverse `ACCESS` ne permet donc de matérialiser cette capacité explicitement.
+- le compte et l'affectation actifs dans leur période de validité ;
+- la possession effective d'au moins un rôle déclaré par l'affectation ;
+- la forme transverse stricte du périmètre `ACCESS` ;
+- l'unicité de la capacité `ACCESS_MANAGE` ;
+- la conservation d'au moins un gestionnaire effectif.
 
-Un registre contenant seulement le rôle `ADMINISTRATEUR` préserverait le comportement historique, mais ne satisferait pas la décision ACCESS-002 selon laquelle les rôles sont descriptifs et les habilitations explicites.
+Le bootstrap et le rôle historique `ADMINISTRATEUR` restent acceptés comme voies temporaires de compatibilité. Ils ne remplacent pas l'habilitation explicite cible.
 
-L’amorçage réel est interdit tant que cet écart n’est pas corrigé et couvert par des tests.
+Le lot intégré ne fournit volontairement aucun service d'amorçage, précontrôle, sauvegarde temporaire ou restauration de recette. Ces fonctions internes réversibles constituent le prochain lot applicatif. Toute exécution modifiant un registre reste interdite avant son implémentation, sa revue, ses tests et une autorisation distincte.
 
 ## 4. Modèle compatible proposé
 
@@ -80,18 +84,21 @@ Le premier enregistrement réel proposé est limité au besoin de migration :
 
 Les droits métier encore obtenus par compatibilité historique ne sont pas présentés comme migrés. Leur inventaire et leur migration explicite relèvent des incréments suivants, au plus tard `ACCESS-002-06`.
 
-## 6. Périmètre applicatif autorisable après validation
+## 6. Prochain périmètre applicatif préparé
 
-Une future autorisation d’implémentation pourra couvrir uniquement :
+Le prochain lot applicatif pourra couvrir uniquement :
 
-1. la prise en charge de l’affectation transverse `ACCESS` ;
-2. le calcul explicite de `ACCESS_MANAGE` depuis cette affectation ;
-3. le maintien borné des deux voies historiques de récupération ;
-4. un service d’amorçage interne à usage exceptionnel, non exposé aux routes ordinaires ;
-5. un mode de précontrôle sans écriture ;
-6. une sauvegarde et une restauration contrôlées de l’état précédent ;
-7. les tests unitaires, de contrat et de non-régression ;
-8. une fonction de recette isolée, nommée explicitement et exclue de la suite cumulative ordinaire.
+1. un service interne de recette, non exposé aux routes ordinaires ;
+2. un mode de précontrôle sans écriture ;
+3. une sauvegarde temporaire dédiée et vérifiée de l'état initial ;
+4. l'application idempotente d'un compte de recette paramétré, jamais codé en dur ;
+5. la vérification d'accès, de refus et d'audit avec résultats minimisés ;
+6. une commande de restauration exacte, idempotente et vérifiée ;
+7. le maintien borné des voies historiques de récupération ;
+8. les tests unitaires, de contrat et de non-régression ;
+9. des fonctions de recette explicitement nommées et exclues de la suite cumulative ordinaire.
+
+Ce lot ne doit contenir aucune adresse réelle, aucune valeur de registre et aucun identifiant de projet. Les paramètres d'exécution sont fournis uniquement au moment d'une recette autorisée.
 
 ## 7. Hors périmètre
 
@@ -140,22 +147,26 @@ Le retour arrière restaure exactement l’état antérieur attendu, le relit, v
 
 ### Phase A — implémentation sans donnée réelle
 
-1. implémenter l’affectation transverse `ACCESS` ;
-2. ajouter le calcul explicite de `ACCESS_MANAGE` ;
-3. implémenter le précontrôle, l’idempotence et la récupération ;
-4. valider les tests ciblés et cumulatifs ;
-5. synchroniser uniquement vers le projet Apps Script isolé de recette.
+1. l'affectation transverse `ACCESS` et le calcul explicite de `ACCESS_MANAGE` sont intégrés au commit `e800bdb` ;
+2. la campagne cumulative correspondante est validée à **484/484** sur la recette isolée ;
+3. implémenter séparément le précontrôle, l'idempotence, la sauvegarde et la restauration ;
+4. valider les tests ciblés et cumulatifs du nouveau lot ;
+5. synchroniser uniquement vers le projet Apps Script isolé de recette après confirmation formelle de son `scriptId`.
 
 ### Phase B — recette isolée et réversible
 
-1. confirmer le projet, l’identité active et l’environnement ;
-2. enregistrer l’état initial et sa révision ;
-3. exécuter d’abord le précontrôle sans écriture ;
-4. effectuer l’amorçage uniquement après autorisation explicite ;
-5. vérifier l’accès du gestionnaire, un refus non habilité et les appels serveur directs ;
-6. contrôler les preuves `INTENTION` et `REUSSI` corrélées ;
-7. exécuter puis vérifier la restauration ;
-8. confirmer le retour exact à l’état initial.
+1. confirmer le nom du projet, son `scriptId`, l'identité active et l'environnement ;
+2. renseigner séparément une identité gestionnaire de recette et une identité de refus autorisées ;
+3. enregistrer l'empreinte minimisée de l'état initial et sa révision ;
+4. créer, relire et vérifier la sauvegarde temporaire avant toute mutation ;
+5. exécuter d’abord le précontrôle sans écriture ;
+6. obtenir l'autorisation explicite portant sur le registre de recette et les deux identités ;
+7. appliquer l'état cible de recette sous verrou ;
+8. vérifier l'accès du gestionnaire, le refus non habilité et les appels serveur directs ;
+9. contrôler les preuves `INTENTION` et `REUSSI` corrélées ;
+10. exécuter puis vérifier la restauration ;
+11. confirmer la révision, l'empreinte et le comportement identiques à l'état initial ;
+12. conserver les preuves minimisées et arrêter la fonction de recette.
 
 ### Phase C — amorçage réel
 
@@ -232,8 +243,30 @@ Le cadrage distingue quatre décisions qui ne doivent pas être confondues :
 
 Une fusion, une opération sur `main`, un déploiement ou une suppression du filet historique restent également soumis à une autorisation explicite.
 
-## 16. Historique
+## 16. Feuille de contrôle de la future recette
+
+Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preuves minimisées après une exécution autorisée.
+
+| Contrôle | État avant exécution | Preuve attendue |
+|---|---|---|
+| Projet Apps Script isolé et `scriptId` confirmés | À confirmer | Nom et suffixe minimisé de l'identifiant |
+| Branche et commit applicatifs exacts | À confirmer | SHA complet |
+| Identité gestionnaire de recette autorisée | Non renseignée | Adresse masquée ou identifiant de scénario |
+| Identité de refus autorisée | Non renseignée | Adresse masquée ou identifiant de scénario |
+| Précontrôle sans écriture | Non exécuté | Résultat et horodatage |
+| Sauvegarde créée, relue et vérifiée | Non exécuté | Empreinte et révision minimisées |
+| Mutation de recette explicitement autorisée | Non autorisée | Référence de l'autorisation |
+| Accès gestionnaire | Non exécuté | Résultat côté serveur |
+| Refus non habilité | Non exécuté | Code d'erreur attendu |
+| Audit corrélé | Non exécuté | Identifiants de corrélation minimisés |
+| Restauration exacte | Non exécutée | Révision et empreinte après restauration |
+| Suite cumulative finale | 484/484 avant nouveau lot | Résultat réellement observé |
+
+Tant que la ligne « Mutation de recette explicitement autorisée » reste non autorisée, seules l'implémentation sans donnée réelle, les validations locales et la synchronisation de code vers le projet isolé sont permises.
+
+## 17. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-09 | Prérequis `ACCESS_MANAGE` explicite intégré par la PR applicative #94 au commit `e800bdb`, campagne isolée 484/484 consignée et protocole du prochain lot de recette réversible préparé, sans registre, compte ou donnée réelle |
 | 0.1.0 | 2026-08-09 | Proposition de cadrage d’ACCESS-002-02 : écart d’habilitation explicite identifié, modèle transverse `ACCESS` proposé, phases d’implémentation/recette/amorçage séparées et garde réversible définie, sans modification réelle |
