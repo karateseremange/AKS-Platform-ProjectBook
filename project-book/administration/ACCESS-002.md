@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.3.6 |
-| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; ACCESS-002-02 à préparer |
+| **Version** | 0.4.0 |
+| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; ACCESS-002-02 proposé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -335,7 +335,9 @@ La compatibilité `access/1.0`, le rôle `ADMINISTRATEUR` historique et le boots
 
 Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative a réussi à **477/477 tests, 0 échec**. Le recomptage de la suite confirme 477 fonctions uniques ; la valeur préparatoire 478 était un inventaire statique erroné.
 
-`ACCESS-002-02 — Amorçage et migration` constitue le prochain incrément à préparer séparément. Aucun amorçage ou changement réel n’est engagé par la présente clôture.
+`ACCESS-002-02 — Amorçage et migration` est désormais cadré dans [`ACCESS-002-02`](ACCESS-002-02.md). L’analyse de l’état intégré montre qu’un lot applicatif doit d’abord matérialiser `ACCESS_MANAGE` comme habilitation transverse explicite : le rôle historique `ADMINISTRATEUR` et le bootstrap restent actuellement les voies compatibles d’autorisation, tandis que les affectations refusent encore cette capacité.
+
+Le cadrage propose une affectation `module=ACCESS`, sans périmètre métier et compatible avec `access/1.0`, puis sépare l’implémentation sans donnée réelle, la recette isolée réversible et l’amorçage réel. Aucune de ces opérations n’est engagée par la présente version documentaire.
 
 ---
 
@@ -343,6 +345,7 @@ Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-09 | ACCESS-002-02 proposé : prérequis d’habilitation transverse explicite identifié, modèle `ACCESS` compatible avec `access/1.0` cadré et phases d’implémentation, recette réversible et amorçage réel séparées, sans mutation |
 | 0.3.6 | 2026-08-09 | ACCESS-002-01 clôturé après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` ; prochain incrément ACCESS-002-02 à préparer séparément, sans amorçage réel |
 | 0.3.5 | 2026-08-09 | Campagne Apps Script isolée d’ACCESS-002-01 consignée : tête `84ea68f`, 226 fichiers synchronisés et suite cumulative réelle 477/477 sans échec ; inventaire préparatoire 478 corrigé après recomptage |
 | 0.3.4 | 2026-08-09 | Cinquième lot correctif documenté : verrou ACCESS/AUDIT partagé sans acquisition imbriquée, autorisation d’audit alignée, refus ACCESS bornés et suites nettoyées ; validations locales 193/193, 19/19 et 46/46, suite cumulative préparée à 478 fonctions uniques sans exécution Apps Script réelle |
