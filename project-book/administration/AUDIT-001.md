@@ -2,8 +2,8 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.3.0 |
-| **Statut** | Validé — premier incrément persistant implémenté et recette isolée concluante |
+| **Version** | 1.3.1 |
+| **Statut** | Validé — socle persistant ; extension ACCESS en PR brouillon |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
 
@@ -372,20 +372,32 @@ Les règles suivantes s’appliquent :
 - `metadata_json` contient uniquement des métadonnées minimisées, masquées et sérialisées de manière déterministe ;
 - `created_by` est une identité technique injectée côté serveur et ne peut pas provenir de l’appelant.
 
-### 18.3.1 Catalogues fermés initiaux
+### 18.3.1 Catalogues fermés
 
-Le registre figé `AKS.Core.Audit.Catalogs` constitue l’emplacement applicatif unique des catalogues du schéma `aks-audit/1.0`. Pour le premier raccordement d’`INSCRIPTIONS-010`, ses valeurs initiales sont :
+Le registre figé `AKS.Core.Audit.Catalogs` constitue l’emplacement applicatif unique des catalogues du schéma `aks-audit/1.0`. Après le raccordement d’`INSCRIPTIONS-010` et du quatrième lot d’`ACCESS-002-01`, les valeurs documentées sont :
 
 | Champ | Valeurs autorisées |
 |---|---|
-| `action` | `DOSSIER_CREATE`, `DOSSIER_UPDATE` |
-| `module` | `INSCRIPTIONS` |
-| `target_type` | `DOSSIER` |
-| `reason_code` | chaîne vide, `INSCRIPTIONS_COMMAND_FAILED`, `INSCRIPTIONS_CONTROL_FAILED`, `INSCRIPTIONS_ATTEMPTS_EXHAUSTED`, `INSCRIPTIONS_RECOVERY_ABSENT`, `INSCRIPTIONS_RECONCILIATION_AMBIGUOUS`, `UNEXPECTED_ERROR` |
+| `action` | `DOSSIER_CREATE`, `DOSSIER_UPDATE`, `ACCESS_REGISTRY_UPDATE` |
+| `module` | `INSCRIPTIONS`, `ACCESS` |
+| `target_type` | `DOSSIER`, `ACCESS_REGISTRY` |
+| `reason_code` | chaîne vide, `INSCRIPTIONS_COMMAND_FAILED`, `INSCRIPTIONS_CONTROL_FAILED`, `INSCRIPTIONS_ATTEMPTS_EXHAUSTED`, `INSCRIPTIONS_RECOVERY_ABSENT`, `INSCRIPTIONS_RECONCILIATION_AMBIGUOUS`, `ACCESS_CAPABILITY_DENIED`, `ACCESS_COMMAND_INVALID`, `ACCESS_REGISTRY_INVALID`, `ACCESS_REGISTRY_CONFLICT`, `ACCESS_REGISTRY_LOCK_UNAVAILABLE`, `ACCESS_LAST_MANAGER_REQUIRED`, `ACCESS_REGISTRY_WRITE_FAILED`, `ACCESS_REGISTRY_RESTORE_FAILED`, `ACCESS_AUDIT_REQUIRED`, `UNEXPECTED_ERROR` |
 
 Les catalogues `actor_type`, `result` et `criticality` restent ceux définis dans les sections 18.3 et 18.6. Une valeur inconnue n’est jamais persistée : une erreur technique non répertoriée est réduite à `UNEXPECTED_ERROR`, sans message libre ni détail sensible. Toute extension d’un catalogue exige une évolution documentée d’`AUDIT-001`, une mise à jour explicite du registre figé et des tests positifs et négatifs.
 
-### 18.3.2 Représentation canonique des cellules
+### 18.3.2 Métadonnées ACCESS minimisées
+
+Pour `ACCESS_REGISTRY_UPDATE`, le schéma fermé de `metadata_json` autorise uniquement :
+
+- `beforeRevision`, `proposedRevision` et `afterRevision` ;
+- `changedAccountIds`, limité aux identités techniques normalisées des comptes modifiés ;
+- `changedCount`, strictement cohérent avec la liste des comptes ciblés ;
+- `selfModification`, indiquant une modification des propres droits de l’acteur ;
+- `restored`, indiquant que l’état précédent a été restauré.
+
+Ces métadonnées sont obligatoires pour l’action ACCESS, validées et sérialisées par le service commun. Le registre complet, les noms d’affichage, rôles, affectations, capacités, dates et commentaires libres ne sont pas recopiés dans la preuve persistante.
+
+### 18.3.3 Représentation canonique des cellules
 
 Les seize cellules sont comparées sous leur représentation canonique, sans conversion implicite par le support :
 
@@ -457,6 +469,8 @@ Une action critique peut produire plusieurs preuves partageant le même `correla
 - `ECHEC`, `REFUSE` ou `ANNULE` lorsque l’action n’aboutit pas.
 
 Le document métier définit les étapes obligatoires de son cycle. Pour `INSCRIPTIONS-010`, les événements `INTENTION`, `REUSSI` et `ECHEC` restent ceux déjà imposés. Le port commun n’invente pas la décision métier et ne modifie pas le journal de commandes.
+
+Pour `ACCESS-002-01`, `INTENTION` doit être persisté avant toute mutation du registre. Une fin normale produit `REUSSI`. Un refus produit `REFUSE` sans écriture. Un échec produit `ECHEC`. Si la preuve finale échoue après sauvegarde, la commande restaure et vérifie l’état précédent avant de retourner une erreur contrôlée ; aucune réussite ne peut être confirmée sans preuve finale persistée.
 
 ## 18.8 Conservation
 
@@ -550,12 +564,21 @@ L’implémentation est déclarée conforme pour le périmètre de recette isol�
 - contrôle visuel : **3 lignes** ;
 - suite cumulative après recette : **423/423 réussis, 0 échec**.
 
+## 18.14 Extension ACCESS-002-01 — état de validation
+
+L’extension est publiée dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93) au commit [`4647478`](https://github.com/karateseremange/AKS-Platform/commit/4647478bac0b9cbeff77687d24677338b64429dd).
+
+Les contrôles locaux ciblés réussissent à **9/9 pour AUDIT-001**, dont la persistance d’une preuve ACCESS minimisée, le refus de métadonnées incohérentes et le cycle complet ACCESS avec le service persistant injecté. ACCESS-002-01 atteint parallèlement **19/19**. Ces résultats ne remplacent pas la campagne cumulative Apps Script : la dernière référence réelle demeure **455/455 tests réussis, 0 échec**.
+
+Aucune preuve n’a été écrite dans une ressource Google réelle pour ce lot, aucun registre ou compte réel n’a été modifié et aucun déploiement n’a été effectué.
+
 ---
 
 # 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.1 | 2026-08-09 | Extension documentée du catalogue persistant pour ACCESS-002-01 : action, module, cible, codes motif et métadonnées fermées ; preuves corrélées obligatoires avant/après, restauration sur échec final et validation locale ciblée 9/9 sans donnée réelle |
 | 1.3.0 | 2026-08-09 | Validation de l’implémentation et de la recette isolée du premier socle persistant commun : PR #90, deux preuves corrélées persistées, configuration restaurée et suite cumulative 423/423 ; prérequis audit d’INSCRIPTIONS-010 levé |
 | 1.2.1 | 2026-08-08 | Précision du contrat implémentable : provenance serveur obligatoire d’`actor_id`, catalogues fermés initiaux, représentation canonique des seize cellules et définitions complètes des trois clés `CONFIG-001` |
 | 1.2.0 | 2026-08-08 | Proposition du premier incrément persistant commun : `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, schéma `aks-audit/1.0`, écriture verrouillée append-only, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans production, consultation, export ni purge automatique |

@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-01 |
 | **Titre** | Socle d’administration des utilisateurs et habilitations |
-| **Version** | 0.2.0 |
-| **Statut** | En cours — trois lots applicatifs publiés en PR brouillon |
+| **Version** | 0.3.0 |
+| **Statut** | En cours — quatre lots applicatifs publiés en PR brouillon |
 | **Nature** | Suivi d’implémentation et de validation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -17,7 +17,7 @@
 
 `ACCESS-002-01` réalise progressivement le socle serveur défini par `ACCESS-002` : administration sécurisée du registre, validation, modification atomique, temporalité, protection du dernier gestionnaire et audit avant/après.
 
-Le présent état documente les trois premiers lots publiés dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Il ne clôt pas l’incrément.
+Le présent état documente les quatre premiers lots publiés dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93). Il ne clôt pas l’incrément.
 
 ---
 
@@ -63,19 +63,34 @@ Le commit applicatif [`8dddcab`](https://github.com/karateseremange/AKS-Platform
 
 Ce lot établit le mécanisme d’écriture et ses garde-fous uniquement par dépendances injectées et tests. Il ne déclenche aucune mutation du registre réel ni d’une Script Property.
 
+### 2.4 Lot 4 — audit persistant avant/après
+
+Le commit applicatif [`4647478`](https://github.com/karateseremange/AKS-Platform/commit/4647478bac0b9cbeff77687d24677338b64429dd) :
+
+- rend obligatoire une preuve persistante `INTENTION` avant toute mutation du registre ;
+- produit une preuve finale corrélée `REUSSI`, `ECHEC` ou `REFUSE` selon le résultat réel de la commande ;
+- restaure l’état précédent lorsque la preuve finale ne peut pas être persistée après sauvegarde ;
+- audite les refus et les restaurations avec le même identifiant de corrélation ;
+- étend le catalogue fermé `AUDIT-001` avec l’action `ACCESS_REGISTRY_UPDATE`, le module `ACCESS`, la cible `ACCESS_REGISTRY` et des codes motif dédiés ;
+- minimise les métadonnées aux révisions, comptes ciblés, nombre de changements, auto-modification et indicateur de restauration, sans copie complète du registre ;
+- valide de bout en bout le cycle ACCESS avec le véritable service d’audit persistant injecté.
+
+L’échec de la preuve d’intention interdit la mutation. L’échec de la preuve finale ne permet jamais de confirmer silencieusement l’écriture : la restauration est exécutée et vérifiée avant retour d’une erreur contrôlée.
+
 ---
 
 ## 3. Validations disponibles
 
-Les contrôles locaux ciblés réalisés sur la tête applicative `8dddcab` sont concluants :
+Les contrôles locaux ciblés réalisés sur la tête applicative `4647478` sont concluants :
 
 | Périmètre | Résultat |
 |---|---:|
 | ACCESS-001 | 18/18 |
-| ACCESS-002-01 | 15/15 |
+| ACCESS-002-01 | 19/19 |
+| AUDIT-001 ciblé | 9/9 |
 | Inscriptions ciblés | 9/9 |
 
-Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Script. La dernière référence cumulative effectivement exécutée reste **455/455 tests réussis, 0 échec**. Les quinze scénarios ACCESS-002-01 sont intégrés à la suite cumulative, mais cette nouvelle suite n’est pas présentée comme exécutée tant qu’une campagne Apps Script réelle ne l’a pas prouvé.
+Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Script. La dernière référence cumulative effectivement exécutée reste **455/455 tests réussis, 0 échec**. Les dix-neuf scénarios ACCESS-002-01 et les nouveaux contrôles AUDIT-001 sont intégrés à la suite cumulative, mais cette nouvelle suite n’est pas présentée comme exécutée tant qu’une campagne Apps Script réelle ne l’a pas prouvé.
 
 ---
 
@@ -98,9 +113,9 @@ Ces résultats ne remplacent pas une exécution cumulative réelle dans Apps Scr
 
 L’incrément reste ouvert. Il doit encore fournir notamment :
 
-1. un audit persistant avant/après avec acteur, cible, résultat et corrélation ;
-2. la couverture ciblée des événements d’audit, refus et restaurations ;
-3. la validation de compatibilité finale et la nouvelle suite cumulative réelle.
+1. la validation de compatibilité finale de la branche applicative ;
+2. la nouvelle campagne cumulative réelle dans Apps Script ;
+3. la consolidation des preuves et la clôture documentaire de l’incrément.
 
 La migration du premier compte gestionnaire réel reste réservée à `ACCESS-002-02`.
 
@@ -110,5 +125,6 @@ La migration du premier compte gestionnaire réel reste réservée à `ACCESS-00
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-09 | Documentation du quatrième lot : audit persistant obligatoire avant mutation, preuves avant/après corrélées, refus et restaurations audités, restauration sur échec de preuve finale et métadonnées minimisées ; tests locaux ACCESS-002-01 portés à 19/19 et AUDIT-001 ciblé à 9/9, sans mutation réelle |
 | 0.2.0 | 2026-08-09 | Documentation du troisième lot : validation stricte, écriture verrouillée avec révision optimiste, relecture, restauration vérifiée, métadonnées serveur, protection du dernier gestionnaire et réactivation sûre ; tests locaux ACCESS-002-01 portés à 15/15, sans mutation réelle |
 | 0.1.0 | 2026-08-09 | Documentation des deux premiers lots applicatifs : catalogue `ANALYTICS_READ` compatible puis API administrative de lecture protégée et immuable ; exclusions et référence cumulative 455/455 conservées |
