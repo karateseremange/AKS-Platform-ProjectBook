@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.80 |
+| **Version** | 1.2.85 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -774,7 +774,11 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` est engagé et son cadrage est validé en version 0.3.0.
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` est engagé. Son cadrage est validé et `ACCESS-002-01` est en cours dans la [PR applicative brouillon #93](https://github.com/karateseremange/AKS-Platform/pull/93).
+
+Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, introduisent une façade administrative de lecture protégée et immuable, établissent une écriture administrative strictement validée avec révision optimiste, verrou, relecture et restauration vérifiée, imposent un audit persistant corrélé avant/après, puis corrigent l’usage du verrou partagé ACCESS/AUDIT, l’autorisation d’audit et le raccordement des suites. Les refus et restaurations sont tracés, et un échec de preuve finale déclenche la restauration de l’état précédent. Le rôle `ADMINISTRATEUR` historique et le bootstrap restent temporairement acceptés pour éviter toute rupture avant migration. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
+
+Les validations locales réussissent à 193/193 pour la syntaxe des fichiers `.gs`, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative réelle a réussi à **477/477 tests, 0 échec**. Le recomptage confirme 477 fonctions uniques ; la valeur préparatoire 478 provenait d’un inventaire statique erroné.
 
 La réalisation est officiellement découpée en six incréments :
 
@@ -947,6 +951,11 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.85 | 2026-08-09 | Recette Apps Script isolée du cinquième lot ACCESS-002-01 consignée sur la tête `84ea68f` : 226 fichiers synchronisés, suite cumulative réelle 477/477 sans échec et correction de l’inventaire préparatoire 478 |
+| 1.2.84 | 2026-08-09 | Cinquième lot correctif ACCESS-002-01 publié dans la PR applicative brouillon #93 : verrou ACCESS/AUDIT partagé sans acquisition imbriquée, autorisation d’audit alignée et suites nettoyées ; validations locales 193/193, 19/19 et AUDIT-001 46/46, inventaire cumulatif préparé à 478 fonctions uniques sans nouvelle exécution Apps Script |
+| 1.2.83 | 2026-08-09 | Quatrième lot ACCESS-002-01 publié dans la PR applicative brouillon #93 : audit persistant obligatoire avant mutation, preuves corrélées avant/après, refus et restaurations tracés, restauration sur échec final et catalogue AUDIT-001 étendu ; tests locaux 19/19 et AUDIT-001 ciblé 9/9, référence cumulative maintenue à 455/455 |
+| 1.2.82 | 2026-08-09 | Troisième lot ACCESS-002-01 publié dans la PR applicative brouillon #93 : validation stricte et écriture atomique protégée avec révision, verrou, relecture, restauration et protection du dernier gestionnaire ; tests locaux portés à 15/15 sans mutation réelle, référence cumulative maintenue à 455/455 |
+| 1.2.81 | 2026-08-09 | ACCESS-002-01 engagé dans la PR applicative brouillon #93 : catalogue `ANALYTICS_READ` compatible et API administrative de lecture protégée publiés ; tests locaux ciblés documentés sans remplacer la référence cumulative réelle 455/455 ; aucune migration, donnée réelle, production ou `main` touchée |
 | 1.2.80 | 2026-08-09 | Finalisation du cadrage ACCESS-002 0.3.0 : découpage officiel en six incréments ACCESS-002-01 à ACCESS-002-06, amorçage de `aserridj@gmail.com` comme premier gestionnaire sans rôle SUPER_ADMIN, règles de séquencement et backlog ACCESS différé consignés avant INSCRIPTIONS-011 |
 | 1.2.79 | 2026-08-09 | Engagement du cadrage ACCESS-002 comme chantier transverse prioritaire avant INSCRIPTIONS-011 : administration des comptes Google, rôles, modules, cours et capacités ; confirmation qu’un rôle n’accorde aucun module implicitement et qu’un professeur peut n’avoir aucun accès Présences ; correction de la trajectoire après clôture d’INSCRIPTIONS-010 |
 | 1.2.78 | 2026-08-09 | Clôture d’INSCRIPTIONS-010 après validation et fusion de la PR applicative #89 dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ; suite finale 455/455 et recette Google isolée conservées ; prochain incrément à cadrer séparément, SIKADA restant bloqué faute de fixture anonymisée validée |
