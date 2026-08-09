@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.77 |
+| **Version** | 1.2.78 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -722,13 +722,13 @@ La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vé
 
 ## 13.1 Statut
 
-**Engagé — quatrième incrément implémenté et recette technique concluante ; PR applicative #89 en brouillon dans l’attente de la validation documentaire et de la revue**.
+**Engagé — quatrième incrément INSCRIPTIONS-010 clôturé et intégré dans `develop` ; prochain incrément à cadrer séparément**.
 
 Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit et valide les jeux d’essai ainsi que la recette cumulative. Son premier incrément applicatif sans écriture est intégré sur `develop` par la PR #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`, avec **341/341 tests réussis**. Le deuxième incrément défini par `INSCRIPTIONS-008` est intégré par la PR applicative [#87](https://github.com/karateseremange/AKS-Platform/pull/87), commit de fusion `ceda8b322715f77399bf8e7eda80c8e2b046daaa`. Après `clasp push` contrôlé, la suite Apps Script exécutée le 2 août 2026 atteint **360/360 tests réussis, 0 échec** ; les seize jeux produisent **13 réussites, 1 résultat partiel et 2 blocages attendus**. Aucun déploiement, registre réel ou accès à une donnée métier Google n’a été introduit.
 
 Le troisième incrément défini par `INSCRIPTIONS-009` est intégré par la PR applicative [#88](https://github.com/karateseremange/AKS-Platform/pull/88), commit de fusion `b870d6f425e52c1ec63f1bb5ce1b5214296c8465`. Ses **20 tests ciblés** réussissent. Après synchronisation contrôlée de la tête `0ee4bb7b7d37a6f84dea38dc57edccf732053782`, la suite Apps Script exécutée le 3 août 2026 atteint **380/380 tests réussis, 0 échec**. Le bilan des jeux d’or reste **13 réussis, 1 partiel et 2 bloqués**. Aucun adaptateur Google, stockage métier réel, interface ou déploiement n’a été introduit.
 
-Le quatrième incrément défini par `INSCRIPTIONS-010 1.1.0` réalise une persistance Google exclusivement technique et isolée en recette : garde d’environnement, schéma `Metadata`/`Sequences`/`Commandes`, verrou réel, journal et séquences persistants, avec audit commun AKS Core. Il interdit toute donnée nominative, tout objet métier réel, toute application de lot, interface, ressource de production ou déploiement. Son implémentation est portée par la PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89), toujours en brouillon, sur la tête finale recettée `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`.
+Le quatrième incrément défini par `INSCRIPTIONS-010 1.1.1` réalise une persistance Google exclusivement technique et isolée en recette : garde d’environnement, schéma `Metadata`/`Sequences`/`Commandes`, verrou réel, journal et séquences persistants, avec audit commun AKS Core. Il interdit toute donnée nominative, tout objet métier réel, toute application de lot, interface, ressource de production ou déploiement. La PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89) a été fusionnée dans `develop` le 9 août 2026 au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f`; la tête finale recettée avant fusion est `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`.
 
 Le prérequis transverse `AUDIT-001` a été intégré dans `develop` par la PR applicative #90 au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`. La branche #89 a ensuite été réalignée sur ce socle, puis synchronisée dans Apps Script. La suite cumulative finale atteint **455/455 tests réussis, 0 échec**.
 
@@ -760,11 +760,11 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-Le prochain jalon est la clôture documentaire de la PR Project Book #103, puis, uniquement après validation explicite du Product Owner, le passage de la PR applicative #89 en prête pour revue et sa fusion éventuelle dans `develop`.
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Le prochain jalon est le cadrage séparé du cinquième incrément AKS Inscriptions à partir de l’état réel de `develop`, sans présumer du domaine retenu avant décision du Product Owner.
 
-INSCRIPTIONS-010 reste strictement interne et editor-only : aucun déploiement Web App de test n’est requis pour cet incrément. Si une fonctionnalité observable via le Web App est introduite dans un incrément ultérieur, elle devra faire l’objet d’un déploiement Web App de test et d’une recette utilisateur avant validation finale et fusion dans `develop`.
+INSCRIPTIONS-010 reste strictement interne et editor-only : aucun déploiement Web App de test n’a été requis pour cet incrément. Si une fonctionnalité observable via le Web App est introduite dans un incrément ultérieur, elle devra faire l’objet d’un déploiement Web App de test et d’une recette utilisateur avant validation finale et fusion dans `develop`.
 
-SIKADA, Analytics/`BODY_KARATE`, données nominatives, référentiel métier complet, restauration complète, interfaces, application de lot, production et déploiement demeurent séparés et interdits dans ce quatrième incrément.
+Le volet SIKADA demeure bloqué tant que l’échantillon anonymisé Windows-1252 à 12 colonnes prévu par `INSCRIPTIONS-006` n’est pas disponible, sécurisé et versionné. Analytics/`BODY_KARATE`, données nominatives, référentiel métier complet, restauration complète, interfaces, application de lot, production et déploiement demeurent séparés du quatrième incrément et nécessitent leur propre cadrage/autorisation.
 
 ## 13.5 Backlog restant
 
@@ -881,7 +881,7 @@ ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
         ↓
-AKS Inscriptions — quatrième incrément recetté techniquement à 455/455 ; PR #89 en brouillon, validation documentaire #103 puis revue/fusion applicative à décider
+AKS Inscriptions — quatrième incrément INSCRIPTIONS-010 clôturé sur `develop` à 455/455 ; prochain incrément à cadrer
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
@@ -892,6 +892,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.78 | 2026-08-09 | Clôture d’INSCRIPTIONS-010 après validation et fusion de la PR applicative #89 dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ; suite finale 455/455 et recette Google isolée conservées ; prochain incrément à cadrer séparément, SIKADA restant bloqué faute de fixture anonymisée validée |
 | 1.2.77 | 2026-08-09 | INSCRIPTIONS-010 réaligné sur AUDIT-001 intégré : tête applicative `0da406b`, suite finale 455/455, recette Google isolée concluante pour le schéma, une séquence et une commande fictive ; anomalie de typage Sheets détectée puis corrigée ; limites des scénarios Google de concurrence/interruption conservées, PR #89 toujours en brouillon avant validation documentaire #103 et revue |
 | 1.2.76 | 2026-08-09 | Validation du premier socle persistant commun AUDIT-001 : PR applicative #90 sur `11e36134`, recette Google isolée concluante, deux preuves corrélées persistées, configuration restaurée et suite cumulative 423/423 ; prérequis audit d’INSCRIPTIONS-010 levé, raccordement et recette de la PR #89 deviennent le prochain jalon après intégration de #90 |
 | 1.2.75 | 2026-08-08 | Précision du cadrage d’AUDIT-001 après revue : identités résolues côté serveur, catalogues fermés initiaux, cellules canoniques et paramètres CONFIG-001 complets ; aucune implémentation ni recette réalisée |

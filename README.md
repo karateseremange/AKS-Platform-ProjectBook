@@ -102,7 +102,7 @@ Les spécifications des modules métier sont regroupées dans le dossier [`proje
 
 - [AKS Analytics](project-book/modules/analytics/) — premier nouveau module métier de la phase suivant la consolidation V1.1.
 - [AKS Calendar](project-book/modules/calendar/) — socle Google Calendar publié en V1.3.0.
-- [AKS Inscriptions](project-book/modules/inscriptions/) — chantier fonctionnel engagé après la V1.3.0 ; quatrième incrément technique recetté sur ressource Google isolée.
+- [AKS Inscriptions](project-book/modules/inscriptions/) — chantier fonctionnel engagé après la V1.3.0 ; quatrième incrément technique INSCRIPTIONS-010 intégré dans `develop` après recette Google isolée concluante.
 
 Le module historique **Questionnaire Santé** reste la première capacité métier livrée en V1.0.0. Les prochains modules sont intégrés progressivement selon `ROADMAP-001`.
 
@@ -173,14 +173,14 @@ Le deuxième incrément est validé dans [`INSCRIPTIONS-008`](project-book/modul
 
 Le troisième incrément est validé dans [`INSCRIPTIONS-009`](project-book/modules/inscriptions/INSCRIPTIONS-009.md). La PR applicative [#88](https://github.com/karateseremange/AKS-Platform/pull/88) est fusionnée sur `develop` au commit `b870d6f425e52c1ec63f1bb5ce1b5214296c8465`. Son journal de commandes injectable, ses transitions fermées, l’idempotence et la reprise après reconstruction du service ajoutent **20 tests ciblés**. Après synchronisation contrôlée de la tête testée `0ee4bb7b7d37a6f84dea38dc57edccf732053782`, la suite Apps Script atteint **380/380 tests réussis, 0 échec**. Le bilan reste **13 jeux d’or réussis, 1 partiel et 2 bloqués**. Aucun adaptateur Google, stockage métier réel, interface ou déploiement n’a été introduit.
 
-Le quatrième incrément est désormais documenté dans [`INSCRIPTIONS-010`](project-book/modules/inscriptions/INSCRIPTIONS-010.md) en version **1.1.0** et dans [`INSCRIPTIONS-010-RECETTE`](project-book/modules/inscriptions/INSCRIPTIONS-010-RECETTE.md). La PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89) reste ouverte et en brouillon sur la tête `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`. Après intégration du socle persistant commun AUDIT-001 et réalignement de la branche, la suite cumulative atteint **455/455 tests réussis, 0 échec**.
+Le quatrième incrément est documenté dans [`INSCRIPTIONS-010`](project-book/modules/inscriptions/INSCRIPTIONS-010.md) et dans [`INSCRIPTIONS-010-RECETTE`](project-book/modules/inscriptions/INSCRIPTIONS-010-RECETTE.md). La PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89) a été fusionnée dans `develop` le 9 août 2026 au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f`. La tête finale recettée avant fusion est `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06` et la suite cumulative atteint **455/455 tests réussis, 0 échec**.
 
 La recette Google Sheets isolée sur `[RECETTE] AKS Inscriptions` est concluante pour le périmètre réellement exécuté : schéma `Metadata`/`Sequences`/`Commandes`, fuseau `Europe/Paris`, séquence `INS-2026-000001`, commande fictive `CMD-RECETTE-010-001` et relecture stricte identique. Une première tentative a détecté une conversion automatique de `scope_key = "2026"` en nombre par Sheets ; le contrôle strict l’a refusée et l’adaptateur a été corrigé dans `0da406b`. Les scénarios Google réels de concurrence simultanée, interruption et réconciliation ne sont pas présentés comme exécutés tant qu’une campagne dédiée ne les a pas prouvés.
 
 Le socle persistant commun [`AUDIT-001`](project-book/administration/AUDIT-001.md) est intégré dans `develop` par la PR applicative #90 au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`. Sa recette isolée reste documentée dans [`AUDIT-001-RECETTE`](project-book/administration/AUDIT-001-RECETTE.md).
 
-INSCRIPTIONS-010 reste strictement interne et editor-only dans cet incrément : aucun déploiement Web App de test n’est requis. Toute fonctionnalité ultérieure observable ou utilisable depuis le Web App devra être validée sur un déploiement de test avant validation finale et fusion dans `develop`.
+INSCRIPTIONS-010 reste strictement interne et editor-only dans cet incrément : aucun déploiement Web App de test n’a été requis. Toute fonctionnalité ultérieure observable ou utilisable depuis le Web App devra être validée sur un déploiement de test avant validation finale et fusion dans `develop`.
 
-La prochaine étape est la validation documentaire de la PR Project Book #103, puis, après autorisation explicite du Product Owner, le passage de la PR applicative #89 en prête pour revue et sa fusion éventuelle dans `develop`. Aucun tag, déploiement ou fusion vers `main` n’est autorisé dans ce cycle.
+Le cycle INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Le prochain incrément AKS Inscriptions doit être cadré séparément à partir de l’état réel de `develop`. Le volet SIKADA demeure bloqué tant que l’échantillon anonymisé Windows-1252 à 12 colonnes prévu par `INSCRIPTIONS-006` n’est pas disponible, sécurisé et versionné. Aucun tag, déploiement ou fusion vers `main` n’a été effectué dans ce cycle.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).

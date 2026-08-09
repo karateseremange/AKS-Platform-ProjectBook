@@ -3,8 +3,8 @@
 | Propriété | Valeur |
 |---|---|
 | **Document ID** | INSCRIPTIONS-010 |
-| **Version** | 1.1.0 |
-| **Statut** | Validé — implémentation et recette technique concluantes, fusion applicative en attente |
+| **Version** | 1.1.1 |
+| **Statut** | Validé — implémentation, recette technique et intégration dans `develop` terminées |
 | **Nature** | Bilan d’implémentation et de recette d’un incrément applicatif borné |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -20,7 +20,7 @@ L’incrément prépare la première persistance Google exclusivement dans un en
 
 Il ne persiste aucune donnée nominative, ne crée aucun licencié, responsable, dossier saisonnier, affectation, formalité, règlement, lot ou ligne d’import et n’autorise aucune écriture de production.
 
-L’implémentation applicative est portée par la PR AKS-Platform #89. La tête finale recettée est `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`. La recette réelle est détaillée dans `INSCRIPTIONS-010-RECETTE`.
+L’implémentation applicative a été portée par la PR AKS-Platform #89, fusionnée dans `develop` le 9 août 2026 au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f`. La tête finale recettée avant fusion est `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`. La recette réelle est détaillée dans `INSCRIPTIONS-010-RECETTE`.
 
 ## 2. Question traitée
 
@@ -51,7 +51,7 @@ Le socle validé fournissait déjà :
 - un bilan de **13 jeux réussis, 1 partiel et 2 bloqués** ;
 - un manifeste Apps Script déjà aligné sur `Europe/Paris`.
 
-Au démarrage d’INSCRIPTIONS-010, il ne fournissait pas encore d’adaptateur Google persistant, de verrou réel de recette ni de preuve Google réelle de persistance. Ces éléments ont depuis été implémentés et recettés sur une ressource isolée.
+Au démarrage d’INSCRIPTIONS-010, il ne fournissait pas encore d’adaptateur Google persistant, de verrou réel de recette ni de preuve Google réelle de persistance. Ces éléments ont depuis été implémentés, recettés sur une ressource isolée puis intégrés dans `develop`.
 
 ## 4. Périmètre autorisé
 
@@ -369,6 +369,7 @@ Les scénarios Google réels de concurrence simultanée, interruption et réconc
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.1 | 2026-08-09 | Clôture de l’incrément après validation et fusion de la PR applicative #89 dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ; preuves 455/455 et recette Google conservées, sans tag, déploiement ni fusion vers `main` |
 | 1.1.0 | 2026-08-09 | Implémentation et recette technique consignées : AUDIT-001 intégré, branche applicative réalignée, 455/455 tests cumulés, schéma Google isolé validé, anomalie de typage Sheets détectée et corrigée dans `0da406b`, séquence `INS-2026-000001` et commande fictive relues strictement ; limites de concurrence/récupération réelles conservées explicitement |
 | 1.0.1 | 2026-08-08 | Validation documentaire du périmètre et autorisation de l’implémentation applicative bornée, sous réserve des critères d’acceptation et sans anticiper de preuve de test, de recette Google ni de déploiement |
 | 1.0.0 | 2026-08-03 | Création du contrat bornant le quatrième incrément à la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative ni application de lot |
