@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.5.0 |
-| **Statut** | En préparation — correctif du rôle initial validé en recette et en revue ; mutation non autorisée |
+| **Version** | 0.6.0 |
+| **Statut** | En préparation — retrait des droits implicites `ADMINISTRATEUR` préparé ; nouvelle validation de recette requise |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -19,7 +19,7 @@
 
 L’incrément doit permettre à `aserridj@gmail.com` de disposer explicitement de `ACCESS_MANAGE`, vérifier les accès autorisés et refusés ainsi que les preuves d’audit, puis conserver l’ancien mécanisme `AKS.Admin.Access` comme filet temporaire de récupération.
 
-Le protocole applicatif réversible est intégré et validé dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. Le correctif du rôle initial porté par la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a ensuite été synchronisé et validé à **496/496 tests, 0 échec**. Le présent état n'autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
+Le protocole applicatif réversible est intégré dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. La première tête de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée et validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore des droits implicites au rôle `ADMINISTRATEUR`. Le correctif fonctionnel est préparé au commit `7dacc7b` ; sa suite cumulative compte **497 tests uniques** et doit encore être synchronisée puis exécutée dans Apps Script. Le présent état n'autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
 
 ## 2. Point de départ vérifié
 
@@ -29,7 +29,9 @@ La [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95)
 
 `AKS_preflightAccess002Recipe` a été exécutée avec succès : cible `RECETTE`, suffixe de script `eIRxs4`, registre absent, zéro compte avant et un compte proposé, avec `writePerformed:false`. `AKS_applyAccess002Recipe` et `AKS_restoreAccess002Recipe` n'ont pas été exécutées. Aucun registre, compte ou environnement de production n'a été modifié.
 
-La tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** dans le même projet Apps Script isolé. La campagne cumulative réelle a réussi à **496/496 tests, 0 échec**. Cette validation couvre le rôle descriptif `ADMINISTRATEUR`, l'unique affectation transverse `ACCESS` et l'unique capacité explicite `ACCESS_MANAGE`, sans exécuter les fonctions d'application ou de restauration.
+La tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** dans le même projet Apps Script isolé. La campagne cumulative réelle a réussi à **496/496 tests, 0 échec**. Elle prouvait la structure du registre proposé, mais pas l'absence de droits effectifs hérités du rôle. La revue finale a donc bloqué la fusion avant toute mutation.
+
+Le correctif fonctionnel préparé au commit `7dacc7b` supprime les raccourcis qui accordaient implicitement les capacités générales, Inscriptions et `ACCESS_MANAGE` à `ADMINISTRATEUR`. Les validations locales réussissent à **18/18** pour ACCESS-001, **19/19** pour ACCESS-002-01, **7/7** pour l'habilitation explicite, **13/13** pour la recette réversible, **19/19** pour Inscriptions ciblé et **1/1** pour le cycle Audit–registre ACCESS. La syntaxe est valide sur **196/196 fichiers** et la suite cumulative préparée contient **497 tests uniques**, sans doublon. Cette nouvelle tête n'a pas encore été synchronisée dans Apps Script.
 
 Le socle fournit déjà :
 
@@ -39,7 +41,7 @@ Le socle fournit déjà :
 - la protection du dernier gestionnaire actif ;
 - une preuve persistante corrélée avant et après chaque mutation ;
 - une restauration vérifiée lorsque la persistance ou la preuve finale échoue ;
-- la compatibilité temporaire avec le bootstrap et le rôle historique `ADMINISTRATEUR`.
+- le bootstrap historique, limité au cas où le registre est absent.
 
 ## 3. Protocole applicatif intégré et reste à faire
 
@@ -51,11 +53,11 @@ Le lot intégré autorise désormais une affectation transverse `ACCESS` et calc
 - l'unicité de la capacité `ACCESS_MANAGE` ;
 - la conservation d'au moins un gestionnaire effectif.
 
-Le bootstrap et le rôle historique `ADMINISTRATEUR` restent acceptés comme voies temporaires de compatibilité. Ils ne remplacent pas l'habilitation explicite cible.
+Le bootstrap historique reste une voie temporaire de récupération uniquement lorsque le registre est absent. Dès qu'un registre existe, le rôle `ADMINISTRATEUR` est strictement descriptif et n'accorde aucune capacité générale, Inscriptions ou administrative.
 
 Le lot intégré fournit trois fonctions éditeur internes, sans route Web ordinaire : précontrôle, application et restauration. Les paramètres de recette sont fournis à l'exécution, sans adresse, valeur de registre ni identifiant de projet codé en dur. L'application est sérialisée sous verrou de script ; une exécution concurrente échoue avant toute mutation et ne peut annuler un état validé par une autre exécution.
 
-Le précontrôle a révélé que la recette intégrée proposait encore `CONSULTATION + ACCESS_MANAGE`. Le Product Owner a confirmé le modèle cible `ADMINISTRATEUR + ACCESS_MANAGE`. Le correctif applicatif en revue remplace le rôle descriptif, conserve une unique affectation `ACCESS` et n'ajoute aucune autre capacité. Sa tête `395de24` a été synchronisée et validée en recette à **496/496**. La mutation réversible demeure interdite jusqu'à intégration du correctif et autorisation explicite distincte.
+Le précontrôle a révélé que la recette intégrée proposait encore `CONSULTATION + ACCESS_MANAGE`. Le Product Owner a confirmé le modèle cible `ADMINISTRATEUR + ACCESS_MANAGE`. Une première correction a aligné la structure, mais la revue finale a détecté que le moteur conservait quatre voies d'héritage implicite. Le correctif `7dacc7b` les retire et ajoute un test de droits effectifs : `ACCESS_MANAGE` est autorisé par l'affectation explicite, tandis que Présences et Inscriptions sont refusées. La mutation réversible demeure interdite jusqu'à synchronisation, validation cumulative réelle, intégration du correctif et autorisation explicite distincte.
 
 ## 4. Modèle compatible proposé
 
@@ -74,7 +76,7 @@ Le schéma reste `access/1.0`. L’évolution autorise une affectation transvers
 
 `ACCESS_MANAGE` devient effectif lorsque le compte et l’affectation sont actifs dans leur période de validité et qu’au moins un rôle de l’affectation appartient au compte.
 
-Le bootstrap et le rôle historique `ADMINISTRATEUR` restent temporairement acceptés pendant cet incrément. Leur retrait n’appartient pas à `ACCESS-002-02` et demeure réservé à `ACCESS-002-06` après migration des modules.
+Le bootstrap historique reste temporairement accepté lorsque le registre est absent. Le rôle `ADMINISTRATEUR` reste une valeur descriptive du schéma `access/1.0`, mais son héritage automatique de capacités est retiré dès `ACCESS-002-02`. `ACCESS-002-06` conserve la migration définitive des modules et le retrait du filet historique résiduel ; il ne doit pas réintroduire de droits implicites liés au rôle.
 
 ## 5. État initial cible du premier gestionnaire
 
@@ -90,7 +92,7 @@ Le premier enregistrement réel proposé est limité au besoin de migration :
 - aucune copie automatique de droits métier non inventoriés ;
 - métadonnées `updatedAt` et `updatedBy` produites exclusivement côté serveur.
 
-Les droits métier encore obtenus par compatibilité historique ne sont pas présentés comme migrés. Leur inventaire et leur migration explicite relèvent des incréments suivants, au plus tard `ACCESS-002-06`.
+Les droits métier ne sont jamais obtenus du seul rôle `ADMINISTRATEUR`. Leur inventaire et leur attribution explicite relèvent des incréments suivants, au plus tard `ACCESS-002-06`.
 
 ## 6. Périmètre applicatif intégré
 
@@ -102,7 +104,7 @@ Le lot applicatif intégré couvre uniquement :
 4. l'application idempotente d'un compte de recette paramétré, jamais codé en dur ;
 5. la vérification d'accès, de refus et d'audit avec résultats minimisés ;
 6. une commande de restauration exacte, idempotente et vérifiée ;
-7. le maintien borné des voies historiques de récupération ;
+7. le maintien borné du bootstrap historique lorsque le registre est absent ;
 8. les tests unitaires, de contrat et de non-régression ;
 9. des fonctions de recette explicitement nommées et exclues de la suite cumulative ordinaire.
 
@@ -161,7 +163,10 @@ Le retour arrière restaure exactement l’état antérieur attendu, le relit, v
 4. la tête `be7323a` est synchronisée avec **229 fichiers** dans le projet Apps Script isolé confirmé ;
 5. les validations ciblées réussissent à **19/19**, **7/7** et **11/11**, la syntaxe à **196/196** et la campagne cumulative à **495/495** ;
 6. le correctif du rôle initial est porté par la PR applicative #96, dont la tête `395de24` est synchronisée avec **229 fichiers** et validée à **496/496 tests, 0 échec** ;
-7. aucune fonction d'application ou de restauration n'est exécutée pendant cette phase.
+7. la revue finale bloque cette première tête, car elle ne vérifie pas les droits effectifs hérités du rôle ;
+8. le correctif fonctionnel `7dacc7b` retire cet héritage, réussit les validations ciblées locales et prépare **497 tests uniques** ;
+9. cette nouvelle tête doit être synchronisée et validée dans Apps Script avant toute application ;
+10. aucune fonction d'application ou de restauration n'est exécutée pendant cette phase.
 
 ### Phase B — recette isolée et réversible
 
@@ -199,6 +204,7 @@ Cette phase nécessite une autorisation distincte portant explicitement sur le c
 | A02-11 | Retrait du dernier gestionnaire effectif | Refus |
 | A02-12 | Procédure de récupération | État antérieur restauré et vérifié |
 | A02-13 | Amorçage du premier gestionnaire | Rôle descriptif `ADMINISTRATEUR`, unique affectation `ACCESS` et unique capacité explicite `ACCESS_MANAGE` |
+| A02-14 | Droits effectifs du premier gestionnaire | `ACCESS_MANAGE` autorisé ; Présences, Inscriptions et autres capacités non attribuées refusées |
 
 La suite cumulative doit rester sans échec. Le nombre final de tests sera consigné à partir de l’exécution réelle, sans estimation documentaire.
 
@@ -231,14 +237,14 @@ Après un arrêt, aucune relance n’est effectuée avant diagnostic et nouvelle
 `ACCESS-002-02` pourra être clôturé lorsque :
 
 1. `ACCESS_MANAGE` est matérialisé par une habilitation explicite compatible avec `access/1.0` ;
-2. les voies historiques restent disponibles uniquement comme compatibilité temporaire ;
+2. le bootstrap historique reste disponible uniquement lorsque le registre est absent ;
 3. le premier gestionnaire est créé sans rôle spécial caché ;
 4. l’accès gestionnaire et le refus non habilité sont prouvés côté serveur ;
 5. l’écriture est atomique, auditée, idempotente et réversible ;
 6. la récupération est exécutée et vérifiée en recette ;
 7. les tests ciblés et cumulatifs réussissent ;
 8. l’amorçage réel, s’il est exécuté, dispose de son autorisation et de ses preuves propres ;
-9. le filet historique n’est pas retiré ;
+9. le filet historique résiduel n’est pas retiré ;
 10. le Project Book reflète exactement l’état livré.
 
 `ACCESS-002-03` ne peut commencer qu’après satisfaction de ces critères et clôture documentaire de l’incrément.
@@ -261,7 +267,7 @@ Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preu
 | Contrôle | État avant exécution | Preuve attendue |
 |---|---|---|
 | Projet Apps Script isolé et `scriptId` confirmés | Confirmé pour la synchronisation du code | Nom et suffixe minimisé de l'identifiant à reconfirmer avant exécution |
-| Branche et commit applicatifs exacts | `develop` au commit `bbedf0a` ; correctif testé sur la tête `395de24` de la PR #96 | SHA complet |
+| Branche et commit applicatifs exacts | `develop` au commit `bbedf0a` ; correctif fonctionnel préparé au commit `7dacc7b` de la PR #96 | SHA complet |
 | Identité gestionnaire de recette autorisée | Configurée : `a***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Identité de refus autorisée | Configurée : `s***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Précontrôle sans écriture | Réussi : cible `RECETTE`, registre absent, 0 compte avant, 1 proposé, `writePerformed:false` | Résultat et horodatage |
@@ -271,7 +277,7 @@ Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preu
 | Refus non habilité | Non exécuté | Code d'erreur attendu |
 | Audit corrélé | Non exécuté | Identifiants de corrélation minimisés |
 | Restauration exacte | Non exécutée | Révision et empreinte après restauration |
-| Suite cumulative finale | 496/496, 0 échec | Résultat observé sur la tête `395de24` après synchronisation de 229 fichiers |
+| Suite cumulative finale | Nouvelle exécution requise ; 497 tests uniques préparés localement | Résultat observé après synchronisation de la tête corrigée |
 
 Tant que la ligne « Mutation de recette explicitement autorisée » reste non autorisée, seules l'implémentation sans donnée réelle, les validations locales et la synchronisation de code vers le projet isolé sont permises.
 
@@ -279,6 +285,7 @@ Tant que la ligne « Mutation de recette explicitement autorisée » reste non a
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.6.0 | 2026-08-09 | Revue finale de la première tête 496/496 bloquée par les droits implicites du rôle ; correctif fonctionnel `7dacc7b` préparé avec rôle strictement descriptif, bootstrap limité au registre absent, validations ciblées concluantes et suite cumulative portée à 497 tests uniques, nouvelle exécution Apps Script requise |
 | 0.5.0 | 2026-08-09 | Correctif `ADMINISTRATEUR + ACCESS_MANAGE` de la PR applicative #96 synchronisé sur sa tête `395de24` avec 229 fichiers et validé à 496/496, sans application, restauration ni mutation du registre |
 | 0.4.0 | 2026-08-09 | Précontrôle en lecture seule réussi ; décision confirmée pour `ADMINISTRATEUR + ACCESS_MANAGE`, sans `SUPER_ADMIN`, exception d'adresse ni autre habilitation ; correctif applicatif et test structurel préparés, application et restauration toujours non exécutées |
 | 0.3.0 | 2026-08-09 | Protocole réversible intégré par la PR applicative #95 au commit `bbedf0a` ; tête `be7323a` synchronisée avec 229 fichiers et validée à 495/495, sans exécution des fonctions de recette ni mutation réelle |
