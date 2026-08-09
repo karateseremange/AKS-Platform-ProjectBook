@@ -96,7 +96,7 @@ Cette validation ne vaut ni activation en production, ni raccordement d'`INSCRIP
 
 # 8. Règle de recette Web App
 
-À compter de cette validation, la règle de travail suivante est retenue pour les incréments applicatifs :
+La règle de travail proposée pour les incréments applicatifs est la suivante :
 
 > Toute modification observable ou utilisable depuis le Web App doit faire l'objet d'une recette sur un déploiement de test avant sa validation finale et avant sa fusion dans `develop`.
 
