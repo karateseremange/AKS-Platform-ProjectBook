@@ -2,10 +2,10 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.2.1 |
-| **Statut** | Cadrage proposé — revue requise avant implémentation |
+| **Version** | 1.3.0 |
+| **Statut** | Validé — premier incrément persistant implémenté et recette isolée concluante |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-08 |
+| **Dernière mise à jour** | 2026-08-09 |
 
 ---
 
@@ -283,6 +283,7 @@ Les modules métier complètent ce document en identifiant leurs propres actions
 - `LOG-001` — Journalisation
 - `SECURITY-001` — Principes de sécurité
 - `GOV-001` — Gouvernance produit
+- `AUDIT-001-RECETTE` — Procès-verbal de recette du socle persistant AUDIT-001
 
 ---
 
@@ -294,11 +295,13 @@ Il complète la journalisation technique sans la dupliquer, contribue à la séc
 
 ---
 
-# 18. Incrément persistant commun proposé
+# 18. Premier incrément persistant commun — implémenté et validé
 
-Le présent cadrage propose un premier incrément applicatif transverse matérialisant le service commun `AKS.Core.Audit` attendu par les modules sensibles.
+Le premier incrément applicatif transverse matérialisant le service commun `AKS.Core.Audit` attendu par les modules sensibles est implémenté par la PR applicative AKS-Platform #90 sur la tête `11e36134ba291e22c92378c4610cdaf3265a68c8`.
 
-Cet incrément répond au prérequis explicite d’`INSCRIPTIONS-010`. Il ne constitue pas une autorisation de recette Google tant que son implémentation, ses tests et sa propre recette isolée ne sont pas validés. La suite cumulative de la PR applicative Inscriptions atteint **412/412 tests réussis, 0 échec**, mais cette preuve automatique ne démontre pas encore la persistance réelle de l’audit.
+Sa recette Google isolée est concluante : le support `AKS_Audit` a été créé sur le classeur dédié `AKS Audit RECETTE`, deux preuves distinctes et corrélées `INTENTION → REUSSI` ont été persistées et relues, la configuration temporaire a été restaurée et la suite cumulative a réussi **423/423 tests, 0 échec**. Le procès-verbal détaillé est `AUDIT-001-RECETTE`.
+
+Ce résultat lève le prérequis d’existence et de persistance du port d’audit commun pour la reprise du raccordement d’`INSCRIPTIONS-010`. Il ne vaut ni activation en production, ni déploiement Web App, ni autorisation implicite de fusion ou de publication.
 
 Le service d’audit s’appuie sur les composants communs d’AKS Core et réutilise les conventions de corrélation, de masquage et d’erreur de la plateforme. Il ne doit toutefois pas déléguer sa garantie de preuve au fournisseur de `LOG-001`, dont le contrat isole volontairement les pannes afin de préserver le traitement appelant.
 
@@ -499,6 +502,8 @@ La recette réelle doit démontrer :
 
 Les fonctions de recette sont nommées explicitement, exclues de la suite cumulative, inaccessibles depuis les routes publiques et administratives, et exigent une confirmation technique avant mutation.
 
+La campagne du 9 août 2026 a validé la persistance réelle sur la ressource isolée, la corrélation du cycle, la restauration de la configuration temporaire et la non-régression cumulative. Les preuves détaillées sont consignées dans `AUDIT-001-RECETTE`.
+
 ## 18.11 Codes d’erreur minimaux
 
 | Code | Signification |
@@ -517,7 +522,7 @@ Les messages publics restent génériques et corrélables. Les détails techniqu
 
 ## 18.12 Critères d’acceptation de l’incrément
 
-L’implémentation ne pourra être déclarée conforme que lorsque :
+L’implémentation est déclarée conforme pour le périmètre de recette isolée décrit ici :
 
 - `AKS.Core.Audit` est le seul point d’entrée commun ;
 - le support `AKS_Audit` est distinct de `AKS_Logs` et conforme à `aks-audit/1.0` ;
@@ -527,9 +532,23 @@ L’implémentation ne pourra être déclarée conforme que lorsque :
 - les données sont minimisées et masquées avant persistance ;
 - une action critique échoue fermée sans preuve ;
 - les tests ciblés et la suite cumulative réussissent sans échec ;
-- la recette Google isolée réussit et restaure son état initial ;
+- la recette Google isolée réussit et restaure sa configuration temporaire ;
 - aucune donnée réelle, route, interface, production, export ou purge automatique n’est introduite ;
-- `INSCRIPTIONS-010` consomme ensuite ce port par injection sans créer de service parallèle.
+- `INSCRIPTIONS-010` doit maintenant consommer ce port par injection sans créer de service parallèle.
+
+## 18.13 Preuves de validation du 9 août 2026
+
+- PR applicative : `AKS-Platform #90` ;
+- tête exécutée : `11e36134ba291e22c92378c4610cdaf3265a68c8` ;
+- AUDIT-001 ciblé : **43/43** ;
+- CONFIG-001 : **29/29** ;
+- syntaxe : **188/188 fichiers `.gs`** ;
+- sonde concurrente : **3/3** ;
+- `clasp push` : **221 fichiers synchronisés** sans erreur affichée ;
+- préparation : onglet `AKS_Audit`, **16 en-têtes**, `existingAuditCount: 0` ;
+- exécution : **2 preuves persistantes corrélées**, `configurationRestored: true` ;
+- contrôle visuel : **3 lignes** ;
+- suite cumulative après recette : **423/423 réussis, 0 échec**.
 
 ---
 
@@ -537,6 +556,7 @@ L’implémentation ne pourra être déclarée conforme que lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.0 | 2026-08-09 | Validation de l’implémentation et de la recette isolée du premier socle persistant commun : PR #90, deux preuves corrélées persistées, configuration restaurée et suite cumulative 423/423 ; prérequis audit d’INSCRIPTIONS-010 levé |
 | 1.2.1 | 2026-08-08 | Précision du contrat implémentable : provenance serveur obligatoire d’`actor_id`, catalogues fermés initiaux, représentation canonique des seize cellules et définitions complètes des trois clés `CONFIG-001` |
 | 1.2.0 | 2026-08-08 | Proposition du premier incrément persistant commun : `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, schéma `aks-audit/1.0`, écriture verrouillée append-only, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans production, consultation, export ni purge automatique |
 | 1.1.1 | 2026-07-24 | Normalisation du statut documentaire vers le statut officiel Validé |
