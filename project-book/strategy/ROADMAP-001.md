@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.92 |
+| **Version** | 1.2.93 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -782,7 +782,7 @@ Les validations locales réussissent à 193/193 pour la syntaxe des fichiers `.g
 
 Le modèle intégré ajoute une affectation transverse `ACCESS` compatible avec `access/1.0` et rend `ACCESS_MANAGE` explicitement attribuable. Le protocole interne de précontrôle, application sous verrou et restauration exacte est intégré par la [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95), au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). La tête `be7323a` a été synchronisée avec 229 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **495/495 tests, 0 échec**. Le précontrôle en lecture seule a ensuite réussi et confirmé un registre absent sans écriture. Le rôle initial cible est `ADMINISTRATEUR`, avec la seule habilitation ajoutée `ACCESS_MANAGE`.
 
-La première tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** et validée à **496/496 tests, 0 échec**, mais la revue finale a détecté que le moteur accordait encore des capacités implicites au rôle. La fusion a été bloquée avant toute mutation. Le correctif fonctionnel `7dacc7b` retire ces raccourcis, conserve le bootstrap uniquement lorsque le registre est absent et prépare **497 tests uniques** ; sa validation Apps Script reste à exécuter. L'application, la restauration et l'amorçage réel restent des décisions distinctes soumises à leurs propres autorisations.
+La première tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** et validée à **496/496 tests, 0 échec**, mais la revue finale a détecté que le moteur accordait encore des capacités implicites au rôle. La fusion a été bloquée avant toute mutation. Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, retire ces raccourcis et conserve le bootstrap uniquement lorsque le registre est absent. Cette tête a été synchronisée avec **229 fichiers**, puis validée dans Apps Script à **497/497 tests, 0 échec**. L'application, la restauration et l'amorçage réel restent des décisions distinctes soumises à leurs propres autorisations.
 
 La réalisation est officiellement découpée en six incréments :
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.93 | 2026-08-09 | Tête corrigée `747c9a3` de la PR #96 synchronisée avec 229 fichiers et validée à 497/497 ; retrait des capacités implicites de `ADMINISTRATEUR` confirmé, sans application, restauration ni mutation du registre |
 | 1.2.92 | 2026-08-09 | Première tête de la PR #96 bloquée malgré 496/496 ; correctif fonctionnel `7dacc7b` préparé pour supprimer les capacités implicites de `ADMINISTRATEUR`, limiter le bootstrap au registre absent et porter la suite à 497 tests uniques avant nouvelle recette Apps Script |
 | 1.2.91 | 2026-08-09 | Correctif ACCESS-002-02 de la PR applicative #96 synchronisé sur la tête `395de24` avec 229 fichiers et validé à 496/496, sans application, restauration ni mutation du registre |
 | 1.2.90 | 2026-08-09 | Précontrôle ACCESS-002-02 réussi sans écriture ; modèle initial `ADMINISTRATEUR + ACCESS_MANAGE` confirmé, correctif applicatif en revue et mutation toujours non autorisée |

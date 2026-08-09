@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.5 |
-| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; correctif fonctionnel ACCESS-002-02 à revalider en recette |
+| **Version** | 0.4.6 |
+| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; correctif fonctionnel ACCESS-002-02 validé en recette |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -339,7 +339,7 @@ Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides
 
 Le précontrôle en lecture seule a ensuite réussi sur la cible isolée : registre absent, zéro compte avant, un compte proposé et `writePerformed:false`. Il a permis d'identifier avant toute mutation un écart entre le rôle `CONSULTATION` proposé par le code et le rôle descriptif `ADMINISTRATEUR` validé. Le Product Owner a confirmé `ADMINISTRATEUR + ACCESS_MANAGE`, sans `SUPER_ADMIN`, exception d'adresse ni autre capacité attribuée par la recette. La première tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** puis validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore implicitement toutes les capacités au rôle. La fusion a été bloquée avant mutation.
 
-Le correctif fonctionnel `7dacc7b` supprime cet héritage dès qu'un registre existe, conserve le bootstrap historique uniquement lorsque le registre est absent et vérifie les droits effectifs du compte amorcé. Les suites ciblées ACCESS réussissent à **57/57**, Inscriptions à **19/19**, le cycle Audit–registre ACCESS à **1/1**, la syntaxe à **196/196** et la suite cumulative préparée contient **497 tests uniques**. Une nouvelle synchronisation et une exécution cumulative Apps Script sont requises. L'application et la restauration restent non exécutées et non autorisées ; l'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
+Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet héritage dès qu'un registre existe, conserve le bootstrap historique uniquement lorsque le registre est absent et vérifie les droits effectifs du compte amorcé. Les suites ciblées ACCESS réussissent à **57/57**, Inscriptions à **19/19**, le cycle Audit–registre ACCESS à **1/1** et la syntaxe à **196/196**. La tête corrigée a été synchronisée avec **229 fichiers** dans la recette Apps Script isolée, puis la suite cumulative réelle a réussi à **497/497 tests, 0 échec**. L'application et la restauration restent non exécutées et non autorisées ; l'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
 
 ---
 
@@ -347,6 +347,7 @@ Le correctif fonctionnel `7dacc7b` supprime cet héritage dès qu'un registre ex
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.6 | 2026-08-09 | Correctif fonctionnel de la PR #96 validé sur la tête `747c9a3` : 229 fichiers synchronisés et campagne cumulative réelle 497/497, sans application, restauration ni mutation du registre |
 | 0.4.5 | 2026-08-09 | Revue finale de la PR #96 bloquée malgré 496/496 : retrait préparé des droits implicites `ADMINISTRATEUR`, bootstrap limité au registre absent, validations ciblées locales concluantes et suite cumulative portée à 497 tests uniques avant nouvelle recette Apps Script |
 | 0.4.4 | 2026-08-09 | Correctif ACCESS-002-02 de la PR applicative #96 synchronisé sur la tête `395de24` avec 229 fichiers et campagne cumulative réelle 496/496, sans application, restauration ni mutation du registre |
 | 0.4.3 | 2026-08-09 | Précontrôle ACCESS-002-02 réussi sans écriture ; choix `ADMINISTRATEUR + ACCESS_MANAGE` confirmé et correctif applicatif préparé avec une habilitation ACCESS unique, sans `SUPER_ADMIN`, exception d'adresse ni autre capacité |

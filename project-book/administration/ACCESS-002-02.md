@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.6.0 |
-| **Statut** | En préparation — retrait des droits implicites `ADMINISTRATEUR` préparé ; nouvelle validation de recette requise |
+| **Version** | 0.7.0 |
+| **Statut** | En préparation — retrait des droits implicites `ADMINISTRATEUR` validé en recette ; mutation non autorisée |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -19,7 +19,7 @@
 
 L’incrément doit permettre à `aserridj@gmail.com` de disposer explicitement de `ACCESS_MANAGE`, vérifier les accès autorisés et refusés ainsi que les preuves d’audit, puis conserver l’ancien mécanisme `AKS.Admin.Access` comme filet temporaire de récupération.
 
-Le protocole applicatif réversible est intégré dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. La première tête de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée et validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore des droits implicites au rôle `ADMINISTRATEUR`. Le correctif fonctionnel est préparé au commit `7dacc7b` ; sa suite cumulative compte **497 tests uniques** et doit encore être synchronisée puis exécutée dans Apps Script. Le présent état n'autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
+Le protocole applicatif réversible est intégré dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. La première tête de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée et validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore des droits implicites au rôle `ADMINISTRATEUR`. La tête corrigée `747c9a3` a ensuite été synchronisée avec **229 fichiers** et validée dans Apps Script à **497/497 tests, 0 échec**. Le présent état n'autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
 
 ## 2. Point de départ vérifié
 
@@ -31,7 +31,7 @@ La [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95)
 
 La tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** dans le même projet Apps Script isolé. La campagne cumulative réelle a réussi à **496/496 tests, 0 échec**. Elle prouvait la structure du registre proposé, mais pas l'absence de droits effectifs hérités du rôle. La revue finale a donc bloqué la fusion avant toute mutation.
 
-Le correctif fonctionnel préparé au commit `7dacc7b` supprime les raccourcis qui accordaient implicitement les capacités générales, Inscriptions et `ACCESS_MANAGE` à `ADMINISTRATEUR`. Les validations locales réussissent à **18/18** pour ACCESS-001, **19/19** pour ACCESS-002-01, **7/7** pour l'habilitation explicite, **13/13** pour la recette réversible, **19/19** pour Inscriptions ciblé et **1/1** pour le cycle Audit–registre ACCESS. La syntaxe est valide sur **196/196 fichiers** et la suite cumulative préparée contient **497 tests uniques**, sans doublon. Cette nouvelle tête n'a pas encore été synchronisée dans Apps Script.
+Le correctif fonctionnel préparé au commit local `7dacc7b` et publié sur la tête `747c9a3` supprime les raccourcis qui accordaient implicitement les capacités générales, Inscriptions et `ACCESS_MANAGE` à `ADMINISTRATEUR`. Les validations locales réussissent à **18/18** pour ACCESS-001, **19/19** pour ACCESS-002-01, **7/7** pour l'habilitation explicite, **13/13** pour la recette réversible, **19/19** pour Inscriptions ciblé et **1/1** pour le cycle Audit–registre ACCESS. La syntaxe est valide sur **196/196 fichiers**. Cette tête a été synchronisée avec **229 fichiers** dans Apps Script, puis la suite cumulative réelle a réussi à **497/497 tests, 0 échec**.
 
 Le socle fournit déjà :
 
@@ -164,8 +164,8 @@ Le retour arrière restaure exactement l’état antérieur attendu, le relit, v
 5. les validations ciblées réussissent à **19/19**, **7/7** et **11/11**, la syntaxe à **196/196** et la campagne cumulative à **495/495** ;
 6. le correctif du rôle initial est porté par la PR applicative #96, dont la tête `395de24` est synchronisée avec **229 fichiers** et validée à **496/496 tests, 0 échec** ;
 7. la revue finale bloque cette première tête, car elle ne vérifie pas les droits effectifs hérités du rôle ;
-8. le correctif fonctionnel `7dacc7b` retire cet héritage, réussit les validations ciblées locales et prépare **497 tests uniques** ;
-9. cette nouvelle tête doit être synchronisée et validée dans Apps Script avant toute application ;
+8. le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, retire cet héritage et réussit les validations ciblées locales ;
+9. cette tête est synchronisée avec **229 fichiers** et validée dans Apps Script à **497/497 tests, 0 échec** ;
 10. aucune fonction d'application ou de restauration n'est exécutée pendant cette phase.
 
 ### Phase B — recette isolée et réversible
@@ -267,7 +267,7 @@ Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preu
 | Contrôle | État avant exécution | Preuve attendue |
 |---|---|---|
 | Projet Apps Script isolé et `scriptId` confirmés | Confirmé pour la synchronisation du code | Nom et suffixe minimisé de l'identifiant à reconfirmer avant exécution |
-| Branche et commit applicatifs exacts | `develop` au commit `bbedf0a` ; correctif fonctionnel préparé au commit `7dacc7b` de la PR #96 | SHA complet |
+| Branche et commit applicatifs exacts | `develop` au commit `bbedf0a` ; correctif fonctionnel testé sur la tête `747c9a3` de la PR #96 | SHA complet |
 | Identité gestionnaire de recette autorisée | Configurée : `a***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Identité de refus autorisée | Configurée : `s***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Précontrôle sans écriture | Réussi : cible `RECETTE`, registre absent, 0 compte avant, 1 proposé, `writePerformed:false` | Résultat et horodatage |
@@ -277,7 +277,7 @@ Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preu
 | Refus non habilité | Non exécuté | Code d'erreur attendu |
 | Audit corrélé | Non exécuté | Identifiants de corrélation minimisés |
 | Restauration exacte | Non exécutée | Révision et empreinte après restauration |
-| Suite cumulative finale | Nouvelle exécution requise ; 497 tests uniques préparés localement | Résultat observé après synchronisation de la tête corrigée |
+| Suite cumulative finale | Réussie : tête `747c9a3`, 229 fichiers synchronisés, **497/497 tests, 0 échec** | Résultat observé après synchronisation de la tête corrigée |
 
 Tant que la ligne « Mutation de recette explicitement autorisée » reste non autorisée, seules l'implémentation sans donnée réelle, les validations locales et la synchronisation de code vers le projet isolé sont permises.
 
@@ -285,6 +285,7 @@ Tant que la ligne « Mutation de recette explicitement autorisée » reste non a
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.7.0 | 2026-08-09 | Tête corrigée `747c9a3` synchronisée avec 229 fichiers et validée dans Apps Script à 497/497, confirmant le rôle `ADMINISTRATEUR` descriptif et `ACCESS_MANAGE` explicite ; application et restauration non exécutées, registre inchangé |
 | 0.6.0 | 2026-08-09 | Revue finale de la première tête 496/496 bloquée par les droits implicites du rôle ; correctif fonctionnel `7dacc7b` préparé avec rôle strictement descriptif, bootstrap limité au registre absent, validations ciblées concluantes et suite cumulative portée à 497 tests uniques, nouvelle exécution Apps Script requise |
 | 0.5.0 | 2026-08-09 | Correctif `ADMINISTRATEUR + ACCESS_MANAGE` de la PR applicative #96 synchronisé sur sa tête `395de24` avec 229 fichiers et validé à 496/496, sans application, restauration ni mutation du registre |
 | 0.4.0 | 2026-08-09 | Précontrôle en lecture seule réussi ; décision confirmée pour `ADMINISTRATEUR + ACCESS_MANAGE`, sans `SUPER_ADMIN`, exception d'adresse ni autre habilitation ; correctif applicatif et test structurel préparés, application et restauration toujours non exécutées |
