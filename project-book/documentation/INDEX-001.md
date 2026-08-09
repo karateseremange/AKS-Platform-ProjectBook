@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.96 |
+| Version | 1.2.97 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-09 |
@@ -76,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.87 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.88 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -121,9 +121,9 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-01 clôturé ; ACCESS-002-02 proposé | 0.4.0 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-01 clôturé ; prérequis ACCESS-002-02 intégré | 0.4.1 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
-| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Proposé — cadrage à valider avant implémentation ou amorçage réel | 0.1.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001 |
+| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | En préparation — prérequis explicite intégré ; recette réversible à implémenter avant exécution | 0.2.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94, `e800bdb` |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
@@ -274,7 +274,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01, ACCESS-002-02, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Socle validé — ACCESS-002 0.4.0 en réalisation ; ACCESS-002-01 1.0.0 clôturé dans `develop` au commit `91ba7e3`, campagne cumulative réelle 477/477 réussie sans échec ; ACCESS-002-02 0.1.0 proposé sans amorçage réel |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01, ACCESS-002-02, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Socle validé — ACCESS-002 0.4.1 en réalisation ; ACCESS-002-01 1.0.0 clôturé au commit `91ba7e3` ; prérequis ACCESS-002-02 intégré au commit `e800bdb`, campagne isolée 484/484 réussie et recette réversible préparée sans mutation réelle |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -299,6 +299,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.2.97 | 2026-08-09 | ACCESS-002-02 passé en 0.2.0 après intégration du prérequis applicatif #94 au commit `e800bdb` et campagne isolée 484/484 ; ACCESS-002 0.4.1 et ROADMAP-001 1.2.88 alignés sur la préparation de la recette réversible, sans mutation réelle |
 | 1.2.96 | 2026-08-09 | Référencement d’ACCESS-002-02 0.1.0 et passage d’ACCESS-002 en 0.4.0 : habilitation transverse `ACCESS_MANAGE` proposée, recette réversible séparée de l’amorçage réel et ROADMAP-001 alignée en 1.2.87, sans mutation |
 | 1.2.95 | 2026-08-09 | Clôture d’ACCESS-002-01 référencée après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` : ACCESS-002-01 1.0.0, ACCESS-002 0.3.6, AUDIT-001 1.3.4 et ROADMAP-001 1.2.86 |
 | 1.2.94 | 2026-08-09 | Cohérence du catalogue Administration rétablie avec les versions documentaires courantes ACCESS-002 0.3.5, ACCESS-002-01 0.4.1 et AUDIT-001 1.3.3 ; synthèse alignée sur la campagne cumulative réelle 477/477 sans échec |

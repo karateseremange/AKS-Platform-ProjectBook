@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.0 |
-| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; ACCESS-002-02 proposé |
+| **Version** | 0.4.1 |
+| **Statut** | Réalisation engagée — ACCESS-002-01 clôturé ; prérequis ACCESS-002-02 intégré |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -335,9 +335,9 @@ La compatibilité `access/1.0`, le rôle `ADMINISTRATEUR` historique et le boots
 
 Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative a réussi à **477/477 tests, 0 échec**. Le recomptage de la suite confirme 477 fonctions uniques ; la valeur préparatoire 478 était un inventaire statique erroné.
 
-`ACCESS-002-02 — Amorçage et migration` est désormais cadré dans [`ACCESS-002-02`](ACCESS-002-02.md). L’analyse de l’état intégré montre qu’un lot applicatif doit d’abord matérialiser `ACCESS_MANAGE` comme habilitation transverse explicite : le rôle historique `ADMINISTRATEUR` et le bootstrap restent actuellement les voies compatibles d’autorisation, tandis que les affectations refusent encore cette capacité.
+`ACCESS-002-02 — Amorçage et migration` est cadré dans [`ACCESS-002-02`](ACCESS-002-02.md). Le prérequis qui matérialise `ACCESS_MANAGE` comme habilitation transverse explicite est intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8). La tête testée `c4998c2` a été synchronisée avec 227 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **484/484 tests, 0 échec**.
 
-Le cadrage propose une affectation `module=ACCESS`, sans périmètre métier et compatible avec `access/1.0`, puis sépare l’implémentation sans donnée réelle, la recette isolée réversible et l’amorçage réel. Aucune de ces opérations n’est engagée par la présente version documentaire.
+Le prochain lot reste borné au précontrôle, à l'idempotence, à une sauvegarde temporaire vérifiée et à une restauration exacte dans la recette isolée. Sa préparation n'autorise aucune mutation : l'identité de test, le registre de recette et l'exécution devront recevoir une autorisation explicite distincte. L'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
 
 ---
 
@@ -345,6 +345,7 @@ Le cadrage propose une affectation `module=ACCESS`, sans périmètre métier et 
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.1 | 2026-08-09 | Prérequis explicite d’ACCESS-002-02 intégré au commit applicatif `e800bdb`, campagne isolée 484/484 consignée et prochain lot de recette réversible borné au précontrôle, à la sauvegarde et à la restauration, sans mutation réelle |
 | 0.4.0 | 2026-08-09 | ACCESS-002-02 proposé : prérequis d’habilitation transverse explicite identifié, modèle `ACCESS` compatible avec `access/1.0` cadré et phases d’implémentation, recette réversible et amorçage réel séparées, sans mutation |
 | 0.3.6 | 2026-08-09 | ACCESS-002-01 clôturé après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` ; prochain incrément ACCESS-002-02 à préparer séparément, sans amorçage réel |
 | 0.3.5 | 2026-08-09 | Campagne Apps Script isolée d’ACCESS-002-01 consignée : tête `84ea68f`, 226 fichiers synchronisés et suite cumulative réelle 477/477 sans échec ; inventaire préparatoire 478 corrigé après recomptage |
