@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.79 |
+| **Version** | 1.2.80 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-09 |
@@ -122,7 +122,17 @@ AKS Calendar — Intégration Google Calendar
         ↓
 AKS Inscriptions — Gestion des licenciés et des inscriptions
         ↓
-ACCESS-002 — Administration transverse des utilisateurs et habilitations
+ACCESS-002-01 — Socle d’administration
+        ↓
+ACCESS-002-02 — Amorçage et migration
+        ↓
+ACCESS-002-03 — Administration des utilisateurs
+        ↓
+ACCESS-002-04 — Fiche et habilitations
+        ↓
+ACCESS-002-05 — Portail privé et Mes accès
+        ↓
+ACCESS-002-06 — Migration définitive des modules
         ↓
 INSCRIPTIONS-011 — prochain incrément métier après ACCESS-002
         ↓
@@ -764,9 +774,20 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` est engagé. Il doit rendre administrable le moteur `ACCESS-001`, permettre des droits explicites par module et, lorsque nécessaire, par cours/saison, puis organiser la migration des écrans privés encore protégés par l’ancien contrôle `AKS.Admin.Access`.
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` est engagé et son cadrage est validé en version 0.3.0.
 
-La règle produit est explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
+La réalisation est officiellement découpée en six incréments :
+
+1. `ACCESS-002-01` — socle d’administration : API serveur sécurisée, validation, modification atomique du registre, temporalité, normalisation et audit avant/après ;
+2. `ACCESS-002-02` — amorçage et migration : premier gestionnaire `aserridj@gmail.com`, recette réelle d’accès/refus/audit et maintien temporaire du filet historique ;
+3. `ACCESS-002-03` — administration des utilisateurs : liste, recherche, filtres, création, activation/désactivation et vue « Qui a accès à quoi ? » ;
+4. `ACCESS-002-04` — fiche et habilitations : multi-rôle, modules, cours, capacités, périodes de validité, synthèse et historique ;
+5. `ACCESS-002-05` — portail privé et « Mes accès » ;
+6. `ACCESS-002-06` — migration définitive des modules et retrait contrôlé de l’ancien mécanisme.
+
+La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
+
+`ACCESS-002-03` ne démarre pas tant que la recette réelle d’`ACCESS-002-02` n’est pas validée. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -775,6 +796,16 @@ INSCRIPTIONS-010 reste strictement interne et editor-only : aucun déploiement W
 Le volet SIKADA demeure bloqué tant que l’échantillon anonymisé Windows-1252 à 12 colonnes prévu par `INSCRIPTIONS-006` n’est pas disponible, sécurisé et versionné. Analytics/`BODY_KARATE`, données nominatives, référentiel métier complet, restauration complète, interfaces, application de lot, production et déploiement demeurent séparés du quatrième incrément et nécessitent leur propre cadrage/autorisation.
 
 ## 13.5 Backlog restant
+
+Les évolutions ACCESS-002 suivantes sont identifiées mais **différées** et non engagées :
+
+- notifications e-mail lors d’un changement d’habilitations ;
+- duplication assistée des habilitations d’une saison vers la suivante ;
+- modifications groupées de plusieurs utilisateurs ;
+- exports et reporting des habilitations ;
+- modèles d’aide à l’attribution de droits, uniquement comme aides de saisie sans héritage implicite.
+
+Elles ne reçoivent pas de version cible tant que leur valeur n’est pas confirmée par l’usage.
 
 Les autres modules ou évolutions restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés. Ils pourront notamment concerner les grades et passages de grade, les documents associatifs, les communications, les tableaux de bord métier et d’autres intégrations externes.
 
@@ -893,7 +924,17 @@ AKS Calendar — socle Google Calendar, publication publique et accès internes 
         ↓
 AKS Inscriptions — INSCRIPTIONS-010 clôturé sur `develop` à 455/455
         ↓
-ACCESS-002 — administration des utilisateurs et habilitations
+ACCESS-002-01 — Socle d’administration
+        ↓
+ACCESS-002-02 — Amorçage et migration
+        ↓
+ACCESS-002-03 — Administration des utilisateurs
+        ↓
+ACCESS-002-04 — Fiche et habilitations
+        ↓
+ACCESS-002-05 — Portail privé et Mes accès
+        ↓
+ACCESS-002-06 — Migration définitive des modules
         ↓
 INSCRIPTIONS-011 — cinquième incrément à cadrer après ACCESS-002
 ```
@@ -906,6 +947,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.80 | 2026-08-09 | Finalisation du cadrage ACCESS-002 0.3.0 : découpage officiel en six incréments ACCESS-002-01 à ACCESS-002-06, amorçage de `aserridj@gmail.com` comme premier gestionnaire sans rôle SUPER_ADMIN, règles de séquencement et backlog ACCESS différé consignés avant INSCRIPTIONS-011 |
 | 1.2.79 | 2026-08-09 | Engagement du cadrage ACCESS-002 comme chantier transverse prioritaire avant INSCRIPTIONS-011 : administration des comptes Google, rôles, modules, cours et capacités ; confirmation qu’un rôle n’accorde aucun module implicitement et qu’un professeur peut n’avoir aucun accès Présences ; correction de la trajectoire après clôture d’INSCRIPTIONS-010 |
 | 1.2.78 | 2026-08-09 | Clôture d’INSCRIPTIONS-010 après validation et fusion de la PR applicative #89 dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ; suite finale 455/455 et recette Google isolée conservées ; prochain incrément à cadrer séparément, SIKADA restant bloqué faute de fixture anonymisée validée |
 | 1.2.77 | 2026-08-09 | INSCRIPTIONS-010 réaligné sur AUDIT-001 intégré : tête applicative `0da406b`, suite finale 455/455, recette Google isolée concluante pour le schéma, une séquence et une commande fictive ; anomalie de typage Sheets détectée puis corrigée ; limites des scénarios Google de concurrence/interruption conservées, PR #89 toujours en brouillon avant validation documentaire #103 et revue |
