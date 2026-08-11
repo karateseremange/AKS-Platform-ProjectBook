@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.7.0 |
-| **Statut** | En préparation — retrait des droits implicites `ADMINISTRATEUR` validé en recette ; mutation non autorisée |
+| **Version** | 0.8.0 |
+| **Statut** | Correctif du précontrôle d’audit en revue — nouvelle application interdite |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-09 |
+| **Dernière mise à jour** | 2026-08-11 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -21,7 +21,13 @@ L’incrément doit permettre à `aserridj@gmail.com` de disposer explicitement 
 
 Le protocole applicatif réversible est intégré dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. La première tête de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée et validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore des droits implicites au rôle `ADMINISTRATEUR`. La tête corrigée `747c9a3` a ensuite été synchronisée avec **229 fichiers** et validée dans Apps Script à **497/497 tests, 0 échec**. Le présent état n'autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
 
-## 2. Point de départ vérifié
+## 2. Anomalie observée le 11 août 2026
+
+Après autorisation de la recette réversible, `AKS_applyAccess002Recipe` s’est arrêtée sur `ACCESS_AUDIT_REQUIRED` lors de la persistance de la preuve `INTENTION`. Le journal d’audit exposait `environment:"production"` et `AUDIT_RECIPE_REQUIRED`, alors que les gardes ACCESS confirmaient la cible `RECETTE`. L’échec est donc intervenu avant l’écriture du registre ; la sauvegarde temporaire a été supprimée par le mécanisme de récupération. Un nouveau précontrôle a confirmé `accountCountBefore:0`, `accountCountProposed:1` et `writePerformed:false`.
+
+Cause : le précontrôle ACCESS validait la cible, les identités et le registre proposé, mais pas `audit.isPersistentRecipeAudit()`. Le correctif applicatif ajoute ce contrôle avant la lecture préparatoire du registre et refuse fermé avec `ACCESS_RECIPE_AUDIT_REQUIRED`, sans écriture. Un test dédié vérifie le refus et l’absence totale d’opération sur les Script Properties. Toute nouvelle application ou restauration reste interdite jusqu’à intégration, synchronisation dans la recette et précontrôle concluant.
+
+## 4. Point de départ vérifié
 
 `ACCESS-002-01` est intégré dans `develop` au commit applicatif `91ba7e3`. Le prérequis permettant d'attribuer explicitement `ACCESS_MANAGE` a ensuite été intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8).
 
@@ -43,7 +49,7 @@ Le socle fournit déjà :
 - une restauration vérifiée lorsque la persistance ou la preuve finale échoue ;
 - le bootstrap historique, limité au cas où le registre est absent.
 
-## 3. Protocole applicatif intégré et reste à faire
+## 4. Protocole applicatif intégré et reste à faire
 
 Le lot intégré autorise désormais une affectation transverse `ACCESS` et calcule `ACCESS_MANAGE` depuis cette habilitation explicite. Il vérifie notamment :
 
@@ -59,7 +65,7 @@ Le lot intégré fournit trois fonctions éditeur internes, sans route Web ordin
 
 Le précontrôle a révélé que la recette intégrée proposait encore `CONSULTATION + ACCESS_MANAGE`. Le Product Owner a confirmé le modèle cible `ADMINISTRATEUR + ACCESS_MANAGE`. Une première correction a aligné la structure, mais la revue finale a détecté que le moteur conservait quatre voies d'héritage implicite. Le correctif `7dacc7b` les retire et ajoute un test de droits effectifs : `ACCESS_MANAGE` est autorisé par l'affectation explicite, tandis que Présences et Inscriptions sont refusées. La mutation réversible demeure interdite jusqu'à synchronisation, validation cumulative réelle, intégration du correctif et autorisation explicite distincte.
 
-## 4. Modèle compatible proposé
+## 5. Modèle compatible proposé
 
 Le schéma reste `access/1.0`. L’évolution autorise une affectation transverse présentant exactement les caractéristiques suivantes :
 
@@ -78,7 +84,7 @@ Le schéma reste `access/1.0`. L’évolution autorise une affectation transvers
 
 Le bootstrap historique reste temporairement accepté lorsque le registre est absent. Le rôle `ADMINISTRATEUR` reste une valeur descriptive du schéma `access/1.0`, mais son héritage automatique de capacités est retiré dès `ACCESS-002-02`. `ACCESS-002-06` conserve la migration définitive des modules et le retrait du filet historique résiduel ; il ne doit pas réintroduire de droits implicites liés au rôle.
 
-## 5. État initial cible du premier gestionnaire
+## 6. État initial cible du premier gestionnaire
 
 Le premier enregistrement réel proposé est limité au besoin de migration :
 
@@ -94,7 +100,7 @@ Le premier enregistrement réel proposé est limité au besoin de migration :
 
 Les droits métier ne sont jamais obtenus du seul rôle `ADMINISTRATEUR`. Leur inventaire et leur attribution explicite relèvent des incréments suivants, au plus tard `ACCESS-002-06`.
 
-## 6. Périmètre applicatif intégré
+## 7. Périmètre applicatif intégré
 
 Le lot applicatif intégré couvre uniquement :
 
@@ -110,7 +116,7 @@ Le lot applicatif intégré couvre uniquement :
 
 Le lot ne contient aucune adresse réelle, aucune valeur de registre et aucun identifiant de projet. Les paramètres d'exécution seront fournis uniquement au moment d'une recette autorisée.
 
-## 7. Hors périmètre
+## 8. Hors périmètre
 
 Sont exclus de cet incrément :
 
@@ -123,7 +129,7 @@ Sont exclus de cet incrément :
 - tout accès client direct au registre ou à la commande d’amorçage ;
 - tout déploiement ou bascule de production implicite.
 
-## 8. Garde d’exécution obligatoire
+## 9. Garde d’exécution obligatoire
 
 L’amorçage doit échouer fermé avant toute écriture si l’une des conditions suivantes n’est pas satisfaite :
 
@@ -140,7 +146,7 @@ L’amorçage doit échouer fermé avant toute écriture si l’une des conditio
 
 Le mode de précontrôle retourne uniquement des indicateurs minimisés. Il ne sérialise jamais le registre complet dans les journaux.
 
-## 9. Idempotence, sauvegarde et retour arrière
+## 10. Idempotence, sauvegarde et retour arrière
 
 L’opération doit être idempotente :
 
@@ -153,7 +159,7 @@ Avant mutation, l’état précédent est sauvegardé dans un support technique 
 
 Le retour arrière restaure exactement l’état antérieur attendu, le relit, vérifie sa révision et produit une preuve d’audit corrélée. Une divergence interdit toute confirmation de réussite.
 
-## 10. Séquence d’exécution
+## 11. Séquence d’exécution
 
 ### Phase A — implémentation sans donnée réelle
 
@@ -187,7 +193,7 @@ Le retour arrière restaure exactement l’état antérieur attendu, le relit, v
 
 Cette phase nécessite une autorisation distincte portant explicitement sur le compte, le registre, les preuves d’audit et l’environnement réels. Elle reprend la séquence de la phase B, sans supprimer le filet historique.
 
-## 11. Scénarios de validation minimaux
+## 12. Scénarios de validation minimaux
 
 | ID | Scénario | Résultat attendu |
 |---|---|---|
@@ -208,7 +214,7 @@ Cette phase nécessite une autorisation distincte portant explicitement sur le c
 
 La suite cumulative doit rester sans échec. Le nombre final de tests sera consigné à partir de l’exécution réelle, sans estimation documentaire.
 
-## 12. Preuves attendues
+## 13. Preuves attendues
 
 La clôture exige au minimum :
 
@@ -226,13 +232,13 @@ La clôture exige au minimum :
 
 Les preuves documentaires restent minimisées : aucun jeton, secret, contenu intégral du registre ou donnée d’audit sensible n’est copié dans le Project Book.
 
-## 13. Conditions d’arrêt
+## 14. Conditions d’arrêt
 
 L’opération s’arrête immédiatement en cas d’identité inattendue, registre illisible ou divergent, audit indisponible, verrou indisponible, révision concurrente, sauvegarde non vérifiée, erreur de restauration, résultat cumulatif en échec ou doute sur l’environnement ciblé.
 
 Après un arrêt, aucune relance n’est effectuée avant diagnostic et nouvelle validation de l’état persistant.
 
-## 14. Critères d’acceptation
+## 15. Critères d’acceptation
 
 `ACCESS-002-02` pourra être clôturé lorsque :
 
@@ -249,7 +255,7 @@ Après un arrêt, aucune relance n’est effectuée avant diagnostic et nouvelle
 
 `ACCESS-002-03` ne peut commencer qu’après satisfaction de ces critères et clôture documentaire de l’incrément.
 
-## 15. Autorisations distinctes requises
+## 16. Autorisations distinctes requises
 
 Le cadrage distingue quatre décisions qui ne doivent pas être confondues :
 
@@ -260,7 +266,7 @@ Le cadrage distingue quatre décisions qui ne doivent pas être confondues :
 
 Une fusion, une opération sur `main`, un déploiement ou une suppression du filet historique restent également soumis à une autorisation explicite.
 
-## 16. Feuille de contrôle de la future recette
+## 17. Feuille de contrôle de la future recette
 
 Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preuves minimisées après une exécution autorisée.
 
@@ -281,10 +287,11 @@ Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preu
 
 Tant que la ligne « Mutation de recette explicitement autorisée » reste non autorisée, seules l'implémentation sans donnée réelle, les validations locales et la synchronisation de code vers le projet isolé sont permises.
 
-## 17. Historique
+## 18. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.8.0 | 2026-08-11 | Application arrêtée avant écriture sur `AUDIT_RECIPE_REQUIRED` ; registre confirmé intact par précontrôle ; correctif préparé pour exiger l’audit persistant dès le précontrôle, avec refus fermé et test sans mutation |
 | 0.7.0 | 2026-08-09 | Tête corrigée `747c9a3` synchronisée avec 229 fichiers et validée dans Apps Script à 497/497, confirmant le rôle `ADMINISTRATEUR` descriptif et `ACCESS_MANAGE` explicite ; application et restauration non exécutées, registre inchangé |
 | 0.6.0 | 2026-08-09 | Revue finale de la première tête 496/496 bloquée par les droits implicites du rôle ; correctif fonctionnel `7dacc7b` préparé avec rôle strictement descriptif, bootstrap limité au registre absent, validations ciblées concluantes et suite cumulative portée à 497 tests uniques, nouvelle exécution Apps Script requise |
 | 0.5.0 | 2026-08-09 | Correctif `ADMINISTRATEUR + ACCESS_MANAGE` de la PR applicative #96 synchronisé sur sa tête `395de24` avec 229 fichiers et validé à 496/496, sans application, restauration ni mutation du registre |
