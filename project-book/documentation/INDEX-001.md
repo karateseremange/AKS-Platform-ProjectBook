@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.2 |
+| Version | 1.3.3 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-08-09 |
+| Dernière mise à jour | 2026-08-11 |
 | Version du produit | Post-V1.3 |
 
 ---
@@ -121,9 +121,9 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-01 clôturé ; correctif fonctionnel ACCESS-002-02 validé en recette | 0.4.6 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-02 bloqué jusqu’au précontrôle d’audit corrigé | 0.4.7 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
-| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | En préparation — retrait des droits implicites `ADMINISTRATEUR` validé en recette ; mutation non autorisée | 0.7.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #96, `e800bdb`, `bbedf0a`, `747c9a3` |
+| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Correctif du précontrôle d’audit en revue — nouvelle application interdite | 0.8.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #96, `e800bdb`, `bbedf0a`, `747c9a3` |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
@@ -299,6 +299,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.3 | 2026-08-11 | ACCESS-002-02 0.8.0 et ACCESS-002 0.4.7 : échec d’audit avant écriture consigné, registre intact confirmé et garde-fou d’audit ajouté au précontrôle ; ROADMAP-001 1.2.94 alignée |
 | 1.3.2 | 2026-08-09 | ACCESS-002-02 passé en 0.7.0 après synchronisation de 229 fichiers et validation réelle 497/497 de la tête corrigée `747c9a3` de la PR applicative #96 ; ACCESS-002 0.4.6 et ROADMAP-001 1.2.93 alignés, application et restauration non exécutées |
 | 1.3.1 | 2026-08-09 | ACCESS-002-02 passé en 0.6.0 après blocage de la première tête 496/496 : correctif `7dacc7b` préparé pour rendre `ADMINISTRATEUR` strictement descriptif, suite portée à 497 tests uniques ; ACCESS-002 0.4.5 et ROADMAP-001 1.2.92 alignés, nouvelle recette Apps Script requise |
 | 1.3.0 | 2026-08-09 | ACCESS-002-02 passé en 0.5.0 après synchronisation de 229 fichiers et validation réelle 496/496 de la tête `395de24` de la PR applicative #96 ; ACCESS-002 0.4.4 et ROADMAP-001 1.2.91 alignés, application et restauration non exécutées |
