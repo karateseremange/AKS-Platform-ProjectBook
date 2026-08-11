@@ -27,7 +27,7 @@ Après autorisation de la recette réversible, `AKS_applyAccess002Recipe` s’es
 
 Cause : le précontrôle ACCESS validait la cible, les identités et le registre proposé, mais pas `audit.isPersistentRecipeAudit()`. Le correctif applicatif ajoute ce contrôle avant la lecture préparatoire du registre et refuse fermé avec `ACCESS_RECIPE_AUDIT_REQUIRED`, sans écriture. Un test dédié vérifie le refus et l’absence totale d’opération sur les Script Properties. Toute nouvelle application ou restauration reste interdite jusqu’à intégration, synchronisation dans la recette et précontrôle concluant.
 
-## 4. Point de départ vérifié
+## 3. Point de départ vérifié
 
 `ACCESS-002-01` est intégré dans `develop` au commit applicatif `91ba7e3`. Le prérequis permettant d'attribuer explicitement `ACCESS_MANAGE` a ensuite été intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8).
 
