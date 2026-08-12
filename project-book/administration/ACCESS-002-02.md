@@ -304,7 +304,7 @@ Une fusion, une opération sur `main`, un déploiement ou une suppression du fil
 
 | Contrôle | État constaté | Preuve minimisée |
 |---|---|---|
-| Projet Apps Script isolé et `scriptId` confirmés | Confirmé pour la synchronisation du code | Nom et suffixe minimisé de l'identifiant à reconfirmer avant exécution |
+| Projet Apps Script isolé et `scriptId` confirmés | Confirmé : `RECETTE`, suffixe `eIRxs4` | Confirmé |
 | Branche et commit applicatifs exacts | `develop` au commit `a1181ed76941eca241df088135d70110f5d9db37` | Confirmé |
 | Identité gestionnaire de recette autorisée | Configurée : `a***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Identité de refus autorisée | Configurée : `s***@gmail.com` | Adresse masquée ou identifiant de scénario |
