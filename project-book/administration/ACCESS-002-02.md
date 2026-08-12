@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.8.0 |
-| **Statut** | Correctif du précontrôle d’audit en revue — nouvelle application interdite |
+| **Version** | 0.9.0 |
+| **Statut** | Second correctif du précontrôle d’audit en revue — application interdite |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-11 |
+| **Dernière mise à jour** | 2026-08-12 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -26,6 +26,14 @@ Le protocole applicatif réversible est intégré dans la recette Apps Script is
 Après autorisation de la recette réversible, `AKS_applyAccess002Recipe` s’est arrêtée sur `ACCESS_AUDIT_REQUIRED` lors de la persistance de la preuve `INTENTION`. Le journal d’audit exposait `environment:"production"` et `AUDIT_RECIPE_REQUIRED`, alors que les gardes ACCESS confirmaient la cible `RECETTE`. L’échec est donc intervenu avant l’écriture du registre ; la sauvegarde temporaire a été supprimée par le mécanisme de récupération. Un nouveau précontrôle a confirmé `accountCountBefore:0`, `accountCountProposed:1` et `writePerformed:false`.
 
 Cause : le précontrôle ACCESS validait la cible, les identités et le registre proposé, mais pas `audit.isPersistentRecipeAudit()`. Le correctif applicatif ajoute ce contrôle avant la lecture préparatoire du registre et refuse fermé avec `ACCESS_RECIPE_AUDIT_REQUIRED`, sans écriture. Un test dédié vérifie le refus et l’absence totale d’opération sur les Script Properties. Toute nouvelle application ou restauration reste interdite jusqu’à intégration, synchronisation dans la recette et précontrôle concluant.
+
+### 2.1 Faux positif du précontrôle observé le 12 août 2026
+
+Après intégration du premier correctif, la tête `ff0431f` a été synchronisée vers le projet Apps Script de recette (`eIRxs4`) avec 229 fichiers. La suite cumulative a réussi à **498/498 tests, 0 échec**. Toutefois, `AKS_preflightAccess002Recipe` a encore retourné `ok:true` alors que le support d’audit n’avait pas été démontré opérationnel.
+
+La revue du code a identifié la cause exacte : `isPersistentRecipeAudit()` retournait une constante `true` dans le service et dans le port public. Le premier test ne simulait qu’un retour booléen `false` et ne détectait donc pas ce faux positif d’intégration. Le second correctif fait exécuter la validation réelle du support — environnement `RECETTE`, identifiant et nom exacts du classeur `AKS Audit RECETTE`, version et en-têtes — sans verrou, écriture ni preuve persistée. Toute erreur est réduite en `ACCESS_RECIPE_AUDIT_REQUIRED` par la recette ACCESS.
+
+L’application et la restauration restent interdites jusqu’à intégration de ce second correctif, nouvelle synchronisation, campagne cumulative sans échec et précontrôle produisant le refus attendu tant que l’audit n’est pas raccordé.
 
 ## 3. Point de départ vérifié
 
@@ -291,6 +299,7 @@ Tant que la ligne « Mutation de recette explicitement autorisée » reste non a
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.9.0 | 2026-08-12 | Tête `ff0431f` synchronisée, campagne cumulative 498/498 réussie, puis faux positif du précontrôle identifié : `isPersistentRecipeAudit()` retournait toujours `true` ; second correctif préparé pour valider réellement le support sans écriture et convertir tout échec en `ACCESS_RECIPE_AUDIT_REQUIRED` |
 | 0.8.0 | 2026-08-11 | Application arrêtée avant écriture sur `AUDIT_RECIPE_REQUIRED` ; registre confirmé intact par précontrôle ; correctif préparé pour exiger l’audit persistant dès le précontrôle, avec refus fermé et test sans mutation |
 | 0.7.0 | 2026-08-09 | Tête corrigée `747c9a3` synchronisée avec 229 fichiers et validée dans Apps Script à 497/497, confirmant le rôle `ADMINISTRATEUR` descriptif et `ACCESS_MANAGE` explicite ; application et restauration non exécutées, registre inchangé |
 | 0.6.0 | 2026-08-09 | Revue finale de la première tête 496/496 bloquée par les droits implicites du rôle ; correctif fonctionnel `7dacc7b` préparé avec rôle strictement descriptif, bootstrap limité au registre absent, validations ciblées concluantes et suite cumulative portée à 497 tests uniques, nouvelle exécution Apps Script requise |
