@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.10 |
-| **Statut** | Réalisation engagée — raccordement réversible AUDIT/ACCESS en revue |
+| **Version** | 0.4.11 |
+| **Statut** | Réalisation engagée — ACCESS-002-02 validé, ACCESS-002-03 à cadrer |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-12 |
+| **Dernière mise à jour** | 2026-08-13 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -339,7 +339,9 @@ Les validations locales atteignent 193/193 fichiers `.gs` syntaxiquement valides
 
 Le précontrôle en lecture seule a ensuite réussi sur la cible isolée : registre absent, zéro compte avant, un compte proposé et `writePerformed:false`. Il a permis d'identifier avant toute mutation un écart entre le rôle `CONSULTATION` proposé par le code et le rôle descriptif `ADMINISTRATEUR` validé. Le Product Owner a confirmé `ADMINISTRATEUR + ACCESS_MANAGE`, sans `SUPER_ADMIN`, exception d'adresse ni autre capacité attribuée par la recette. La première tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** puis validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore implicitement toutes les capacités au rôle. La fusion a été bloquée avant mutation.
 
-Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet héritage dès qu'un registre existe, conserve le bootstrap historique uniquement lorsque le registre est absent et vérifie les droits effectifs du compte amorcé. Les suites ciblées ACCESS réussissent à **57/57**, Inscriptions à **19/19**, le cycle Audit–registre ACCESS à **1/1** et la syntaxe à **196/196**. La tête corrigée a été synchronisée avec **229 fichiers** dans la recette Apps Script isolée, puis la suite cumulative réelle a réussi à **497/497 tests, 0 échec**. L'application et la restauration restent non exécutées et non autorisées ; l'amorçage réel de `aserridj@gmail.com` demeure une phase ultérieure séparée.
+Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet héritage dès qu'un registre existe, conserve le bootstrap historique uniquement lorsque le registre est absent et vérifie les droits effectifs du compte amorcé. Après les correctifs d’audit et de couverture cumulative, le commit applicatif `a1181ed` a été synchronisé avec **229 fichiers** dans la recette Apps Script isolée, puis la suite cumulative réelle a réussi à **507/507 tests, 0 échec**.
+
+La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT persistante vérifiée, précontrôle sans écriture, application explicitement autorisée, accès gestionnaire et refus non habilité confirmés, preuves `INTENTION` et `REUSSI` persistantes pour l’application puis la restauration, révision initiale restaurée exactement, sauvegarde ACCESS supprimée, configuration AUDIT antérieure restaurée exactement et sauvegarde AUDIT supprimée. Aucun état temporaire ne subsiste ; l’amorçage permanent et la production restent hors périmètre. `ACCESS-002-03 — Administration des utilisateurs` devient le prochain incrément à cadrer.
 
 ---
 
@@ -347,6 +349,7 @@ Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.11 | 2026-08-13 | ACCESS-002-02 validé après synchronisation du commit `a1181ed`, campagne 507/507 et cycle réversible complet : audit connecté, application et accès/refus prouvés, restauration ACCESS puis déconnexion AUDIT exactes ; aucun état temporaire ou changement de production, ACCESS-002-03 devient le prochain incrément à cadrer |
 | 0.4.10 | 2026-08-12 | Campagne cumulative 502/502 validée et garde-fou réel confirmé ; raccordement AUDIT persistant réversible préparé avec déconnexion interdite avant restauration ACCESS et reprise sûre des états partiels, prochaine campagne attendue à 507 tests |
 | 0.4.9 | 2026-08-12 | `555ddd3` synchronisé et corpus antérieur validé à 498/498 ; trois tests d’audit omis de l’agrégateur cumulatif, correctif engagé avec garde structurel et nouvelle campagne attendue à 502 tests |
 | 0.4.8 | 2026-08-12 | Campagne cumulative 498/498 réussie après synchronisation de `ff0431f`, mais faux positif du précontrôle confirmé ; second correctif engagé pour vérifier réellement le support d’audit avant toute lecture ou mutation ACCESS |

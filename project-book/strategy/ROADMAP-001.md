@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.97 |
+| **Version** | 1.2.98 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-12 |
+| **Dernière mise à jour** | 2026-08-13 |
 
 ---
 
@@ -795,7 +795,7 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-`ACCESS-002-03` ne démarre pas tant que la recette réelle d’`ACCESS-002-02` n’est pas validée. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
+La recette réversible d’`ACCESS-002-02` est validée : campagne 507/507, accès et refus attendus, preuves persistantes corrélées, restauration exacte du registre puis de la configuration AUDIT. `ACCESS-002-03` devient le prochain incrément à cadrer. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.98 | 2026-08-13 | ACCESS-002-02 clôturé après synchronisation de `a1181ed`, campagne 507/507 et recette réversible complète avec preuves persistantes, restauration exacte d’ACCESS puis d’AUDIT ; ACCESS-002-03 devient le prochain incrément à cadrer |
 | 1.2.97 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : campagne 502/502 validée, garde-fou audit réel confirmé par refus attendu, raccordement persistant réversible avec reprise des états partiels préparé et prochaine campagne attendue à 507 tests |
 | 1.2.96 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : corpus antérieur validé à 498/498 après synchronisation de `555ddd3`, mais trois nouveaux tests omis de la suite cumulative ; correction et garde structurel préparés, prochaine campagne attendue à 502 tests |
 | 1.2.95 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : `ff0431f` synchronisé et 498/498 validés, mais faux positif du précontrôle d’audit confirmé ; second correctif de validation réelle préparé, application et restauration toujours interdites |
