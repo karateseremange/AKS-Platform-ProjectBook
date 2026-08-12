@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.11 |
-| **Statut** | Réalisation engagée — ACCESS-002-02 validé, ACCESS-002-03 à cadrer |
+| **Version** | 0.4.12 |
+| **Statut** | Réalisation engagée — cadrage ACCESS-002-03 en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -341,7 +341,9 @@ Le précontrôle en lecture seule a ensuite réussi sur la cible isolée : regis
 
 Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet héritage dès qu'un registre existe, conserve le bootstrap historique uniquement lorsque le registre est absent et vérifie les droits effectifs du compte amorcé. Après les correctifs d’audit et de couverture cumulative, le commit applicatif `a1181ed` a été synchronisé avec **229 fichiers** dans la recette Apps Script isolée, puis la suite cumulative réelle a réussi à **507/507 tests, 0 échec**.
 
-La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT persistante vérifiée, précontrôle sans écriture, application explicitement autorisée, accès gestionnaire et refus non habilité confirmés, preuves `INTENTION` et `REUSSI` persistantes pour l’application puis la restauration, révision initiale restaurée exactement, sauvegarde ACCESS supprimée, configuration AUDIT antérieure restaurée exactement et sauvegarde AUDIT supprimée. Aucun état temporaire ne subsiste ; l’amorçage permanent et la production restent hors périmètre. `ACCESS-002-03 — Administration des utilisateurs` devient le prochain incrément à cadrer.
+La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT persistante vérifiée, précontrôle sans écriture, application explicitement autorisée, accès gestionnaire et refus non habilité confirmés, preuves `INTENTION` et `REUSSI` persistantes pour l’application puis la restauration, révision initiale restaurée exactement, sauvegarde ACCESS supprimée, configuration AUDIT antérieure restaurée exactement et sauvegarde AUDIT supprimée. Aucun état temporaire ne subsiste ; l’amorçage permanent et la production restent hors périmètre. Cette validation permet d’ouvrir le cadrage d’`ACCESS-002-03 — Administration des utilisateurs`.
+
+Le premier cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la liste, la recherche, les filtres, la synthèse « Qui a accès à quoi ? », la création minimale d’un compte inactif sans habilitation et son cycle d’activation/désactivation. La fiche multi-rôle et l’édition détaillée des modules, cours, capacités et périodes restent dans `ACCESS-002-04`. Les décisions proposées doivent être validées avant toute implémentation.
 
 ---
 
@@ -349,6 +351,7 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.12 | 2026-08-13 | Premier cadrage d’ACCESS-002-03 en revue : projection serveur, liste/recherche/filtres, création inactive sans habilitation, activation/désactivation, synthèse des accès effectifs et séparation stricte de la fiche détaillée ACCESS-002-04 |
 | 0.4.11 | 2026-08-13 | ACCESS-002-02 validé après synchronisation du commit `a1181ed`, campagne 507/507 et cycle réversible complet : audit connecté, application et accès/refus prouvés, restauration ACCESS puis déconnexion AUDIT exactes ; aucun état temporaire ou changement de production, ACCESS-002-03 devient le prochain incrément à cadrer |
 | 0.4.10 | 2026-08-12 | Campagne cumulative 502/502 validée et garde-fou réel confirmé ; raccordement AUDIT persistant réversible préparé avec déconnexion interdite avant restauration ACCESS et reprise sûre des états partiels, prochaine campagne attendue à 507 tests |
 | 0.4.9 | 2026-08-12 | `555ddd3` synchronisé et corpus antérieur validé à 498/498 ; trois tests d’audit omis de l’agrégateur cumulatif, correctif engagé avec garde structurel et nouvelle campagne attendue à 502 tests |
