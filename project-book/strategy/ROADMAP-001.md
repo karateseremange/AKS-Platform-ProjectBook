@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.94 |
+| **Version** | 1.2.95 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-11 |
+| **Dernière mise à jour** | 2026-08-12 |
 
 ---
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.95 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : `ff0431f` synchronisé et 498/498 validés, mais faux positif du précontrôle d’audit confirmé ; second correctif de validation réelle préparé, application et restauration toujours interdites |
 | 1.2.94 | 2026-08-11 | ACCESS-002-02 maintenu prioritaire : application arrêtée avant mutation faute d’audit persistant de recette ; correctif du précontrôle préparé et nouvelle application interdite jusqu’à validation |
 | 1.2.93 | 2026-08-09 | Tête corrigée `747c9a3` de la PR #96 synchronisée avec 229 fichiers et validée à 497/497 ; retrait des capacités implicites de `ADMINISTRATEUR` confirmé, sans application, restauration ni mutation du registre |
 | 1.2.92 | 2026-08-09 | Première tête de la PR #96 bloquée malgré 496/496 ; correctif fonctionnel `7dacc7b` préparé pour supprimer les capacités implicites de `ADMINISTRATEUR`, limiter le bootstrap au registre absent et porter la suite à 497 tests uniques avant nouvelle recette Apps Script |
