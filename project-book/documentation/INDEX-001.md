@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.5 |
+| Version | 1.3.6 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-12 |
@@ -121,9 +121,9 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-02 bloqué jusqu’à validation cumulative complète de l’audit | 0.4.9 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — raccordement réversible AUDIT/ACCESS en revue | 0.4.10 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
-| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Couverture cumulative du précontrôle d’audit en correction — application interdite | 0.10.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #96, `e800bdb`, `bbedf0a`, `747c9a3` |
+| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Raccordement réversible de l’audit en revue — application interdite | 0.11.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #96, `e800bdb`, `bbedf0a`, `747c9a3` |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
@@ -299,6 +299,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.6 | 2026-08-12 | ACCESS-002-02 0.11.0 et ACCESS-002 0.4.10 : campagne 502/502 validée, refus réel de l’audit confirmé et raccordement persistant réversible préparé ; ROADMAP-001 1.2.97 alignée |
 | 1.3.5 | 2026-08-12 | ACCESS-002-02 0.10.0 et ACCESS-002 0.4.9 : 498/498 du corpus antérieur validés, omission de trois tests dans l’agrégateur consignée et garde structurel ajouté ; ROADMAP-001 1.2.96 alignée |
 | 1.3.4 | 2026-08-12 | ACCESS-002-02 0.9.0 et ACCESS-002 0.4.8 : 498/498 réussis après synchronisation, faux positif du premier garde-fou documenté et second correctif de validation réelle de l’audit engagé ; ROADMAP-001 1.2.95 alignée |
 | 1.3.3 | 2026-08-11 | ACCESS-002-02 0.8.0 et ACCESS-002 0.4.7 : échec d’audit avant écriture consigné, registre intact confirmé et garde-fou d’audit ajouté au précontrôle ; ROADMAP-001 1.2.94 alignée |
