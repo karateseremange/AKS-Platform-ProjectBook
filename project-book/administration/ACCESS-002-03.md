@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-03 |
 | **Titre** | Liste, recherche et cycle de vie des comptes d’accès |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage en revue — aucune implémentation engagée |
+| **Version** | 0.2.0 |
+| **Statut** | Cadrage validé — implémentation non engagée |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -261,9 +261,9 @@ Aucune donnée réelle n’est modifiée pendant les trois premiers lots. Toute 
 10. aucune fonctionnalité d’`ACCESS-002-04`, production ou branche `main` n’est modifiée ;
 11. le Project Book reflète exactement l’état livré.
 
-## 14. Décisions à valider
+## 14. Décisions validées
 
-Le présent cadrage propose les décisions suivantes :
+Le Product Owner a validé le 13 août 2026 les décisions suivantes :
 
 1. création par défaut en statut `INACTIVE` ;
 2. un rôle descriptif initial obligatoire, sans multi-rôle dans cet incrément ;
@@ -273,10 +273,11 @@ Le présent cadrage propose les décisions suivantes :
 6. filtres combinables sur statut, rôle, module et état temporel ;
 7. aucun amorçage permanent requis pour implémenter et tester les lots sans donnée réelle.
 
-L’implémentation ne doit commencer qu’après validation de ces décisions et intégration du cadrage documentaire dans `develop`.
+L’implémentation ne doit commencer qu’après intégration du cadrage documentaire dans `develop`. Cette validation fonctionnelle n’autorise aucune mutation de donnée réelle, recette modifiant le registre, production, branche `main` ou déploiement.
 
 ## 15. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-13 | Validation Product Owner des sept décisions : création inactive, rôle descriptif initial unique, aucune habilitation à la création, réactivation avec effacement confirmé des anciennes affectations, liste sans pagination au volume actuel, filtres combinables et intégration documentaire préalable à l’implémentation |
 | 0.1.0 | 2026-08-13 | Premier cadrage d’ACCESS-002-03 : liste et synthèse « Qui a accès à quoi ? », recherche/filtres, création inactive sans habilitation, activation/désactivation, projection serveur, route protégée, audit, concurrence, recette réversible et séparation stricte d’ACCESS-002-04 |

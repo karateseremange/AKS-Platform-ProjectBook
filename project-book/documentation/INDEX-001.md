@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.8 |
+| Version | 1.3.9 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-13 |
@@ -121,10 +121,10 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — cadrage ACCESS-002-03 en revue | 0.4.12 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — cadrage ACCESS-002-03 validé | 0.4.13 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
-| ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Cadrage en revue — aucune implémentation engagée | 0.1.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001 |
+| ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Cadrage validé — implémentation non engagée | 0.2.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
@@ -300,6 +300,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.9 | 2026-08-13 | Validation d’ACCESS-002-03 0.2.0 et passage d’ACCESS-002 en 0.4.13 : sept décisions de cadrage approuvées, implémentation maintenue non engagée avant intégration ; ROADMAP-001 1.3.0 alignée |
 | 1.3.8 | 2026-08-13 | Référencement d’ACCESS-002-03 0.1.0 et passage d’ACCESS-002 en 0.4.12 : liste/recherche/filtres, création inactive sans habilitation, cycle d’activation/désactivation et synthèse des accès proposés avant implémentation ; ROADMAP-001 1.2.99 alignée |
 | 1.3.7 | 2026-08-13 | ACCESS-002-02 1.0.0 validé après campagne 507/507 et cycle réversible complet avec preuves persistantes, restaurations exactes d’ACCESS et d’AUDIT ; ACCESS-002 0.4.11 et ROADMAP-001 1.2.98 alignés sur le cadrage suivant d’ACCESS-002-03 |
 | 1.3.6 | 2026-08-12 | ACCESS-002-02 0.11.0 et ACCESS-002 0.4.10 : campagne 502/502 validée, refus réel de l’audit confirmé et raccordement persistant réversible et récupérable après état partiel préparé ; ROADMAP-001 1.2.97 alignée |
