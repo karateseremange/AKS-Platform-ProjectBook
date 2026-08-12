@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.11.0 |
-| **Statut** | Raccordement réversible de l’audit en revue — application interdite |
+| **Version** | 1.0.0 |
+| **Statut** | Validé — recette réversible concluante |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-12 |
+| **Dernière mise à jour** | 2026-08-13 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -19,7 +19,7 @@
 
 L’incrément doit permettre à `aserridj@gmail.com` de disposer explicitement de `ACCESS_MANAGE`, vérifier les accès autorisés et refusés ainsi que les preuves d’audit, puis conserver l’ancien mécanisme `AKS.Admin.Access` comme filet temporaire de récupération.
 
-Le protocole applicatif réversible est intégré dans la recette Apps Script isolée. Les quatre propriétés de garde ont été configurées et le précontrôle en lecture seule a réussi. La première tête de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée et validée à **496/496 tests, 0 échec**, mais la revue finale a montré que le moteur accordait encore des droits implicites au rôle `ADMINISTRATEUR`. La tête corrigée `747c9a3` a ensuite été synchronisée avec **229 fichiers** et validée dans Apps Script à **497/497 tests, 0 échec**. Le présent état n'autorise aucune application ni restauration, modification du registre, modification de compte ou déploiement.
+Le protocole applicatif réversible est intégré dans la recette Apps Script isolée. Après les corrections successives du modèle d’habilitation, du garde-fou d’audit et de sa couverture cumulative, le commit applicatif [`a1181ed`](https://github.com/karateseremange/AKS-Platform/commit/a1181ed76941eca241df088135d70110f5d9db37) a été synchronisé avec **229 fichiers** et validé à **507/507 tests, 0 échec**. La recette complète a ensuite démontré le précontrôle sans écriture, l’application autorisée, les accès et refus attendus, les preuves d’audit persistantes, la restauration exacte du registre puis la restauration exacte de la configuration AUDIT. `ACCESS-002-02` est clôturé sans modification de `main`, de la production ni amorçage permanent.
 
 ## 2. Anomalie observée le 11 août 2026
 
@@ -49,13 +49,21 @@ La recette AUDIT-001 existante ne pouvait pas satisfaire ACCESS : elle installai
 
 La séquence imposée devient : connexion AUDIT, précontrôle ACCESS, application ACCESS autorisée, contrôles, restauration ACCESS, puis seulement déconnexion AUDIT. Le correctif ajoute cinq tests et porte la prochaine campagne cumulative attendue à **507 tests**.
 
+### 2.4 Validation finale de la recette réversible
+
+Le commit applicatif `a1181ed` a été synchronisé le 12 août 2026 avec **229 fichiers** dans le projet Apps Script isolé (`eIRxs4`). La campagne cumulative réelle a réussi à **507/507 tests, 0 échec**. La connexion AUDIT-001 a vérifié le classeur de recette attendu, sa sauvegarde et son raccordement persistant avant toute opération ACCESS.
+
+Le précontrôle ACCESS a confirmé la cible `RECETTE`, le registre absent, zéro compte avant, un compte proposé et `writePerformed:false`. Après autorisation explicite, l’application a créé l’état réversible attendu : le gestionnaire disposait de `ACCESS_MANAGE`, l’identité non habilitée restait refusée, la sauvegarde était vérifiée et les deux preuves persistantes `INTENTION` puis `REUSSI` partageaient la corrélation minimisée `corr-access-6f5e…57ff`.
+
+Après une seconde autorisation explicite, la restauration a rétabli exactement la révision initiale `access-rev/1-4-x0xxgk-yj2w2m`, supprimé la sauvegarde ACCESS et produit deux nouvelles preuves persistantes `INTENTION` puis `REUSSI`, corrélées sous `corr-access002-restore-668d…3132` avec `restored:true`. La déconnexion AUDIT-001, autorisée séparément, a ensuite restauré exactement sa configuration antérieure et supprimé sa propre sauvegarde. Aucun état ACCESS temporaire ni raccordement AUDIT temporaire ne subsiste.
+
 ## 3. Point de départ vérifié
 
 `ACCESS-002-01` est intégré dans `develop` au commit applicatif `91ba7e3`. Le prérequis permettant d'attribuer explicitement `ACCESS_MANAGE` a ensuite été intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8).
 
 La [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95) a intégré le protocole réversible dans `develop` au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). Sa tête testée `be7323a` a été synchronisée avec **229 fichiers** dans le projet Apps Script isolé `[RECETTE] AKS Inscriptions`. La campagne cumulative réelle a réussi à **495/495 tests, 0 échec**. Les validations ciblées ont réussi à **19/19** pour ACCESS-002-01, **7/7** pour l'habilitation explicite et **11/11** pour le protocole réversible ; la syntaxe a été vérifiée sur **196/196 fichiers**.
 
-`AKS_preflightAccess002Recipe` a été exécutée avec succès : cible `RECETTE`, suffixe de script `eIRxs4`, registre absent, zéro compte avant et un compte proposé, avec `writePerformed:false`. `AKS_applyAccess002Recipe` et `AKS_restoreAccess002Recipe` n'ont pas été exécutées. Aucun registre, compte ou environnement de production n'a été modifié.
+`AKS_preflightAccess002Recipe` a été exécutée avec succès : cible `RECETTE`, suffixe de script `eIRxs4`, registre absent, zéro compte avant et un compte proposé, avec `writePerformed:false`. La campagne finale a ensuite exécuté l’application et la restauration autorisées : l’état temporaire a été audité, puis le registre et la configuration AUDIT ont été restaurés exactement. Aucun environnement de production n’a été modifié.
 
 La tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** dans le même projet Apps Script isolé. La campagne cumulative réelle a réussi à **496/496 tests, 0 échec**. Elle prouvait la structure du registre proposé, mais pas l'absence de droits effectifs hérités du rôle. La revue finale a donc bloqué la fusion avant toute mutation.
 
@@ -85,7 +93,7 @@ Le bootstrap historique reste une voie temporaire de récupération uniquement l
 
 Le lot intégré fournit trois fonctions éditeur internes, sans route Web ordinaire : précontrôle, application et restauration. Les paramètres de recette sont fournis à l'exécution, sans adresse, valeur de registre ni identifiant de projet codé en dur. L'application est sérialisée sous verrou de script ; une exécution concurrente échoue avant toute mutation et ne peut annuler un état validé par une autre exécution.
 
-Le précontrôle a révélé que la recette intégrée proposait encore `CONSULTATION + ACCESS_MANAGE`. Le Product Owner a confirmé le modèle cible `ADMINISTRATEUR + ACCESS_MANAGE`. Une première correction a aligné la structure, mais la revue finale a détecté que le moteur conservait quatre voies d'héritage implicite. Le correctif `7dacc7b` les retire et ajoute un test de droits effectifs : `ACCESS_MANAGE` est autorisé par l'affectation explicite, tandis que Présences et Inscriptions sont refusées. La mutation réversible demeure interdite jusqu'à synchronisation, validation cumulative réelle, intégration du correctif et autorisation explicite distincte.
+Le précontrôle a révélé que la recette intégrée proposait encore `CONSULTATION + ACCESS_MANAGE`. Le Product Owner a confirmé le modèle cible `ADMINISTRATEUR + ACCESS_MANAGE`. Une première correction a aligné la structure, mais la revue finale a détecté que le moteur conservait quatre voies d'héritage implicite. Le correctif `7dacc7b` les retire et ajoute un test de droits effectifs : `ACCESS_MANAGE` est autorisé par l'affectation explicite, tandis que Présences et Inscriptions sont refusées. La recette réversible finale a confirmé ce modèle sans conserver la mutation temporaire.
 
 ## 5. Modèle compatible proposé
 
@@ -196,7 +204,7 @@ Le retour arrière restaure exactement l’état antérieur attendu, le relit, v
 9. cette tête est synchronisée avec **229 fichiers** et validée dans Apps Script à **497/497 tests, 0 échec** ;
 10. aucune fonction d'application ou de restauration n'est exécutée pendant cette phase.
 
-### Phase B — recette isolée et réversible
+### Phase B — recette isolée et réversible exécutée
 
 1. confirmer le nom du projet, son `scriptId`, l'identité active et l'environnement ;
 2. renseigner séparément une identité gestionnaire de recette et une identité de refus autorisées ;
@@ -214,6 +222,8 @@ Le retour arrière restaure exactement l’état antérieur attendu, le relit, v
 ### Phase C — amorçage réel
 
 Cette phase nécessite une autorisation distincte portant explicitement sur le compte, le registre, les preuves d’audit et l’environnement réels. Elle reprend la séquence de la phase B, sans supprimer le filet historique.
+
+Elle n’a pas été exécutée dans le cadre d’`ACCESS-002-02`, dont la validation porte exclusivement sur la recette isolée et entièrement restaurée.
 
 ## 12. Scénarios de validation minimaux
 
@@ -277,6 +287,8 @@ Après un arrêt, aucune relance n’est effectuée avant diagnostic et nouvelle
 
 `ACCESS-002-03` ne peut commencer qu’après satisfaction de ces critères et clôture documentaire de l’incrément.
 
+Ces critères sont satisfaits pour la recette isolée et réversible. L’amorçage permanent éventuel reste une décision séparée et n’est pas une condition de démarrage d’`ACCESS-002-03`.
+
 ## 16. Autorisations distinctes requises
 
 Le cadrage distingue quatre décisions qui ne doivent pas être confondues :
@@ -288,31 +300,30 @@ Le cadrage distingue quatre décisions qui ne doivent pas être confondues :
 
 Une fusion, une opération sur `main`, un déploiement ou une suppression du filet historique restent également soumis à une autorisation explicite.
 
-## 17. Feuille de contrôle de la future recette
+## 17. Feuille de contrôle de la recette exécutée
 
-Cette feuille est préparatoire. Elle ne doit être complétée qu'avec des preuves minimisées après une exécution autorisée.
-
-| Contrôle | État avant exécution | Preuve attendue |
+| Contrôle | État constaté | Preuve minimisée |
 |---|---|---|
 | Projet Apps Script isolé et `scriptId` confirmés | Confirmé pour la synchronisation du code | Nom et suffixe minimisé de l'identifiant à reconfirmer avant exécution |
-| Branche et commit applicatifs exacts | `develop` au commit `bbedf0a` ; correctif fonctionnel testé sur la tête `747c9a3` de la PR #96 | SHA complet |
+| Branche et commit applicatifs exacts | `develop` au commit `a1181ed76941eca241df088135d70110f5d9db37` | Confirmé |
 | Identité gestionnaire de recette autorisée | Configurée : `a***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Identité de refus autorisée | Configurée : `s***@gmail.com` | Adresse masquée ou identifiant de scénario |
 | Précontrôle sans écriture | Réussi : cible `RECETTE`, registre absent, 0 compte avant, 1 proposé, `writePerformed:false` | Résultat et horodatage |
-| Sauvegarde créée, relue et vérifiée | Non exécuté | Empreinte et révision minimisées |
-| Mutation de recette explicitement autorisée | Non autorisée | Référence de l'autorisation |
-| Accès gestionnaire | Non exécuté | Résultat côté serveur |
-| Refus non habilité | Non exécuté | Code d'erreur attendu |
-| Audit corrélé | Non exécuté | Identifiants de corrélation minimisés |
-| Restauration exacte | Non exécutée | Révision et empreinte après restauration |
-| Suite cumulative finale | Réussie : tête `747c9a3`, 229 fichiers synchronisés, **497/497 tests, 0 échec** | Résultat observé après synchronisation de la tête corrigée |
+| Sauvegarde créée, relue et vérifiée | Confirmé pendant l’application | `backupVerified:true` |
+| Mutation de recette explicitement autorisée | Autorisée puis exécutée | Autorisation Product Owner consignée |
+| Accès gestionnaire | Confirmé | `managerAccess:true` |
+| Refus non habilité | Confirmé | `deniedAccess:false` |
+| Audit corrélé | Confirmé pour application et restauration | Deux couples `INTENTION` / `REUSSI` persistants |
+| Restauration exacte | Confirmée | Révision initiale rétablie, `exactRestore:true`, sauvegarde supprimée |
+| Suite cumulative finale | Réussie : commit `a1181ed`, 229 fichiers synchronisés, **507/507 tests, 0 échec** | Résultat observé après synchronisation finale |
 
-Tant que la ligne « Mutation de recette explicitement autorisée » reste non autorisée, seules l'implémentation sans donnée réelle, les validations locales et la synchronisation de code vers le projet isolé sont permises.
+La configuration AUDIT temporaire a elle aussi été restaurée exactement après suppression de la sauvegarde ACCESS. La phase de recette est terminée.
 
 ## 18. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-13 | Clôture d’ACCESS-002-02 : commit `a1181ed` synchronisé avec 229 fichiers, campagne 507/507, connexion AUDIT vérifiée, précontrôle sans écriture, application autorisée avec accès/refus et preuves persistantes corrélées, restauration exacte du registre et déconnexion AUDIT avec restauration exacte de sa configuration ; aucun état temporaire, production ou `main` modifié |
 | 0.11.0 | 2026-08-12 | Campagne 502/502 validée puis refus attendu `ACCESS_RECIPE_AUDIT_REQUIRED` ; mécanisme temporaire AUDIT-001 identifié comme insuffisant, raccordement persistant réversible préparé avec sauvegarde strictement validée, idempotence, reprise des restaurations partielles, ordre de restauration protégé et prochaine campagne attendue à 507 tests |
 | 0.10.0 | 2026-08-12 | Après synchronisation de `555ddd3`, campagne 498/498 sans échec mais trois nouveaux tests absents de l’agrégateur cumulatif ; correction préparée pour les enregistrer et ajouter un garde structurel, prochaine campagne attendue à 502 tests |
 | 0.9.0 | 2026-08-12 | Tête `ff0431f` synchronisée, campagne cumulative 498/498 réussie, puis faux positif du précontrôle identifié : `isPersistentRecipeAudit()` retournait toujours `true` ; second correctif préparé pour valider réellement le support sans écriture et convertir tout échec en `ACCESS_RECIPE_AUDIT_REQUIRED` |
