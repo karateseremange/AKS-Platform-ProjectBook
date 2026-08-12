@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.7 |
-| **Statut** | Réalisation engagée — ACCESS-002-02 bloqué jusqu’au précontrôle d’audit corrigé |
+| **Version** | 0.4.8 |
+| **Statut** | Réalisation engagée — ACCESS-002-02 bloqué jusqu’à validation réelle de l’audit |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-11 |
+| **Dernière mise à jour** | 2026-08-12 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -347,6 +347,7 @@ Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.8 | 2026-08-12 | Campagne cumulative 498/498 réussie après synchronisation de `ff0431f`, mais faux positif du précontrôle confirmé ; second correctif engagé pour vérifier réellement le support d’audit avant toute lecture ou mutation ACCESS |
 | 0.4.7 | 2026-08-11 | Recette ACCESS-002-02 arrêtée avant écriture faute d’audit persistant de recette ; registre intact confirmé ; correctif du précontrôle d’audit préparé, nouvelle application interdite avant validation |
 | 0.4.6 | 2026-08-09 | Correctif fonctionnel de la PR #96 validé sur la tête `747c9a3` : 229 fichiers synchronisés et campagne cumulative réelle 497/497, sans application, restauration ni mutation du registre |
 | 0.4.5 | 2026-08-09 | Revue finale de la PR #96 bloquée malgré 496/496 : retrait préparé des droits implicites `ADMINISTRATEUR`, bootstrap limité au registre absent, validations ciblées locales concluantes et suite cumulative portée à 497 tests uniques avant nouvelle recette Apps Script |
