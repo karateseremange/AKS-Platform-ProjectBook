@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.95 |
+| **Version** | 1.2.96 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-12 |
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.96 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : corpus antérieur validé à 498/498 après synchronisation de `555ddd3`, mais trois nouveaux tests omis de la suite cumulative ; correction et garde structurel préparés, prochaine campagne attendue à 502 tests |
 | 1.2.95 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : `ff0431f` synchronisé et 498/498 validés, mais faux positif du précontrôle d’audit confirmé ; second correctif de validation réelle préparé, application et restauration toujours interdites |
 | 1.2.94 | 2026-08-11 | ACCESS-002-02 maintenu prioritaire : application arrêtée avant mutation faute d’audit persistant de recette ; correctif du précontrôle préparé et nouvelle application interdite jusqu’à validation |
 | 1.2.93 | 2026-08-09 | Tête corrigée `747c9a3` de la PR #96 synchronisée avec 229 fichiers et validée à 497/497 ; retrait des capacités implicites de `ADMINISTRATEUR` confirmé, sans application, restauration ni mutation du registre |

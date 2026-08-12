@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-02 |
 | **Titre** | Amorçage contrôlé et migration du premier gestionnaire ACCESS |
-| **Version** | 0.9.0 |
-| **Statut** | Second correctif du précontrôle d’audit en revue — application interdite |
+| **Version** | 0.10.0 |
+| **Statut** | Couverture cumulative du précontrôle d’audit en correction — application interdite |
 | **Nature** | Spécification d’incrément, plan de migration et de recette |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-12 |
@@ -34,6 +34,12 @@ Après intégration du premier correctif, la tête `ff0431f` a été synchronis�
 La revue du code a identifié la cause exacte : `isPersistentRecipeAudit()` retournait une constante `true` dans le service et dans le port public. Le premier test ne simulait qu’un retour booléen `false` et ne détectait donc pas ce faux positif d’intégration. Le second correctif fait exécuter la validation réelle du support — environnement `RECETTE`, identifiant et nom exacts du classeur `AKS Audit RECETTE`, version et en-têtes — sans verrou, écriture ni preuve persistée. Toute erreur est réduite en `ACCESS_RECIPE_AUDIT_REQUIRED` par la recette ACCESS.
 
 L’application et la restauration restent interdites jusqu’à intégration de ce second correctif, nouvelle synchronisation, campagne cumulative sans échec et précontrôle produisant le refus attendu tant que l’audit n’est pas raccordé.
+
+### 2.2 Omission cumulative observée le 12 août 2026
+
+Après fusion du second correctif au commit `555ddd3`, 229 fichiers ont été synchronisés dans la recette. `AKS_runV11TestSuite` a retourné **498/498 tests réussis, 0 échec**, au lieu des 501 annoncés. Le code et les trois tests ciblés étaient présents, mais `TestSuiteV11.gs` n’enregistrait pas ces nouveaux scénarios dans la campagne cumulative.
+
+Le correctif ajoute les trois tests manquants et un garde structurel qui échoue si cette couverture critique disparaît de la suite cumulative. La prochaine campagne attendue comporte donc **502 tests** : les 498 existants, les trois scénarios de validation réelle de l’audit et le garde de couverture. Le résultat 498/498 reste une preuve valide de non-régression du corpus antérieur, mais ne valide pas encore le correctif d’audit.
 
 ## 3. Point de départ vérifié
 
@@ -299,6 +305,7 @@ Tant que la ligne « Mutation de recette explicitement autorisée » reste non a
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.10.0 | 2026-08-12 | Après synchronisation de `555ddd3`, campagne 498/498 sans échec mais trois nouveaux tests absents de l’agrégateur cumulatif ; correction préparée pour les enregistrer et ajouter un garde structurel, prochaine campagne attendue à 502 tests |
 | 0.9.0 | 2026-08-12 | Tête `ff0431f` synchronisée, campagne cumulative 498/498 réussie, puis faux positif du précontrôle identifié : `isPersistentRecipeAudit()` retournait toujours `true` ; second correctif préparé pour valider réellement le support sans écriture et convertir tout échec en `ACCESS_RECIPE_AUDIT_REQUIRED` |
 | 0.8.0 | 2026-08-11 | Application arrêtée avant écriture sur `AUDIT_RECIPE_REQUIRED` ; registre confirmé intact par précontrôle ; correctif préparé pour exiger l’audit persistant dès le précontrôle, avec refus fermé et test sans mutation |
 | 0.7.0 | 2026-08-09 | Tête corrigée `747c9a3` synchronisée avec 229 fichiers et validée dans Apps Script à 497/497, confirmant le rôle `ADMINISTRATEUR` descriptif et `ACCESS_MANAGE` explicite ; application et restauration non exécutées, registre inchangé |
