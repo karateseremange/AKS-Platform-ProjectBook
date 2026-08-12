@@ -45,9 +45,9 @@ Le correctif ajoute les trois tests manquants et un garde structurel qui échoue
 
 La campagne cumulative corrigée a réussi à **502/502 tests, 0 échec**. Le précontrôle ACCESS a ensuite refusé comme attendu avec `ACCESS_RECIPE_AUDIT_REQUIRED`, confirmant le fonctionnement réel du garde-fou et l’absence de raccordement persistant.
 
-La recette AUDIT-001 existante ne pouvait pas satisfaire ACCESS : elle installait ses trois paramètres uniquement pendant `AKS_runAudit001Recipe`, puis restaurait immédiatement leurs valeurs antérieures. Le correctif ajoute `AKS_connectAudit001Recipe` et `AKS_disconnectAudit001Recipe`. La connexion sauvegarde exactement les trois valeurs antérieures, installe la configuration `RECETTE`, vérifie le support sans produire de preuve d’audit et reste idempotente. La déconnexion refuse de s’exécuter tant que la sauvegarde ACCESS existe, puis restaure exactement la configuration antérieure et supprime sa sauvegarde.
+La recette AUDIT-001 existante ne pouvait pas satisfaire ACCESS : elle installait ses trois paramètres uniquement pendant `AKS_runAudit001Recipe`, puis restaurait immédiatement leurs valeurs antérieures. Le correctif ajoute `AKS_connectAudit001Recipe` et `AKS_disconnectAudit001Recipe`. La connexion sauvegarde exactement les trois valeurs antérieures, installe la configuration `RECETTE`, vérifie le support sans produire de preuve d’audit et reste idempotente. La déconnexion refuse de s’exécuter tant que la sauvegarde ACCESS existe, puis restaure exactement la configuration antérieure et supprime sa sauvegarde. Un état partiellement restauré reste récupérable : chaque paramètre doit correspondre soit à la valeur installée, soit à la valeur antérieure ; toute troisième valeur concurrente est refusée. La sauvegarde est validée strictement avant utilisation.
 
-La séquence imposée devient : connexion AUDIT, précontrôle ACCESS, application ACCESS autorisée, contrôles, restauration ACCESS, puis seulement déconnexion AUDIT. Le correctif ajoute quatre tests et porte la prochaine campagne cumulative attendue à **506 tests**.
+La séquence imposée devient : connexion AUDIT, précontrôle ACCESS, application ACCESS autorisée, contrôles, restauration ACCESS, puis seulement déconnexion AUDIT. Le correctif ajoute cinq tests et porte la prochaine campagne cumulative attendue à **507 tests**.
 
 ## 3. Point de départ vérifié
 
@@ -313,7 +313,7 @@ Tant que la ligne « Mutation de recette explicitement autorisée » reste non a
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.11.0 | 2026-08-12 | Campagne 502/502 validée puis refus attendu `ACCESS_RECIPE_AUDIT_REQUIRED` ; mécanisme temporaire AUDIT-001 identifié comme insuffisant, raccordement persistant réversible préparé avec sauvegarde exacte, idempotence, ordre de restauration protégé et prochaine campagne attendue à 506 tests |
+| 0.11.0 | 2026-08-12 | Campagne 502/502 validée puis refus attendu `ACCESS_RECIPE_AUDIT_REQUIRED` ; mécanisme temporaire AUDIT-001 identifié comme insuffisant, raccordement persistant réversible préparé avec sauvegarde strictement validée, idempotence, reprise des restaurations partielles, ordre de restauration protégé et prochaine campagne attendue à 507 tests |
 | 0.10.0 | 2026-08-12 | Après synchronisation de `555ddd3`, campagne 498/498 sans échec mais trois nouveaux tests absents de l’agrégateur cumulatif ; correction préparée pour les enregistrer et ajouter un garde structurel, prochaine campagne attendue à 502 tests |
 | 0.9.0 | 2026-08-12 | Tête `ff0431f` synchronisée, campagne cumulative 498/498 réussie, puis faux positif du précontrôle identifié : `isPersistentRecipeAudit()` retournait toujours `true` ; second correctif préparé pour valider réellement le support sans écriture et convertir tout échec en `ACCESS_RECIPE_AUDIT_REQUIRED` |
 | 0.8.0 | 2026-08-11 | Application arrêtée avant écriture sur `AUDIT_RECIPE_REQUIRED` ; registre confirmé intact par précontrôle ; correctif préparé pour exiger l’audit persistant dès le précontrôle, avec refus fermé et test sans mutation |
