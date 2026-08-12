@@ -299,7 +299,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.3.6 | 2026-08-12 | ACCESS-002-02 0.11.0 et ACCESS-002 0.4.10 : campagne 502/502 validée, refus réel de l’audit confirmé et raccordement persistant réversible préparé ; ROADMAP-001 1.2.97 alignée |
+| 1.3.6 | 2026-08-12 | ACCESS-002-02 0.11.0 et ACCESS-002 0.4.10 : campagne 502/502 validée, refus réel de l’audit confirmé et raccordement persistant réversible et récupérable après état partiel préparé ; ROADMAP-001 1.2.97 alignée |
 | 1.3.5 | 2026-08-12 | ACCESS-002-02 0.10.0 et ACCESS-002 0.4.9 : 498/498 du corpus antérieur validés, omission de trois tests dans l’agrégateur consignée et garde structurel ajouté ; ROADMAP-001 1.2.96 alignée |
 | 1.3.4 | 2026-08-12 | ACCESS-002-02 0.9.0 et ACCESS-002 0.4.8 : 498/498 réussis après synchronisation, faux positif du premier garde-fou documenté et second correctif de validation réelle de l’audit engagé ; ROADMAP-001 1.2.95 alignée |
 | 1.3.3 | 2026-08-11 | ACCESS-002-02 0.8.0 et ACCESS-002 0.4.7 : échec d’audit avant écriture consigné, registre intact confirmé et garde-fou d’audit ajouté au précontrôle ; ROADMAP-001 1.2.94 alignée |
