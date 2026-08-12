@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.0 |
+| **Version** | 1.3.1 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -795,7 +795,7 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-La recette réversible d’`ACCESS-002-02` est validée : campagne 507/507, accès et refus attendus, preuves persistantes corrélées, restauration exacte du registre puis de la configuration AUDIT. Le cadrage d’`ACCESS-002-03` est validé ; il retient la liste, la recherche, les filtres, la création inactive sans habilitation, l’activation/désactivation et la synthèse « Qui a accès à quoi ? », sans engager la fiche détaillée d’`ACCESS-002-04`. L’implémentation commencera après intégration du cadrage dans `develop`. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
+La recette réversible d’`ACCESS-002-02` est validée : campagne 507/507, accès et refus attendus, preuves persistantes corrélées, restauration exacte du registre puis de la configuration AUDIT. Le cadrage d’`ACCESS-002-03` est validé et intégré. Son premier lot de projection serveur en lecture seule est publié dans la [PR applicative brouillon #101](https://github.com/karateseremange/AKS-Platform/pull/101), avec 10/10 tests ciblés, 198/198 fichiers `.gs` syntaxiquement valides et 517 références cumulatives uniques préparées ; aucune campagne Apps Script ni donnée réelle n’a encore été exécutée. La fiche détaillée reste réservée à `ACCESS-002-04`. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.1 | 2026-08-13 | ACCESS-002-03 engagé par la PR applicative brouillon #101 : lot 1 limité à la projection serveur en lecture seule, validé localement à 10/10, syntaxe 198/198 et inventaire cumulatif préparé à 517 références uniques, sans recette Apps Script ni donnée réelle |
 | 1.3.0 | 2026-08-13 | Cadrage ACCESS-002-03 validé : sept décisions fonctionnelles approuvées, séparation d’ACCESS-002-04 confirmée et implémentation maintenue non engagée avant intégration documentaire |
 | 1.2.99 | 2026-08-13 | ACCESS-002-03 ouvert au cadrage : liste/recherche/filtres, création inactive sans habilitation, activation/désactivation, synthèse des accès effectifs et séparation d’ACCESS-002-04 proposées avant toute implémentation |
 | 1.2.98 | 2026-08-13 | ACCESS-002-02 clôturé après synchronisation de `a1181ed`, campagne 507/507 et recette réversible complète avec preuves persistantes, restauration exacte d’ACCESS puis d’AUDIT ; ACCESS-002-03 devient le prochain incrément à cadrer |
