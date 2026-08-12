@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.9 |
-| **Statut** | Réalisation engagée — ACCESS-002-02 bloqué jusqu’à validation cumulative complète de l’audit |
+| **Version** | 0.4.10 |
+| **Statut** | Réalisation engagée — raccordement réversible AUDIT/ACCESS en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-12 |
@@ -347,6 +347,7 @@ Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.10 | 2026-08-12 | Campagne cumulative 502/502 validée et garde-fou réel confirmé ; raccordement AUDIT persistant réversible préparé avec déconnexion interdite avant restauration ACCESS et reprise sûre des états partiels, prochaine campagne attendue à 507 tests |
 | 0.4.9 | 2026-08-12 | `555ddd3` synchronisé et corpus antérieur validé à 498/498 ; trois tests d’audit omis de l’agrégateur cumulatif, correctif engagé avec garde structurel et nouvelle campagne attendue à 502 tests |
 | 0.4.8 | 2026-08-12 | Campagne cumulative 498/498 réussie après synchronisation de `ff0431f`, mais faux positif du précontrôle confirmé ; second correctif engagé pour vérifier réellement le support d’audit avant toute lecture ou mutation ACCESS |
 | 0.4.7 | 2026-08-11 | Recette ACCESS-002-02 arrêtée avant écriture faute d’audit persistant de recette ; registre intact confirmé ; correctif du précontrôle d’audit préparé, nouvelle application interdite avant validation |
