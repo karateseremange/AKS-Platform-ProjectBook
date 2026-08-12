@@ -955,7 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.2.97 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : campagne 502/502 validée, garde-fou audit réel confirmé par refus attendu, raccordement persistant réversible préparé et prochaine campagne attendue à 506 tests |
+| 1.2.97 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : campagne 502/502 validée, garde-fou audit réel confirmé par refus attendu, raccordement persistant réversible avec reprise des états partiels préparé et prochaine campagne attendue à 507 tests |
 | 1.2.96 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : corpus antérieur validé à 498/498 après synchronisation de `555ddd3`, mais trois nouveaux tests omis de la suite cumulative ; correction et garde structurel préparés, prochaine campagne attendue à 502 tests |
 | 1.2.95 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : `ff0431f` synchronisé et 498/498 validés, mais faux positif du précontrôle d’audit confirmé ; second correctif de validation réelle préparé, application et restauration toujours interdites |
 | 1.2.94 | 2026-08-11 | ACCESS-002-02 maintenu prioritaire : application arrêtée avant mutation faute d’audit persistant de recette ; correctif du précontrôle préparé et nouvelle application interdite jusqu’à validation |
