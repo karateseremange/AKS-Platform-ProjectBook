@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-03 |
 | **Titre** | Liste, recherche et cycle de vie des comptes d’accès |
-| **Version** | 0.6.0 |
-| **Statut** | Réalisation engagée — lot 2 validé |
+| **Version** | 0.7.0 |
+| **Statut** | Réalisation engagée — lot 3 en revue |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -302,10 +302,24 @@ La [PR applicative #102](https://github.com/karateseremange/AKS-Platform/pull/10
 
 Après correction de revue, les validations locales réussissent à **13/13** pour le cycle de vie et **20/20** pour le socle administratif ACCESS. La syntaxe est valide sur **200/200 fichiers `.gs`**. Après fusion, le commit `066aebb` a été synchronisé dans la recette Apps Script avec **233 fichiers**, puis la campagne cumulative réelle a réussi à **532/532 tests, 0 échec**. Aucune commande de cycle de vie ni mutation de registre n’a été exécutée pendant cette campagne.
 
-## 17. Historique
+## 17. Lot 3 — route et interface en revue
+
+La [PR applicative brouillon #103](https://github.com/karateseremange/AKS-Platform/pull/103) publie la route et l’interface d’administration :
+
+- route `?app=access` et chaque appel serveur protégés par `ACCESS_MANAGE` ;
+- destination de navigation absente lorsque cette capacité effective n’est pas confirmée ;
+- liste avec recherche, filtres combinables, compteurs et état vide ;
+- création inactive sans habilitation, désactivation et réactivation avec confirmations explicites ;
+- révision optimiste, identifiant de requête et blocage client des doubles soumissions ;
+- réactivation avec avertissement renforcé avant effacement des anciennes habilitations.
+
+Les **5/5 tests ciblés** de contrôleur, autorisation, navigation et états interactifs réussissent localement. La syntaxe est valide sur **202/202 fichiers `.gs`** et la suite cumulative est préparée à **537 références uniques**. Aucune synchronisation Apps Script, commande de cycle de vie ou mutation de registre n’a été exécutée pour ce lot.
+
+## 18. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.7.0 | 2026-08-13 | Lot 3 publié dans la PR applicative brouillon #103 : route et commandes protégées par ACCESS_MANAGE, navigation conditionnelle, liste/recherche/filtres/états vides, confirmations et blocage des doubles soumissions ; tests ciblés 5/5, syntaxe 202/202 et suite cumulative préparée à 537 références uniques, sans Apps Script ni mutation réelle |
 | 0.6.0 | 2026-08-13 | Lot 2 intégré dans `develop` par la PR applicative #102 au commit `066aebb`, synchronisé avec 233 fichiers puis validé dans Apps Script à 532/532 sans échec ; aucune commande de cycle de vie ni mutation de registre exécutée |
 | 0.5.0 | 2026-08-13 | Lot 2 publié puis corrigé après revue dans la PR applicative brouillon #102 : refus métier audités sans écriture et révision courante exigée avant retour idempotent ; cycle de vie 13/13, socle ACCESS 20/20, syntaxe 200/200 et inventaire cumulatif préparé à 532 références uniques, sans Apps Script ni donnée réelle |
 | 0.4.0 | 2026-08-13 | Lot 1 intégré dans `develop` par la PR applicative #101 au commit `b41787d`, synchronisé avec 231 fichiers dans Apps Script puis validé par la campagne cumulative réelle 518/518 sans échec ; aucune mutation de registre ni donnée réelle |
