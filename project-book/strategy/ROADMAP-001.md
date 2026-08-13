@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.10 |
+| **Version** | 1.3.11 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -795,7 +795,7 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est également clôturé en version 1.0.0 : commit final `9d8e57f`, 248 fichiers synchronisés, campagne **586/586**, recette multi-rôle/Analytics/historique concluante et restaurations ACCESS/AUDIT exactes. `ACCESS-002-05 — Portail privé et Mes accès` devient l’incrément prioritaire suivant.
+`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est également clôturé en version 1.0.0 : commit final `9d8e57f`, 248 fichiers synchronisés, campagne **586/586**, recette multi-rôle/Analytics/historique concluante et restaurations ACCESS/AUDIT exactes. `ACCESS-002-05 — Portail privé et Mes accès` devient l’incrément prioritaire suivant. Son cadrage validé conserve `?app=admin`, personnalise les destinations selon les habilitations effectives, ajoute une projection personnelle en lecture seule et maintient transitoirement les autorisations administratives historiques jusqu’à ACCESS-002-06.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -955,7 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.3.10 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 : commit final `9d8e57f`, 248 fichiers synchronisés, campagne **586/586**, recette réversible conforme, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées ; ACCESS-002-05 devient prioritaire |
+| 1.3.11 | 2026-08-13 | ACCESS-002-05 cadré : Portail AKS personnalisé, Mes accès minimisé, refus neutre sans habilitation, sécurité serveur et compatibilité historique bornée jusqu’à ACCESS-002-06, sans implémentation || 1.3.10 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 : commit final `9d8e57f`, 248 fichiers synchronisés, campagne **586/586**, recette réversible conforme, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées ; ACCESS-002-05 devient prioritaire |
 | 1.3.9 | 2026-08-13 | Cadrage ACCESS-002-04 validé : fiche, multi-rôle, modules Présences/Analytics/Inscriptions/ACCESS, temporalité, synthèse, historique AUDIT et compatibilité `access/1.0` vers `access/1.1`, sans implémentation ni migration |
 | 1.3.8 | 2026-08-13 | ACCESS-002-03 clôturé après intégration de la PR #104 au commit `b120963`, synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète ; cycle vérifié, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
 | 1.3.7 | 2026-08-13 | ACCESS-002-03 lot 4 préparé dans la PR applicative brouillon #104 : protocole réversible du cycle de vie avec restauration exacte et auto-restauration ; 5/5 tests ciblés et suite préparée à 542 références, sans Apps Script ni mutation réelle |
