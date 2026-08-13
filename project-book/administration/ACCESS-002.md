@@ -4,7 +4,7 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.28 |
+| **Version** | 0.4.29 |
 | **Statut** | Réalisation engagée — ACCESS-002-05 cadré |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
@@ -347,7 +347,7 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 [`ACCESS-002-04`](ACCESS-002-04.md) est clôturé en version `1.0.0`. Les PR applicatives #105 à #111 couvrent le schéma `access/1.1`, la fiche multi-rôle, les habilitations indépendantes, la prévisualisation, l’écriture atomique, l’interface et l’historique AUDIT minimisé. Le commit final `9d8e57f` a été synchronisé avec 248 fichiers et validé à **586/586 tests, 0 échec**. La recette réversible a ajouté temporairement `CONSULTATION` et `ANALYTICS_READ`, vérifié la fiche et l’historique, puis restauré exactement le registre initial et la configuration AUDIT ; les deux sauvegardes ont été supprimées. `ACCESS-002-05 — Portail privé et Mes accès` devient le prochain incrément.
 
-[`ACCESS-002-05`](ACCESS-002-05.md) est cadré : le Centre de pilotage devient un portail privé personnalisé selon les habilitations effectives, l’URL `?app=admin` reste compatible et « Mes accès » expose uniquement les droits effectifs de l’identité active. Les destinations administratives historiques restent bornées par `AKS.Admin.Access` jusqu’à ACCESS-002-06 ; le lot 1 est publié dans la PR applicative brouillon #112 avec une projection personnelle effective, un catalogue fermé de destinations et huit tests ciblés ; aucune interface ni donnée réelle n’est modifiée.
+[`ACCESS-002-05`](ACCESS-002-05.md) est cadré : le Centre de pilotage devient un portail privé personnalisé selon les habilitations effectives, l’URL `?app=admin` reste compatible et « Mes accès » expose uniquement les droits effectifs de l’identité active. Les destinations administratives historiques restent bornées par `AKS.Admin.Access` jusqu’à ACCESS-002-06 ; le lot 1 est intégré par la PR applicative #112 au commit `6d1ab91` : projection personnelle effective et catalogue fermé de destinations. Le dépôt a été synchronisé avec 250 fichiers et validé à **594/594 tests, 0 échec**, sans interface ni donnée réelle.
 
 ---
 
@@ -355,7 +355,7 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.4.28 | 2026-08-13 | ACCESS-002-05 lot 1 publié dans la PR applicative brouillon #112 : projection personnelle effective et navigation fermée, 8/8 tests ciblés et cible cumulative **594**, sans interface ni donnée réelle || 0.4.27 | 2026-08-13 | ACCESS-002-05 cadré : portail personnalisé, Mes accès effectif et minimisé, page neutre sans habilitation, compatibilité `?app=admin` et transition historique bornée, sans implémentation || 0.4.26 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 après campagne **586/586** et recette réversible complète : fiche multi-rôle, Analytics et historique vérifiés, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
+| 0.4.29 | 2026-08-13 | ACCESS-002-05 lot 1 validé : PR #112 fusionnée au commit `6d1ab91`, 250 fichiers synchronisés et campagne cumulative **594/594**, sans interface ni donnée réelle || 0.4.28 | 2026-08-13 | ACCESS-002-05 lot 1 publié dans la PR applicative brouillon #112 : projection personnelle effective et navigation fermée, 8/8 tests ciblés et cible cumulative **594**, sans interface ni donnée réelle || 0.4.27 | 2026-08-13 | ACCESS-002-05 cadré : portail personnalisé, Mes accès effectif et minimisé, page neutre sans habilitation, compatibilité `?app=admin` et transition historique bornée, sans implémentation || 0.4.26 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 après campagne **586/586** et recette réversible complète : fiche multi-rôle, Analytics et historique vérifiés, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
 | 0.4.25 | 2026-08-13 | ACCESS-002-04 lot 5 intégré au commit `9d8e57f`, 248 fichiers synchronisés et campagne cumulative **586/586** ; recette réelle non exécutée |
 | 0.4.24 | 2026-08-13 | ACCESS-002-04 lot 5 préparé dans la PR applicative brouillon #111 : recette réversible fiche/historique, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **586**, sans exécution réelle |
 | 0.4.23 | 2026-08-13 | ACCESS-002-04 sous-lot 4B validé : PR #110 fusionnée au commit `6566c48`, 246 fichiers synchronisés et campagne cumulative **581/581** ; historique fonctionnel AUDIT minimisé intégré sans mutation réelle |
