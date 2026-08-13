@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.34 |
-| **Statut** | Réalisation engagée — ACCESS-002-05 lot 4 en revue |
+| **Version** | 0.4.35 |
+| **Statut** | Réalisation engagée — ACCESS-002-05 recette à exécuter |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -355,6 +355,7 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.35 | 2026-08-14 | ACCESS-002-05 lot 4 intégré par la PR #116 au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; recette réelle multi-profils non encore exécutée |
 | 0.4.34 | 2026-08-13 | ACCESS-002-05 lot 4 publié : recette réversible des profils sans accès et Présences uniquement, vérification Portail/Mes accès, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **614**, sans exécution réelle |
 | 0.4.33 | 2026-08-13 | ACCESS-002-05 lot 3 validé : PR #114 fusionnée au commit `c1412ec`, trois régressions corrigées par la PR #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne cumulative finale **609/609**, sans donnée réelle |
 | 0.4.32 | 2026-08-13 | ACCESS-002-05 lot 3 publié dans la PR applicative brouillon #114 au commit `1a2fbcc` : Portail AKS personnalisé, destinations projetées uniquement, états neutre/refus génériques et compatibilité `?app=admin` ; 7/7 tests ciblés, cible cumulative **609**, sans donnée réelle |
