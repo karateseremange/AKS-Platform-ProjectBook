@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.3 |
+| **Version** | 1.3.4 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -795,7 +795,7 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-La recette réversible d’`ACCESS-002-02` est validée : campagne 507/507, accès et refus attendus, preuves persistantes corrélées, restauration exacte du registre puis de la configuration AUDIT. Le premier lot d’`ACCESS-002-03` est intégré et validé à 518/518. Le deuxième lot de commandes minimales est publié dans la [PR applicative brouillon #102](https://github.com/karateseremange/AKS-Platform/pull/102), puis corrigé en revue pour auditer les refus métier et imposer la révision courante avant tout retour idempotent. Les validations locales réussissent à 13/13 pour le cycle de vie et 20/20 pour le socle ACCESS ; 532 références cumulatives sont préparées, sans Apps Script ni donnée réelle à ce stade. La fiche détaillée reste réservée à `ACCESS-002-04`. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
+La recette réversible d’`ACCESS-002-02` est validée : campagne 507/507, accès et refus attendus, preuves persistantes corrélées, restauration exacte du registre puis de la configuration AUDIT. Le premier lot d’`ACCESS-002-03` est validé à 518/518. Le deuxième lot de commandes minimales est intégré par la [PR applicative #102](https://github.com/karateseremange/AKS-Platform/pull/102) au commit `066aebb`. Après synchronisation de 233 fichiers, la campagne Apps Script réelle a réussi à 532/532 sans commande de cycle de vie ni mutation de registre. La fiche détaillée reste réservée à `ACCESS-002-04`. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.4 | 2026-08-13 | ACCESS-002-03 lot 2 intégré par la PR applicative #102 au commit `066aebb`, synchronisé avec 233 fichiers puis validé dans Apps Script à 532/532 sans commande de cycle de vie ni mutation de registre |
 | 1.3.3 | 2026-08-13 | ACCESS-002-03 lot 2 corrigé après revue dans la PR applicative brouillon #102 : refus métier audités et révision courante exigée pour l’idempotence ; cycle de vie 13/13, socle ACCESS 20/20 et suite cumulative préparée à 532 références uniques, sans Apps Script ni donnée réelle |
 | 1.3.2 | 2026-08-13 | ACCESS-002-03 lot 1 intégré par la PR applicative #101 au commit `b41787d`, synchronisé avec 231 fichiers puis validé dans Apps Script à 518/518 sans échec ni mutation de donnée réelle |
 | 1.3.1 | 2026-08-13 | ACCESS-002-03 engagé par la PR applicative brouillon #101 : projection corrigée après revue pour ne déduire les modules que des capacités effectives, validée localement à 11/11, syntaxe 198/198 et inventaire cumulatif préparé à 518 références uniques, sans recette Apps Script ni donnée réelle |

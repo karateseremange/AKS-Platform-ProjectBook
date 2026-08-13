@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.16 |
-| **Statut** | Réalisation engagée — ACCESS-002-03 lot 2 en revue |
+| **Version** | 0.4.17 |
+| **Statut** | Réalisation engagée — ACCESS-002-03 lot 2 validé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -343,7 +343,7 @@ Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet
 
 La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT persistante vérifiée, précontrôle sans écriture, application explicitement autorisée, accès gestionnaire et refus non habilité confirmés, preuves `INTENTION` et `REUSSI` persistantes pour l’application puis la restauration, révision initiale restaurée exactement, sauvegarde ACCESS supprimée, configuration AUDIT antérieure restaurée exactement et sauvegarde AUDIT supprimée. Aucun état temporaire ne subsiste ; l’amorçage permanent et la production restent hors périmètre. Cette validation permet d’ouvrir le cadrage d’`ACCESS-002-03 — Administration des utilisateurs`.
 
-Le cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la liste, la recherche, les filtres, la synthèse « Qui a accès à quoi ? », la création minimale d’un compte inactif sans habilitation et son cycle d’activation/désactivation. La fiche multi-rôle et l’édition détaillée des modules, cours, capacités et périodes restent dans `ACCESS-002-04`. Le premier lot de projection serveur est intégré et validé à 518/518. Le deuxième lot de commandes minimales est publié dans la PR applicative brouillon #102, sans donnée réelle.
+Le cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la liste, la recherche, les filtres, la synthèse « Qui a accès à quoi ? », la création minimale d’un compte inactif sans habilitation et son cycle d’activation/désactivation. La fiche multi-rôle et l’édition détaillée des modules, cours, capacités et périodes restent dans `ACCESS-002-04`. Le premier lot de projection serveur est validé à 518/518. Le deuxième lot de commandes minimales est intégré au commit `066aebb` et validé dans Apps Script à 532/532 après synchronisation de 233 fichiers, sans mutation de registre.
 
 ---
 
@@ -351,6 +351,7 @@ Le cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la li
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.17 | 2026-08-13 | ACCESS-002-03 lot 2 intégré par la PR #102 au commit `066aebb`, 233 fichiers synchronisés et campagne Apps Script 532/532 réussie sans commande de cycle de vie ni mutation de registre |
 | 0.4.16 | 2026-08-13 | ACCESS-002-03 lot 2 corrigé après revue dans la PR applicative brouillon #102 : refus métier audités et révision courante imposée aux retours idempotents ; cycle de vie 13/13, socle ACCESS 20/20, syntaxe 200/200 et suite cumulative préparée à 532 références uniques, sans Apps Script ni donnée réelle |
 | 0.4.15 | 2026-08-13 | ACCESS-002-03 lot 1 intégré par la PR #101 au commit `b41787d`, 231 fichiers synchronisés et campagne cumulative Apps Script 518/518 réussie sans mutation de registre ni donnée réelle |
 | 0.4.14 | 2026-08-13 | ACCESS-002-03 engagé par la PR applicative brouillon #101 : projection serveur corrigée après revue pour dériver les modules des capacités effectives, validée localement à 11/11, syntaxe 198/198 et suite cumulative préparée à 518 références uniques, sans exécution Apps Script ni donnée réelle |

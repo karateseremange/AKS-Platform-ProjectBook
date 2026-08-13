@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-03 |
 | **Titre** | Liste, recherche et cycle de vie des comptes d’accès |
-| **Version** | 0.5.0 |
-| **Statut** | Réalisation engagée — lot 2 en revue |
+| **Version** | 0.6.0 |
+| **Statut** | Réalisation engagée — lot 2 validé |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -288,9 +288,9 @@ La [PR applicative #101](https://github.com/karateseremange/AKS-Platform/pull/10
 
 Les validations locales réussissent à **11/11** pour la suite ciblée, notamment la non-régression qui interdit de déduire un accès Présences du seul rôle descriptif. La syntaxe est valide sur **198/198 fichiers `.gs`**. Après fusion, le commit `b41787d` a été synchronisé dans la recette Apps Script avec **231 fichiers**, puis la campagne cumulative réelle a réussi à **518/518 tests, 0 échec**. La campagne reste strictement en lecture pour ce lot : aucune mutation de registre ni donnée réelle n’a été exécutée.
 
-## 16. Lot 2 — commandes de cycle de vie en revue
+## 16. Lot 2 — commandes de cycle de vie validées
 
-La [PR applicative brouillon #102](https://github.com/karateseremange/AKS-Platform/pull/102) publie les commandes serveur minimales :
+La [PR applicative #102](https://github.com/karateseremange/AKS-Platform/pull/102) a intégré les commandes serveur minimales dans `develop` au commit [`066aebb`](https://github.com/karateseremange/AKS-Platform/commit/066aebb0623d88aa6509f0b90ae9108fd1bf0c86) :
 
 - création inactive avec un rôle descriptif unique et aucune affectation ;
 - désactivation avec conservation des rôles, affectations et métadonnées historiques ;
@@ -300,12 +300,13 @@ La [PR applicative brouillon #102](https://github.com/karateseremange/AKS-Platfo
 - délégation au socle audité `AccessAdmin` pour toute écriture et preuve `REFUSE` pour les refus métier ;
 - contrôle de la révision courante avant tout retour idempotent sans écriture.
 
-Après correction de revue, les validations locales réussissent à **13/13** pour le cycle de vie et **20/20** pour le socle administratif ACCESS. La syntaxe est valide sur **200/200 fichiers `.gs`** et l’inventaire cumulatif préparé contient **532 références uniques**, sans doublon ni fonction manquante. Aucune synchronisation Apps Script, campagne cumulative réelle ou mutation de registre n’a encore été exécutée pour ce lot.
+Après correction de revue, les validations locales réussissent à **13/13** pour le cycle de vie et **20/20** pour le socle administratif ACCESS. La syntaxe est valide sur **200/200 fichiers `.gs`**. Après fusion, le commit `066aebb` a été synchronisé dans la recette Apps Script avec **233 fichiers**, puis la campagne cumulative réelle a réussi à **532/532 tests, 0 échec**. Aucune commande de cycle de vie ni mutation de registre n’a été exécutée pendant cette campagne.
 
 ## 17. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.6.0 | 2026-08-13 | Lot 2 intégré dans `develop` par la PR applicative #102 au commit `066aebb`, synchronisé avec 233 fichiers puis validé dans Apps Script à 532/532 sans échec ; aucune commande de cycle de vie ni mutation de registre exécutée |
 | 0.5.0 | 2026-08-13 | Lot 2 publié puis corrigé après revue dans la PR applicative brouillon #102 : refus métier audités sans écriture et révision courante exigée avant retour idempotent ; cycle de vie 13/13, socle ACCESS 20/20, syntaxe 200/200 et inventaire cumulatif préparé à 532 références uniques, sans Apps Script ni donnée réelle |
 | 0.4.0 | 2026-08-13 | Lot 1 intégré dans `develop` par la PR applicative #101 au commit `b41787d`, synchronisé avec 231 fichiers dans Apps Script puis validé par la campagne cumulative réelle 518/518 sans échec ; aucune mutation de registre ni donnée réelle |
 | 0.3.0 | 2026-08-13 | Premier lot applicatif publié puis corrigé après revue dans la PR brouillon #101 : projection serveur en lecture seule, modules dérivés des capacités réellement effectives, recherche, filtres combinés, tri stable et immutabilité ; tests ciblés 11/11, syntaxe 198/198 et inventaire cumulatif préparé à 518 références uniques, sans exécution Apps Script ni donnée réelle |
