@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-03 |
 | **Titre** | Liste, recherche et cycle de vie des comptes d’accès |
-| **Version** | 0.9.0 |
-| **Statut** | Réalisation engagée — lot 4 en revue |
+| **Version** | 1.0.0 |
+| **Statut** | Validé — recette réversible concluante |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -315,18 +315,19 @@ La [PR applicative #103](https://github.com/karateseremange/AKS-Platform/pull/10
 
 Les **5/5 tests ciblés** de contrôleur, autorisation, navigation et états interactifs réussissent localement. Après fusion, **238 fichiers** ont été synchronisés dans Apps Script et la campagne cumulative réelle a réussi à **537/537 tests, 0 échec**. La page `?app=access`, ses filtres, son formulaire, son état vide et le retour au Centre de pilotage ont été vérifiés avec le compte historique autorisé. La destination conditionnelle est visible pour ce compte. L’accès direct avec `aserridj@gmail.com`, non habilité depuis la restauration réversible du registre, est refusé côté serveur avant toute projection. Aucune commande de cycle de vie ni mutation du registre n’a été exécutée.
 
-## 18. Lot 4 — protocole réversible en revue
+## 18. Lot 4 — recette réversible validée
 
-La [PR applicative brouillon #104](https://github.com/karateseremange/AKS-Platform/pull/104) prépare la recette du cycle de vie sans l’exécuter. Elle réutilise les garde-fous d’ACCESS-002-02 pour confirmer la cible isolée, amorcer temporairement le gestionnaire, sauvegarder la sérialisation exacte et restaurer le registre.
+La [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) a intégré le protocole réversible au commit [`b120963`](https://github.com/karateseremange/AKS-Platform/commit/b120963ebcdf85d39415e9e701c78b092f296ebe). Après synchronisation de **240 fichiers**, la campagne cumulative réelle a réussi à **542/542 tests, 0 échec**.
 
 Le compte de recette, obligatoirement distinct et absent du registre au précontrôle, suit le cycle création inactive sans habilitation, activation sans accès puis désactivation. La projection finale est contrôlée et la sauvegarde est avancée après chaque mutation connue. Tout échec déclenche une restauration automatique ; la restauration nominale reste une étape séparée et explicitement autorisée. Les preuves de restauration recensent le gestionnaire temporaire et le compte de cycle de vie.
 
-Les **5/5 tests ciblés** réussissent localement. La syntaxe est valide sur **204/204 fichiers `.gs`** et la suite cumulative est préparée à **542 références uniques**. Aucune fonction de recette, synchronisation Apps Script ou mutation du registre n’a été exécutée.
+La recette isolée a ensuite confirmé : précontrôle sans écriture sur la révision initiale `access-rev/1-4-x0xxgk-yj2w2m`, raccordement AUDIT réversible, création inactive sans habilitation, activation sans accès, désactivation avec historique et projection visuelle conforme du compte temporaire. La restauration a rétabli exactement la révision initiale et supprimé la sauvegarde ACCESS. La déconnexion AUDIT a restauré exactement sa configuration et supprimé sa sauvegarde. Aucun compte temporaire ni état de recette ne subsiste.
 
 ## 19. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-13 | ACCESS-002-03 clôturé après intégration de la PR #104 au commit `b120963`, synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète ; création/activation/désactivation vérifiées puis registre et configuration AUDIT restaurés exactement, sauvegardes supprimées |
 | 0.9.0 | 2026-08-13 | Lot 4 préparé dans la PR applicative brouillon #104 : recette de cycle de vie réversible, compte distinct, sauvegarde avancée, projection finale, restauration exacte et auto-restauration ; 5/5 tests ciblés, syntaxe 204/204 et suite préparée à 542 références, sans Apps Script ni mutation réelle |
 | 0.8.0 | 2026-08-13 | Lot 3 intégré par la PR applicative #103 au commit `846e666`, synchronisé avec 238 fichiers puis validé à 537/537 ; écran et navigation autorisés vérifiés, accès direct non habilité refusé, sans commande de cycle de vie ni mutation de registre |
 | 0.7.0 | 2026-08-13 | Lot 3 publié dans la PR applicative brouillon #103 : route et commandes protégées par ACCESS_MANAGE, navigation conditionnelle, liste/recherche/filtres/états vides, confirmations et blocage des doubles soumissions ; tests ciblés 5/5, syntaxe 202/202 et suite cumulative préparée à 537 références uniques, sans Apps Script ni mutation réelle |
