@@ -351,7 +351,7 @@ Le cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la li
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.4.14 | 2026-08-13 | ACCESS-002-03 engagé par la PR applicative brouillon #101 : premier lot de projection serveur en lecture seule validé localement à 10/10, syntaxe 198/198 et suite cumulative préparée à 517 références uniques, sans exécution Apps Script ni donnée réelle |
+| 0.4.14 | 2026-08-13 | ACCESS-002-03 engagé par la PR applicative brouillon #101 : projection serveur corrigée après revue pour dériver les modules des capacités effectives, validée localement à 11/11, syntaxe 198/198 et suite cumulative préparée à 518 références uniques, sans exécution Apps Script ni donnée réelle |
 | 0.4.13 | 2026-08-13 | Cadrage ACCESS-002-03 validé par le Product Owner : création inactive avec rôle descriptif initial, aucune habilitation, réactivation avec effacement confirmé, liste sans pagination et filtres combinables ; implémentation non engagée avant intégration documentaire |
 | 0.4.12 | 2026-08-13 | Premier cadrage d’ACCESS-002-03 en revue : projection serveur, liste/recherche/filtres, création inactive sans habilitation, activation/désactivation, synthèse des accès effectifs et séparation stricte de la fiche détaillée ACCESS-002-04 |
 | 0.4.11 | 2026-08-13 | ACCESS-002-02 validé après synchronisation du commit `a1181ed`, campagne 507/507 et cycle réversible complet : audit connecté, application et accès/refus prouvés, restauration ACCESS puis déconnexion AUDIT exactes ; aucun état temporaire ou changement de production, ACCESS-002-03 devient le prochain incrément à cadrer |
