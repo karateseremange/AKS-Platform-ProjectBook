@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-04 |
 | **Titre** | Fiche utilisateur, rôles multiples et habilitations explicites |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage validé — implémentation non engagée |
+| **Version** | 0.2.0 |
+| **Statut** | Lot 1 implémenté — PR applicative #105 en validation |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -127,6 +127,8 @@ La compatibilité inclut :
 
 La migration réelle d’un registre reste une opération de recette puis de production séparément autorisée. ACCESS-002-04 n’autorise pas à lui seul une migration permanente.
 
+Le lot 1 ajoute une protection supplémentaire : une ancienne affectation Présences portant une capacité Analytics reste lisible en `access/1.0`, mais ne peut pas être réenregistrée telle quelle sous l’étiquette `access/1.1`. L’écriture est refusée sans mutation jusqu’à ce qu’une migration explicitement autorisée produise une affectation autonome `ANALYTICS`. Cette règle évite toute extension implicite d’un droit historiquement limité à un cours.
+
 ## 10. Synthèse et confirmation
 
 Avant toute écriture, l’interface affiche :
@@ -202,7 +204,7 @@ Sont exclus :
 
 La réalisation est découpée en cinq lots :
 
-1. **schéma et catalogues** — compatibilité `access/1.0`, modèle canonique `access/1.1`, Analytics autonome et tests purs ;
+1. **schéma et catalogues — implémenté dans la PR #105** — compatibilité `access/1.0`, modèle canonique `access/1.1`, catalogue fermé et immuable, Analytics autonome et dix tests ciblés ;
 2. **projection et prévisualisation** — fiche minimisée, catalogues serveur et synthèse sans écriture ;
 3. **commande atomique** — rôles multiples, habilitations, temporalité, commentaire, audit et protections ;
 4. **interface et historique** — route, cartes, synthèse, confirmations et historique fonctionnel ;
@@ -236,4 +238,5 @@ Le Product Owner a validé le 13 août 2026 les quinze décisions suivantes : fi
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-13 | Lot 1 implémenté dans la PR applicative #105 : schéma canonique `access/1.1`, lecture compatible `access/1.0`, catalogue fermé et immuable, Analytics autonome, refus des écritures historiques non migrées et dix tests ciblés ; aucune donnée réelle modifiée |
 | 0.1.0 | 2026-08-13 | Cadrage initial validé : fiche individuelle, multi-rôle, quatre cartes d’habilitations, temporalité, synthèse/commentaire, historique AUDIT, protections et évolution compatible `access/1.0` vers `access/1.1`, sans implémentation ni donnée réelle |
