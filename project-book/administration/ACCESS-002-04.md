@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-04 |
 | **Titre** | Fiche utilisateur, rôles multiples et habilitations explicites |
-| **Version** | 0.3.1 |
-| **Statut** | Lot 2 validé — lot 3 prêt à démarrer |
+| **Version** | 0.4.0 |
+| **Statut** | Lot 3 implémenté — PR applicative #107 en validation |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -206,7 +206,7 @@ La réalisation est découpée en cinq lots :
 
 1. **schéma et catalogues — validé** — PR applicative #105 fusionnée dans `develop` au commit `58ef718`, 242 fichiers synchronisés dans Apps Script et suite cumulative validée à **552/552** ;
 2. **projection et prévisualisation — validé** — PR applicative #106 fusionnée dans `develop` au commit `a3a175a`, 244 fichiers synchronisés dans Apps Script et suite cumulative validée à **562/562** ;
-3. **commande atomique** — rôles multiples, habilitations, temporalité, commentaire, audit et protections ;
+3. **commande atomique — implémenté dans la PR #107** — remplacement ciblé sous révision et verrou, commentaire et `requestId` bornés, audit persistant, confirmations sensibles, double soumission bornée et restauration exacte ;
 4. **interface et historique** — route, cartes, synthèse, confirmations et historique fonctionnel ;
 5. **recette réversible et clôture** — campagne cumulative, profils représentatifs, restauration exacte et documentation finale.
 
@@ -238,6 +238,7 @@ Le Product Owner a validé le 13 août 2026 les quinze décisions suivantes : fi
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-13 | Lot 3 implémenté dans la PR applicative #107 : commande ciblée atomique, contexte AUDIT, confirmations renforcées, refus sans changement, double soumission bornée et cinq nouveaux scénarios cumulatifs ; aucune donnée réelle modifiée |
 | 0.3.1 | 2026-08-13 | Lot 2 validé par le Product Owner : PR #106 fusionnée au commit `a3a175a`, 244 fichiers synchronisés et suite cumulative Apps Script réussie à **562/562**, sans modification de données réelles |
 | 0.3.0 | 2026-08-13 | Lot 2 implémenté dans la PR applicative #106 : fiche minimisée, catalogues fermés, prévisualisation pure réutilisant le validateur central, protection des comptes inactifs, synthèse des écarts et dix scénarios ciblés ; aucune donnée réelle modifiée |
 | 0.2.1 | 2026-08-13 | Lot 1 validé par le Product Owner : PR #105 fusionnée au commit `58ef718`, 242 fichiers synchronisés et suite cumulative Apps Script réussie à **552/552**, sans modification de données réelles |
