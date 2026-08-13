@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.13 |
+| Version | 1.3.14 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-13 |
@@ -121,10 +121,10 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-03 lot 2 validé | 0.4.17 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-03 lot 3 en revue | 0.4.18 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
-| ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Réalisation engagée — lot 2 validé | 0.6.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #101 et #102, `066aebb` |
+| ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Réalisation engagée — lot 3 en revue | 0.7.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #101 à #103 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
@@ -300,6 +300,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.14 | 2026-08-13 | ACCESS-002-03 0.7.0 et ACCESS-002 0.4.18 : lot 3 publié dans la PR applicative brouillon #103, route et interface protégées, navigation conditionnelle et états interactifs ; tests ciblés 5/5, syntaxe 202/202 et suite cumulative préparée à 537 références uniques, sans Apps Script ni mutation réelle |
 | 1.3.13 | 2026-08-13 | ACCESS-002-03 0.6.0 validé après intégration de la PR #102 au commit `066aebb`, synchronisation de 233 fichiers et campagne Apps Script 532/532 ; ACCESS-002 0.4.17 et ROADMAP-001 1.3.4 alignées, sans commande de cycle de vie ni mutation de registre |
 | 1.3.12 | 2026-08-13 | ACCESS-002-03 0.5.0 et ACCESS-002 0.4.16 : lot 2 corrigé après revue dans la PR applicative brouillon #102, refus métier audités, révision idempotente contrôlée, cycle de vie 13/13, socle ACCESS 20/20 et inventaire cumulatif préparé à 532 références uniques ; ROADMAP-001 1.3.3 alignée, sans Apps Script ni donnée réelle |
 | 1.3.11 | 2026-08-13 | ACCESS-002-03 0.4.0 validé après intégration de la PR #101 au commit `b41787d`, synchronisation de 231 fichiers et campagne Apps Script 518/518 ; ACCESS-002 0.4.15 et ROADMAP-001 1.3.2 alignées, sans mutation de registre ni donnée réelle |
