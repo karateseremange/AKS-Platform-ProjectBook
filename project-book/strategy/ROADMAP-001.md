@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.5 |
+| **Version** | 1.3.6 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -795,7 +795,7 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-La recette réversible d’`ACCESS-002-02` est validée : campagne 507/507, accès et refus attendus, preuves persistantes corrélées, restauration exacte du registre puis de la configuration AUDIT. Le premier lot d’`ACCESS-002-03` est validé à 518/518. Le deuxième lot de commandes minimales est intégré par la [PR applicative #102](https://github.com/karateseremange/AKS-Platform/pull/102) au commit `066aebb`. Après synchronisation de 233 fichiers, la campagne Apps Script réelle a réussi à 532/532 sans commande de cycle de vie ni mutation de registre. Le troisième lot de route et d’interface protégées est en revue dans la [PR applicative brouillon #103](https://github.com/karateseremange/AKS-Platform/pull/103), avec 5/5 tests ciblés réussis et une suite cumulative préparée à 537 références uniques. La fiche détaillée reste réservée à `ACCESS-002-04`. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
+La recette réversible d’`ACCESS-002-02` est validée : campagne 507/507, accès et refus attendus, preuves persistantes corrélées, restauration exacte du registre puis de la configuration AUDIT. Le premier lot d’`ACCESS-002-03` est validé à 518/518. Le deuxième lot de commandes minimales est intégré par la [PR applicative #102](https://github.com/karateseremange/AKS-Platform/pull/102) au commit `066aebb`. Après synchronisation de 233 fichiers, la campagne Apps Script réelle a réussi à 532/532 sans commande de cycle de vie ni mutation de registre. Le troisième lot est intégré par la [PR applicative #103](https://github.com/karateseremange/AKS-Platform/pull/103) au commit `846e666`, synchronisé avec 238 fichiers et validé à 537/537. L’écran et la navigation autorisés fonctionnent ; l’accès direct non habilité est refusé côté serveur sans projection. Aucune commande de cycle de vie ni mutation de registre n’a été exécutée. La fiche détaillée reste réservée à `ACCESS-002-04`. La migration définitive des modules n’intervient qu’après disponibilité de l’administration complète des habilitations. Les tests cumulés et de non-régression sont requis à chaque incrément.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.6 | 2026-08-13 | ACCESS-002-03 lot 3 intégré par la PR applicative #103 au commit `846e666`, synchronisé avec 238 fichiers et validé à 537/537 ; écran/navigation autorisés et refus direct non habilité confirmés, sans commande ni mutation du registre |
 | 1.3.5 | 2026-08-13 | ACCESS-002-03 lot 3 publié dans la PR applicative brouillon #103 : route et interface protégées par ACCESS_MANAGE, navigation conditionnelle, liste, filtres, confirmations et blocage des doubles soumissions ; 5/5 tests ciblés et suite cumulative préparée à 537 références uniques, sans Apps Script ni mutation réelle |
 | 1.3.4 | 2026-08-13 | ACCESS-002-03 lot 2 intégré par la PR applicative #102 au commit `066aebb`, synchronisé avec 233 fichiers puis validé dans Apps Script à 532/532 sans commande de cycle de vie ni mutation de registre |
 | 1.3.3 | 2026-08-13 | ACCESS-002-03 lot 2 corrigé après revue dans la PR applicative brouillon #102 : refus métier audités et révision courante exigée pour l’idempotence ; cycle de vie 13/13, socle ACCESS 20/20 et suite cumulative préparée à 532 références uniques, sans Apps Script ni donnée réelle |
