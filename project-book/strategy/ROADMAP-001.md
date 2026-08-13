@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.8 |
+| **Version** | 1.3.9 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -795,7 +795,7 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. La recette réversible a prouvé la création inactive sans habilitation, l’activation sans accès, la désactivation avec historique et la projection conforme. Le registre initial puis la configuration AUDIT ont été restaurés exactement et leurs sauvegardes supprimées. Aucun état temporaire ne subsiste. `ACCESS-002-04 — Fiche et habilitations` devient le prochain incrément à cadrer ; la migration définitive des modules reste ultérieure.
+`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. La recette réversible a restauré exactement ACCESS et AUDIT. `ACCESS-002-04` est désormais cadré : fiche individuelle, multi-rôle, modules indépendants, temporalité, synthèse et historique. L’évolution `access/1.1` reste compatible en lecture avec `access/1.0` et aucune migration réelle n’est autorisée par ce seul cadrage.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.9 | 2026-08-13 | Cadrage ACCESS-002-04 validé : fiche, multi-rôle, modules Présences/Analytics/Inscriptions/ACCESS, temporalité, synthèse, historique AUDIT et compatibilité `access/1.0` vers `access/1.1`, sans implémentation ni migration |
 | 1.3.8 | 2026-08-13 | ACCESS-002-03 clôturé après intégration de la PR #104 au commit `b120963`, synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète ; cycle vérifié, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
 | 1.3.7 | 2026-08-13 | ACCESS-002-03 lot 4 préparé dans la PR applicative brouillon #104 : protocole réversible du cycle de vie avec restauration exacte et auto-restauration ; 5/5 tests ciblés et suite préparée à 542 références, sans Apps Script ni mutation réelle |
 | 1.3.6 | 2026-08-13 | ACCESS-002-03 lot 3 intégré par la PR applicative #103 au commit `846e666`, synchronisé avec 238 fichiers et validé à 537/537 ; écran/navigation autorisés et refus direct non habilité confirmés, sans commande ni mutation du registre |
