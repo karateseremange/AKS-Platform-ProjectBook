@@ -300,7 +300,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.3.10 | 2026-08-13 | ACCESS-002-03 0.3.0 engagé par la PR applicative brouillon #101 : projection serveur en lecture seule, tests ciblés 10/10, syntaxe 198/198 et inventaire cumulatif préparé à 517 références uniques ; ACCESS-002 0.4.14 et ROADMAP-001 1.3.1 alignées, sans recette Apps Script ni donnée réelle |
+| 1.3.10 | 2026-08-13 | ACCESS-002-03 0.3.0 engagé par la PR applicative brouillon #101 : projection corrigée pour dériver les modules des capacités effectives, tests ciblés 11/11, syntaxe 198/198 et inventaire cumulatif préparé à 518 références uniques ; ACCESS-002 0.4.14 et ROADMAP-001 1.3.1 alignées, sans recette Apps Script ni donnée réelle |
 | 1.3.9 | 2026-08-13 | Validation d’ACCESS-002-03 0.2.0 et passage d’ACCESS-002 en 0.4.13 : sept décisions de cadrage approuvées, implémentation maintenue non engagée avant intégration ; ROADMAP-001 1.3.0 alignée |
 | 1.3.8 | 2026-08-13 | Référencement d’ACCESS-002-03 0.1.0 et passage d’ACCESS-002 en 0.4.12 : liste/recherche/filtres, création inactive sans habilitation, cycle d’activation/désactivation et synthèse des accès proposés avant implémentation ; ROADMAP-001 1.2.99 alignée |
 | 1.3.7 | 2026-08-13 | ACCESS-002-02 1.0.0 validé après campagne 507/507 et cycle réversible complet avec preuves persistantes, restaurations exactes d’ACCESS et d’AUDIT ; ACCESS-002 0.4.11 et ROADMAP-001 1.2.98 alignés sur le cadrage suivant d’ACCESS-002-03 |
