@@ -351,7 +351,7 @@ Le cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la li
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.4.16 | 2026-08-13 | ACCESS-002-03 lot 2 publié dans la PR applicative brouillon #102 : création inactive, désactivation, réactivation sûre et idempotence validées localement à 12/12, syntaxe 200/200 et suite cumulative préparée à 530 références uniques, sans exécution Apps Script ni donnée réelle |
+| 0.4.16 | 2026-08-13 | ACCESS-002-03 lot 2 corrigé après revue dans la PR applicative brouillon #102 : refus métier audités et révision courante imposée aux retours idempotents ; cycle de vie 13/13, socle ACCESS 20/20, syntaxe 200/200 et suite cumulative préparée à 532 références uniques, sans Apps Script ni donnée réelle |
 | 0.4.15 | 2026-08-13 | ACCESS-002-03 lot 1 intégré par la PR #101 au commit `b41787d`, 231 fichiers synchronisés et campagne cumulative Apps Script 518/518 réussie sans mutation de registre ni donnée réelle |
 | 0.4.14 | 2026-08-13 | ACCESS-002-03 engagé par la PR applicative brouillon #101 : projection serveur corrigée après revue pour dériver les modules des capacités effectives, validée localement à 11/11, syntaxe 198/198 et suite cumulative préparée à 518 références uniques, sans exécution Apps Script ni donnée réelle |
 | 0.4.13 | 2026-08-13 | Cadrage ACCESS-002-03 validé par le Product Owner : création inactive avec rôle descriptif initial, aucune habilitation, réactivation avec effacement confirmé, liste sans pagination et filtres combinables ; implémentation non engagée avant intégration documentaire |
