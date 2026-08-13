@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-04 |
 | **Titre** | Fiche utilisateur, rôles multiples et habilitations explicites |
-| **Version** | 0.2.0 |
-| **Statut** | Lot 1 implémenté — PR applicative #105 en validation |
+| **Version** | 0.2.1 |
+| **Statut** | Lot 1 validé — lot 2 prêt à démarrer |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -204,7 +204,7 @@ Sont exclus :
 
 La réalisation est découpée en cinq lots :
 
-1. **schéma et catalogues — implémenté dans la PR #105** — compatibilité `access/1.0`, modèle canonique `access/1.1`, catalogue fermé et immuable, Analytics autonome et dix tests ciblés ;
+1. **schéma et catalogues — validé** — PR applicative #105 fusionnée dans `develop` au commit `58ef718`, 242 fichiers synchronisés dans Apps Script et suite cumulative validée à **552/552** ;
 2. **projection et prévisualisation** — fiche minimisée, catalogues serveur et synthèse sans écriture ;
 3. **commande atomique** — rôles multiples, habilitations, temporalité, commentaire, audit et protections ;
 4. **interface et historique** — route, cartes, synthèse, confirmations et historique fonctionnel ;
@@ -238,5 +238,6 @@ Le Product Owner a validé le 13 août 2026 les quinze décisions suivantes : fi
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.1 | 2026-08-13 | Lot 1 validé par le Product Owner : PR #105 fusionnée au commit `58ef718`, 242 fichiers synchronisés et suite cumulative Apps Script réussie à **552/552**, sans modification de données réelles |
 | 0.2.0 | 2026-08-13 | Lot 1 implémenté dans la PR applicative #105 : schéma canonique `access/1.1`, lecture compatible `access/1.0`, catalogue fermé et immuable, Analytics autonome, refus des écritures historiques non migrées et dix tests ciblés ; aucune donnée réelle modifiée |
 | 0.1.0 | 2026-08-13 | Cadrage initial validé : fiche individuelle, multi-rôle, quatre cartes d’habilitations, temporalité, synthèse/commentaire, historique AUDIT, protections et évolution compatible `access/1.0` vers `access/1.1`, sans implémentation ni donnée réelle |
