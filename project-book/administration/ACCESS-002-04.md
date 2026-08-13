@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-04 |
 | **Titre** | Fiche utilisateur, rôles multiples et habilitations explicites |
-| **Version** | 0.7.0 |
-| **Statut** | Lot 5 implémenté — validation en attente |
+| **Version** | 0.7.1 |
+| **Statut** | Lot 5 intégré — recette réversible en attente |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -208,7 +208,7 @@ La réalisation est découpée en cinq lots :
 2. **projection et prévisualisation — validé** — PR applicative #106 fusionnée dans `develop` au commit `a3a175a`, 244 fichiers synchronisés dans Apps Script et suite cumulative validée à **562/562** ;
 3. **commande atomique — validé** — PR applicative #107 fusionnée dans `develop` au commit `68abc2b`, 244 fichiers synchronisés dans Apps Script et suite cumulative validée à **568/568** ;
 4. **interface et historique** — sous-lot 4A validé : PR #108 et correction #109 fusionnées, 244 fichiers synchronisés, suite cumulative **574/574**, contrôle visuel concluant et restaurations ACCESS/AUDIT exactes ; sous-lot 4B validé : PR applicative #110 fusionnée au commit `6566c48`, 246 fichiers synchronisés et campagne cumulative **581/581** ; historique AUDIT ciblé, paginé, décroissant, minimisé et réautorisé à chaque page ;
-5. **recette réversible et clôture** — protocole publié dans la PR applicative brouillon #111 : précontrôle sans écriture, ajout temporaire multi-rôle et Analytics, vérification de la fiche et de l’historique, restauration exacte et auto-restauration ; campagne Apps Script et exécution réelle restant à valider.
+5. **recette réversible et clôture** — protocole intégré par la PR applicative #111 au commit `9d8e57f`, 248 fichiers synchronisés et campagne cumulative **586/586** ; précontrôle, application temporaire et restauration réelle restant à exécuter avec autorisations distinctes.
 
 Aucune donnée réelle n’est modifiée pendant les quatre premiers lots. Chaque mutation de recette ou migration de schéma exige une autorisation explicite distincte.
 
@@ -238,7 +238,7 @@ Le Product Owner a validé le 13 août 2026 les quinze décisions suivantes : fi
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.7.0 | 2026-08-13 | Lot 5 implémenté dans la PR applicative brouillon #111 : recette réversible de la fiche et de l’historique, cinq tests ciblés réussis, suite cumulative préparée à **586 tests**, sans exécution Apps Script ni mutation réelle || 0.6.1 | 2026-08-13 | Sous-lot 4B validé : PR applicative #110 fusionnée au commit `6566c48`, dépôt propre, 246 fichiers synchronisés dans Apps Script et campagne cumulative réussie à **581/581**, sans mutation de donnée réelle || 0.6.0 | 2026-08-13 | Sous-lot 4B implémenté dans la PR applicative brouillon #110 : lecture paginée et décroissante des preuves AUDIT, réautorisation `ACCESS_MANAGE` par page, acteur masqué et projection fonctionnelle minimisée ; métadonnées strictement validées avant écriture, 7 scénarios cumulatifs ajoutés et cible préparée à **581 tests**, sans déploiement ni donnée réelle || 0.5.1 | 2026-08-13 | Sous-lot 4A validé par le Product Owner : PR #108 et correction visuelle #109 fusionnées, 244 fichiers synchronisés, **574/574** tests réussis, quatre cartes contrôlées visuellement, cases compactes et ACCESS unique ; registre ACCESS et configuration AUDIT restaurés exactement, sauvegardes supprimées |
+| 0.7.1 | 2026-08-13 | Lot 5 intégré : PR applicative #111 fusionnée au commit `9d8e57f`, dépôt propre, 248 fichiers synchronisés et campagne cumulative **586/586** ; aucune fonction de recette exécutée ni donnée réelle modifiée || 0.7.0 | 2026-08-13 | Lot 5 implémenté dans la PR applicative brouillon #111 : recette réversible de la fiche et de l’historique, cinq tests ciblés réussis, suite cumulative préparée à **586 tests**, sans exécution Apps Script ni mutation réelle || 0.6.1 | 2026-08-13 | Sous-lot 4B validé : PR applicative #110 fusionnée au commit `6566c48`, dépôt propre, 246 fichiers synchronisés dans Apps Script et campagne cumulative réussie à **581/581**, sans mutation de donnée réelle || 0.6.0 | 2026-08-13 | Sous-lot 4B implémenté dans la PR applicative brouillon #110 : lecture paginée et décroissante des preuves AUDIT, réautorisation `ACCESS_MANAGE` par page, acteur masqué et projection fonctionnelle minimisée ; métadonnées strictement validées avant écriture, 7 scénarios cumulatifs ajoutés et cible préparée à **581 tests**, sans déploiement ni donnée réelle || 0.5.1 | 2026-08-13 | Sous-lot 4A validé par le Product Owner : PR #108 et correction visuelle #109 fusionnées, 244 fichiers synchronisés, **574/574** tests réussis, quatre cartes contrôlées visuellement, cases compactes et ACCESS unique ; registre ACCESS et configuration AUDIT restaurés exactement, sauvegardes supprimées |
 | 0.5.0 | 2026-08-13 | Sous-lot 4A implémenté dans la PR applicative #108 : interface de fiche, rôles multiples, quatre cartes, dates, commentaire, synthèse et confirmation, avec cinq scénarios cumulatifs ; historique réservé à 4B et aucune donnée réelle modifiée |
 | 0.4.1 | 2026-08-13 | Lot 3 validé par le Product Owner : PR #107 fusionnée au commit `68abc2b`, 244 fichiers synchronisés et suite cumulative Apps Script réussie à **568/568**, sans modification de données réelles |
 | 0.4.0 | 2026-08-13 | Lot 3 implémenté dans la PR applicative #107 : commande ciblée atomique, contexte AUDIT, confirmations renforcées, refus sans changement, double soumission bornée et cinq nouveaux scénarios cumulatifs ; aucune donnée réelle modifiée |
