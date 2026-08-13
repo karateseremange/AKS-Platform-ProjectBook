@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.20 |
-| **Statut** | Réalisation engagée — ACCESS-002-03 lot 4 en revue |
+| **Version** | 0.4.21 |
+| **Statut** | Réalisation engagée — ACCESS-002-03 clôturé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -343,7 +343,7 @@ Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, supprime cet
 
 La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT persistante vérifiée, précontrôle sans écriture, application explicitement autorisée, accès gestionnaire et refus non habilité confirmés, preuves `INTENTION` et `REUSSI` persistantes pour l’application puis la restauration, révision initiale restaurée exactement, sauvegarde ACCESS supprimée, configuration AUDIT antérieure restaurée exactement et sauvegarde AUDIT supprimée. Aucun état temporaire ne subsiste ; l’amorçage permanent et la production restent hors périmètre. Cette validation permet d’ouvrir le cadrage d’`ACCESS-002-03 — Administration des utilisateurs`.
 
-Le cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la liste, la recherche, les filtres, la synthèse « Qui a accès à quoi ? », la création minimale d’un compte inactif sans habilitation et son cycle d’activation/désactivation. La fiche multi-rôle et l’édition détaillée des modules, cours, capacités et périodes restent dans `ACCESS-002-04`. Le premier lot de projection serveur est validé à 518/518. Le deuxième lot de commandes minimales est intégré au commit `066aebb` et validé dans Apps Script à 532/532 après synchronisation de 233 fichiers, sans mutation de registre. Le troisième lot de route et d’interface protégées est intégré au commit `846e666`, synchronisé avec 238 fichiers et validé à 537/537. L’écran et la navigation autorisés fonctionnent, tandis que l’accès direct d’un compte non habilité est refusé côté serveur sans projection. Le protocole réversible du lot 4 est en revue dans la PR applicative brouillon #104, validé localement à 5/5 et préparé à 542 références cumulatives. Aucune fonction de recette ni mutation du registre n’a été exécutée.
+[`ACCESS-002-03`](ACCESS-002-03.md) est clôturé. Ses quatre lots couvrent la projection, les commandes minimales, l’interface protégée et la recette réversible. Le commit `b120963` a été synchronisé avec 240 fichiers et validé à 542/542. La recette a prouvé la création inactive sans habilitation, l’activation sans accès, la désactivation avec historique et la projection conforme, puis a restauré exactement le registre initial et la configuration AUDIT en supprimant les deux sauvegardes. La fiche multi-rôle et l’édition détaillée restent dans `ACCESS-002-04`.
 
 ---
 
@@ -351,6 +351,7 @@ Le cadrage d’[`ACCESS-002-03`](ACCESS-002-03.md) borne l’incrément à la li
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.21 | 2026-08-13 | ACCESS-002-03 clôturé en 1.0.0 après campagne 542/542 et recette réversible complète : cycle de vie vérifié, restauration exacte du registre et d’AUDIT, sauvegardes supprimées ; ACCESS-002-04 devient le prochain incrément |
 | 0.4.20 | 2026-08-13 | ACCESS-002-03 lot 4 préparé dans la PR applicative brouillon #104 : recette réversible du cycle de vie, restauration exacte et récupération automatique ; 5/5 tests ciblés, syntaxe 204/204 et suite préparée à 542 références, sans Apps Script ni mutation réelle |
 | 0.4.19 | 2026-08-13 | ACCESS-002-03 lot 3 intégré par la PR #103 au commit `846e666`, 238 fichiers synchronisés et campagne 537/537 réussie ; écran/navigation autorisés et refus direct non habilité validés sans mutation de registre |
 | 0.4.18 | 2026-08-13 | ACCESS-002-03 lot 3 publié dans la PR applicative brouillon #103 : route et interface protégées par ACCESS_MANAGE, navigation conditionnelle, confirmations et états de liste ; tests ciblés 5/5, syntaxe 202/202 et suite cumulative préparée à 537 références uniques, sans Apps Script ni mutation réelle |
