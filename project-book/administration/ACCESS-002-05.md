@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-05 |
 | **Titre** | Portail privé personnalisé et consultation de ses accès |
-| **Version** | 0.4.1 |
-| **Statut** | Lot 3 validé — recette multi-profils à préparer |
+| **Version** | 0.5.0 |
+| **Statut** | Lot 4 publié — revue en attente |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -167,7 +167,7 @@ La réalisation est découpée en quatre lots :
 1. **projection personnelle et navigation autorisée — validé** — PR applicative #112 fusionnée au commit `6d1ab91`, 250 fichiers synchronisés et campagne cumulative **594/594** ;
 2. **Mes accès — validé** — PR applicative #113 fusionnée au commit `2396bb0`, 255 fichiers synchronisés et campagne cumulative **602/602** ;
 3. **Portail AKS — validé** — PR applicative #114 fusionnée au commit `c1412ec`, puis correctif de compatibilité #115 fusionné au commit `7a47f33` après détection de trois régressions de tests ; dépôt propre, 256 fichiers synchronisés et campagne cumulative finale **609/609** ;
-4. **recette multi-profils et clôture** — contrôles directs, campagne cumulative, recette réversible si une donnée temporaire est nécessaire et documentation finale.
+4. **recette multi-profils et clôture — publiée** — protocole réversible pour deux identités explicitement configurées : compte actif sans habilitation et professeur limité aux Présences ; vérification du Portail, de « Mes accès », de l’absence d’Analytics et d’ACCESS, restauration exacte et auto-restauration ; **5/5 tests ciblés**, cible cumulative **614**.
 
 Chaque lot est intégré, testé et documenté séparément. Aucune donnée réelle n’est modifiée pendant les trois premiers lots.
 
@@ -208,6 +208,7 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.5.0 | 2026-08-13 | Lot 4 publié : recette multi-profils réversible, profils sans accès et Présences uniquement, vérification Portail/Mes accès, destinations interdites masquées, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **614**, sans exécution Apps Script ni donnée réelle modifiée |
 | 0.4.1 | 2026-08-13 | Lot 3 validé : PR #114 fusionnée au commit `c1412ec`, correction des trois régressions de compatibilité par la PR #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne cumulative **609/609**, sans donnée réelle modifiée |
 | 0.4.0 | 2026-08-13 | Lot 3 publié dans la PR applicative brouillon #114 au commit `1a2fbcc` : Portail AKS personnalisé, Mes accès toujours visible pour les comptes connus, destinations effectives uniquement, état neutre sans habilitation, refus générique sans fuite et administration historique bornée ; 7/7 tests ciblés et cible cumulative **609**, sans donnée réelle modifiée |
 | 0.3.1 | 2026-08-13 | Lot 2 validé : PR applicative #113 fusionnée au commit `2396bb0`, dépôt propre, 255 fichiers synchronisés et campagne cumulative **602/602**, sans donnée réelle modifiée || 0.3.0 | 2026-08-13 | Lot 2 publié dans la PR applicative brouillon #113 : page Mes accès personnelle, effective et en lecture seule, sans identité cible, avec états vide/refus génériques ; 8/8 tests ciblés et cible cumulative **602**, sans donnée réelle || 0.2.1 | 2026-08-13 | Lot 1 validé : PR applicative #112 fusionnée au commit `6d1ab91`, dépôt propre, 250 fichiers synchronisés et campagne cumulative **594/594**, sans interface ni donnée réelle || 0.2.0 | 2026-08-13 | Lot 1 publié dans la PR applicative brouillon #112 : projection personnelle effective, navigation fermée, cloisonnement Présences/Analytics/ACCESS, historique transitoire borné et état neutre ; 8/8 tests ciblés, cible cumulative **594**, sans interface ni donnée réelle || 0.1.0 | 2026-08-13 | Cadrage validé : portail personnalisé selon habilitations effectives, Mes accès personnel et minimisé, état neutre sans habilitation, sécurité serveur, compatibilité URL et transition bornée vers ACCESS-002-06 |

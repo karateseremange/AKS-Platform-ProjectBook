@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.33 |
-| **Statut** | Réalisation engagée — ACCESS-002-05 lot 3 validé |
+| **Version** | 0.4.34 |
+| **Statut** | Réalisation engagée — ACCESS-002-05 lot 4 en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -355,6 +355,7 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.34 | 2026-08-13 | ACCESS-002-05 lot 4 publié : recette réversible des profils sans accès et Présences uniquement, vérification Portail/Mes accès, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **614**, sans exécution réelle |
 | 0.4.33 | 2026-08-13 | ACCESS-002-05 lot 3 validé : PR #114 fusionnée au commit `c1412ec`, trois régressions corrigées par la PR #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne cumulative finale **609/609**, sans donnée réelle |
 | 0.4.32 | 2026-08-13 | ACCESS-002-05 lot 3 publié dans la PR applicative brouillon #114 au commit `1a2fbcc` : Portail AKS personnalisé, destinations projetées uniquement, états neutre/refus génériques et compatibilité `?app=admin` ; 7/7 tests ciblés, cible cumulative **609**, sans donnée réelle |
 | 0.4.31 | 2026-08-13 | ACCESS-002-05 lot 2 validé : PR #113 fusionnée au commit `2396bb0`, 255 fichiers synchronisés et campagne cumulative **602/602**, sans donnée réelle || 0.4.30 | 2026-08-13 | ACCESS-002-05 lot 2 publié dans la PR applicative brouillon #113 : Mes accès effectif, minimisé, sans cible et en lecture seule ; 8/8 tests ciblés, cible cumulative **602**, sans donnée réelle || 0.4.29 | 2026-08-13 | ACCESS-002-05 lot 1 validé : PR #112 fusionnée au commit `6d1ab91`, 250 fichiers synchronisés et campagne cumulative **594/594**, sans interface ni donnée réelle || 0.4.28 | 2026-08-13 | ACCESS-002-05 lot 1 publié dans la PR applicative brouillon #112 : projection personnelle effective et navigation fermée, 8/8 tests ciblés et cible cumulative **594**, sans interface ni donnée réelle || 0.4.27 | 2026-08-13 | ACCESS-002-05 cadré : portail personnalisé, Mes accès effectif et minimisé, page neutre sans habilitation, compatibilité `?app=admin` et transition historique bornée, sans implémentation || 0.4.26 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 après campagne **586/586** et recette réversible complète : fiche multi-rôle, Analytics et historique vérifiés, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
