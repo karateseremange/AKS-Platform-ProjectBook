@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-04 |
 | **Titre** | Fiche utilisateur, rôles multiples et habilitations explicites |
-| **Version** | 0.5.1 |
-| **Statut** | Lot 4A validé — lot 4B prêt à démarrer |
+| **Version** | 0.6.0 |
+| **Statut** | Lot 4B implémenté — validation en attente |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -207,7 +207,7 @@ La réalisation est découpée en cinq lots :
 1. **schéma et catalogues — validé** — PR applicative #105 fusionnée dans `develop` au commit `58ef718`, 242 fichiers synchronisés dans Apps Script et suite cumulative validée à **552/552** ;
 2. **projection et prévisualisation — validé** — PR applicative #106 fusionnée dans `develop` au commit `a3a175a`, 244 fichiers synchronisés dans Apps Script et suite cumulative validée à **562/562** ;
 3. **commande atomique — validé** — PR applicative #107 fusionnée dans `develop` au commit `68abc2b`, 244 fichiers synchronisés dans Apps Script et suite cumulative validée à **568/568** ;
-4. **interface et historique** — sous-lot 4A validé : PR #108 et correction #109 fusionnées, 244 fichiers synchronisés, suite cumulative **574/574**, contrôle visuel concluant et restaurations ACCESS/AUDIT exactes ; sous-lot 4B historique AUDIT restant ;
+4. **interface et historique** — sous-lot 4A validé : PR #108 et correction #109 fusionnées, 244 fichiers synchronisés, suite cumulative **574/574**, contrôle visuel concluant et restaurations ACCESS/AUDIT exactes ; sous-lot 4B publié dans la PR applicative brouillon #110 : historique AUDIT ciblé, paginé, décroissant, minimisé et réautorisé à chaque page ;
 5. **recette réversible et clôture** — campagne cumulative, profils représentatifs, restauration exacte et documentation finale.
 
 Aucune donnée réelle n’est modifiée pendant les quatre premiers lots. Chaque mutation de recette ou migration de schéma exige une autorisation explicite distincte.
@@ -238,7 +238,7 @@ Le Product Owner a validé le 13 août 2026 les quinze décisions suivantes : fi
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.5.1 | 2026-08-13 | Sous-lot 4A validé par le Product Owner : PR #108 et correction visuelle #109 fusionnées, 244 fichiers synchronisés, **574/574** tests réussis, quatre cartes contrôlées visuellement, cases compactes et ACCESS unique ; registre ACCESS et configuration AUDIT restaurés exactement, sauvegardes supprimées |
+| 0.6.0 | 2026-08-13 | Sous-lot 4B implémenté dans la PR applicative brouillon #110 : lecture paginée et décroissante des preuves AUDIT, réautorisation `ACCESS_MANAGE` par page, acteur masqué et projection fonctionnelle minimisée ; métadonnées strictement validées avant écriture, 7 scénarios cumulatifs ajoutés et cible préparée à **581 tests**, sans déploiement ni donnée réelle || 0.5.1 | 2026-08-13 | Sous-lot 4A validé par le Product Owner : PR #108 et correction visuelle #109 fusionnées, 244 fichiers synchronisés, **574/574** tests réussis, quatre cartes contrôlées visuellement, cases compactes et ACCESS unique ; registre ACCESS et configuration AUDIT restaurés exactement, sauvegardes supprimées |
 | 0.5.0 | 2026-08-13 | Sous-lot 4A implémenté dans la PR applicative #108 : interface de fiche, rôles multiples, quatre cartes, dates, commentaire, synthèse et confirmation, avec cinq scénarios cumulatifs ; historique réservé à 4B et aucune donnée réelle modifiée |
 | 0.4.1 | 2026-08-13 | Lot 3 validé par le Product Owner : PR #107 fusionnée au commit `68abc2b`, 244 fichiers synchronisés et suite cumulative Apps Script réussie à **568/568**, sans modification de données réelles |
 | 0.4.0 | 2026-08-13 | Lot 3 implémenté dans la PR applicative #107 : commande ciblée atomique, contexte AUDIT, confirmations renforcées, refus sans changement, double soumission bornée et cinq nouveaux scénarios cumulatifs ; aucune donnée réelle modifiée |
