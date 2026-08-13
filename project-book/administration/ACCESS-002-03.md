@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-03 |
 | **Titre** | Liste, recherche et cycle de vie des comptes d’accès |
-| **Version** | 0.2.0 |
-| **Statut** | Cadrage validé — implémentation non engagée |
+| **Version** | 0.3.0 |
+| **Statut** | Réalisation engagée — lot 1 en revue |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -273,11 +273,25 @@ Le Product Owner a validé le 13 août 2026 les décisions suivantes :
 6. filtres combinables sur statut, rôle, module et état temporel ;
 7. aucun amorçage permanent requis pour implémenter et tester les lots sans donnée réelle.
 
-L’implémentation ne doit commencer qu’après intégration du cadrage documentaire dans `develop`. Cette validation fonctionnelle n’autorise aucune mutation de donnée réelle, recette modifiant le registre, production, branche `main` ou déploiement.
+Le cadrage a été intégré dans `develop`, ce qui a permis d’engager le premier lot. Cette validation fonctionnelle n’autorise aucune mutation de donnée réelle, recette modifiant le registre, production, branche `main` ou déploiement.
 
-## 15. Historique
+## 15. Lot 1 — projection serveur en revue
+
+La [PR applicative brouillon #101](https://github.com/karateseremange/AKS-Platform/pull/101) publie le premier lot, limité à la lecture :
+
+- projection minimisée distincte du registre persistant ;
+- calcul à la date serveur des affectations et modules effectifs ;
+- recherche normalisée sur le nom et l’adresse ;
+- filtres combinables par statut, rôle, module et état temporel ;
+- tri stable, compteurs et résultat profondément immuable ;
+- refus fermé des valeurs de filtre inconnues avant lecture administrative.
+
+Les validations locales réussissent à **11/11** pour la suite ciblée, notamment la non-régression qui interdit de déduire un accès Présences du seul rôle descriptif. La syntaxe est valide sur **198/198 fichiers `.gs`** et l’inventaire cumulatif préparé contient **518 références uniques**, sans doublon ni fonction manquante. Cette valeur ne remplace pas une campagne Apps Script réelle : aucune synchronisation `clasp`, aucune recette et aucune mutation de registre n’ont été exécutées pour ce lot.
+
+## 16. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-13 | Premier lot applicatif publié puis corrigé après revue dans la PR brouillon #101 : projection serveur en lecture seule, modules dérivés des capacités réellement effectives, recherche, filtres combinés, tri stable et immutabilité ; tests ciblés 11/11, syntaxe 198/198 et inventaire cumulatif préparé à 518 références uniques, sans exécution Apps Script ni donnée réelle |
 | 0.2.0 | 2026-08-13 | Validation Product Owner des sept décisions : création inactive, rôle descriptif initial unique, aucune habilitation à la création, réactivation avec effacement confirmé des anciennes affectations, liste sans pagination au volume actuel, filtres combinables et intégration documentaire préalable à l’implémentation |
 | 0.1.0 | 2026-08-13 | Premier cadrage d’ACCESS-002-03 : liste et synthèse « Qui a accès à quoi ? », recherche/filtres, création inactive sans habilitation, activation/désactivation, projection serveur, route protégée, audit, concurrence, recette réversible et séparation stricte d’ACCESS-002-04 |
