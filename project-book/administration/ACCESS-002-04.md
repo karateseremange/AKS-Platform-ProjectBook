@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-04 |
 | **Titre** | Fiche utilisateur, rôles multiples et habilitations explicites |
-| **Version** | 0.4.1 |
-| **Statut** | Lot 3 validé — lot 4 prêt à démarrer |
+| **Version** | 0.5.0 |
+| **Statut** | Lot 4A implémenté — PR applicative #108 en validation |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -207,7 +207,7 @@ La réalisation est découpée en cinq lots :
 1. **schéma et catalogues — validé** — PR applicative #105 fusionnée dans `develop` au commit `58ef718`, 242 fichiers synchronisés dans Apps Script et suite cumulative validée à **552/552** ;
 2. **projection et prévisualisation — validé** — PR applicative #106 fusionnée dans `develop` au commit `a3a175a`, 244 fichiers synchronisés dans Apps Script et suite cumulative validée à **562/562** ;
 3. **commande atomique — validé** — PR applicative #107 fusionnée dans `develop` au commit `68abc2b`, 244 fichiers synchronisés dans Apps Script et suite cumulative validée à **568/568** ;
-4. **interface et historique** — route, cartes, synthèse, confirmations et historique fonctionnel ;
+4. **interface et historique** — sous-lot 4A implémenté dans la PR #108 : fiche intégrée à la liste, quatre cartes, dates, commentaire, prévisualisation, synthèse, lecture seule des comptes inactifs et confirmation ; sous-lot 4B historique AUDIT restant ;
 5. **recette réversible et clôture** — campagne cumulative, profils représentatifs, restauration exacte et documentation finale.
 
 Aucune donnée réelle n’est modifiée pendant les quatre premiers lots. Chaque mutation de recette ou migration de schéma exige une autorisation explicite distincte.
@@ -238,6 +238,7 @@ Le Product Owner a validé le 13 août 2026 les quinze décisions suivantes : fi
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.5.0 | 2026-08-13 | Sous-lot 4A implémenté dans la PR applicative #108 : interface de fiche, rôles multiples, quatre cartes, dates, commentaire, synthèse et confirmation, avec cinq scénarios cumulatifs ; historique réservé à 4B et aucune donnée réelle modifiée |
 | 0.4.1 | 2026-08-13 | Lot 3 validé par le Product Owner : PR #107 fusionnée au commit `68abc2b`, 244 fichiers synchronisés et suite cumulative Apps Script réussie à **568/568**, sans modification de données réelles |
 | 0.4.0 | 2026-08-13 | Lot 3 implémenté dans la PR applicative #107 : commande ciblée atomique, contexte AUDIT, confirmations renforcées, refus sans changement, double soumission bornée et cinq nouveaux scénarios cumulatifs ; aucune donnée réelle modifiée |
 | 0.3.1 | 2026-08-13 | Lot 2 validé par le Product Owner : PR #106 fusionnée au commit `a3a175a`, 244 fichiers synchronisés et suite cumulative Apps Script réussie à **562/562**, sans modification de données réelles |
