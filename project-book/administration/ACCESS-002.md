@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.25 |
-| **Statut** | Réalisation engagée — ACCESS-002-04 cadré |
+| **Version** | 0.4.26 |
+| **Statut** | Réalisation engagée — ACCESS-002-04 clôturé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-13 |
@@ -345,7 +345,7 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 [`ACCESS-002-03`](ACCESS-002-03.md) est clôturé. Ses quatre lots couvrent la projection, les commandes minimales, l’interface protégée et la recette réversible. Le commit `b120963` a été synchronisé avec 240 fichiers et validé à 542/542. La recette a prouvé la création inactive sans habilitation, l’activation sans accès, la désactivation avec historique et la projection conforme, puis a restauré exactement le registre initial et la configuration AUDIT en supprimant les deux sauvegardes. La fiche multi-rôle et l’édition détaillée restent dans `ACCESS-002-04`.
 
-[`ACCESS-002-04`](ACCESS-002-04.md) a validé ses quatre premiers lots. Le sous-lot 4B est intégré par la PR applicative #110 au commit `6566c48` : historique AUDIT ciblé, paginé, décroissant, minimisé et réautorisé à chaque page. Le commit a été synchronisé avec 246 fichiers et la campagne cumulative a réussi à **581/581 tests, 0 échec**. Le protocole du lot 5 est intégré par la PR applicative #111 au commit `9d8e57f`. Le dépôt a été synchronisé avec 248 fichiers et la campagne cumulative a réussi à **586/586 tests, 0 échec**. Le précontrôle, l’application temporaire et la restauration réelle restent à exécuter avec autorisations distinctes ; aucune migration réelle n’a encore été effectuée.
+[`ACCESS-002-04`](ACCESS-002-04.md) est clôturé en version `1.0.0`. Les PR applicatives #105 à #111 couvrent le schéma `access/1.1`, la fiche multi-rôle, les habilitations indépendantes, la prévisualisation, l’écriture atomique, l’interface et l’historique AUDIT minimisé. Le commit final `9d8e57f` a été synchronisé avec 248 fichiers et validé à **586/586 tests, 0 échec**. La recette réversible a ajouté temporairement `CONSULTATION` et `ANALYTICS_READ`, vérifié la fiche et l’historique, puis restauré exactement le registre initial et la configuration AUDIT ; les deux sauvegardes ont été supprimées. `ACCESS-002-05 — Portail privé et Mes accès` devient le prochain incrément.
 
 ---
 
@@ -353,7 +353,11 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.4.25 | 2026-08-13 | ACCESS-002-04 lot 5 intégré au commit `9d8e57f`, 248 fichiers synchronisés et campagne cumulative **586/586** ; recette réelle non exécutée || 0.4.24 | 2026-08-13 | ACCESS-002-04 lot 5 préparé dans la PR applicative brouillon #111 : recette réversible fiche/historique, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **586**, sans exécution réelle || 0.4.23 | 2026-08-13 | ACCESS-002-04 sous-lot 4B validé : PR #110 fusionnée au commit `6566c48`, 246 fichiers synchronisés et campagne cumulative **581/581** ; historique fonctionnel AUDIT minimisé intégré sans mutation réelle || 0.4.22 | 2026-08-13 | Cadrage ACCESS-002-04 validé : fiche, multi-rôle, habilitations explicites, Analytics autonome, temporalité, synthèse, audit et compatibilité `access/1.0` vers `access/1.1`, sans implémentation ni migration réelle |
+| 0.4.26 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 après campagne **586/586** et recette réversible complète : fiche multi-rôle, Analytics et historique vérifiés, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
+| 0.4.25 | 2026-08-13 | ACCESS-002-04 lot 5 intégré au commit `9d8e57f`, 248 fichiers synchronisés et campagne cumulative **586/586** ; recette réelle non exécutée |
+| 0.4.24 | 2026-08-13 | ACCESS-002-04 lot 5 préparé dans la PR applicative brouillon #111 : recette réversible fiche/historique, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **586**, sans exécution réelle |
+| 0.4.23 | 2026-08-13 | ACCESS-002-04 sous-lot 4B validé : PR #110 fusionnée au commit `6566c48`, 246 fichiers synchronisés et campagne cumulative **581/581** ; historique fonctionnel AUDIT minimisé intégré sans mutation réelle |
+| 0.4.22 | 2026-08-13 | Cadrage ACCESS-002-04 validé : fiche, multi-rôle, habilitations explicites, Analytics autonome, temporalité, synthèse, audit et compatibilité `access/1.0` vers `access/1.1`, sans implémentation ni migration réelle |
 | 0.4.21 | 2026-08-13 | ACCESS-002-03 clôturé en 1.0.0 après campagne 542/542 et recette réversible complète : cycle de vie vérifié, restauration exacte du registre et d’AUDIT, sauvegardes supprimées ; ACCESS-002-04 devient le prochain incrément |
 | 0.4.20 | 2026-08-13 | ACCESS-002-03 lot 4 préparé dans la PR applicative brouillon #104 : recette réversible du cycle de vie, restauration exacte et récupération automatique ; 5/5 tests ciblés, syntaxe 204/204 et suite préparée à 542 références, sans Apps Script ni mutation réelle |
 | 0.4.19 | 2026-08-13 | ACCESS-002-03 lot 3 intégré par la PR #103 au commit `846e666`, 238 fichiers synchronisés et campagne 537/537 réussie ; écran/navigation autorisés et refus direct non habilité validés sans mutation de registre |
