@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.12 | 2026-08-13 | ACCESS-002-05 lot 3 validé : Portail AKS intégré par la PR #114 au commit `c1412ec`, correctif de compatibilité #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne finale **609/609**, sans donnée réelle |
 | 1.3.11 | 2026-08-13 | ACCESS-002-05 cadré : Portail AKS personnalisé, Mes accès minimisé, refus neutre sans habilitation, sécurité serveur et compatibilité historique bornée jusqu’à ACCESS-002-06, sans implémentation || 1.3.10 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 : commit final `9d8e57f`, 248 fichiers synchronisés, campagne **586/586**, recette réversible conforme, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées ; ACCESS-002-05 devient prioritaire |
 | 1.3.9 | 2026-08-13 | Cadrage ACCESS-002-04 validé : fiche, multi-rôle, modules Présences/Analytics/Inscriptions/ACCESS, temporalité, synthèse, historique AUDIT et compatibilité `access/1.0` vers `access/1.1`, sans implémentation ni migration |
 | 1.3.8 | 2026-08-13 | ACCESS-002-03 clôturé après intégration de la PR #104 au commit `b120963`, synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète ; cycle vérifié, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
