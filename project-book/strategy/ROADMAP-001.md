@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.11 |
+| **Version** | 1.3.16 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-13 |
+| **Dernière mise à jour** | 2026-08-14 |
 
 ---
 
@@ -795,7 +795,7 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est également clôturé en version 1.0.0 : commit final `9d8e57f`, 248 fichiers synchronisés, campagne **586/586**, recette multi-rôle/Analytics/historique concluante et restaurations ACCESS/AUDIT exactes. `ACCESS-002-05 — Portail privé et Mes accès` devient l’incrément prioritaire suivant. Son cadrage validé conserve `?app=admin`, personnalise les destinations selon les habilitations effectives, ajoute une projection personnelle en lecture seule et maintient transitoirement les autorisations administratives historiques jusqu’à ACCESS-002-06.
+`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`.
 
 INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
 
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.16 | 2026-08-14 | Cadrage ACCESS-002-06 validé : décisions D1 à D13 et six lots, capacités Config/Logs explicites, cohérences sans héritage, lecture `access/1.1` sans réécriture, aucune attribution ou récupération réelle et recette de récupération avec restauration exacte obligatoire |
 | 1.3.15 | 2026-08-14 | ACCESS-002-05 clôturé en 1.0.0 : Portail AKS et Mes accès validés, commit final `9af21d7`, campagne **614/614**, recette multi-profils conforme, restaurations ACCESS/AUDIT exactes et nettoyage complet ; ACCESS-002-06 devient prioritaire |
 | 1.3.14 | 2026-08-14 | ACCESS-002-05 lot 4 intégré au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; recette multi-profils réelle restant à exécuter |
 | 1.3.13 | 2026-08-13 | ACCESS-002-05 lot 4 publié : recette multi-profils réversible pour un compte sans accès et un professeur Présences uniquement, contrôles Portail/Mes accès, restauration exacte et auto-restauration ; 5/5 tests ciblés, cible cumulative **614**, sans exécution réelle |
