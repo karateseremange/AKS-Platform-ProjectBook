@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.36 |
-| **Statut** | Réalisation engagée — ACCESS-002-06 prochain incrément |
+| **Version** | 0.4.37 |
+| **Statut** | Réalisation engagée — ACCESS-002-06 cadré |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-14 |
@@ -351,12 +351,15 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 `ACCESS-002-05` est clôturé en version `1.0.0`. Le protocole multi-profils a été corrigé par les PR #117 et #118 jusqu’au commit `9af21d7`, synchronisé avec 258 fichiers et validé à **614/614**. Deux tentatives refusées ont été auto-restaurées ; la troisième a vérifié le compte sans accès, le professeur Présences uniquement, « Mes accès » et le masquage d’Analytics/ACCESS. Le registre ACCESS et la configuration AUDIT ont été restaurés exactement ; propriétés et sauvegardes temporaires ont été supprimées. `ACCESS-002-06 — Migration définitive des modules` devient le prochain incrément.
 
+[`ACCESS-002-06`](ACCESS-002-06.md) est cadré : migration progressive d’Analytics, Paramétrage et Journaux vers des capacités explicites ; module `ADMINISTRATION` limité à `CONFIG_READ`, `CONFIG_WRITE`, `CONFIG_RESET` et `LOG_READ` ; cohérences Config et Analytics sans héritage implicite ; historique ciblé maintenu sous `ACCESS_MANAGE` et `AUDIT_READ` réservé à une future consultation globale. `access/1.1` reste lisible et normalisé en mémoire vers `access/1.2` sans réécriture automatique. Aucune attribution ni récupération réelle n’est autorisée pendant l’implémentation. La recette de récupération doit restaurer exactement le registre initial, y compris en `access/1.1`, avant toute décision documentée sur `AKS.Admin.Access`.
+
 ---
 
 ## 22. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.37 | 2026-08-14 | Cadrage ACCESS-002-06 validé : décisions D1 à D13, six lots, capacités explicites Config/Logs, cohérence Analytics, compatibilité `access/1.1` sans réécriture, recette de récupération réversible et aucune récupération réelle |
 | 0.4.36 | 2026-08-14 | ACCESS-002-05 clôturé en 1.0.0 : commit final `9af21d7`, 258 fichiers, campagne **614/614**, recette multi-profils conforme après deux auto-restaurations, restaurations ACCESS/AUDIT exactes et nettoyage complet ; ACCESS-002-06 devient prioritaire |
 | 0.4.35 | 2026-08-14 | ACCESS-002-05 lot 4 intégré par la PR #116 au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; recette réelle multi-profils non encore exécutée |
 | 0.4.34 | 2026-08-13 | ACCESS-002-05 lot 4 publié : recette réversible des profils sans accès et Présences uniquement, vérification Portail/Mes accès, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **614**, sans exécution réelle |
