@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.35 |
-| **Statut** | Réalisation engagée — ACCESS-002-05 recette à exécuter |
+| **Version** | 0.4.36 |
+| **Statut** | Réalisation engagée — ACCESS-002-06 prochain incrément |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-13 |
+| **Dernière mise à jour** | 2026-08-14 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -349,12 +349,15 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 [`ACCESS-002-05`](ACCESS-002-05.md) est cadré : le Centre de pilotage devient un portail privé personnalisé selon les habilitations effectives, l’URL `?app=admin` reste compatible et « Mes accès » expose uniquement les droits effectifs de l’identité active. Les destinations administratives historiques restent bornées par `AKS.Admin.Access` jusqu’à ACCESS-002-06 ; le lot 1 est intégré par la PR applicative #112 au commit `6d1ab91` et validé à **594/594**. Le lot 2 est intégré par la PR #113 au commit `2396bb0` et validé à **602/602**. Le lot 3 est intégré par la PR #114 au commit `c1412ec` : `?app=admin` devient le Portail AKS, n’expose que les destinations projetées, conserve « Mes accès » pour les comptes connus et retourne des états neutre ou refusé sans fuite. Trois régressions de compatibilité détectées lors de la première campagne cumulative ont été corrigées par la PR #115 au commit `7a47f33`. Après synchronisation de 256 fichiers, la campagne finale réussit à **609/609 tests, 0 échec**, sans donnée réelle modifiée.
 
+`ACCESS-002-05` est clôturé en version `1.0.0`. Le protocole multi-profils a été corrigé par les PR #117 et #118 jusqu’au commit `9af21d7`, synchronisé avec 258 fichiers et validé à **614/614**. Deux tentatives refusées ont été auto-restaurées ; la troisième a vérifié le compte sans accès, le professeur Présences uniquement, « Mes accès » et le masquage d’Analytics/ACCESS. Le registre ACCESS et la configuration AUDIT ont été restaurés exactement ; propriétés et sauvegardes temporaires ont été supprimées. `ACCESS-002-06 — Migration définitive des modules` devient le prochain incrément.
+
 ---
 
 ## 22. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.36 | 2026-08-14 | ACCESS-002-05 clôturé en 1.0.0 : commit final `9af21d7`, 258 fichiers, campagne **614/614**, recette multi-profils conforme après deux auto-restaurations, restaurations ACCESS/AUDIT exactes et nettoyage complet ; ACCESS-002-06 devient prioritaire |
 | 0.4.35 | 2026-08-14 | ACCESS-002-05 lot 4 intégré par la PR #116 au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; recette réelle multi-profils non encore exécutée |
 | 0.4.34 | 2026-08-13 | ACCESS-002-05 lot 4 publié : recette réversible des profils sans accès et Présences uniquement, vérification Portail/Mes accès, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **614**, sans exécution réelle |
 | 0.4.33 | 2026-08-13 | ACCESS-002-05 lot 3 validé : PR #114 fusionnée au commit `c1412ec`, trois régressions corrigées par la PR #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne cumulative finale **609/609**, sans donnée réelle |

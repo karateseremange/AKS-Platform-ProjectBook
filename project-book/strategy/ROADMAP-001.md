@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.15 | 2026-08-14 | ACCESS-002-05 clôturé en 1.0.0 : Portail AKS et Mes accès validés, commit final `9af21d7`, campagne **614/614**, recette multi-profils conforme, restaurations ACCESS/AUDIT exactes et nettoyage complet ; ACCESS-002-06 devient prioritaire |
 | 1.3.14 | 2026-08-14 | ACCESS-002-05 lot 4 intégré au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; recette multi-profils réelle restant à exécuter |
 | 1.3.13 | 2026-08-13 | ACCESS-002-05 lot 4 publié : recette multi-profils réversible pour un compte sans accès et un professeur Présences uniquement, contrôles Portail/Mes accès, restauration exacte et auto-restauration ; 5/5 tests ciblés, cible cumulative **614**, sans exécution réelle |
 | 1.3.12 | 2026-08-13 | ACCESS-002-05 lot 3 validé : Portail AKS intégré par la PR #114 au commit `c1412ec`, correctif de compatibilité #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne finale **609/609**, sans donnée réelle |

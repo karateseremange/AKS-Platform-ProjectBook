@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002-05 |
 | **Titre** | Portail privé personnalisé et consultation de ses accès |
-| **Version** | 0.5.1 |
-| **Statut** | Lot 4 intégré — recette réelle à exécuter |
+| **Version** | 1.0.0 |
+| **Statut** | Clôturé — recette multi-profils conforme |
 | **Nature** | Spécification d’incrément fonctionnel et technique |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-13 |
+| **Dernière mise à jour** | 2026-08-14 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -167,7 +167,7 @@ La réalisation est découpée en quatre lots :
 1. **projection personnelle et navigation autorisée — validé** — PR applicative #112 fusionnée au commit `6d1ab91`, 250 fichiers synchronisés et campagne cumulative **594/594** ;
 2. **Mes accès — validé** — PR applicative #113 fusionnée au commit `2396bb0`, 255 fichiers synchronisés et campagne cumulative **602/602** ;
 3. **Portail AKS — validé** — PR applicative #114 fusionnée au commit `c1412ec`, puis correctif de compatibilité #115 fusionné au commit `7a47f33` après détection de trois régressions de tests ; dépôt propre, 256 fichiers synchronisés et campagne cumulative finale **609/609** ;
-4. **recette multi-profils et clôture — intégrée** — PR applicative #116 fusionnée au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; protocole réversible pour deux identités explicitement configurées : compte actif sans habilitation et professeur limité aux Présences ; exécution réelle non encore engagée.
+4. **recette multi-profils et clôture — validée** — PR #116 intégrée, puis corrections #117 et #118 fusionnées jusqu’au commit `9af21d7` ; campagne cumulative **614/614**. Deux premières tentatives ont été refusées puis auto-restaurées (périmètre Présences invalide, puis URL de projection non déterministe). La troisième a vérifié le profil sans accès, le professeur Présences uniquement, « Mes accès » et l’absence d’Analytics/ACCESS. Le registre initial a été restauré exactement, les propriétés temporaires supprimées, AUDIT restauré exactement et toutes les sauvegardes supprimées.
 
 Chaque lot est intégré, testé et documenté séparément. Aucune donnée réelle n’est modifiée pendant les trois premiers lots.
 
@@ -208,6 +208,7 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-14 | ACCESS-002-05 clôturé : correctifs #117 et #118 intégrés jusqu’au commit `9af21d7`, campagne **614/614**, recette multi-profils conforme, deux échecs auto-restaurés, troisième application réussie, restaurations ACCESS/AUDIT exactes, propriétés et sauvegardes temporaires supprimées ; ACCESS-002-06 devient le prochain incrément |
 | 0.5.1 | 2026-08-14 | Lot 4 intégré : PR #116 fusionnée au commit `406f63a`, dépôt propre, 258 fichiers synchronisés et campagne cumulative **614/614** ; aucune fonction de recette encore exécutée |
 | 0.5.0 | 2026-08-13 | Lot 4 publié : recette multi-profils réversible, profils sans accès et Présences uniquement, vérification Portail/Mes accès, destinations interdites masquées, restauration exacte et auto-restauration ; 5/5 tests ciblés et cible cumulative **614**, sans exécution Apps Script ni donnée réelle modifiée |
 | 0.4.1 | 2026-08-13 | Lot 3 validé : PR #114 fusionnée au commit `c1412ec`, correction des trois régressions de compatibilité par la PR #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne cumulative **609/609**, sans donnée réelle modifiée |
