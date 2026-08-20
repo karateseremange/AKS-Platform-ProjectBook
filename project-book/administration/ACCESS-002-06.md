@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-06 |
 | **Titre** | Migration définitive des modules vers les capacités ACCESS explicites |
-| **Version** | 0.4.0 |
-| **Statut** | Implémentation engagée — lots 1 à 3 clôturés, lot 4 à engager |
+| **Version** | 0.5.0 |
+| **Statut** | Implémentation engagée — lots 1 à 4 clôturés, lot 5 à engager |
 | **Nature** | Spécification d’incrément fonctionnel, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -268,6 +268,16 @@ Aucune fonction de modification métier n’a été appelée directement. Aucun 
 - adaptation de l’aperçu du portail ;
 - séparation avec AUDIT et l’historique ACCESS.
 
+#### État du lot 4 — clôturé le 20 août 2026
+
+Le lot 4 est intégré dans `develop` par la [PR applicative #122](https://github.com/karateseremange/AKS-Platform/pull/122), au commit de fusion [`ca691f2`](https://github.com/karateseremange/AKS-Platform/commit/ca691f2808fef55d75b09be951c0edcb50b9237d).
+
+Le contrôleur Journaux ne dépend plus d’`AKS.Admin.Access`. La route `?app=logs`, la lecture filtrée et l’aperçu récent réautorisent `LOG_READ` avant tout accès au stockage. Un refus ACCESS reste un refus et n’est pas transformé en indisponibilité technique. La carte Journaux est projetée par `LOG_READ` ; son accès historique est borné au bootstrap sans registre. L’aperçu récent du Portail est chargé uniquement lorsque la destination `admin.logs` est effectivement projetée.
+
+Cette consultation reste strictement séparée des preuves AUDIT et de l’historique ciblé ACCESS : ni `AUDIT_READ` ni `ACCESS_MANAGE` ne donnent accès aux journaux techniques.
+
+Après synchronisation de la tête `5e4c012`, les campagnes Apps Script ont réussi à **32/32** pour LOGGER-001, **13/13** pour la projection du portail et **641/641** pour la suite cumulative, sans échec. Aucune fonction d’écriture LOG n’a été appelée directement, aucune preuve AUDIT n’a été consultée et aucun compte, droit, registre ou donnée réelle n’a été modifié.
+
 ### Lot 5 — Portail et réduction du mécanisme historique
 
 - projection pilotée par ACCESS ;
@@ -329,7 +339,7 @@ Chaque lot part du dernier `develop` intégré, ajoute ses tests ciblés, conser
 | A06-16 | Registre initial `access/1.1` | Restauration exacte en `access/1.1` |
 | A06-17 | Administrateur historique en fonctionnement normal | Aucun contournement des capacités ACCESS |
 | A06-18 | Récupération réelle | Non exécutée ; procédure seulement documentée |
-| A06-19 | Suite cumulative | Référence portée à 637/637 après le lot 3 |
+| A06-19 | Suite cumulative | Référence portée à 641/641 après le lot 4 |
 
 ## 8. Hors périmètre
 
@@ -371,6 +381,7 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.5.0 | 2026-08-20 | Lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, route et aperçu du portail réautorisés avant stockage, séparation AUDIT/ACCESS confirmée, validations **32/32**, **13/13** et **641/641**, sans mutation réelle |
 | 0.4.0 | 2026-08-20 | Lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698` ; contrôles explicites READ/WRITE/RESET, carte pilotée par `CONFIG_*`, incident de fixture UX corrigé par `e250b4a`, campagnes finales **13/13**, **11/11** et **637/637**, sans mutation réelle |
 | 0.3.0 | 2026-08-20 | Lot 2 clôturé : Analytics migré vers ACCESS par la PR applicative #120 au commit `d8e7d7d` ; incident de lecteur de template corrigé par `b91052f`, campagnes finales **16/16**, **9/9** et **630/630**, sans publication Drive ni mutation réelle |
 | 0.2.0 | 2026-08-20 | Lot 1 clôturé : modèle `access/1.2` et module ADMINISTRATION intégrés par la PR applicative #119 au commit `31ba2d1`, 259 fichiers synchronisés, suite ciblée **10/10** et campagne cumulative **624/624**, sans attribution, réécriture automatique ni récupération réelle |
