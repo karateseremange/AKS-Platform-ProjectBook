@@ -186,6 +186,6 @@ Le socle persistant commun [`AUDIT-001`](project-book/administration/AUDIT-001.m
 
 INSCRIPTIONS-010 reste strictement interne et editor-only dans cet incrément : aucun déploiement Web App de test n’a été requis. Toute fonctionnalité ultérieure observable ou utilisable depuis le Web App devra être validée sur un déploiement de test avant validation finale et fusion dans `develop`.
 
-Le cycle INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Le prochain incrément AKS Inscriptions doit être cadré séparément à partir de l’état réel de `develop`. Le volet SIKADA demeure bloqué tant que l’échantillon anonymisé Windows-1252 à 12 colonnes prévu par `INSCRIPTIONS-006` n’est pas disponible, sécurisé et versionné. Aucun tag, déploiement ou fusion vers `main` n’a été effectué dans ce cycle.
+Le cycle INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Le cadrage d’`INSCRIPTIONS-011` reste différé jusqu’à la publication, l’amorçage et la validation fonctionnelle d’ACCESS en production. Le volet SIKADA demeure bloqué tant que l’échantillon anonymisé Windows-1252 à 12 colonnes prévu par `INSCRIPTIONS-006` n’est pas disponible, sécurisé et versionné. Aucun tag, déploiement ou fusion vers `main` n’a été effectué dans ce cycle.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).
