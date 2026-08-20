@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.19 |
+| **Version** | 1.3.20 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -132,7 +132,7 @@ ACCESS-002-04 — Fiche et habilitations
         ↓
 ACCESS-002-05 — Portail privé et Mes accès
         ↓
-ACCESS-002-06 — lots 1 à 3 clôturés, lot 4 Journaux prioritaire
+ACCESS-002-06 — lots 1 à 4 clôturés, lot 5 Portail prioritaire
         ↓
 INSCRIPTIONS-011 — prochain incrément métier après ACCESS-002
         ↓
@@ -942,7 +942,7 @@ ACCESS-002-04 — Fiche et habilitations
         ↓
 ACCESS-002-05 — Portail privé et Mes accès
         ↓
-ACCESS-002-06 — lots 1 à 3 clôturés, lot 4 Journaux prioritaire
+ACCESS-002-06 — lots 1 à 4 clôturés, lot 5 Portail prioritaire
         ↓
 INSCRIPTIONS-011 — cinquième incrément à cadrer après ACCESS-002
 ```
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.20 | 2026-08-20 | ACCESS-002-06 lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, validations **32/32**, **13/13** et **641/641** ; lot 5 Portail et réduction du mécanisme historique désormais prioritaire |
 | 1.3.19 | 2026-08-20 | ACCESS-002-06 lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698`, fixture UX corrigée par `e250b4a`, validations **13/13**, **11/11** et **637/637** ; lot 4 Journaux désormais prioritaire |
 | 1.3.18 | 2026-08-20 | ACCESS-002-06 lot 2 clôturé : Analytics migré vers ACCESS par la PR applicative #120 au commit `d8e7d7d`, incident de test corrigé par `b91052f`, validations **16/16**, **9/9** et **630/630** ; lot 3 Paramétrage désormais prioritaire |
 | 1.3.17 | 2026-08-20 | ACCESS-002-06 lot 1 clôturé : modèle `access/1.2` intégré par la PR applicative #119 au commit `31ba2d1`, 259 fichiers synchronisés, validation **10/10** ciblée et **624/624** cumulative ; lot 2 Analytics désormais prioritaire |
