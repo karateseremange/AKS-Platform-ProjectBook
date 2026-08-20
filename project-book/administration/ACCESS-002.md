@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.39 |
-| **Statut** | Réalisation engagée — ACCESS-002-06 lots 1 et 2 clôturés |
+| **Version** | 0.4.40 |
+| **Statut** | Réalisation engagée — ACCESS-002-06 lots 1 à 3 clôturés |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -355,7 +355,9 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 Le lot 1 d’`ACCESS-002-06` est clôturé. La [PR applicative #119](https://github.com/karateseremange/AKS-Platform/pull/119) est fusionnée dans `develop` au commit [`31ba2d1`](https://github.com/karateseremange/AKS-Platform/commit/31ba2d12ef4fd971b6978beaccb1390dec4fe93f). La tête `25a8a33` a été synchronisée avec **259 fichiers** en recette ; la suite ciblée réussit à **10/10** et la campagne cumulative à **624/624**, sans échec. Aucun compte ni registre réel n’a été modifié, aucune nouvelle capacité n’a été attribuée et aucune récupération réelle n’a été exécutée.
 
-Le lot 2 est également clôturé. La [PR applicative #120](https://github.com/karateseremange/AKS-Platform/pull/120) est fusionnée dans `develop` au commit [`d8e7d7d`](https://github.com/karateseremange/AKS-Platform/commit/d8e7d7daaf55ac58a01e4007c990754c1000f813). Analytics utilise désormais les trois capacités ACCESS explicites côté route, API et interface. L’incident initial **13/16**, limité au lecteur des tests structurels, a été corrigé par `b91052f` sans changement fonctionnel. Les validations finales réussissent à **16/16**, **9/9** et **630/630**. Aucune publication Drive, attribution ou mutation réelle n’a été exécutée. Le lot 3 « Migration du Paramétrage » devient la prochaine étape applicative.
+Le lot 2 est également clôturé. La [PR applicative #120](https://github.com/karateseremange/AKS-Platform/pull/120) est fusionnée dans `develop` au commit [`d8e7d7d`](https://github.com/karateseremange/AKS-Platform/commit/d8e7d7daaf55ac58a01e4007c990754c1000f813). Analytics utilise désormais les trois capacités ACCESS explicites côté route, API et interface. L’incident initial **13/16**, limité au lecteur des tests structurels, a été corrigé par `b91052f` sans changement fonctionnel. Les validations finales réussissent à **16/16**, **9/9** et **630/630**. Aucune publication Drive, attribution ou mutation réelle n’a été exécutée.
+
+Le lot 3 est clôturé. La [PR applicative #121](https://github.com/karateseremange/AKS-Platform/pull/121) est fusionnée dans `develop` au commit [`d7d3698`](https://github.com/karateseremange/AKS-Platform/commit/d7d3698658a789aa5a2b59c034fae14ee054babd). Paramétrage utilise désormais `CONFIG_READ`, `CONFIG_WRITE` et `CONFIG_RESET` avec réautorisation serveur des combinaisons complètes, adaptation de la vue et carte pilotée par ACCESS. L’échec initial **636/637**, limité à une fixture UX historique, a été corrigé par `e250b4a` sans changement fonctionnel. Les validations finales réussissent à **13/13**, **11/11** et **637/637**. Aucune fonction de mutation n’a été appelée directement et aucun compte, droit, registre, paramètre ou donnée réelle n’a été modifié. Le lot 4 « Migration des Journaux » devient la prochaine étape applicative.
 
 ---
 
@@ -363,6 +365,7 @@ Le lot 2 est également clôturé. La [PR applicative #120](https://github.com/k
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.40 | 2026-08-20 | ACCESS-002-06 lot 3 clôturé : PR applicative #121 fusionnée au commit `d7d3698`, correctif de fixture UX `e250b4a`, validations **13/13**, **11/11** et **637/637**, sans mutation réelle ; lot 4 Journaux prioritaire |
 | 0.4.39 | 2026-08-20 | ACCESS-002-06 lot 2 clôturé : PR applicative #120 fusionnée au commit `d8e7d7d`, correctif de test `b91052f`, validations **16/16**, **9/9** et **630/630**, sans publication Drive ni mutation réelle ; lot 3 Paramétrage prioritaire |
 | 0.4.38 | 2026-08-20 | ACCESS-002-06 lot 1 clôturé : PR applicative #119 fusionnée au commit `31ba2d1`, 259 fichiers synchronisés, suite ciblée **10/10** et campagne cumulative **624/624**, sans compte, registre, attribution ou récupération réelle |
 | 0.4.37 | 2026-08-14 | Cadrage ACCESS-002-06 validé : décisions D1 à D13, six lots, capacités explicites Config/Logs, cohérence Analytics, compatibilité `access/1.1` sans réécriture, recette de récupération réversible et aucune récupération réelle |
