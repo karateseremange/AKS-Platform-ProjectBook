@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.16 |
+| **Version** | 1.3.17 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-14 |
+| **Dernière mise à jour** | 2026-08-20 |
 
 ---
 
@@ -132,7 +132,7 @@ ACCESS-002-04 — Fiche et habilitations
         ↓
 ACCESS-002-05 — Portail privé et Mes accès
         ↓
-ACCESS-002-06 — Migration définitive des modules
+ACCESS-002-06 — lot 1 clôturé, lot 2 Analytics prioritaire
         ↓
 INSCRIPTIONS-011 — prochain incrément métier après ACCESS-002
         ↓
@@ -942,7 +942,7 @@ ACCESS-002-04 — Fiche et habilitations
         ↓
 ACCESS-002-05 — Portail privé et Mes accès
         ↓
-ACCESS-002-06 — Migration définitive des modules
+ACCESS-002-06 — lot 1 clôturé, lot 2 Analytics prioritaire
         ↓
 INSCRIPTIONS-011 — cinquième incrément à cadrer après ACCESS-002
 ```
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.17 | 2026-08-20 | ACCESS-002-06 lot 1 clôturé : modèle `access/1.2` intégré par la PR applicative #119 au commit `31ba2d1`, 259 fichiers synchronisés, validation **10/10** ciblée et **624/624** cumulative ; lot 2 Analytics désormais prioritaire |
 | 1.3.16 | 2026-08-14 | Cadrage ACCESS-002-06 validé : décisions D1 à D13 et six lots, capacités Config/Logs explicites, cohérences sans héritage, lecture `access/1.1` sans réécriture, aucune attribution ou récupération réelle et recette de récupération avec restauration exacte obligatoire |
 | 1.3.15 | 2026-08-14 | ACCESS-002-05 clôturé en 1.0.0 : Portail AKS et Mes accès validés, commit final `9af21d7`, campagne **614/614**, recette multi-profils conforme, restaurations ACCESS/AUDIT exactes et nettoyage complet ; ACCESS-002-06 devient prioritaire |
 | 1.3.14 | 2026-08-14 | ACCESS-002-05 lot 4 intégré au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; recette multi-profils réelle restant à exécuter |
