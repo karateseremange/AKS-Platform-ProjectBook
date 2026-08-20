@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.20 |
+| Version | 1.3.21 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-20 |
@@ -128,11 +128,12 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | Cadrage validé — réalisation non commencée | 0.1.0 | ACCESS-002, ACCESS-002-06, AUDIT-001, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P1 consolidé et validé — production interdite | 0.2.0 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, RELEASE-001, ROADMAP-001 |
+| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | Cadrage validé — implémentation autorisée, opération réelle interdite | 0.1.0 | AUDIT-001, ACCESS-002-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
-| AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
+| AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Socle recette validé — extension de production cadrée, non implémentée | 1.4.0 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01, AUDIT-001-PRODUCTION |
 | AUDIT-001-RECETTE | Procès-verbal de recette du socle persistant AUDIT-001 | En revue | 1.0.0 | AUDIT-001, CONFIG-001, AKS-Platform #90 |
 
 ---
@@ -305,6 +306,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.21 | 2026-08-20 | Référencement d’AUDIT-001-PRODUCTION 0.1.0 et consolidation d’ACCESS-002-PRODUCTION 0.2.0 : P1.1 à P1.12, conservation 1 095 jours, aucune opération réelle autorisée |
 | 1.3.20 | 2026-08-20 | Statut ACCESS rectifié : six lots intégrés et recettés mais non publiés ; ajout d’ACCESS-002-PRODUCTION comme jalon prioritaire avant INSCRIPTIONS-011 |
 | 1.3.18 | 2026-08-13 | Référencement d’ACCESS-002-04 0.1.0 et passage d’ACCESS-002 en 0.4.22 : fiche, multi-rôle, quatre cartes d’habilitations, temporalité, synthèse, audit et évolution compatible `access/1.1` cadrés ; ROADMAP-001 1.3.9 alignée, sans implémentation ni donnée réelle |
 | 1.3.17 | 2026-08-13 | ACCESS-002-03 clôturé en 1.0.0 après synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète avec restaurations exactes d’ACCESS et d’AUDIT ; ACCESS-002 0.4.21 et ROADMAP-001 1.3.8 alignées |
