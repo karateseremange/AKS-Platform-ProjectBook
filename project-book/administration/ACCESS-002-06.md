@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-06 |
 | **Titre** | Migration définitive des modules vers les capacités ACCESS explicites |
-| **Version** | 0.5.0 |
-| **Statut** | Implémentation engagée — lots 1 à 4 clôturés, lot 5 à engager |
+| **Version** | 0.6.0 |
+| **Statut** | Implémentation engagée — lots 1 à 5 clôturés, lot 6 à engager |
 | **Nature** | Spécification d’incrément fonctionnel, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -286,6 +286,16 @@ Après synchronisation de la tête `5e4c012`, les campagnes Apps Script ont réu
 - suppression des dépendances historiques des contrôleurs migrés ;
 - maintien borné du mécanisme de récupération.
 
+#### État du lot 5 — clôturé le 20 août 2026
+
+Le lot 5 est intégré dans `develop` par la [PR applicative #123](https://github.com/karateseremange/AKS-Platform/pull/123), au commit de fusion [`426f526`](https://github.com/karateseremange/AKS-Platform/commit/426f52680819456456f32e8c62d99603a565155c). La tête applicative testée est `3684a5d`.
+
+La projection normale du Portail AKS dépend désormais exclusivement du snapshot ACCESS. L’injection directe d’`AKS.Admin.Access` a été retirée du contrôleur. Les destinations Paramétrage et Journaux restent disponibles uniquement lorsque le snapshot ACCESS signale explicitement le bootstrap ; aucune liste historique n’est consultée par la projection en fonctionnement normal.
+
+La destination privée « Questionnaire santé » a été supprimée du Portail et de la navigation administrative historique. Le service public, sa route par défaut, son formulaire, ses soumissions, attestations, notifications et données restent inchangés. Le fonctionnement normal du Portail ne consulte plus `AKS.Admin.Access`. Des API de compatibilité historiques demeurent toutefois présentes hors de cette projection ; le lot 6 devra en dresser l’inventaire final, vérifier qu’elles ne constituent aucun contournement en fonctionnement normal, puis documenter la décision de maintien résiduel ou de retrait futur.
+
+Après correction de trois attentes de tests devenues obsolètes, les campagnes Apps Script ont réussi à **13/13** pour la projection du portail et **641/641** pour la suite cumulative, sans échec. Aucun compte, droit, registre ou donnée réelle n’a été modifié.
+
 ### Lot 6 — Procédure de récupération, recette réversible et clôture
 
 - documentation de la récupération exceptionnelle ;
@@ -381,6 +391,7 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.6.0 | 2026-08-20 | Lot 5 clôturé : Portail piloté par le snapshot ACCESS, injection historique retirée, bootstrap Config/Journaux borné, destination privée Questionnaire santé supprimée sans modification du service public ; PR #123 fusionnée au commit `426f526`, validations **13/13** et **641/641** |
 | 0.5.0 | 2026-08-20 | Lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, route et aperçu du portail réautorisés avant stockage, séparation AUDIT/ACCESS confirmée, validations **32/32**, **13/13** et **641/641**, sans mutation réelle |
 | 0.4.0 | 2026-08-20 | Lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698` ; contrôles explicites READ/WRITE/RESET, carte pilotée par `CONFIG_*`, incident de fixture UX corrigé par `e250b4a`, campagnes finales **13/13**, **11/11** et **637/637**, sans mutation réelle |
 | 0.3.0 | 2026-08-20 | Lot 2 clôturé : Analytics migré vers ACCESS par la PR applicative #120 au commit `d8e7d7d` ; incident de lecteur de template corrigé par `b91052f`, campagnes finales **16/16**, **9/9** et **630/630**, sans publication Drive ni mutation réelle |
