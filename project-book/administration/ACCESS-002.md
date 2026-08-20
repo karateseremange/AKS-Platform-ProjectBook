@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.40 |
-| **Statut** | Réalisation engagée — ACCESS-002-06 lots 1 à 3 clôturés |
+| **Version** | 0.4.41 |
+| **Statut** | Réalisation engagée — ACCESS-002-06 lots 1 à 4 clôturés |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -357,7 +357,9 @@ Le lot 1 d’`ACCESS-002-06` est clôturé. La [PR applicative #119](https://git
 
 Le lot 2 est également clôturé. La [PR applicative #120](https://github.com/karateseremange/AKS-Platform/pull/120) est fusionnée dans `develop` au commit [`d8e7d7d`](https://github.com/karateseremange/AKS-Platform/commit/d8e7d7daaf55ac58a01e4007c990754c1000f813). Analytics utilise désormais les trois capacités ACCESS explicites côté route, API et interface. L’incident initial **13/16**, limité au lecteur des tests structurels, a été corrigé par `b91052f` sans changement fonctionnel. Les validations finales réussissent à **16/16**, **9/9** et **630/630**. Aucune publication Drive, attribution ou mutation réelle n’a été exécutée.
 
-Le lot 3 est clôturé. La [PR applicative #121](https://github.com/karateseremange/AKS-Platform/pull/121) est fusionnée dans `develop` au commit [`d7d3698`](https://github.com/karateseremange/AKS-Platform/commit/d7d3698658a789aa5a2b59c034fae14ee054babd). Paramétrage utilise désormais `CONFIG_READ`, `CONFIG_WRITE` et `CONFIG_RESET` avec réautorisation serveur des combinaisons complètes, adaptation de la vue et carte pilotée par ACCESS. L’échec initial **636/637**, limité à une fixture UX historique, a été corrigé par `e250b4a` sans changement fonctionnel. Les validations finales réussissent à **13/13**, **11/11** et **637/637**. Aucune fonction de mutation n’a été appelée directement et aucun compte, droit, registre, paramètre ou donnée réelle n’a été modifié. Le lot 4 « Migration des Journaux » devient la prochaine étape applicative.
+Le lot 3 est clôturé. La [PR applicative #121](https://github.com/karateseremange/AKS-Platform/pull/121) est fusionnée dans `develop` au commit [`d7d3698`](https://github.com/karateseremange/AKS-Platform/commit/d7d3698658a789aa5a2b59c034fae14ee054babd). Paramétrage utilise désormais `CONFIG_READ`, `CONFIG_WRITE` et `CONFIG_RESET` avec réautorisation serveur des combinaisons complètes, adaptation de la vue et carte pilotée par ACCESS. L’échec initial **636/637**, limité à une fixture UX historique, a été corrigé par `e250b4a` sans changement fonctionnel. Les validations finales réussissent à **13/13**, **11/11** et **637/637**. Aucune fonction de mutation n’a été appelée directement et aucun compte, droit, registre, paramètre ou donnée réelle n’a été modifié.
+
+Le lot 4 est clôturé. La [PR applicative #122](https://github.com/karateseremange/AKS-Platform/pull/122) est fusionnée dans `develop` au commit [`ca691f2`](https://github.com/karateseremange/AKS-Platform/commit/ca691f2808fef55d75b09be951c0edcb50b9237d). Journaux utilise désormais `LOG_READ` côté route, lecture filtrée et aperçu du Portail. Les refus sont propagés avant stockage, la carte et l’aperçu suivent la projection ACCESS, et la séparation avec AUDIT et l’historique ciblé ACCESS est conservée. Les validations réussissent à **32/32**, **13/13** et **641/641**. Aucune écriture LOG, lecture AUDIT ou mutation réelle n’a été exécutée. Le lot 5 « Portail et réduction du mécanisme historique » devient la prochaine étape applicative.
 
 ---
 
@@ -365,6 +367,7 @@ Le lot 3 est clôturé. La [PR applicative #121](https://github.com/karateserema
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.41 | 2026-08-20 | ACCESS-002-06 lot 4 clôturé : PR applicative #122 fusionnée au commit `ca691f2`, Journaux protégés par `LOG_READ`, validations **32/32**, **13/13** et **641/641**, sans écriture LOG, lecture AUDIT ni mutation réelle ; lot 5 prioritaire |
 | 0.4.40 | 2026-08-20 | ACCESS-002-06 lot 3 clôturé : PR applicative #121 fusionnée au commit `d7d3698`, correctif de fixture UX `e250b4a`, validations **13/13**, **11/11** et **637/637**, sans mutation réelle ; lot 4 Journaux prioritaire |
 | 0.4.39 | 2026-08-20 | ACCESS-002-06 lot 2 clôturé : PR applicative #120 fusionnée au commit `d8e7d7d`, correctif de test `b91052f`, validations **16/16**, **9/9** et **630/630**, sans publication Drive ni mutation réelle ; lot 3 Paramétrage prioritaire |
 | 0.4.38 | 2026-08-20 | ACCESS-002-06 lot 1 clôturé : PR applicative #119 fusionnée au commit `31ba2d1`, 259 fichiers synchronisés, suite ciblée **10/10** et campagne cumulative **624/624**, sans compte, registre, attribution ou récupération réelle |
