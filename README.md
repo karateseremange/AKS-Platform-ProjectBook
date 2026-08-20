@@ -94,6 +94,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [ACCESS-002 — Administration des utilisateurs et habilitations](project-book/administration/ACCESS-002.md)
 - [ACCESS-002-06 — Migration des modules, validée en recette](project-book/administration/ACCESS-002-06.md)
 - [ACCESS-002-PRODUCTION — Publication et amorçage](project-book/administration/ACCESS-002-PRODUCTION.md)
+- [AUDIT-001-PRODUCTION — Audit persistant de production](project-book/administration/AUDIT-001-PRODUCTION.md)
 
 ## Expérience utilisateur
 
