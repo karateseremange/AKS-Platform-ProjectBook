@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.38 |
-| **Statut** | Réalisation engagée — ACCESS-002-06 lot 1 clôturé |
+| **Version** | 0.4.39 |
+| **Statut** | Réalisation engagée — ACCESS-002-06 lots 1 et 2 clôturés |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -353,7 +353,9 @@ La recette réversible d’`ACCESS-002-02` est clôturée : connexion AUDIT pers
 
 [`ACCESS-002-06`](ACCESS-002-06.md) est cadré : migration progressive d’Analytics, Paramétrage et Journaux vers des capacités explicites ; module `ADMINISTRATION` limité à `CONFIG_READ`, `CONFIG_WRITE`, `CONFIG_RESET` et `LOG_READ` ; cohérences Config et Analytics sans héritage implicite ; historique ciblé maintenu sous `ACCESS_MANAGE` et `AUDIT_READ` réservé à une future consultation globale. `access/1.1` reste lisible et normalisé en mémoire vers `access/1.2` sans réécriture automatique. Aucune attribution ni récupération réelle n’est autorisée pendant l’implémentation. La recette de récupération doit restaurer exactement le registre initial, y compris en `access/1.1`, avant toute décision documentée sur `AKS.Admin.Access`.
 
-Le lot 1 d’`ACCESS-002-06` est clôturé. La [PR applicative #119](https://github.com/karateseremange/AKS-Platform/pull/119) est fusionnée dans `develop` au commit [`31ba2d1`](https://github.com/karateseremange/AKS-Platform/commit/31ba2d12ef4fd971b6978beaccb1390dec4fe93f). La tête `25a8a33` a été synchronisée avec **259 fichiers** en recette ; la suite ciblée réussit à **10/10** et la campagne cumulative à **624/624**, sans échec. Aucun compte ni registre réel n’a été modifié, aucune nouvelle capacité n’a été attribuée et aucune récupération réelle n’a été exécutée. Le lot 2, consacré à la migration Analytics, devient la prochaine étape applicative.
+Le lot 1 d’`ACCESS-002-06` est clôturé. La [PR applicative #119](https://github.com/karateseremange/AKS-Platform/pull/119) est fusionnée dans `develop` au commit [`31ba2d1`](https://github.com/karateseremange/AKS-Platform/commit/31ba2d12ef4fd971b6978beaccb1390dec4fe93f). La tête `25a8a33` a été synchronisée avec **259 fichiers** en recette ; la suite ciblée réussit à **10/10** et la campagne cumulative à **624/624**, sans échec. Aucun compte ni registre réel n’a été modifié, aucune nouvelle capacité n’a été attribuée et aucune récupération réelle n’a été exécutée.
+
+Le lot 2 est également clôturé. La [PR applicative #120](https://github.com/karateseremange/AKS-Platform/pull/120) est fusionnée dans `develop` au commit [`d8e7d7d`](https://github.com/karateseremange/AKS-Platform/commit/d8e7d7daaf55ac58a01e4007c990754c1000f813). Analytics utilise désormais les trois capacités ACCESS explicites côté route, API et interface. L’incident initial **13/16**, limité au lecteur des tests structurels, a été corrigé par `b91052f` sans changement fonctionnel. Les validations finales réussissent à **16/16**, **9/9** et **630/630**. Aucune publication Drive, attribution ou mutation réelle n’a été exécutée. Le lot 3 « Migration du Paramétrage » devient la prochaine étape applicative.
 
 ---
 
@@ -361,6 +363,7 @@ Le lot 1 d’`ACCESS-002-06` est clôturé. La [PR applicative #119](https://git
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.39 | 2026-08-20 | ACCESS-002-06 lot 2 clôturé : PR applicative #120 fusionnée au commit `d8e7d7d`, correctif de test `b91052f`, validations **16/16**, **9/9** et **630/630**, sans publication Drive ni mutation réelle ; lot 3 Paramétrage prioritaire |
 | 0.4.38 | 2026-08-20 | ACCESS-002-06 lot 1 clôturé : PR applicative #119 fusionnée au commit `31ba2d1`, 259 fichiers synchronisés, suite ciblée **10/10** et campagne cumulative **624/624**, sans compte, registre, attribution ou récupération réelle |
 | 0.4.37 | 2026-08-14 | Cadrage ACCESS-002-06 validé : décisions D1 à D13, six lots, capacités explicites Config/Logs, cohérence Analytics, compatibilité `access/1.1` sans réécriture, recette de récupération réversible et aucune récupération réelle |
 | 0.4.36 | 2026-08-14 | ACCESS-002-05 clôturé en 1.0.0 : commit final `9af21d7`, 258 fichiers, campagne **614/614**, recette multi-profils conforme après deux auto-restaurations, restaurations ACCESS/AUDIT exactes et nettoyage complet ; ACCESS-002-06 devient prioritaire |

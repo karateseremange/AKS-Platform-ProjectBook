@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-06 |
 | **Titre** | Migration définitive des modules vers les capacités ACCESS explicites |
-| **Version** | 0.2.0 |
-| **Statut** | Implémentation engagée — lot 1 clôturé, lot 2 à engager |
+| **Version** | 0.3.0 |
+| **Statut** | Implémentation engagée — lots 1 et 2 clôturés, lot 3 à engager |
 | **Nature** | Spécification d’incrément fonctionnel, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -235,6 +235,16 @@ La tête applicative `25a8a33` a été synchronisée avec **259 fichiers** dans 
 - traitement sûr des anciennes combinaisons incohérentes ;
 - tests des appels directs et non-régressions.
 
+#### État du lot 2 — clôturé le 20 août 2026
+
+Le lot 2 est intégré dans `develop` par la [PR applicative #120](https://github.com/karateseremange/AKS-Platform/pull/120), au commit de fusion [`d8e7d7d`](https://github.com/karateseremange/AKS-Platform/commit/d8e7d7daaf55ac58a01e4007c990754c1000f813).
+
+Le contrôleur Analytics ne dépend plus d’`AKS.Admin.Access` en fonctionnement normal. La route est visible dès qu’une capacité Analytics effective existe ; le diagnostic, l’aperçu et la publication réautorisent respectivement `ANALYTICS_READ`, `ANALYTICS_PREVIEW` et `ANALYTICS_PUBLISH`. La vue adapte ses actions aux droits explicites et masque une publication techniquement inutilisable lorsqu’aucun aperçu autorisé ne peut fournir le jeton requis. Le bootstrap historique reste borné au registre absent.
+
+La première exécution a obtenu **13/16** : les treize contrôles fonctionnels avaient réussi, mais trois tests structurels utilisaient un lecteur HTML incompatible avec les scriptlets conditionnels. Le correctif `b91052f` a remplacé cette lecture par la source brute du template, sans modifier la vue ni la logique fonctionnelle. Après resynchronisation, les campagnes ont réussi à **16/16** pour Analytics, **9/9** pour la projection du portail et **630/630** pour la suite cumulative.
+
+Aucune fonction métier Analytics n’a été appelée directement, aucune publication Drive n’a été exécutée et aucun compte, registre ou droit réel n’a été modifié.
+
 ### Lot 3 — Migration du Paramétrage
 
 - protection séparée de la lecture, de l’écriture et de la réinitialisation ;
@@ -309,7 +319,7 @@ Chaque lot part du dernier `develop` intégré, ajoute ses tests ciblés, conser
 | A06-16 | Registre initial `access/1.1` | Restauration exacte en `access/1.1` |
 | A06-17 | Administrateur historique en fonctionnement normal | Aucun contournement des capacités ACCESS |
 | A06-18 | Récupération réelle | Non exécutée ; procédure seulement documentée |
-| A06-19 | Suite cumulative | Référence portée à 624/624 après le lot 1 |
+| A06-19 | Suite cumulative | Référence portée à 630/630 après le lot 2 |
 
 ## 8. Hors périmètre
 
@@ -351,5 +361,6 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-20 | Lot 2 clôturé : Analytics migré vers ACCESS par la PR applicative #120 au commit `d8e7d7d` ; incident de lecteur de template corrigé par `b91052f`, campagnes finales **16/16**, **9/9** et **630/630**, sans publication Drive ni mutation réelle |
 | 0.2.0 | 2026-08-20 | Lot 1 clôturé : modèle `access/1.2` et module ADMINISTRATION intégrés par la PR applicative #119 au commit `31ba2d1`, 259 fichiers synchronisés, suite ciblée **10/10** et campagne cumulative **624/624**, sans attribution, réécriture automatique ni récupération réelle |
 | 0.1.0 | 2026-08-14 | Cadrage validé : décisions D1 à D13, six lots, module ADMINISTRATION, capacités Config et Logs, cohérences explicites Config/Analytics, lecture `access/1.1` sans réécriture, portail piloté par ACCESS, retrait de la seule destination privée Questionnaire santé, procédure de récupération distinguant recette réversible et récupération réelle hors périmètre |
