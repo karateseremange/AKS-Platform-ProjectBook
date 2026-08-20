@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.21 |
+| **Version** | 1.3.22 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -132,7 +132,7 @@ ACCESS-002-04 — Fiche et habilitations
         ↓
 ACCESS-002-05 — Portail privé et Mes accès
         ↓
-ACCESS-002-06 — lots 1 à 5 clôturés, lot 6 Récupération prioritaire
+ACCESS-002-06 — clôturé, six lots intégrés
         ↓
 INSCRIPTIONS-011 — prochain incrément métier après ACCESS-002
         ↓
@@ -942,7 +942,7 @@ ACCESS-002-04 — Fiche et habilitations
         ↓
 ACCESS-002-05 — Portail privé et Mes accès
         ↓
-ACCESS-002-06 — lots 1 à 5 clôturés, lot 6 Récupération prioritaire
+ACCESS-002-06 — clôturé, six lots intégrés
         ↓
 INSCRIPTIONS-011 — cinquième incrément à cadrer après ACCESS-002
 ```
@@ -955,6 +955,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.22 | 2026-08-20 | ACCESS-002-06 clôturé par la PR #124 au commit `a90ef30` : récupération réversible restaurée exactement, AUDIT restauré, validations **10/10** et **651/651**, aucune récupération réelle ; INSCRIPTIONS-011 redevient prioritaire |
 | 1.3.21 | 2026-08-20 | ACCESS-002-06 lot 5 clôturé : Portail piloté exclusivement par ACCESS, bootstrap Config/Journaux borné et destination privée Questionnaire santé retirée par la PR #123 au commit `426f526`, validations **13/13** et **641/641** ; lot 6 Récupération et clôture désormais prioritaire |
 | 1.3.20 | 2026-08-20 | ACCESS-002-06 lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, validations **32/32**, **13/13** et **641/641** ; lot 5 Portail et réduction du mécanisme historique désormais prioritaire |
 | 1.3.19 | 2026-08-20 | ACCESS-002-06 lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698`, fixture UX corrigée par `e250b4a`, validations **13/13**, **11/11** et **637/637** ; lot 4 Journaux désormais prioritaire |
