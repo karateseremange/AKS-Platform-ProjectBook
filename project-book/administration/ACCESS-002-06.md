@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-06 |
 | **Titre** | Migration définitive des modules vers les capacités ACCESS explicites |
-| **Version** | 0.6.0 |
-| **Statut** | Implémentation engagée — lots 1 à 5 clôturés, lot 6 à engager |
+| **Version** | 0.7.0 |
+| **Statut** | Clôturé — six lots intégrés et recette réversible validée |
 | **Nature** | Spécification d’incrément fonctionnel, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -313,6 +313,14 @@ Après correction de trois attentes de tests devenues obsolètes, les campagnes 
 - aucune récupération réelle exécutée ;
 - décision documentée sur le maintien résiduel ou le retrait futur d’`AKS.Admin.Access`.
 
+#### État du lot 6 — clôturé le 20 août 2026
+
+Le lot 6 est intégré par la [PR applicative #124](https://github.com/karateseremange/AKS-Platform/pull/124), au commit de fusion [`a90ef30`](https://github.com/karateseremange/AKS-Platform/commit/a90ef3052d569548c928737e70de75c8014c3ee6). La tête `2ededfa` a réussi à **10/10** sur la suite ciblée et **651/651** sur la campagne cumulative.
+
+La recette a démarré avec un registre absent, connecté AUDIT temporairement après autorisation, appliqué l’amorçage minimal, restauré le registre à son état absent dans le même appel, puis restauré et déconnecté AUDIT. Les sauvegardes temporaires ont été supprimées. Aucune récupération réelle n’a été exécutée.
+
+La procédure détaillée est consignée dans [ACCESS-002-06-RECOVERY](./ACCESS-002-06-RECOVERY.md). `AKS.Admin.Access` est maintenu temporairement pour l’amorçage, les recettes éditeur et quelques API internes non routées. Il n’autorise plus les routes normales migrées et son retrait complet nécessitera un incrément dédié.
+
 Chaque lot part du dernier `develop` intégré, ajoute ses tests ciblés, conserve la suite cumulative et fait l’objet de preuves documentaires séparées.
 
 ## 6. Sécurité et contrôles serveur
@@ -349,7 +357,7 @@ Chaque lot part du dernier `develop` intégré, ajoute ses tests ciblés, conser
 | A06-16 | Registre initial `access/1.1` | Restauration exacte en `access/1.1` |
 | A06-17 | Administrateur historique en fonctionnement normal | Aucun contournement des capacités ACCESS |
 | A06-18 | Récupération réelle | Non exécutée ; procédure seulement documentée |
-| A06-19 | Suite cumulative | Référence portée à 641/641 après le lot 4 |
+| A06-19 | Suite cumulative | Référence portée à 651/651 après le lot 6 |
 
 ## 8. Hors périmètre
 
@@ -391,6 +399,7 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.7.0 | 2026-08-20 | Lot 6 et ACCESS-002-06 clôturés : recette de récupération atomique validée, registre absent restauré exactement, AUDIT restauré et déconnecté, validations **10/10** et **651/651**, aucune récupération réelle ; maintien résiduel d’AKS.Admin.Access documenté |
 | 0.6.0 | 2026-08-20 | Lot 5 clôturé : Portail piloté par le snapshot ACCESS, injection historique retirée, bootstrap Config/Journaux borné, destination privée Questionnaire santé supprimée sans modification du service public ; PR #123 fusionnée au commit `426f526`, validations **13/13** et **641/641** |
 | 0.5.0 | 2026-08-20 | Lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, route et aperçu du portail réautorisés avant stockage, séparation AUDIT/ACCESS confirmée, validations **32/32**, **13/13** et **641/641**, sans mutation réelle |
 | 0.4.0 | 2026-08-20 | Lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698` ; contrôles explicites READ/WRITE/RESET, carte pilotée par `CONFIG_*`, incident de fixture UX corrigé par `e250b4a`, campagnes finales **13/13**, **11/11** et **637/637**, sans mutation réelle |
