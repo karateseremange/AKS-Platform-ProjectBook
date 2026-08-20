@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.19 |
+| Version | 1.3.20 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-20 |
@@ -121,13 +121,14 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | ACCESS-002-06 clôturé — récupération réversible validée | 0.4.43 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Implémenté et validé en recette sur `develop` — publication et amorçage en attente | 0.4.44 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
 | ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #101 à #104, `b120963` |
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
-| ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Clôturé — six lots et recette réversible validés | 0.7.0 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | Cadrage validé — réalisation non commencée | 0.1.0 | ACCESS-002, ACCESS-002-06, AUDIT-001, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
@@ -279,7 +280,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01, ACCESS-002-02, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Socle validé — ACCESS-002 0.4.6 en réalisation ; ACCESS-002-01 1.0.0 clôturé ; retrait des droits implicites `ADMINISTRATEUR` validé en recette à 497/497, application et restauration non exécutées, registre inchangé |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Six lots ACCESS intégrés et validés en recette sur `develop` ; publication, audit de production, amorçage et validation opérationnelle encore requis avant clôture |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -304,6 +305,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.20 | 2026-08-20 | Statut ACCESS rectifié : six lots intégrés et recettés mais non publiés ; ajout d’ACCESS-002-PRODUCTION comme jalon prioritaire avant INSCRIPTIONS-011 |
 | 1.3.18 | 2026-08-13 | Référencement d’ACCESS-002-04 0.1.0 et passage d’ACCESS-002 en 0.4.22 : fiche, multi-rôle, quatre cartes d’habilitations, temporalité, synthèse, audit et évolution compatible `access/1.1` cadrés ; ROADMAP-001 1.3.9 alignée, sans implémentation ni donnée réelle |
 | 1.3.17 | 2026-08-13 | ACCESS-002-03 clôturé en 1.0.0 après synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète avec restaurations exactes d’ACCESS et d’AUDIT ; ACCESS-002 0.4.21 et ROADMAP-001 1.3.8 alignées |
 | 1.3.16 | 2026-08-13 | ACCESS-002-03 0.9.0 et ACCESS-002 0.4.20 : protocole réversible du lot 4 publié dans la PR applicative brouillon #104, 5/5 tests ciblés, syntaxe 204/204 et suite préparée à 542 références ; ROADMAP-001 1.3.7 alignée, sans Apps Script ni mutation réelle |

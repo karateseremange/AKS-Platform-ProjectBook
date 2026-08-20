@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.22 |
+| **Version** | 1.3.23 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -132,9 +132,11 @@ ACCESS-002-04 — Fiche et habilitations
         ↓
 ACCESS-002-05 — Portail privé et Mes accès
         ↓
-ACCESS-002-06 — clôturé, six lots intégrés
+ACCESS-002-06 — six lots intégrés et validés en recette
         ↓
-INSCRIPTIONS-011 — prochain incrément métier après ACCESS-002
+ACCESS-002-PRODUCTION — publication, déploiement et amorçage
+        ↓
+INSCRIPTIONS-011 — après validation effective d’ACCESS en production
         ↓
 Modules futurs priorisés selon la valeur métier
 ```
@@ -774,7 +776,9 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 ## 13.4 Prochain jalon
 
-INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` reste prioritaire. `ACCESS-002-01` est clôturé après fusion de la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93) dans `develop`, au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). Le prérequis explicite d'`ACCESS-002-02` est intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8), sans amorçage réel.
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. `INSCRIPTIONS-011` reste suspendu jusqu’à la publication et à la validation effective d’ACCESS en production. Les six lots d’ACCESS-002-06 sont intégrés et validés en recette sur `develop`, mais cette situation ne constitue ni une publication, ni un déploiement, ni un amorçage réel.
+
+Le prochain jalon officiel est `ACCESS-002-PRODUCTION`, selon les décisions P1 à P10 : adaptation contrôlée d’AUDIT à la production, candidate de publication, Quality Gate, fusions et tags autorisés, déploiement Apps Script réversible, support AUDIT distinct, amorçage minimal du premier gestionnaire, validation fonctionnelle puis confirmation ou retour arrière. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` reste prioritaire. `ACCESS-002-01` est clôturé après fusion de la [PR applicative #93](https://github.com/karateseremange/AKS-Platform/pull/93) dans `develop`, au commit [`91ba7e3`](https://github.com/karateseremange/AKS-Platform/commit/91ba7e37972ce3ab1d96aa74bbdf4fc1bc4d38e8). Le prérequis explicite d'`ACCESS-002-02` est intégré par la [PR applicative #94](https://github.com/karateseremange/AKS-Platform/pull/94), au commit [`e800bdb`](https://github.com/karateseremange/AKS-Platform/commit/e800bdbc38a7618921a12358bdfee1f28ec865e8), sans amorçage réel.
 
 Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, introduisent une façade administrative de lecture protégée et immuable, établissent une écriture administrative strictement validée avec révision optimiste, verrou, relecture et restauration vérifiée, imposent un audit persistant corrélé avant/après, puis corrigent l’usage du verrou partagé ACCESS/AUDIT, l’autorisation d’audit et le raccordement des suites. Les refus et restaurations sont tracés, et un échec de preuve finale déclenche la restauration de l’état précédent. Le bootstrap historique reste temporairement accepté lorsque le registre est absent ; dès qu'un registre existe, `ADMINISTRATEUR` est descriptif et ne confère aucune capacité implicite. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
 
@@ -955,7 +959,8 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.3.22 | 2026-08-20 | ACCESS-002-06 clôturé par la PR #124 au commit `a90ef30` : récupération réversible restaurée exactement, AUDIT restauré, validations **10/10** et **651/651**, aucune récupération réelle ; INSCRIPTIONS-011 redevient prioritaire |
+| 1.3.23 | 2026-08-20 | Rectification de la trajectoire : ACCESS-002-06 est intégré et recetté sur `develop`, mais non publié ; ACCESS-002-PRODUCTION (P1 à P10) devient prioritaire avant INSCRIPTIONS-011 |
+| 1.3.22 | 2026-08-20 | ACCESS-002-06 clôturé pour son périmètre technique par la PR #124 au commit `a90ef30` : récupération réversible restaurée exactement, AUDIT restauré, validations **10/10** et **651/651**, aucune récupération réelle ; publication et amorçage encore requis |
 | 1.3.21 | 2026-08-20 | ACCESS-002-06 lot 5 clôturé : Portail piloté exclusivement par ACCESS, bootstrap Config/Journaux borné et destination privée Questionnaire santé retirée par la PR #123 au commit `426f526`, validations **13/13** et **641/641** ; lot 6 Récupération et clôture désormais prioritaire |
 | 1.3.20 | 2026-08-20 | ACCESS-002-06 lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, validations **32/32**, **13/13** et **641/641** ; lot 5 Portail et réduction du mécanisme historique désormais prioritaire |
 | 1.3.19 | 2026-08-20 | ACCESS-002-06 lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698`, fixture UX corrigée par `e250b4a`, validations **13/13**, **11/11** et **637/637** ; lot 4 Journaux désormais prioritaire |

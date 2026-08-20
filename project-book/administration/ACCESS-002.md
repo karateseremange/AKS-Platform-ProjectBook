@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.43 |
-| **Statut** | ACCESS-002-06 clôturé — récupération réversible validée |
+| **Version** | 0.4.44 |
+| **Statut** | Implémenté et validé en recette sur `develop` — publication et amorçage de production en attente |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -325,6 +325,8 @@ Le cadrage est terminé. Toute nouvelle évolution fonctionnelle doit être trai
 
 ACCESS-002 est terminé lorsque les six incréments sont validés, le registre est administrable depuis l’interface privée, le portail est personnalisé selon les droits effectifs, les contrôles restent systématiquement côté serveur, le multi-rôle fonctionne sans héritage automatique, les modules utilisent leurs capacités propres, la protection du dernier gestionnaire est effective, la récupération est documentée et testée, les changements sont audités avant/après, la recette multi-profils est concluante, les évolutions différées restent au backlog et le Project Book reflète le comportement livré.
 
+La seule intégration dans `develop` et la réussite des recettes ne suffisent pas à satisfaire cette définition. La clôture produit exige également la publication sur `main`, un déploiement Apps Script de production identifié et réversible, un support AUDIT de production distinct, l’amorçage explicitement autorisé du premier gestionnaire ACCESS et une validation fonctionnelle en production. Tant que ces jalons ne sont pas acquis, le chantier reste **implémenté et validé en recette, mais non publié**.
+
 ---
 
 ## 21. État de réalisation
@@ -367,10 +369,19 @@ Le lot 6 et ACCESS-002-06 sont clôturés. La [PR applicative #124](https://gith
 
 ---
 
-## 22. Historique
+## 22. Publication et mise en service restant à réaliser
+
+Les lots `ACCESS-002-01` à `ACCESS-002-06` sont intégrés dans `develop` et validés en recette. Ils n’ont pas été fusionnés dans `main`, aucun nouveau déploiement Apps Script de production n’a été créé ou mis à jour, aucun registre de production n’a été amorcé et aucun compte réel n’a reçu `ACCESS_MANAGE`.
+
+La phase [ACCESS-002-PRODUCTION](ACCESS-002-PRODUCTION.md), validée par le Product Owner le 20 août 2026, est prioritaire avant `INSCRIPTIONS-011`. Elle couvre l’audit persistant de production, la candidate de publication, le Quality Gate, les fusions et tags contrôlés, le déploiement, l’amorçage minimal du premier gestionnaire, les contrôles fonctionnels et le retour arrière.
+
+---
+
+## 23. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.44 | 2026-08-20 | Rectification de l’état produit : six lots intégrés et recettés sur `develop`, mais publication, audit de production, amorçage du premier gestionnaire et validation de production encore requis ; `ACCESS-002-PRODUCTION` devient prioritaire avant INSCRIPTIONS-011 |
 | 0.4.43 | 2026-08-20 | ACCESS-002-06 clôturé : PR #124 fusionnée au commit `a90ef30`, recette réversible restaurée exactement, AUDIT restauré, validations **10/10** et **651/651**, aucune récupération réelle ; maintien résiduel d’AKS.Admin.Access documenté |
 | 0.4.42 | 2026-08-20 | ACCESS-002-06 lot 5 clôturé : PR applicative #123 fusionnée au commit `426f526`, Portail piloté par ACCESS, bootstrap historique borné et destination privée Questionnaire santé retirée ; validations **13/13** et **641/641**, sans mutation réelle ; lot 6 prioritaire |
 | 0.4.41 | 2026-08-20 | ACCESS-002-06 lot 4 clôturé : PR applicative #122 fusionnée au commit `ca691f2`, Journaux protégés par `LOG_READ`, validations **32/32**, **13/13** et **641/641**, sans écriture LOG, lecture AUDIT ni mutation réelle ; lot 5 prioritaire |
