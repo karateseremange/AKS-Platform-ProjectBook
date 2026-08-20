@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002-06 |
 | **Titre** | Migration définitive des modules vers les capacités ACCESS explicites |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage validé — implémentation non engagée |
+| **Version** | 0.2.0 |
+| **Statut** | Implémentation engagée — lot 1 clôturé, lot 2 à engager |
 | **Nature** | Spécification d’incrément fonctionnel, technique et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-14 |
+| **Dernière mise à jour** | 2026-08-20 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -220,6 +220,14 @@ La recette de récupération reste temporaire et se termine obligatoirement par 
 - normalisation interne sans écriture ;
 - tests de schéma, registre et non-régression.
 
+#### État du lot 1 — clôturé le 20 août 2026
+
+Le lot 1 est intégré dans `develop` par la [PR applicative #119](https://github.com/karateseremange/AKS-Platform/pull/119), au commit de fusion [`31ba2d1`](https://github.com/karateseremange/AKS-Platform/commit/31ba2d12ef4fd971b6978beaccb1390dec4fe93f).
+
+L’implémentation introduit le modèle `access/1.2`, le module `ADMINISTRATION`, les quatre capacités Config/Logs et les règles de cohérence explicites Config et Analytics. La lecture de `access/1.0` et `access/1.1` reste compatible ; la normalisation vers `access/1.2` est effectuée en mémoire sans réécriture automatique. `AUDIT_READ` reste non attribuable.
+
+La tête applicative `25a8a33` a été synchronisée avec **259 fichiers** dans l’environnement Apps Script de recette. La suite ciblée a réussi à **10/10** et la campagne cumulative à **624/624**, sans échec. Aucun compte ni registre réel n’a été modifié, aucune capacité réelle n’a été attribuée et aucune récupération réelle n’a été exécutée.
+
 ### Lot 2 — Migration Analytics
 
 - contrôle fin des trois API serveur ;
@@ -301,7 +309,7 @@ Chaque lot part du dernier `develop` intégré, ajoute ses tests ciblés, conser
 | A06-16 | Registre initial `access/1.1` | Restauration exacte en `access/1.1` |
 | A06-17 | Administrateur historique en fonctionnement normal | Aucun contournement des capacités ACCESS |
 | A06-18 | Récupération réelle | Non exécutée ; procédure seulement documentée |
-| A06-19 | Suite cumulative | Référence 614/614 conservée puis augmentée explicitement |
+| A06-19 | Suite cumulative | Référence portée à 624/624 après le lot 1 |
 
 ## 8. Hors périmètre
 
@@ -343,4 +351,5 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-20 | Lot 1 clôturé : modèle `access/1.2` et module ADMINISTRATION intégrés par la PR applicative #119 au commit `31ba2d1`, 259 fichiers synchronisés, suite ciblée **10/10** et campagne cumulative **624/624**, sans attribution, réécriture automatique ni récupération réelle |
 | 0.1.0 | 2026-08-14 | Cadrage validé : décisions D1 à D13, six lots, module ADMINISTRATION, capacités Config et Logs, cohérences explicites Config/Analytics, lecture `access/1.1` sans réécriture, portail piloté par ACCESS, retrait de la seule destination privée Questionnaire santé, procédure de récupération distinguant recette réversible et récupération réelle hors périmètre |
