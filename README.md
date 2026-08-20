@@ -91,6 +91,9 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [LOG-001 — Journalisation](project-book/administration/LOG-001.md)
 - [AUDIT-001 — Audit et traçabilité](project-book/administration/AUDIT-001.md)
 - [AUDIT-001-RECETTE — Procès-verbal de recette du socle persistant](project-book/administration/AUDIT-001-RECETTE.md)
+- [ACCESS-002 — Administration des utilisateurs et habilitations](project-book/administration/ACCESS-002.md)
+- [ACCESS-002-06 — Migration des modules, validée en recette](project-book/administration/ACCESS-002-06.md)
+- [ACCESS-002-PRODUCTION — Publication et amorçage](project-book/administration/ACCESS-002-PRODUCTION.md)
 
 ## Expérience utilisateur
 
@@ -165,7 +168,9 @@ et dans `ANALYTICS-008`.
 
 La **V1.3.0** a été publiée le 1er août 2026. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version. Le tag documentaire `v1.3.0` pointe sur le commit `647ae45a501bf14c1f3463fbca480945993bc515`.
 
-Le chantier suivant est **AKS Inscriptions**. Son cadrage fonctionnel, son modèle métier, ses services, la reprise des trois Google Forms, les interfaces de contrôle, le socle transverse d’accès privés, les contrats techniques ainsi que la stratégie de recette cumulative sont validés dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md) à [`INSCRIPTIONS-006`](project-book/modules/inscriptions/INSCRIPTIONS-006.md).
+Les six lots d’**ACCESS-002-06** sont intégrés dans `develop` et validés en recette, mais ACCESS n’est pas encore publié ni amorcé en production. La phase prioritaire est [`ACCESS-002-PRODUCTION`](project-book/administration/ACCESS-002-PRODUCTION.md). `INSCRIPTIONS-011` reste suspendu jusqu’à la validation fonctionnelle d’ACCESS en production.
+
+Le chantier métier suivant est **AKS Inscriptions**. Son cadrage fonctionnel, son modèle métier, ses services, la reprise des trois Google Forms, les interfaces de contrôle, le socle transverse d’accès privés, les contrats techniques ainsi que la stratégie de recette cumulative sont validés dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md) à [`INSCRIPTIONS-006`](project-book/modules/inscriptions/INSCRIPTIONS-006.md).
 
 Le premier incrément applicatif sans écriture réelle est intégré sur `develop` par la PR applicative #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. La suite cumulative exécutée dans Apps Script le 2 août 2026 est concluante : **341/341 tests réussis, 0 échec**. Les seize jeux d’or produisent 12 réussites, 2 résultats partiels et 2 blocages attendus. Le code a été synchronisé dans le projet Apps Script pour cette validation, mais les tests n’ont lu ni écrit aucune donnée métier ou cible Google réelle et aucun déploiement de production n’a été créé.
 

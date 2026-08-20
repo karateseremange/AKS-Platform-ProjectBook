@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-06 |
 | **Titre** | Migration définitive des modules vers les capacités ACCESS explicites |
-| **Version** | 0.7.0 |
-| **Statut** | Clôturé — six lots intégrés et recette réversible validée |
+| **Version** | 0.7.1 |
+| **Statut** | Incrément technique intégré et validé en recette — mise en production non réalisée |
 | **Nature** | Spécification d’incrément fonctionnel, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -395,10 +395,27 @@ Sont exclus :
 14. les tests ciblés et la suite cumulative sont concluants ;
 15. le Project Book contient les preuves et incidents utiles à la reprise.
 
-## 10. Historique
+## 10. Limite de clôture et suite opérationnelle
+
+La clôture mentionnée dans les lots concerne exclusivement leur implémentation sur `develop` et leur validation en recette. Elle ne signifie pas qu’ACCESS est publié ou utilisable pour administrer des comptes en production.
+
+À la date du 20 août 2026 :
+
+- `main` ne contient pas ACCESS-002-06 ;
+- aucun nouveau déploiement Apps Script de production n’a été réalisé ;
+- le support AUDIT n’autorise que l’environnement `RECETTE` ;
+- aucun registre ACCESS de production n’existe ;
+- aucun compte réel n’a reçu `ACCESS_MANAGE`.
+
+La phase [ACCESS-002-PRODUCTION](ACCESS-002-PRODUCTION.md) doit être terminée avant que le chantier ACCESS puisse être déclaré publié et avant l’ouverture d’`INSCRIPTIONS-011`.
+
+---
+
+## 11. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.7.1 | 2026-08-20 | Statut rectifié : incrément intégré et recetté sur `develop`, mais publication, déploiement, audit de production et amorçage réel non réalisés ; renvoi vers ACCESS-002-PRODUCTION |
 | 0.7.0 | 2026-08-20 | Lot 6 et ACCESS-002-06 clôturés : recette de récupération atomique validée, registre absent restauré exactement, AUDIT restauré et déconnecté, validations **10/10** et **651/651**, aucune récupération réelle ; maintien résiduel d’AKS.Admin.Access documenté |
 | 0.6.0 | 2026-08-20 | Lot 5 clôturé : Portail piloté par le snapshot ACCESS, injection historique retirée, bootstrap Config/Journaux borné, destination privée Questionnaire santé supprimée sans modification du service public ; PR #123 fusionnée au commit `426f526`, validations **13/13** et **641/641** |
 | 0.5.0 | 2026-08-20 | Lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, route et aperçu du portail réautorisés avant stockage, séparation AUDIT/ACCESS confirmée, validations **32/32**, **13/13** et **641/641**, sans mutation réelle |
