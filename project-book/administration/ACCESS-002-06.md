@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-06 |
 | **Titre** | Migration définitive des modules vers les capacités ACCESS explicites |
-| **Version** | 0.3.0 |
-| **Statut** | Implémentation engagée — lots 1 et 2 clôturés, lot 3 à engager |
+| **Version** | 0.4.0 |
+| **Statut** | Implémentation engagée — lots 1 à 3 clôturés, lot 4 à engager |
 | **Nature** | Spécification d’incrément fonctionnel, technique et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -252,6 +252,16 @@ Aucune fonction métier Analytics n’a été appelée directement, aucune publi
 - conservation des restrictions sur les paramètres sensibles ;
 - tests des combinaisons et appels directs.
 
+#### État du lot 3 — clôturé le 20 août 2026
+
+Le lot 3 est intégré dans `develop` par la [PR applicative #121](https://github.com/karateseremange/AKS-Platform/pull/121), au commit de fusion [`d7d3698`](https://github.com/karateseremange/AKS-Platform/commit/d7d3698658a789aa5a2b59c034fae14ee054babd).
+
+Le contrôleur Paramétrage ne dépend plus d’`AKS.Admin.Access` en fonctionnement normal. La consultation exige `CONFIG_READ`, l’enregistrement réautorise explicitement `CONFIG_READ` et `CONFIG_WRITE`, et la réinitialisation exige les trois capacités `CONFIG_READ`, `CONFIG_WRITE` et `CONFIG_RESET`. Aucun héritage n’est calculé. La vue n’expose aucune valeur sans droit de lecture, adapte les formulaires aux combinaisons complètes et conserve les restrictions sur les paramètres sensibles. La carte Paramétrage est projetée avec toute capacité `CONFIG_*` effective ; son accès historique est borné au seul bootstrap sans registre.
+
+Les premières campagnes ont réussi à **13/13** pour le Paramétrage et **11/11** pour la projection du portail. La suite cumulative a obtenu **636/637** : l’unique échec provenait de l’ancienne fixture UX du socle administratif, qui ne fournissait pas le nouveau bloc `permissions`. Le correctif `e250b4a` a uniquement adapté cette fixture, sans changement fonctionnel. Après resynchronisation, la campagne cumulative a réussi à **637/637**, sans échec.
+
+Aucune fonction de modification métier n’a été appelée directement. Aucun compte, droit, registre, paramètre ou donnée réelle n’a été modifié.
+
 ### Lot 4 — Migration des Journaux
 
 - protection de la route et des lectures par `LOG_READ` ;
@@ -319,7 +329,7 @@ Chaque lot part du dernier `develop` intégré, ajoute ses tests ciblés, conser
 | A06-16 | Registre initial `access/1.1` | Restauration exacte en `access/1.1` |
 | A06-17 | Administrateur historique en fonctionnement normal | Aucun contournement des capacités ACCESS |
 | A06-18 | Récupération réelle | Non exécutée ; procédure seulement documentée |
-| A06-19 | Suite cumulative | Référence portée à 630/630 après le lot 2 |
+| A06-19 | Suite cumulative | Référence portée à 637/637 après le lot 3 |
 
 ## 8. Hors périmètre
 
@@ -361,6 +371,7 @@ Sont exclus :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-20 | Lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698` ; contrôles explicites READ/WRITE/RESET, carte pilotée par `CONFIG_*`, incident de fixture UX corrigé par `e250b4a`, campagnes finales **13/13**, **11/11** et **637/637**, sans mutation réelle |
 | 0.3.0 | 2026-08-20 | Lot 2 clôturé : Analytics migré vers ACCESS par la PR applicative #120 au commit `d8e7d7d` ; incident de lecteur de template corrigé par `b91052f`, campagnes finales **16/16**, **9/9** et **630/630**, sans publication Drive ni mutation réelle |
 | 0.2.0 | 2026-08-20 | Lot 1 clôturé : modèle `access/1.2` et module ADMINISTRATION intégrés par la PR applicative #119 au commit `31ba2d1`, 259 fichiers synchronisés, suite ciblée **10/10** et campagne cumulative **624/624**, sans attribution, réécriture automatique ni récupération réelle |
 | 0.1.0 | 2026-08-14 | Cadrage validé : décisions D1 à D13, six lots, module ADMINISTRATION, capacités Config et Logs, cohérences explicites Config/Analytics, lecture `access/1.1` sans réécriture, portail piloté par ACCESS, retrait de la seule destination privée Questionnaire santé, procédure de récupération distinguant recette réversible et récupération réelle hors périmètre |
