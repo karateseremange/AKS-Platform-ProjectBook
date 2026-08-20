@@ -292,7 +292,7 @@ Le lot 5 est intégré dans `develop` par la [PR applicative #123](https://githu
 
 La projection normale du Portail AKS dépend désormais exclusivement du snapshot ACCESS. L’injection directe d’`AKS.Admin.Access` a été retirée du contrôleur. Les destinations Paramétrage et Journaux restent disponibles uniquement lorsque le snapshot ACCESS signale explicitement le bootstrap ; aucune liste historique n’est consultée par la projection en fonctionnement normal.
 
-La destination privée « Questionnaire santé » a été supprimée du Portail et de la navigation administrative historique. Le service public, sa route par défaut, son formulaire, ses soumissions, attestations, notifications et données restent inchangés. `AKS.Admin.Access` demeure temporairement présent et borné à l’amorçage et à la future procédure de récupération du lot 6.
+La destination privée « Questionnaire santé » a été supprimée du Portail et de la navigation administrative historique. Le service public, sa route par défaut, son formulaire, ses soumissions, attestations, notifications et données restent inchangés. Le fonctionnement normal du Portail ne consulte plus `AKS.Admin.Access`. Des API de compatibilité historiques demeurent toutefois présentes hors de cette projection ; le lot 6 devra en dresser l’inventaire final, vérifier qu’elles ne constituent aucun contournement en fonctionnement normal, puis documenter la décision de maintien résiduel ou de retrait futur.
 
 Après correction de trois attentes de tests devenues obsolètes, les campagnes Apps Script ont réussi à **13/13** pour la projection du portail et **641/641** pour la suite cumulative, sans échec. Aucun compte, droit, registre ou donnée réelle n’a été modifié.
 
