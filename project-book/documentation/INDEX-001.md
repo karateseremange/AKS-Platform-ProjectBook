@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.18 |
+| Version | 1.3.19 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-08-13 |
+| Dernière mise à jour | 2026-08-20 |
 | Version du produit | Post-V1.3 |
 
 ---
@@ -121,11 +121,14 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Réalisation engagée — ACCESS-002-04 cadré | 0.4.22 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | ACCESS-002-06 clôturé — récupération réversible validée | 0.4.43 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
 | ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #101 à #104, `b120963` |
-| ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Cadrage validé — implémentation non engagée | 0.1.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
+| ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
+| ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
+| ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Clôturé — six lots et recette réversible validés | 0.7.0 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
 | AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Validé | 1.3.4 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01 |
