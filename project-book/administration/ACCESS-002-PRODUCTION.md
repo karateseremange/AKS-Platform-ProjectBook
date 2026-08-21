@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.2.0 |
-| **Statut** | P1 consolidé et validé — modifications documentaires/applicatives autorisées, production interdite |
+| **Version** | 0.3.0 |
+| **Statut** | P1 intégré et validé en recette — préparation du Quality Gate autorisée, production interdite |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-20 |
+| **Dernière mise à jour** | 2026-08-21 |
 | **Version cible proposée** | AKS Platform V1.4.0, à confirmer au Quality Gate |
 
 ---
@@ -21,13 +21,14 @@ Le chantier ACCESS ne peut donc pas être considéré comme publié ni opératio
 
 ## 2. État technique vérifié
 
-- le dépôt applicatif `develop` est en avance de 206 commits sur `main`, sans retard ;
-- le Project Book `develop` est en avance de 329 commits sur `main`, sans retard ;
+- le dépôt applicatif pointe sur `develop` à `ab52dc6` et sur `main` à `e8fb0fc` ;
+- le Project Book pointe sur `develop` à `ae3630a` et sur `main` à `647ae45` avant la présente mise à jour documentaire ;
 - l’écart applicatif contient ACCESS, AUDIT et des fondations Inscriptions internes ;
 - ACCESS exige une preuve AUDIT persistante pour toute mutation du registre ;
-- AUDIT n’accepte actuellement que `RECETTE` et le support `AKS Audit RECETTE` ;
+- AUDIT accepte désormais les contrats fermés `RECETTE` et `PRODUCTION` dans `develop`, sans aucune configuration de production ;
 - le projet Apps Script utilisé pour les campagnes précédentes est un environnement de recette ;
-- la version applicative embarquée reste à synchroniser avec la future release.
+- la version applicative embarquée reste à synchroniser avec la future release ;
+- la référence Git de `main` est identifiée, mais sa correspondance avec le déploiement Apps Script public reste à démontrer avant de confirmer `V1.4.0`.
 
 Une fusion sélective de quelques commits ACCESS n’est pas retenue par défaut : ACCESS dépend des évolutions AUDIT et transverses cumulatives. Le périmètre exact de la candidate devra toutefois être confirmé par l’audit de release.
 
@@ -42,6 +43,8 @@ Le précontrôle sans écriture et le test contrôlé d’écriture/relecture co
 Le comportement reste fermé si le nouveau code est déployé avant configuration : aucun registre n’est créé, aucune capacité n’est inférée, aucune mutation ACCESS n’est possible sans audit persistant conforme et les services publics existants restent inchangés.
 
 La durée initiale de conservation est fixée à **1 095 jours**, réévaluable avant la première purge. Aucune purge réelle n’est exécutée pendant cette mise en production.
+
+P1 est intégré par la [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125), fusionnée dans `develop` au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad). La tête `a620b390` a réussi à **62/62** sur AUDIT-001 et **660/660** sur la campagne cumulative dans l’environnement Apps Script de recette. Aucun précontrôle, test d’écriture, support, paramètre ou déploiement de production n’a été exécuté ou modifié.
 
 ### P2 — Candidate de publication
 
@@ -190,5 +193,6 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-21 | P1 intégré dans `develop` par la PR #125 au commit `ab52dc6`, validé en recette à **62/62** et **660/660** ; aucune opération de production exécutée, prochaine étape limitée à la préparation de la candidate et du Quality Gate |
 | 0.2.0 | 2026-08-20 | P1 consolidé : précontrôle séparé du test d’écriture autorisé distinctement, fermeture avant configuration, inventaire préalable de la production, retour arrière AUDIT conservatoire, rétention initiale de 1 095 jours sans purge et V1.4.0 conditionnelle |
 | 0.1.0 | 2026-08-20 | Cadrage P1 à P10 validé ; rectification de l’état ACCESS et priorité donnée à la publication, au déploiement et à l’amorçage avant INSCRIPTIONS-011 |

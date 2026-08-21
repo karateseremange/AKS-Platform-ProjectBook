@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage validé — implémentation autorisée, opération réelle interdite |
+| **Version** | 0.2.0 |
+| **Statut** | P1 implémenté et validé en recette sur `develop` — opération réelle interdite |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-20 |
+| **Dernière mise à jour** | 2026-08-21 |
 | **Version cible** | À confirmer après vérification de `main` et de la production |
 
 ---
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle actuel est volontairement limité à `RECETTE`, au classeur `AKS Audit RECETTE` et à l’API `isPersistentRecipeAudit()`. Une simple modification de propriétés ne suffit pas et reste refusée par le code.
+Le socle multi-environnement est intégré dans `develop`, mais aucune ressource ni configuration de production n’existe encore. Une simple modification de propriétés ne suffit pas : les contrôles du projet, du support, du schéma, des permissions et de l’identité technique restent obligatoires.
 
 ## 2. Principes permanents
 
@@ -138,6 +138,26 @@ La campagne applicative préalable, exécutée exclusivement en recette, couvre 
 
 Cette campagne ne crée ni ressource, ni propriété, ni preuve de production.
 
+## 3.1 État d’implémentation de P1
+
+La [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125) est fusionnée dans `develop` au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad).
+
+L’implémentation fournit notamment :
+
+- les cinq paramètres techniques AUDIT, dont `audit.scriptId` et `audit.retentionDays` ;
+- la séparation exacte des supports `RECETTE` et `PRODUCTION` ;
+- `isPersistentAuditAvailable()` avec maintien temporaire de `isPersistentRecipeAudit()` pour les recettes existantes ;
+- le raccordement générique d’ACCESS, qui reste fermé sans audit conforme ;
+- la vérification que l’identité technique est propriétaire ou éditrice du classeur de production ;
+- `AKS_preflightAudit001Production()`, strictement sans écriture ;
+- `AKS_runAudit001ProductionControlledWriteRead(confirmation)`, distinct, réautorisé côté serveur et inutilisable sans confirmation explicite ;
+- l’action technique `AUDIT_SUPPORT_TEST`, qui ne représente aucune opération métier ;
+- l’absence de fonction de purge.
+
+La tête `a620b390` a été synchronisée dans l’environnement Apps Script de recette. Les validations ont réussi à **62/62** pour AUDIT-001 et **660/660** pour la campagne cumulative, sans exécuter les deux fonctions de production.
+
+Aucun classeur, paramètre, compte, registre, déploiement ou test réel de production n’a été créé ou modifié. P1 est donc intégré et validé en recette, mais non activé en production.
+
 ## 4. Comportement avant configuration
 
 Le nouveau code peut être déployé avant la configuration d’AUDIT et l’amorçage d’ACCESS sans ouvrir de droit :
@@ -228,4 +248,5 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-21 | P1 intégré par la PR applicative #125 au commit `ab52dc6` ; validations de recette **62/62** et **660/660**, contrôles production non exécutés et aucune ressource réelle modifiée |
 | 0.1.0 | 2026-08-20 | P1.1 à P1.12 consolidés et validés avec séparation précontrôle/écriture, fermeture avant configuration, inventaire préalable, retour arrière conservatoire, rétention de 1 095 jours et double niveau d’autorisation |
