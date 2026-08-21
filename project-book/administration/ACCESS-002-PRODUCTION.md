@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.3.0 |
-| **Statut** | P1 intégré et validé en recette — préparation du Quality Gate autorisée, production interdite |
+| **Version** | 0.4.0 |
+| **Statut** | P2 cadré et validé — candidate et Quality Gate en préparation, production interdite |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -49,6 +49,8 @@ P1 est intégré par la [PR applicative #125](https://github.com/karateseremange
 ### P2 — Candidate de publication
 
 Une candidate de publication cohérente est préparée à partir de l’état validé de `develop`. La version proposée est `V1.4.0`, sous réserve de vérification formelle de la référence actuelle de `main` et de la production, puis de confirmation au Quality Gate.
+
+Les décisions détaillées P2.1 à P2.10, le périmètre de l’écart et la checklist sont définis dans [ACCESS-002-PRODUCTION-P2](ACCESS-002-PRODUCTION-P2.md). La candidate de travail est `1.4.0-rc.1` et ne constitue pas une publication.
 
 La candidate comprend principalement ACCESS, la migration administrative, AUDIT et les fondations internes déjà intégrées. Les fondations Inscriptions restent non exposées et refusées en production.
 
@@ -193,6 +195,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-21 | P2.1 à P2.10 validés : candidate complète `1.4.0-rc.1` depuis `develop`, métadonnées et documentation à aligner, Quality Gate transverse, recette obligatoire, aucune PR vers `main`, aucun tag ni aucune opération de production |
 | 0.3.0 | 2026-08-21 | P1 intégré dans `develop` par la PR #125 au commit `ab52dc6`, validé en recette à **62/62** et **660/660** ; aucune opération de production exécutée, prochaine étape limitée à la préparation de la candidate et du Quality Gate |
 | 0.2.0 | 2026-08-20 | P1 consolidé : précontrôle séparé du test d’écriture autorisé distinctement, fermeture avant configuration, inventaire préalable de la production, retour arrière AUDIT conservatoire, rétention initiale de 1 095 jours sans purge et V1.4.0 conditionnelle |
 | 0.1.0 | 2026-08-20 | Cadrage P1 à P10 validé ; rectification de l’état ACCESS et priorité donnée à la publication, au déploiement et à l’amorçage avant INSCRIPTIONS-011 |
