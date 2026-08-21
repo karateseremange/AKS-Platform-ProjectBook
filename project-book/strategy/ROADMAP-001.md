@@ -959,6 +959,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.29 | 2026-08-21 | P3 renforcé avant inventaire : distinction du HEAD Apps Script et de la version réellement déployée, puis archive durable relue et vérifiée par empreintes |
 | 1.3.28 | 2026-08-21 | P2 clôturé sur `develop` ; P3 cadré par les décisions I1 à I12 pour un inventaire Apps Script en lecture seule, sans accès réel à la production |
 | 1.3.27 | 2026-08-21 | Candidate `1.4.0-rc.1` intégrée par la PR #126 au commit `b13fc20` et validée en recette sur sa tête exacte à **8/8** VERSION-001 et **661/661** cumulés, sans opération de production |
 | 1.3.26 | 2026-08-21 | P2 de la publication ACCESS cadré : candidate complète `1.4.0-rc.1`, 209 commits et 82 fichiers applicatifs inventoriés, Quality Gate transverse et recette obligatoire, sans PR vers `main`, tag ni opération de production |

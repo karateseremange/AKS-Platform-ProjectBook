@@ -4,7 +4,7 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P3 |
 | **Titre** | Inventaire technique préalable de la production |
-| **Version** | 0.1.0 |
+| **Version** | 0.1.1 |
 | **Statut** | Cadrage validé — inventaire réel non autorisé |
 | **Nature** | Protocole d’exploitation sans mutation |
 | **Propriétaire** | Product Owner |
@@ -43,9 +43,11 @@ Avant toute commande distante, l’opérateur confirme la source fiable permetta
 
 Le projet de recette dont l’identifiant se termine par `eIRxs4` est exclu. Si le projet présumé de production correspond à ce projet, l’opération s’arrête immédiatement.
 
-### I4 — Répertoire local isolé
+### I4 — Espace de travail isolé et archive durable
 
 L’inventaire s’exécute dans un nouveau répertoire temporaire hors du dépôt applicatif actif. Le `.clasp.json` de recette n’est ni remplacé ni réutilisé. La copie de production n’est jamais mélangée à la candidate et aucun identifiant sensible n’est ajouté à Git.
+
+Ce répertoire sert uniquement au travail courant. Avant toute étape ultérieure, ses preuves sont copiées dans une archive protégée et durable, distincte du dépôt Git et du répertoire temporaire. L’archive est relue et vérifiée par ses empreintes avant d’être considérée comme sauvegarde de retour arrière.
 
 ### I5 — Lectures autorisables
 
@@ -54,12 +56,14 @@ Après autorisation spécifique, le protocole pourra uniquement :
 1. lire les métadonnées du projet Apps Script ;
 2. lister ses déploiements ;
 3. lister ses versions ;
-4. récupérer une copie locale exacte du code actuellement présent ;
-5. relever le déploiement Web actif et sa version ;
-6. relever l’URL publique depuis les métadonnées sans l’appeler ;
-7. relever les paramètres d’exécution et d’accès du déploiement ;
-8. calculer localement les empreintes des fichiers récupérés ;
-9. comparer la copie à `main`, aux tags publiés et à la candidate.
+4. récupérer séparément le HEAD courant du projet Apps Script ;
+5. identifier le déploiement Web actif et son numéro de version ;
+6. récupérer séparément le contenu exact de cette version numérotée ;
+7. relever l’URL publique depuis les métadonnées sans l’appeler ;
+8. relever les paramètres d’exécution et d’accès du déploiement ;
+9. calculer localement les empreintes des deux contenus récupérés ;
+10. comparer le HEAD au contenu réellement déployé ;
+11. comparer en priorité la version déployée à `main`, aux tags publiés et à la candidate.
 
 Les commandes finales seront présentées avant exécution et revues pour démontrer leur absence d’écriture.
 
@@ -67,24 +71,27 @@ Les commandes finales seront présentées avant exécution et revues pour démon
 
 La sauvegarde restreinte contient :
 
-- la copie exacte des fichiers Apps Script et du manifeste ;
+- la copie exacte et séparée du HEAD Apps Script et de son manifeste ;
+- la copie exacte et séparée des fichiers et du manifeste de la version déployée ;
 - les identifiants minimisés du projet et du déploiement ;
 - le numéro de version ;
 - l’URL publique dans une preuve protégée si elle est confidentielle ;
 - les paramètres « exécuter en tant que » et « utilisateurs autorisés » ;
 - la date et l’identité de l’opérateur ;
-- l’empreinte SHA-256 de chaque fichier ;
+- un manifeste horodaté et l’empreinte SHA-256 de chaque fichier des deux états ;
+- le résultat de la relecture et de la vérification de l’archive durable ;
 - le résultat du rapprochement Git.
 
-Elle n’est ni supprimée ni remplacée avant la confirmation finale de production.
+L’archive durable n’est ni supprimée ni remplacée avant la confirmation finale de production. Le répertoire temporaire ne constitue jamais à lui seul une sauvegarde valable.
 
 ### I7 — Rapprochement Git
 
 | Référence | Contrôle attendu |
 |---|---|
-| `main` applicatif actuel | correspondance avec le code récupéré |
-| tag `v1.2.0` | correspondance avec la dernière version applicative documentée |
-| `develop` à `b13fc20` | écart complet avec la candidate `1.4.0-rc.1` |
+| HEAD du projet Apps Script | comparaison avec la version numérotée réellement déployée |
+| `main` applicatif actuel | correspondance avec la version réellement déployée |
+| tag `v1.2.0` | correspondance avec la version réellement déployée et la dernière version applicative documentée |
+| `develop` à `b13fc20` | écart entre la version réellement déployée et la candidate `1.4.0-rc.1` |
 | futur commit publié | référence exacte à déployer après autorisation |
 
 `V1.4.0` ne devient pas définitive si l’état public réel reste indéterminé.
@@ -106,9 +113,11 @@ L’inventaire s’arrête immédiatement si :
 - le projet de production reste ambigu ou correspond à la recette ;
 - plusieurs déploiements publics sont actifs sans référence claire ;
 - la version déployée ne peut pas être déterminée ;
+- le contenu exact de la version numérotée déployée ne peut pas être récupéré séparément du HEAD ;
 - une commande implique ou peut impliquer une écriture ;
 - une donnée sensible apparaît dans une sortie destinée à Git ;
-- la copie locale ne peut pas être vérifiée ;
+- le HEAD, la version déployée ou leurs empreintes ne peuvent pas être vérifiés ;
+- l’archive durable ne peut pas être créée, relue ou validée par ses empreintes ;
 - l’accès nécessite d’étendre le périmètre autorisé.
 
 ### I11 — Restitution minimisée
@@ -122,6 +131,7 @@ Les identifiants complets, URL restreintes et valeurs sensibles restent dans la 
 P3 est concluant uniquement lorsque sont connus exactement :
 
 - le code actuellement exécuté ;
+- l’éventuel écart entre le HEAD Apps Script et la version déployée ;
 - la méthode permettant de revenir à cet état ;
 - l’URL à conserver ;
 - la pertinence du numéro `V1.4.0` ;
@@ -143,5 +153,5 @@ P3 est concluant uniquement lorsque sont connus exactement :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.1.1 | 2026-08-21 | Distinction obligatoire entre HEAD Apps Script et contenu exact de la version déployée ; archive protégée durable, horodatée, relue et vérifiée par SHA-256 |
 | 0.1.0 | 2026-08-21 | Décisions I1 à I12 validées : inventaire Apps Script borné en lecture seule, sauvegarde isolée, rapprochement Git, exclusion des propriétés et données métier, URL non exécutée et autorisation réelle différée |
-
