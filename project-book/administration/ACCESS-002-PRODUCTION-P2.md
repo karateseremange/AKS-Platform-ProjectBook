@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P2 |
 | **Titre** | Préparation de la candidate et du Quality Gate ACCESS |
-| **Version** | 0.2.1 |
-| **Statut** | Candidate validée en recette — clôture documentaire P2 en revue, production interdite |
+| **Version** | 1.0.0 |
+| **Statut** | P2 clôturé sur `develop` — candidate validée en recette, production interdite |
 | **Nature** | Spécification de release et plan de validation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -132,6 +132,7 @@ La recette confirme la cohérence technique de la candidate. Elle ne constitue n
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-21 | P2 clôturé après fusion de la PR documentaire #161 dans `develop` au commit `c4b1e0b` ; P3 devient le prochain jalon sous autorisation séparée |
 | 0.2.1 | 2026-08-21 | Note V1.4.0 candidate ajoutée, Quality Gate P2 renseigné domaine par domaine et statut borné à la clôture documentaire en revue |
 | 0.2.0 | 2026-08-21 | PR applicative #126 fusionnée dans `develop` au commit `b13fc20` ; candidate exacte `1.4.0-rc.1` validée en recette à **8/8** VERSION-001 et **661/661** cumulés, sans opération de production |
 | 0.1.0 | 2026-08-21 | Décisions P2.1 à P2.10 validées : candidate complète `1.4.0-rc.1`, synchronisation des versions, note non publiée, Quality Gate transverse, recette obligatoire et production inchangée |

@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.5.1 |
-| **Statut** | Candidate validée en recette — clôture documentaire P2 en revue, production interdite |
+| **Version** | 0.6.0 |
+| **Statut** | P2 clôturé — P3 cadré, inventaire réel de production non autorisé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -59,6 +59,8 @@ La version embarquée, le README et le changelog ont été synchronisés par la 
 ### P3 — Aucune mutation réelle pendant la préparation
 
 La préparation du code et de la documentation ne crée aucun registre de production, n’attribue aucune capacité, ne modifie aucun compte réel et ne crée ou modifie aucun déploiement de production.
+
+Le protocole détaillé d’inventaire technique préalable est défini dans [ACCESS-002-PRODUCTION-P3](ACCESS-002-PRODUCTION-P3.md). Ses décisions I1 à I12 sont validées, mais aucune lecture réelle de production n’est autorisée par ce cadrage.
 
 ### P4 — Quality Gate
 
@@ -195,6 +197,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.6.0 | 2026-08-21 | P2 clôturé sur `develop` par la PR documentaire #161 ; cadrage I1 à I12 de P3 validé, inventaire réel toujours soumis à une autorisation distincte |
 | 0.5.1 | 2026-08-21 | Note V1.4.0 candidate et checklist P2 renseignée ajoutées ; clôture documentaire encore soumise à la revue de la PR Project Book |
 | 0.5.0 | 2026-08-21 | Candidate `1.4.0-rc.1` intégrée par la PR #126 au commit `b13fc20` et validée en recette à **8/8** VERSION-001 et **661/661** cumulés ; production inchangée |
 | 0.4.0 | 2026-08-21 | P2.1 à P2.10 validés : candidate complète `1.4.0-rc.1` depuis `develop`, métadonnées et documentation à aligner, Quality Gate transverse, recette obligatoire, aucune PR vers `main`, aucun tag ni aucune opération de production |
