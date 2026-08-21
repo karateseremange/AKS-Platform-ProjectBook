@@ -2,10 +2,10 @@
 |-----------|--------|
 | **Document ID** | AUDIT-001 |
 | **Titre** | Traçabilité et audit des actions sensibles |
-| **Version** | 1.4.0 |
-| **Statut** | Socle recette validé — extension de production cadrée, non implémentée |
+| **Version** | 1.4.1 |
+| **Statut** | Extension multi-environnement intégrée et validée en recette — production non configurée |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-20 |
+| **Dernière mise à jour** | 2026-08-21 |
 
 ---
 
@@ -580,7 +580,7 @@ Aucune preuve n’a été écrite dans une ressource Google réelle pour ce lot,
 
 Le cadrage [AUDIT-001-PRODUCTION](AUDIT-001-PRODUCTION.md) définit l’extension multi-environnement nécessaire à ACCESS : supports strictement séparés, liaison au projet Apps Script, contrôle persistant générique, fermeture avant configuration, conservation initiale de 1 095 jours, purge différée et double niveau d’autorisation.
 
-Cette extension est validée pour implémentation sur une branche applicative dédiée. Aucun support, paramètre, test d’écriture ou autre opération réelle de production n’est autorisé à ce stade.
+Cette extension est intégrée dans `develop` par la [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125), au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad). La validation Apps Script de recette réussit à **62/62** pour AUDIT-001 et **660/660** pour la suite cumulative. Aucun support, paramètre, précontrôle, test d’écriture ou autre opération réelle de production n’a été exécuté.
 
 ---
 
@@ -588,6 +588,7 @@ Cette extension est validée pour implémentation sur une branche applicative d�
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.4.1 | 2026-08-21 | Extension AUDIT multi-environnement intégrée par la PR #125 au commit `ab52dc6` et validée en recette à **62/62** et **660/660**, sans opération réelle de production |
 | 1.4.0 | 2026-08-20 | Extension AUDIT de production cadrée dans AUDIT-001-PRODUCTION : P1.1 à P1.12 validés, rétention initiale 1 095 jours, aucune purge ni opération réelle autorisée |
 | 1.3.4 | 2026-08-09 | Extension ACCESS-002-01 intégrée dans `develop` par la PR applicative #93 au commit de fusion `91ba7e3` ; validation 477/477 conservée et aucune donnée réelle modifiée |
 | 1.3.3 | 2026-08-09 | Recette cumulative réelle de l’extension ACCESS consignée sur la tête `84ea68f` : 226 fichiers synchronisés dans Apps Script isolé, 477/477 tests réussis sans échec et inventaire préparatoire 478 corrigé |
