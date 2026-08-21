@@ -88,7 +88,7 @@ Le numéro stable, le build final et le plan exact de retour arrière sont gelé
 
 | Domaine | Résultat P2 | Preuve ou limite |
 |---|---|---|
-| Version | Validé en recette | VERSION-001 **8/8** ; marqueurs `1.4.0-rc.1` alignés ; note [V1.4.0](../release/V1.4.0.md) non publiée |
+| Version | Validé en recette | VERSION-001 **8/8** ; marqueurs `1.4.0-rc.1` alignés ; note [V1.4.0](../../releases/V1.4.0.md) non publiée |
 | Suite cumulative | Validé en recette | tête exacte `b13fc20` : **661/661**, 0 échec |
 | ACCESS | Validé en recette | contrôles inclus dans la campagne cumulative ; aucun amorçage réel |
 | AUDIT | Validé en recette | contrats RECETTE/PRODUCTION testés par injection ; aucune fonction de production appelée |
