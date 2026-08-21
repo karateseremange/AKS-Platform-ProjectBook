@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P3 |
 | **Titre** | Inventaire technique préalable de la production |
-| **Version** | 0.1.1 |
-| **Statut** | Cadrage validé — inventaire réel non autorisé |
+| **Version** | 1.0.0 |
+| **Statut** | Inventaire et rapprochement clôturés — production inchangée |
 | **Nature** | Protocole d’exploitation sans mutation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -14,7 +14,7 @@
 
 P3 définit l’inventaire nécessaire avant toute publication ou mutation de production. Il doit identifier et sauvegarder l’état Apps Script actuellement publié, permettre son rapprochement avec Git et préparer un retour arrière reproductible.
 
-La validation du présent document n’autorise pas l’inventaire réel. Une autorisation explicite distincte reste obligatoire avant toute lecture du projet Apps Script, de ses déploiements, versions, URL ou paramètres de production.
+Les lectures réelles ont ensuite été autorisées par phases distinctes. Les résultats minimisés sont consignés ci-dessous ; les preuves complètes restent dans des archives locales protégées.
 
 ## 2. Décisions I1 à I12 validées
 
@@ -138,7 +138,91 @@ P3 est concluant uniquement lorsque sont connus exactement :
 - les éléments à sauvegarder avant publication ;
 - les autorisations réelles encore nécessaires.
 
-## 3. Séquencement
+## 3. Résultats de l’inventaire autorisé
+
+L’inventaire réel a été exécuté le 21 août 2026 après autorisations séparées,
+uniquement en lecture distante et en traitement local. Aucun `clasp push`,
+déploiement, version, propriété, compte, registre ou ressource métier n’a été
+créé ou modifié.
+
+### 3.1 Identification minimisée
+
+| Élément | Résultat vérifié |
+|---|---|
+| Projet Apps Script de production | suffixe `6x2ZeH`, distinct de la recette `eIRxs4` |
+| Déploiement Web public | suffixe `wgNc37` |
+| Version effectivement exécutée | version Apps Script numérotée `53` |
+| Mode d’exécution | utilisateur accédant à l’application |
+| Accès | tout utilisateur possédant un compte Google |
+| URL publique | identifiée et conservée dans la preuve protégée, non appelée pendant P3 |
+| Libellé du déploiement | contient « Recette Présences » malgré son usage confirmé en production ; anomalie documentaire, sans modification pendant P3 |
+
+Neuf déploiements et 53 versions ont été inventoriés. Le déploiement
+`wgNc37` a été confirmé par le Product Owner comme déploiement public de
+production.
+
+### 3.2 États Apps Script sauvegardés
+
+Le HEAD et la version 53 ont été récupérés séparément :
+
+| État | Fichiers source comparables | Qualification |
+|---|---:|---|
+| Version 53 déployée | 207 | état public réellement exécuté |
+| HEAD Apps Script | 225 | état non déployé, distinct de la version 53 |
+| Différence HEAD / version 53 | 6 fichiers modifiés et 18 fichiers ajoutés dans le HEAD | aucune incidence sur le déploiement figé à 53 |
+
+L’archive complète contient 439 fichiers vérifiés sans différence après copie.
+Elle conserve séparément les deux états et leurs manifestes.
+
+### 3.3 Rapprochement Git
+
+Les références vérifiées sont :
+
+| Référence | SHA | Résultat |
+|---|---|---|
+| `main` | `e8fb0fc3d8e5dfcf806ef5a0b7fab0007b84ec49` | 206 fichiers applicatifs identiques sur 206 à la version 53 |
+| HEAD Apps Script | `ed03cc428f8a8b055400b59aec7ba2e0a005629f` + `RecipeRunner.js` | 224 fichiers Git identiques, aucun modifié, un lanceur de recette non versionné ajouté |
+| `develop` / RC1 | `b13fc202300af6f7ce0c99b65403fa83117ed34b` | candidate `1.4.0-rc.1` non déployée |
+
+Le seul écart entre la version 53 et `main` est `appsscript.json`. Le
+manifeste récupéré depuis la version déployée contient les paramètres Web App
+`USER_ACCESSING` et `ANYONE`, absents du manifeste Git. Le code
+applicatif est identique. Les deux manifestes historiques utilisent encore
+`America/New_York` ; la candidate prévoit `Europe/Paris`, à contrôler au
+Quality Gate et au déploiement.
+
+Le HEAD Apps Script correspond au commit de fusion d’INSCRIPTIONS-010
+`ed03cc4`, avec le seul fichier supplémentaire `RecipeRunner.js`
+(SHA-256 `2EB1ED87F758EA0E5070BD7BFE861784622137C7B5B2E9ED866E2CF9ED20687C`).
+Ce lanceur appelle des composants INSCRIPTIONS-010 versionnés, n’est pas
+présent dans la version 53 et n’est pas inclus dans RC1. Il est qualifié de
+résidu non déployé ; P3 ne le supprime pas.
+
+### 3.4 Archives durables vérifiées
+
+| Archive protégée | SHA-256 |
+|---|---|
+| Inventaire HEAD + version 53 | `10F14203AD214DA930B16E047A3B16C852F415A78EC72196D1F4013D886C07D6` |
+| Rapprochement Git complémentaire | `EBBCB6B0CADF5546B933705F328D0A7FFA50286134A41FAC6DEE34530D9FAD79` |
+
+La première archive a été relue à 448 entrées. L’archive complémentaire a été
+relue à 13 entrées et confirme que la première archive est restée inchangée.
+Les emplacements complets, identifiants complets et URL restent hors Git.
+
+### 3.5 Retour arrière préparé et sortie P3
+
+La référence primaire de retour arrière est la version Apps Script numérotée
+53 sur le déploiement existant `wgNc37`, afin de conserver l’URL publique.
+Le HEAD ne doit pas servir de sauvegarde de production et aucun `clasp pull`
+du HEAD ne doit remplacer la copie de la version 53.
+
+Les critères I12 sont satisfaits : l’état exécuté, l’écart du HEAD, la
+référence de retour arrière, l’URL à conserver, les archives et les
+autorisations restantes sont identifiés. Le numéro proposé `V1.4.0` reste
+cohérent, mais son gel définitif et son build final relèvent du Quality Gate
+P4. P3 est clôturé sans mutation de production.
+
+## 4. Séquencement
 
 1. intégrer le présent cadrage dans `develop` du Project Book ;
 2. demander une autorisation explicite d’inventaire en lecture seule ;
@@ -149,9 +233,10 @@ P3 est concluant uniquement lorsque sont connus exactement :
 7. documenter les résultats dans une nouvelle PR ;
 8. soumettre séparément la suite du Quality Gate.
 
-## 4. Historique
+## 5. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-21 | Inventaire réel clôturé : version publique 53 identifiée, HEAD rattaché à `ed03cc4` plus un lanceur non versionné, `main` rapproché, RC1 confirmée non déployée et deux archives SHA-256 vérifiées sans mutation de production |
 | 0.1.1 | 2026-08-21 | Distinction obligatoire entre HEAD Apps Script et contenu exact de la version déployée ; archive protégée durable, horodatée, relue et vérifiée par SHA-256 |
 | 0.1.0 | 2026-08-21 | Décisions I1 à I12 validées : inventaire Apps Script borné en lecture seule, sauvegarde isolée, rapprochement Git, exclusion des propriétés et données métier, URL non exécutée et autorisation réelle différée |
