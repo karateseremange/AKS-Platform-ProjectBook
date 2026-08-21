@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.30 |
+| **Version** | 1.3.31 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -959,6 +959,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.31 | 2026-08-21 | ACCESS-PRODUCTION P4 cadré : candidate `b13fc20` figée, décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, contrôles Git/RECETTE/production séparés et exécutions réelles toujours soumises à autorisations distinctes |
 | 1.3.30 | 2026-08-21 | ACCESS-PRODUCTION P3 clôturé sans mutation : déploiement public `wgNc37` version 53 rapproché de `main` `e8fb0fc`, HEAD rattaché à `ed03cc4` plus un lanceur non versionné, RC1 confirmée non déployée et archives durables vérifiées ; P4 Quality Gate devient prioritaire |
 | 1.3.29 | 2026-08-21 | P3 renforcé avant inventaire : distinction du HEAD Apps Script et de la version réellement déployée, puis archive durable relue et vérifiée par empreintes |
 | 1.3.28 | 2026-08-21 | P2 clôturé sur `develop` ; P3 cadré par les décisions I1 à I12 pour un inventaire Apps Script en lecture seule, sans accès réel à la production |

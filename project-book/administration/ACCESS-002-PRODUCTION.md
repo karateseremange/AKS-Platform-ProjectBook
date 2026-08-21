@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.7.0 |
-| **Statut** | P3 clôturé — P4 Quality Gate à engager |
+| **Version** | 0.8.0 |
+| **Statut** | P4 cadré — exécution du Quality Gate non autorisée |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -66,17 +66,15 @@ Le protocole et ses résultats minimisés sont définis dans [ACCESS-002-PRODUCT
 
 ### P4 — Quality Gate
 
-Le Quality Gate vérifie au minimum :
+Le protocole détaillé est défini dans
+[ACCESS-002-PRODUCTION-P4](ACCESS-002-PRODUCTION-P4.md). Les décisions P4.1 à
+P4.12 et les sous-étapes P4-A à P4-G sont validées.
 
-- la suite cumulative de référence et les suites ciblées ACCESS/AUDIT ;
-- le Questionnaire santé public ;
-- Analytics et Présences ;
-- le refus des fonctions internes Inscriptions en production ;
-- l’absence de route Audit ou Maintenance non cadrée ;
-- la cohérence de la version embarquée ;
-- les dépendances de l’écart complet entre `main` et `develop` ;
-- la procédure de retour vers la version actuellement déployée ;
-- l’absence de défaut bloquant ou critique.
+Le gate fige la candidate `b13fc20`, sépare contrôles Git, campagne Apps
+Script RECETTE, parcours fonctionnels et référence publique version 53. Chaque
+synchronisation, recette avec écriture ou accès à la production exige une
+autorisation distincte. La validation du cadrage n’autorise ni `clasp push`,
+ni publication vers `main`, ni opération de production.
 
 ### P5 — Publication Git contrôlée
 
@@ -199,6 +197,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.8.0 | 2026-08-21 | P4 cadré : décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, candidate `b13fc20` figée, contrôles Git/RECETTE/production séparés et toute exécution réelle soumise à autorisation distincte |
 | 0.7.0 | 2026-08-21 | P3 clôturé : déploiement public `wgNc37` version 53 rapproché de `main`, HEAD rattaché à `ed03cc4` plus `RecipeRunner.js`, RC1 confirmée non déployée et archives durables vérifiées ; P4 Quality Gate devient prioritaire |
 | 0.6.0 | 2026-08-21 | P2 clôturé sur `develop` par la PR documentaire #161 ; cadrage I1 à I12 de P3 validé, inventaire réel toujours soumis à une autorisation distincte |
 | 0.5.1 | 2026-08-21 | Note V1.4.0 candidate et checklist P2 renseignée ajoutées ; clôture documentaire encore soumise à la revue de la PR Project Book |
