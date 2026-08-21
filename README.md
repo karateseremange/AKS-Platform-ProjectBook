@@ -56,6 +56,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
+- [V1.4.0 — Candidate non publiée](project-book/release/V1.4.0.md)
 - [V1.1.0 — Note de publication](releases/V1.1.0.md)
 - [V1.2.0 — Note de publication](releases/V1.2.0.md)
 - [V1.3.0 — Note de prépublication](releases/V1.3.0.md)

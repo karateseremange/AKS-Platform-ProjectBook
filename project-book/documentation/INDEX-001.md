@@ -128,8 +128,8 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P2 validé en recette — inventaire de production et Quality Gate final en attente | 0.5.0 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
-| ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | Candidate intégrée dans `develop` et validée en recette — production interdite | 0.2.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | Candidate validée en recette — clôture documentaire P2 en revue, production interdite | 0.5.1 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | Candidate validée en recette — clôture documentaire P2 en revue, production interdite | 0.2.1 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | P1 implémenté et validé en recette sur `develop` — opération réelle interdite | 0.2.0 | AUDIT-001, ACCESS-002-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
@@ -307,6 +307,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.25 | 2026-08-21 | Note V1.4.0 candidate non publiée ajoutée et checklist P2 renseignée ; statuts bornés à une clôture documentaire encore en revue |
 | 1.3.24 | 2026-08-21 | Candidate `1.4.0-rc.1` intégrée par la PR applicative #126 au commit `b13fc20` et validée sur sa tête exacte à **8/8** VERSION-001 et **661/661** cumulés, sans opération de production |
 | 1.3.23 | 2026-08-21 | Référencement d’ACCESS-002-PRODUCTION-P2 0.1.0 et passage d’ACCESS-002-PRODUCTION en 0.4.0 : candidate `1.4.0-rc.1`, écart complet, synchronisation des versions et Quality Gate transverse, sans publication ni opération réelle |
 | 1.3.22 | 2026-08-21 | P1 AUDIT de production intégré par la PR applicative #125 au commit `ab52dc6` ; AUDIT-001-PRODUCTION 0.2.0, ACCESS-002-PRODUCTION 0.3.0 et AUDIT-001 1.4.1 alignés après validations **62/62** et **660/660**, sans opération réelle |

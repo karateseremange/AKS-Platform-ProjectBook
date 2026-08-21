@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P2 |
 | **Titre** | Préparation de la candidate et du Quality Gate ACCESS |
-| **Version** | 0.2.0 |
-| **Statut** | Candidate intégrée dans `develop` et validée en recette — production interdite |
+| **Version** | 0.2.1 |
+| **Statut** | Candidate validée en recette — clôture documentaire P2 en revue, production interdite |
 | **Nature** | Spécification de release et plan de validation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -86,20 +86,20 @@ Le numéro stable, le build final et le plan exact de retour arrière sont gelé
 
 ## 5. Checklist du Quality Gate
 
-| Domaine | Contrôle minimal | Preuve attendue |
+| Domaine | Résultat P2 | Preuve ou limite |
 |---|---|---|
-| Version | Métadonnées, README, changelog et note alignés | tests VERSION et revue du diff |
-| Suite cumulative | Aucun échec sur la tête exacte | résultat complet Apps Script |
-| ACCESS | droits explicites, appels directs refusés, compatibilité et absence d’amorçage | suites ACCESS ciblées |
-| AUDIT | RECETTE conforme, PRODUCTION injectée seulement dans les tests, aucun appel réel | suite AUDIT ciblée |
-| Questionnaire santé | route publique par défaut, préparation et soumission inchangées | suites HQ et contrôle public différé |
-| Analytics | lecture, aperçu, publication et saisie protégés | suites Analytics ciblées |
-| Présences | routes existantes et contrôles serveur préservés | suites Présences ciblées |
-| Paramétrage | lecture, écriture et reset séparés | suites Config ciblées |
-| Journaux | lecture protégée par `LOG_READ` | suite Logger et contrôles administratifs |
-| Inscriptions | aucune route publiée, recettes et écritures réelles refusées | revue statique et suites 008 à 010 |
-| Manifeste | fuseau `Europe/Paris`, aucune dépendance ou portée inattendue | revue de `appsscript.json` |
-| Retour arrière | références Git et composants à restaurer identifiés | checklist sans mutation |
+| Version | Validé en recette | VERSION-001 **8/8** ; marqueurs `1.4.0-rc.1` alignés ; note [V1.4.0](../release/V1.4.0.md) non publiée |
+| Suite cumulative | Validé en recette | tête exacte `b13fc20` : **661/661**, 0 échec |
+| ACCESS | Validé en recette | contrôles inclus dans la campagne cumulative ; aucun amorçage réel |
+| AUDIT | Validé en recette | contrats RECETTE/PRODUCTION testés par injection ; aucune fonction de production appelée |
+| Questionnaire santé | Validé en recette, contrôle public différé | tests cumulatifs conformes ; URL publique réelle non consultée |
+| Analytics | Validé en recette, intégrations réelles différées | contrôles serveur inclus ; aucune publication Drive exécutée |
+| Présences | Validé en recette | routes et contrôles inclus dans la campagne cumulative |
+| Paramétrage | Validé en recette | lecture, écriture et reset séparés dans les tests ; aucune propriété réelle modifiée |
+| Journaux | Validé en recette | `LOG_READ` et contrôles administratifs inclus ; aucune donnée de production consultée |
+| Inscriptions | Validé en recette et statiquement | suites cumulatives conformes ; aucune route Web dédiée ni écriture réelle |
+| Manifeste | Vérifié statiquement | fuseau `Europe/Paris` ; manifeste inchangé par la candidate P2 |
+| Retour arrière | Partiel, à finaliser après inventaire | références Git connues ; version, déploiement, URL et support AUDIT réels encore interdits d’inventaire |
 
 Les intégrations Google réelles susceptibles d’écrire, publier, envoyer ou modifier une ressource restent exclues tant qu’elles ne disposent pas de leur autorisation propre.
 
@@ -132,5 +132,6 @@ La recette confirme la cohérence technique de la candidate. Elle ne constitue n
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.1 | 2026-08-21 | Note V1.4.0 candidate ajoutée, Quality Gate P2 renseigné domaine par domaine et statut borné à la clôture documentaire en revue |
 | 0.2.0 | 2026-08-21 | PR applicative #126 fusionnée dans `develop` au commit `b13fc20` ; candidate exacte `1.4.0-rc.1` validée en recette à **8/8** VERSION-001 et **661/661** cumulés, sans opération de production |
 | 0.1.0 | 2026-08-21 | Décisions P2.1 à P2.10 validées : candidate complète `1.4.0-rc.1`, synchronisation des versions, note non publiée, Quality Gate transverse, recette obligatoire et production inchangée |
