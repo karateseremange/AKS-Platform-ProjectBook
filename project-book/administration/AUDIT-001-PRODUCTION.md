@@ -72,7 +72,7 @@ Le contrôle de production vérifie au minimum :
 
 - absence de partage public ;
 - absence de partage « toute personne disposant du lien » ;
-- capacité de l’identité technique à écrire et relire ;
+- permissions déclarées compatibles avec l’écriture par l’identité technique, sans effectuer d’écriture ;
 - inventaire minimisé du propriétaire et des éditeurs dans la preuve de précontrôle ;
 - absence de modification automatique des permissions.
 
@@ -114,15 +114,15 @@ Le précontrôle est strictement sans écriture. Il vérifie et restitue sous fo
 - correspondance du projet Apps Script ;
 - correspondance du classeur et de son titre ;
 - schéma et nombre de lignes ;
-- état des permissions ;
-- accessibilité en lecture ;
+- état des permissions et compatibilité déclarée avec l’écriture, sans la tester ;
+- accessibilité effective en lecture ;
 - blocages éventuels.
 
 Il ne crée ni onglet, ni en-tête, ni propriété, ni preuve, ni sauvegarde.
 
 ### P1.12 — Test contrôlé d’écriture et recette
 
-Le test d’écriture/relecture est distinct du précontrôle et exige une autorisation spécifique. Il écrit uniquement une preuve contrôlée, la relit exactement, consigne son résultat et ne la présente jamais comme une opération métier réelle.
+Le test d’écriture/relecture est distinct du précontrôle et exige une autorisation spécifique. Lui seul démontre la capacité effective d’écrire puis de relire. Il écrit uniquement une preuve contrôlée, la relit exactement, consigne son résultat et ne la présente jamais comme une opération métier réelle.
 
 La campagne applicative préalable, exécutée exclusivement en recette, couvre :
 
