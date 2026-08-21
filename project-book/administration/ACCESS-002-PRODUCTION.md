@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage validé — réalisation non commencée |
+| **Version** | 0.2.0 |
+| **Statut** | P1 consolidé et validé — modifications documentaires/applicatives autorisées, production interdite |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-20 |
@@ -35,13 +35,17 @@ Une fusion sélective de quelques commits ACCESS n’est pas retenue par défaut
 
 ### P1 — Audit de production distinct
 
-AUDIT doit distinguer explicitement `RECETTE` et `PRODUCTION`. Le support de production est un classeur distinct, contrôlé par environnement, identifiant, titre, schéma et autorisations. Le classeur de recette ne peut jamais servir de support de production.
+Le cadrage détaillé [AUDIT-001-PRODUCTION](AUDIT-001-PRODUCTION.md) est validé. AUDIT doit distinguer explicitement `RECETTE` et `PRODUCTION`, lier chaque support au projet Apps Script attendu et conserver des ressources strictement séparées.
 
-La conservation, la sauvegarde et la restauration des preuves doivent être définies avant ouverture.
+Le précontrôle sans écriture et le test contrôlé d’écriture/relecture constituent deux opérations différentes. Le second exige une autorisation spécifique qui n’est pas accordée par la validation du cadrage.
+
+Le comportement reste fermé si le nouveau code est déployé avant configuration : aucun registre n’est créé, aucune capacité n’est inférée, aucune mutation ACCESS n’est possible sans audit persistant conforme et les services publics existants restent inchangés.
+
+La durée initiale de conservation est fixée à **1 095 jours**, réévaluable avant la première purge. Aucune purge réelle n’est exécutée pendant cette mise en production.
 
 ### P2 — Candidate de publication
 
-Une candidate de publication cohérente est préparée à partir de l’état validé de `develop`. La version proposée est `V1.4.0`, sous réserve de confirmation au Quality Gate.
+Une candidate de publication cohérente est préparée à partir de l’état validé de `develop`. La version proposée est `V1.4.0`, sous réserve de vérification formelle de la référence actuelle de `main` et de la production, puis de confirmation au Quality Gate.
 
 La candidate comprend principalement ACCESS, la migration administrative, AUDIT et les fondations internes déjà intégrées. Les fondations Inscriptions restent non exposées et refusées en production.
 
@@ -79,8 +83,8 @@ Après validation du Quality Gate seulement :
 
 Après publication Git :
 
-1. identifier formellement le projet et le déploiement de production existants ;
-2. sauvegarder leurs identifiants, leur version et leur configuration ;
+1. identifier formellement le projet Apps Script, le déploiement, la version et l’URL publics de production existants ;
+2. sauvegarder leur état exact et vérifier leur correspondance avec `main` avant de figer la version cible ;
 3. synchroniser exactement le commit publié ;
 4. créer une nouvelle version Apps Script ;
 5. mettre à jour le déploiement existant afin de conserver son URL lorsque cela est possible ;
@@ -129,8 +133,10 @@ L’état de production n’est confirmé qu’après validation finale explicit
 - revenir au déploiement Apps Script précédent ;
 - restaurer la configuration sauvegardée ;
 - restaurer ou supprimer le registre selon son état initial ;
-- contrôler la restauration ;
-- conserver uniquement les preuves nécessaires.
+- isoler le classeur AUDIT de production si nécessaire sans supprimer automatiquement les preuves utiles ;
+- conserver les preuves déjà produites lorsque leur intégrité et leur utilité demeurent établies ;
+- contrôler la restauration de chaque composant ;
+- soumettre toute suppression ou purge à une décision ultérieure distincte.
 
 ## 4. Séquencement autorisé
 
@@ -145,7 +151,12 @@ L’état de production n’est confirmé qu’après validation finale explicit
 9. prévisualisation puis autorisation de l’amorçage ;
 10. validation fonctionnelle et confirmation finale ou retour arrière.
 
-Chaque mutation de production exige l’autorisation correspondant à son étape. Une validation du cadrage ne vaut pas autorisation de fusionner dans `main`, de déployer ou de modifier un compte réel.
+Deux niveaux d’autorisation restent formellement séparés :
+
+1. validation du cadrage et démarrage des modifications documentaires/applicatives ;
+2. autorisation ultérieure spécifique pour chaque opération réelle de production, notamment inventaire sensible, création ou configuration de ressource, test d’écriture, fusion vers `main`, déploiement, amorçage, modification de compte, purge ou retour arrière.
+
+La présente validation accorde uniquement le premier niveau. Chaque mutation de production exige l’autorisation correspondant à son étape. Une validation du cadrage ne vaut pas autorisation de fusionner dans `main`, de déployer ou de modifier un compte réel.
 
 ## 5. Critères de clôture du chantier ACCESS
 
@@ -179,4 +190,5 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-20 | P1 consolidé : précontrôle séparé du test d’écriture autorisé distinctement, fermeture avant configuration, inventaire préalable de la production, retour arrière AUDIT conservatoire, rétention initiale de 1 095 jours sans purge et V1.4.0 conditionnelle |
 | 0.1.0 | 2026-08-20 | Cadrage P1 à P10 validé ; rectification de l’état ACCESS et priorité donnée à la publication, au déploiement et à l’amorçage avant INSCRIPTIONS-011 |
