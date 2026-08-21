@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.6.0 |
-| **Statut** | P2 clôturé — P3 cadré, inventaire réel de production non autorisé |
+| **Version** | 0.7.0 |
+| **Statut** | P3 clôturé — P4 Quality Gate à engager |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -21,14 +21,16 @@ Le chantier ACCESS ne peut donc pas être considéré comme publié ni opératio
 
 ## 2. État technique vérifié
 
-- le dépôt applicatif pointe sur `develop` à `ab52dc6` et sur `main` à `e8fb0fc` ;
-- le Project Book pointe sur `develop` à `ae3630a` et sur `main` à `647ae45` avant la présente mise à jour documentaire ;
+- le dépôt applicatif pointe sur `develop` à `b13fc20` (candidate `1.4.0-rc.1`) et sur `main` à `e8fb0fc` ;
+- le cadrage P3 est intégré dans le Project Book à partir de `develop` `4ebc8d6` ;
 - l’écart applicatif contient ACCESS, AUDIT et des fondations Inscriptions internes ;
 - ACCESS exige une preuve AUDIT persistante pour toute mutation du registre ;
 - AUDIT accepte désormais les contrats fermés `RECETTE` et `PRODUCTION` dans `develop`, sans aucune configuration de production ;
 - le projet Apps Script utilisé pour les campagnes précédentes est un environnement de recette ;
-- la version applicative embarquée reste à synchroniser avec la future release ;
-- la référence Git de `main` est identifiée, mais sa correspondance avec le déploiement Apps Script public reste à démontrer avant de confirmer `V1.4.0`.
+- la version publique exécute le déploiement `wgNc37` figé à la version Apps Script 53 ;
+- la version 53 correspond au code applicatif de `main` `e8fb0fc`, avec pour seul écart le manifeste Web App ;
+- le HEAD Apps Script non déployé correspond à `ed03cc4` plus un lanceur de recette non versionné ;
+- la candidate `b13fc20` n’est pas déployée en production.
 
 Une fusion sélective de quelques commits ACCESS n’est pas retenue par défaut : ACCESS dépend des évolutions AUDIT et transverses cumulatives. Le périmètre exact de la candidate devra toutefois être confirmé par l’audit de release.
 
@@ -56,11 +58,11 @@ La candidate comprend principalement ACCESS, la migration administrative, AUDIT 
 
 La version embarquée, le README et le changelog ont été synchronisés par la [PR applicative #126](https://github.com/karateseremange/AKS-Platform/pull/126), fusionnée dans `develop` au commit [`b13fc20`](https://github.com/karateseremange/AKS-Platform/commit/b13fc202300af6f7ce0c99b65403fa83117ed34b). La tête exacte a réussi à **8/8** sur VERSION-001 et **661/661** sur la campagne cumulative dans Apps Script de recette. Aucune opération de production n’a été exécutée.
 
-### P3 — Aucune mutation réelle pendant la préparation
+### P3 — Inventaire et rapprochement de production
 
 La préparation du code et de la documentation ne crée aucun registre de production, n’attribue aucune capacité, ne modifie aucun compte réel et ne crée ou modifie aucun déploiement de production.
 
-Le protocole détaillé d’inventaire technique préalable est défini dans [ACCESS-002-PRODUCTION-P3](ACCESS-002-PRODUCTION-P3.md). Ses décisions I1 à I12 sont validées, mais aucune lecture réelle de production n’est autorisée par ce cadrage.
+Le protocole et ses résultats minimisés sont définis dans [ACCESS-002-PRODUCTION-P3](ACCESS-002-PRODUCTION-P3.md). Après autorisations séparées, le projet de production, le déploiement `wgNc37`, la version 53, le HEAD et leurs écarts Git ont été inventoriés sans écriture. Deux archives durables ont été relues et vérifiées par SHA-256. La production est restée inchangée ; P3 est clôturé et P4 devient l’étape suivante.
 
 ### P4 — Quality Gate
 
@@ -197,6 +199,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.7.0 | 2026-08-21 | P3 clôturé : déploiement public `wgNc37` version 53 rapproché de `main`, HEAD rattaché à `ed03cc4` plus `RecipeRunner.js`, RC1 confirmée non déployée et archives durables vérifiées ; P4 Quality Gate devient prioritaire |
 | 0.6.0 | 2026-08-21 | P2 clôturé sur `develop` par la PR documentaire #161 ; cadrage I1 à I12 de P3 validé, inventaire réel toujours soumis à une autorisation distincte |
 | 0.5.1 | 2026-08-21 | Note V1.4.0 candidate et checklist P2 renseignée ajoutées ; clôture documentaire encore soumise à la revue de la PR Project Book |
 | 0.5.0 | 2026-08-21 | Candidate `1.4.0-rc.1` intégrée par la PR #126 au commit `b13fc20` et validée en recette à **8/8** VERSION-001 et **661/661** cumulés ; production inchangée |
