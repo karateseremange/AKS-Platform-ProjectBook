@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P2 |
 | **Titre** | Préparation de la candidate et du Quality Gate ACCESS |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage validé — préparation documentaire et applicative autorisée, publication interdite |
+| **Version** | 0.2.0 |
+| **Statut** | Candidate intégrée dans `develop` et validée en recette — production interdite |
 | **Nature** | Spécification de release et plan de validation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -120,8 +120,17 @@ P2 est terminé lorsque la candidate est reproductible et validée en recette, s
 
 La suite reste P3/P4 : inventaire autorisé de la production puis Quality Gate final rapproché. Aucune fusion vers `main` n’est implicite.
 
-## 8. Historique
+## 8. Réalisation et validation
+
+La [PR applicative #126](https://github.com/karateseremange/AKS-Platform/pull/126) a intégré la candidate `1.4.0-rc.1` dans `develop` au commit [`b13fc20`](https://github.com/karateseremange/AKS-Platform/commit/b13fc202300af6f7ce0c99b65403fa83117ed34b).
+
+Cette tête exacte a été synchronisée dans le projet Apps Script de recette. Les contrôles ont réussi à **8/8** pour VERSION-001 et **661/661** pour la campagne cumulative, avec **0 échec**.
+
+La recette confirme la cohérence technique de la candidate. Elle ne constitue ni un inventaire du déploiement public, ni une validation du Quality Gate de production, ni une autorisation de fusion vers `main`, de tag ou de déploiement. Aucune ressource ni configuration de production n’a été consultée ou modifiée.
+
+## 9. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-21 | PR applicative #126 fusionnée dans `develop` au commit `b13fc20` ; candidate exacte `1.4.0-rc.1` validée en recette à **8/8** VERSION-001 et **661/661** cumulés, sans opération de production |
 | 0.1.0 | 2026-08-21 | Décisions P2.1 à P2.10 validées : candidate complète `1.4.0-rc.1`, synchronisation des versions, note non publiée, Quality Gate transverse, recette obligatoire et production inchangée |

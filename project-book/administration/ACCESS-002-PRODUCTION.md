@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.4.0 |
-| **Statut** | P2 cadré et validé — candidate et Quality Gate en préparation, production interdite |
+| **Version** | 0.5.0 |
+| **Statut** | P2 validé en recette — inventaire de production et Quality Gate final en attente |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -54,7 +54,7 @@ Les décisions détaillées P2.1 à P2.10, le périmètre de l’écart et la ch
 
 La candidate comprend principalement ACCESS, la migration administrative, AUDIT et les fondations internes déjà intégrées. Les fondations Inscriptions restent non exposées et refusées en production.
 
-La version embarquée, le README, le changelog et les notes de publication doivent être synchronisés.
+La version embarquée, le README et le changelog ont été synchronisés par la [PR applicative #126](https://github.com/karateseremange/AKS-Platform/pull/126), fusionnée dans `develop` au commit [`b13fc20`](https://github.com/karateseremange/AKS-Platform/commit/b13fc202300af6f7ce0c99b65403fa83117ed34b). La tête exacte a réussi à **8/8** sur VERSION-001 et **661/661** sur la campagne cumulative dans Apps Script de recette. Aucune opération de production n’a été exécutée.
 
 ### P3 — Aucune mutation réelle pendant la préparation
 
@@ -195,6 +195,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.5.0 | 2026-08-21 | Candidate `1.4.0-rc.1` intégrée par la PR #126 au commit `b13fc20` et validée en recette à **8/8** VERSION-001 et **661/661** cumulés ; production inchangée |
 | 0.4.0 | 2026-08-21 | P2.1 à P2.10 validés : candidate complète `1.4.0-rc.1` depuis `develop`, métadonnées et documentation à aligner, Quality Gate transverse, recette obligatoire, aucune PR vers `main`, aucun tag ni aucune opération de production |
 | 0.3.0 | 2026-08-21 | P1 intégré dans `develop` par la PR #125 au commit `ab52dc6`, validé en recette à **62/62** et **660/660** ; aucune opération de production exécutée, prochaine étape limitée à la préparation de la candidate et du Quality Gate |
 | 0.2.0 | 2026-08-20 | P1 consolidé : précontrôle séparé du test d’écriture autorisé distinctement, fermeture avant configuration, inventaire préalable de la production, retour arrière AUDIT conservatoire, rétention initiale de 1 095 jours sans purge et V1.4.0 conditionnelle |
