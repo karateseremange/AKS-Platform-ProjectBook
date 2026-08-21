@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.25 |
+| **Version** | 1.3.26 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-21 |
@@ -778,7 +778,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. `INSCRIPTIONS-011` reste suspendu jusqu’à la publication et à la validation effective d’ACCESS en production. Les six lots d’ACCESS-002-06 sont intégrés et validés en recette sur `develop`, mais cette situation ne constitue ni une publication, ni un déploiement, ni un amorçage réel.
 
-Le prochain jalon officiel reste `ACCESS-002-PRODUCTION`, selon les décisions P1 à P10. Son étape P1 est désormais intégrée dans `develop` par la [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125), au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad), et validée dans l’environnement Apps Script de recette à **62/62** pour AUDIT et **660/660** cumulés. Aucun contrôle, support, paramètre ou test d’écriture de production n’a été exécuté. La prochaine étape est la préparation de la candidate et du Quality Gate ; la version V1.4.0 reste conditionnée à la vérification de `main` et de la production. La suite couvre les fusions et tags autorisés, le déploiement Apps Script réversible, l’amorçage minimal du premier gestionnaire, la validation fonctionnelle puis la confirmation ou le retour arrière. Avant d’ouvrir le cinquième incrément métier `INSCRIPTIONS-011`, le chantier transverse `ACCESS-002 — Administration des utilisateurs et habilitations` reste prioritaire.
+Le prochain jalon officiel reste `ACCESS-002-PRODUCTION`, selon les décisions P1 à P10. P1 est intégré dans `develop` par la [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125), au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad), et validé en recette à **62/62** pour AUDIT et **660/660** cumulés. P2 est cadré dans [ACCESS-002-PRODUCTION-P2](../administration/ACCESS-002-PRODUCTION-P2.md) : candidate complète `1.4.0-rc.1`, synchronisation des métadonnées et de la documentation, Quality Gate transverse et nouvelle validation sur la tête exacte. Aucun contrôle, support, paramètre ou test d’écriture de production n’est autorisé. `V1.4.0` reste conditionnée au rapprochement de `main` et du déploiement public réel. Avant `INSCRIPTIONS-011`, ACCESS reste prioritaire.
 
 Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, introduisent une façade administrative de lecture protégée et immuable, établissent une écriture administrative strictement validée avec révision optimiste, verrou, relecture et restauration vérifiée, imposent un audit persistant corrélé avant/après, puis corrigent l’usage du verrou partagé ACCESS/AUDIT, l’autorisation d’audit et le raccordement des suites. Les refus et restaurations sont tracés, et un échec de preuve finale déclenche la restauration de l’état précédent. Le bootstrap historique reste temporairement accepté lorsque le registre est absent ; dès qu'un registre existe, `ADMINISTRATEUR` est descriptif et ne confère aucune capacité implicite. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
 
@@ -959,6 +959,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.26 | 2026-08-21 | P2 de la publication ACCESS cadré : candidate complète `1.4.0-rc.1`, 209 commits et 82 fichiers applicatifs inventoriés, Quality Gate transverse et recette obligatoire, sans PR vers `main`, tag ni opération de production |
 | 1.3.25 | 2026-08-21 | P1 AUDIT de production intégré dans `develop` par la PR #125 au commit `ab52dc6`, validé en recette à **62/62** et **660/660** sans opération réelle ; préparation de la candidate et du Quality Gate désormais prioritaire |
 | 1.3.24 | 2026-08-20 | P1 de la publication ACCESS consolidé dans AUDIT-001-PRODUCTION : P1.1 à P1.12 validés, rétention 1 095 jours, double autorisation et aucune opération réelle de production |
 | 1.3.23 | 2026-08-20 | Rectification de la trajectoire : ACCESS-002-06 est intégré et recetté sur `develop`, mais non publié ; ACCESS-002-PRODUCTION (P1 à P10) devient prioritaire avant INSCRIPTIONS-011 |
