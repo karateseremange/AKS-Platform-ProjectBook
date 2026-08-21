@@ -136,7 +136,7 @@ sur la version 53 actuelle :
 - conservation de l’URL publique ;
 - accessibilité du Questionnaire santé ;
 - chargement et validation sans soumission ;
-- routes administratives historiques attendues ;
+- comportement attendu des routes administratives historiques ;
 - absence d’effet de bord.
 
 Aucun formulaire n’est envoyé et aucun appel administratif mutable n’est
