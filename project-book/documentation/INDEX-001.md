@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.29 |
+| Version | 1.3.30 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-24 |
@@ -128,12 +128,12 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P5-A à P5-C clôturés — version stable intégrée dans `develop`, P5-D non engagé | 1.0.0 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P5, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P5-D clôturé — application publiée dans `main`, P5-E engagé | 1.1.0 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P5, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4 | Quality Gate final de la candidate ACCESS | Clôturé — P4-G validé sur RC5 | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4-G | Rapport final du Quality Gate ACCESS | Validé — Quality Gate P4 concluant | 0.2.0 | ACCESS-002-PRODUCTION-P4, RELEASE-001, ROADMAP-001 |
-| ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | P5-A à P5-C clôturés — P5-D non engagé | 0.2.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | P5-D clôturé — P5-E engagé | 0.3.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
 | AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | P1 implémenté et validé en recette sur `develop` — opération réelle interdite | 0.2.0 | AUDIT-001, ACCESS-002-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
@@ -286,7 +286,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Six lots ACCESS validés ; P5-A à P5-C clôturés et V1.4.0 stable intégrée dans `develop` ; publication vers `main`, tags, déploiement, configuration AUDIT, amorçage et validation de production encore requis |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Six lots ACCESS validés ; V1.4.0 stable publiée dans le `main` applicatif ; publication documentaire, tags, déploiement, configuration AUDIT, amorçage et validation de production encore requis |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -311,6 +311,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.30 | 2026-08-24 | P5-D clôturé : PR applicative #132 fusionnée dans `main` au commit `fa8876f`, contenu identique à `develop`, V1.4.0 et build `20260824.1` confirmés ; P5-E engagé, tags et production inchangés |
 | 1.3.29 | 2026-08-24 | P5-A à P5-C clôturés : version stable `1.4.0` build `20260824.1` validée en RECETTE à 8/8 et 665/665, puis intégrée dans `develop` à `32a511a`; P5-D et production non engagés |
 | 1.3.28 | 2026-08-24 | Référencement du Quality Gate P4 clôturé et du cadrage P5 validé : finalisation stable, publications complètes vers `main` et tags cohérents, sans exécution P5 ni production |
 | 1.3.27 | 2026-08-21 | P3 renforcé : HEAD Apps Script et version réellement déployée sauvegardés séparément ; archive durable horodatée, relue et vérifiée par SHA-256 avant toute suite |

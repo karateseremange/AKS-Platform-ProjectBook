@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P5 |
 | **Titre** | Finalisation stable et publication Git contrôlée de V1.4.0 |
-| **Version** | 0.2.0 |
-| **Statut** | P5-A à P5-C clôturés — finalisation stable intégrée dans `develop`, P5-D non engagé |
+| **Version** | 0.3.0 |
+| **Statut** | P5-A à P5-D clôturés — application publiée sur `main`, P5-E engagé |
 | **Nature** | Protocole de publication Git |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -215,7 +215,7 @@ documentaire complète vers `main`, puis soumettre séparément sa fusion.
 Vérifier les deux `main`, prévisualiser les tags, obtenir les autorisations
 requises, créer les tags puis consigner leurs références. P6 reste non autorisé.
 
-## 5. Résultats P5-A à P5-C
+## 5. Résultats P5-A à P5-D
 
 ### 5.1 P5-A — Précontrôle et gel
 
@@ -261,17 +261,35 @@ La PR #131 a été fusionnée dans `develop` par le commit
 `32a511a93eb341efa29cedffd3358f638c7b1d30`. Le contrôle distant a confirmé
 que `develop` pointe exactement sur ce commit. P5-A à P5-C sont clôturés.
 
-P5-D n'est pas engagé : aucune PR applicative `develop → main`, aucune fusion
-dans `main`, aucun tag et aucune opération de production ne sont autorisés par
-cette consignation.
+### 5.4 P5-D — Publication applicative sur `main`
+
+Le précontrôle de publication a confirmé :
+
+- application `main` : `e8fb0fc3d8e5dfcf806ef5a0b7fab0007b84ec49` ;
+- application `develop` : `32a511a93eb341efa29cedffd3358f638c7b1d30` ;
+- écart : **233 commits en avance, 0 en retard** ;
+- périmètre cumulatif : **87 fichiers**, sans autre PR applicative ouverte.
+
+La PR applicative
+[#132](https://github.com/karateseremange/AKS-Platform/pull/132) a été revue
+sans défaut bloquant puis fusionnée dans `main` au commit
+`fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5`.
+
+Le contrôle distant a confirmé que `main` pointe exactement sur ce commit et
+possède le même contenu que `develop`, avec uniquement le commit de fusion
+supplémentaire. Les marqueurs `1.4.0` et `20260824.1` ont été relus sur
+`main`. P5-D est clôturé.
+
+P5-E est engagé par la présente finalisation documentaire. Le Project Book
+`main`, les tags et toute opération de production restent inchangés.
 
 ## 6. Autorisations distinctes
 
-Les opérations P5-A à P5-C ci-dessus ont été exécutées après leurs autorisations
+Les opérations P5-A à P5-D ci-dessus ont été exécutées après leurs autorisations
 successives. Restent soumises à des validations distinctes :
 
-1. l'ouverture, la revue puis la fusion applicative `develop → main` de P5-D ;
-2. la finalisation puis la fusion documentaire vers `main` de P5-E ;
+1. la fusion de la finalisation P5-E dans `develop` du Project Book ;
+2. l'ouverture, la revue puis la fusion documentaire `develop → main` ;
 3. la création de chaque tag de P5-F ;
 4. le démarrage de P6 ;
 5. chaque opération réelle de production.
@@ -302,5 +320,6 @@ Le cadrage est conforme lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-24 | P5-D clôturé : PR applicative #132 revue et fusionnée dans `main` à `fa8876f`, contenu identique à `develop`, version `1.4.0` build `20260824.1`; P5-E engagé, tags et production inchangés |
 | 0.2.0 | 2026-08-24 | P5-A à P5-C clôturés : précontrôle conforme, version stable `1.4.0` build `20260824.1` validée en RECETTE à 8/8 et 665/665, PR applicative #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
 | 0.1.0 | 2026-08-24 | Cadrage P5.1 à P5.12 et P5-A à P5-F validé : finalisation stable explicite, publication complète des deux `develop`, fusions et tags séparément autorisés, aucune opération de production |
