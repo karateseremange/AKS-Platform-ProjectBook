@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P4 |
 | **Titre** | Quality Gate final de la candidate ACCESS |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage validé — exécution non autorisée par ce document |
+| **Version** | 0.2.0 |
+| **Statut** | Exécution en cours — campagne automatique et parcours ACCESS RC5 concluants |
 | **Nature** | Protocole de validation de release |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-21 |
-| **Candidate contrôlée** | `1.4.0-rc.1` — `b13fc202300af6f7ce0c99b65403fa83117ed34b` |
+| **Dernière mise à jour** | 2026-08-24 |
+| **Candidate contrôlée** | `1.4.0-rc.5` — `52024aba72a76247179bb801cfb93006151ebbb9` |
 
 ## 1. Objet
 
@@ -241,8 +241,69 @@ P4 est concluant lorsque :
 La clôture de P4 n’autorise pas P5, une fusion vers `main` ou une opération
 Apps Script de production.
 
-## 6. Historique
+## 6. Rapport d’exécution intermédiaire — RC1 à RC5
+
+### 6.1 Évolution des candidates
+
+| Candidate | Référence | Résultat |
+|---|---|---|
+| RC1 | `b13fc202300af6f7ce0c99b65403fa83117ed34b` | Contrôles statiques et automatiques concluants à **661/661** ; défaut fonctionnel du portail historique détecté |
+| RC2 | `8ae1b0c7b6a8f1225a70beb3fe3456a7b8b46792` | Destination « Mes accès » retirée du bootstrap historique ; campagne portée à **662/662** |
+| RC3 | `3aa6dec9420a7b11ecff89e0e5bf5f5b16bf8729` | Typage réel de `audit.retentionDays` corrigé ; AUDIT **63/63**, cumulative **663/663** |
+| RC4 | `206c436cf109970a7688fc91a7c12ef7a63282b6` | Historique AUDIT chargé à la demande et exception technique minimisée ; ACCESS UI **14/14**, cumulative **664/664** |
+| RC5 | `52024aba72a76247179bb801cfb93006151ebbb9` | Retour d’échec de l’historique affiché localement et accessible ; ACCESS UI **15/15**, cumulative **665/665** |
+
+Toute preuve attachée à une candidate antérieure a été rejouée lorsqu’elle était
+invalidée par une modification concernée. RC5 constitue la candidate courante.
+
+### 6.2 Preuves RECETTE de RC5
+
+- projet Apps Script de RECETTE confirmé par le suffixe `eIRxs4` ;
+- tête Git exacte `52024ab`, arbre local propre et `rootDir = src` ;
+- synchronisation contrôlée de **261 fichiers** ;
+- déploiement Web de RECETTE existant `OMcZ9gl` conservé ;
+- version Apps Script **8**, description
+  `ACCESS V1.4.0-rc.5 — Quality Gate P4` ;
+- URL et paramètres d’exécution du déploiement inchangés ;
+- VERSION-001 **8/8**, ACCESS administration **15/15** et campagne
+  cumulative **665/665** ;
+- ouverture de « Comptes et accès » sans lecture AUDIT prématurée ;
+- indisponibilité du classeur AUDIT réduite au message fonctionnel local
+  « L’historique des modifications est temporairement indisponible. » ;
+- absence de numéro de ligne, nom de fichier ou détail Google exposé.
+
+### 6.3 Réversibilité et nettoyage
+
+La recette ACCESS-002-05 a été rejouée avec autorisations séparées :
+
+- précontrôle sans écriture sur la révision initiale
+  `access-rev/1-4-x0xxgk-yj2w2m` ;
+- application temporaire à la révision
+  `access-rev/1-wl-31hp3l-xvj0h3` ;
+- restauration exacte du registre initial ;
+- sauvegarde ACCESS supprimée ;
+- connexion puis déconnexion exactes d’AUDIT ;
+- sauvegarde de connexion AUDIT supprimée ;
+- propriétés des deux identités fictives supprimées ;
+- aucune modification de compte conservée et aucune récupération réelle.
+
+Le portail final de RECETTE est revenu au bootstrap historique normal :
+`Paramétrage`, `Journaux`, version `1.4.0-rc.5`.
+
+### 6.4 État du gate
+
+Les contrôles P4-B, P4-C, P4-D et le parcours ACCESS concerné de P4-E sont
+concluants sur RC5. Les défauts bloquants découverts pendant cette exécution
+sont corrigés et fermés.
+
+P4 n’est pas encore déclaré clôturé : les parcours restants autorisés, le
+contrôle P4-F de la production publique version 53 et le rapport de décision
+P4-G doivent être consignés avant toute proposition de P5, fusion vers
+`main` ou opération de production.
+
+## 7. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-24 | Exécution intermédiaire P4 documentée jusqu’à RC5 : campagnes 665/665, défauts AUDIT corrigés, parcours ACCESS concluant, restauration exacte et nettoyage complet ; gate non clôturé | 
 | 0.1.0 | 2026-08-21 | P4.1 à P4.12 et sous-étapes P4-A à P4-G validés : candidate figée, contrôles statiques/RECETTE/production séparés, autorisations distinctes et aucun droit de publication ou mutation accordé |
