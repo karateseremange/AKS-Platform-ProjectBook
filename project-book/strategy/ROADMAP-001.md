@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.33 |
+| **Version** | 1.3.34 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -959,6 +959,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.34 | 2026-08-24 | Product Owner : P4-G validé, Quality Gate clôturé sur RC5 (`52024ab`) et candidate admissible à P5 ; P5, `main`, tag et production restent non autorisés |
 | 1.3.33 | 2026-08-24 | P4-E et P4-F terminés : RECETTE RC5 et production historique version 53 conformes en consultation ; rapport P4-G soumis pour déclarer le gate concluant et RC5 admissible à P5, sans autoriser P5, `main`, tag ou production |
 | 1.3.32 | 2026-08-24 | ACCESS-002-PRODUCTION P4 atteint RC5 sur `develop` (`52024ab`) : VERSION 8/8, ACCESS UI 15/15, cumulative 665/665, parcours Comptes et accès corrigé et recette restaurée exactement ; P4-F/P4-G restent requis avant P5 et toute production |
 | 1.3.31 | 2026-08-21 | ACCESS-PRODUCTION P4 cadré : candidate `b13fc20` figée, décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, contrôles Git/RECETTE/production séparés et exécutions réelles toujours soumises à autorisations distinctes |
