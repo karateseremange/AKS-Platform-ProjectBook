@@ -99,6 +99,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [ACCESS-002-PRODUCTION-P3 — Inventaire de production en lecture seule](project-book/administration/ACCESS-002-PRODUCTION-P3.md)
 - [ACCESS-002-PRODUCTION-P4 — Quality Gate final](project-book/administration/ACCESS-002-PRODUCTION-P4.md)
 - [ACCESS-002-PRODUCTION-P4-G — Rapport final du Quality Gate](project-book/administration/ACCESS-002-PRODUCTION-P4-G.md)
+- [ACCESS-002-PRODUCTION-P5 — Publication Git contrôlée](project-book/administration/ACCESS-002-PRODUCTION-P5.md)
 - [AUDIT-001-PRODUCTION — Audit persistant de production](project-book/administration/AUDIT-001-PRODUCTION.md)
 
 ## Expérience utilisateur
@@ -174,7 +175,7 @@ et dans `ANALYTICS-008`.
 
 La **V1.3.0** a été publiée le 1er août 2026. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version. Le tag documentaire `v1.3.0` pointe sur le commit `647ae45a501bf14c1f3463fbca480945993bc515`.
 
-Les six lots d’**ACCESS-002-06** sont intégrés dans `develop` et validés en recette, mais ACCESS n’est pas encore publié ni amorcé en production. La phase prioritaire est [`ACCESS-002-PRODUCTION`](project-book/administration/ACCESS-002-PRODUCTION.md). `INSCRIPTIONS-011` reste suspendu jusqu’à la validation fonctionnelle d’ACCESS en production.
+Les six lots d’**ACCESS-002-06** sont intégrés dans `develop` et validés en recette, mais ACCESS n’est pas encore publié ni amorcé en production. P4 est clôturé sur RC5 et le cadrage de [P5 — publication Git contrôlée](project-book/administration/ACCESS-002-PRODUCTION-P5.md) est validé sans exécution engagée. `INSCRIPTIONS-011` reste suspendu jusqu’à la validation fonctionnelle d’ACCESS en production.
 
 Le chantier métier suivant est **AKS Inscriptions**. Son cadrage fonctionnel, son modèle métier, ses services, la reprise des trois Google Forms, les interfaces de contrôle, le socle transverse d’accès privés, les contrats techniques ainsi que la stratégie de recette cumulative sont validés dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md) à [`INSCRIPTIONS-006`](project-book/modules/inscriptions/INSCRIPTIONS-006.md).
 
