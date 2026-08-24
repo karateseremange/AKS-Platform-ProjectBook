@@ -4,7 +4,7 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P5 |
 | **Titre** | Finalisation stable et publication Git contrôlée de V1.4.0 |
-| **Version** | 1.0.0 |
+| **Version** | 1.0.1 |
 | **Statut** | Clôturé — V1.4.0 publiée dans les deux dépôts et tags `v1.4.0` vérifiés |
 | **Nature** | Protocole de publication Git |
 | **Propriétaire** | Product Owner |
@@ -306,7 +306,13 @@ Les deux tags `v1.4.0` ont été créés puis relus sur GitHub :
   `7cfa3ce62b12edaf26d38e743e4cdd2da2ce43c1`.
 
 Chaque tag est strictement identique au `main` correspondant au moment de la
-publication. P5-A à P5-F sont clôturés.
+publication. Ces commits sont les snapshots V1.4.0 immuables ciblés par les
+tags ; ils ne constituent pas des têtes de branche invariantes. La PR
+applicative #134 a ensuite porté `main` applicatif à `7a6b70a341bc869f10e1a18efda8ad4d6ab8fe6d`
+par une correction exclusivement documentaire, sans déplacer `v1.4.0`. La
+publication post-release du Project Book suit la même règle : sa tête `main`
+peut avancer tandis que le tag documentaire reste sur `7cfa3ce62b12edaf26d38e743e4cdd2da2ce43c1`.
+P5-A à P5-F sont clôturés.
 
 Cette clôture reste exclusivement Git. P6, Apps Script de production, AUDIT de
 production, amorçage ACCESS et toute attribution réelle restent non engagés.
@@ -348,6 +354,7 @@ Le cadrage est conforme lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-24 | Distinction entre les snapshots de publication/tagués V1.4.0 et les têtes de `main` post-release ; PR applicative #134 consignée à `7a6b70a`, tags inchangés et production non engagée |
 | 1.0.0 | 2026-08-24 | P5 clôturé : application `main@fa8876f`, Project Book `main@7cfa3ce`, tags légers `v1.4.0` vérifiés dans les deux dépôts ; P6 et production non engagés |
 | 0.3.0 | 2026-08-24 | P5-D clôturé : PR applicative #132 revue et fusionnée dans `main` à `fa8876f`, contenu identique à `develop`, version `1.4.0` build `20260824.1`; P5-E engagé, tags et production inchangés |
 | 0.2.0 | 2026-08-24 | P5-A à P5-C clôturés : précontrôle conforme, version stable `1.4.0` build `20260824.1` validée en RECETTE à 8/8 et 665/665, PR applicative #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
