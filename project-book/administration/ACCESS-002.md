@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.44 |
+| **Version** | 0.4.45 |
 | **Statut** | Implémenté et validé en recette sur `develop` — publication et amorçage de production en attente |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-20 |
+| **Dernière mise à jour** | 2026-08-24 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -381,6 +381,7 @@ La phase [ACCESS-002-PRODUCTION](ACCESS-002-PRODUCTION.md), validée par le Prod
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.45 | 2026-08-24 | Quality Gate P4 poursuivi jusqu’à RC5 : ouverture de Comptes et accès sans AUDIT prématuré, erreur d’historique minimisée et affichée localement, campagnes 15/15 et 665/665, recette réversible restaurée exactement ; publication de production toujours non autorisée |
 | 0.4.44 | 2026-08-20 | Rectification de l’état produit : six lots intégrés et recettés sur `develop`, mais publication, audit de production, amorçage du premier gestionnaire et validation de production encore requis ; `ACCESS-002-PRODUCTION` devient prioritaire avant INSCRIPTIONS-011 |
 | 0.4.43 | 2026-08-20 | ACCESS-002-06 clôturé : PR #124 fusionnée au commit `a90ef30`, recette réversible restaurée exactement, AUDIT restauré, validations **10/10** et **651/651**, aucune récupération réelle ; maintien résiduel d’AKS.Admin.Access documenté |
 | 0.4.42 | 2026-08-20 | ACCESS-002-06 lot 5 clôturé : PR applicative #123 fusionnée au commit `426f526`, Portail piloté par ACCESS, bootstrap historique borné et destination privée Questionnaire santé retirée ; validations **13/13** et **641/641**, sans mutation réelle ; lot 6 prioritaire |

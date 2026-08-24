@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.31 |
+| **Version** | 1.3.32 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-21 |
+| **Dernière mise à jour** | 2026-08-24 |
 
 ---
 
@@ -778,7 +778,7 @@ Le parcours couvre la préinscription ouverte toute la saison, le contrôle des 
 
 INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. `INSCRIPTIONS-011` reste suspendu jusqu’à la publication et à la validation effective d’ACCESS en production. Les six lots d’ACCESS-002-06 sont intégrés et validés en recette sur `develop`, mais cette situation ne constitue ni une publication, ni un déploiement, ni un amorçage réel.
 
-Le prochain jalon officiel reste `ACCESS-002-PRODUCTION`, selon les décisions P1 à P10. P1 est intégré dans `develop` par la [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125), au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad), et validé en recette à **62/62** pour AUDIT et **660/660** cumulés. P2 est intégré par la [PR applicative #126](https://github.com/karateseremange/AKS-Platform/pull/126) au commit [`b13fc20`](https://github.com/karateseremange/AKS-Platform/commit/b13fc202300af6f7ce0c99b65403fa83117ed34b), validé à **8/8** VERSION-001 et **661/661** cumulés, puis clôturé documentairement par la PR Project Book #161 au commit `c4b1e0b`. P3 est désormais cadré dans [ACCESS-002-PRODUCTION-P3](../administration/ACCESS-002-PRODUCTION-P3.md), mais l’inventaire réel de production reste non autorisé. `V1.4.0` demeure conditionnée au rapprochement de `main` et du déploiement public réel. Avant `INSCRIPTIONS-011`, ACCESS reste prioritaire.
+Le prochain jalon officiel reste `ACCESS-002-PRODUCTION`, selon les décisions P1 à P10. P1 est intégré dans `develop` par la [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125), au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad), et validé en recette à **62/62** pour AUDIT et **660/660** cumulés. P2 est intégré par la [PR applicative #126](https://github.com/karateseremange/AKS-Platform/pull/126) au commit [`b13fc20`](https://github.com/karateseremange/AKS-Platform/commit/b13fc202300af6f7ce0c99b65403fa83117ed34b), validé à **8/8** VERSION-001 et **661/661** cumulés, puis clôturé documentairement par la PR Project Book #161 au commit `c4b1e0b`. P3 est clôturé dans [ACCESS-002-PRODUCTION-P3](../administration/ACCESS-002-PRODUCTION-P3.md) : projet, déploiement public version 53, HEAD Apps Script, `main` et candidate ont été inventoriés, rapprochés et archivés sans mutation. P4 a progressé jusqu’à la candidate RC5 (`52024ab`) avec **8/8** VERSION-001, **15/15** ACCESS UI et **665/665** cumulés ; les parcours restants, P4-F et P4-G demeurent nécessaires avant P5. Avant `INSCRIPTIONS-011`, ACCESS reste prioritaire.
 
 Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, introduisent une façade administrative de lecture protégée et immuable, établissent une écriture administrative strictement validée avec révision optimiste, verrou, relecture et restauration vérifiée, imposent un audit persistant corrélé avant/après, puis corrigent l’usage du verrou partagé ACCESS/AUDIT, l’autorisation d’audit et le raccordement des suites. Les refus et restaurations sont tracés, et un échec de preuve finale déclenche la restauration de l’état précédent. Le bootstrap historique reste temporairement accepté lorsque le registre est absent ; dès qu'un registre existe, `ADMINISTRATEUR` est descriptif et ne confère aucune capacité implicite. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
 
@@ -959,6 +959,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.32 | 2026-08-24 | ACCESS-002-PRODUCTION P4 atteint RC5 sur `develop` (`52024ab`) : VERSION 8/8, ACCESS UI 15/15, cumulative 665/665, parcours Comptes et accès corrigé et recette restaurée exactement ; P4-F/P4-G restent requis avant P5 et toute production |
 | 1.3.31 | 2026-08-21 | ACCESS-PRODUCTION P4 cadré : candidate `b13fc20` figée, décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, contrôles Git/RECETTE/production séparés et exécutions réelles toujours soumises à autorisations distinctes |
 | 1.3.30 | 2026-08-21 | ACCESS-PRODUCTION P3 clôturé sans mutation : déploiement public `wgNc37` version 53 rapproché de `main` `e8fb0fc`, HEAD rattaché à `ed03cc4` plus un lanceur non versionné, RC1 confirmée non déployée et archives durables vérifiées ; P4 Quality Gate devient prioritaire |
 | 1.3.29 | 2026-08-21 | P3 renforcé avant inventaire : distinction du HEAD Apps Script et de la version réellement déployée, puis archive durable relue et vérifiée par empreintes |
