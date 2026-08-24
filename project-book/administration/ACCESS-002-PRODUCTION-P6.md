@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P6 |
 | **Titre** | Préparation, déploiement et validation contrôlés de V1.4.0 en production |
-| **Version** | 0.2.0 |
-| **Statut** | P6-E clôturé — HEAD V1.4.0 vérifié, déploiement public maintenu en version 53 ; P6-F non autorisé |
+| **Version** | 0.3.0 |
+| **Statut** | P6-F clôturé — version 54 vérifiée à 261/261, déploiement public maintenu en version 53 ; P6-G non autorisé |
 | **Nature** | Procédure opérationnelle et registre de preuves |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -136,7 +136,29 @@ P6-E est clôturé. Le HEAD contient exactement la candidate V1.4.0 tandis que l
 
 ### P6-F — Création d’une version numérotée
 
-Après nouvelle autorisation explicite, créer une version Apps Script numérotée et consigner son numéro, sa description et sa correspondance exacte avec le HEAD validé.
+P6-F a été explicitement autorisé puis exécuté le 24 août 2026 depuis le répertoire de relecture P6-E. Les préconditions ont confirmé le projet suffixé `6x2ZeH`, 261 fichiers locaux, la dernière version numérotée 53 et le déploiement public `wgNc37` toujours lié à cette version.
+
+Une seule version Apps Script a été créée :
+
+| Propriété | Valeur |
+|---|---|
+| Version créée | 54 |
+| Dernière version listée | 54 |
+| Description | `AKS Platform V1.4.0 - build 20260824.1 - P6-F production` |
+| Version publique pendant et après P6-F | 53 |
+
+La version 54 a ensuite été relue dans un répertoire neuf avec `clasp pull --versionNumber 54`. La comparaison compatible Windows PowerShell `5.1.26100.9168` a produit :
+
+| Contrôle de la version 54 | Résultat |
+|---|---|
+| Fichiers candidats | 261 |
+| Fichiers version 54 | 261 |
+| Chemins canoniques candidats | 261 |
+| Chemins canoniques version 54 | 261 |
+| Différences de chemin ou de contenu | 0 |
+| Déploiement public `wgNc37` | toujours version 53 |
+
+Aucun `clasp deploy` n’a été exécuté. P6-F est clôturé : la version 54 est l’artefact immuable admissible à P6-G. La mise à jour du déploiement existant reste non autorisée.
 
 ### P6-G — Mise à jour du déploiement existant
 
@@ -163,5 +185,6 @@ En cas d’échec, remettre `wgNc37` sur la version 53 et vérifier la restaurat
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-24 | P6-F clôturé : version Apps Script 54 créée puis relue à 261/261 sans différence avec la candidate ; déploiement public maintenu sur la version 53, P6-G non autorisé |
 | 0.2.0 | 2026-08-24 | P6-E clôturé : 261 fichiers poussés vers le HEAD puis relus et comparés à 261/261, zéro différence ; déploiement public maintenu sur la version 53, aucune version ni modification de déploiement exécutée |
 | 0.1.0 | 2026-08-24 | P6-A à P6-D consignés : cible et sauvegardes vérifiées, premier paquet rejeté, paquet corrigé conforme à la barrière canonique 54/30/0 ; aucune écriture de production autorisée |
