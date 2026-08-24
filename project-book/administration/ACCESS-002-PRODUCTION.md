@@ -21,7 +21,7 @@ Le chantier ACCESS ne peut donc pas être considéré comme publié ni opératio
 
 ## 2. État technique vérifié
 
-- le dépôt applicatif pointe sur `develop` à `b13fc20` (candidate `1.4.0-rc.1`) et sur `main` à `e8fb0fc` ;
+- le dépôt applicatif pointe sur `develop` à `52024ab` (candidate `1.4.0-rc.5`, P4 concluant) et sur `main` à `e8fb0fc` ;
 - le cadrage P3 est intégré dans le Project Book à partir de `develop` `4ebc8d6` ;
 - l’écart applicatif contient ACCESS, AUDIT et des fondations Inscriptions internes ;
 - ACCESS exige une preuve AUDIT persistante pour toute mutation du registre ;
