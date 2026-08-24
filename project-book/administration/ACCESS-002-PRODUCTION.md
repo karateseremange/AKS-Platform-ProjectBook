@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.0.0 |
-| **Statut** | P5-A à P5-C clôturés — version stable intégrée dans `develop`, P5-D non engagé |
+| **Version** | 1.1.0 |
+| **Statut** | P5-D clôturé — application V1.4.0 publiée sur `main`, P5-E engagé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -88,8 +88,14 @@ est en exécution contrôlée. P5-A à P5-C sont clôturés :
 - PR applicative #131 fusionnée dans `develop` au commit
   `32a511a93eb341efa29cedffd3358f638c7b1d30`.
 
-P5-D n'est pas engagé. La publication applicative `develop → main`, la
-publication documentaire, chaque tag et toute opération P6 ou de production
+P5-D est clôturé. Après une revue cumulative conforme, la PR applicative
+[#132](https://github.com/karateseremange/AKS-Platform/pull/132) a été fusionnée
+dans `main` au commit `fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5`.
+Le contenu publié est identique à `develop` et conserve les marqueurs
+`1.4.0` et `20260824.1`.
+
+P5-E est engagé pour finaliser puis publier le Project Book. La publication
+documentaire vers `main`, chaque tag et toute opération P6 ou de production
 restent soumis à des autorisations distinctes.
 
 ### P6 — Déploiement Apps Script de production
@@ -203,6 +209,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.1.0 | 2026-08-24 | P5-D clôturé : V1.4.0 publiée dans `main` par la PR #132 au commit `fa8876f`, contenu identique à `develop`; P5-E engagé, tags, Apps Script et production inchangés |
 | 1.0.0 | 2026-08-24 | P5-A à P5-C clôturés : finalisation stable `1.4.0` build `20260824.1` validée à 8/8 et 665/665, PR #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
 | 0.9.0 | 2026-08-24 | Cadrage P5 validé et consigné : P5.1 à P5.12, P5-A à P5-F, finalisation stable explicite et publications Git séparément autorisées ; P6 et production restent interdits |
 | 0.8.0 | 2026-08-21 | P4 cadré : décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, candidate `b13fc20` figée, contrôles Git/RECETTE/production séparés et toute exécution réelle soumise à autorisation distincte |
