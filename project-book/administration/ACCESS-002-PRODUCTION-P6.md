@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P6 |
 | **Titre** | Préparation, déploiement et validation contrôlés de V1.4.0 en production |
-| **Version** | 0.1.0 |
-| **Statut** | P6-A à P6-D préparés et validés localement — écriture en production non autorisée |
+| **Version** | 0.2.0 |
+| **Statut** | P6-E clôturé — HEAD V1.4.0 vérifié, déploiement public maintenu en version 53 ; P6-F non autorisé |
 | **Nature** | Procédure opérationnelle et registre de preuves |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -15,9 +15,9 @@
 
 ## 1. Objet et limite d’autorisation
 
-Ce document consigne la préparation locale du déploiement Apps Script de production. Il ne vaut autorisation ni de `clasp push`, ni de création de version Apps Script, ni de modification du déploiement public, ni d’appel de son URL.
+Ce document consigne la préparation puis la synchronisation contrôlée du HEAD Apps Script de production. P6-E a autorisé uniquement un `clasp push` vers le HEAD ; il ne vaut autorisation ni de créer une version Apps Script, ni de modifier le déploiement public, ni d’appeler son URL.
 
-La production n’a pas été modifiée pendant P6-A à P6-D. Chaque mutation future exige une autorisation explicite et distincte.
+Le HEAD a été modifié et vérifié pendant P6-E. Le déploiement public est resté lié à la version 53 et son comportement public n’a pas été modifié. Chaque mutation future exige une autorisation explicite et distincte.
 
 ## 2. Références immuables
 
@@ -110,14 +110,29 @@ L’écart canonique correspond exactement au diff Git entre l’ancienne réfé
 
 ### P6-E — Synchronisation du HEAD
 
-Après autorisation explicite uniquement :
+P6-E a été explicitement autorisé puis exécuté le 24 août 2026. Le paquet corrigé a été contrôlé immédiatement avant l’écriture :
 
-1. exécuter `clasp push` depuis le paquet corrigé vers le projet suffixé `6x2ZeH` ;
-2. relire immédiatement le HEAD ;
-3. comparer exactement les 261 fichiers attendus et le manifeste ;
-4. vérifier que le déploiement public `wgNc37` reste encore lié à la version 53.
+- SHA-256 ZIP : `520BF57BC5CF20C722580F8D3B9B27227BCAAC152FBAD38E2E8BE178540E75B6` ;
+- cible : projet PRODUCTION suffixé `6x2ZeH`, `rootDir = src` ;
+- manifeste : `Europe/Paris`, `USER_ACCESSING`, `ANYONE` ;
+- `RecipeRunner` absent.
 
-Cette autorisation ne couvre ni la création d’une version ni la modification du déploiement.
+Le `clasp push` a envoyé 261 fichiers au HEAD à 22:49:41. Aucun `clasp version` ni `clasp deploy` n’a été exécuté.
+
+Une relecture fraîche par `clasp pull` a ensuite été créée dans un répertoire distinct. Le contrôle final, compatible avec Windows PowerShell `5.1.26100.9168`, a normalisé les extensions serveur `.gs` et `.js`, les fins de ligne et le manifeste JSON.
+
+| Contrôle après écriture | Résultat |
+|---|---|
+| Fichiers candidats | 261 |
+| Fichiers relus depuis le HEAD | 261 |
+| Chemins canoniques candidats | 261 |
+| Chemins canoniques relus | 261 |
+| Différences de chemin ou de contenu | 0 |
+| Déploiement public `wgNc37` | toujours version 53 |
+
+Deux résultats intermédiaires indiquant zéro fichier ont été invalidés : ils provenaient de scripts de contrôle incompatibles avec Windows PowerShell 5.1, notamment l’emploi de `[IO.Path]::GetRelativePath()`. Le diagnostic direct a confirmé 261 fichiers relus, puis la comparaison compatible PowerShell 5.1 a établi le résultat final 261/261 avec zéro différence.
+
+P6-E est clôturé. Le HEAD contient exactement la candidate V1.4.0 tandis que l’URL publique continue d’exécuter la version 53. La création d’une version numérotée relève exclusivement de P6-F et reste non autorisée.
 
 ### P6-F — Création d’une version numérotée
 
@@ -142,10 +157,11 @@ En cas d’échec, remettre `wgNc37` sur la version 53 et vérifier la restaurat
 - P7 reste consacré à la configuration AUDIT de production et exige ses propres autorisations ;
 - P8 reste consacré à la prévisualisation puis à l’amorçage minimal du premier gestionnaire ;
 - aucune identité réelle, aucun secret et aucun identifiant complet de projet ou de déploiement ne sont consignés ici ;
-- aucune étape P6-A à P6-D n’a appelé l’URL publique ni modifié la production.
+- P6-E a modifié uniquement le HEAD et l’a vérifié exactement ; l’URL publique n’a pas été appelée et son déploiement est resté sur la version 53.
 
 ## 9. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-24 | P6-E clôturé : 261 fichiers poussés vers le HEAD puis relus et comparés à 261/261, zéro différence ; déploiement public maintenu sur la version 53, aucune version ni modification de déploiement exécutée |
 | 0.1.0 | 2026-08-24 | P6-A à P6-D consignés : cible et sauvegardes vérifiées, premier paquet rejeté, paquet corrigé conforme à la barrière canonique 54/30/0 ; aucune écriture de production autorisée |
