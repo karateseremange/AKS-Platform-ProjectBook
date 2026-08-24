@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.9.0 |
-| **Statut** | P4 clôturé — cadrage P5 validé, exécution non engagée |
+| **Version** | 1.0.0 |
+| **Statut** | P5-A à P5-C clôturés — version stable intégrée dans `develop`, P5-D non engagé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
-| **Version cible** | AKS Platform V1.4.0 — finalisation Git P5 requise |
+| **Version cible** | AKS Platform V1.4.0 — build `20260824.1`, publication `main` requise |
 
 ---
 
@@ -78,15 +78,19 @@ opération de production.
 
 ### P5 — Publication Git contrôlée
 
-Le cadrage détaillé [ACCESS-002-PRODUCTION-P5](ACCESS-002-PRODUCTION-P5.md)
-est validé. Il définit P5.1 à P5.12 et P5-A à P5-F : précontrôle Git,
-finalisation explicite de `1.4.0`, validation du nouveau commit stable,
-publication complète des deux branches `develop` vers `main`, puis tags
-cohérents.
+Le protocole détaillé [ACCESS-002-PRODUCTION-P5](ACCESS-002-PRODUCTION-P5.md)
+est en exécution contrôlée. P5-A à P5-C sont clôturés :
 
-La consignation du cadrage n'autorise pas son exécution. Chaque fusion vers
-`develop` ou `main`, chaque tag et toute opération Apps Script restent
-soumis à une autorisation distincte.
+- précontrôle Git conforme sur RC5 `52024ab` ;
+- commit stable exact `5f16d9072b99a4449e1198454b26e484b92de954` ;
+- version `1.4.0`, build `20260824.1` ;
+- validation RECETTE : **8/8 VERSION-001** et **665/665 cumulés** ;
+- PR applicative #131 fusionnée dans `develop` au commit
+  `32a511a93eb341efa29cedffd3358f638c7b1d30`.
+
+P5-D n'est pas engagé. La publication applicative `develop → main`, la
+publication documentaire, chaque tag et toute opération P6 ou de production
+restent soumis à des autorisations distinctes.
 
 ### P6 — Déploiement Apps Script de production
 
@@ -199,6 +203,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-24 | P5-A à P5-C clôturés : finalisation stable `1.4.0` build `20260824.1` validée à 8/8 et 665/665, PR #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
 | 0.9.0 | 2026-08-24 | Cadrage P5 validé et consigné : P5.1 à P5.12, P5-A à P5-F, finalisation stable explicite et publications Git séparément autorisées ; P6 et production restent interdits |
 | 0.8.0 | 2026-08-21 | P4 cadré : décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, candidate `b13fc20` figée, contrôles Git/RECETTE/production séparés et toute exécution réelle soumise à autorisation distincte |
 | 0.7.0 | 2026-08-21 | P3 clôturé : déploiement public `wgNc37` version 53 rapproché de `main`, HEAD rattaché à `ed03cc4` plus `RecipeRunner.js`, RC1 confirmée non déployée et archives durables vérifiées ; P4 Quality Gate devient prioritaire |
