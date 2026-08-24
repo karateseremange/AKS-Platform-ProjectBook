@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P5 |
 | **Titre** | Finalisation stable et publication Git contrôlée de V1.4.0 |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage validé — exécution non engagée |
+| **Version** | 0.2.0 |
+| **Statut** | P5-A à P5-C clôturés — finalisation stable intégrée dans `develop`, P5-D non engagé |
 | **Nature** | Protocole de publication Git |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -32,9 +32,9 @@ configuration AUDIT, aucun amorçage ACCESS et aucune modification de compte ré
 | Application `develop` | `52024aba72a76247179bb801cfb93006151ebbb9` — RC5 |
 | Application `main` | `e8fb0fc3d8e5dfcf806ef5a0b7fab0007b84ec49` |
 | Écart applicatif | 230 commits en avance, 0 en retard |
-| Project Book `develop` | `ac8be0c7fb37a71caf384ad288b1a0308d42fa28` |
+| Project Book `develop` | `ead35c914af58a0a09523ffb2d377de57535b551` |
 | Project Book `main` | `647ae45a501bf14c1f3463fbca480945993bc515` |
-| Écart documentaire | 379 commits en avance, 0 en retard |
+| Écart documentaire | 389 commits en avance, 0 en retard |
 | Quality Gate | P4 concluant, P4-G validé le 24 août 2026 |
 | Production actuelle | déploiement `wgNc37`, version Apps Script 53, inchangé |
 
@@ -215,23 +215,68 @@ documentaire complète vers `main`, puis soumettre séparément sa fusion.
 Vérifier les deux `main`, prévisualiser les tags, obtenir les autorisations
 requises, créer les tags puis consigner leurs références. P6 reste non autorisé.
 
-## 5. Autorisations distinctes
+## 5. Résultats P5-A à P5-C
 
-La validation du présent cadrage autorise uniquement sa consignation dans une
-branche et une PR Project Book vers `develop`.
+### 5.1 P5-A — Précontrôle et gel
 
-Restent notamment soumises à des validations ultérieures distinctes :
+Le précontrôle distant a confirmé les références suivantes avant finalisation :
 
-1. la fusion de la PR de cadrage dans `develop` ;
-2. le démarrage de P5-A et P5-B ;
-3. toute synchronisation ou campagne Apps Script RECETTE ;
-4. la fusion de la finalisation applicative dans `develop` ;
-5. l'ouverture puis la fusion de chaque PR vers `main` ;
-6. la création de chaque tag ;
-7. le démarrage de P6 ;
-8. chaque opération réelle de production.
+- application `develop` : `52024aba72a76247179bb801cfb93006151ebbb9` ;
+- application `main` : `e8fb0fc3d8e5dfcf806ef5a0b7fab0007b84ec49` ;
+- écart applicatif : **230 commits en avance, 0 en retard** ;
+- Project Book `develop` : `ead35c914af58a0a09523ffb2d377de57535b551` ;
+- Project Book `main` : `647ae45a501bf14c1f3463fbca480945993bc515` ;
+- écart documentaire : **389 commits en avance, 0 en retard**.
 
-## 6. Retour arrière Git
+La PR historique Project Book #1 visant `main` est exclue du périmètre et ne
+doit pas être fusionnée.
+
+### 5.2 P5-B — Finalisation stable
+
+La branche applicative `release/v1.4.0-finalization` a été créée depuis RC5.
+Elle contient :
+
+- `be07ea57ddd0a50f05bbe550d2ab295e39d91829` — finalisation de
+  `1.4.0`, build `20260824.1`, nom « ACCESS et administration sécurisée » ;
+- `5f16d9072b99a4449e1198454b26e484b92de954` — alignement des intitulés
+  et identifiants de tests sur la version stable.
+
+La PR applicative
+[#131](https://github.com/karateseremange/AKS-Platform/pull/131) a porté
+exactement **2 commits et 7 fichiers**, sans évolution fonctionnelle.
+
+### 5.3 P5-C — Validation et intégration dans `develop`
+
+Les contrôles du commit stable exact `5f16d9072b99a4449e1198454b26e484b92de954`
+ont obtenu :
+
+- syntaxe JavaScript : **223/223 fichiers `.gs`** ;
+- VERSION-001 locale : **8/8** ;
+- agrégateur cumulatif : **665 références, 665 uniques** ;
+- synchronisation dans Apps Script RECETTE : **261 fichiers poussés** ;
+- `AKS_runVersion001Tests()` en RECETTE : **8/8 réussis** ;
+- `AKS_runValidationSuiteV11()` en RECETTE : **665/665 réussis, 0 échec**.
+
+La PR #131 a été fusionnée dans `develop` par le commit
+`32a511a93eb341efa29cedffd3358f638c7b1d30`. Le contrôle distant a confirmé
+que `develop` pointe exactement sur ce commit. P5-A à P5-C sont clôturés.
+
+P5-D n'est pas engagé : aucune PR applicative `develop → main`, aucune fusion
+dans `main`, aucun tag et aucune opération de production ne sont autorisés par
+cette consignation.
+
+## 6. Autorisations distinctes
+
+Les opérations P5-A à P5-C ci-dessus ont été exécutées après leurs autorisations
+successives. Restent soumises à des validations distinctes :
+
+1. l'ouverture, la revue puis la fusion applicative `develop → main` de P5-D ;
+2. la finalisation puis la fusion documentaire vers `main` de P5-E ;
+3. la création de chaque tag de P5-F ;
+4. le démarrage de P6 ;
+5. chaque opération réelle de production.
+
+## 7. Retour arrière Git
 
 Avant chaque fusion, les références exactes de la base et de la tête sont
 enregistrées. En cas d'anomalie Git avant P6, le traitement privilégié est un
@@ -241,7 +286,7 @@ partagées n'est utilisé.
 Le retour arrière Git de P5 ne modifie jamais automatiquement Apps Script. La
 production reste sur la version 53 tant que P6 n'est pas explicitement autorisé.
 
-## 7. Critères d'acceptation du cadrage
+## 8. Critères d'acceptation du cadrage
 
 Le cadrage est conforme lorsque :
 
@@ -253,8 +298,9 @@ Le cadrage est conforme lorsque :
 - chaque mutation possède son autorisation propre ;
 - les références finales sont documentées.
 
-## 8. Historique
+## 9. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-24 | P5-A à P5-C clôturés : précontrôle conforme, version stable `1.4.0` build `20260824.1` validée en RECETTE à 8/8 et 665/665, PR applicative #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
 | 0.1.0 | 2026-08-24 | Cadrage P5.1 à P5.12 et P5-A à P5-F validé : finalisation stable explicite, publication complète des deux `develop`, fusions et tags séparément autorisés, aucune opération de production |
