@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P4-G |
 | **Titre** | Rapport final et décision proposée du Quality Gate ACCESS |
-| **Version** | 0.1.0 |
-| **Statut** | Rapport soumis à validation du Product Owner |
+| **Version** | 0.2.0 |
+| **Statut** | Validé — Quality Gate P4 concluant |
 | **Nature** | Procès-verbal de validation de candidate |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -134,18 +134,18 @@ arrière.
 - INSCRIPTIONS-011 reste suspendu jusqu’à la validation effective d’ACCESS en
   production.
 
-## 9. Décision proposée
+## 9. Décision validée
 
 Au vu des preuves, aucun défaut bloquant ou critique connu ne reste ouvert sur
 le périmètre P4.
 
-Décision proposée au Product Owner :
+Décision validée par le Product Owner le 24 août 2026 :
 
 > Déclarer le Quality Gate P4 concluant sur la candidate
 > `1.4.0-rc.5` au commit `52024ab`, et reconnaître cette candidate comme
 > admissible au cadrage puis à l’exécution séparément autorisée de P5.
 
-Cette décision ne constitue pas une autorisation d’exécuter P5.
+Cette décision clôt P4 et rend RC5 admissible à P5. Elle ne constitue pas une autorisation d’exécuter P5.
 
 ## 10. Autorisations encore requises
 
@@ -168,4 +168,5 @@ Des validations distinctes restent obligatoires pour :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-24 | Product Owner : P4 déclaré concluant sur RC5 et candidate admise à P5, sans autoriser P5, `main`, tag ou production | 
 | 0.1.0 | 2026-08-24 | Rapport final P4-G soumis : RC5, 665/665, parcours RECETTE et production historique conformes, défauts fermés et admission à P5 proposée sans autorisation implicite |
