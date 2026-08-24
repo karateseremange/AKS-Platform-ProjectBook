@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P4 |
 | **Titre** | Quality Gate final de la candidate ACCESS |
-| **Version** | 0.2.0 |
-| **Statut** | Exécution en cours — campagne automatique et parcours ACCESS RC5 concluants |
+| **Version** | 0.4.0 |
+| **Statut** | Clôturé — P4-G validé sur RC5 |
 | **Nature** | Protocole de validation de release |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -40,10 +40,10 @@ publique, publication Git ou mutation de production.
 
 ### P4.1 — Candidate figée
 
-Le Quality Gate porte exclusivement sur le commit `b13fc20`. Toute
-modification applicative ultérieure invalide les preuves concernées, impose une
-nouvelle candidate — normalement `1.4.0-rc.2` — et une campagne sur sa tête
-exacte.
+Le Quality Gate final porte sur RC5 au commit `52024ab`. RC1 à RC4 restent
+des jalons de détection et de correction ; chaque modification a invalidé les
+preuves concernées et imposé une nouvelle campagne sur la tête exacte. Seules
+les preuves rejouées ou non affectées peuvent contribuer à la décision P4-G.
 
 ### P4.2 — Quatre niveaux de contrôle
 
@@ -76,8 +76,8 @@ Le gate confirme au minimum :
 
 - les références `main`, candidate et leur écart complet ;
 - la syntaxe de tous les fichiers `.gs` ;
-- l’unicité des 661 références cumulatives ;
-- les marqueurs exacts `1.4.0-rc.1` ;
+- l’unicité des 665 références cumulatives ;
+- les marqueurs exacts `1.4.0-rc.5` ;
 - le fuseau `Europe/Paris` ;
 - l’absence de route Web Audit, Maintenance ou Inscriptions ;
 - le maintien du Questionnaire santé comme service public hors ACCESS ;
@@ -90,7 +90,7 @@ Le gate confirme au minimum :
 La campagne minimale sur la tête exacte comprend :
 
 1. `AKS_runVersion001Tests()`, attendu **8/8** ;
-2. `AKS_runValidationSuiteV11()`, attendu **661/661** ;
+2. `AKS_runValidationSuiteV11()`, attendu **665/665** ;
 3. les suites ciblées ACCESS et AUDIT réellement disponibles ;
 4. les contrôles ciblés Paramétrage, Journaux, Analytics et Portail ;
 5. la vérification que les fonctions de recette avec écriture restent hors de
@@ -153,7 +153,7 @@ la référence de retour arrière.
 Le gate échoue notamment si :
 
 - un test automatique échoue ;
-- la tête testée diffère de `b13fc20` ;
+- la tête testée diffère de `52024ab` ;
 - un contrôle exige une ressource de production non autorisée ;
 - le Questionnaire santé régresse ;
 - une route Inscriptions, Audit ou Maintenance est exposée ;
@@ -167,7 +167,7 @@ Si le gate est concluant :
 
 - `V1.4.0` peut être retenue comme numéro stable ;
 - le build final est dérivé du commit finalement publié ;
-- RC1 n’est pas renommée silencieusement dans son commit actuel ;
+- RC5 n’est pas renommée silencieusement dans son commit actuel ;
 - une finalisation documentaire et applicative précède la PR
   `develop → main`.
 
@@ -223,8 +223,8 @@ Après autorisation spécifique, contrôler sans écriture la production version
 
 ### P4-G — Rapport et décision
 
-Conclure le gate, qualifier les défauts, maintenir RC1 ou préparer RC2, puis
-soumettre séparément la décision d’engager P5.
+Conclure le gate, qualifier les défauts, identifier la candidate finale exacte,
+puis soumettre séparément la décision d’engager P5.
 
 ## 5. Critères de sortie
 
@@ -296,14 +296,17 @@ Les contrôles P4-B, P4-C, P4-D et le parcours ACCESS concerné de P4-E sont
 concluants sur RC5. Les défauts bloquants découverts pendant cette exécution
 sont corrigés et fermés.
 
-P4 n’est pas encore déclaré clôturé : les parcours restants autorisés, le
-contrôle P4-F de la production publique version 53 et le rapport de décision
-P4-G doivent être consignés avant toute proposition de P5, fusion vers
-`main` ou opération de production.
+Les contrôles P4-E restants et P4-F sont désormais terminés sans défaut
+bloquant ou critique. Le rapport
+[ACCESS-002-PRODUCTION-P4-G](ACCESS-002-PRODUCTION-P4-G.md) a été validé par
+le Product Owner le 24 août 2026. P4 est clôturé et RC5 est admissible à P5.
+P5, `main`, les tags et la production restent non autorisés.
 
 ## 7. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-24 | P4-G validé par le Product Owner : gate clôturé sur RC5 et candidate admissible à P5 ; P5 et toutes les opérations de publication/production restent soumises à autorisations distinctes | 
+| 0.3.0 | 2026-08-24 | P4-E et P4-F terminés ; rapport P4-G créé, aucun défaut bloquant ou critique ouvert et admission de RC5 à P5 soumise au Product Owner sans autorisation implicite | 
 | 0.2.0 | 2026-08-24 | Exécution intermédiaire P4 documentée jusqu’à RC5 : campagnes 665/665, défauts AUDIT corrigés, parcours ACCESS concluant, restauration exacte et nettoyage complet ; gate non clôturé | 
 | 0.1.0 | 2026-08-21 | P4.1 à P4.12 et sous-étapes P4-A à P4-G validés : candidate figée, contrôles statiques/RECETTE/production séparés, autorisations distinctes et aucun droit de publication ou mutation accordé |
