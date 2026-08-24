@@ -40,10 +40,10 @@ publique, publication Git ou mutation de production.
 
 ### P4.1 — Candidate figée
 
-Le Quality Gate porte exclusivement sur le commit `b13fc20`. Toute
-modification applicative ultérieure invalide les preuves concernées, impose une
-nouvelle candidate — normalement `1.4.0-rc.2` — et une campagne sur sa tête
-exacte.
+Le Quality Gate final porte sur RC5 au commit `52024ab`. RC1 à RC4 restent
+des jalons de détection et de correction ; chaque modification a invalidé les
+preuves concernées et imposé une nouvelle campagne sur la tête exacte. Seules
+les preuves rejouées ou non affectées peuvent contribuer à la décision P4-G.
 
 ### P4.2 — Quatre niveaux de contrôle
 
@@ -76,8 +76,8 @@ Le gate confirme au minimum :
 
 - les références `main`, candidate et leur écart complet ;
 - la syntaxe de tous les fichiers `.gs` ;
-- l’unicité des 661 références cumulatives ;
-- les marqueurs exacts `1.4.0-rc.1` ;
+- l’unicité des 665 références cumulatives ;
+- les marqueurs exacts `1.4.0-rc.5` ;
 - le fuseau `Europe/Paris` ;
 - l’absence de route Web Audit, Maintenance ou Inscriptions ;
 - le maintien du Questionnaire santé comme service public hors ACCESS ;
@@ -90,7 +90,7 @@ Le gate confirme au minimum :
 La campagne minimale sur la tête exacte comprend :
 
 1. `AKS_runVersion001Tests()`, attendu **8/8** ;
-2. `AKS_runValidationSuiteV11()`, attendu **661/661** ;
+2. `AKS_runValidationSuiteV11()`, attendu **665/665** ;
 3. les suites ciblées ACCESS et AUDIT réellement disponibles ;
 4. les contrôles ciblés Paramétrage, Journaux, Analytics et Portail ;
 5. la vérification que les fonctions de recette avec écriture restent hors de
@@ -153,7 +153,7 @@ la référence de retour arrière.
 Le gate échoue notamment si :
 
 - un test automatique échoue ;
-- la tête testée diffère de `b13fc20` ;
+- la tête testée diffère de `52024ab` ;
 - un contrôle exige une ressource de production non autorisée ;
 - le Questionnaire santé régresse ;
 - une route Inscriptions, Audit ou Maintenance est exposée ;
@@ -167,7 +167,7 @@ Si le gate est concluant :
 
 - `V1.4.0` peut être retenue comme numéro stable ;
 - le build final est dérivé du commit finalement publié ;
-- RC1 n’est pas renommée silencieusement dans son commit actuel ;
+- RC5 n’est pas renommée silencieusement dans son commit actuel ;
 - une finalisation documentaire et applicative précède la PR
   `develop → main`.
 
@@ -223,8 +223,8 @@ Après autorisation spécifique, contrôler sans écriture la production version
 
 ### P4-G — Rapport et décision
 
-Conclure le gate, qualifier les défauts, maintenir RC1 ou préparer RC2, puis
-soumettre séparément la décision d’engager P5.
+Conclure le gate, qualifier les défauts, identifier la candidate finale exacte,
+puis soumettre séparément la décision d’engager P5.
 
 ## 5. Critères de sortie
 
