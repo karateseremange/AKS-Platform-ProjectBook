@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P4 |
 | **Titre** | Quality Gate final de la candidate ACCESS |
-| **Version** | 0.2.0 |
-| **Statut** | Exécution en cours — campagne automatique et parcours ACCESS RC5 concluants |
+| **Version** | 0.3.0 |
+| **Statut** | Exécution technique terminée — décision P4-G soumise au Product Owner |
 | **Nature** | Protocole de validation de release |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -296,14 +296,17 @@ Les contrôles P4-B, P4-C, P4-D et le parcours ACCESS concerné de P4-E sont
 concluants sur RC5. Les défauts bloquants découverts pendant cette exécution
 sont corrigés et fermés.
 
-P4 n’est pas encore déclaré clôturé : les parcours restants autorisés, le
-contrôle P4-F de la production publique version 53 et le rapport de décision
-P4-G doivent être consignés avant toute proposition de P5, fusion vers
-`main` ou opération de production.
+Les contrôles P4-E restants et P4-F sont désormais terminés sans défaut
+bloquant ou critique. Le rapport
+[ACCESS-002-PRODUCTION-P4-G](ACCESS-002-PRODUCTION-P4-G.md) soumet la clôture
+du gate au Product Owner. Tant que cette décision n’est pas validée, P4 reste
+formellement ouvert ; P5, `main`, les tags et la production restent non
+autorisés.
 
 ## 7. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-24 | P4-E et P4-F terminés ; rapport P4-G créé, aucun défaut bloquant ou critique ouvert et admission de RC5 à P5 soumise au Product Owner sans autorisation implicite | 
 | 0.2.0 | 2026-08-24 | Exécution intermédiaire P4 documentée jusqu’à RC5 : campagnes 665/665, défauts AUDIT corrigés, parcours ACCESS concluant, restauration exacte et nettoyage complet ; gate non clôturé | 
 | 0.1.0 | 2026-08-21 | P4.1 à P4.12 et sous-étapes P4-A à P4-G validés : candidate figée, contrôles statiques/RECETTE/production séparés, autorisations distinctes et aucun droit de publication ou mutation accordé |
