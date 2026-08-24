@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.1 |
-| **Statut** | P5 clôturé — publication Git V1.4.0 complète, P6 non engagé |
+| **Version** | 1.2.2 |
+| **Statut** | P6-A à P6-D préparés et validés localement — écriture de production non autorisée |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -115,16 +115,18 @@ soumis à des autorisations distinctes.
 
 ### P6 — Déploiement Apps Script de production
 
-Après publication Git :
+Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) est engagé jusqu’à sa préparation locale. P6-A à P6-D sont validés :
 
-1. identifier formellement le projet Apps Script, le déploiement, la version et l’URL publics de production existants ;
-2. sauvegarder leur état exact et vérifier leur correspondance avec `main` avant de figer la version cible ;
-3. synchroniser exactement le commit publié ;
-4. créer une nouvelle version Apps Script ;
-5. mettre à jour le déploiement existant afin de conserver son URL lorsque cela est possible ;
-6. vérifier d’abord le Questionnaire santé public.
+- cible immuable : tag `v1.4.0` au commit `fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5` ;
+- projet PRODUCTION suffixé `6x2ZeH`, distinct de la RECETTE suffixée `eIRxs4` ;
+- déploiement public `wgNc37` toujours figé à la version 53 ;
+- sauvegarde fraîche vérifiée par SHA-256 et identique aux archives P3 ;
+- premier paquet marqué invalide après détection d’un mauvais fuseau ;
+- paquet corrigé validé sur `Europe/Paris`, `USER_ACCESSING` et `ANYONE` ;
+- barrière canonique conforme : 54 fichiers ajoutés, 30 modifiés et aucun absent par rapport à la version 53 ;
+- 261 fichiers poussables, sans `RecipeRunner`.
 
-Aucun projet de recette ne doit être requalifié implicitement en production.
+Aucun `clasp push`, aucune création de version, aucune modification de déploiement et aucun appel de l’URL publique n’ont été exécutés. P6-E à P6-H exigent chacun une autorisation distincte. Le retour arrière cible exclusivement la version 53, jamais le HEAD.
 
 ### P7 — Ressources de production
 
@@ -224,6 +226,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.2 | 2026-08-24 | P6-A à P6-D préparés et validés localement : cible V1.4.0, sauvegarde fraîche, paquet erroné rejeté et paquet corrigé conforme à la barrière canonique 54/30/0 ; aucune écriture de production autorisée |
 | 1.2.1 | 2026-08-24 | Références post-release clarifiées : commits de publication/tagués distingués des têtes `main`; application `main@7a6b70a` après la PR #134, tags inchangés et production non engagée |
 | 1.2.0 | 2026-08-24 | P5 clôturé : application et Project Book publiés sur `main`, tags légers `v1.4.0` vérifiés sur `fa8876f` et `7cfa3ce`; P6, Apps Script et production non engagés |
 | 1.1.0 | 2026-08-24 | P5-D clôturé : V1.4.0 publiée dans `main` par la PR #132 au commit `fa8876f`, contenu identique à `develop`; P5-E engagé, tags, Apps Script et production inchangés |
