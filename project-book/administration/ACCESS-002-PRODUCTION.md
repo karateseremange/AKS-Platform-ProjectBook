@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 0.8.0 |
-| **Statut** | P4 cadré — exécution du Quality Gate non autorisée |
+| **Version** | 0.9.0 |
+| **Statut** | P4 clôturé — cadrage P5 validé, exécution non engagée |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-21 |
-| **Version cible proposée** | AKS Platform V1.4.0, à confirmer au Quality Gate |
+| **Dernière mise à jour** | 2026-08-24 |
+| **Version cible** | AKS Platform V1.4.0 — finalisation Git P5 requise |
 
 ---
 
@@ -66,25 +66,27 @@ Le protocole et ses résultats minimisés sont définis dans [ACCESS-002-PRODUCT
 
 ### P4 — Quality Gate
 
-Le protocole détaillé est défini dans
-[ACCESS-002-PRODUCTION-P4](ACCESS-002-PRODUCTION-P4.md). Les décisions P4.1 à
-P4.12 et les sous-étapes P4-A à P4-G sont validées.
+Le protocole [ACCESS-002-PRODUCTION-P4](ACCESS-002-PRODUCTION-P4.md) a été
+exécuté jusqu'à RC5. Le rapport
+[ACCESS-002-PRODUCTION-P4-G](ACCESS-002-PRODUCTION-P4-G.md) a été validé le
+24 août 2026 : Quality Gate concluant sur `1.4.0-rc.5` au commit
+`52024aba72a76247179bb801cfb93006151ebbb9`, aucun défaut bloquant ou
+critique ouvert et candidate admissible à P5.
 
-Le gate fige la candidate `b13fc20`, sépare contrôles Git, campagne Apps
-Script RECETTE, parcours fonctionnels et référence publique version 53. Chaque
-synchronisation, recette avec écriture ou accès à la production exige une
-autorisation distincte. La validation du cadrage n’autorise ni `clasp push`,
-ni publication vers `main`, ni opération de production.
+La clôture de P4 n'autorise ni P5, ni publication vers `main`, ni tag, ni
+opération de production.
 
 ### P5 — Publication Git contrôlée
 
-Après validation du Quality Gate seulement :
+Le cadrage détaillé [ACCESS-002-PRODUCTION-P5](ACCESS-002-PRODUCTION-P5.md)
+est validé. Il définit P5.1 à P5.12 et P5-A à P5-F : précontrôle Git,
+finalisation explicite de `1.4.0`, validation du nouveau commit stable,
+publication complète des deux branches `develop` vers `main`, puis tags
+cohérents.
 
-1. PR applicative `develop` vers `main` ;
-2. PR documentaire `develop` vers `main` ;
-3. autorisation explicite avant chaque fusion ;
-4. tags applicatif et documentaire cohérents ;
-5. aucune fusion automatique.
+La consignation du cadrage n'autorise pas son exécution. Chaque fusion vers
+`develop` ou `main`, chaque tag et toute opération Apps Script restent
+soumis à une autorisation distincte.
 
 ### P6 — Déploiement Apps Script de production
 
@@ -197,6 +199,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.9.0 | 2026-08-24 | Cadrage P5 validé et consigné : P5.1 à P5.12, P5-A à P5-F, finalisation stable explicite et publications Git séparément autorisées ; P6 et production restent interdits |
 | 0.8.0 | 2026-08-21 | P4 cadré : décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, candidate `b13fc20` figée, contrôles Git/RECETTE/production séparés et toute exécution réelle soumise à autorisation distincte |
 | 0.7.0 | 2026-08-21 | P3 clôturé : déploiement public `wgNc37` version 53 rapproché de `main`, HEAD rattaché à `ed03cc4` plus `RecipeRunner.js`, RC1 confirmée non déployée et archives durables vérifiées ; P4 Quality Gate devient prioritaire |
 | 0.6.0 | 2026-08-21 | P2 clôturé sur `develop` par la PR documentaire #161 ; cadrage I1 à I12 de P3 validé, inventaire réel toujours soumis à une autorisation distincte |
