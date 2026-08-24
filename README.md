@@ -56,7 +56,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
-- [V1.4.0 — Publication Git applicative réalisée](releases/V1.4.0.md)
+- [V1.4.0 — Publication Git clôturée](releases/V1.4.0.md)
 - [V1.1.0 — Note de publication](releases/V1.1.0.md)
 - [V1.2.0 — Note de publication](releases/V1.2.0.md)
 - [V1.3.0 — Note de prépublication](releases/V1.3.0.md)
@@ -175,7 +175,7 @@ et dans `ANALYTICS-008`.
 
 La **V1.3.0** a été publiée le 1er août 2026. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version. Le tag documentaire `v1.3.0` pointe sur le commit `647ae45a501bf14c1f3463fbca480945993bc515`.
 
-Les six lots d’**ACCESS-002-06** sont validés en recette et la version stable `1.4.0`, build `20260824.1`, est publiée dans le `main` applicatif au commit `fa8876f` par la PR #132. Cette publication Git ne constitue ni un déploiement ni un amorçage ACCESS en production. [P5-E — publication documentaire](project-book/administration/ACCESS-002-PRODUCTION-P5.md) est engagé ; les tags et P6 restent non autorisés. `INSCRIPTIONS-011` reste suspendu jusqu’à la validation fonctionnelle d’ACCESS en production.
+Les six lots d’**ACCESS-002-06** sont validés en recette et la publication Git V1.4.0 est clôturée : application `main@fa8876f`, Project Book `main@7cfa3ce` et tags légers `v1.4.0` vérifiés dans les deux dépôts. Cette publication Git ne constitue ni un déploiement ni un amorçage ACCESS en production. [P5 — publication Git contrôlée](project-book/administration/ACCESS-002-PRODUCTION-P5.md) est clôturé ; P6 reste non engagé. `INSCRIPTIONS-011` reste suspendu jusqu’à la validation fonctionnelle d’ACCESS en production.
 
 Le chantier métier suivant est **AKS Inscriptions**. Son cadrage fonctionnel, son modèle métier, ses services, la reprise des trois Google Forms, les interfaces de contrôle, le socle transverse d’accès privés, les contrats techniques ainsi que la stratégie de recette cumulative sont validés dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md) à [`INSCRIPTIONS-006`](project-book/modules/inscriptions/INSCRIPTIONS-006.md).
 
