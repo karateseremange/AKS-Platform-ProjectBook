@@ -6,11 +6,11 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.2.66 |
+| Version | 1.3.30 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-08-01 |
-| Version du produit | V1.3 |
+| Dernière mise à jour | 2026-08-24 |
+| Version du produit | Post-V1.3 |
 
 ---
 
@@ -51,7 +51,9 @@ project-book/
 ├── administration/
 ├── ux/
 ├── modules/
-│   └── analytics/
+│   ├── analytics/
+│   ├── calendar/
+│   └── inscriptions/
 ├── documentation/
 │   ├── DOC-001.md
 │   ├── INDEX-001.md
@@ -74,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.59 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.90 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -119,9 +121,25 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Implémenté et validé en recette sur `develop` — publication et amorçage en attente | 0.4.44 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
+| ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
+| ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #101 à #104, `b120963` |
+| ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
+| ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
+| ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P5-D clôturé — application publiée dans `main`, P5-E engagé | 1.1.0 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P5, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P4 | Quality Gate final de la candidate ACCESS | Clôturé — P4-G validé sur RC5 | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P4-G | Rapport final du Quality Gate ACCESS | Validé — Quality Gate P4 concluant | 0.2.0 | ACCESS-002-PRODUCTION-P4, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | P5-D clôturé — P5-E engagé | 0.3.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
+| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | P1 implémenté et validé en recette sur `develop` — opération réelle interdite | 0.2.0 | AUDIT-001, ACCESS-002-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
+| ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
-| AUDIT-001 | Audit et traçabilité | Validé | 1.1.1 | SECURITY-001, LOG-001 |
+| AUDIT-001 | Audit et traçabilité — socle persistant étendu aux opérations ACCESS | Extension multi-environnement intégrée et validée en recette — production non configurée | 1.4.1 | SECURITY-001, LOG-001, CORE-001, STORAGE-001, ERROR-001, ACCESS-002-01, AUDIT-001-PRODUCTION |
+| AUDIT-001-RECETTE | Procès-verbal de recette du socle persistant AUDIT-001 | En revue | 1.0.0 | AUDIT-001, CONFIG-001, AKS-Platform #90 |
 
 ---
 
@@ -144,10 +162,10 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010`, `INSCRIPTIONS-010-RECETTE` | Quatrième incrément INSCRIPTIONS-010 clôturé et fusionné dans `develop` par la PR #89 au commit `ed03cc4…` ; **455/455 tests**, recette Google isolée concluante pour le périmètre exécuté ; ACCESS-002 devient le prérequis transverse avant le cadrage d’INSCRIPTIONS-011 |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
-| Licenciés | À créer | À créer | Futur |
 | Communication | À créer | À créer | Futur |
 
 ### 9.1 Documents AKS Calendar
@@ -165,7 +183,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |----|-------|--------|---------|-------------------------|
 | ANALYTICS-001 | Vision et architecture du module AKS Analytics | Référence de développement | 1.3.0 | ARCH-001, CORE-001, ADMIN-004, STD-001 |
 | ANALYTICS-002 | Modèle métier d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001, ROADMAP-001, SECURITY-001, STORAGE-001 |
-| ANALYTICS-003 | Services et règles d’orchestration d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001, ANALYTICS-002, CORE-001, ADMIN-004, CONFIG-001, LOG-001 |
+| ANALYTICS-003 | Services et règles d'orchestration d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001, ANALYTICS-002, CORE-001, ADMIN-004, CONFIG-001, LOG-001 |
 | ANALYTICS-004 | Interfaces et restitutions d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-003, ADMIN-002 à ADMIN-004, UI-001, UX-001 |
 | ANALYTICS-005 | Contrats externes et formats des sources d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-004, STORAGE-001, SECURITY-001, CONFIG-001 |
 | ANALYTICS-006 | Stratégie de validation, jeux d’essai et recette d’AKS Analytics | Référence de développement | 1.1.0 | ANALYTICS-001 à ANALYTICS-005, ADMIN-004, CONFIG-001, LOG-001, SECURITY-001, STORAGE-001, UI-001, UX-001 |
@@ -173,12 +191,27 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 | ANALYTICS-008 | Bilan d’implémentation et procès-verbal de recette | Validé | 1.0.1 | ANALYTICS-001 à ANALYTICS-007 |
 | ANALYTICS-009 | Guide d’alimentation Google Sheets V1.2.0 | Validé | 1.0.0 | ANALYTICS-005, ANALYTICS-008, implémentation V1.2.0 |
 | ANALYTICS-SAISIE-001 | Cadrage fonctionnel et UX de la saisie des présences | Validé | 1.0.0 | ANALYTICS-001 à ANALYTICS-009, SECURITY-001, UX-001 |
-| ACCESS-001 | Rôles, capacités et affectations Analytics | Publié sur `main` et validé en production | 1.1.0 | ANALYTICS-SAISIE-001, SECURITY-001, CONFIG-001, LOG-001, AUDIT-001, API-001 |
+| ACCESS-001 | Rôles, capacités et habilitations privées d’AKS Platform | Socle implémenté et utilisé par Présences — extension transverse partiellement raccordée | 1.2.1 | ANALYTICS-SAISIE-001, INSCRIPTIONS-004, SECURITY-001, CONFIG-001, LOG-001, AUDIT-001, API-001 |
 | ANALYTICS-SAISIE-002 | Contrat d’écriture des séances et présences | Implémentation et recette validées — publiée sur `main` | 1.1.2 | ANALYTICS-SAISIE-001, ACCESS-001, ANALYTICS-009, SECURITY-001, AUDIT-001, LOG-001, API-001, ERROR-001 |
 | ANALYTICS-SAISIE-003 | Route et navigation mobile des présences | Publié sur `main` et validé en production | 1.1.0 | ANALYTICS-SAISIE-001, ANALYTICS-SAISIE-002, ACCESS-001, UX-001, API-001 |
 | ANALYTICS-SAISIE-004 | Saisie rapide et brouillon reprenable | Publié sur `main` et validé en production | 1.1.0 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-003, ACCESS-001, UX-001, API-001 |
 | ANALYTICS-SAISIE-005 | Clôture mobile sécurisée | Publié sur `main` et validé en production | 1.1.0 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-004, ACCESS-001, UX-001, API-001 |
 | ANALYTICS-SAISIE-006 | Recette fonctionnelle mobile isolée | Recette validée et parcours mobile publié en production | 1.1.0 | ANALYTICS-SAISIE-001 à ANALYTICS-SAISIE-005, ACCESS-001, UX-001, API-001 |
+
+### 9.3 Documents AKS Inscriptions
+
+| ID | Titre | Statut | Version | Dépendances principales |
+|----|-------|--------|---------|-------------------------|
+| INSCRIPTIONS-001 | Cadrage fonctionnel d’AKS Inscriptions | Validé | 1.0.2 | ROADMAP-001, STD-001, SECURITY-001, STORAGE-001, NOTIF-001, ANALYTICS-001, ANALYTICS-SAISIE-001 |
+| INSCRIPTIONS-002 | Modèle métier d’AKS Inscriptions | Validé | 1.0.2 | INSCRIPTIONS-001, ANALYTICS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001 |
+| INSCRIPTIONS-003 | Services, transitions et reprise Google Forms | Validé | 1.0.1 | INSCRIPTIONS-001, INSCRIPTIONS-002, SECURITY-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
+| INSCRIPTIONS-004 | Interfaces et accès privés d’AKS Platform | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-003, ACCESS-001, ADMIN-002, SECURITY-001, UI-001, UX-001 |
+| INSCRIPTIONS-005 | Contrats techniques, stockage et intégrations | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-004, CONFIG-001, ACCESS-001, STORAGE-001, LOG-001, AUDIT-001, ERROR-001 |
+| INSCRIPTIONS-006 | Jeux d’essai et stratégie de recette cumulative | Validé | 1.0.1 | INSCRIPTIONS-001 à INSCRIPTIONS-005, ACCESS-001, CONFIG-001, LOG-001, AUDIT-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-008 | Deuxième incrément : accès et audit sans écriture métier | Validé | 1.1.0 | INSCRIPTIONS-004 à INSCRIPTIONS-006, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-009 | Troisième incrément : journal de commandes et reprise sans Google | Validé | 1.1.0 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, ACCESS-001, AUDIT-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-010 | Quatrième incrément : persistance technique en recette contrôlée | Validé — implémentation, recette technique et intégration dans `develop` terminées | 1.1.1 | INSCRIPTIONS-005, INSCRIPTIONS-006, INSCRIPTIONS-008, INSCRIPTIONS-009, CONFIG-001, ACCESS-001, AUDIT-001, STORAGE-001, SECURITY-001, ERROR-001 |
+| INSCRIPTIONS-010-RECETTE | Procès-verbal de recette de la persistance technique INSCRIPTIONS-010 | Validé | 1.1.0 | INSCRIPTIONS-010, AUDIT-001, CONFIG-001, AKS-Platform #89 |
 
 Ordre produit validé après la publication de la V1.1 :
 
@@ -253,10 +286,11 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, CONFIG-001, LOG-001, AUDIT-001 | Complète |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Six lots ACCESS validés ; V1.4.0 stable publiée dans le `main` applicatif ; publication documentaire, tags, déploiement, configuration AUDIT, amorçage et validation de production encore requis |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
-| AKS Calendar | CALENDAR-001 à CALENDAR-004 | Socle Google Calendar, publication publique et accès internes WordPress validés ; prêt pour publication V1.3.0 |
+| AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010, INSCRIPTIONS-010-RECETTE | Quatrième incrément INSCRIPTIONS-010 clôturé et intégré dans `develop` par la PR #89 ; **455/455**, recette Google isolée concluante pour le périmètre exécuté ; ACCESS-002 est le prérequis transverse avant INSCRIPTIONS-011 |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -277,6 +311,69 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.30 | 2026-08-24 | P5-D clôturé : PR applicative #132 fusionnée dans `main` au commit `fa8876f`, contenu identique à `develop`, V1.4.0 et build `20260824.1` confirmés ; P5-E engagé, tags et production inchangés |
+| 1.3.29 | 2026-08-24 | P5-A à P5-C clôturés : version stable `1.4.0` build `20260824.1` validée en RECETTE à 8/8 et 665/665, puis intégrée dans `develop` à `32a511a`; P5-D et production non engagés |
+| 1.3.28 | 2026-08-24 | Référencement du Quality Gate P4 clôturé et du cadrage P5 validé : finalisation stable, publications complètes vers `main` et tags cohérents, sans exécution P5 ni production |
+| 1.3.27 | 2026-08-21 | P3 renforcé : HEAD Apps Script et version réellement déployée sauvegardés séparément ; archive durable horodatée, relue et vérifiée par SHA-256 avant toute suite |
+| 1.3.26 | 2026-08-21 | P2 clôturé sur `develop` ; référencement d’ACCESS-002-PRODUCTION-P3 0.1.0 et cadrage I1 à I12 de l’inventaire en lecture seule, sans accès réel à la production |
+| 1.3.25 | 2026-08-21 | Note V1.4.0 candidate non publiée ajoutée et checklist P2 renseignée ; statuts bornés à une clôture documentaire encore en revue |
+| 1.3.24 | 2026-08-21 | Candidate `1.4.0-rc.1` intégrée par la PR applicative #126 au commit `b13fc20` et validée sur sa tête exacte à **8/8** VERSION-001 et **661/661** cumulés, sans opération de production |
+| 1.3.23 | 2026-08-21 | Référencement d’ACCESS-002-PRODUCTION-P2 0.1.0 et passage d’ACCESS-002-PRODUCTION en 0.4.0 : candidate `1.4.0-rc.1`, écart complet, synchronisation des versions et Quality Gate transverse, sans publication ni opération réelle |
+| 1.3.22 | 2026-08-21 | P1 AUDIT de production intégré par la PR applicative #125 au commit `ab52dc6` ; AUDIT-001-PRODUCTION 0.2.0, ACCESS-002-PRODUCTION 0.3.0 et AUDIT-001 1.4.1 alignés après validations **62/62** et **660/660**, sans opération réelle |
+| 1.3.21 | 2026-08-20 | Référencement d’AUDIT-001-PRODUCTION 0.1.0 et consolidation d’ACCESS-002-PRODUCTION 0.2.0 : P1.1 à P1.12, conservation 1 095 jours, aucune opération réelle autorisée |
+| 1.3.20 | 2026-08-20 | Statut ACCESS rectifié : six lots intégrés et recettés mais non publiés ; ajout d’ACCESS-002-PRODUCTION comme jalon prioritaire avant INSCRIPTIONS-011 |
+| 1.3.18 | 2026-08-13 | Référencement d’ACCESS-002-04 0.1.0 et passage d’ACCESS-002 en 0.4.22 : fiche, multi-rôle, quatre cartes d’habilitations, temporalité, synthèse, audit et évolution compatible `access/1.1` cadrés ; ROADMAP-001 1.3.9 alignée, sans implémentation ni donnée réelle |
+| 1.3.17 | 2026-08-13 | ACCESS-002-03 clôturé en 1.0.0 après synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète avec restaurations exactes d’ACCESS et d’AUDIT ; ACCESS-002 0.4.21 et ROADMAP-001 1.3.8 alignées |
+| 1.3.16 | 2026-08-13 | ACCESS-002-03 0.9.0 et ACCESS-002 0.4.20 : protocole réversible du lot 4 publié dans la PR applicative brouillon #104, 5/5 tests ciblés, syntaxe 204/204 et suite préparée à 542 références ; ROADMAP-001 1.3.7 alignée, sans Apps Script ni mutation réelle |
+| 1.3.15 | 2026-08-13 | ACCESS-002-03 0.8.0 validé après intégration de la PR #103 au commit `846e666`, synchronisation de 238 fichiers, campagne 537/537, contrôle visuel autorisé et refus direct non habilité ; ACCESS-002 0.4.19 et ROADMAP-001 1.3.6 alignées, sans mutation de registre |
+| 1.3.14 | 2026-08-13 | ACCESS-002-03 0.7.0 et ACCESS-002 0.4.18 : lot 3 publié dans la PR applicative brouillon #103, route et interface protégées, navigation conditionnelle et états interactifs ; tests ciblés 5/5, syntaxe 202/202 et suite cumulative préparée à 537 références uniques, sans Apps Script ni mutation réelle |
+| 1.3.13 | 2026-08-13 | ACCESS-002-03 0.6.0 validé après intégration de la PR #102 au commit `066aebb`, synchronisation de 233 fichiers et campagne Apps Script 532/532 ; ACCESS-002 0.4.17 et ROADMAP-001 1.3.4 alignées, sans commande de cycle de vie ni mutation de registre |
+| 1.3.12 | 2026-08-13 | ACCESS-002-03 0.5.0 et ACCESS-002 0.4.16 : lot 2 corrigé après revue dans la PR applicative brouillon #102, refus métier audités, révision idempotente contrôlée, cycle de vie 13/13, socle ACCESS 20/20 et inventaire cumulatif préparé à 532 références uniques ; ROADMAP-001 1.3.3 alignée, sans Apps Script ni donnée réelle |
+| 1.3.11 | 2026-08-13 | ACCESS-002-03 0.4.0 validé après intégration de la PR #101 au commit `b41787d`, synchronisation de 231 fichiers et campagne Apps Script 518/518 ; ACCESS-002 0.4.15 et ROADMAP-001 1.3.2 alignées, sans mutation de registre ni donnée réelle |
+| 1.3.10 | 2026-08-13 | ACCESS-002-03 0.3.0 engagé par la PR applicative brouillon #101 : projection corrigée pour dériver les modules des capacités effectives, tests ciblés 11/11, syntaxe 198/198 et inventaire cumulatif préparé à 518 références uniques ; ACCESS-002 0.4.14 et ROADMAP-001 1.3.1 alignées, sans recette Apps Script ni donnée réelle |
+| 1.3.9 | 2026-08-13 | Validation d’ACCESS-002-03 0.2.0 et passage d’ACCESS-002 en 0.4.13 : sept décisions de cadrage approuvées, implémentation maintenue non engagée avant intégration ; ROADMAP-001 1.3.0 alignée |
+| 1.3.8 | 2026-08-13 | Référencement d’ACCESS-002-03 0.1.0 et passage d’ACCESS-002 en 0.4.12 : liste/recherche/filtres, création inactive sans habilitation, cycle d’activation/désactivation et synthèse des accès proposés avant implémentation ; ROADMAP-001 1.2.99 alignée |
+| 1.3.7 | 2026-08-13 | ACCESS-002-02 1.0.0 validé après campagne 507/507 et cycle réversible complet avec preuves persistantes, restaurations exactes d’ACCESS et d’AUDIT ; ACCESS-002 0.4.11 et ROADMAP-001 1.2.98 alignés sur le cadrage suivant d’ACCESS-002-03 |
+| 1.3.6 | 2026-08-12 | ACCESS-002-02 0.11.0 et ACCESS-002 0.4.10 : campagne 502/502 validée, refus réel de l’audit confirmé et raccordement persistant réversible et récupérable après état partiel préparé ; ROADMAP-001 1.2.97 alignée |
+| 1.3.5 | 2026-08-12 | ACCESS-002-02 0.10.0 et ACCESS-002 0.4.9 : 498/498 du corpus antérieur validés, omission de trois tests dans l’agrégateur consignée et garde structurel ajouté ; ROADMAP-001 1.2.96 alignée |
+| 1.3.4 | 2026-08-12 | ACCESS-002-02 0.9.0 et ACCESS-002 0.4.8 : 498/498 réussis après synchronisation, faux positif du premier garde-fou documenté et second correctif de validation réelle de l’audit engagé ; ROADMAP-001 1.2.95 alignée |
+| 1.3.3 | 2026-08-11 | ACCESS-002-02 0.8.0 et ACCESS-002 0.4.7 : échec d’audit avant écriture consigné, registre intact confirmé et garde-fou d’audit ajouté au précontrôle ; ROADMAP-001 1.2.94 alignée |
+| 1.3.2 | 2026-08-09 | ACCESS-002-02 passé en 0.7.0 après synchronisation de 229 fichiers et validation réelle 497/497 de la tête corrigée `747c9a3` de la PR applicative #96 ; ACCESS-002 0.4.6 et ROADMAP-001 1.2.93 alignés, application et restauration non exécutées |
+| 1.3.1 | 2026-08-09 | ACCESS-002-02 passé en 0.6.0 après blocage de la première tête 496/496 : correctif `7dacc7b` préparé pour rendre `ADMINISTRATEUR` strictement descriptif, suite portée à 497 tests uniques ; ACCESS-002 0.4.5 et ROADMAP-001 1.2.92 alignés, nouvelle recette Apps Script requise |
+| 1.3.0 | 2026-08-09 | ACCESS-002-02 passé en 0.5.0 après synchronisation de 229 fichiers et validation réelle 496/496 de la tête `395de24` de la PR applicative #96 ; ACCESS-002 0.4.4 et ROADMAP-001 1.2.91 alignés, application et restauration non exécutées |
+| 1.2.99 | 2026-08-09 | ACCESS-002-02 passé en 0.4.0 après précontrôle réussi sans écriture et confirmation de `ADMINISTRATEUR + ACCESS_MANAGE` ; ACCESS-002 0.4.3 et ROADMAP-001 1.2.90 alignés, application et restauration non exécutées |
+| 1.2.98 | 2026-08-09 | ACCESS-002-02 passé en 0.3.0 après intégration du protocole réversible par la PR applicative #95 au commit `bbedf0a` et campagne isolée 495/495 ; ACCESS-002 0.4.2 et ROADMAP-001 1.2.89 alignés, sans exécution des fonctions de recette ni mutation réelle |
+| 1.2.97 | 2026-08-09 | ACCESS-002-02 passé en 0.2.0 après intégration du prérequis applicatif #94 au commit `e800bdb` et campagne isolée 484/484 ; ACCESS-002 0.4.1 et ROADMAP-001 1.2.88 alignés sur la préparation de la recette réversible, sans mutation réelle |
+| 1.2.96 | 2026-08-09 | Référencement d’ACCESS-002-02 0.1.0 et passage d’ACCESS-002 en 0.4.0 : habilitation transverse `ACCESS_MANAGE` proposée, recette réversible séparée de l’amorçage réel et ROADMAP-001 alignée en 1.2.87, sans mutation |
+| 1.2.95 | 2026-08-09 | Clôture d’ACCESS-002-01 référencée après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` : ACCESS-002-01 1.0.0, ACCESS-002 0.3.6, AUDIT-001 1.3.4 et ROADMAP-001 1.2.86 |
+| 1.2.94 | 2026-08-09 | Cohérence du catalogue Administration rétablie avec les versions documentaires courantes ACCESS-002 0.3.5, ACCESS-002-01 0.4.1 et AUDIT-001 1.3.3 ; synthèse alignée sur la campagne cumulative réelle 477/477 sans échec |
+| 1.2.93 | 2026-08-09 | Recette Apps Script isolée d’ACCESS-002-01 référencée : ACCESS-002-01 passe en 0.4.1, ACCESS-002 en 0.3.5, AUDIT-001 en 1.3.3 et ROADMAP-001 en 1.2.85 ; tête `84ea68f`, 226 fichiers synchronisés et suite cumulative réelle 477/477 sans échec ; inventaire préparatoire 478 corrigé |
+| 1.2.92 | 2026-08-09 | Cinquième lot ACCESS-002-01 documenté : ACCESS-002-01 passe en 0.4.0, ACCESS-002 en 0.3.4, AUDIT-001 en 1.3.2 et ROADMAP-001 en 1.2.84 ; verrou partagé et autorisation d’audit corrigés, validations locales 193/193, 19/19 et 46/46, suite cumulative préparée à 478 fonctions uniques sans nouvelle exécution Apps Script |
+| 1.2.91 | 2026-08-09 | Quatrième lot ACCESS-002-01 documenté : ACCESS-002-01 passe en 0.3.0, ACCESS-002 en 0.3.3, AUDIT-001 en 1.3.1 et ROADMAP-001 en 1.2.83 ; preuves persistantes corrélées, refus/restaurations et catalogues ACCESS couverts localement à 19/19 et 9/9, référence cumulative maintenue à 455/455 |
+| 1.2.90 | 2026-08-09 | Troisième lot ACCESS-002-01 documenté : ACCESS-002-01 passe en 0.2.0, ACCESS-002 en 0.3.2 et ROADMAP-001 en 1.2.82 ; écriture atomique et validations couvertes localement à 15/15 sans mutation réelle, référence cumulative maintenue à 455/455 |
+| 1.2.89 | 2026-08-09 | Référencement d’ACCESS-002-01 0.1.0 et passage d’ACCESS-002 en 0.3.1 : deux premiers lots applicatifs documentés, ROADMAP-001 alignée en 1.2.81, référence cumulative réelle maintenue à 455/455 |
+| 1.2.88 | 2026-08-09 | Alignement final d’ACCESS-002 sur la version 0.3.0 : cadrage et conception validés, UX, amorçage/migration et découpage en six incréments actés ; ROADMAP-001 référencée en 1.2.80 et chantier prêt pour réalisation |
+| 1.2.87 | 2026-08-09 | Référencement d’ACCESS-002 0.1.0 comme cadrage de l’administration des utilisateurs et habilitations ; correction du statut réel d’ACCESS-001, déjà implémenté et utilisé par Présences mais encore partiellement raccordé aux autres espaces privés ; ACCESS-002 devient le prérequis transverse avant INSCRIPTIONS-011 et ROADMAP-001 passe en 1.2.79 |
+| 1.2.86 | 2026-08-09 | Clôture documentaire d’INSCRIPTIONS-010 après fusion de la PR applicative #89 dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ; INSCRIPTIONS-010 1.1.1 et son PV 1.1.0 passent à l’état final validé, ROADMAP-001 alignée en 1.2.78, prochain incrément à cadrer séparément |
+| 1.2.85 | 2026-08-09 | Référencement de la recette réelle INSCRIPTIONS-010 : tête applicative `0da406b`, 455/455 tests, schéma Google isolé et persistance séquence/commande validés, anomalie de typage Sheets détectée et corrigée ; ajout d’INSCRIPTIONS-010-RECETTE et maintien explicite des limites de concurrence/interruption non exécutées réellement |
+| 1.2.84 | 2026-08-09 | Validation du premier socle persistant AUDIT-001 : PR applicative #90 testée sur `11e36134`, recette Google isolée concluante, deux preuves corrélées persistées, configuration restaurée, suite cumulative 423/423 ; référencement du PV AUDIT-001-RECETTE et levée du prérequis audit pour la suite d’INSCRIPTIONS-010 |
+| 1.2.83 | 2026-08-08 | Précision d’AUDIT-001 après revue (identités serveur, catalogues initiaux, cellules canoniques et paramètres CONFIG-001) et correction du statut global du domaine Administration |
+| 1.2.82 | 2026-08-08 | Proposition du cadrage persistant d’AUDIT-001 : port commun `AKS.Core.Audit`, support `AKS_Audit` distinct d’`AKS_Logs`, écriture verrouillée, relecture exacte, échec fermé, minimisation, corrélation et recette isolée, sans implémentation ni production |
+| 1.2.81 | 2026-08-08 | Validation documentaire d’INSCRIPTIONS-010 1.0.1 et autorisation de son implémentation bornée ; référence maintenue à 380/380 et bilan 13/1/2 jusqu’aux futures preuves, sans donnée nominative, application de lot, production ni déploiement |
+| 1.2.80 | 2026-08-03 | Référencement d’INSCRIPTIONS-010 : quatrième incrément proposé pour la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative, application de lot ni déploiement |
+| 1.2.79 | 2026-08-03 | Validation d’INSCRIPTIONS-009 : PR applicative #88 fusionnée, 20/20 tests ciblés et suite Apps Script 380/380, bilan des jeux d’or inchangé à 13 réussis, 1 partiel et 2 bloqués, sans adaptateur Google ni déploiement |
+| 1.2.78 | 2026-08-03 | Référencement d’INSCRIPTIONS-009 : troisième incrément proposé pour le journal de commandes injectable, l’idempotence et la reprise après interruption sans API Google |
+| 1.2.77 | 2026-08-02 | Validation d’INSCRIPTIONS-008 : PR applicative #87 fusionnée sur `develop`, 360/360 tests réussis, 13 jeux d’or réussis, 1 partiel et 2 bloqués, sans déploiement ni donnée Google réelle |
+| 1.2.76 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : deuxième incrément borné aux capacités Inscriptions d’ACCESS-001, à une matrice de périmètres fermée et à un cycle d’audit en deux temps sans écriture métier |
+| 1.2.75 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle applicatif sans écriture : PR #85 fusionnée sur `develop`, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
+| 1.2.74 | 2026-08-02 | Validation d’INSCRIPTIONS-005 et référencement d’INSCRIPTIONS-006 : jeux d’or, niveaux de validation, recette isolée, concurrence, restauration et preuves cumulatives |
+| 1.2.73 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et référencement d’INSCRIPTIONS-005 : stockage privé, schéma, séquences, idempotence durable, audit fonctionnel et intégrations externes |
+| 1.2.72 | 2026-08-02 | Correction du catalogue général AKS Inscriptions : référencement d’INSCRIPTIONS-001 à INSCRIPTIONS-004 et alignement de l’état sur la validation d’INSCRIPTIONS-003 |
+| 1.2.71 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et référencement d’INSCRIPTIONS-004 ; extension transverse d’ACCESS-001 pour Inscriptions, Analytics, Présences et administration privée |
+| 1.2.70 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et référencement d’INSCRIPTIONS-003 : services, transitions, adaptateurs versionnés et reprise contrôlée des trois Google Forms 2026–2027 |
+| 1.2.69 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et référencement d’INSCRIPTIONS-002 : modèle licencié, dossier saisonnier, états indépendants, imports Google Forms/SIKADA et écarts Analytics/Body Karaté |
+| 1.2.68 | 2026-08-02 | Alignement d’INSCRIPTIONS-001 en version 1.0.1 : maintien transitoire des trois Google Forms et reprise complète, contrôlée, relançable et sans doublon de leurs réponses |
+| 1.2.67 | 2026-08-02 | Ouverture du chantier AKS Inscriptions : création et référencement d’INSCRIPTIONS-001, alignement de ROADMAP-001 en version 1.2.61 et correction du statut publié de la V1.3.0 |
 | 1.2.66 | 2026-08-01 | Préparation de la V1.3.0 : référencement de la note de publication AKS Calendar, alignement de la matrice de couverture et statut prêt à publier, sans fusion sur main ni création de tag |
 | 1.2.65 | 2026-08-01 | CALENDAR-004 validé : page WordPress protégée, accès aux trois calendriers internes, recette de sécurité et menu Services en ligne validés ; clôture complète du socle AKS Calendar |
 | 1.2.64 | 2026-07-31 | CALENDAR-003 validé : calendrier Public publié sur WordPress, affichages ordinateur et mobile, abonnements Google Agenda et iCal, menu Services en ligne et guide utilisateur validés ; socle AKS Calendar clôturé |
@@ -305,7 +402,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 | 1.2.40 | 2026-07-28 | Référencement de la validation Apps Script d’ANALYTICS-SAISIE-002 : 290/290 tests réussis, 0 échec |
 | 1.2.39 | 2026-07-28 | Référencement de l’implémentation d’ANALYTICS-SAISIE-002 sur `develop`, de ses tests locaux et de la recette Apps Script encore requise |
 | 1.2.38 | 2026-07-28 | Validation d’ANALYTICS-SAISIE-002 et référencement du contrat d’écriture sécurisé comme référence de développement |
-| 1.2.34 | 2026-07-28 | Engagement d’ANALYTICS-SAISIE avant Calendar, référencement d’ANALYTICS-SAISIE-001 et alignement d’ANALYTICS-008 et ROADMAP-001 |
+| 1.2.34 | 2026-07-28 | Engagement d’ANALYTICS-SAISIE avant Calendar, référencement d’ANALYTICS-008 et ROADMAP-001 |
 | 1.2.33 | 2026-07-28 | Validation d’ANALYTICS-009 comme guide d’exploitation officiel de la V1.2.0 |
 | 1.2.32 | 2026-07-28 | Référencement d’ANALYTICS-009, guide d’alimentation Google Sheets conforme à l’implémentation V1.2.0 et explicitation de l’écart avec la structure cible d’ANALYTICS-005 |
 | 1.2.31 | 2026-07-28 | Clôture de la publication applicative V1.2.0 : PR #41 fusionnée, commit `47bb3ca8`, tag `v1.2.0`, et alignement de la note de version, de ROADMAP-001 et du README |

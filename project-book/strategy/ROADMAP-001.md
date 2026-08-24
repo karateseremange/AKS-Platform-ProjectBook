@@ -5,10 +5,10 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.2.60 |
+| **Version** | 1.3.37 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-01 |
+| **Dernière mise à jour** | 2026-08-24 |
 
 ---
 
@@ -120,10 +120,28 @@ ANALYTICS-SAISIE — Saisie des présences et contrôle d’accès
         ↓
 AKS Calendar — Intégration Google Calendar
         ↓
+AKS Inscriptions — Gestion des licenciés et des inscriptions
+        ↓
+ACCESS-002-01 — Socle d’administration
+        ↓
+ACCESS-002-02 — Amorçage et migration
+        ↓
+ACCESS-002-03 — Administration des utilisateurs
+        ↓
+ACCESS-002-04 — Fiche et habilitations
+        ↓
+ACCESS-002-05 — Portail privé et Mes accès
+        ↓
+ACCESS-002-06 — six lots intégrés et validés en recette
+        ↓
+ACCESS-002-PRODUCTION — publication, déploiement et amorçage
+        ↓
+INSCRIPTIONS-011 — après validation effective d’ACCESS en production
+        ↓
 Modules futurs priorisés selon la valeur métier
 ```
 
-Cette séquence est la trajectoire de référence au 28 juillet 2026.
+Cette séquence est la trajectoire de référence au 9 août 2026.
 
 ---
 
@@ -364,7 +382,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 
 ## 6.15 État documentaire de la V1.1
 
-| Document | Domaine | État au 25 juillet 2026 |
+| Document | Domaine | État au 9 août 2026 |
 |---|---|---|
 | ROADMAP-001 | Feuille de route | Validé |
 | GOV-001 | Gouvernance produit | Validé |
@@ -374,7 +392,7 @@ Les documents ARCH-001, CORE-001, CONFIG-001, LOG-001 et UX-001 ont été consol
 | LOG-001 | Journalisation — socle structuré, persistance durable dans `AKS_Logs`, conservation à 90 jours, purge contrôlée et consultation administrative en lecture seule validés (106/106 tests) ; chantier fonctionnellement terminé | Validé |
 | UX-001 | Expérience utilisateur — fondations administratives communes, retours d’action du Paramétrage, consultation des Journaux et présentation compréhensible des événements validés (121/121 tests) ; chantier fonctionnellement terminé | Validé |
 | SECURITY-001 | Sécurité | Validé |
-| AUDIT-001 | Audit et traçabilité | Validé |
+| AUDIT-001 | Audit et traçabilité — premier incrément persistant commun intégré dans `develop` par la PR #90 au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`, recette Google isolée concluante et suite cumulative 423/423 | Validé |
 | NOTIF-001 | Notifications | Validé |
 | API-001 | Interfaces internes | Validé |
 | ERROR-001 | Gestion des erreurs | Validé |
@@ -475,8 +493,7 @@ WEB-001 a été validé le 25 juillet 2026 après mise en place du menu « Servi
 
 ## 8.2 Positionnement
 
-WEB-001 a été réalisé après la publication officielle de la V1.1 sur `main` et
-avant le développement d’AKS Analytics.
+WEB-001 a été réalisé après la publication officielle de la V1.1 sur `main` et avant le développement d’AKS Analytics.
 
 Son inscription dans la roadmap ne modifie pas le périmètre fonctionnel de la V1.1 et ne bloque pas sa publication.
 
@@ -595,8 +612,7 @@ Permettre aux administrateurs, professeurs et assistants AFA explicitement
 autorisés de saisir rapidement les présences depuis un téléphone ou une tablette,
 avec contrôle systématique des droits côté serveur.
 
-Le premier contrat d’écriture reste celui réellement consommé par la V1.2.0 :
-`Configuration`, `Licenciés`, `Séances` et `Présences`.
+Le premier contrat d’écriture reste celui réellement consommé par la V1.2.0 : `Configuration`, `Licenciés`, `Séances` et `Présences`.
 
 ## 10.3 Décisions structurantes
 
@@ -693,13 +709,13 @@ L’ordre de réalisation a été achevé : `CALENDAR-001` pour le cadrage, `CAL
 
 ---
 
-# 12. Prépublication AKS Platform V1.3.0 — AKS Calendar
+# 12. Publication AKS Platform V1.3.0 — AKS Calendar
 
 ## 12.1 Statut
 
-**Prête à publier**.
+**Publiée le 1er août 2026**.
 
-La V1.3.0 regroupe le socle AKS Calendar déjà opérationnel et documenté dans `CALENDAR-001` à `CALENDAR-004`. Elle n’introduit aucun nouveau code applicatif : la valeur livrée repose sur Google Calendar et WordPress.
+La V1.3.0 regroupe le socle AKS Calendar opérationnel et documenté dans `CALENDAR-001` à `CALENDAR-004`. Elle n’introduit aucun nouveau code applicatif : la valeur livrée repose sur Google Calendar et WordPress. Le tag documentaire `v1.3.0` pointe sur le commit de publication `647ae45a501bf14c1f3463fbca480945993bc515`.
 
 ## 12.2 Critères de sortie validés
 
@@ -714,27 +730,96 @@ La V1.3.0 regroupe le socle AKS Calendar déjà opérationnel et documenté dans
 - aucun changement applicatif requis ;
 - branches applicatives réalignées avant publication.
 
-La publication reste conditionnée à la fusion documentaire de `develop` vers `main` et à la création du tag `v1.3.0` conformément à `RELEASE-001`.
+La fusion documentaire vers `main` et la création du tag `v1.3.0` ont été vérifiées. La V1.3.0 est clôturée.
 
 ---
 
-# 13. Backlog produit après AKS Calendar
+# 13. AKS Inscriptions — Chantier engagé
 
-Les modules ou évolutions futures restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés.
+## 13.1 Statut
 
-Ils pourront notamment concerner :
+**Engagé — quatrième incrément INSCRIPTIONS-010 clôturé et intégré dans `develop` ; ACCESS-002 engagé comme prérequis transverse avant INSCRIPTIONS-011**.
 
-- la gestion des licenciés ;
-- les inscriptions ;
-- les grades et passages de grade ;
-- les documents associatifs ;
-- les communications ;
-- les tableaux de bord métier ;
-- d’autres intégrations externes.
+Le Product Owner a validé le lancement d’un module unique AKS Inscriptions alimenté par trois parcours publics distincts : Karaté classique, Cours féminin et Body Karaté. `INSCRIPTIONS-001` constitue le cadrage fonctionnel validé, `INSCRIPTIONS-002` le modèle métier validé, `INSCRIPTIONS-003` les services, transitions et contrats de reprise transitoire validés, `INSCRIPTIONS-004` l’interface de contrôle ainsi que l’extension documentaire d’`ACCESS-001` aux futurs modules privés, et `INSCRIPTIONS-005` les contrats techniques de stockage, d’identifiants, d’idempotence, d’audit et d’intégration validés. `INSCRIPTIONS-006` définit et valide les jeux d’essai ainsi que la recette cumulative. Son premier incrément applicatif sans écriture est intégré sur `develop` par la PR #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`, avec **341/341 tests réussis**. Le deuxième incrément défini par `INSCRIPTIONS-008` est intégré par la PR applicative [#87](https://github.com/karateseremange/AKS-Platform/pull/87), commit de fusion `ceda8b322715f77399bf8e7eda80c8e2b046daaa`. Après `clasp push` contrôlé, la suite Apps Script exécutée le 2 août 2026 atteint **360/360 tests réussis, 0 échec** ; les seize jeux produisent **13 réussites, 1 résultat partiel et 2 blocages attendus**. Aucun déploiement, registre réel ou accès à une donnée métier Google n’a été introduit.
 
-Leur ordre n’est pas fixé par le présent document.
+Le troisième incrément défini par `INSCRIPTIONS-009` est intégré par la PR applicative [#88](https://github.com/karateseremange/AKS-Platform/pull/88), commit de fusion `b870d6f425e52c1ec63f1bb5ce1b5214296c8465`. Ses **20 tests ciblés** réussissent. Après synchronisation contrôlée de la tête `0ee4bb7b7d37a6f84dea38dc57edccf732053782`, la suite Apps Script exécutée le 3 août 2026 atteint **380/380 tests réussis, 0 échec**. Le bilan des jeux d’or reste **13 réussis, 1 partiel et 2 bloqués**. Aucun adaptateur Google, stockage métier réel, interface ou déploiement n’a été introduit.
 
-Chaque candidat devra être évalué selon la valeur, les risques, les dépendances et l’effort de maintenance.
+Le quatrième incrément défini par `INSCRIPTIONS-010 1.1.1` réalise une persistance Google exclusivement technique et isolée en recette : garde d’environnement, schéma `Metadata`/`Sequences`/`Commandes`, verrou réel, journal et séquences persistants, avec audit commun AKS Core. Il interdit toute donnée nominative, tout objet métier réel, toute application de lot, interface, ressource de production ou déploiement. La PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89) a été fusionnée dans `develop` le 9 août 2026 au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f`; la tête finale recettée avant fusion est `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06`.
+
+Le prérequis transverse `AUDIT-001` a été intégré dans `develop` par la PR applicative #90 au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`. La branche #89 a ensuite été réalignée sur ce socle, puis synchronisée dans Apps Script. La suite cumulative finale atteint **455/455 tests réussis, 0 échec**.
+
+La recette Google Sheets isolée du 9 août 2026 sur `[RECETTE] AKS Inscriptions` est concluante pour le périmètre réellement exécuté. Le schéma `inscriptions-recipe-tech/1.0` a été créé avec `Metadata`, `Sequences` et `Commandes` dans le fuseau `Europe/Paris`. Une première allocation a révélé que Sheets convertissait automatiquement la chaîne `scope_key = "2026"` en valeur numérique ; la relecture stricte a refusé cette altération. La correction du commit `0da406b` force désormais les valeurs chaîne au format texte lors des écritures contrôlées. Après correction, la séquence `INS-2026-000001` et la commande fictive `CMD-RECETTE-010-001` ont été persistées et relues conformément au contrat.
+
+La campagne ne doit pas être interprétée comme une preuve Google réelle de tous les scénarios de concurrence et de reprise du cadrage initial. Les collisions simultanées, conflits de version provoqués réellement dans Sheets, interruptions et réconciliations restent couverts par les tests injectés lorsqu’ils existent et nécessiteraient une campagne dédiée pour constituer une preuve réelle distincte. Le détail est consigné dans `INSCRIPTIONS-010-RECETTE`.
+
+## 13.2 Objectif
+
+AKS Inscriptions doit remplacer progressivement les recopies et suivis répartis entre formulaires Google, classeurs Excel et documents de travail par un référentiel commun des licenciés et des dossiers saisonniers.
+
+Le parcours couvre la préinscription ouverte toute la saison, le contrôle des données, l’affectation au cours, les capacités et listes d’attente, la confirmation, l’inscription physique, les pièces, règlements et aides, la préparation SIKADA, l’import des numéros FFK puis l’activation vers Analytics et Présences.
+
+## 13.3 Principes validés
+
+- trois formulaires publics alimentent un seul module ;
+- la personne possède un identifiant interne stable et un dossier par saison ;
+- le numéro FFK est renseigné après création dans SIKADA et n’est pas l’identifiant interne ;
+- le numéro FFKDA est stocké comme texte selon le format actuel observé `8 chiffres + 1 lettre` ;
+- les états administratif, de place, fédéral et d’activation sont suivis séparément ;
+- la préinscription reste obligatoire pour toute nouvelle inscription et ouverte toute la saison ;
+- les places restent limitées par cours et une liste d’attente est prévue ;
+- le paiement en ligne et l’espace licencié sont exclus du périmètre initial ;
+- aucun code n’est écrit avant validation du cadrage fonctionnel ;
+- Google authentifie les utilisateurs privés et AKS Platform autorise chaque module et chaque action ;
+- les rôles généraux et les capacités propres aux modules sont distincts et cumulables ;
+- l’accès privé à Analytics est contrôlé côté serveur et complété par les partages Google Drive ;
+- les trois Google Forms restent les interfaces publiques transitoires.
+
+## 13.4 Prochain jalon
+
+INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. `INSCRIPTIONS-011` reste suspendu jusqu’à la publication et à la validation effective d’ACCESS en production. Les six lots d’ACCESS-002-06 sont intégrés et validés en recette sur `develop`, mais cette situation ne constitue ni une publication, ni un déploiement, ni un amorçage réel.
+
+Le prochain jalon officiel reste `ACCESS-002-PRODUCTION`, selon les décisions P1 à P10. P1 est intégré dans `develop` par la [PR applicative #125](https://github.com/karateseremange/AKS-Platform/pull/125), au commit [`ab52dc6`](https://github.com/karateseremange/AKS-Platform/commit/ab52dc6200ca5e138883d182cfcd700352276dad), et validé en recette à **62/62** pour AUDIT et **660/660** cumulés. P2 est intégré par la [PR applicative #126](https://github.com/karateseremange/AKS-Platform/pull/126) au commit [`b13fc20`](https://github.com/karateseremange/AKS-Platform/commit/b13fc202300af6f7ce0c99b65403fa83117ed34b), validé à **8/8** VERSION-001 et **661/661** cumulés, puis clôturé documentairement par la PR Project Book #161 au commit `c4b1e0b`. P3 est clôturé dans [ACCESS-002-PRODUCTION-P3](../administration/ACCESS-002-PRODUCTION-P3.md) : projet, déploiement public version 53, HEAD Apps Script, `main` et candidate ont été inventoriés, rapprochés et archivés sans mutation. P4 est clôturé sur RC5 (`52024ab`) avec **8/8** VERSION-001, **15/15** ACCESS UI et **665/665** cumulés. P5-A à P5-C sont également clôturés : la version stable `1.4.0`, build `20260824.1`, a réussi **8/8** VERSION-001 et **665/665** cumulés sur le commit `5f16d907`, puis la PR applicative #131 a été fusionnée dans `develop` au commit `32a511a`. P5-D est clôturé : la PR applicative #132 a publié l'intégralité de `develop` dans `main` au commit `fa8876f`, avec un contenu identique et les marqueurs stables confirmés. P5-E — finalisation et publication du Project Book — est le prochain jalon engagé. Avant `INSCRIPTIONS-011`, ACCESS reste prioritaire.
+
+Les cinq lots publiés ajoutent `ANALYTICS_READ` comme capacité indépendante tout en préservant `access/1.0`, introduisent une façade administrative de lecture protégée et immuable, établissent une écriture administrative strictement validée avec révision optimiste, verrou, relecture et restauration vérifiée, imposent un audit persistant corrélé avant/après, puis corrigent l’usage du verrou partagé ACCESS/AUDIT, l’autorisation d’audit et le raccordement des suites. Les refus et restaurations sont tracés, et un échec de preuve finale déclenche la restauration de l’état précédent. Le bootstrap historique reste temporairement accepté lorsque le registre est absent ; dès qu'un registre existe, `ADMINISTRATEUR` est descriptif et ne confère aucune capacité implicite. Aucun compte réel, registre, mécanisme `AKS.Admin.Access`, environnement de production ou branche `main` n’est modifié.
+
+Les validations locales réussissent à 193/193 pour la syntaxe des fichiers `.gs`, 18/18 pour ACCESS-001, 19/19 pour ACCESS-002-01, 46/46 pour AUDIT-001 et 9/9 pour Inscriptions ciblés. La tête `84ea68f` a été synchronisée dans le projet Apps Script isolé de recette avec 226 fichiers, puis la suite cumulative réelle a réussi à **477/477 tests, 0 échec**. Le recomptage confirme 477 fonctions uniques ; la valeur préparatoire 478 provenait d’un inventaire statique erroné.
+
+Le modèle intégré ajoute une affectation transverse `ACCESS` compatible avec `access/1.0` et rend `ACCESS_MANAGE` explicitement attribuable. Le protocole interne de précontrôle, application sous verrou et restauration exacte est intégré par la [PR applicative #95](https://github.com/karateseremange/AKS-Platform/pull/95), au commit [`bbedf0a`](https://github.com/karateseremange/AKS-Platform/commit/bbedf0a02c39e1680917013deda8840269964e28). La tête `be7323a` a été synchronisée avec 229 fichiers dans le projet Apps Script isolé, puis la campagne cumulative a réussi à **495/495 tests, 0 échec**. Le précontrôle en lecture seule a ensuite réussi et confirmé un registre absent sans écriture. Le rôle initial cible est `ADMINISTRATEUR`, avec la seule habilitation ajoutée `ACCESS_MANAGE`.
+
+La première tête `395de24` de la [PR applicative #96](https://github.com/karateseremange/AKS-Platform/pull/96) a été synchronisée avec **229 fichiers** et validée à **496/496 tests, 0 échec**, mais la revue finale a détecté que le moteur accordait encore des capacités implicites au rôle. La fusion a été bloquée avant toute mutation. Le correctif fonctionnel `7dacc7b`, publié sur la tête `747c9a3`, retire ces raccourcis et conserve le bootstrap uniquement lorsque le registre est absent. Cette tête a été synchronisée avec **229 fichiers**, puis validée dans Apps Script à **497/497 tests, 0 échec**. L'application, la restauration et l'amorçage réel restent des décisions distinctes soumises à leurs propres autorisations.
+
+La réalisation est officiellement découpée en six incréments :
+
+1. `ACCESS-002-01` — socle d’administration : API serveur sécurisée, validation, modification atomique du registre, temporalité, normalisation et audit avant/après ;
+2. `ACCESS-002-02` — amorçage et migration : premier gestionnaire `aserridj@gmail.com`, recette réelle d’accès/refus/audit et maintien temporaire du filet historique ;
+3. `ACCESS-002-03` — administration des utilisateurs : liste, recherche, filtres, création, activation/désactivation et vue « Qui a accès à quoi ? » ;
+4. `ACCESS-002-04` — fiche et habilitations : multi-rôle, modules, cours, capacités, périodes de validité, synthèse et historique ;
+5. `ACCESS-002-05` — portail privé et « Mes accès » ;
+6. `ACCESS-002-06` — migration définitive des modules et retrait contrôlé de l’ancien mécanisme.
+
+La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
+
+`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`.
+
+INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
+
+INSCRIPTIONS-010 reste strictement interne et editor-only : aucun déploiement Web App de test n’a été requis pour cet incrément. Si une fonctionnalité observable via le Web App est introduite dans un incrément ultérieur, elle devra faire l’objet d’un déploiement Web App de test et d’une recette utilisateur avant validation finale et fusion dans `develop`.
+
+Le volet SIKADA demeure bloqué tant que l’échantillon anonymisé Windows-1252 à 12 colonnes prévu par `INSCRIPTIONS-006` n’est pas disponible, sécurisé et versionné. Analytics/`BODY_KARATE`, données nominatives, référentiel métier complet, restauration complète, interfaces, application de lot, production et déploiement demeurent séparés du quatrième incrément et nécessitent leur propre cadrage/autorisation.
+
+## 13.5 Backlog restant
+
+Les évolutions ACCESS-002 suivantes sont identifiées mais **différées** et non engagées :
+
+- notifications e-mail lors d’un changement d’habilitations ;
+- duplication assistée des habilitations d’une saison vers la suivante ;
+- modifications groupées de plusieurs utilisateurs ;
+- exports et reporting des habilitations ;
+- modèles d’aide à l’attribution de droits, uniquement comme aides de saisie sans héritage implicite.
+
+Elles ne reçoivent pas de version cible tant que leur valeur n’est pas confirmée par l’usage.
+
+Les autres modules ou évolutions restent au statut **candidat** tant qu’ils ne sont pas cadrés et engagés. Ils pourront notamment concerner les grades et passages de grade, les documents associatifs, les communications, les tableaux de bord métier et d’autres intégrations externes.
 
 ---
 
@@ -831,8 +916,10 @@ ROADMAP-001 doit permettre de répondre sans ambiguïté aux questions suivantes
 
 La trajectoire officielle est à jour : WEB-001, AKS Analytics, le parcours de
 saisie des présences et le socle AKS Calendar sont publiés ou opérationnels ;
-la V1.2.0 reste la version applicative stable. Le prochain chantier métier sera
-sélectionné dans le backlog par décision du Product Owner :
+la V1.2.0 reste la version applicative stable. AKS Inscriptions est le chantier
+métier engagé après la publication documentaire de la V1.3.0. Après la clôture
+d’INSCRIPTIONS-010, ACCESS-002 devient le chantier transverse prioritaire avant
+la reprise du cinquième incrément métier :
 
 ```text
 AKS Platform v1.0.0
@@ -846,6 +933,105 @@ AKS Platform v1.2.0 — AKS Analytics publié
 ANALYTICS-SAISIE — parcours Présences publié et documenté
         ↓
 AKS Calendar — socle Google Calendar, publication publique et accès internes WordPress opérationnels
+        ↓
+AKS Inscriptions — INSCRIPTIONS-010 clôturé sur `develop` à 455/455
+        ↓
+ACCESS-002-01 — Socle d’administration
+        ↓
+ACCESS-002-02 — Amorçage et migration
+        ↓
+ACCESS-002-03 — Administration des utilisateurs
+        ↓
+ACCESS-002-04 — Fiche et habilitations
+        ↓
+ACCESS-002-05 — Portail privé et Mes accès
+        ↓
+ACCESS-002-06 — clôturé, six lots intégrés
+        ↓
+INSCRIPTIONS-011 — cinquième incrément à cadrer après ACCESS-002
 ```
 
 Toute modification de cet ordre ou du périmètre engagé doit être validée et documentée selon les règles de gouvernance du Project Book.
+
+---
+
+# 19. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 1.3.37 | 2026-08-24 | P5-D clôturé : V1.4.0 publiée sur le `main` applicatif par la PR #132 au commit `fa8876f`, contenu identique à `develop`; P5-E engagé, tags et production inchangés |
+| 1.3.36 | 2026-08-24 | P5-A à P5-C clôturés : V1.4.0 stable build `20260824.1` validée à 8/8 et 665/665, PR #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
+| 1.3.35 | 2026-08-24 | Cadrage P5 validé : finalisation explicite de V1.4.0, publication complète des deux `develop`, fusions et tags séparément autorisés ; exécution P5, P6 et production non engagées |
+| 1.3.34 | 2026-08-24 | Product Owner : P4-G validé, Quality Gate clôturé sur RC5 (`52024ab`) et candidate admissible à P5 ; P5, `main`, tag et production restent non autorisés |
+| 1.3.33 | 2026-08-24 | P4-E et P4-F terminés : RECETTE RC5 et production historique version 53 conformes en consultation ; rapport P4-G soumis pour déclarer le gate concluant et RC5 admissible à P5, sans autoriser P5, `main`, tag ou production |
+| 1.3.32 | 2026-08-24 | ACCESS-002-PRODUCTION P4 atteint RC5 sur `develop` (`52024ab`) : VERSION 8/8, ACCESS UI 15/15, cumulative 665/665, parcours Comptes et accès corrigé et recette restaurée exactement ; P4-F/P4-G restent requis avant P5 et toute production |
+| 1.3.31 | 2026-08-21 | ACCESS-PRODUCTION P4 cadré : candidate `b13fc20` figée, décisions P4.1 à P4.12 et étapes P4-A à P4-G validées, contrôles Git/RECETTE/production séparés et exécutions réelles toujours soumises à autorisations distinctes |
+| 1.3.30 | 2026-08-21 | ACCESS-PRODUCTION P3 clôturé sans mutation : déploiement public `wgNc37` version 53 rapproché de `main` `e8fb0fc`, HEAD rattaché à `ed03cc4` plus un lanceur non versionné, RC1 confirmée non déployée et archives durables vérifiées ; P4 Quality Gate devient prioritaire |
+| 1.3.29 | 2026-08-21 | P3 renforcé avant inventaire : distinction du HEAD Apps Script et de la version réellement déployée, puis archive durable relue et vérifiée par empreintes |
+| 1.3.28 | 2026-08-21 | P2 clôturé sur `develop` ; P3 cadré par les décisions I1 à I12 pour un inventaire Apps Script en lecture seule, sans accès réel à la production |
+| 1.3.27 | 2026-08-21 | Candidate `1.4.0-rc.1` intégrée par la PR #126 au commit `b13fc20` et validée en recette sur sa tête exacte à **8/8** VERSION-001 et **661/661** cumulés, sans opération de production |
+| 1.3.26 | 2026-08-21 | P2 de la publication ACCESS cadré : candidate complète `1.4.0-rc.1`, 209 commits et 82 fichiers applicatifs inventoriés, Quality Gate transverse et recette obligatoire, sans PR vers `main`, tag ni opération de production |
+| 1.3.25 | 2026-08-21 | P1 AUDIT de production intégré dans `develop` par la PR #125 au commit `ab52dc6`, validé en recette à **62/62** et **660/660** sans opération réelle ; préparation de la candidate et du Quality Gate désormais prioritaire |
+| 1.3.24 | 2026-08-20 | P1 de la publication ACCESS consolidé dans AUDIT-001-PRODUCTION : P1.1 à P1.12 validés, rétention 1 095 jours, double autorisation et aucune opération réelle de production |
+| 1.3.23 | 2026-08-20 | Rectification de la trajectoire : ACCESS-002-06 est intégré et recetté sur `develop`, mais non publié ; ACCESS-002-PRODUCTION (P1 à P10) devient prioritaire avant INSCRIPTIONS-011 |
+| 1.3.22 | 2026-08-20 | ACCESS-002-06 clôturé pour son périmètre technique par la PR #124 au commit `a90ef30` : récupération réversible restaurée exactement, AUDIT restauré, validations **10/10** et **651/651**, aucune récupération réelle ; publication et amorçage encore requis |
+| 1.3.21 | 2026-08-20 | ACCESS-002-06 lot 5 clôturé : Portail piloté exclusivement par ACCESS, bootstrap Config/Journaux borné et destination privée Questionnaire santé retirée par la PR #123 au commit `426f526`, validations **13/13** et **641/641** ; lot 6 Récupération et clôture désormais prioritaire |
+| 1.3.20 | 2026-08-20 | ACCESS-002-06 lot 4 clôturé : Journaux migrés vers `LOG_READ` par la PR applicative #122 au commit `ca691f2`, validations **32/32**, **13/13** et **641/641** ; lot 5 Portail et réduction du mécanisme historique désormais prioritaire |
+| 1.3.19 | 2026-08-20 | ACCESS-002-06 lot 3 clôturé : Paramétrage migré vers ACCESS par la PR applicative #121 au commit `d7d3698`, fixture UX corrigée par `e250b4a`, validations **13/13**, **11/11** et **637/637** ; lot 4 Journaux désormais prioritaire |
+| 1.3.18 | 2026-08-20 | ACCESS-002-06 lot 2 clôturé : Analytics migré vers ACCESS par la PR applicative #120 au commit `d8e7d7d`, incident de test corrigé par `b91052f`, validations **16/16**, **9/9** et **630/630** ; lot 3 Paramétrage désormais prioritaire |
+| 1.3.17 | 2026-08-20 | ACCESS-002-06 lot 1 clôturé : modèle `access/1.2` intégré par la PR applicative #119 au commit `31ba2d1`, 259 fichiers synchronisés, validation **10/10** ciblée et **624/624** cumulative ; lot 2 Analytics désormais prioritaire |
+| 1.3.16 | 2026-08-14 | Cadrage ACCESS-002-06 validé : décisions D1 à D13 et six lots, capacités Config/Logs explicites, cohérences sans héritage, lecture `access/1.1` sans réécriture, aucune attribution ou récupération réelle et recette de récupération avec restauration exacte obligatoire |
+| 1.3.15 | 2026-08-14 | ACCESS-002-05 clôturé en 1.0.0 : Portail AKS et Mes accès validés, commit final `9af21d7`, campagne **614/614**, recette multi-profils conforme, restaurations ACCESS/AUDIT exactes et nettoyage complet ; ACCESS-002-06 devient prioritaire |
+| 1.3.14 | 2026-08-14 | ACCESS-002-05 lot 4 intégré au commit `406f63a`, 258 fichiers synchronisés et campagne cumulative **614/614** ; recette multi-profils réelle restant à exécuter |
+| 1.3.13 | 2026-08-13 | ACCESS-002-05 lot 4 publié : recette multi-profils réversible pour un compte sans accès et un professeur Présences uniquement, contrôles Portail/Mes accès, restauration exacte et auto-restauration ; 5/5 tests ciblés, cible cumulative **614**, sans exécution réelle |
+| 1.3.12 | 2026-08-13 | ACCESS-002-05 lot 3 validé : Portail AKS intégré par la PR #114 au commit `c1412ec`, correctif de compatibilité #115 au commit `7a47f33`, 256 fichiers synchronisés et campagne finale **609/609**, sans donnée réelle |
+| 1.3.11 | 2026-08-13 | ACCESS-002-05 cadré : Portail AKS personnalisé, Mes accès minimisé, refus neutre sans habilitation, sécurité serveur et compatibilité historique bornée jusqu’à ACCESS-002-06, sans implémentation || 1.3.10 | 2026-08-13 | ACCESS-002-04 clôturé en 1.0.0 : commit final `9d8e57f`, 248 fichiers synchronisés, campagne **586/586**, recette réversible conforme, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées ; ACCESS-002-05 devient prioritaire |
+| 1.3.9 | 2026-08-13 | Cadrage ACCESS-002-04 validé : fiche, multi-rôle, modules Présences/Analytics/Inscriptions/ACCESS, temporalité, synthèse, historique AUDIT et compatibilité `access/1.0` vers `access/1.1`, sans implémentation ni migration |
+| 1.3.8 | 2026-08-13 | ACCESS-002-03 clôturé après intégration de la PR #104 au commit `b120963`, synchronisation de 240 fichiers, campagne 542/542 et recette réversible complète ; cycle vérifié, restaurations ACCESS/AUDIT exactes et sauvegardes supprimées |
+| 1.3.7 | 2026-08-13 | ACCESS-002-03 lot 4 préparé dans la PR applicative brouillon #104 : protocole réversible du cycle de vie avec restauration exacte et auto-restauration ; 5/5 tests ciblés et suite préparée à 542 références, sans Apps Script ni mutation réelle |
+| 1.3.6 | 2026-08-13 | ACCESS-002-03 lot 3 intégré par la PR applicative #103 au commit `846e666`, synchronisé avec 238 fichiers et validé à 537/537 ; écran/navigation autorisés et refus direct non habilité confirmés, sans commande ni mutation du registre |
+| 1.3.5 | 2026-08-13 | ACCESS-002-03 lot 3 publié dans la PR applicative brouillon #103 : route et interface protégées par ACCESS_MANAGE, navigation conditionnelle, liste, filtres, confirmations et blocage des doubles soumissions ; 5/5 tests ciblés et suite cumulative préparée à 537 références uniques, sans Apps Script ni mutation réelle |
+| 1.3.4 | 2026-08-13 | ACCESS-002-03 lot 2 intégré par la PR applicative #102 au commit `066aebb`, synchronisé avec 233 fichiers puis validé dans Apps Script à 532/532 sans commande de cycle de vie ni mutation de registre |
+| 1.3.3 | 2026-08-13 | ACCESS-002-03 lot 2 corrigé après revue dans la PR applicative brouillon #102 : refus métier audités et révision courante exigée pour l’idempotence ; cycle de vie 13/13, socle ACCESS 20/20 et suite cumulative préparée à 532 références uniques, sans Apps Script ni donnée réelle |
+| 1.3.2 | 2026-08-13 | ACCESS-002-03 lot 1 intégré par la PR applicative #101 au commit `b41787d`, synchronisé avec 231 fichiers puis validé dans Apps Script à 518/518 sans échec ni mutation de donnée réelle |
+| 1.3.1 | 2026-08-13 | ACCESS-002-03 engagé par la PR applicative brouillon #101 : projection corrigée après revue pour ne déduire les modules que des capacités effectives, validée localement à 11/11, syntaxe 198/198 et inventaire cumulatif préparé à 518 références uniques, sans recette Apps Script ni donnée réelle |
+| 1.3.0 | 2026-08-13 | Cadrage ACCESS-002-03 validé : sept décisions fonctionnelles approuvées, séparation d’ACCESS-002-04 confirmée et implémentation maintenue non engagée avant intégration documentaire |
+| 1.2.99 | 2026-08-13 | ACCESS-002-03 ouvert au cadrage : liste/recherche/filtres, création inactive sans habilitation, activation/désactivation, synthèse des accès effectifs et séparation d’ACCESS-002-04 proposées avant toute implémentation |
+| 1.2.98 | 2026-08-13 | ACCESS-002-02 clôturé après synchronisation de `a1181ed`, campagne 507/507 et recette réversible complète avec preuves persistantes, restauration exacte d’ACCESS puis d’AUDIT ; ACCESS-002-03 devient le prochain incrément à cadrer |
+| 1.2.97 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : campagne 502/502 validée, garde-fou audit réel confirmé par refus attendu, raccordement persistant réversible avec reprise des états partiels préparé et prochaine campagne attendue à 507 tests |
+| 1.2.96 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : corpus antérieur validé à 498/498 après synchronisation de `555ddd3`, mais trois nouveaux tests omis de la suite cumulative ; correction et garde structurel préparés, prochaine campagne attendue à 502 tests |
+| 1.2.95 | 2026-08-12 | ACCESS-002-02 maintenu prioritaire : `ff0431f` synchronisé et 498/498 validés, mais faux positif du précontrôle d’audit confirmé ; second correctif de validation réelle préparé, application et restauration toujours interdites |
+| 1.2.94 | 2026-08-11 | ACCESS-002-02 maintenu prioritaire : application arrêtée avant mutation faute d’audit persistant de recette ; correctif du précontrôle préparé et nouvelle application interdite jusqu’à validation |
+| 1.2.93 | 2026-08-09 | Tête corrigée `747c9a3` de la PR #96 synchronisée avec 229 fichiers et validée à 497/497 ; retrait des capacités implicites de `ADMINISTRATEUR` confirmé, sans application, restauration ni mutation du registre |
+| 1.2.92 | 2026-08-09 | Première tête de la PR #96 bloquée malgré 496/496 ; correctif fonctionnel `7dacc7b` préparé pour supprimer les capacités implicites de `ADMINISTRATEUR`, limiter le bootstrap au registre absent et porter la suite à 497 tests uniques avant nouvelle recette Apps Script |
+| 1.2.91 | 2026-08-09 | Correctif ACCESS-002-02 de la PR applicative #96 synchronisé sur la tête `395de24` avec 229 fichiers et validé à 496/496, sans application, restauration ni mutation du registre |
+| 1.2.90 | 2026-08-09 | Précontrôle ACCESS-002-02 réussi sans écriture ; modèle initial `ADMINISTRATEUR + ACCESS_MANAGE` confirmé, correctif applicatif en revue et mutation toujours non autorisée |
+| 1.2.89 | 2026-08-09 | Protocole réversible ACCESS-002-02 intégré par la PR applicative #95 au commit `bbedf0a`, tête `be7323a` synchronisée avec 229 fichiers et campagne isolée 495/495, sans exécution des fonctions de recette ni mutation réelle |
+| 1.2.88 | 2026-08-09 | Prérequis explicite d’ACCESS-002-02 intégré par la PR applicative #94 au commit `e800bdb`, tête `c4998c2` validée en recette à 484/484 et protocole du prochain lot réversible préparé, sans registre, compte ou donnée réelle |
+| 1.2.87 | 2026-08-09 | ACCESS-002-02 cadré en version 0.1.0 : écart entre rôle historique et habilitation explicite identifié, affectation transverse `ACCESS` proposée et séquence implémentation/recette/amorçage bornée, sans modification réelle |
+| 1.2.86 | 2026-08-09 | ACCESS-002-01 clôturé après fusion de la PR applicative #93 dans `develop` au commit `91ba7e3` ; version finale 1.0.0, campagne 477/477 conservée et ACCESS-002-02 identifié comme prochain incrément à préparer |
+| 1.2.85 | 2026-08-09 | Recette Apps Script isolée du cinquième lot ACCESS-002-01 consignée sur la tête `84ea68f` : 226 fichiers synchronisés, suite cumulative réelle 477/477 sans échec et correction de l’inventaire préparatoire 478 |
+| 1.2.84 | 2026-08-09 | Cinquième lot correctif ACCESS-002-01 publié dans la PR applicative brouillon #93 : verrou ACCESS/AUDIT partagé sans acquisition imbriquée, autorisation d’audit alignée et suites nettoyées ; validations locales 193/193, 19/19 et AUDIT-001 46/46, inventaire cumulatif préparé à 478 fonctions uniques sans nouvelle exécution Apps Script |
+| 1.2.83 | 2026-08-09 | Quatrième lot ACCESS-002-01 publié dans la PR applicative brouillon #93 : audit persistant obligatoire avant mutation, preuves corrélées avant/après, refus et restaurations tracés, restauration sur échec final et catalogue AUDIT-001 étendu ; tests locaux 19/19 et AUDIT-001 ciblé 9/9, référence cumulative maintenue à 455/455 |
+| 1.2.82 | 2026-08-09 | Troisième lot ACCESS-002-01 publié dans la PR applicative brouillon #93 : validation stricte et écriture atomique protégée avec révision, verrou, relecture, restauration et protection du dernier gestionnaire ; tests locaux portés à 15/15 sans mutation réelle, référence cumulative maintenue à 455/455 |
+| 1.2.81 | 2026-08-09 | ACCESS-002-01 engagé dans la PR applicative brouillon #93 : catalogue `ANALYTICS_READ` compatible et API administrative de lecture protégée publiés ; tests locaux ciblés documentés sans remplacer la référence cumulative réelle 455/455 ; aucune migration, donnée réelle, production ou `main` touchée |
+| 1.2.80 | 2026-08-09 | Finalisation du cadrage ACCESS-002 0.3.0 : découpage officiel en six incréments ACCESS-002-01 à ACCESS-002-06, amorçage de `aserridj@gmail.com` comme premier gestionnaire sans rôle SUPER_ADMIN, règles de séquencement et backlog ACCESS différé consignés avant INSCRIPTIONS-011 |
+| 1.2.79 | 2026-08-09 | Engagement du cadrage ACCESS-002 comme chantier transverse prioritaire avant INSCRIPTIONS-011 : administration des comptes Google, rôles, modules, cours et capacités ; confirmation qu’un rôle n’accorde aucun module implicitement et qu’un professeur peut n’avoir aucun accès Présences ; correction de la trajectoire après clôture d’INSCRIPTIONS-010 |
+| 1.2.78 | 2026-08-09 | Clôture d’INSCRIPTIONS-010 après validation et fusion de la PR applicative #89 dans `develop` au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f` ; suite finale 455/455 et recette Google isolée conservées ; prochain incrément à cadrer séparément, SIKADA restant bloqué faute de fixture anonymisée validée |
+| 1.2.77 | 2026-08-09 | INSCRIPTIONS-010 réaligné sur AUDIT-001 intégré : tête applicative `0da406b`, suite finale 455/455, recette Google isolée concluante pour le schéma, une séquence et une commande fictive ; anomalie de typage Sheets détectée puis corrigée ; limites des scénarios Google de concurrence/interruption conservées, PR #89 toujours en brouillon avant validation documentaire #103 et revue |
+| 1.2.76 | 2026-08-09 | Validation du premier socle persistant commun AUDIT-001 : PR applicative #90 sur `11e36134`, recette Google isolée concluante, deux preuves corrélées persistées, configuration restaurée et suite cumulative 423/423 ; prérequis audit d’INSCRIPTIONS-010 levé, raccordement et recette de la PR #89 deviennent le prochain jalon après intégration de #90 |
+| 1.2.75 | 2026-08-08 | Précision du cadrage d’AUDIT-001 après revue : identités résolues côté serveur, catalogues fermés initiaux, cellules canoniques et paramètres CONFIG-001 complets ; aucune implémentation ni recette réalisée |
+| 1.2.74 | 2026-08-08 | Proposition du premier incrément persistant d’AUDIT-001 comme prérequis à la recette d’INSCRIPTIONS-010 ; la PR applicative #89 reste en brouillon après 412/412, sans recette Google, production ni déploiement |
+| 1.2.73 | 2026-08-08 | Validation documentaire d’INSCRIPTIONS-010 et autorisation de son implémentation bornée ; référence maintenue à 380/380 et bilan 13/1/2 jusqu’aux futures preuves, sans donnée nominative, application de lot, production ni déploiement |
+| 1.2.72 | 2026-08-03 | Ouverture d’INSCRIPTIONS-010 : quatrième incrément proposé pour la persistance technique du journal et des séquences dans une recette Google isolée, avec garde d’environnement et audit commun, sans donnée nominative, application de lot ni déploiement |
+| 1.2.71 | 2026-08-03 | Validation d’INSCRIPTIONS-009 : PR applicative #88 fusionnée, 20/20 tests ciblés et suite Apps Script 380/380, bilan des jeux d’or inchangé à 13 réussis, 1 partiel et 2 bloqués, sans adaptateur Google ni déploiement |
+| 1.2.70 | 2026-08-03 | Ouverture d’INSCRIPTIONS-009 : troisième incrément proposé pour journaliser, rejouer et reprendre les commandes avec dépendances injectées, sans API Google ni changement des jeux d’or |
+| 1.2.69 | 2026-08-02 | Validation d’INSCRIPTIONS-008 : PR applicative #87 fusionnée, suite Apps Script 360/360, 13 jeux d’or réussis, 1 partiel et 2 bloqués, sans déploiement ni donnée Google réelle ; prochain incrément à cadrer |
+| 1.2.68 | 2026-08-02 | Ouverture d’INSCRIPTIONS-008 : second incrément borné aux capacités Inscriptions d’ACCESS-001, à une matrice de périmètres fermée et à un cycle d’audit en deux temps sans écriture métier |
+| 1.2.67 | 2026-08-02 | Validation d’INSCRIPTIONS-006 et du premier socle sans écriture : PR applicative #85 fusionnée, 341/341 tests réussis, 12 jeux réussis, 2 partiels et 2 bloqués |
+| 1.2.66 | 2026-08-02 | Validation d’INSCRIPTIONS-005 et ouverture d’INSCRIPTIONS-006 : jeux d’or, niveaux de validation, recette isolée, concurrence, restauration et preuves cumulatives |
+| 1.2.65 | 2026-08-02 | Validation d’INSCRIPTIONS-004 et ouverture d’INSCRIPTIONS-005 : stockage, schéma, identifiants, concurrence, idempotence durable et intégrations externes |
+| 1.2.64 | 2026-08-02 | Validation d’INSCRIPTIONS-003 et ouverture d’INSCRIPTIONS-004 : interface de contrôle, habilitations centralisées et accès privé Analytics via ACCESS-001 |
+| 1.2.63 | 2026-08-02 | Validation d’INSCRIPTIONS-002 et ouverture d’INSCRIPTIONS-003 : services, transitions et reprise contrôlée des trois Google Forms officiels 2026–2027 |
+| 1.2.62 | 2026-08-02 | Validation d’INSCRIPTIONS-001 et ouverture d’INSCRIPTIONS-002 : modèle métier, distinction identifiant AKS/numéro FFKDA, états indépendants et intégrations Google Forms, SIKADA, Analytics et Body Karaté |
+| 1.2.61 | 2026-08-02 | Publication V1.3.0 alignée sur l’état réel et engagement d’AKS Inscriptions avec INSCRIPTIONS-001 comme premier incrément documentaire |

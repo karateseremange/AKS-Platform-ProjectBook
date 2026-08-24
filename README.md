@@ -34,7 +34,9 @@ project-book/
 ├── administration/
 ├── ux/
 ├── modules/
-│   └── analytics/
+│   ├── analytics/
+│   ├── calendar/
+│   └── inscriptions/
 ├── documentation/
 └── release/
 ```
@@ -54,6 +56,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
+- [V1.4.0 — Publication Git applicative réalisée](releases/V1.4.0.md)
 - [V1.1.0 — Note de publication](releases/V1.1.0.md)
 - [V1.2.0 — Note de publication](releases/V1.2.0.md)
 - [V1.3.0 — Note de prépublication](releases/V1.3.0.md)
@@ -88,6 +91,16 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [CONFIG-001 — Paramétrage centralisé](project-book/administration/CONFIG-001.md)
 - [LOG-001 — Journalisation](project-book/administration/LOG-001.md)
 - [AUDIT-001 — Audit et traçabilité](project-book/administration/AUDIT-001.md)
+- [AUDIT-001-RECETTE — Procès-verbal de recette du socle persistant](project-book/administration/AUDIT-001-RECETTE.md)
+- [ACCESS-002 — Administration des utilisateurs et habilitations](project-book/administration/ACCESS-002.md)
+- [ACCESS-002-06 — Migration des modules, validée en recette](project-book/administration/ACCESS-002-06.md)
+- [ACCESS-002-PRODUCTION — Publication et amorçage](project-book/administration/ACCESS-002-PRODUCTION.md)
+- [ACCESS-002-PRODUCTION-P2 — Candidate et Quality Gate](project-book/administration/ACCESS-002-PRODUCTION-P2.md)
+- [ACCESS-002-PRODUCTION-P3 — Inventaire de production en lecture seule](project-book/administration/ACCESS-002-PRODUCTION-P3.md)
+- [ACCESS-002-PRODUCTION-P4 — Quality Gate final](project-book/administration/ACCESS-002-PRODUCTION-P4.md)
+- [ACCESS-002-PRODUCTION-P4-G — Rapport final du Quality Gate](project-book/administration/ACCESS-002-PRODUCTION-P4-G.md)
+- [ACCESS-002-PRODUCTION-P5 — Publication Git contrôlée](project-book/administration/ACCESS-002-PRODUCTION-P5.md)
+- [AUDIT-001-PRODUCTION — Audit persistant de production](project-book/administration/AUDIT-001-PRODUCTION.md)
 
 ## Expérience utilisateur
 
@@ -98,6 +111,8 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 Les spécifications des modules métier sont regroupées dans le dossier [`project-book/modules/`](project-book/modules/).
 
 - [AKS Analytics](project-book/modules/analytics/) — premier nouveau module métier de la phase suivant la consolidation V1.1.
+- [AKS Calendar](project-book/modules/calendar/) — socle Google Calendar publié en V1.3.0.
+- [AKS Inscriptions](project-book/modules/inscriptions/) — chantier fonctionnel engagé après la V1.3.0 ; quatrième incrément technique INSCRIPTIONS-010 intégré dans `develop` après recette Google isolée concluante.
 
 Le module historique **Questionnaire Santé** reste la première capacité métier livrée en V1.0.0. Les prochains modules sont intégrés progressivement selon `ROADMAP-001`.
 
@@ -158,6 +173,26 @@ Cette version introduit AKS Analytics. Son périmètre, ses limites et ses preuv
 de validation sont consignés dans la [note de publication V1.2.0](releases/V1.2.0.md)
 et dans `ANALYTICS-008`.
 
-La **V1.3.0** est prête à être publiée. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version.
+La **V1.3.0** a été publiée le 1er août 2026. Elle formalise le socle AKS Calendar déjà opérationnel : quatre calendriers Google, publication du calendrier public sur WordPress, accès protégé aux calendriers internes et guide utilisateur. Aucun nouveau code applicatif n’est introduit par cette version. Le tag documentaire `v1.3.0` pointe sur le commit `647ae45a501bf14c1f3463fbca480945993bc515`.
+
+Les six lots d’**ACCESS-002-06** sont validés en recette et la version stable `1.4.0`, build `20260824.1`, est publiée dans le `main` applicatif au commit `fa8876f` par la PR #132. Cette publication Git ne constitue ni un déploiement ni un amorçage ACCESS en production. [P5-E — publication documentaire](project-book/administration/ACCESS-002-PRODUCTION-P5.md) est engagé ; les tags et P6 restent non autorisés. `INSCRIPTIONS-011` reste suspendu jusqu’à la validation fonctionnelle d’ACCESS en production.
+
+Le chantier métier suivant est **AKS Inscriptions**. Son cadrage fonctionnel, son modèle métier, ses services, la reprise des trois Google Forms, les interfaces de contrôle, le socle transverse d’accès privés, les contrats techniques ainsi que la stratégie de recette cumulative sont validés dans [`INSCRIPTIONS-001`](project-book/modules/inscriptions/INSCRIPTIONS-001.md) à [`INSCRIPTIONS-006`](project-book/modules/inscriptions/INSCRIPTIONS-006.md).
+
+Le premier incrément applicatif sans écriture réelle est intégré sur `develop` par la PR applicative #85, commit `d09c85c3e125f8944b3f6aa47ba222fdf3a73b32`. La suite cumulative exécutée dans Apps Script le 2 août 2026 est concluante : **341/341 tests réussis, 0 échec**. Les seize jeux d’or produisent 12 réussites, 2 résultats partiels et 2 blocages attendus. Le code a été synchronisé dans le projet Apps Script pour cette validation, mais les tests n’ont lu ni écrit aucune donnée métier ou cible Google réelle et aucun déploiement de production n’a été créé.
+
+Le deuxième incrément est validé dans [`INSCRIPTIONS-008`](project-book/modules/inscriptions/INSCRIPTIONS-008.md). Il étend `ACCESS-001` aux six capacités Inscriptions, applique des périmètres fermés et fournit un cycle d’audit injectable en deux temps. La PR applicative [#87](https://github.com/karateseremange/AKS-Platform/pull/87) est fusionnée sur `develop` au commit `ceda8b322715f77399bf8e7eda80c8e2b046daaa`. Après synchronisation contrôlée par `clasp push`, la suite Apps Script atteint **360/360 tests réussis, 0 échec** et les jeux d’or **13 réussis, 1 partiel, 2 bloqués**. Aucun registre réel, ressource Google métier, interface ou déploiement n’a été introduit.
+
+Le troisième incrément est validé dans [`INSCRIPTIONS-009`](project-book/modules/inscriptions/INSCRIPTIONS-009.md). La PR applicative [#88](https://github.com/karateseremange/AKS-Platform/pull/88) est fusionnée sur `develop` au commit `b870d6f425e52c1ec63f1bb5ce1b5214296c8465`. Son journal de commandes injectable, ses transitions fermées, l’idempotence et la reprise après reconstruction du service ajoutent **20 tests ciblés**. Après synchronisation contrôlée de la tête testée `0ee4bb7b7d37a6f84dea38dc57edccf732053782`, la suite Apps Script atteint **380/380 tests réussis, 0 échec**. Le bilan reste **13 jeux d’or réussis, 1 partiel et 2 bloqués**. Aucun adaptateur Google, stockage métier réel, interface ou déploiement n’a été introduit.
+
+Le quatrième incrément est documenté dans [`INSCRIPTIONS-010`](project-book/modules/inscriptions/INSCRIPTIONS-010.md) et dans [`INSCRIPTIONS-010-RECETTE`](project-book/modules/inscriptions/INSCRIPTIONS-010-RECETTE.md). La PR applicative [#89](https://github.com/karateseremange/AKS-Platform/pull/89) a été fusionnée dans `develop` le 9 août 2026 au commit `ed03cc428f8a8b055400b59aec7ba2e0a005629f`. La tête finale recettée avant fusion est `0da406b0796dc4d96e1c403fe90dc4ab76d4cc06` et la suite cumulative atteint **455/455 tests réussis, 0 échec**.
+
+La recette Google Sheets isolée sur `[RECETTE] AKS Inscriptions` est concluante pour le périmètre réellement exécuté : schéma `Metadata`/`Sequences`/`Commandes`, fuseau `Europe/Paris`, séquence `INS-2026-000001`, commande fictive `CMD-RECETTE-010-001` et relecture stricte identique. Une première tentative a détecté une conversion automatique de `scope_key = "2026"` en nombre par Sheets ; le contrôle strict l’a refusée et l’adaptateur a été corrigé dans `0da406b`. Les scénarios Google réels de concurrence simultanée, interruption et réconciliation ne sont pas présentés comme exécutés tant qu’une campagne dédiée ne les a pas prouvés.
+
+Le socle persistant commun [`AUDIT-001`](project-book/administration/AUDIT-001.md) est intégré dans `develop` par la PR applicative #90 au commit `ad3b5cea26063c73b22f155a85ed4fbfa855ba69`. Sa recette isolée reste documentée dans [`AUDIT-001-RECETTE`](project-book/administration/AUDIT-001-RECETTE.md).
+
+INSCRIPTIONS-010 reste strictement interne et editor-only dans cet incrément : aucun déploiement Web App de test n’a été requis. Toute fonctionnalité ultérieure observable ou utilisable depuis le Web App devra être validée sur un déploiement de test avant validation finale et fusion dans `develop`.
+
+Le cycle INSCRIPTIONS-010 est clôturé pour son périmètre autorisé. Le cadrage d’`INSCRIPTIONS-011` reste différé jusqu’à la publication, l’amorçage et la validation fonctionnelle d’ACCESS en production. Le volet SIKADA demeure bloqué tant que l’échantillon anonymisé Windows-1252 à 12 colonnes prévu par `INSCRIPTIONS-006` n’est pas disponible, sécurisé et versionné. Aucun tag, déploiement ou fusion vers `main` n’a été effectué dans ce cycle.
 
 Toute évolution fonctionnelle importante doit être accompagnée d'une mise à jour de la documentation concernée et, lorsque nécessaire, du catalogue [`INDEX-001`](project-book/documentation/INDEX-001.md).
