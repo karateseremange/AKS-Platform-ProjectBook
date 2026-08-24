@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.31 |
+| Version | 1.3.32 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-24 |
@@ -133,7 +133,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4 | Quality Gate final de la candidate ACCESS | Clôturé — P4-G validé sur RC5 | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4-G | Rapport final du Quality Gate ACCESS | Validé — Quality Gate P4 concluant | 0.2.0 | ACCESS-002-PRODUCTION-P4, RELEASE-001, ROADMAP-001 |
-| ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | Clôturé — deux `main` publiés et tags `v1.4.0` vérifiés | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | Clôturé — snapshots publiés et tagués, têtes post-release distinguées | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
 | AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | P1 implémenté et validé en recette sur `develop` — opération réelle interdite | 0.2.0 | AUDIT-001, ACCESS-002-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
@@ -311,6 +311,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.32 | 2026-08-24 | Clarification post-release V1.4.0 : snapshots tagués `fa8876f` et `7cfa3ce` distingués des têtes `main`; application `main@7a6b70a` après la PR #134, production inchangée |
 | 1.3.31 | 2026-08-24 | P5 clôturé : application `main@fa8876f`, Project Book `main@7cfa3ce` et tags légers `v1.4.0` vérifiés dans les deux dépôts ; P6 et production non engagés |
 | 1.3.30 | 2026-08-24 | P5-D clôturé : PR applicative #132 fusionnée dans `main` au commit `fa8876f`, contenu identique à `develop`, V1.4.0 et build `20260824.1` confirmés ; P5-E engagé, tags et production inchangés |
 | 1.3.29 | 2026-08-24 | P5-A à P5-C clôturés : version stable `1.4.0` build `20260824.1` validée en RECETTE à 8/8 et 665/665, puis intégrée dans `develop` à `32a511a`; P5-D et production non engagés |
