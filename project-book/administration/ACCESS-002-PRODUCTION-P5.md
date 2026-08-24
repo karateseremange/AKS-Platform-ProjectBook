@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P5 |
 | **Titre** | Finalisation stable et publication Git contrôlée de V1.4.0 |
-| **Version** | 0.3.0 |
-| **Statut** | P5-A à P5-D clôturés — application publiée sur `main`, P5-E engagé |
+| **Version** | 1.0.1 |
+| **Statut** | Clôturé — V1.4.0 publiée dans les deux dépôts et tags `v1.4.0` vérifiés |
 | **Nature** | Protocole de publication Git |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -215,7 +215,7 @@ documentaire complète vers `main`, puis soumettre séparément sa fusion.
 Vérifier les deux `main`, prévisualiser les tags, obtenir les autorisations
 requises, créer les tags puis consigner leurs références. P6 reste non autorisé.
 
-## 5. Résultats P5-A à P5-D
+## 5. Résultats P5-A à P5-F
 
 ### 5.1 P5-A — Précontrôle et gel
 
@@ -280,19 +280,53 @@ possède le même contenu que `develop`, avec uniquement le commit de fusion
 supplémentaire. Les marqueurs `1.4.0` et `20260824.1` ont été relus sur
 `main`. P5-D est clôturé.
 
-P5-E est engagé par la présente finalisation documentaire. Le Project Book
-`main`, les tags et toute opération de production restent inchangés.
+### 5.5 P5-E — Publication documentaire
+
+La finalisation après publication applicative a été intégrée dans `develop`
+du Project Book par la PR #169 au commit
+`88a50c0e44ed9fa84331a1c6d07898880e15b2fa`.
+
+La PR documentaire complète
+[#170](https://github.com/karateseremange/AKS-Platform-ProjectBook/pull/170)
+a ensuite été revue sans défaut bloquant puis fusionnée dans `main` au commit
+`7cfa3ce62b12edaf26d38e743e4cdd2da2ce43c1`. Le contrôle distant a confirmé
+un contenu identique à `develop`, avec uniquement le commit de fusion
+supplémentaire. P5-E est clôturé.
+
+### 5.6 P5-F — Tags et contrôle de sortie
+
+La convention historique a été vérifiée : les tags de publication sont des
+tags légers au format `vX.Y.Z`.
+
+Les deux tags `v1.4.0` ont été créés puis relus sur GitHub :
+
+- application : `v1.4.0` pointe sur
+  `fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5` ;
+- Project Book : `v1.4.0` pointe sur
+  `7cfa3ce62b12edaf26d38e743e4cdd2da2ce43c1`.
+
+Chaque tag est strictement identique au `main` correspondant au moment de la
+publication. Ces commits sont les snapshots V1.4.0 immuables ciblés par les
+tags ; ils ne constituent pas des têtes de branche invariantes. La PR
+applicative #134 a ensuite porté `main` applicatif à `7a6b70a341bc869f10e1a18efda8ad4d6ab8fe6d`
+par une correction exclusivement documentaire, sans déplacer `v1.4.0`. La
+publication post-release du Project Book suit la même règle : sa tête `main`
+peut avancer tandis que le tag documentaire reste sur `7cfa3ce62b12edaf26d38e743e4cdd2da2ce43c1`.
+P5-A à P5-F sont clôturés.
+
+Cette clôture reste exclusivement Git. P6, Apps Script de production, AUDIT de
+production, amorçage ACCESS et toute attribution réelle restent non engagés.
 
 ## 6. Autorisations distinctes
 
-Les opérations P5-A à P5-D ci-dessus ont été exécutées après leurs autorisations
-successives. Restent soumises à des validations distinctes :
+Les opérations P5-A à P5-F ci-dessus ont été exécutées après leurs
+autorisations successives. P5 est clôturé.
 
-1. la fusion de la finalisation P5-E dans `develop` du Project Book ;
-2. l'ouverture, la revue puis la fusion documentaire `develop → main` ;
-3. la création de chaque tag de P5-F ;
-4. le démarrage de P6 ;
-5. chaque opération réelle de production.
+Restent soumises à des validations distinctes :
+
+1. la fusion puis la publication de ce rapport post-publication ;
+2. le démarrage de P6 ;
+3. chaque opération Apps Script ou réelle de production.
 
 ## 7. Retour arrière Git
 
@@ -320,6 +354,8 @@ Le cadrage est conforme lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-24 | Distinction entre les snapshots de publication/tagués V1.4.0 et les têtes de `main` post-release ; PR applicative #134 consignée à `7a6b70a`, tags inchangés et production non engagée |
+| 1.0.0 | 2026-08-24 | P5 clôturé : application `main@fa8876f`, Project Book `main@7cfa3ce`, tags légers `v1.4.0` vérifiés dans les deux dépôts ; P6 et production non engagés |
 | 0.3.0 | 2026-08-24 | P5-D clôturé : PR applicative #132 revue et fusionnée dans `main` à `fa8876f`, contenu identique à `develop`, version `1.4.0` build `20260824.1`; P5-E engagé, tags et production inchangés |
 | 0.2.0 | 2026-08-24 | P5-A à P5-C clôturés : précontrôle conforme, version stable `1.4.0` build `20260824.1` validée en RECETTE à 8/8 et 665/665, PR applicative #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
 | 0.1.0 | 2026-08-24 | Cadrage P5.1 à P5.12 et P5-A à P5-F validé : finalisation stable explicite, publication complète des deux `develop`, fusions et tags séparément autorisés, aucune opération de production |

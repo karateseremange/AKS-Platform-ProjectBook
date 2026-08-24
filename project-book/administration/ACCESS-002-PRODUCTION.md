@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.1.0 |
-| **Statut** | P5-D clôturé — application V1.4.0 publiée sur `main`, P5-E engagé |
+| **Version** | 1.2.1 |
+| **Statut** | P5 clôturé — publication Git V1.4.0 complète, P6 non engagé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -94,9 +94,24 @@ dans `main` au commit `fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5`.
 Le contenu publié est identique à `develop` et conserve les marqueurs
 `1.4.0` et `20260824.1`.
 
-P5-E est engagé pour finaliser puis publier le Project Book. La publication
-documentaire vers `main`, chaque tag et toute opération P6 ou de production
-restent soumis à des autorisations distinctes.
+P5-E et P5-F sont clôturés :
+
+- Project Book publié dans `main` par la PR #170 au commit
+  `7cfa3ce62b12edaf26d38e743e4cdd2da2ce43c1` ;
+- tag applicatif `v1.4.0` vérifié sur
+  `fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5` ;
+- tag documentaire `v1.4.0` vérifié sur
+  `7cfa3ce62b12edaf26d38e743e4cdd2da2ce43c1`.
+
+Ces deux SHA sont les commits de publication ciblés par les tags, et non des
+têtes `main` destinées à rester figées. Après la correction documentaire
+applicative #134, `main` applicatif pointe sur `7a6b70a341bc869f10e1a18efda8ad4d6ab8fe6d`,
+tandis que son tag `v1.4.0` reste sur `fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5`. La publication
+post-release du Project Book peut faire avancer sa branche `main` sans déplacer
+le tag documentaire.
+
+P5 est clôturé. P6 et toute opération Apps Script ou de production restent
+soumis à des autorisations distinctes.
 
 ### P6 — Déploiement Apps Script de production
 
@@ -209,6 +224,8 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.1 | 2026-08-24 | Références post-release clarifiées : commits de publication/tagués distingués des têtes `main`; application `main@7a6b70a` après la PR #134, tags inchangés et production non engagée |
+| 1.2.0 | 2026-08-24 | P5 clôturé : application et Project Book publiés sur `main`, tags légers `v1.4.0` vérifiés sur `fa8876f` et `7cfa3ce`; P6, Apps Script et production non engagés |
 | 1.1.0 | 2026-08-24 | P5-D clôturé : V1.4.0 publiée dans `main` par la PR #132 au commit `fa8876f`, contenu identique à `develop`; P5-E engagé, tags, Apps Script et production inchangés |
 | 1.0.0 | 2026-08-24 | P5-A à P5-C clôturés : finalisation stable `1.4.0` build `20260824.1` validée à 8/8 et 665/665, PR #131 fusionnée dans `develop` à `32a511a`; P5-D, `main`, tags et production non engagés |
 | 0.9.0 | 2026-08-24 | Cadrage P5 validé et consigné : P5.1 à P5.12, P5-A à P5-F, finalisation stable explicite et publications Git séparément autorisées ; P6 et production restent interdits |
