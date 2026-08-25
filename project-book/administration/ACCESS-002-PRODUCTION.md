@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.5 |
-| **Statut** | P6 clôturé — production en version 54 et vérifications fonctionnelles concluantes ; P7 non engagé |
+| **Version** | 1.2.6 |
+| **Statut** | P6 clôturé ; P7-A clôturé en lecture seule — P7-B non autorisé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-24 |
+| **Dernière mise à jour** | 2026-08-25 |
 | **Version cible** | AKS Platform V1.4.0 — build `20260824.1`, publication `main` requise |
 
 ---
@@ -135,14 +135,17 @@ P6 est clôturé. La version 53 demeure le point de retour arrière. La configur
 
 ### P7 — Ressources de production
 
-Après autorisation spécifique, créer ou sélectionner :
+Le protocole détaillé est défini dans [ACCESS-002-PRODUCTION-P7](ACCESS-002-PRODUCTION-P7.md).
 
-- le classeur `AKS Audit PRODUCTION` ;
-- l’onglet et le schéma AUDIT contrôlés ;
-- les paramètres techniques de production ;
-- les règles de conservation, sauvegarde et restauration.
+P7-A est clôturé en lecture seule :
 
-Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
+- aucun classeur portant exactement le titre `AKS Audit PRODUCTION` ni dossier de production exact n’a été identifié dans le Drive accessible ;
+- le support privé `AKS Audit RECETTE` reste distinct et n’est pas réutilisé ;
+- `AKS_preflightAudit001Production()` a refusé la suite de façon fermée sur la configuration indisponible au premier paramètre requis, `audit.environment` ;
+- aucun support, paramètre, onglet, en-tête, sauvegarde ou preuve n’a été créé ;
+- le test contrôlé d’écriture/relecture n’a pas été exécuté.
+
+P7-B doit préparer un support privé conforme, mais reste non autorisé. La création du support, la configuration, le nouveau précontrôle et le test d’écriture constituent des opérations séparément autorisées. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
 
 ### P8 — Amorçage minimal du premier gestionnaire
 
@@ -231,6 +234,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.6 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié, précontrôle fermé sur la configuration indisponible, aucune ressource ni preuve créée ; P7-B non autorisé |
 | 1.2.5 | 2026-08-24 | P6 clôturé : déploiement public existant mis à jour vers la version 54, identifiant et URL préservés ; contrôles publics et administratifs en lecture concluants, P7 non engagé |
 | 1.2.4 | 2026-08-24 | P6-F clôturé : version Apps Script 54 créée, relue à 261/261 et comparée sans différence ; déploiement public toujours sur la version 53, P6-G non autorisé |
 | 1.2.3 | 2026-08-24 | P6-E clôturé : HEAD de production synchronisé avec 261 fichiers puis relu et comparé à 261/261 sans différence ; déploiement public toujours sur la version 53, P6-F non autorisé |
