@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P7 |
 | **Titre** | Activation contrôlée d’AUDIT en production |
-| **Version** | 0.5.0 |
-| **Statut** | P7-A à P7-E clôturés — preuve contrôlée créée et relue ; P7-F non autorisé |
+| **Version** | 1.0.0 |
+| **Statut** | Clôturé — P7-A à P7-F conformes ; P8 non autorisé |
 | **Nature** | Procédure d’exploitation et de preuve |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -15,7 +15,7 @@
 
 ## 1. Objet et limite d’autorisation
 
-Ce document consigne le précontrôle initial P7-A, la préparation du support privé P7-B, la configuration technique P7-C, le précontrôle conforme P7-D et la preuve contrôlée P7-E, puis découpe la clôture de l’activation d’AUDIT. La réussite de P7-E n’autorise ni clôture P7-F, ni amorçage ACCESS.
+Ce document consigne le précontrôle initial P7-A, la préparation du support privé P7-B, la configuration technique P7-C, le précontrôle conforme P7-D, la preuve contrôlée P7-E et la vérification finale P7-F. P7 est clôturé ; cette clôture n’autorise aucun amorçage ACCESS P8.
 
 Les identifiants complets et secrets restent hors de Git. Seuls les noms contractuels et les suffixes déjà autorisés sont documentés.
 
@@ -76,7 +76,15 @@ Le 25 août 2026 à 22:27, l’exécution autorisée unique de `AKS_runAudit001P
 
 Le résultat confirme `ok: true`, `phase: "WRITE_READ_VERIFIED"`, l’environnement `PRODUCTION`, `controlledProof: true` et `businessOperation: false`. Les seuls identifiants consignés sont les suffixes `ac6e57` pour la preuve et `895d54` pour la corrélation.
 
-La fonction n’a réalisé aucune opération métier. Le fichier `P7E_Temporary.gs` a été supprimé immédiatement après l’unique exécution et le projet Apps Script a été enregistré. P7-F reste non autorisé.
+La fonction n’a réalisé aucune opération métier. Le fichier `P7E_Temporary.gs` a été supprimé immédiatement après l’unique exécution et le projet Apps Script a été enregistré.
+
+## 2.5 Résultat de P7-F — vérification finale et clôture
+
+Le 25 août 2026, le classeur `AKS Audit PRODUCTION` a été relu directement. Il contient les seize en-têtes contractuels et exactement une ligne : la preuve `AUDIT_SUPPORT_TEST`, en environnement `PRODUCTION`, avec résultat `REUSSI`, métadonnées `attemptCount: 1` et `status: "CONFIRMEE"`, et les suffixes `ac6e57` et `895d54`.
+
+Le précontrôle final `AKS_preflightAudit001Production()` a confirmé `rowCount: 1`, `writePerformed: false`, le support privé, le propriétaire présent, aucun éditeur additionnel et l’acteur technique présent. Les résultats Drive et Apps Script concordent exactement.
+
+Les preuves minimisées sont sauvegardées dans le présent document. P7 est clôturé. P8 reste non autorisé.
 
 ## 3. Contrat du support de production
 
@@ -123,7 +131,7 @@ Chaque étape exige une autorisation distincte :
 2. **P7-C — Configuration — clôturé** : cinq paramètres techniques installés et relus exactement ; fichier temporaire supprimé, aucune écriture d’audit.
 3. **P7-D — Précontrôle — clôturé** : `AKS_preflightAudit001Production()` a réussi en lecture seule, avec support vide, permissions compatibles et `writePerformed: false`.
 4. **P7-E — Écriture/relecture contrôlée — clôturé** : une preuve `AUDIT_SUPPORT_TEST` a été créée puis relue exactement, sans opération métier ; le fichier temporaire a été supprimé.
-5. **P7-F — Sauvegarde et clôture — non autorisé** : sauvegarder et relire les preuves minimisées avant de déclarer P7 terminé.
+5. **P7-F — Sauvegarde et clôture — clôturé** : preuve relue directement, précontrôle final à `rowCount: 1`, permissions conformes et résultats minimisés sauvegardés.
 
 Aucune purge n’est exécutée pendant P7.
 
@@ -149,6 +157,7 @@ P7 ne peut être clôturé que si :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-25 | P7-F et P7 clôturés : preuve unique relue directement, précontrôle final `rowCount: 1` et `writePerformed: false`, permissions privées conformes ; preuves minimisées sauvegardées, P8 non autorisé |
 | 0.5.0 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, non métier, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
 | 0.4.0 | 2026-08-25 | P7-D clôturé : précontrôle réussi sur les suffixes `6x2ZeH` et `GyeQH4`, support privé vide, permissions compatibles et `writePerformed: false` ; P7-E non autorisé |
 | 0.3.0 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement sur les suffixes `6x2ZeH` et `GyeQH4`, sans écriture d’audit ; fichier temporaire supprimé, P7-D non autorisé |
