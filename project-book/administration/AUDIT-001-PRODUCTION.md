@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 0.3.0 |
-| **Statut** | P7-A clôturé en lecture seule — support et configuration de production indisponibles ; P7-B non autorisé |
+| **Version** | 0.4.0 |
+| **Statut** | P7-A et P7-B clôturés — support privé conforme, configuration absente ; P7-C non autorisé |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle multi-environnement est intégré dans `develop`, mais aucune ressource ni configuration de production n’existe encore. Une simple modification de propriétés ne suffit pas : les contrôles du projet, du support, du schéma, des permissions et de l’identité technique restent obligatoires.
+Le socle multi-environnement est intégré dans `develop` et le support privé de production est désormais préparé, mais aucune configuration AUDIT de production n’est appliquée. Une simple modification de propriétés ne suffit pas : les contrôles du projet, du support, du schéma, des permissions et de l’identité technique restent obligatoires.
 
 ## 2. Principes permanents
 
@@ -168,6 +168,14 @@ Dans le projet Apps Script de production suffixé `6x2ZeH`, `AKS_preflightAudit0
 
 P7-A n’a créé ni ressource, ni propriété, ni onglet, ni en-tête, ni sauvegarde, ni preuve. Le test contrôlé d’écriture/relecture n’a pas été exécuté. P7-B, consacré au support privé de production, exige une autorisation distincte.
 
+## 3.3 État du support P7-B
+
+Le dossier privé `AKS Platform PRODUCTION` et le classeur Google Sheets natif privé `AKS Audit PRODUCTION` ont été créés dans le Drive accessible. La relecture confirme un seul onglet `AKS_Audit`, les seize en-têtes exacts dans l’ordre contractuel, aucune ligne d’audit et le fuseau `Europe/Paris`.
+
+Le dossier et le classeur sont non partagés. Aucun support de recette n’a été réutilisé. L’écart de fuseau attribué à l’import a été corrigé de façon ciblée avant clôture.
+
+Aucun identifiant Drive complet n’est versionné. Aucune propriété Apps Script, configuration AUDIT ou preuve d’audit n’a été créée. P7-C exige une autorisation distincte.
+
 ## 4. Comportement avant configuration
 
 Le nouveau code peut être déployé avant la configuration d’AUDIT et l’amorçage d’ACCESS sans ouvrir de droit :
@@ -258,6 +266,7 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-25 | P7-B clôturé : support privé créé et relu conforme sur le titre, l’onglet, les seize en-têtes, l’absence de lignes, les permissions et le fuseau `Europe/Paris` ; configuration absente et P7-C non autorisé |
 | 0.3.0 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié et précontrôle arrêté de façon fermée sur `audit.environment` indisponible ; aucune ressource, configuration ou preuve créée, P7-B non autorisé |
 | 0.2.0 | 2026-08-21 | P1 intégré par la PR applicative #125 au commit `ab52dc6` ; validations de recette **62/62** et **660/660**, contrôles production non exécutés et aucune ressource réelle modifiée |
 | 0.1.0 | 2026-08-20 | P1.1 à P1.12 consolidés et validés avec séparation précontrôle/écriture, fermeture avant configuration, inventaire préalable, retour arrière conservatoire, rétention de 1 095 jours et double niveau d’autorisation |
