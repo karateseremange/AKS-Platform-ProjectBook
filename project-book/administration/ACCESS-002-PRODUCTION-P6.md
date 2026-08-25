@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P6 |
 | **Titre** | Préparation, déploiement et validation contrôlés de V1.4.0 en production |
-| **Version** | 0.3.0 |
-| **Statut** | P6-F clôturé — version 54 vérifiée à 261/261, déploiement public maintenu en version 53 ; P6-G non autorisé |
+| **Version** | 0.4.0 |
+| **Statut** | P6 clôturé — déploiement public en version 54, URL préservée et vérifications P6-H concluantes |
 | **Nature** | Procédure opérationnelle et registre de preuves |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -15,9 +15,9 @@
 
 ## 1. Objet et limite d’autorisation
 
-Ce document consigne la préparation puis la synchronisation contrôlée du HEAD Apps Script de production. P6-E a autorisé uniquement un `clasp push` vers le HEAD ; il ne vaut autorisation ni de créer une version Apps Script, ni de modifier le déploiement public, ni d’appeler son URL.
+Ce document consigne la préparation, la synchronisation, le versionnement, la mise à jour du déploiement public et les vérifications fonctionnelles de P6. Chaque mutation a fait l’objet d’une autorisation explicite et distincte.
 
-Le HEAD a été modifié et vérifié pendant P6-E. Le déploiement public est resté lié à la version 53 et son comportement public n’a pas été modifié. Chaque mutation future exige une autorisation explicite et distincte.
+P6 est clôturé sur la version Apps Script 54. Le déploiement public existant et son URL ont été préservés. Les opérations AUDIT de production, l’amorçage ACCESS et toute attribution réelle de droits restent exclus de P6.
 
 ## 2. Références immuables
 
@@ -162,29 +162,54 @@ Aucun `clasp deploy` n’a été exécuté. P6-F est clôturé : la version 54 e
 
 ### P6-G — Mise à jour du déploiement existant
 
-Après nouvelle autorisation explicite, faire pointer le déploiement `wgNc37` vers la nouvelle version, sans recréer le déploiement, afin de préserver son URL et ses paramètres Web App. Contrôler immédiatement que l’exécution et l’accès restent `USER_ACCESSING` et `ANYONE`.
+P6-G a été explicitement autorisé puis exécuté le 24 août 2026. Le déploiement public existant, identifié par le suffixe `wgNc37`, a été mis à jour de la version 53 vers la version 54 avec la description `AKS Platform V1.4.0 - build 20260824.1 - PRODUCTION`.
+
+Le contrôle initial du script PowerShell n’a reconnu que sept lignes de déploiement en raison d’un analyseur trop strict. Ce résultat intermédiaire a été invalidé. Une analyse flexible de la sortie réelle de clasp a ensuite établi :
+
+| Contrôle P6-G | Résultat |
+|---|---|
+| Déploiements avant | 9 |
+| Déploiements après | 9 |
+| Différences d’identifiants | 0 |
+| Déploiement public ciblé | 1 |
+| Version avant | 53 |
+| Version après | 54 |
+| Identifiant préservé | oui |
+| URL préservée | oui |
+
+Aucun nouveau déploiement n’a été créé. La version 53 demeure le point de retour arrière, mais aucun retour arrière n’a été déclenché.
 
 ### P6-H — Vérification fonctionnelle minimale
 
-Après nouvelle autorisation explicite :
+P6-H a été explicitement autorisé en lecture fonctionnelle. Les vérifications ont été réalisées sans soumission de questionnaire, modification de configuration, action sur les journaux ou mutation de compte.
 
-1. vérifier d’abord le Questionnaire santé public ;
-2. vérifier ensuite les routes administratives en lecture seule ;
-3. ne réaliser aucune mutation de compte, configuration AUDIT ou amorçage ACCESS dans P6.
+| Parcours | Résultat |
+|---|---|
+| Page publique WordPress du Questionnaire santé | fonctionnelle avec plusieurs comptes et navigateurs |
+| Questionnaire santé depuis le parcours public officiel | fonctionnel, aucune régression constatée |
+| Portail `?app=admin` | chargé sans erreur avec le compte de production actuel |
+| Version affichée | `1.4.0` |
+| Nom affiché | `ACCESS et administration sécurisée` |
+| Paramétrage `?app=config` | chargé en consultation, valeurs valides visibles |
+| Journaux | chargés en consultation, 25 événements visibles |
+| Mutation manuelle | aucune |
 
-En cas d’échec, remettre `wgNc37` sur la version 53 et vérifier la restauration. Le HEAD n’est pas un rollback.
+Le lien Apps Script direct exécuté avec `USER_ACCESSING` reste dépendant des droits Google du compte actif sur les ressources sous-jacentes. Son accès par d’autres comptes Gmail n’est pas présenté comme opérationnel avant P7 et P8. Le parcours public officiel du Questionnaire santé, porté par le site du club, fonctionne indépendamment du compte et constitue le contrôle public de non-régression.
+
+L’absence de « Comptes et accès » dans le portail est attendue avant la configuration AUDIT de production et l’amorçage du premier gestionnaire. P6-H est concluant pour son périmètre. P6 est clôturé ; P7 devient le prochain jalon.
 
 ## 8. Frontières avec les étapes suivantes
 
 - P7 reste consacré à la configuration AUDIT de production et exige ses propres autorisations ;
 - P8 reste consacré à la prévisualisation puis à l’amorçage minimal du premier gestionnaire ;
 - aucune identité réelle, aucun secret et aucun identifiant complet de projet ou de déploiement ne sont consignés ici ;
-- P6-E a modifié uniquement le HEAD et l’a vérifié exactement ; l’URL publique n’a pas été appelée et son déploiement est resté sur la version 53.
+- P6-E à P6-H ont synchronisé le HEAD, créé la version 54, mis à jour le déploiement existant et vérifié les parcours autorisés ; aucune configuration AUDIT, aucun registre ACCESS et aucun compte réel n’ont été modifiés.
 
 ## 9. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-24 | P6 clôturé : déploiement public existant mis à jour vers la version 54 avec identifiant et URL préservés ; Questionnaire public, portail, Paramétrage et Journaux vérifiés sans mutation ; P7 devient le prochain jalon |
 | 0.3.0 | 2026-08-24 | P6-F clôturé : version Apps Script 54 créée puis relue à 261/261 sans différence avec la candidate ; déploiement public maintenu sur la version 53, P6-G non autorisé |
 | 0.2.0 | 2026-08-24 | P6-E clôturé : 261 fichiers poussés vers le HEAD puis relus et comparés à 261/261, zéro différence ; déploiement public maintenu sur la version 53, aucune version ni modification de déploiement exécutée |
 | 0.1.0 | 2026-08-24 | P6-A à P6-D consignés : cible et sauvegardes vérifiées, premier paquet rejeté, paquet corrigé conforme à la barrière canonique 54/30/0 ; aucune écriture de production autorisée |
