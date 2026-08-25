@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 0.2.0 |
-| **Statut** | P1 implémenté et validé en recette sur `develop` — opération réelle interdite |
+| **Version** | 0.3.0 |
+| **Statut** | P7-A clôturé en lecture seule — support et configuration de production indisponibles ; P7-B non autorisé |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-21 |
+| **Dernière mise à jour** | 2026-08-25 |
 | **Version cible** | À confirmer après vérification de `main` et de la production |
 
 ---
@@ -158,6 +158,16 @@ La tête `a620b390` a été synchronisée dans l’environnement Apps Script de 
 
 Aucun classeur, paramètre, compte, registre, déploiement ou test réel de production n’a été créé ou modifié. P1 est donc intégré et validé en recette, mais non activé en production.
 
+## 3.2 État du précontrôle P7-A
+
+Le protocole détaillé est consigné dans [ACCESS-002-PRODUCTION-P7](ACCESS-002-PRODUCTION-P7.md).
+
+Le 25 août 2026, les recherches en lecture seule n’ont identifié aucun classeur portant exactement le titre `AKS Audit PRODUCTION` ni dossier de production exact dans le Drive accessible. Le classeur privé `AKS Audit RECETTE` reste distinct et n’est pas réutilisé.
+
+Dans le projet Apps Script de production suffixé `6x2ZeH`, `AKS_preflightAudit001Production()` a atteint le contrôle de configuration puis a refusé la suite avec `Configuration d'audit indisponible.` au premier paramètre requis, `audit.environment`. Ce résultat confirme l’échec fermé avant support conforme.
+
+P7-A n’a créé ni ressource, ni propriété, ni onglet, ni en-tête, ni sauvegarde, ni preuve. Le test contrôlé d’écriture/relecture n’a pas été exécuté. P7-B, consacré au support privé de production, exige une autorisation distincte.
+
 ## 4. Comportement avant configuration
 
 Le nouveau code peut être déployé avant la configuration d’AUDIT et l’amorçage d’ACCESS sans ouvrir de droit :
@@ -248,5 +258,6 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié et précontrôle arrêté de façon fermée sur `audit.environment` indisponible ; aucune ressource, configuration ou preuve créée, P7-B non autorisé |
 | 0.2.0 | 2026-08-21 | P1 intégré par la PR applicative #125 au commit `ab52dc6` ; validations de recette **62/62** et **660/660**, contrôles production non exécutés et aucune ressource réelle modifiée |
 | 0.1.0 | 2026-08-20 | P1.1 à P1.12 consolidés et validés avec séparation précontrôle/écriture, fermeture avant configuration, inventaire préalable, retour arrière conservatoire, rétention de 1 095 jours et double niveau d’autorisation |
