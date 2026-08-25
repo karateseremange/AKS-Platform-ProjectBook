@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 0.7.0 |
-| **Statut** | P7-A à P7-E clôturés — preuve contrôlée créée et relue ; P7-F non autorisé |
+| **Version** | 1.0.0 |
+| **Statut** | Activé en production — P7 clôturé ; P8 non autorisé |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
-| **Version cible** | À confirmer après vérification de `main` et de la production |
+| **Version cible** | AKS Platform V1.4.0 — Apps Script version 54 |
 
 ---
 
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle multi-environnement est intégré dans `develop`, le support privé de production est préparé, les cinq paramètres techniques sont installés, le précontrôle P7-D est conforme et la preuve contrôlée P7-E a été créée puis relue exactement. La sauvegarde et la clôture P7-F demeurent obligatoires avant activation et exigent une autorisation distincte.
+Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production comme prérequis technique ; aucun amorçage ACCESS P8 n’est autorisé.
 
 ## 2. Principes permanents
 
@@ -198,7 +198,15 @@ Le 25 août 2026 à 22:27, une exécution unique et explicitement autorisée a c
 
 Les identifiants complets restent hors de Git. Les suffixes minimisés sont `ac6e57` pour la preuve et `895d54` pour la corrélation. Le fichier temporaire d’appel a été supprimé et le projet Apps Script enregistré.
 
-Cette preuve ne constitue aucune opération métier ni aucun amorçage ACCESS. P7-F, vérification finale et sauvegarde des preuves minimisées, reste non autorisé.
+Cette preuve ne constitue aucune opération métier ni aucun amorçage ACCESS.
+
+## 3.7 État de la vérification finale P7-F
+
+Le 25 août 2026, la relecture directe du classeur a confirmé les seize en-têtes contractuels et une unique ligne `AUDIT_SUPPORT_TEST`, avec environnement `PRODUCTION`, résultat `REUSSI`, métadonnées `attemptCount: 1` et `status: "CONFIRMEE"`, ainsi que les suffixes `ac6e57` et `895d54`.
+
+Le précontrôle final sans écriture confirme `rowCount: 1`, `writePerformed: false`, les suffixes `6x2ZeH` et `GyeQH4`, le schéma `aks-audit/1.0`, la conservation de 1 095 jours et les permissions privées conformes. Les résultats sont concordants.
+
+Les preuves minimisées sont sauvegardées dans le Project Book. P7 et l’activation technique d’AUDIT-001 en production sont clôturés. P8 reste non autorisé.
 
 ## 4. Comportement avant configuration
 
@@ -290,6 +298,7 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.0 | 2026-08-25 | P7-F et activation AUDIT clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; résultats minimisés sauvegardés, P8 non autorisé |
 | 0.7.0 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, `businessOperation: false`, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
 | 0.6.0 | 2026-08-25 | P7-D clôturé : précontrôle de production réussi, support privé vide, permissions compatibles et `writePerformed: false` ; aucune preuve créée, P7-E non autorisé |
 | 0.5.0 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement, sans écriture d’audit ; fichier temporaire supprimé et P7-D non autorisé |
