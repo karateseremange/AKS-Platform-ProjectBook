@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P7 |
 | **Titre** | Activation contrôlée d’AUDIT en production |
-| **Version** | 0.3.0 |
-| **Statut** | P7-A à P7-C clôturés — configuration relue exactement ; P7-D non autorisé |
+| **Version** | 0.4.0 |
+| **Statut** | P7-A à P7-D clôturés — précontrôle réussi sans écriture ; P7-E non autorisé |
 | **Nature** | Procédure d’exploitation et de preuve |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -15,7 +15,7 @@
 
 ## 1. Objet et limite d’autorisation
 
-Ce document consigne le précontrôle P7-A, la préparation du support privé P7-B, la configuration technique P7-C et découpe la suite de l’activation d’AUDIT en opérations séparément autorisées. La clôture de P7-C n’autorise ni précontrôle P7-D, ni écriture d’audit, ni amorçage ACCESS.
+Ce document consigne le précontrôle initial P7-A, la préparation du support privé P7-B, la configuration technique P7-C et le précontrôle conforme P7-D, puis découpe la suite de l’activation d’AUDIT en opérations séparément autorisées. La clôture de P7-D n’autorise ni écriture d’audit P7-E, ni amorçage ACCESS.
 
 Les identifiants complets et secrets restent hors de Git. Seuls les noms contractuels et les suffixes déjà autorisés sont documentés.
 
@@ -60,7 +60,15 @@ Le 25 août 2026, les cinq paramètres techniques non administrables ont été i
 
 Le contrôle a confirmé cinq paramètres, une relecture exacte et `auditWritePerformed: false`. Les identifiants complets restent hors de Git.
 
-La fonction temporaire d’installation a été supprimée immédiatement après succès et le projet Apps Script a été enregistré. Le déploiement public version 54 n’a pas été modifié. P7-D reste non autorisé.
+La fonction temporaire d’installation a été supprimée immédiatement après succès et le projet Apps Script a été enregistré. Le déploiement public version 54 n’a pas été modifié.
+
+## 2.3 Résultat de P7-D — précontrôle sans écriture
+
+Le 25 août 2026, `AKS_preflightAudit001Production()` a réussi dans le projet de production suffixé `6x2ZeH`. Le résultat confirme `ok: true`, `environment: "PRODUCTION"` et `writePerformed: false`.
+
+Le support `AKS Audit PRODUCTION`, suffixé `GyeQH4`, a été relu avec le schéma `aks-audit/1.0`, une conservation de 1 095 jours et `rowCount: 0`. Les permissions sont disponibles et privées : `sharingAccess: "PRIVATE"`, `sharingPermission: "NONE"`, propriétaire présent, aucun éditeur additionnel et acteur technique présent.
+
+Aucune ligne ni preuve d’audit n’a été créée. P7-E reste non autorisé.
 
 ## 3. Contrat du support de production
 
@@ -105,8 +113,8 @@ Chaque étape exige une autorisation distincte :
 
 1. **P7-B — Support privé — clôturé** : dossier et classeur privés créés, onglet, en-têtes et fuseau relus conformes, aucune ligne d’audit.
 2. **P7-C — Configuration — clôturé** : cinq paramètres techniques installés et relus exactement ; fichier temporaire supprimé, aucune écriture d’audit.
-3. **P7-D — Précontrôle — non autorisé** : exécuter `AKS_preflightAudit001Production()` en lecture seule et exiger une réussite complète.
-4. **P7-E — Écriture/relecture contrôlée** : après autorisation explicite, appeler `AKS_runAudit001ProductionControlledWriteRead("CONFIRMER_TEST_ECRITURE_AUDIT_PRODUCTION")`, puis vérifier la relecture exacte.
+3. **P7-D — Précontrôle — clôturé** : `AKS_preflightAudit001Production()` a réussi en lecture seule, avec support vide, permissions compatibles et `writePerformed: false`.
+4. **P7-E — Écriture/relecture contrôlée — non autorisé** : après autorisation explicite, appeler `AKS_runAudit001ProductionControlledWriteRead("CONFIRMER_TEST_ECRITURE_AUDIT_PRODUCTION")`, puis vérifier la relecture exacte.
 5. **P7-F — Sauvegarde et clôture** : sauvegarder et relire les preuves minimisées avant de déclarer P7 terminé.
 
 Aucune purge n’est exécutée pendant P7.
@@ -133,6 +141,7 @@ P7 ne peut être clôturé que si :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-25 | P7-D clôturé : précontrôle réussi sur les suffixes `6x2ZeH` et `GyeQH4`, support privé vide, permissions compatibles et `writePerformed: false` ; P7-E non autorisé |
 | 0.3.0 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement sur les suffixes `6x2ZeH` et `GyeQH4`, sans écriture d’audit ; fichier temporaire supprimé, P7-D non autorisé |
 | 0.2.0 | 2026-08-25 | P7-B clôturé : dossier et classeur privés créés, onglet unique, seize en-têtes et fuseau `Europe/Paris` relus conformes ; aucune propriété Apps Script ni preuve d’audit, P7-C non autorisé |
 | 0.1.0 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié, précontrôle arrêté de façon fermée sur la configuration indisponible ; aucune ressource, propriété ou preuve créée, P7-B non autorisé |
