@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P7 |
 | **Titre** | Activation contrôlée d’AUDIT en production |
-| **Version** | 0.2.0 |
-| **Statut** | P7-A et P7-B clôturés — support privé conforme ; P7-C non autorisé |
+| **Version** | 0.3.0 |
+| **Statut** | P7-A à P7-C clôturés — configuration relue exactement ; P7-D non autorisé |
 | **Nature** | Procédure d’exploitation et de preuve |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -15,7 +15,7 @@
 
 ## 1. Objet et limite d’autorisation
 
-Ce document consigne le précontrôle P7-A, la préparation du support privé P7-B et découpe la suite de l’activation d’AUDIT en opérations séparément autorisées. La clôture de P7-B n’autorise aucune propriété de script, aucune écriture d’audit et aucun amorçage ACCESS.
+Ce document consigne le précontrôle P7-A, la préparation du support privé P7-B, la configuration technique P7-C et découpe la suite de l’activation d’AUDIT en opérations séparément autorisées. La clôture de P7-C n’autorise ni précontrôle P7-D, ni écriture d’audit, ni amorçage ACCESS.
 
 Les identifiants complets et secrets restent hors de Git. Seuls les noms contractuels et les suffixes déjà autorisés sont documentés.
 
@@ -45,6 +45,22 @@ La relecture a confirmé :
 L’import avait initialement attribué `America/Los_Angeles`. Cette valeur a été détectée avant clôture, corrigée uniquement sur la propriété `timeZone`, puis relue sans changement du contenu, des permissions ou de l’emplacement.
 
 Aucun identifiant Drive complet n’est consigné dans Git. Aucune propriété Apps Script n’a été créée, aucune configuration AUDIT n’a été appliquée et aucune preuve d’audit n’a été écrite. P7-C reste non autorisé.
+
+## 2.2 Résultat de P7-C — configuration technique
+
+Le 25 août 2026, les cinq paramètres techniques non administrables ont été installés dans les propriétés du projet Apps Script de production, puis relus exactement :
+
+| Paramètre | Preuve minimisée |
+|---|---|
+| `audit.environment` | `PRODUCTION` |
+| `audit.scriptId` | suffixe `6x2ZeH` |
+| `audit.spreadsheetId` | suffixe `GyeQH4` |
+| `audit.retentionDays` | `1095` |
+| `audit.schemaVersion` | `aks-audit/1.0` |
+
+Le contrôle a confirmé cinq paramètres, une relecture exacte et `auditWritePerformed: false`. Les identifiants complets restent hors de Git.
+
+La fonction temporaire d’installation a été supprimée immédiatement après succès et le projet Apps Script a été enregistré. Le déploiement public version 54 n’a pas été modifié. P7-D reste non autorisé.
 
 ## 3. Contrat du support de production
 
@@ -88,8 +104,8 @@ Les identifiants complets sont configurés uniquement dans l’environnement aut
 Chaque étape exige une autorisation distincte :
 
 1. **P7-B — Support privé — clôturé** : dossier et classeur privés créés, onglet, en-têtes et fuseau relus conformes, aucune ligne d’audit.
-2. **P7-C — Configuration — non autorisé** : renseigner les cinq paramètres techniques, sans passer par l’interface d’administration.
-3. **P7-D — Précontrôle** : exécuter `AKS_preflightAudit001Production()` en lecture seule et exiger une réussite complète.
+2. **P7-C — Configuration — clôturé** : cinq paramètres techniques installés et relus exactement ; fichier temporaire supprimé, aucune écriture d’audit.
+3. **P7-D — Précontrôle — non autorisé** : exécuter `AKS_preflightAudit001Production()` en lecture seule et exiger une réussite complète.
 4. **P7-E — Écriture/relecture contrôlée** : après autorisation explicite, appeler `AKS_runAudit001ProductionControlledWriteRead("CONFIRMER_TEST_ECRITURE_AUDIT_PRODUCTION")`, puis vérifier la relecture exacte.
 5. **P7-F — Sauvegarde et clôture** : sauvegarder et relire les preuves minimisées avant de déclarer P7 terminé.
 
@@ -117,5 +133,6 @@ P7 ne peut être clôturé que si :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.0 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement sur les suffixes `6x2ZeH` et `GyeQH4`, sans écriture d’audit ; fichier temporaire supprimé, P7-D non autorisé |
 | 0.2.0 | 2026-08-25 | P7-B clôturé : dossier et classeur privés créés, onglet unique, seize en-têtes et fuseau `Europe/Paris` relus conformes ; aucune propriété Apps Script ni preuve d’audit, P7-C non autorisé |
 | 0.1.0 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié, précontrôle arrêté de façon fermée sur la configuration indisponible ; aucune ressource, propriété ou preuve créée, P7-B non autorisé |
