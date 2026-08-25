@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.7 |
-| **Statut** | P6 clôturé ; P7-A et P7-B clôturés — P7-C non autorisé |
+| **Version** | 1.2.8 |
+| **Statut** | P6 clôturé ; P7-A à P7-C clôturés — P7-D non autorisé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -131,7 +131,7 @@ Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) 
 - 9 déploiements avant et après, aucun identifiant ajouté ou supprimé ;
 - Questionnaire santé public, portail V1.4.0, Paramétrage et Journaux vérifiés sans mutation.
 
-P6 est clôturé. La version 53 demeure le point de retour arrière. Le support AUDIT privé est préparé en P7-B ; la configuration AUDIT, l’amorçage ACCESS et l’ouverture du portail à d’autres comptes relèvent de P7-C à P8 et restent non engagés.
+P6 est clôturé. La version 53 demeure le point de retour arrière. Le support AUDIT privé est préparé en P7-B et la configuration technique installée en P7-C ; le précontrôle, l’écriture contrôlée, l’amorçage ACCESS et l’ouverture du portail à d’autres comptes relèvent de P7-D à P8 et restent non engagés.
 
 ### P7 — Ressources de production
 
@@ -147,7 +147,9 @@ P7-A est clôturé en lecture seule :
 
 P7-B est clôturé : le dossier privé `AKS Platform PRODUCTION` et le classeur Google Sheets natif privé `AKS Audit PRODUCTION` ont été créés. La relecture confirme l’onglet unique `AKS_Audit`, les seize en-têtes exacts, aucune ligne d’audit, l’absence de partage et le fuseau `Europe/Paris`. Aucun support de recette n’a été réutilisé.
 
-Aucune propriété Apps Script, configuration AUDIT ou preuve d’audit n’a été créée. P7-C reste non autorisé. La configuration, le nouveau précontrôle et le test d’écriture constituent des opérations séparément autorisées. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
+P7-C est clôturé : les cinq paramètres techniques ont été installés et relus exactement pour l’environnement `PRODUCTION`, les suffixes `6x2ZeH` et `GyeQH4`, la conservation `1095` et le schéma `aks-audit/1.0`. Aucune preuve d’audit n’a été écrite. La fonction temporaire a été supprimée et le déploiement public version 54 est inchangé.
+
+P7-D reste non autorisé. Le précontrôle et le test d’écriture constituent des opérations séparément autorisées. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
 
 ### P8 — Amorçage minimal du premier gestionnaire
 
@@ -236,6 +238,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.8 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement, sans écriture d’audit ; fichier temporaire supprimé, déploiement inchangé et P7-D non autorisé |
 | 1.2.7 | 2026-08-25 | P7-B clôturé : dossier et classeur AUDIT privés créés, onglet, seize en-têtes, absence de lignes, permissions et fuseau `Europe/Paris` relus conformes ; P7-C non autorisé |
 | 1.2.6 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié, précontrôle fermé sur la configuration indisponible, aucune ressource ni preuve créée ; P7-B non autorisé |
 | 1.2.5 | 2026-08-24 | P6 clôturé : déploiement public existant mis à jour vers la version 54, identifiant et URL préservés ; contrôles publics et administratifs en lecture concluants, P7 non engagé |
