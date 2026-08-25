@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 0.5.0 |
-| **Statut** | P7-A à P7-C clôturés — support et configuration préparés ; P7-D non autorisé |
+| **Version** | 0.6.0 |
+| **Statut** | P7-A à P7-D clôturés — précontrôle conforme sans écriture ; P7-E non autorisé |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle multi-environnement est intégré dans `develop`, le support privé de production est préparé et les cinq paramètres techniques sont installés. Cette configuration ne suffit pas à elle seule : les contrôles du projet, du support, du schéma, des permissions et de l’identité technique restent obligatoires en P7-D.
+Le socle multi-environnement est intégré dans `develop`, le support privé de production est préparé, les cinq paramètres techniques sont installés et le précontrôle P7-D a validé le projet, le support, le schéma, les permissions et l’identité technique sans écriture. La preuve contrôlée P7-E demeure obligatoire avant activation et exige une autorisation distincte.
 
 ## 2. Principes permanents
 
@@ -182,7 +182,15 @@ Les cinq paramètres techniques non administrables ont été installés dans les
 
 Le résultat confirme `parameterCount: 5`, `exactReadback: true` et `auditWritePerformed: false`. La fonction temporaire a ensuite été supprimée et le projet enregistré. Aucun identifiant complet n’est versionné et le déploiement public version 54 demeure inchangé.
 
-Cette étape ne prouve pas encore l’accessibilité, les permissions ni l’ensemble du contrat AUDIT. P7-D, strictement sans écriture, exige une autorisation distincte.
+Cette étape ne prouvait pas encore l’accessibilité, les permissions ni l’ensemble du contrat AUDIT, contrôlés séparément en P7-D.
+
+## 3.5 État du précontrôle P7-D
+
+Le 25 août 2026, `AKS_preflightAudit001Production()` a réussi dans le projet de production suffixé `6x2ZeH`. Le résultat confirme `ok: true`, l’environnement `PRODUCTION`, le support suffixé `GyeQH4`, le schéma `aks-audit/1.0`, la conservation de 1 095 jours et `writePerformed: false`.
+
+Le support `AKS Audit PRODUCTION` reste vide avec `rowCount: 0`. Les permissions relues sont disponibles et privées : `sharingAccess: "PRIVATE"`, `sharingPermission: "NONE"`, propriétaire présent, aucun éditeur additionnel et acteur technique présent.
+
+Aucune preuve d’audit n’a été créée. P7-E, test contrôlé d’écriture et de relecture, reste non autorisé.
 
 ## 4. Comportement avant configuration
 
@@ -274,6 +282,7 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.6.0 | 2026-08-25 | P7-D clôturé : précontrôle de production réussi, support privé vide, permissions compatibles et `writePerformed: false` ; aucune preuve créée, P7-E non autorisé |
 | 0.5.0 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement, sans écriture d’audit ; fichier temporaire supprimé et P7-D non autorisé |
 | 0.4.0 | 2026-08-25 | P7-B clôturé : support privé créé et relu conforme sur le titre, l’onglet, les seize en-têtes, l’absence de lignes, les permissions et le fuseau `Europe/Paris` ; configuration absente et P7-C non autorisé |
 | 0.3.0 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié et précontrôle arrêté de façon fermée sur `audit.environment` indisponible ; aucune ressource, configuration ou preuve créée, P7-B non autorisé |
