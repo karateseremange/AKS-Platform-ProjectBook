@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.9 |
-| **Statut** | P6 clôturé ; P7-A à P7-D clôturés — P7-E non autorisé |
+| **Version** | 1.2.10 |
+| **Statut** | P6 clôturé ; P7-A à P7-E clôturés — P7-F non autorisé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -131,7 +131,7 @@ Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) 
 - 9 déploiements avant et après, aucun identifiant ajouté ou supprimé ;
 - Questionnaire santé public, portail V1.4.0, Paramétrage et Journaux vérifiés sans mutation.
 
-P6 est clôturé. La version 53 demeure le point de retour arrière. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C et le précontrôle P7-D validé sans écriture ; l’écriture contrôlée, l’amorçage ACCESS et l’ouverture du portail à d’autres comptes relèvent de P7-E à P8 et restent non engagés.
+P6 est clôturé. La version 53 demeure le point de retour arrière. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C, le précontrôle P7-D validé sans écriture et la preuve contrôlée P7-E créée puis relue ; la clôture P7-F, l’amorçage ACCESS et l’ouverture du portail à d’autres comptes relèvent de P7-F à P8 et restent non engagés.
 
 ### P7 — Ressources de production
 
@@ -151,7 +151,9 @@ P7-C est clôturé : les cinq paramètres techniques ont été installés et rel
 
 P7-D est clôturé : `AKS_preflightAudit001Production()` a réussi pour l’environnement `PRODUCTION`, les suffixes `6x2ZeH` et `GyeQH4`, le support privé `AKS Audit PRODUCTION`, le schéma `aks-audit/1.0` et la conservation de 1 095 jours. Le support reste vide (`rowCount: 0`), les permissions sont compatibles, l’acteur technique est présent et `writePerformed: false`.
 
-P7-E reste non autorisé. Le précontrôle et le test d’écriture constituent des opérations séparément autorisées. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
+P7-E est clôturé : une exécution unique a créé puis relu exactement une preuve technique `AUDIT_SUPPORT_TEST`. Le résultat confirme `phase: "WRITE_READ_VERIFIED"`, `controlledProof: true` et `businessOperation: false`, avec les suffixes minimisés `ac6e57` et `895d54`. Le fichier temporaire a été supprimé et le projet enregistré.
+
+P7-F reste non autorisé. La preuve contrôlée ne constitue aucun amorçage ACCESS. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
 
 ### P8 — Amorçage minimal du premier gestionnaire
 
@@ -240,6 +242,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.10 | 2026-08-25 | P7-E clôturé : preuve `AUDIT_SUPPORT_TEST` créée et relue exactement, non métier, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
 | 1.2.9 | 2026-08-25 | P7-D clôturé : précontrôle réussi sans écriture, support privé vide et permissions compatibles ; `writePerformed: false`, P7-E non autorisé |
 | 1.2.8 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement, sans écriture d’audit ; fichier temporaire supprimé, déploiement inchangé et P7-D non autorisé |
 | 1.2.7 | 2026-08-25 | P7-B clôturé : dossier et classeur AUDIT privés créés, onglet, seize en-têtes, absence de lignes, permissions et fuseau `Europe/Paris` relus conformes ; P7-C non autorisé |
