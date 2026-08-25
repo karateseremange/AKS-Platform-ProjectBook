@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.40 |
+| Version | 1.3.41 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-25 |
@@ -128,15 +128,15 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P6 clôturé ; P7-A à P7-D clôturés, P7-E non autorisé | 1.2.9 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P7, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P6 clôturé ; P7-A à P7-E clôturés, P7-F non autorisé | 1.2.10 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P7, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4 | Quality Gate final de la candidate ACCESS | Clôturé — P4-G validé sur RC5 | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4-G | Rapport final du Quality Gate ACCESS | Validé — Quality Gate P4 concluant | 0.2.0 | ACCESS-002-PRODUCTION-P4, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | Clôturé — snapshots publiés et tagués, têtes post-release distinguées | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P6 | Préparation et déploiement Apps Script contrôlé | Clôturé — déploiement version 54 et vérifications P6-H concluantes | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, ACCESS-002-PRODUCTION-P5, AUDIT-001-PRODUCTION, ROADMAP-001 |
-| ACCESS-002-PRODUCTION-P7 | Activation contrôlée d’AUDIT en production | P7-A à P7-D clôturés — précontrôle réussi sans écriture, P7-E non autorisé | 0.4.0 | ACCESS-002-PRODUCTION, AUDIT-001-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
-| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | P7-A à P7-D clôturés — support privé, configuration et précontrôle conformes, P7-E non autorisé | 0.6.0 | AUDIT-001, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, CONFIG-001, SECURITY-001, STORAGE-001 |
+| ACCESS-002-PRODUCTION-P7 | Activation contrôlée d’AUDIT en production | P7-A à P7-E clôturés — preuve contrôlée créée et relue, P7-F non autorisé | 0.5.0 | ACCESS-002-PRODUCTION, AUDIT-001-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
+| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | P7-A à P7-E clôturés — preuve contrôlée créée et relue, P7-F non autorisé | 0.7.0 | AUDIT-001, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
@@ -288,7 +288,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P7, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | Six lots ACCESS validés ; publication Git et déploiement V1.4.0 clôturés ; support, configuration et précontrôle AUDIT conformes jusqu’à P7-D, écriture contrôlée P7-E puis amorçage ACCESS P8 encore requis |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P7, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | Six lots ACCESS validés ; publication Git et déploiement V1.4.0 clôturés ; preuve AUDIT contrôlée créée et relue en P7-E, vérification finale P7-F puis amorçage ACCESS P8 encore requis |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -313,6 +313,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.41 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, `businessOperation: false`, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
 | 1.3.40 | 2026-08-25 | P7-D clôturé : précontrôle réussi pour `6x2ZeH` et `GyeQH4`, support privé vide, permissions compatibles, acteur technique présent et `writePerformed: false` ; P7-E non autorisé |
 | 1.3.39 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement pour le projet `6x2ZeH` et le support `GyeQH4`, avec rétention 1 095 jours et schéma `aks-audit/1.0` ; aucune écriture d’audit, fonction temporaire supprimée, P7-D non autorisé |
 | 1.3.38 | 2026-08-25 | P7-B clôturé : support AUDIT privé créé et relu conforme sur l’onglet, les seize en-têtes, l’absence de lignes, les permissions et le fuseau `Europe/Paris` ; aucune configuration Apps Script ni preuve, P7-C non autorisé |
