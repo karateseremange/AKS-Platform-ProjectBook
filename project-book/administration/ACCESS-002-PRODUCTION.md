@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.4 |
-| **Statut** | P6-F clôturé — version 54 vérifiée, déploiement public toujours en version 53 ; P6-G non autorisé |
+| **Version** | 1.2.5 |
+| **Statut** | P6 clôturé — production en version 54 et vérifications fonctionnelles concluantes ; P7 non engagé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-24 |
@@ -115,7 +115,7 @@ soumis à des autorisations distinctes.
 
 ### P6 — Déploiement Apps Script de production
 
-Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) est engagé jusqu’à la création contrôlée de la version numérotée. P6-A à P6-F sont validés :
+Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) est clôturé. P6-A à P6-H sont validés :
 
 - cible immuable : tag `v1.4.0` au commit `fa8876fcc57dcc46b943c8a3ce451e006bfa5bb5` ;
 - projet PRODUCTION suffixé `6x2ZeH`, distinct de la RECETTE suffixée `eIRxs4` ;
@@ -127,9 +127,11 @@ Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) 
 - 261 fichiers poussables, sans `RecipeRunner` ;
 - P6-E : 261 fichiers poussés vers le HEAD, relus à 261/261 et comparés sans différence sous Windows PowerShell 5.1 ;
 - version Apps Script 54 créée puis relue à 261/261 sans différence avec la candidate ;
-- déploiement public `wgNc37` maintenu sur la version 53.
+- déploiement public `wgNc37` mis à jour de la version 53 vers la version 54, sans changement d’identifiant ni d’URL ;
+- 9 déploiements avant et après, aucun identifiant ajouté ou supprimé ;
+- Questionnaire santé public, portail V1.4.0, Paramétrage et Journaux vérifiés sans mutation.
 
-Aucune modification de déploiement et aucun appel de l’URL publique n’ont été exécutés. P6-G et P6-H exigent chacun une autorisation distincte. Le retour arrière cible exclusivement la version 53, jamais le HEAD.
+P6 est clôturé. La version 53 demeure le point de retour arrière. La configuration AUDIT de production, l’amorçage ACCESS et l’ouverture du portail à d’autres comptes relèvent de P7 et P8 et restent non engagés.
 
 ### P7 — Ressources de production
 
@@ -229,6 +231,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.5 | 2026-08-24 | P6 clôturé : déploiement public existant mis à jour vers la version 54, identifiant et URL préservés ; contrôles publics et administratifs en lecture concluants, P7 non engagé |
 | 1.2.4 | 2026-08-24 | P6-F clôturé : version Apps Script 54 créée, relue à 261/261 et comparée sans différence ; déploiement public toujours sur la version 53, P6-G non autorisé |
 | 1.2.3 | 2026-08-24 | P6-E clôturé : HEAD de production synchronisé avec 261 fichiers puis relu et comparé à 261/261 sans différence ; déploiement public toujours sur la version 53, P6-F non autorisé |
 | 1.2.2 | 2026-08-24 | P6-A à P6-D préparés et validés localement : cible V1.4.0, sauvegarde fraîche, paquet erroné rejeté et paquet corrigé conforme à la barrière canonique 54/30/0 ; aucune écriture de production autorisée |
