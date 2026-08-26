@@ -9,7 +9,7 @@
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
-| **Version du produit** | Post-V1.3.0 |
+| **Version du produit** | V1.4.0 |
 
 ---
 
