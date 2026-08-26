@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 1.0.3 |
-| **Statut** | Activé en production — preuves P8-C et P9-C conformes ; support privé à cinq preuves |
+| **Version** | 1.0.4 |
+| **Statut** | Activé et confirmé en production — support privé stable à cinq preuves |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -230,6 +230,12 @@ P9-C a produit deux nouvelles preuves `ACCESS_REGISTRY_UPDATE`, `INTENTION` puis
 
 La relecture indépendante finale confirme les seize en-têtes, exactement cinq preuves et aucun `ECHEC` ou `REFUSE`. Le support demeure privé et les contrôles fonctionnels n’ont ajouté aucune ligne.
 
+## 3.11 Précontrôle P10 et confirmation finale
+
+P10-A a relu le support directement après la clôture documentaire de P9. Il demeure privé, limité à son propriétaire, avec les seize en-têtes exacts et cinq preuves : une preuve technique P7-E, deux preuves P8-C et deux preuves P9-C. Aucun `ECHEC` ni `REFUSE` n’est présent et aucune ligne supplémentaire n’a été créée.
+
+Cette stabilité, rapprochée du déploiement public `wgNc37` toujours en version 54, a permis au Product Owner de confirmer P10-B et l’état final de production. Aucun retour arrière ni aucune écriture AUDIT supplémentaire n’ont été autorisés.
+
 ## 4. Comportement avant configuration
 
 Le nouveau code peut être déployé avant la configuration d’AUDIT et l’amorçage d’ACCESS sans ouvrir de droit :
@@ -256,7 +262,7 @@ Avant toute publication réelle, une opération sans mutation doit identifier et
 - la référence actuelle de `main` ;
 - la configuration nécessaire au retour arrière.
 
-Cette preuve conditionne la confirmation de la version cible. `V1.4.0` reste une proposition tant que l’état réel de `main` et de la production n’est pas rapproché.
+Cette preuve conditionnait la confirmation de la version cible. Le rapprochement a été réalisé et P10 a confirmé l’état final de `V1.4.0` en production.
 
 ## 6. Deux niveaux d’autorisation
 
@@ -320,6 +326,7 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.4 | 2026-08-26 | P10 clôturé : support privé relu inchangé à cinq preuves et seize en-têtes, aucun `ECHEC` ni `REFUSE`, aucune nouvelle écriture AUDIT et production V1.4.0 confirmée |
 | 1.0.3 | 2026-08-26 | P9-C clôturé : preuves corrélées par `c9e6d7`, révision finale `dlkpc9`, support privé à cinq preuves, aucune preuve d’échec ou de refus |
 | 1.0.2 | 2026-08-26 | P8-C et P8-D clôturés : preuves ACCESS `INTENTION` et `REUSSI` corrélées par `4d3bb3`, révision finale `nshtnj`, support privé à exactement trois preuves, aucune preuve d’échec ou de refus et aucune écriture pendant P8-D |
 | 1.0.1 | 2026-08-26 | P8-A et P8-B exécutés sans écriture ACCESS ni AUDIT ; support toujours limité à l’unique preuve P7-E ; contrat `INTENTION` puis `REUSSI` documenté pour P8-C, qui reste non autorisé |

@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.14 |
-| **Statut** | P6 à P9 clôturés — deux gestionnaires ACCESS actifs ; P10 non autorisé |
+| **Version** | 1.2.15 |
+| **Statut** | P1 à P10 clôturés — production V1.4.0 confirmée |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
-| **Version cible** | AKS Platform V1.4.0 — build `20260824.1`, publication `main` requise |
+| **Version cible** | AKS Platform V1.4.0 — build `20260824.1`, Apps Script version 54 |
 
 ---
 
@@ -17,7 +17,7 @@
 
 Les incréments `ACCESS-002-01` à `ACCESS-002-06` sont implémentés dans la branche applicative `develop` et validés en recette. Ils ne sont pas présents dans `main`, aucun nouveau déploiement Apps Script de production n’a été effectué, aucun registre ACCESS de production n’a été amorcé et aucun compte réel ne possède encore `ACCESS_MANAGE`.
 
-Le chantier ACCESS ne peut donc pas être considéré comme publié ni opérationnel. Le présent jalon est prioritaire avant `INSCRIPTIONS-011`.
+À ce stade initial, le chantier ACCESS ne pouvait pas être considéré comme publié ni opérationnel. Le présent document a ensuite piloté sa publication et sa validation avant `INSCRIPTIONS-011`.
 
 ## 2. État technique vérifié
 
@@ -131,7 +131,7 @@ Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) 
 - 9 déploiements avant et après, aucun identifiant ajouté ou supprimé ;
 - Questionnaire santé public, portail V1.4.0, Paramétrage et Journaux vérifiés sans mutation.
 
-P6 est clôturé. La version 53 demeure le point de retour arrière historique. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C, le précontrôle P7-D validé sans écriture, la preuve contrôlée P7-E créée puis relue et la vérification finale P7-F concordante. P7 est clôturé. P8 a ensuite amorcé le premier gestionnaire ACCESS et vérifié son droit effectif. P9 a ajouté puis vérifié un deuxième gestionnaire ; P10 reste non autorisé.
+P6 est clôturé. La version 53 demeure le point de retour arrière historique. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C, le précontrôle P7-D validé sans écriture, la preuve contrôlée P7-E créée puis relue et la vérification finale P7-F concordante. P7 est clôturé. P8 a ensuite amorcé le premier gestionnaire ACCESS et vérifié son droit effectif. P9 a ajouté puis vérifié un deuxième gestionnaire. P10 a ensuite confirmé l’état final de production sans retour arrière.
 
 ### P7 — Ressources de production
 
@@ -155,7 +155,7 @@ P7-E est clôturé : une exécution unique a créé puis relu exactement une pre
 
 P7-F est clôturé : la relecture directe confirme une preuve unique `AUDIT_SUPPORT_TEST` et le précontrôle final confirme `rowCount: 1`, `writePerformed: false` et des permissions privées conformes. Les résultats Drive et Apps Script concordent, et les preuves minimisées sont sauvegardées dans le Project Book.
 
-P7 est clôturé et AUDIT-001 est techniquement actif en production. P8-A à P8-D sont également clôturés : le premier gestionnaire ACCESS est amorcé et vérifié. P9 est clôturé : le deuxième gestionnaire est ajouté et la validation fonctionnelle est concluante. P10 reste non autorisé. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
+P7 est clôturé et AUDIT-001 est techniquement actif en production. P8-A à P8-D sont également clôturés : le premier gestionnaire ACCESS est amorcé et vérifié. P9 est clôturé : le deuxième gestionnaire est ajouté et la validation fonctionnelle est concluante. P10 est également clôturé : l’état final de production est confirmé et aucun retour arrière n’est autorisé. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
 
 ### P8 — Amorçage minimal du premier gestionnaire
 
@@ -181,7 +181,7 @@ Après amorçage, le Product Owner vérifie au minimum :
 - le refus d’un compte non habilité ;
 - la non-régression du Questionnaire santé public.
 
-P9 est clôturé selon [ACCESS-002-PRODUCTION-P9](ACCESS-002-PRODUCTION-P9.md). Le deuxième gestionnaire est actif, la révision se termine par `dlkpc9`, les preuves sont corrélées par `c9e6d7` et la validation multi-compte est conforme. P10 reste non autorisé.
+P9 est clôturé selon [ACCESS-002-PRODUCTION-P9](ACCESS-002-PRODUCTION-P9.md). Le deuxième gestionnaire est actif, la révision se termine par `dlkpc9`, les preuves sont corrélées par `c9e6d7` et la validation multi-compte est conforme. P10 a ensuite été exécuté et clôturé selon [ACCESS-002-PRODUCTION-P10](ACCESS-002-PRODUCTION-P10.md).
 
 ### P10 — Confirmation finale ou retour arrière
 
@@ -194,6 +194,10 @@ L’état de production n’est confirmé qu’après validation finale explicit
 - conserver les preuves déjà produites lorsque leur intégrité et leur utilité demeurent établies ;
 - contrôler la restauration de chaque composant ;
 - soumettre toute suppression ou purge à une décision ultérieure distincte.
+
+Le précontrôle P10-A a confirmé neuf déploiements Apps Script, dont l’unique déploiement public `wgNc37` en version 54, ainsi qu’un support AUDIT privé inchangé à cinq preuves et sans `ECHEC` ni `REFUSE`. Le premier comptage automatique à sept déploiements provenait uniquement du filtre PowerShell ; la sortie brute `clasp deployments` a confirmé les neuf déploiements attendus.
+
+Le 26 août 2026, le Product Owner a explicitement confirmé P10-B et l’état final de production d’AKS Platform V1.4.0. Aucun retour arrière n’est autorisé ni requis. P10 est clôturé et aucune mutation supplémentaire de production n’a été effectuée.
 
 ## 4. Séquencement autorisé
 
@@ -217,7 +221,7 @@ La présente validation accorde uniquement le premier niveau. Chaque mutation de
 
 ## 5. Critères de clôture du chantier ACCESS
 
-Le chantier ACCESS peut être déclaré publié et opérationnel uniquement lorsque :
+Le chantier ACCESS est déclaré publié et opérationnel, les critères suivants étant tous satisfaits :
 
 - le code et la documentation validés sont présents sur `main` et identifiés par des tags cohérents ;
 - le déploiement de production exécute la version publiée ;
@@ -247,6 +251,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.15 | 2026-08-26 | P10 clôturé : précontrôle final conforme, neuf déploiements confirmés, `wgNc37` unique en version 54, AUDIT privé inchangé à cinq preuves, production V1.4.0 confirmée et aucun retour arrière autorisé |
 | 1.2.14 | 2026-08-26 | P9 clôturé : deuxième gestionnaire ajouté, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte et support privé à cinq preuves conformes ; P10 non autorisé |
 | 1.2.13 | 2026-08-26 | P8-C et P8-D clôturés : premier gestionnaire ACCESS amorcé, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves, déploiement `wgNc37` toujours en version 54 ; P8 clôturé, P9 non autorisé |
 | 1.2.12 | 2026-08-26 | P8-A et P8-B clôturés sans écriture : registre initial absent, premier gestionnaire confirmé, prévisualisation minimale `access/1.2`, révisions `yj2w2m` puis `bdt4m9`, support AUDIT toujours à une preuve ; P8-C non autorisé |
