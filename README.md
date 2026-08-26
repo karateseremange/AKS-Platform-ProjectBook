@@ -170,9 +170,9 @@ Les développements doivent respecter les règles suivantes :
 
 # État du Project Book
 
-La version **V1.2.0**, publiée le 28 juillet 2026, est la référence applicative
-stable. Elle correspond au tag `v1.2.0` et au commit
-`47bb3ca83eb902bc9db0867c8d41affffd3ceb47`.
+La version **V1.2.0**, publiée le 28 juillet 2026, constitue la référence
+historique de l’introduction d’AKS Analytics. Elle correspond au tag
+`v1.2.0` et au commit `47bb3ca83eb902bc9db0867c8d41affffd3ceb47`.
 
 Cette version introduit AKS Analytics. Son périmètre, ses limites et ses preuves
 de validation sont consignés dans la [note de publication V1.2.0](releases/V1.2.0.md)
