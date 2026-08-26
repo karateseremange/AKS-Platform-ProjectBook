@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P7 |
 | **Titre** | Activation contrôlée d’AUDIT en production |
-| **Version** | 1.0.0 |
-| **Statut** | Clôturé — P7-A à P7-F conformes ; P8 non autorisé |
+| **Version** | 1.0.1 |
+| **Statut** | Clôturé — P7-A à P7-F conformes ; P8 à P10 clôturés ultérieurement |
 | **Nature** | Procédure d’exploitation et de preuve |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-25 |
@@ -153,10 +153,13 @@ P7 ne peut être clôturé que si :
 - aucune ressource de recette n’a été réutilisée ;
 - le Project Book reflète l’état réellement atteint.
 
+P8, P9 et P10 ont ensuite été conduits sous autorisations séparées. L’état final confirme AUDIT actif sur un support privé stable à cinq preuves, sans `ECHEC` ni `REFUSE`, et la production V1.4.0 validée sans retour arrière.
+
 ## 8. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-26 | Alignement postérieur : P8 à P10 clôturés, support AUDIT privé stable à cinq preuves, production V1.4.0 confirmée et aucun retour arrière autorisé |
 | 1.0.0 | 2026-08-25 | P7-F et P7 clôturés : preuve unique relue directement, précontrôle final `rowCount: 1` et `writePerformed: false`, permissions privées conformes ; preuves minimisées sauvegardées, P8 non autorisé |
 | 0.5.0 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, non métier, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
 | 0.4.0 | 2026-08-25 | P7-D clôturé : précontrôle réussi sur les suffixes `6x2ZeH` et `GyeQH4`, support privé vide, permissions compatibles et `writePerformed: false` ; P7-E non autorisé |
