@@ -6,11 +6,11 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.36 |
+| Version | 1.3.47 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-08-24 |
-| Version du produit | Post-V1.3 |
+| Dernière mise à jour | 2026-08-26 |
+| Version du produit | V1.4.0 |
 
 ---
 
@@ -76,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.2.90 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.3.53 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -121,21 +121,25 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | Implémenté et validé en recette sur `develop` — publication et amorçage en attente | 0.4.44 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | Publié, amorcé et validé en production — P10 clôturé | 0.4.46 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
 | ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #101 à #104, `b120963` |
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
-| ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P6 clôturé — production en version 54, P7 non engagé | 1.2.5 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P6, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Intégré, publié et validé en production dans V1.4.0 | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P1 à P10 clôturés — production V1.4.0 confirmée | 1.2.15 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4 | Quality Gate final de la candidate ACCESS | Clôturé — P4-G validé sur RC5 | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4-G | Rapport final du Quality Gate ACCESS | Validé — Quality Gate P4 concluant | 0.2.0 | ACCESS-002-PRODUCTION-P4, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | Clôturé — snapshots publiés et tagués, têtes post-release distinguées | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P6 | Préparation et déploiement Apps Script contrôlé | Clôturé — déploiement version 54 et vérifications P6-H concluantes | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, ACCESS-002-PRODUCTION-P5, AUDIT-001-PRODUCTION, ROADMAP-001 |
-| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | P1 implémenté et validé en recette sur `develop` — opération réelle interdite | 0.2.0 | AUDIT-001, ACCESS-002-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
+| ACCESS-002-PRODUCTION-P7 | Activation contrôlée d’AUDIT en production | Clôturé — P7-A à P7-F conformes, P8 à P10 clôturés ultérieurement | 1.0.1 | ACCESS-002-PRODUCTION, AUDIT-001-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
+| ACCESS-002-PRODUCTION-P8 | Amorçage minimal du premier gestionnaire ACCESS | Clôturé — P8-A à P8-D conformes, P9 clôturé ultérieurement | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, ACCESS-002-PRODUCTION-P9, AUDIT-001-PRODUCTION, ACCESS-002-02, SECURITY-001 |
+| ACCESS-002-PRODUCTION-P9 | Validation fonctionnelle et deuxième gestionnaire ACCESS | Clôturé — P9-A à P9-E conformes, P10 clôturé ultérieurement | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P8, ACCESS-002-PRODUCTION-P10, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ACCESS-002-PRODUCTION-P10 | Confirmation finale de production ou retour arrière | Clôturé — production V1.4.0 confirmée, aucun retour arrière autorisé | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P9, AUDIT-001-PRODUCTION, RELEASE-001, ROADMAP-001 |
+| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | Activé et confirmé en production — support privé stable à cinq preuves | 1.0.4 | AUDIT-001, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7 à P10, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
@@ -163,7 +167,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010`, `INSCRIPTIONS-010-RECETTE` | Quatrième incrément INSCRIPTIONS-010 clôturé et fusionné dans `develop` par la PR #89 au commit `ed03cc4…` ; **455/455 tests**, recette Google isolée concluante pour le périmètre exécuté ; ACCESS-002 devient le prérequis transverse avant le cadrage d’INSCRIPTIONS-011 |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010`, `INSCRIPTIONS-010-RECETTE` | Quatrième incrément INSCRIPTIONS-010 clôturé et fusionné dans `develop` par la PR #89 au commit `ed03cc4…` ; **455/455 tests**, recette Google isolée concluante ; prérequis ACCESS-002 satisfait par P10, cadrage d’INSCRIPTIONS-011 non engagé |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -287,11 +291,11 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P6, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE | Six lots ACCESS validés ; publication Git et déploiement V1.4.0 clôturés ; AUDIT de production, amorçage ACCESS et validation des comptes encore requis |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; deux gestionnaires actifs, AUDIT privé conforme et P10 clôturé sans retour arrière |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010, INSCRIPTIONS-010-RECETTE | Quatrième incrément INSCRIPTIONS-010 clôturé et intégré dans `develop` par la PR #89 ; **455/455**, recette Google isolée concluante pour le périmètre exécuté ; ACCESS-002 est le prérequis transverse avant INSCRIPTIONS-011 |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010, INSCRIPTIONS-010-RECETTE | Quatrième incrément INSCRIPTIONS-010 clôturé et intégré dans `develop` par la PR #89 ; **455/455**, recette Google isolée concluante ; prérequis ACCESS-002 satisfait, INSCRIPTIONS-011 à cadrer séparément |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -312,6 +316,17 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.47 | 2026-08-26 | Alignement postérieur de P7 1.0.1 : P8 à P10 clôturés, support AUDIT privé stable à cinq preuves et production V1.4.0 confirmée sans retour arrière |
+| 1.3.46 | 2026-08-26 | Référencement de P10 1.0.0 : précontrôle final conforme, neuf déploiements confirmés, `wgNc37` unique en version 54, AUDIT privé inchangé à cinq preuves, production V1.4.0 confirmée et aucun retour arrière autorisé |
+| 1.3.45 | 2026-08-26 | Référencement de P9 1.0.0 : deuxième gestionnaire ajouté, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte et support privé à cinq preuves conformes ; P10 non autorisé |
+| 1.3.44 | 2026-08-26 | P8 clôturé : registre `access/1.2` amorcé pour le premier gestionnaire, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves et déploiement public toujours en version 54 ; P9 non autorisé |
+| 1.3.43 | 2026-08-26 | Référencement d’ACCESS-002-PRODUCTION-P8 0.1.0 : P8-A et P8-B clôturés sans écriture, registre initial absent, premier gestionnaire confirmé, prévisualisation minimale et support AUDIT toujours à une preuve ; P8-C non autorisé |
+| 1.3.42 | 2026-08-25 | P7-F et P7 clôturés : relecture directe d’une preuve unique, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; AUDIT activé, P8 non autorisé |
+| 1.3.41 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, `businessOperation: false`, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
+| 1.3.40 | 2026-08-25 | P7-D clôturé : précontrôle réussi pour `6x2ZeH` et `GyeQH4`, support privé vide, permissions compatibles, acteur technique présent et `writePerformed: false` ; P7-E non autorisé |
+| 1.3.39 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement pour le projet `6x2ZeH` et le support `GyeQH4`, avec rétention 1 095 jours et schéma `aks-audit/1.0` ; aucune écriture d’audit, fonction temporaire supprimée, P7-D non autorisé |
+| 1.3.38 | 2026-08-25 | P7-B clôturé : support AUDIT privé créé et relu conforme sur l’onglet, les seize en-têtes, l’absence de lignes, les permissions et le fuseau `Europe/Paris` ; aucune configuration Apps Script ni preuve, P7-C non autorisé |
+| 1.3.37 | 2026-08-25 | Référencement d’ACCESS-002-PRODUCTION-P7 0.1.0 : P7-A clôturé en lecture seule, aucun support exact accessible identifié et précontrôle fermé sur la configuration indisponible ; aucune ressource ou preuve créée, P7-B non autorisé |
 | 1.3.36 | 2026-08-24 | P6 clôturé : déploiement public existant passé en version 54 avec identifiant et URL préservés ; Questionnaire public, portail, Paramétrage et Journaux vérifiés sans mutation ; P7 devient le prochain jalon |
 | 1.3.35 | 2026-08-24 | P6-F clôturé : version Apps Script 54 créée puis relue à 261/261 sans différence ; déploiement public maintenu en version 53, P6-G non autorisé |
 | 1.3.34 | 2026-08-24 | P6-E clôturé : 261 fichiers poussés vers le HEAD de production, relus à 261/261 et comparés sans différence sous PowerShell 5.1 ; déploiement public maintenu en version 53, P6-F non autorisé |

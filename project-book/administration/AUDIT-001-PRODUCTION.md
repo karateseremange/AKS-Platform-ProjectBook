@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 0.2.0 |
-| **Statut** | P1 implémenté et validé en recette sur `develop` — opération réelle interdite |
+| **Version** | 1.0.4 |
+| **Statut** | Activé et confirmé en production — support privé stable à cinq preuves |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-21 |
-| **Version cible** | À confirmer après vérification de `main` et de la production |
+| **Dernière mise à jour** | 2026-08-26 |
+| **Version cible** | AKS Platform V1.4.0 — Apps Script version 54 |
 
 ---
 
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle multi-environnement est intégré dans `develop`, mais aucune ressource ni configuration de production n’existe encore. Une simple modification de propriétés ne suffit pas : les contrôles du projet, du support, du schéma, des permissions et de l’identité technique restent obligatoires.
+Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production. P8-C a ajouté les deux preuves corrélées attendues pour l’amorçage ACCESS, puis P8-D a confirmé en lecture seule un support privé contenant exactement trois preuves. P9-C a ajouté les deux preuves corrélées de l’ajout du deuxième gestionnaire, puis la vérification finale a confirmé exactement cinq preuves.
 
 ## 2. Principes permanents
 
@@ -158,6 +158,84 @@ La tête `a620b390` a été synchronisée dans l’environnement Apps Script de 
 
 Aucun classeur, paramètre, compte, registre, déploiement ou test réel de production n’a été créé ou modifié. P1 est donc intégré et validé en recette, mais non activé en production.
 
+## 3.2 État du précontrôle P7-A
+
+Le protocole détaillé est consigné dans [ACCESS-002-PRODUCTION-P7](ACCESS-002-PRODUCTION-P7.md).
+
+Le 25 août 2026, les recherches en lecture seule n’ont identifié aucun classeur portant exactement le titre `AKS Audit PRODUCTION` ni dossier de production exact dans le Drive accessible. Le classeur privé `AKS Audit RECETTE` reste distinct et n’est pas réutilisé.
+
+Dans le projet Apps Script de production suffixé `6x2ZeH`, `AKS_preflightAudit001Production()` a atteint le contrôle de configuration puis a refusé la suite avec `Configuration d'audit indisponible.` au premier paramètre requis, `audit.environment`. Ce résultat confirme l’échec fermé avant support conforme.
+
+P7-A n’a créé ni ressource, ni propriété, ni onglet, ni en-tête, ni sauvegarde, ni preuve. Le test contrôlé d’écriture/relecture n’a pas été exécuté. P7-B, consacré au support privé de production, exige une autorisation distincte.
+
+## 3.3 État du support P7-B
+
+Le dossier privé `AKS Platform PRODUCTION` et le classeur Google Sheets natif privé `AKS Audit PRODUCTION` ont été créés dans le Drive accessible. La relecture confirme un seul onglet `AKS_Audit`, les seize en-têtes exacts dans l’ordre contractuel, aucune ligne d’audit et le fuseau `Europe/Paris`.
+
+Le dossier et le classeur sont non partagés. Aucun support de recette n’a été réutilisé. L’écart de fuseau attribué à l’import a été corrigé de façon ciblée avant clôture.
+
+Aucun identifiant Drive complet n’est versionné. Aucune propriété Apps Script, configuration AUDIT ou preuve d’audit n’a été créée. P7-C exige une autorisation distincte.
+
+## 3.4 État de la configuration P7-C
+
+Les cinq paramètres techniques non administrables ont été installés dans les propriétés du projet de production et relus exactement : environnement `PRODUCTION`, projet suffixé `6x2ZeH`, classeur suffixé `GyeQH4`, conservation `1095` jours et schéma `aks-audit/1.0`.
+
+Le résultat confirme `parameterCount: 5`, `exactReadback: true` et `auditWritePerformed: false`. La fonction temporaire a ensuite été supprimée et le projet enregistré. Aucun identifiant complet n’est versionné et le déploiement public version 54 demeure inchangé.
+
+Cette étape ne prouvait pas encore l’accessibilité, les permissions ni l’ensemble du contrat AUDIT, contrôlés séparément en P7-D.
+
+## 3.5 État du précontrôle P7-D
+
+Le 25 août 2026, `AKS_preflightAudit001Production()` a réussi dans le projet de production suffixé `6x2ZeH`. Le résultat confirme `ok: true`, l’environnement `PRODUCTION`, le support suffixé `GyeQH4`, le schéma `aks-audit/1.0`, la conservation de 1 095 jours et `writePerformed: false`.
+
+Le support `AKS Audit PRODUCTION` reste vide avec `rowCount: 0`. Les permissions relues sont disponibles et privées : `sharingAccess: "PRIVATE"`, `sharingPermission: "NONE"`, propriétaire présent, aucun éditeur additionnel et acteur technique présent.
+
+Aucune preuve d’audit n’a été créée pendant P7-D.
+
+## 3.6 État de la preuve contrôlée P7-E
+
+Le 25 août 2026 à 22:27, une exécution unique et explicitement autorisée a créé la preuve technique `AUDIT_SUPPORT_TEST`, puis l’a relue avec sa corrélation exacte. Le résultat confirme `phase: "WRITE_READ_VERIFIED"`, l’environnement `PRODUCTION`, `controlledProof: true` et `businessOperation: false`.
+
+Les identifiants complets restent hors de Git. Les suffixes minimisés sont `ac6e57` pour la preuve et `895d54` pour la corrélation. Le fichier temporaire d’appel a été supprimé et le projet Apps Script enregistré.
+
+Cette preuve ne constitue aucune opération métier ni aucun amorçage ACCESS.
+
+## 3.7 État de la vérification finale P7-F
+
+Le 25 août 2026, la relecture directe du classeur a confirmé les seize en-têtes contractuels et une unique ligne `AUDIT_SUPPORT_TEST`, avec environnement `PRODUCTION`, résultat `REUSSI`, métadonnées `attemptCount: 1` et `status: "CONFIRMEE"`, ainsi que les suffixes `ac6e57` et `895d54`.
+
+Le précontrôle final sans écriture confirme `rowCount: 1`, `writePerformed: false`, les suffixes `6x2ZeH` et `GyeQH4`, le schéma `aks-audit/1.0`, la conservation de 1 095 jours et les permissions privées conformes. Les résultats sont concordants.
+
+Les preuves minimisées sont sauvegardées dans le Project Book. P7 et l’activation technique d’AUDIT-001 en production sont clôturés.
+
+## 3.8 État de la préparation ACCESS P8-A et P8-B
+
+Le 26 août 2026, l’inventaire ACCESS P8-A puis la prévisualisation serveur P8-B ont été exécutés avec `writePerformed: false` et `auditWritePerformed: false`. Les fonctions temporaires ont été supprimées après chaque contrôle.
+
+La relecture du support confirme qu’il contient toujours exactement l’unique preuve technique P7-E ; son état et son horodatage de modification sont inchangés. Aucun amorçage, aucune propriété ACCESS et aucune preuve AUDIT supplémentaire n’ont été créés.
+
+P8-C a ensuite été autorisé séparément et exécuté une seule fois.
+
+## 3.9 État des preuves ACCESS P8-C et vérification P8-D
+
+La mutation `ACCESS_REGISTRY_UPDATE` a produit exactement deux preuves persistantes de type `ADMIN`, dans l’environnement `PRODUCTION`, avec les résultats successifs `INTENTION` puis `REUSSI`. Elles partagent la corrélation suffixée `4d3bb3`.
+
+Les métadonnées relues confirment notamment la révision initiale suffixée `yj2w2m`, la révision finale suffixée `nshtnj`, un compte modifié, le rôle `ADMINISTRATEUR`, une affectation ajoutée, l’opération `ACCESS_BOOTSTRAP`, `selfModification: true` et `restored: false`.
+
+P8-D a relu les seize en-têtes et exactement trois preuves : la preuve technique P7-E, l’intention P8-C et la réussite P8-C. Aucune preuve `ECHEC` ou `REFUSE` n’existe. Le support demeure privé, non partagé, avec son propriétaire unique. Sa dernière modification correspond à la preuve finale P8-C ; les contrôles P8-D n’ont ajouté aucune ligne.
+
+## 3.10 Preuves ACCESS P9-C et vérification finale
+
+P9-C a produit deux nouvelles preuves `ACCESS_REGISTRY_UPDATE`, `INTENTION` puis `REUSSI`, corrélées par le suffixe `c9e6d7`. Les métadonnées confirment le passage de `nshtnj` à `dlkpc9` et le compte modifié `aserridj@gmail.com`.
+
+La relecture indépendante finale confirme les seize en-têtes, exactement cinq preuves et aucun `ECHEC` ou `REFUSE`. Le support demeure privé et les contrôles fonctionnels n’ont ajouté aucune ligne.
+
+## 3.11 Précontrôle P10 et confirmation finale
+
+P10-A a relu le support directement après la clôture documentaire de P9. Il demeure privé, limité à son propriétaire, avec les seize en-têtes exacts et cinq preuves : une preuve technique P7-E, deux preuves P8-C et deux preuves P9-C. Aucun `ECHEC` ni `REFUSE` n’est présent et aucune ligne supplémentaire n’a été créée.
+
+Cette stabilité, rapprochée du déploiement public `wgNc37` toujours en version 54, a permis au Product Owner de confirmer P10-B et l’état final de production. Aucun retour arrière ni aucune écriture AUDIT supplémentaire n’ont été autorisés.
+
 ## 4. Comportement avant configuration
 
 Le nouveau code peut être déployé avant la configuration d’AUDIT et l’amorçage d’ACCESS sans ouvrir de droit :
@@ -184,7 +262,7 @@ Avant toute publication réelle, une opération sans mutation doit identifier et
 - la référence actuelle de `main` ;
 - la configuration nécessaire au retour arrière.
 
-Cette preuve conditionne la confirmation de la version cible. `V1.4.0` reste une proposition tant que l’état réel de `main` et de la production n’est pas rapproché.
+Cette preuve conditionnait la confirmation de la version cible. Le rapprochement a été réalisé et P10 a confirmé l’état final de `V1.4.0` en production.
 
 ## 6. Deux niveaux d’autorisation
 
@@ -248,5 +326,15 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.4 | 2026-08-26 | P10 clôturé : support privé relu inchangé à cinq preuves et seize en-têtes, aucun `ECHEC` ni `REFUSE`, aucune nouvelle écriture AUDIT et production V1.4.0 confirmée |
+| 1.0.3 | 2026-08-26 | P9-C clôturé : preuves corrélées par `c9e6d7`, révision finale `dlkpc9`, support privé à cinq preuves, aucune preuve d’échec ou de refus |
+| 1.0.2 | 2026-08-26 | P8-C et P8-D clôturés : preuves ACCESS `INTENTION` et `REUSSI` corrélées par `4d3bb3`, révision finale `nshtnj`, support privé à exactement trois preuves, aucune preuve d’échec ou de refus et aucune écriture pendant P8-D |
+| 1.0.1 | 2026-08-26 | P8-A et P8-B exécutés sans écriture ACCESS ni AUDIT ; support toujours limité à l’unique preuve P7-E ; contrat `INTENTION` puis `REUSSI` documenté pour P8-C, qui reste non autorisé |
+| 1.0.0 | 2026-08-25 | P7-F et activation AUDIT clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; résultats minimisés sauvegardés, P8 non autorisé |
+| 0.7.0 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, `businessOperation: false`, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
+| 0.6.0 | 2026-08-25 | P7-D clôturé : précontrôle de production réussi, support privé vide, permissions compatibles et `writePerformed: false` ; aucune preuve créée, P7-E non autorisé |
+| 0.5.0 | 2026-08-25 | P7-C clôturé : cinq paramètres techniques installés et relus exactement, sans écriture d’audit ; fichier temporaire supprimé et P7-D non autorisé |
+| 0.4.0 | 2026-08-25 | P7-B clôturé : support privé créé et relu conforme sur le titre, l’onglet, les seize en-têtes, l’absence de lignes, les permissions et le fuseau `Europe/Paris` ; configuration absente et P7-C non autorisé |
+| 0.3.0 | 2026-08-25 | P7-A clôturé en lecture seule : aucun support exact accessible identifié et précontrôle arrêté de façon fermée sur `audit.environment` indisponible ; aucune ressource, configuration ou preuve créée, P7-B non autorisé |
 | 0.2.0 | 2026-08-21 | P1 intégré par la PR applicative #125 au commit `ab52dc6` ; validations de recette **62/62** et **660/660**, contrôles production non exécutés et aucune ressource réelle modifiée |
 | 0.1.0 | 2026-08-20 | P1.1 à P1.12 consolidés et validés avec séparation précontrôle/écriture, fermeture avant configuration, inventaire préalable, retour arrière conservatoire, rétention de 1 095 jours et double niveau d’autorisation |
