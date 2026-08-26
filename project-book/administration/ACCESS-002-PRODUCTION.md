@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.12 |
-| **Statut** | P6 et P7 clôturés — P8-A et P8-B clôturés ; P8-C non autorisé |
+| **Version** | 1.2.13 |
+| **Statut** | P6 à P8 clôturés — premier gestionnaire ACCESS actif ; P9 non autorisé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -131,7 +131,7 @@ Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) 
 - 9 déploiements avant et après, aucun identifiant ajouté ou supprimé ;
 - Questionnaire santé public, portail V1.4.0, Paramétrage et Journaux vérifiés sans mutation.
 
-P6 est clôturé. La version 53 demeure le point de retour arrière. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C, le précontrôle P7-D validé sans écriture, la preuve contrôlée P7-E créée puis relue et la vérification finale P7-F concordante. P7 est clôturé ; l’amorçage ACCESS et l’ouverture du portail à d’autres comptes relèvent de P8 et restent non engagés.
+P6 est clôturé. La version 53 demeure le point de retour arrière historique. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C, le précontrôle P7-D validé sans écriture, la preuve contrôlée P7-E créée puis relue et la vérification finale P7-F concordante. P7 est clôturé. P8 a ensuite amorcé le premier gestionnaire ACCESS et vérifié son droit effectif ; l’ouverture fonctionnelle à d’autres comptes relève de P9 et reste non engagée.
 
 ### P7 — Ressources de production
 
@@ -155,19 +155,19 @@ P7-E est clôturé : une exécution unique a créé puis relu exactement une pre
 
 P7-F est clôturé : la relecture directe confirme une preuve unique `AUDIT_SUPPORT_TEST` et le précontrôle final confirme `rowCount: 1`, `writePerformed: false` et des permissions privées conformes. Les résultats Drive et Apps Script concordent, et les preuves minimisées sont sauvegardées dans le Project Book.
 
-P7 est clôturé et AUDIT-001 est techniquement actif en production. Cette activation ne constitue aucun amorçage ACCESS. P8-A et P8-B sont clôturés sans écriture ; P8-C reste non autorisé. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
+P7 est clôturé et AUDIT-001 est techniquement actif en production. P8-A à P8-D sont également clôturés : le premier gestionnaire ACCESS est amorcé et vérifié. P9 reste non autorisé. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
 
 ### P8 — Amorçage minimal du premier gestionnaire
 
 Le protocole détaillé et les résultats minimisés sont définis dans [ACCESS-002-PRODUCTION-P8](ACCESS-002-PRODUCTION-P8.md).
 
-P8-A est clôturé en lecture seule : l’identité courante est `karate.seremange@gmail.com`, le registre ACCESS est absent (`bootstrap: true`, `accountCount: 0`), le schéma attendu est `access/1.2` et le suffixe de révision initial est `yj2w2m`. Aucune écriture ACCESS ni AUDIT n’a été effectuée.
+P8-A et P8-B sont clôturés : l’état initial absent a été inventorié sans écriture sur la révision suffixée `yj2w2m`, puis le registre minimal `access/1.2` a été prévisualisé avec la révision suffixée `bdt4m9`.
 
-P8-B est clôturé en prévisualisation côté serveur : le registre minimal proposé contient un unique compte actif `karate.seremange@gmail.com`, affiché comme `Association Karaté Serémange`, avec le rôle `ADMINISTRATEUR`, une affectation globale active au module `ACCESS` pour la saison `*`, et la seule capacité supplémentaire `ACCESS_MANAGE`. Le suffixe de révision proposé est `bdt4m9`. Aucun `SUPER_ADMIN` ni droit métier implicite n’est créé.
+P8-C est clôturé après autorisation explicite d’une tentative unique. Le service ACCESS officiel a créé atomiquement un seul compte actif `karate.seremange@gmail.com`, affiché comme `Association Karaté Serémange`, avec le rôle `ADMINISTRATEUR`, une affectation globale ACCESS active et la seule capacité `ACCESS_MANAGE`. Après estampillage serveur, la révision persistée se termine par `nshtnj`.
 
-Les fichiers temporaires de P8-A et P8-B ont été supprimés et le projet Apps Script enregistré. La relecture du support AUDIT confirme qu’il contient toujours exactement l’unique preuve technique P7-E ; aucune nouvelle preuve n’a été écrite.
+Les preuves AUDIT `INTENTION` et `REUSSI` sont corrélées par le suffixe `4d3bb3`. Le support privé contient exactement trois preuves au total, sans `ECHEC` ni `REFUSE`.
 
-P8-C constitue l’amorçage réel. Il exige une autorisation distincte et explicite, une mutation atomique sous verrou, les preuves AUDIT corrélées `INTENTION` puis `REUSSI`, une relecture exacte et un retour à l’absence de registre en cas d’échec final. P8-C n’est pas autorisé.
+P8-D est clôturé sans écriture : registre, compte, rôle, capacité effective, preuves AUDIT, unicité du déploiement `wgNc37` et version 54 ont été relus conformes. Tous les fichiers temporaires P8 ont été supprimés. P8 est clôturé ; P9 reste non autorisé.
 
 ### P9 — Validation fonctionnelle en production
 
@@ -245,6 +245,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.13 | 2026-08-26 | P8-C et P8-D clôturés : premier gestionnaire ACCESS amorcé, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves, déploiement `wgNc37` toujours en version 54 ; P8 clôturé, P9 non autorisé |
 | 1.2.12 | 2026-08-26 | P8-A et P8-B clôturés sans écriture : registre initial absent, premier gestionnaire confirmé, prévisualisation minimale `access/1.2`, révisions `yj2w2m` puis `bdt4m9`, support AUDIT toujours à une preuve ; P8-C non autorisé |
 | 1.2.11 | 2026-08-25 | P7-F et P7 clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; AUDIT activé, P8 non autorisé |
 | 1.2.10 | 2026-08-25 | P7-E clôturé : preuve `AUDIT_SUPPORT_TEST` créée et relue exactement, non métier, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |

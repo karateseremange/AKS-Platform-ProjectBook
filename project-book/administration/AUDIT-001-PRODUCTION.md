@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 1.0.1 |
-| **Statut** | Activé en production — P8-A et P8-B sans nouvelle preuve ; P8-C non autorisé |
+| **Version** | 1.0.2 |
+| **Statut** | Activé en production — preuves P8-C conformes ; P8-D sans écriture |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production comme prérequis technique. Les opérations P8-A et P8-B ont été exécutées sans écriture ; le support contient toujours exactement la preuve P7-E. L’amorçage réel P8-C n’est pas autorisé.
+Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production. P8-C a ajouté les deux preuves corrélées attendues pour l’amorçage ACCESS, puis P8-D a confirmé en lecture seule un support privé contenant exactement trois preuves.
 
 ## 2. Principes permanents
 
@@ -214,7 +214,15 @@ Le 26 août 2026, l’inventaire ACCESS P8-A puis la prévisualisation serveur P
 
 La relecture du support confirme qu’il contient toujours exactement l’unique preuve technique P7-E ; son état et son horodatage de modification sont inchangés. Aucun amorçage, aucune propriété ACCESS et aucune preuve AUDIT supplémentaire n’ont été créés.
 
-Si P8-C est ultérieurement autorisé et réussit, la mutation ACCESS doit produire deux preuves corrélées et persistantes, `INTENTION` puis `REUSSI`, conformément au contrat transactionnel. P8-C reste non autorisé.
+P8-C a ensuite été autorisé séparément et exécuté une seule fois.
+
+## 3.9 État des preuves ACCESS P8-C et vérification P8-D
+
+La mutation `ACCESS_REGISTRY_UPDATE` a produit exactement deux preuves persistantes de type `ADMIN`, dans l’environnement `PRODUCTION`, avec les résultats successifs `INTENTION` puis `REUSSI`. Elles partagent la corrélation suffixée `4d3bb3`.
+
+Les métadonnées relues confirment notamment la révision initiale suffixée `yj2w2m`, la révision finale suffixée `nshtnj`, un compte modifié, le rôle `ADMINISTRATEUR`, une affectation ajoutée, l’opération `ACCESS_BOOTSTRAP`, `selfModification: true` et `restored: false`.
+
+P8-D a relu les seize en-têtes et exactement trois preuves : la preuve technique P7-E, l’intention P8-C et la réussite P8-C. Aucune preuve `ECHEC` ou `REFUSE` n’existe. Le support demeure privé, non partagé, avec son propriétaire unique. Sa dernière modification correspond à la preuve finale P8-C ; les contrôles P8-D n’ont ajouté aucune ligne.
 
 ## 4. Comportement avant configuration
 
@@ -306,6 +314,7 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.2 | 2026-08-26 | P8-C et P8-D clôturés : preuves ACCESS `INTENTION` et `REUSSI` corrélées par `4d3bb3`, révision finale `nshtnj`, support privé à exactement trois preuves, aucune preuve d’échec ou de refus et aucune écriture pendant P8-D |
 | 1.0.1 | 2026-08-26 | P8-A et P8-B exécutés sans écriture ACCESS ni AUDIT ; support toujours limité à l’unique preuve P7-E ; contrat `INTENTION` puis `REUSSI` documenté pour P8-C, qui reste non autorisé |
 | 1.0.0 | 2026-08-25 | P7-F et activation AUDIT clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; résultats minimisés sauvegardés, P8 non autorisé |
 | 0.7.0 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, `businessOperation: false`, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
