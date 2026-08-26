@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P9 |
 | **Titre** | Validation fonctionnelle et ajout du deuxième gestionnaire ACCESS en production |
-| **Version** | 1.0.0 |
-| **Statut** | Clôturé — P9-A à P9-E conformes ; P10 non autorisé |
+| **Version** | 1.0.1 |
+| **Statut** | Clôturé — P9-A à P9-E conformes ; P10 clôturé ultérieurement |
 | **Nature** | Procédure d’exploitation, de sécurité et de preuve |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -17,7 +17,7 @@
 
 Ce document consigne la validation fonctionnelle d’ACCESS en production et l’ajout contrôlé du deuxième gestionnaire. P9-B était sans écriture, P9-C autorisait une mutation unique avec audit corrélé, et les contrôles finaux étaient en lecture seule.
 
-La clôture de P9 n’autorise ni P10, ni une autre mutation ACCESS/AUDIT, ni une modification du déploiement, du code, de `main` ou des tags. Les identifiants et révisions complets restent hors de Git.
+Lors de sa clôture initiale, P9 n’autorisait ni P10, ni une autre mutation ACCESS/AUDIT, ni une modification du déploiement, du code, de `main` ou des tags. P10 a ensuite été confirmé séparément par le Product Owner, sans retour arrière ni nouvelle mutation de production. Les identifiants et révisions complets restent hors de Git.
 
 ## 2. État initial et compte validé
 
@@ -64,8 +64,9 @@ Les pages ACCESS utilisent une présentation plus minimale que le Portail AKS. C
 
 ## 8. Clôture et historique
 
-Tous les critères P9 sont satisfaits. P9 est clôturé. P10 — confirmation finale ou retour arrière — reste soumis à une autorisation explicite distincte.
+Tous les critères P9 sont satisfaits. P9 est clôturé. P10 a ensuite confirmé l’état final de production selon [ACCESS-002-PRODUCTION-P10](ACCESS-002-PRODUCTION-P10.md), sans autoriser de retour arrière.
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-26 | Alignement postérieur : P10 confirmé et clôturé sans retour arrière ni nouvelle mutation de production |
 | 1.0.0 | 2026-08-26 | P9 clôturé : deuxième gestionnaire ajouté, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte, refus fermé, Questionnaire public et support AUDIT à cinq preuves conformes ; P10 non autorisé |
