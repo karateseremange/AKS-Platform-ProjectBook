@@ -791,7 +791,7 @@ La première tête `395de24` de la [PR applicative #96](https://github.com/karat
 La réalisation est officiellement découpée en six incréments :
 
 1. `ACCESS-002-01` — socle d’administration : API serveur sécurisée, validation, modification atomique du registre, temporalité, normalisation et audit avant/après ;
-2. `ACCESS-002-02` — amorçage et migration : premier gestionnaire `aserridj@gmail.com`, recette réelle d’accès/refus/audit et maintien temporaire du filet historique ;
+2. `ACCESS-002-02` — amorçage et migration : le cadrage initial prévoyait `aserridj@gmail.com` comme premier gestionnaire pour la recette d’accès/refus/audit ; avant la production, le Product Owner a finalement retenu `karate.seremange@gmail.com` comme premier gestionnaire, car ce compte est propriétaire du Google Drive et du projet, puis `aserridj@gmail.com` comme deuxième gestionnaire ; maintien temporaire du filet historique ;
 3. `ACCESS-002-03` — administration des utilisateurs : liste, recherche, filtres, création, activation/désactivation et vue « Qui a accès à quoi ? » ;
 4. `ACCESS-002-04` — fiche et habilitations : multi-rôle, modules, cours, capacités, périodes de validité, synthèse et historique ;
 5. `ACCESS-002-05` — portail privé et « Mes accès » ;
@@ -959,7 +959,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.3.52 | 2026-08-26 | P9 clôturé : deuxième gestionnaire actif, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte, refus fermé et Questionnaire public conformes ; P10 non autorisé |
+| 1.3.52 | 2026-08-26 | P9 clôturé : deuxième gestionnaire actif, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte, refus fermé et Questionnaire public conformes ; évolution du choix initial documentée, `karate.seremange@gmail.com` étant retenu comme premier gestionnaire de production car propriétaire du Drive et du projet ; P10 non autorisé |
 | 1.3.51 | 2026-08-26 | P8-C et P8-D clôturés : premier gestionnaire ACCESS actif, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves et déploiement public toujours en version 54 ; P8 clôturé, P9 non autorisé |
 | 1.3.50 | 2026-08-26 | P8-A et P8-B clôturés sans écriture : registre initial absent, premier gestionnaire confirmé, prévisualisation minimale `access/1.2`, révisions `yj2w2m` puis `bdt4m9`, support AUDIT toujours à une preuve ; P8-C non autorisé |
 | 1.3.49 | 2026-08-25 | P7-F et P7 clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; AUDIT activé, P8 non autorisé |
