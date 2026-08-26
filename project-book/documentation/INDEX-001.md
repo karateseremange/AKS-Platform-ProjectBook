@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.46 |
+| Version | 1.3.47 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-26 |
@@ -135,7 +135,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-PRODUCTION-P4-G | Rapport final du Quality Gate ACCESS | Validé — Quality Gate P4 concluant | 0.2.0 | ACCESS-002-PRODUCTION-P4, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | Clôturé — snapshots publiés et tagués, têtes post-release distinguées | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P6 | Préparation et déploiement Apps Script contrôlé | Clôturé — déploiement version 54 et vérifications P6-H concluantes | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, ACCESS-002-PRODUCTION-P5, AUDIT-001-PRODUCTION, ROADMAP-001 |
-| ACCESS-002-PRODUCTION-P7 | Activation contrôlée d’AUDIT en production | Clôturé — P7-A à P7-F conformes | 1.0.0 | ACCESS-002-PRODUCTION, AUDIT-001-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
+| ACCESS-002-PRODUCTION-P7 | Activation contrôlée d’AUDIT en production | Clôturé — P7-A à P7-F conformes, P8 à P10 clôturés ultérieurement | 1.0.1 | ACCESS-002-PRODUCTION, AUDIT-001-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-PRODUCTION-P8 | Amorçage minimal du premier gestionnaire ACCESS | Clôturé — P8-A à P8-D conformes, P9 clôturé ultérieurement | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, ACCESS-002-PRODUCTION-P9, AUDIT-001-PRODUCTION, ACCESS-002-02, SECURITY-001 |
 | ACCESS-002-PRODUCTION-P9 | Validation fonctionnelle et deuxième gestionnaire ACCESS | Clôturé — P9-A à P9-E conformes, P10 clôturé ultérieurement | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P8, ACCESS-002-PRODUCTION-P10, AUDIT-001-PRODUCTION, SECURITY-001 |
 | ACCESS-002-PRODUCTION-P10 | Confirmation finale de production ou retour arrière | Clôturé — production V1.4.0 confirmée, aucun retour arrière autorisé | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P9, AUDIT-001-PRODUCTION, RELEASE-001, ROADMAP-001 |
@@ -316,6 +316,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.47 | 2026-08-26 | Alignement postérieur de P7 1.0.1 : P8 à P10 clôturés, support AUDIT privé stable à cinq preuves et production V1.4.0 confirmée sans retour arrière |
 | 1.3.46 | 2026-08-26 | Référencement de P10 1.0.0 : précontrôle final conforme, neuf déploiements confirmés, `wgNc37` unique en version 54, AUDIT privé inchangé à cinq preuves, production V1.4.0 confirmée et aucun retour arrière autorisé |
 | 1.3.45 | 2026-08-26 | Référencement de P9 1.0.0 : deuxième gestionnaire ajouté, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte et support privé à cinq preuves conformes ; P10 non autorisé |
 | 1.3.44 | 2026-08-26 | P8 clôturé : registre `access/1.2` amorcé pour le premier gestionnaire, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves et déploiement public toujours en version 54 ; P9 non autorisé |
