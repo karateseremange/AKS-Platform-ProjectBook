@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION-P8 |
 | **Titre** | Amorçage minimal du premier gestionnaire ACCESS en production |
-| **Version** | 1.0.0 |
-| **Statut** | Clôturé — P8-A à P8-D conformes ; P9 non autorisé |
+| **Version** | 1.0.1 |
+| **Statut** | Clôturé — P8-A à P8-D conformes ; P9 clôturé ultérieurement |
 | **Nature** | Procédure d’exploitation, de sécurité et de preuve |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -17,7 +17,7 @@
 
 Ce document encadre l’amorçage minimal du registre ACCESS de production après la clôture de P7 et l’activation technique d’AUDIT-001.
 
-P8-A et P8-B ont été exécutés strictement sans écriture. P8-C a ensuite été explicitement autorisé pour une tentative unique et a amorcé le registre minimal. P8-D a vérifié l’état final en lecture seule. La clôture de P8 ne constitue aucune autorisation d’ajouter un autre compte, de modifier le registre ou le déploiement, ni d’engager P9.
+P8-A et P8-B ont été exécutés strictement sans écriture. P8-C a ensuite été explicitement autorisé pour une tentative unique et a amorcé le registre minimal. P8-D a vérifié l’état final en lecture seule. À la date de clôture de P8, cette clôture ne constituait aucune autorisation d’ajouter un autre compte, de modifier le registre ou le déploiement, ni d’engager P9. P9 a ensuite été autorisé et clôturé séparément selon [ACCESS-002-PRODUCTION-P9](ACCESS-002-PRODUCTION-P9.md).
 
 Les identifiants complets, la révision complète du registre et les secrets restent hors de Git. Seuls les suffixes minimisés et les valeurs fonctionnelles autorisées sont documentés.
 
@@ -91,7 +91,7 @@ Toute suppression manuelle du registre, restauration, purge ou nouvelle mutation
 2. **P8-B — Prévisualisation — clôturé** : registre minimal validé, révision prévisualisée `bdt4m9`, aucune écriture.
 3. **P8-C — Amorçage réel — clôturé** : registre minimal créé atomiquement, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées.
 4. **P8-D — Vérification — clôturé** : registre, droits effectifs, support AUDIT privé à trois preuves et déploiement public version 54 relus conformes, sans écriture.
-5. **P9 — Validation fonctionnelle — non autorisé** : vérifier le portail, les refus et l’ajout contrôlé d’un autre compte.
+5. **P9 — Validation fonctionnelle — clôturé ultérieurement** : deuxième gestionnaire ajouté et vérifié selon [ACCESS-002-PRODUCTION-P9](ACCESS-002-PRODUCTION-P9.md).
 
 ## 7. Critères de clôture de P8
 
@@ -108,11 +108,12 @@ P8 ne peut être clôturé que si :
 - aucune capacité métier implicite n’est accordée ;
 - les preuves minimisées sont sauvegardées dans le Project Book.
 
-Tous ces critères sont satisfaits. P8 est clôturé ; P9 reste non autorisé.
+Tous ces critères sont satisfaits. P8 demeure clôturé. P9 a été clôturé ultérieurement dans un cycle distinct ; P10 reste non autorisé.
 
 ## 8. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-26 | Continuité mise à jour après la clôture séparée de P9 ; P10 maintenu non autorisé |
 | 1.0.0 | 2026-08-26 | P8-C et P8-D clôturés : registre `access/1.2` amorcé à un gestionnaire, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, relecture ACCESS/AUDIT conforme, déploiement public toujours en version 54, fichiers temporaires supprimés ; P8 clôturé, P9 non autorisé |
 | 0.1.0 | 2026-08-26 | P8-A et P8-B clôturés sans écriture : registre absent, zéro compte, révision `yj2w2m`, registre minimal prévisualisé pour `karate.seremange@gmail.com` et future révision `bdt4m9` ; P8-C non autorisé |
