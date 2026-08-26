@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.45 |
-| **Statut** | Implémenté et validé en recette sur `develop` — publication et amorçage de production en attente |
+| **Version** | 0.4.46 |
+| **Statut** | Publié, amorcé et validé en production — P10 clôturé |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-24 |
+| **Dernière mise à jour** | 2026-08-26 |
 | **Version du produit** | Post-V1.3.0 |
 
 ---
@@ -226,7 +226,7 @@ ACCESS-002 est réalisé en six incréments, chacun testable et documentable ind
 | Incrément | Objectif | Résultat attendu |
 |---|---|---|
 | **ACCESS-002-01** | Socle d’administration | API serveur sécurisée de lecture, validation et modification du registre ; normalisation, atomicité, contrôles, temporalité, protection du dernier gestionnaire et audit avant/après |
-| **ACCESS-002-02** | Amorçage et migration | `aserridj@gmail.com` devient le premier gestionnaire ACCESS-002 réel ; rôle `ADMINISTRATEUR` descriptif, `ACCESS_MANAGE` explicite ; recette d’accès/refus/audit concluante ; bootstrap historique limité au registre absent |
+| **ACCESS-002-02** | Amorçage et migration | Le cadrage initial visait `aserridj@gmail.com` comme premier gestionnaire ; la décision de production retient finalement `karate.seremange@gmail.com` en premier, car propriétaire du Drive et du projet, puis `aserridj@gmail.com` en deuxième ; rôle `ADMINISTRATEUR` descriptif, `ACCESS_MANAGE` explicite ; bootstrap historique limité au registre absent |
 | **ACCESS-002-03** | Administration des utilisateurs | Liste, recherche, filtres, création, activation/désactivation et vue « Qui a accès à quoi ? » |
 | **ACCESS-002-04** | Fiche et habilitations | UX validée, multi-rôle, modules, cours, capacités, dates, synthèse, commentaire, confirmation sensible et historique |
 | **ACCESS-002-05** | Portail privé et Mes accès | Navigation personnalisée selon les droits effectifs et consultation des propres accès |
@@ -314,7 +314,7 @@ ACCESS-002 est un préalable au prochain écran privé sensible d’AKS Inscript
 Les trois arbitrages ouverts lors de la version 0.2.0 sont désormais clos :
 
 1. **Fiche utilisateur et UX** — organisation en Identité/statut, Rôles, Accès modules, Synthèse et Historique validée ;
-2. **Initialisation / migration administrateur** — amorçage explicite de `aserridj@gmail.com`, sans `SUPER_ADMIN`, avec filet historique temporaire validé ;
+2. **Initialisation / migration administrateur** — le plan initial prévoyait `aserridj@gmail.com` ; la production a été amorcée avec `karate.seremange@gmail.com` comme premier gestionnaire, puis `aserridj@gmail.com` comme deuxième, sans `SUPER_ADMIN`, avec filet historique temporaire validé ;
 3. **Découpage ACCESS-002** — six incréments `ACCESS-002-01` à `ACCESS-002-06` validés.
 
 Le cadrage est terminé. Toute nouvelle évolution fonctionnelle doit être traitée comme changement de périmètre ou élément de backlog, et non comme une micro-décision préalable au développement.
@@ -325,7 +325,7 @@ Le cadrage est terminé. Toute nouvelle évolution fonctionnelle doit être trai
 
 ACCESS-002 est terminé lorsque les six incréments sont validés, le registre est administrable depuis l’interface privée, le portail est personnalisé selon les droits effectifs, les contrôles restent systématiquement côté serveur, le multi-rôle fonctionne sans héritage automatique, les modules utilisent leurs capacités propres, la protection du dernier gestionnaire est effective, la récupération est documentée et testée, les changements sont audités avant/après, la recette multi-profils est concluante, les évolutions différées restent au backlog et le Project Book reflète le comportement livré.
 
-La seule intégration dans `develop` et la réussite des recettes ne suffisent pas à satisfaire cette définition. La clôture produit exige également la publication sur `main`, un déploiement Apps Script de production identifié et réversible, un support AUDIT de production distinct, l’amorçage explicitement autorisé du premier gestionnaire ACCESS et une validation fonctionnelle en production. Tant que ces jalons ne sont pas acquis, le chantier reste **implémenté et validé en recette, mais non publié**.
+La seule intégration dans `develop` et la réussite des recettes ne suffisaient pas à satisfaire cette définition. La clôture produit exigeait également la publication sur `main`, un déploiement Apps Script de production identifié et réversible, un support AUDIT de production distinct, l’amorçage explicitement autorisé du premier gestionnaire ACCESS et une validation fonctionnelle en production. Ces jalons sont désormais tous acquis et confirmés par P10 : le chantier est **publié, amorcé et validé en production**.
 
 ---
 
@@ -371,9 +371,9 @@ Le lot 6 et ACCESS-002-06 sont clôturés. La [PR applicative #124](https://gith
 
 ## 22. Publication et mise en service restant à réaliser
 
-Les lots `ACCESS-002-01` à `ACCESS-002-06` sont intégrés dans `develop` et validés en recette. Ils n’ont pas été fusionnés dans `main`, aucun nouveau déploiement Apps Script de production n’a été créé ou mis à jour, aucun registre de production n’a été amorcé et aucun compte réel n’a reçu `ACCESS_MANAGE`.
+Les lots `ACCESS-002-01` à `ACCESS-002-06` sont intégrés et validés. La phase [ACCESS-002-PRODUCTION](ACCESS-002-PRODUCTION.md) est clôturée de P1 à P10 : V1.4.0 est publiée, le déploiement public `wgNc37` exécute la version 54, AUDIT est actif sur un support privé, le registre `access/1.2` contient deux gestionnaires actifs et la validation fonctionnelle multi-compte est concluante.
 
-La phase [ACCESS-002-PRODUCTION](ACCESS-002-PRODUCTION.md), validée par le Product Owner le 20 août 2026, est prioritaire avant `INSCRIPTIONS-011`. Elle couvre l’audit persistant de production, la candidate de publication, le Quality Gate, les fusions et tags contrôlés, le déploiement, l’amorçage minimal du premier gestionnaire, les contrôles fonctionnels et le retour arrière.
+Le Product Owner a confirmé l’état final de production le 26 août 2026 et n’a autorisé aucun retour arrière. ACCESS satisfait désormais le prérequis transverse qui suspendait `INSCRIPTIONS-011`; l’engagement de cet incrément reste toutefois soumis à une décision séparée.
 
 ---
 
@@ -381,6 +381,7 @@ La phase [ACCESS-002-PRODUCTION](ACCESS-002-PRODUCTION.md), validée par le Prod
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.46 | 2026-08-26 | P10 clôturé : production V1.4.0 confirmée, déploiement public `wgNc37` en version 54, AUDIT privé à cinq preuves, deux gestionnaires ACCESS actifs et aucun retour arrière autorisé ; prérequis ACCESS d’INSCRIPTIONS-011 satisfait |
 | 0.4.45 | 2026-08-24 | Quality Gate P4 poursuivi jusqu’à RC5 : ouverture de Comptes et accès sans AUDIT prématuré, erreur d’historique minimisée et affichée localement, campagnes 15/15 et 665/665, recette réversible restaurée exactement ; publication de production toujours non autorisée |
 | 0.4.44 | 2026-08-20 | Rectification de l’état produit : six lots intégrés et recettés sur `develop`, mais publication, audit de production, amorçage du premier gestionnaire et validation de production encore requis ; `ACCESS-002-PRODUCTION` devient prioritaire avant INSCRIPTIONS-011 |
 | 0.4.43 | 2026-08-20 | ACCESS-002-06 clôturé : PR #124 fusionnée au commit `a90ef30`, recette réversible restaurée exactement, AUDIT restauré, validations **10/10** et **651/651**, aucune récupération réelle ; maintien résiduel d’AKS.Admin.Access documenté |
