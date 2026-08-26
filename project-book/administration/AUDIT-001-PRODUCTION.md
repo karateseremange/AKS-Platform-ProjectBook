@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 1.0.0 |
-| **Statut** | Activé en production — P7 clôturé ; P8 non autorisé |
+| **Version** | 1.0.1 |
+| **Statut** | Activé en production — P8-A et P8-B sans nouvelle preuve ; P8-C non autorisé |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-25 |
+| **Dernière mise à jour** | 2026-08-26 |
 | **Version cible** | AKS Platform V1.4.0 — Apps Script version 54 |
 
 ---
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production comme prérequis technique ; aucun amorçage ACCESS P8 n’est autorisé.
+Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production comme prérequis technique. Les opérations P8-A et P8-B ont été exécutées sans écriture ; le support contient toujours exactement la preuve P7-E. L’amorçage réel P8-C n’est pas autorisé.
 
 ## 2. Principes permanents
 
@@ -206,7 +206,15 @@ Le 25 août 2026, la relecture directe du classeur a confirmé les seize en-têt
 
 Le précontrôle final sans écriture confirme `rowCount: 1`, `writePerformed: false`, les suffixes `6x2ZeH` et `GyeQH4`, le schéma `aks-audit/1.0`, la conservation de 1 095 jours et les permissions privées conformes. Les résultats sont concordants.
 
-Les preuves minimisées sont sauvegardées dans le Project Book. P7 et l’activation technique d’AUDIT-001 en production sont clôturés. P8 reste non autorisé.
+Les preuves minimisées sont sauvegardées dans le Project Book. P7 et l’activation technique d’AUDIT-001 en production sont clôturés.
+
+## 3.8 État de la préparation ACCESS P8-A et P8-B
+
+Le 26 août 2026, l’inventaire ACCESS P8-A puis la prévisualisation serveur P8-B ont été exécutés avec `writePerformed: false` et `auditWritePerformed: false`. Les fonctions temporaires ont été supprimées après chaque contrôle.
+
+La relecture du support confirme qu’il contient toujours exactement l’unique preuve technique P7-E ; son état et son horodatage de modification sont inchangés. Aucun amorçage, aucune propriété ACCESS et aucune preuve AUDIT supplémentaire n’ont été créés.
+
+Si P8-C est ultérieurement autorisé et réussit, la mutation ACCESS doit produire deux preuves corrélées et persistantes, `INTENTION` puis `REUSSI`, conformément au contrat transactionnel. P8-C reste non autorisé.
 
 ## 4. Comportement avant configuration
 
@@ -298,6 +306,7 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.1 | 2026-08-26 | P8-A et P8-B exécutés sans écriture ACCESS ni AUDIT ; support toujours limité à l’unique preuve P7-E ; contrat `INTENTION` puis `REUSSI` documenté pour P8-C, qui reste non autorisé |
 | 1.0.0 | 2026-08-25 | P7-F et activation AUDIT clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; résultats minimisés sauvegardés, P8 non autorisé |
 | 0.7.0 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, `businessOperation: false`, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
 | 0.6.0 | 2026-08-25 | P7-D clôturé : précontrôle de production réussi, support privé vide, permissions compatibles et `writePerformed: false` ; aucune preuve créée, P7-E non autorisé |
