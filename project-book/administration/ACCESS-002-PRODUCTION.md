@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-PRODUCTION |
 | **Titre** | Publication, déploiement et amorçage d’ACCESS en production |
-| **Version** | 1.2.13 |
-| **Statut** | P6 à P8 clôturés — premier gestionnaire ACCESS actif ; P9 non autorisé |
+| **Version** | 1.2.14 |
+| **Statut** | P6 à P9 clôturés — deux gestionnaires ACCESS actifs ; P10 non autorisé |
 | **Nature** | Spécification de publication et d’exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -131,7 +131,7 @@ Le protocole détaillé [ACCESS-002-PRODUCTION-P6](ACCESS-002-PRODUCTION-P6.md) 
 - 9 déploiements avant et après, aucun identifiant ajouté ou supprimé ;
 - Questionnaire santé public, portail V1.4.0, Paramétrage et Journaux vérifiés sans mutation.
 
-P6 est clôturé. La version 53 demeure le point de retour arrière historique. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C, le précontrôle P7-D validé sans écriture, la preuve contrôlée P7-E créée puis relue et la vérification finale P7-F concordante. P7 est clôturé. P8 a ensuite amorcé le premier gestionnaire ACCESS et vérifié son droit effectif ; l’ouverture fonctionnelle à d’autres comptes relève de P9 et reste non engagée.
+P6 est clôturé. La version 53 demeure le point de retour arrière historique. Le support AUDIT privé est préparé en P7-B, la configuration technique installée en P7-C, le précontrôle P7-D validé sans écriture, la preuve contrôlée P7-E créée puis relue et la vérification finale P7-F concordante. P7 est clôturé. P8 a ensuite amorcé le premier gestionnaire ACCESS et vérifié son droit effectif. P9 a ajouté puis vérifié un deuxième gestionnaire ; P10 reste non autorisé.
 
 ### P7 — Ressources de production
 
@@ -155,7 +155,7 @@ P7-E est clôturé : une exécution unique a créé puis relu exactement une pre
 
 P7-F est clôturé : la relecture directe confirme une preuve unique `AUDIT_SUPPORT_TEST` et le précontrôle final confirme `rowCount: 1`, `writePerformed: false` et des permissions privées conformes. Les résultats Drive et Apps Script concordent, et les preuves minimisées sont sauvegardées dans le Project Book.
 
-P7 est clôturé et AUDIT-001 est techniquement actif en production. P8-A à P8-D sont également clôturés : le premier gestionnaire ACCESS est amorcé et vérifié. P9 reste non autorisé. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
+P7 est clôturé et AUDIT-001 est techniquement actif en production. P8-A à P8-D sont également clôturés : le premier gestionnaire ACCESS est amorcé et vérifié. P9 est clôturé : le deuxième gestionnaire est ajouté et la validation fonctionnelle est concluante. P10 reste non autorisé. Les secrets et identifiants sensibles ne sont jamais consignés en clair dans Git.
 
 ### P8 — Amorçage minimal du premier gestionnaire
 
@@ -167,7 +167,7 @@ P8-C est clôturé après autorisation explicite d’une tentative unique. Le se
 
 Les preuves AUDIT `INTENTION` et `REUSSI` sont corrélées par le suffixe `4d3bb3`. Le support privé contient exactement trois preuves au total, sans `ECHEC` ni `REFUSE`.
 
-P8-D est clôturé sans écriture : registre, compte, rôle, capacité effective, preuves AUDIT, unicité du déploiement `wgNc37` et version 54 ont été relus conformes. Tous les fichiers temporaires P8 ont été supprimés. P8 est clôturé ; P9 reste non autorisé.
+P8-D est clôturé sans écriture : registre, compte, rôle, capacité effective, preuves AUDIT, unicité du déploiement `wgNc37` et version 54 ont été relus conformes. Tous les fichiers temporaires P8 ont été supprimés. P8 est clôturé. P9 a ensuite été conduit séparément selon [ACCESS-002-PRODUCTION-P9](ACCESS-002-PRODUCTION-P9.md).
 
 ### P9 — Validation fonctionnelle en production
 
@@ -180,6 +180,8 @@ Après amorçage, le Product Owner vérifie au minimum :
 - la preuve AUDIT correspondante ;
 - le refus d’un compte non habilité ;
 - la non-régression du Questionnaire santé public.
+
+P9 est clôturé selon [ACCESS-002-PRODUCTION-P9](ACCESS-002-PRODUCTION-P9.md). Le deuxième gestionnaire est actif, la révision se termine par `dlkpc9`, les preuves sont corrélées par `c9e6d7` et la validation multi-compte est conforme. P10 reste non autorisé.
 
 ### P10 — Confirmation finale ou retour arrière
 
@@ -245,6 +247,7 @@ Le terme « clôturé » ne doit plus être utilisé pour une fonctionnalité qu
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.2.14 | 2026-08-26 | P9 clôturé : deuxième gestionnaire ajouté, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte et support privé à cinq preuves conformes ; P10 non autorisé |
 | 1.2.13 | 2026-08-26 | P8-C et P8-D clôturés : premier gestionnaire ACCESS amorcé, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves, déploiement `wgNc37` toujours en version 54 ; P8 clôturé, P9 non autorisé |
 | 1.2.12 | 2026-08-26 | P8-A et P8-B clôturés sans écriture : registre initial absent, premier gestionnaire confirmé, prévisualisation minimale `access/1.2`, révisions `yj2w2m` puis `bdt4m9`, support AUDIT toujours à une preuve ; P8-C non autorisé |
 | 1.2.11 | 2026-08-25 | P7-F et P7 clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; AUDIT activé, P8 non autorisé |
