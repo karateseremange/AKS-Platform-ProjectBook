@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.43 |
+| Version | 1.3.44 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-26 |
@@ -128,7 +128,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Incrément technique intégré et validé en recette — mise en production non réalisée | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P8-A et P8-B clôturés sans écriture — P8-C non autorisé | 1.2.12 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P8, RELEASE-001, ROADMAP-001 |
+| ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P6 à P8 clôturés — premier gestionnaire ACCESS actif, P9 non autorisé | 1.2.13 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P8, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P4 | Quality Gate final de la candidate ACCESS | Clôturé — P4-G validé sur RC5 | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, RELEASE-001, ROADMAP-001 |
@@ -136,8 +136,8 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-PRODUCTION-P5 | Finalisation stable et publication Git contrôlée de V1.4.0 | Clôturé — snapshots publiés et tagués, têtes post-release distinguées | 1.0.1 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P4-G, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P6 | Préparation et déploiement Apps Script contrôlé | Clôturé — déploiement version 54 et vérifications P6-H concluantes | 0.4.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P3, ACCESS-002-PRODUCTION-P5, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P7 | Activation contrôlée d’AUDIT en production | Clôturé — P7-A à P7-F conformes | 1.0.0 | ACCESS-002-PRODUCTION, AUDIT-001-PRODUCTION, CONFIG-001, SECURITY-001, STORAGE-001 |
-| ACCESS-002-PRODUCTION-P8 | Amorçage minimal du premier gestionnaire ACCESS | P8-A et P8-B clôturés — inventaire et prévisualisation sans écriture, P8-C non autorisé | 0.1.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, AUDIT-001-PRODUCTION, ACCESS-002-02, SECURITY-001 |
-| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | Activé en production — P8-A et P8-B sans nouvelle preuve, P8-C non autorisé | 1.0.1 | AUDIT-001, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, ACCESS-002-PRODUCTION-P8, CONFIG-001, SECURITY-001, STORAGE-001 |
+| ACCESS-002-PRODUCTION-P8 | Amorçage minimal du premier gestionnaire ACCESS | Clôturé — P8-A à P8-D conformes, P9 non autorisé | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, AUDIT-001-PRODUCTION, ACCESS-002-02, SECURITY-001 |
+| AUDIT-001-PRODUCTION | Extension contrôlée d’AUDIT-001 à la production | Activé en production — preuves P8-C conformes, P8-D sans écriture | 1.0.2 | AUDIT-001, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P7, ACCESS-002-PRODUCTION-P8, CONFIG-001, SECURITY-001, STORAGE-001 |
 | ACCESS-002-06-RECOVERY | Procédure de récupération exceptionnelle | Validé par recette réversible — récupération réelle non exécutée | 1.0.0 | ACCESS-002-06, AUDIT-001, CONFIG-001 |
 | CONFIG-001 | Paramétrage centralisé | Validé | 1.2.3 | CORE-001, ADMIN-001 |
 | LOG-001 | Journalisation | Validé | 1.2.5 | CORE-001, AUDIT-001 |
@@ -289,7 +289,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P8, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | Six lots ACCESS validés ; publication Git, déploiement V1.4.0 et activation AUDIT P7 clôturés ; P8-A et P8-B clôturés sans écriture, amorçage réel P8-C encore requis et non autorisé |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P8, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | Six lots ACCESS validés ; publication Git, déploiement V1.4.0, activation AUDIT et amorçage ACCESS P8 clôturés ; premier gestionnaire actif, P9 non autorisé |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -314,6 +314,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.44 | 2026-08-26 | P8 clôturé : registre `access/1.2` amorcé pour le premier gestionnaire, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves et déploiement public toujours en version 54 ; P9 non autorisé |
 | 1.3.43 | 2026-08-26 | Référencement d’ACCESS-002-PRODUCTION-P8 0.1.0 : P8-A et P8-B clôturés sans écriture, registre initial absent, premier gestionnaire confirmé, prévisualisation minimale et support AUDIT toujours à une preuve ; P8-C non autorisé |
 | 1.3.42 | 2026-08-25 | P7-F et P7 clôturés : relecture directe d’une preuve unique, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; AUDIT activé, P8 non autorisé |
 | 1.3.41 | 2026-08-25 | P7-E clôturé : preuve contrôlée `AUDIT_SUPPORT_TEST` créée et relue exactement, `businessOperation: false`, suffixes `ac6e57` et `895d54` ; fichier temporaire supprimé, P7-F non autorisé |
