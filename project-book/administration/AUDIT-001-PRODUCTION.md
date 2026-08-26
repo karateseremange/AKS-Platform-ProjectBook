@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | AUDIT-001-PRODUCTION |
 | **Titre** | Extension contrôlée d’AUDIT-001 à la production |
-| **Version** | 1.0.2 |
-| **Statut** | Activé en production — preuves P8-C conformes ; P8-D sans écriture |
+| **Version** | 1.0.3 |
+| **Statut** | Activé en production — preuves P8-C et P9-C conformes ; support privé à cinq preuves |
 | **Nature** | Spécification fonctionnelle, technique, sécurité et exploitation |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -17,7 +17,7 @@
 
 Ce document définit l’extension du socle persistant AUDIT-001 à la production afin de permettre ultérieurement les mutations critiques d’ACCESS. Il complète ACCESS-002-PRODUCTION et ne constitue aucune autorisation d’agir sur une ressource, une propriété, une identité, une configuration ou un déploiement de production.
 
-Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production. P8-C a ajouté les deux preuves corrélées attendues pour l’amorçage ACCESS, puis P8-D a confirmé en lecture seule un support privé contenant exactement trois preuves.
+Le socle multi-environnement est intégré, le support privé de production est conforme, les cinq paramètres techniques sont installés, le précontrôle P7-D est concluant, la preuve contrôlée P7-E a été créée puis relue exactement et la vérification finale P7-F concorde entre Drive et Apps Script. AUDIT-001 est activé en production. P8-C a ajouté les deux preuves corrélées attendues pour l’amorçage ACCESS, puis P8-D a confirmé en lecture seule un support privé contenant exactement trois preuves. P9-C a ajouté les deux preuves corrélées de l’ajout du deuxième gestionnaire, puis la vérification finale a confirmé exactement cinq preuves.
 
 ## 2. Principes permanents
 
@@ -224,6 +224,12 @@ Les métadonnées relues confirment notamment la révision initiale suffixée `y
 
 P8-D a relu les seize en-têtes et exactement trois preuves : la preuve technique P7-E, l’intention P8-C et la réussite P8-C. Aucune preuve `ECHEC` ou `REFUSE` n’existe. Le support demeure privé, non partagé, avec son propriétaire unique. Sa dernière modification correspond à la preuve finale P8-C ; les contrôles P8-D n’ont ajouté aucune ligne.
 
+## 3.10 Preuves ACCESS P9-C et vérification finale
+
+P9-C a produit deux nouvelles preuves `ACCESS_REGISTRY_UPDATE`, `INTENTION` puis `REUSSI`, corrélées par le suffixe `c9e6d7`. Les métadonnées confirment le passage de `nshtnj` à `dlkpc9` et le compte modifié `aserridj@gmail.com`.
+
+La relecture indépendante finale confirme les seize en-têtes, exactement cinq preuves et aucun `ECHEC` ou `REFUSE`. Le support demeure privé et les contrôles fonctionnels n’ont ajouté aucune ligne.
+
 ## 4. Comportement avant configuration
 
 Le nouveau code peut être déployé avant la configuration d’AUDIT et l’amorçage d’ACCESS sans ouvrir de droit :
@@ -314,6 +320,7 @@ P1 est prêt pour la suite lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.0.3 | 2026-08-26 | P9-C clôturé : preuves corrélées par `c9e6d7`, révision finale `dlkpc9`, support privé à cinq preuves, aucune preuve d’échec ou de refus |
 | 1.0.2 | 2026-08-26 | P8-C et P8-D clôturés : preuves ACCESS `INTENTION` et `REUSSI` corrélées par `4d3bb3`, révision finale `nshtnj`, support privé à exactement trois preuves, aucune preuve d’échec ou de refus et aucune écriture pendant P8-D |
 | 1.0.1 | 2026-08-26 | P8-A et P8-B exécutés sans écriture ACCESS ni AUDIT ; support toujours limité à l’unique preuve P7-E ; contrat `INTENTION` puis `REUSSI` documenté pour P8-C, qui reste non autorisé |
 | 1.0.0 | 2026-08-25 | P7-F et activation AUDIT clôturés : preuve unique relue, précontrôle final `rowCount: 1`, `writePerformed: false` et permissions privées conformes ; résultats minimisés sauvegardés, P8 non autorisé |
