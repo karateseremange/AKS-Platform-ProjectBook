@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.47 |
+| Version | 1.3.48 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-26 |
@@ -76,7 +76,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | VISION-001 | Vision d'AKS Platform | Vision | Validé | 1.1.0 | Définit la finalité, les principes et les ambitions de la plateforme |
 | OBJECTIVES-001 | Objectifs stratégiques | Stratégie | Validé | 1.1.0 | Définit les objectifs stratégiques et les résultats attendus |
 | SCOPE-001 | Périmètre fonctionnel | Stratégie | Validé | 1.1.0 | Définit les éléments inclus, exclus et différés du périmètre produit |
-| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.3.53 | Définit l'ordre et les priorités d'évolution |
+| ROADMAP-001 | Feuille de route officielle | Stratégie | Validé | 1.3.54 | Définit l'ordre et les priorités d'évolution |
 | GOV-001 | Gouvernance produit | Stratégie | Validé | 1.1.0 | Définit les rôles, décisions et règles de pilotage |
 | ARCH-001 | Architecture fonctionnelle | Architecture | Validé | 1.2.0 | Définit l'organisation fonctionnelle générale |
 | CORE-001 | AKS Core | Architecture | Published | 1.2.0 | Définit le socle commun de la plateforme |
@@ -128,6 +128,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Intégré, publié et validé en production dans V1.4.0 | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-07 | Attribution des habilitations Configuration et Journaux | En réalisation — PR vers `develop` sans fusion | 0.1.0 | ACCESS-002, ACCESS-002-06, CONFIG-001, LOG-001, AUDIT-001 |
 | ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P1 à P10 clôturés — production V1.4.0 confirmée | 1.2.15 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
@@ -291,7 +292,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-06, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; deux gestionnaires actifs, AUDIT privé conforme et P10 clôturé sans retour arrière |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-07, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; P10 clôturé sans retour arrière ; correctif d’attribution Administration ACCESS-002-07 en revue sans production |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -316,6 +317,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.48 | 2026-08-26 | Référencement d’ACCESS-002-07 0.1.0 : exposition contrôlée du module ADMINISTRATION dans la fiche et le filtre, sans fusion ni production et sans engager INSCRIPTIONS-011 |
 | 1.3.47 | 2026-08-26 | Alignement postérieur de P7 1.0.1 : P8 à P10 clôturés, support AUDIT privé stable à cinq preuves et production V1.4.0 confirmée sans retour arrière |
 | 1.3.46 | 2026-08-26 | Référencement de P10 1.0.0 : précontrôle final conforme, neuf déploiements confirmés, `wgNc37` unique en version 54, AUDIT privé inchangé à cinq preuves, production V1.4.0 confirmée et aucun retour arrière autorisé |
 | 1.3.45 | 2026-08-26 | Référencement de P9 1.0.0 : deuxième gestionnaire ajouté, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte et support privé à cinq preuves conformes ; P10 non autorisé |
