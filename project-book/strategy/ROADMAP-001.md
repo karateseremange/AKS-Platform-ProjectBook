@@ -798,11 +798,11 @@ La réalisation est officiellement découpée en six incréments :
 4. `ACCESS-002-04` — fiche et habilitations : multi-rôle, modules, cours, capacités, périodes de validité, synthèse et historique ;
 5. `ACCESS-002-05` — portail privé et « Mes accès » ;
 6. `ACCESS-002-06` — migration définitive des modules et retrait contrôlé de l’ancien mécanisme ;
-7. `ACCESS-002-07` — correctif d’interface pour attribuer Configuration et Journaux depuis la fiche utilisateur, validé en recette à **15/15** et **665/665**, en revue avant fusion.
+7. `ACCESS-002-07` — correctif d’interface pour attribuer Configuration et Journaux depuis la fiche utilisateur, validé en recette à **15/15** et **665/665**, recette restaurée exactement, en revue avant fusion.
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`. `ACCESS-002-07` a ensuite été synchronisé exclusivement sur la recette suffixée `eIRxs4` au commit `c2efda48`, relu à 261/261 sans différence et validé à **15/15** puis **665/665**, sans mutation de production.
+`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`. `ACCESS-002-07` a ensuite été synchronisé exclusivement sur la recette suffixée `eIRxs4` au commit `c2efda48`, relu à 261/261 sans différence et validé à **15/15** puis **665/665**, sans mutation de production. La recette a ensuite été restaurée depuis la sauvegarde préalable et relue à 261/261 sans différence ; l’inventaire du projet restauré compte sept déploiements et ne contient pas `wgNc37`.
 
 Le cadrage en lecture seule d’INSCRIPTIONS-011 a été explicitement autorisé par le Product Owner le 26 août 2026, uniquement pour l’analyse et la préparation d’une proposition. ACCESS-002-07 reste distinct de ce cadrage, ne l’élargit pas et n’autorise ni implémentation, ni modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
 
@@ -951,7 +951,7 @@ ACCESS-002-05 — Portail privé et Mes accès
         ↓
 ACCESS-002-06 — clôturé, six lots intégrés
         ↓
-ACCESS-002-07 — validé en recette, en revue avant fusion
+ACCESS-002-07 — validé, recette restaurée, en revue avant fusion
         ↓
 INSCRIPTIONS-011 — cadrage en lecture seule autorisé, proposition à préparer
 ```
@@ -964,7 +964,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
-| 1.3.55 | 2026-08-27 | ACCESS-002-07 validé en recette isolée sur `c2efda48` : relecture 261/261 sans différence, campagnes **15/15** et **665/665** sans échec ; PR en revue, sans fusion ni production |
+| 1.3.55 | 2026-08-27 | ACCESS-002-07 validé en recette isolée sur `c2efda48` : relecture 261/261 sans différence, campagnes **15/15** et **665/665** sans échec, puis restauration de recette relue à 261/261 sans différence ; PR en revue, sans fusion ni production |
 | 1.3.54 | 2026-08-26 | ACCESS-002-07 autorisé : correctif d’interface limité à l’attribution du module ADMINISTRATION, branches et PR vers `develop` sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi et sans implémentation engagée |
 | 1.3.53 | 2026-08-26 | P10 clôturé : production V1.4.0 confirmée, neuf déploiements Apps Script vérifiés, `wgNc37` unique en version 54, AUDIT privé stable à cinq preuves et aucun retour arrière autorisé ; prérequis ACCESS-002 d’INSCRIPTIONS-011 satisfait sans engager son cadrage |
 | 1.3.52 | 2026-08-26 | P9 clôturé : deuxième gestionnaire actif, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte, refus fermé et Questionnaire public conformes ; évolution du choix initial documentée, `karate.seremange@gmail.com` étant retenu comme premier gestionnaire de production car propriétaire du Drive et du projet ; P10 non autorisé |
