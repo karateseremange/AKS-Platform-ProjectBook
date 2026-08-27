@@ -5,7 +5,7 @@
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
 | **Version** | 0.1.0 |
-| **Statut** | En réalisation — branches dédiées, PR en préparation |
+| **Statut** | En revue — PR applicative #135 et Project Book #194 ouvertes vers `develop` |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -167,8 +167,8 @@ validation fonctionnelle, vérification AUDIT et conclusion documentaire.
 
 - branche applicative : `agent/access-002-07-administration-ui` ;
 - branche Project Book : `docs/access-002-07-administration-ui` ;
-- PR applicative : à ouvrir ;
-- PR Project Book : à ouvrir.
+- PR applicative : [AKS-Platform #135](https://github.com/karateseremange/AKS-Platform/pull/135) ;
+- PR Project Book : [AKS-Platform-ProjectBook #194](https://github.com/karateseremange/AKS-Platform-ProjectBook/pull/194).
 
 ## 10. Critères de clôture
 
@@ -187,4 +187,4 @@ publication et de déploiement séparé.
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR vers `develop` sans fusion, production inchangée et INSCRIPTIONS-011 non engagé |
+| 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR applicative #135 et Project Book #194 ouvertes vers `develop` sans fusion, production inchangée et INSCRIPTIONS-011 non engagé |
