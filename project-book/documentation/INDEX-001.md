@@ -6,11 +6,11 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.50 |
+| Version | 1.3.51 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-27 |
-| Version du produit | V1.4.0 |
+| Version du produit | V1.4.1 en préparation |
 
 ---
 
@@ -128,7 +128,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Intégré, publié et validé en production dans V1.4.0 | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-07 | Attribution des habilitations Configuration et Journaux | En réalisation — PR vers `develop` sans fusion | 0.1.0 | ACCESS-002, ACCESS-002-06, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-07 | Attribution des habilitations Configuration et Journaux | Intégré dans les deux `develop` — publication corrective V1.4.1 en préparation | 0.3.0 | ACCESS-002, ACCESS-002-06, CONFIG-001, LOG-001, AUDIT-001 |
 | ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P1 à P10 clôturés — production V1.4.0 confirmée | 1.2.15 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
@@ -292,7 +292,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-07, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; P10 clôturé sans retour arrière ; correctif ACCESS-002-07 intégré dans `develop` par la PR #135 au commit `6d7815a` après validation **15/15** et **665/665** et restauration exacte de la recette ; clôture documentaire en revue sans production |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-07, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; P10 clôturé sans retour arrière ; correctif ACCESS-002-07 intégré dans les deux `develop` par les PR #135 et #194 après validation **15/15** et **665/665** et restauration exacte de la recette ; publication corrective V1.4.1 en préparation sans `main` ni production |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -317,6 +317,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.51 | 2026-08-27 | Préparation documentaire de V1.4.1 : ACCESS-002-07 intégré dans les deux `develop`, note corrective créée, métadonnées de publication cadrées ; aucune fusion vers `main`, aucun tag, aucun déploiement et aucune implémentation d’INSCRIPTIONS-011 |
 | 1.3.50 | 2026-08-27 | Référencement d’ACCESS-002-07 0.2.0 : PR applicative #135 fusionnée dans `develop` au commit `6d7815a`, PR Project Book #194 maintenue ouverte ; `main`, production et implémentation d’INSCRIPTIONS-011 inchangés |
 | 1.3.49 | 2026-08-27 | Référencement d’ACCESS-002-07 0.1.1 : candidate `c2efda48` synchronisée et relue à 261/261 sans différence, validations Apps Script **15/15** et **665/665** sans échec, puis recette restaurée et relue à 261/261 sans différence ; PR en revue, sans fusion ni production |
 | 1.3.48 | 2026-08-26 | Référencement d’ACCESS-002-07 0.1.0 : exposition contrôlée du module ADMINISTRATION dans la fiche et le filtre, sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi et sans implémentation engagée |
