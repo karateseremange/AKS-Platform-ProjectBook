@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.46 |
-| **Statut** | Publié, amorcé et validé en production — P10 clôturé |
+| **Version** | 0.4.49 |
+| **Statut** | Publié, amorcé et validé en production — correctif ACCESS-002-07 intégré dans `develop`, clôture documentaire en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-26 |
+| **Dernière mise à jour** | 2026-08-27 |
 | **Version du produit** | V1.4.0 |
 
 ---
@@ -377,10 +377,30 @@ Le Product Owner a confirmé l’état final de production le 26 août 2026 et n
 
 ---
 
-## 23. Historique
+## 23. Correctif post-production ACCESS-002-07
+
+La validation fonctionnelle de production a confirmé que le moteur
+`access/1.2`, Paramétrage, Journaux et le Portail utilisent correctement
+`CONFIG_READ`, `CONFIG_WRITE`, `CONFIG_RESET` et `LOG_READ`. La fiche
+« Gérer les habilitations » n’exposait toutefois pas le module
+`ADMINISTRATION`.
+
+Le Product Owner a validé le 26 août 2026 la réalisation
+d’[ACCESS-002-07](ACCESS-002-07.md) : ajout d’une cinquième carte
+« Configuration et journaux », du filtre `ADMINISTRATION`, de la portée
+globale et des tests structurels. La réalisation reste limitée aux branches et
+PR vers `develop` ; aucune fusion, publication, attribution réelle ou
+mutation de production n’est autorisée. Après correction de la portée globale lors de la sérialisation et maintien d’un alias de compatibilité pour la suite cumulative, le commit applicatif `c2efda48` a été synchronisé avec 261 fichiers sur la recette suffixée `eIRxs4`, relu à 261/261 sans différence, puis validé à **15/15** et **665/665**, sans échec. La recette a ensuite été restaurée et relue à 261/261 sans différence ; son inventaire de sept déploiements ne contient pas `wgNc37`. La PR applicative #135 a ensuite été fusionnée dans `develop` au commit [`6d7815a`](https://github.com/karateseremange/AKS-Platform/commit/6d7815a2f3e20256de4c55c361670c7fd3fdaddb) ; la PR Project Book #194 reste ouverte sans fusion. Le cadrage en lecture seule d’INSCRIPTIONS-011 a été autorisé séparément le 26 août 2026 ; ACCESS-002-07 ne l’élargit pas et n’autorise ni son implémentation, ni aucune modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
+
+---
+
+## 24. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.49 | 2026-08-27 | PR applicative ACCESS-002-07 #135 fusionnée dans `develop` au commit `6d7815a` après validation ciblée **15/15**, cumulative **665/665** et restauration exacte de la recette ; PR documentaire #194 en revue, sans `main` ni production |
+| 0.4.48 | 2026-08-27 | ACCESS-002-07 validé en recette isolée sur `c2efda48` : 261/261 fichiers relus sans différence, suite ciblée **15/15** et cumulative **665/665** sans échec, puis restauration de recette confirmée à 261/261 sans différence ; PR toujours sans fusion, `main` et production inchangés |
+| 0.4.47 | 2026-08-26 | ACCESS-002-07 autorisé : exposition de l’attribution Administration dans la fiche et le filtre, portée globale, tests et documentation sur branches dédiées ; PR sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi et sans implémentation engagée |
 | 0.4.46 | 2026-08-26 | P10 clôturé : production V1.4.0 confirmée, déploiement public `wgNc37` en version 54, AUDIT privé à cinq preuves, deux gestionnaires ACCESS actifs et aucun retour arrière autorisé ; prérequis ACCESS d’INSCRIPTIONS-011 satisfait |
 | 0.4.45 | 2026-08-24 | Quality Gate P4 poursuivi jusqu’à RC5 : ouverture de Comptes et accès sans AUDIT prématuré, erreur d’historique minimisée et affichée localement, campagnes 15/15 et 665/665, recette réversible restaurée exactement ; publication de production toujours non autorisée |
 | 0.4.44 | 2026-08-20 | Rectification de l’état produit : six lots intégrés et recettés sur `develop`, mais publication, audit de production, amorçage du premier gestionnaire et validation de production encore requis ; `ACCESS-002-PRODUCTION` devient prioritaire avant INSCRIPTIONS-011 |
