@@ -177,7 +177,7 @@ ACCESS-002-07 pourra être déclaré documentairement intégré lorsque :
 2. les corrections de revue resteront consignées ;
 3. les tests autorisés resteront référencés ;
 4. la fusion de la PR Project Book #194 vers `develop` aura été explicitement autorisée ;
-5. la documentation indiquera les deux commits de fusion réels.
+5. le commit applicatif réel restera indiqué dans la documentation et le commit documentaire restera traçable dans l’historique GitHub de la PR #194.
 
 Il ne pourra être déclaré publié ou actif en production qu’après un cycle de
 publication et de déploiement séparé.
