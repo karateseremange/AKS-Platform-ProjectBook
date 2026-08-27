@@ -181,8 +181,9 @@ PR #136 au commit `62c859a7`, puis dans le `develop` documentaire par la
 PR #195 au commit `0b428b76`. La PR applicative de publication #137 a ensuite
 été fusionnée dans `main` au commit `7e5125e7`. La PR Project Book de
 publication #197 a été fusionnée dans `main` au commit `5f9f6623`. La
-publication Git V1.4.1 est ainsi réalisée dans les deux dépôts ; les tags et
-le déploiement restent en attente.
+publication Git V1.4.1 est ainsi réalisée dans les deux dépôts. Les tags
+légers `v1.4.1` ont été créés et vérifiés sur `7e5125e7` pour l’application
+et `5f9f6623` pour le Project Book. Le déploiement reste en attente.
 La production reste sur V1.4.0, version Apps Script 54 du déploiement public
 `wgNc37`. L’implémentation d’INSCRIPTIONS-011 n’est pas engagée.
 

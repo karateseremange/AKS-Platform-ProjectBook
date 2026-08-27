@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.55 |
-| **Statut** | V1.4.0 en production — V1.4.1 publiée dans Git, tags et déploiement en attente |
+| **Version** | 0.4.56 |
+| **Statut** | V1.4.0 en production — V1.4.1 publiée et taguée dans Git, non déployée |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -390,7 +390,7 @@ d’[ACCESS-002-07](ACCESS-002-07.md) : ajout d’une cinquième carte
 « Configuration et journaux », du filtre `ADMINISTRATION`, de la portée
 globale et des tests structurels. La réalisation reste limitée aux branches et
 PR vers `develop` ; aucune fusion, publication, attribution réelle ou
-mutation de production n’est autorisée. Après correction de la portée globale lors de la sérialisation et maintien d’un alias de compatibilité pour la suite cumulative, le commit applicatif `c2efda48` a été synchronisé avec 261 fichiers sur la recette suffixée `eIRxs4`, relu à 261/261 sans différence, puis validé à **15/15** et **665/665**, sans échec. La recette a ensuite été restaurée et relue à 261/261 sans différence ; son inventaire de sept déploiements ne contient pas `wgNc37`. La PR applicative #135 a ensuite été fusionnée dans `develop` au commit [`6d7815a`](https://github.com/karateseremange/AKS-Platform/commit/6d7815a2f3e20256de4c55c361670c7fd3fdaddb) ; la PR Project Book #194 a été fusionnée dans le `develop` documentaire au commit `860d353`. La publication corrective V1.4.1 est préparée sur deux branches dédiées avec la version `1.4.1`, le build `20260827.1` et le nom « ACCESS et administration sécurisée — correctif d’attribution ». La candidate exacte `60cc727e` a été relue à 261/261 fichiers, validée à **8/8**, **15/15** et **665/665**, puis la recette a été restaurée à 261/261 sans différence. La PR applicative #136 a été fusionnée dans `develop` au commit `62c859a7` ; la PR documentaire #195 a été fusionnée dans `develop` au commit `0b428b76`. La PR applicative de publication #137 a ensuite été fusionnée dans `main` au commit `7e5125e7`. La PR Project Book #197 a ensuite été fusionnée dans `main` au commit `5f9f6623` ; les tags et la production restent inchangés. Le cadrage en lecture seule d’INSCRIPTIONS-011 a été autorisé séparément le 26 août 2026 ; ACCESS-002-07 ne l’élargit pas et n’autorise ni son implémentation, ni aucune modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
+mutation de production n’est autorisée. Après correction de la portée globale lors de la sérialisation et maintien d’un alias de compatibilité pour la suite cumulative, le commit applicatif `c2efda48` a été synchronisé avec 261 fichiers sur la recette suffixée `eIRxs4`, relu à 261/261 sans différence, puis validé à **15/15** et **665/665**, sans échec. La recette a ensuite été restaurée et relue à 261/261 sans différence ; son inventaire de sept déploiements ne contient pas `wgNc37`. La PR applicative #135 a ensuite été fusionnée dans `develop` au commit [`6d7815a`](https://github.com/karateseremange/AKS-Platform/commit/6d7815a2f3e20256de4c55c361670c7fd3fdaddb) ; la PR Project Book #194 a été fusionnée dans le `develop` documentaire au commit `860d353`. La publication corrective V1.4.1 est préparée sur deux branches dédiées avec la version `1.4.1`, le build `20260827.1` et le nom « ACCESS et administration sécurisée — correctif d’attribution ». La candidate exacte `60cc727e` a été relue à 261/261 fichiers, validée à **8/8**, **15/15** et **665/665**, puis la recette a été restaurée à 261/261 sans différence. La PR applicative #136 a été fusionnée dans `develop` au commit `62c859a7` ; la PR documentaire #195 a été fusionnée dans `develop` au commit `0b428b76`. La PR applicative de publication #137 a ensuite été fusionnée dans `main` au commit `7e5125e7`. La PR Project Book #197 a ensuite été fusionnée dans `main` au commit `5f9f6623`. Les tags légers `v1.4.1` ont été créés et vérifiés sur `7e5125e7` pour l’application et `5f9f6623` pour le Project Book ; la production reste inchangée. Le cadrage en lecture seule d’INSCRIPTIONS-011 a été autorisé séparément le 26 août 2026 ; ACCESS-002-07 ne l’élargit pas et n’autorise ni son implémentation, ni aucune modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
 
 ---
 
@@ -398,6 +398,7 @@ mutation de production n’est autorisée. Après correction de la portée globa
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.56 | 2026-08-27 | Tags légers `v1.4.1` créés et vérifiés : application `7e5125e7`, Project Book `5f9f6623` ; production inchangée, INSCRIPTIONS-011 non engagé |
 | 0.4.55 | 2026-08-27 | PR Project Book de publication #197 fusionnée dans `main` au commit `5f9f6623` ; V1.4.1 publiée dans les deux dépôts, tags et production inchangés, INSCRIPTIONS-011 non engagé |
 | 0.4.54 | 2026-08-27 | PR applicative de publication #137 fusionnée dans `main` au commit `7e5125e7` ; PR Project Book #197 ouverte sans fusion, tag et production inchangés, INSCRIPTIONS-011 non engagé |
 | 0.4.53 | 2026-08-27 | PR Project Book #195 fusionnée dans `develop` au commit `0b428b76` ; V1.4.1 intégrée dans les deux `develop`, sans `main`, tag, production ni engagement d’INSCRIPTIONS-011 |
