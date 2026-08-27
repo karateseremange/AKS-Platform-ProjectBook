@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002 |
 | **Titre** | Administration des utilisateurs et habilitations privées |
-| **Version** | 0.4.46 |
-| **Statut** | Publié, amorcé et validé en production — P10 clôturé |
+| **Version** | 0.4.47 |
+| **Statut** | Publié, amorcé et validé en production — correctif ACCESS-002-07 en revue |
 | **Nature** | Spécification fonctionnelle et de sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -377,10 +377,28 @@ Le Product Owner a confirmé l’état final de production le 26 août 2026 et n
 
 ---
 
-## 23. Historique
+## 23. Correctif post-production ACCESS-002-07
+
+La validation fonctionnelle de production a confirmé que le moteur
+`access/1.2`, Paramétrage, Journaux et le Portail utilisent correctement
+`CONFIG_READ`, `CONFIG_WRITE`, `CONFIG_RESET` et `LOG_READ`. La fiche
+« Gérer les habilitations » n’exposait toutefois pas le module
+`ADMINISTRATION`.
+
+Le Product Owner a validé le 26 août 2026 la réalisation
+d’[ACCESS-002-07](ACCESS-002-07.md) : ajout d’une cinquième carte
+« Configuration et journaux », du filtre `ADMINISTRATION`, de la portée
+globale et des tests structurels. La réalisation reste limitée aux branches et
+PR vers `develop` ; aucune fusion, publication, attribution réelle ou
+mutation de production n’est autorisée. INSCRIPTIONS-011 demeure non engagé.
+
+---
+
+## 24. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.47 | 2026-08-26 | ACCESS-002-07 autorisé : exposition de l’attribution Administration dans la fiche et le filtre, portée globale, tests et documentation sur branches dédiées ; PR sans fusion, production inchangée et INSCRIPTIONS-011 non engagé |
 | 0.4.46 | 2026-08-26 | P10 clôturé : production V1.4.0 confirmée, déploiement public `wgNc37` en version 54, AUDIT privé à cinq preuves, deux gestionnaires ACCESS actifs et aucun retour arrière autorisé ; prérequis ACCESS d’INSCRIPTIONS-011 satisfait |
 | 0.4.45 | 2026-08-24 | Quality Gate P4 poursuivi jusqu’à RC5 : ouverture de Comptes et accès sans AUDIT prématuré, erreur d’historique minimisée et affichée localement, campagnes 15/15 et 665/665, recette réversible restaurée exactement ; publication de production toujours non autorisée |
 | 0.4.44 | 2026-08-20 | Rectification de l’état produit : six lots intégrés et recettés sur `develop`, mais publication, audit de production, amorçage du premier gestionnaire et validation de production encore requis ; `ACCESS-002-PRODUCTION` devient prioritaire avant INSCRIPTIONS-011 |
