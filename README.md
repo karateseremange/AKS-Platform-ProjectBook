@@ -56,7 +56,8 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
-- [V1.4.0 — Publication Git clôturée](releases/V1.4.0.md)
+- [V1.4.1 — Correctif ACCESS en préparation](releases/V1.4.1.md)
+- [V1.4.0 — Publication et production clôturées](releases/V1.4.0.md)
 - [V1.1.0 — Note de publication](releases/V1.1.0.md)
 - [V1.2.0 — Note de publication](releases/V1.2.0.md)
 - [V1.3.0 — Note de prépublication](releases/V1.3.0.md)
@@ -169,6 +170,14 @@ Les développements doivent respecter les règles suivantes :
 ---
 
 # État du Project Book
+
+Le correctif **V1.4.1 — ACCESS et administration sécurisée — correctif
+d’attribution** est préparé sur deux branches dédiées à partir des `develop`
+contrôlés. ACCESS-002-07 est intégré dans les deux `develop`, mais V1.4.1
+n’est ni publiée dans `main`, ni taguée, ni déployée. La production reste sur
+V1.4.0, version Apps Script 54 du déploiement public `wgNc37`.
+L’implémentation d’INSCRIPTIONS-011 n’est pas engagée par cette préparation.
+
 
 La version **V1.2.0**, publiée le 28 juillet 2026, constitue la référence
 historique de l’introduction d’AKS Analytics. Elle correspond au tag
