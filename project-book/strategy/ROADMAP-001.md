@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.61 |
+| **Version** | 1.3.62 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -815,8 +815,9 @@ suffixe de production `wgNc37` est absent. La PR applicative #136 a ensuite ét�
 `62c859a7`, avec un contenu identique à la branche validée. La PR documentaire
 #195 a été fusionnée dans le `develop` documentaire au commit `0b428b76`.
 La PR applicative de publication #137 a ensuite été fusionnée dans `main` au
-commit `7e5125e7`. La PR Project Book #197 reste ouverte sans fusion ; aucun tag
-ni déploiement ou mutation de production n’a été réalisé.
+commit `7e5125e7`. La PR Project Book de publication #197 a été fusionnée dans
+`main` au commit `5f9f6623`. Aucun tag, déploiement ou mutation de production
+n’a été réalisé.
 
 Le cadrage en lecture seule d’INSCRIPTIONS-011 a été explicitement autorisé par le Product Owner le 26 août 2026, uniquement pour l’analyse et la préparation d’une proposition. ACCESS-002-07 reste distinct de ce cadrage, ne l’élargit pas et n’autorise ni implémentation, ni modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
 
@@ -965,7 +966,7 @@ ACCESS-002-05 — Portail privé et Mes accès
         ↓
 ACCESS-002-06 — clôturé, six lots intégrés
         ↓
-ACCESS-002-07 — V1.4.1 publiée dans `main` applicatif, documentation en attente
+ACCESS-002-07 — V1.4.1 publiée dans Git, tags et déploiement en attente
         ↓
 INSCRIPTIONS-011 — cadrage en lecture seule autorisé, proposition à préparer
 ```
@@ -978,6 +979,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.62 | 2026-08-27 | PR Project Book de publication #197 fusionnée dans `main` au commit `5f9f6623` ; V1.4.1 publiée dans les deux dépôts, tags et production inchangés, INSCRIPTIONS-011 non engagé |
 | 1.3.61 | 2026-08-27 | PR applicative de publication #137 fusionnée dans `main` au commit `7e5125e7` ; PR Project Book #197 ouverte sans fusion, tag et production inchangés, INSCRIPTIONS-011 non engagé |
 | 1.3.60 | 2026-08-27 | PR Project Book #195 fusionnée dans `develop` au commit `0b428b76` ; V1.4.1 intégrée dans les deux `develop`, sans `main`, tag, production ni engagement d’INSCRIPTIONS-011 |
 | 1.3.59 | 2026-08-27 | PR applicative V1.4.1 #136 fusionnée dans `develop` au commit `62c859a7`, contenu identique à la branche validée ; PR Project Book #195 encore ouverte, sans `main`, tag, production ni INSCRIPTIONS-011 |
