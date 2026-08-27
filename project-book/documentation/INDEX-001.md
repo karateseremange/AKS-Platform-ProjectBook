@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.52 |
+| Version | 1.3.53 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-27 |
@@ -128,7 +128,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Intégré, publié et validé en production dans V1.4.0 | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-07 | Attribution des habilitations Configuration et Journaux | Intégré dans les deux `develop` — candidate V1.4.1 recettée et restaurée | 0.3.1 | ACCESS-002, ACCESS-002-06, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-07 | Attribution des habilitations Configuration et Journaux | Finalisation V1.4.1 intégrée dans le `develop` applicatif — clôture documentaire en revue | 0.3.2 | ACCESS-002, ACCESS-002-06, CONFIG-001, LOG-001, AUDIT-001 |
 | ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P1 à P10 clôturés — production V1.4.0 confirmée | 1.2.15 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
@@ -317,6 +317,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.53 | 2026-08-27 | PR applicative V1.4.1 #136 fusionnée dans `develop` au commit `62c859a7`, contenu identique à la branche validée ; PR Project Book #195 maintenue ouverte sans fusion, `main`, tags et production inchangés |
 | 1.3.52 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261 sans différence, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée à 261/261 sans différence ; deux déploiements de recette préservés, production absente et PR maintenues sans fusion |
 | 1.3.51 | 2026-08-27 | Préparation documentaire de V1.4.1 : ACCESS-002-07 intégré dans les deux `develop`, note corrective créée, métadonnées de publication cadrées ; aucune fusion vers `main`, aucun tag, aucun déploiement et aucune implémentation d’INSCRIPTIONS-011 |
 | 1.3.50 | 2026-08-27 | Référencement d’ACCESS-002-07 0.2.0 : PR applicative #135 fusionnée dans `develop` au commit `6d7815a`, PR Project Book #194 maintenue ouverte ; `main`, production et implémentation d’INSCRIPTIONS-011 inchangés |
