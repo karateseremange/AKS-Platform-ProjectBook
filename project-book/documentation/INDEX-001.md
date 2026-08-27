@@ -168,7 +168,7 @@ Tout nouveau module métier doit respecter `STD-001`, conformément à la règle
 |--------|---------|-------------------|------|
 | AKS Analytics | `project-book/modules/analytics/` | `ANALYTICS-001` à `ANALYTICS-009`, `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-005`, `ACCESS-001` | V1.2.0 publiée — contrat d’écriture des présences publié |
 | AKS Calendar | `project-book/modules/calendar/` | `CALENDAR-001` à `CALENDAR-004` | Socle Google Calendar, publication publique et accès internes WordPress opérationnels |
-| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010`, `INSCRIPTIONS-010-RECETTE` | Quatrième incrément INSCRIPTIONS-010 clôturé et fusionné dans `develop` par la PR #89 au commit `ed03cc4…` ; **455/455 tests**, recette Google isolée concluante ; prérequis ACCESS-002 satisfait par P10, cadrage d’INSCRIPTIONS-011 non engagé |
+| AKS Inscriptions | `project-book/modules/inscriptions/` | `INSCRIPTIONS-001` à `INSCRIPTIONS-006`, `INSCRIPTIONS-008` à `INSCRIPTIONS-010`, `INSCRIPTIONS-010-RECETTE` | Quatrième incrément INSCRIPTIONS-010 clôturé et fusionné dans `develop` par la PR #89 au commit `ed03cc4…` ; **455/455 tests**, recette Google isolée concluante ; prérequis ACCESS-002 satisfait par P10 ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément le 26 août 2026, limité à l’analyse et à la préparation d’une proposition, sans implémentation ni mutation |
 | Questionnaire Santé | À structurer dans le Project Book | À consolider | Livré en V1.0.0 |
 | Grades | À créer | À créer | Futur |
 | Présences | Extension d’AKS Analytics | `ANALYTICS-SAISIE-001` à `ANALYTICS-SAISIE-006` | Parcours mobile publié et validé en production |
@@ -296,7 +296,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
-| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010, INSCRIPTIONS-010-RECETTE | Quatrième incrément INSCRIPTIONS-010 clôturé et intégré dans `develop` par la PR #89 ; **455/455**, recette Google isolée concluante ; prérequis ACCESS-002 satisfait, INSCRIPTIONS-011 à cadrer séparément |
+| AKS Inscriptions | INSCRIPTIONS-001 à INSCRIPTIONS-006, INSCRIPTIONS-008 à INSCRIPTIONS-010, INSCRIPTIONS-010-RECETTE | Quatrième incrément INSCRIPTIONS-010 clôturé et intégré dans `develop` par la PR #89 ; **455/455**, recette Google isolée concluante ; prérequis ACCESS-002 satisfait ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, proposition à préparer, sans implémentation autorisée |
 | Autres modules métier | Documents à créer selon la roadmap et STD-001 | Planifiée |
 
 ---
@@ -317,7 +317,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
-| 1.3.48 | 2026-08-26 | Référencement d’ACCESS-002-07 0.1.0 : exposition contrôlée du module ADMINISTRATION dans la fiche et le filtre, sans fusion ni production et sans engager INSCRIPTIONS-011 |
+| 1.3.48 | 2026-08-26 | Référencement d’ACCESS-002-07 0.1.0 : exposition contrôlée du module ADMINISTRATION dans la fiche et le filtre, sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi et sans implémentation engagée |
 | 1.3.47 | 2026-08-26 | Alignement postérieur de P7 1.0.1 : P8 à P10 clôturés, support AUDIT privé stable à cinq preuves et production V1.4.0 confirmée sans retour arrière |
 | 1.3.46 | 2026-08-26 | Référencement de P10 1.0.0 : précontrôle final conforme, neuf déploiements confirmés, `wgNc37` unique en version 54, AUDIT privé inchangé à cinq preuves, production V1.4.0 confirmée et aucun retour arrière autorisé |
 | 1.3.45 | 2026-08-26 | Référencement de P9 1.0.0 : deuxième gestionnaire ajouté, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte et support privé à cinq preuves conformes ; P10 non autorisé |
