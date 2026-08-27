@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.59 |
+| **Version** | 1.3.60 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -798,7 +798,7 @@ La réalisation est officiellement découpée en six incréments :
 4. `ACCESS-002-04` — fiche et habilitations : multi-rôle, modules, cours, capacités, périodes de validité, synthèse et historique ;
 5. `ACCESS-002-05` — portail privé et « Mes accès » ;
 6. `ACCESS-002-06` — migration définitive des modules et retrait contrôlé de l’ancien mécanisme ;
-7. `ACCESS-002-07` — correctif d’interface pour attribuer Configuration et Journaux depuis la fiche utilisateur, validé en recette à **15/15** et **665/665**, recette restaurée exactement puis application intégrée dans `develop` par la PR #135 au commit `6d7815a` ; clôture documentaire en revue.
+7. `ACCESS-002-07` — correctif d’interface pour attribuer Configuration et Journaux depuis la fiche utilisateur, validé en recette à **15/15** et **665/665**, recette restaurée exactement puis application intégrée dans `develop` par la PR #135 au commit `6d7815a` ; clôture documentaire intégrée dans `develop` par la PR #195 au commit `0b428b76`.
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
@@ -813,7 +813,8 @@ relue à 261/261 fichiers sans différence, validée à **8/8** VERSION-001,
 261/261 fichiers sans différence. Ses deux déploiements sont préservés et le
 suffixe de production `wgNc37` est absent. La PR applicative #136 a ensuite été fusionnée dans `develop` au commit
 `62c859a7`, avec un contenu identique à la branche validée. La PR documentaire
-#195 reste ouverte sans fusion. Cette intégration n’autorise ni fusion vers
+#195 a été fusionnée dans le `develop` documentaire au commit `0b428b76`.
+Cette intégration n’autorise ni fusion vers
 `main`, ni tag, ni déploiement ou mutation de production.
 
 Le cadrage en lecture seule d’INSCRIPTIONS-011 a été explicitement autorisé par le Product Owner le 26 août 2026, uniquement pour l’analyse et la préparation d’une proposition. ACCESS-002-07 reste distinct de ce cadrage, ne l’élargit pas et n’autorise ni implémentation, ni modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
@@ -976,6 +977,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.60 | 2026-08-27 | PR Project Book #195 fusionnée dans `develop` au commit `0b428b76` ; V1.4.1 intégrée dans les deux `develop`, sans `main`, tag, production ni engagement d’INSCRIPTIONS-011 |
 | 1.3.59 | 2026-08-27 | PR applicative V1.4.1 #136 fusionnée dans `develop` au commit `62c859a7`, contenu identique à la branche validée ; PR Project Book #195 encore ouverte, sans `main`, tag, production ni INSCRIPTIONS-011 |
 | 1.3.58 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR #136 et #195 maintenues ouvertes sans fusion, `main` et production inchangés |
 | 1.3.57 | 2026-08-27 | ACCESS-002-07 intégré dans les deux `develop` par les PR #135 et #194 ; préparation de V1.4.1 sur deux branches dédiées, sans fusion vers `main`, sans tag, sans production et sans implémentation d’INSCRIPTIONS-011 |

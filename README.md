@@ -177,8 +177,9 @@ contrôlés. La candidate applicative exacte `60cc727e` a réussi VERSION-001
 **8/8**, ACCESS **15/15** et la campagne cumulative **665/665** dans le projet
 Apps Script de recette `eIRxs4`. La recette a ensuite été restaurée à
 261/261 fichiers sans différence. La finalisation V1.4.1 a été intégrée dans le `develop` applicatif par la
-PR #136 au commit `62c859a7`. La PR documentaire #195 reste ouverte sans
-fusion. V1.4.1 n’est ni publiée dans `main`, ni taguée, ni déployée.
+PR #136 au commit `62c859a7`, puis dans le `develop` documentaire par la
+PR #195 au commit `0b428b76`. V1.4.1 n’est ni publiée dans `main`, ni taguée,
+ni déployée.
 La production reste sur V1.4.0, version Apps Script 54 du déploiement public
 `wgNc37`. L’implémentation d’INSCRIPTIONS-011 n’est pas engagée.
 
