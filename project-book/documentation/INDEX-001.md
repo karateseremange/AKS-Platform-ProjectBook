@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.49 |
+| Version | 1.3.50 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-27 |
@@ -292,7 +292,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-07, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; P10 clôturé sans retour arrière ; correctif ACCESS-002-07 validé en recette à **15/15** et **665/665**, recette restaurée exactement, en revue sans fusion ni production |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-07, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; P10 clôturé sans retour arrière ; correctif ACCESS-002-07 intégré dans `develop` par la PR #135 au commit `6d7815a` après validation **15/15** et **665/665** et restauration exacte de la recette ; clôture documentaire en revue sans production |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -317,6 +317,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.50 | 2026-08-27 | Référencement d’ACCESS-002-07 0.2.0 : PR applicative #135 fusionnée dans `develop` au commit `6d7815a`, PR Project Book #194 maintenue ouverte ; `main`, production et implémentation d’INSCRIPTIONS-011 inchangés |
 | 1.3.49 | 2026-08-27 | Référencement d’ACCESS-002-07 0.1.1 : candidate `c2efda48` synchronisée et relue à 261/261 sans différence, validations Apps Script **15/15** et **665/665** sans échec, puis recette restaurée et relue à 261/261 sans différence ; PR en revue, sans fusion ni production |
 | 1.3.48 | 2026-08-26 | Référencement d’ACCESS-002-07 0.1.0 : exposition contrôlée du module ADMINISTRATION dans la fiche et le filtre, sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi et sans implémentation engagée |
 | 1.3.47 | 2026-08-26 | Alignement postérieur de P7 1.0.1 : P8 à P10 clôturés, support AUDIT privé stable à cinq preuves et production V1.4.0 confirmée sans retour arrière |
