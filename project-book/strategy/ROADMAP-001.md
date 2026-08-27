@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.58 |
+| **Version** | 1.3.59 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -811,8 +811,10 @@ sécurisée — correctif d’attribution ». La candidate exacte `60cc727e` a �
 relue à 261/261 fichiers sans différence, validée à **8/8** VERSION-001,
 **15/15** ACCESS et **665/665** cumulés, puis la recette a été restaurée à
 261/261 fichiers sans différence. Ses deux déploiements sont préservés et le
-suffixe de production `wgNc37` est absent. Cette validation n’autorise ni
-fusion vers `main`, ni tag, ni déploiement ou mutation de production.
+suffixe de production `wgNc37` est absent. La PR applicative #136 a ensuite été fusionnée dans `develop` au commit
+`62c859a7`, avec un contenu identique à la branche validée. La PR documentaire
+#195 reste ouverte sans fusion. Cette intégration n’autorise ni fusion vers
+`main`, ni tag, ni déploiement ou mutation de production.
 
 Le cadrage en lecture seule d’INSCRIPTIONS-011 a été explicitement autorisé par le Product Owner le 26 août 2026, uniquement pour l’analyse et la préparation d’une proposition. ACCESS-002-07 reste distinct de ce cadrage, ne l’élargit pas et n’autorise ni implémentation, ni modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
 
@@ -961,7 +963,7 @@ ACCESS-002-05 — Portail privé et Mes accès
         ↓
 ACCESS-002-06 — clôturé, six lots intégrés
         ↓
-ACCESS-002-07 — intégré, candidate V1.4.1 recettée et restaurée
+ACCESS-002-07 — finalisation V1.4.1 intégrée dans `develop`
         ↓
 INSCRIPTIONS-011 — cadrage en lecture seule autorisé, proposition à préparer
 ```
@@ -974,6 +976,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.59 | 2026-08-27 | PR applicative V1.4.1 #136 fusionnée dans `develop` au commit `62c859a7`, contenu identique à la branche validée ; PR Project Book #195 encore ouverte, sans `main`, tag, production ni INSCRIPTIONS-011 |
 | 1.3.58 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR #136 et #195 maintenues ouvertes sans fusion, `main` et production inchangés |
 | 1.3.57 | 2026-08-27 | ACCESS-002-07 intégré dans les deux `develop` par les PR #135 et #194 ; préparation de V1.4.1 sur deux branches dédiées, sans fusion vers `main`, sans tag, sans production et sans implémentation d’INSCRIPTIONS-011 |
 | 1.3.56 | 2026-08-27 | ACCESS-002-07 intégré dans `develop` par la PR applicative #135 au commit `6d7815a` après recette validée et restaurée ; PR Project Book #194 ouverte sans fusion, `main` et production inchangés |
