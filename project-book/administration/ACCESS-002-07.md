@@ -5,7 +5,7 @@
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
 | **Version** | 0.1.1 |
-| **Statut** | En revue — recette Apps Script validée à 15/15 et 665/665, PR #135 et #194 ouvertes vers `develop` |
+| **Statut** | En revue — recette Apps Script validée à 15/15 et 665/665 puis restaurée exactement, PR #135 et #194 ouvertes vers `develop` |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -142,7 +142,7 @@ Avant toute fusion applicative, la revue a confirmé :
 9. absence de route ou destination Inscriptions ajoutée ;
 10. absence de mutation de production.
 
-Après autorisation explicite, le commit applicatif `c2efda48a0d2cabbb735cd7c0245f7331435be94` a été synchronisé exclusivement avec le projet Apps Script de recette suffixé `eIRxs4`. La sauvegarde préalable contient 262 fichiers et son archive `prepush-20260827-112543.zip` porte l’empreinte SHA-256 `FEECD6FB70443D6CF728ACE8FDB38DBE9983641CCB09F023D2E327140DA78538`. Le push a porté sur 261 fichiers ; la relecture post-push en compte 261/261 sans différence avec la candidate. La suite ciblée `AKS_runAccess002AdminUiSuite` réussit à **15/15** et la suite cumulative `AKS_runValidationSuiteV11` à **665/665**, avec zéro échec. Aucune donnée réelle, branche `main` ou production n’a été modifiée.
+Après autorisation explicite, le commit applicatif `c2efda48a0d2cabbb735cd7c0245f7331435be94` a été synchronisé exclusivement avec le projet Apps Script de recette suffixé `eIRxs4`. La sauvegarde préalable contient 262 fichiers et son archive `prepush-20260827-112543.zip` porte l’empreinte SHA-256 `FEECD6FB70443D6CF728ACE8FDB38DBE9983641CCB09F023D2E327140DA78538`. Le push a porté sur 261 fichiers ; la relecture post-push en compte 261/261 sans différence avec la candidate. La suite ciblée `AKS_runAccess002AdminUiSuite` réussit à **15/15** et la suite cumulative `AKS_runValidationSuiteV11` à **665/665**, avec zéro échec. Après validation, la recette a été restaurée depuis la sauvegarde préalable puis relue à 261/261 fichiers sans différence. Le projet restauré compte sept déploiements et n’expose pas le suffixe de production `wgNc37`. Aucune donnée réelle, branche `main` ou production n’a été modifiée.
 
 ## 8. Publication et production
 
@@ -186,5 +186,5 @@ publication et de déploiement séparé.
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.1.1 | 2026-08-27 | Revue corrective et recette Apps Script isolée : portée globale `ADMINISTRATION` préservée à l’enregistrement, compatibilité de la suite cumulative maintenue, candidate `c2efda48` relue à 261/261 sans différence, validations **15/15** et **665/665** sans échec ; PR toujours sans fusion et production inchangée |
+| 0.1.1 | 2026-08-27 | Revue corrective et recette Apps Script isolée : portée globale `ADMINISTRATION` préservée à l’enregistrement, compatibilité de la suite cumulative maintenue, candidate `c2efda48` relue à 261/261 sans différence, validations **15/15** et **665/665** sans échec, puis restauration de recette relue à 261/261 sans différence ; PR toujours sans fusion et production inchangée |
 | 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR applicative #135 et Project Book #194 ouvertes vers `develop` sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi par cet incrément et sans implémentation engagée |
