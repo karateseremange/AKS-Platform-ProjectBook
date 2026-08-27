@@ -390,7 +390,7 @@ d’[ACCESS-002-07](ACCESS-002-07.md) : ajout d’une cinquième carte
 « Configuration et journaux », du filtre `ADMINISTRATION`, de la portée
 globale et des tests structurels. La réalisation reste limitée aux branches et
 PR vers `develop` ; aucune fusion, publication, attribution réelle ou
-mutation de production n’est autorisée. INSCRIPTIONS-011 demeure non engagé.
+mutation de production n’est autorisée. Le cadrage en lecture seule d’INSCRIPTIONS-011 a été autorisé séparément le 26 août 2026 ; ACCESS-002-07 ne l’élargit pas et n’autorise ni son implémentation, ni aucune modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
 
 ---
 
@@ -398,7 +398,7 @@ mutation de production n’est autorisée. INSCRIPTIONS-011 demeure non engagé.
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.4.47 | 2026-08-26 | ACCESS-002-07 autorisé : exposition de l’attribution Administration dans la fiche et le filtre, portée globale, tests et documentation sur branches dédiées ; PR sans fusion, production inchangée et INSCRIPTIONS-011 non engagé |
+| 0.4.47 | 2026-08-26 | ACCESS-002-07 autorisé : exposition de l’attribution Administration dans la fiche et le filtre, portée globale, tests et documentation sur branches dédiées ; PR sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi et sans implémentation engagée |
 | 0.4.46 | 2026-08-26 | P10 clôturé : production V1.4.0 confirmée, déploiement public `wgNc37` en version 54, AUDIT privé à cinq preuves, deux gestionnaires ACCESS actifs et aucun retour arrière autorisé ; prérequis ACCESS d’INSCRIPTIONS-011 satisfait |
 | 0.4.45 | 2026-08-24 | Quality Gate P4 poursuivi jusqu’à RC5 : ouverture de Comptes et accès sans AUDIT prématuré, erreur d’historique minimisée et affichée localement, campagnes 15/15 et 665/665, recette réversible restaurée exactement ; publication de production toujours non autorisée |
 | 0.4.44 | 2026-08-20 | Rectification de l’état produit : six lots intégrés et recettés sur `develop`, mais publication, audit de production, amorçage du premier gestionnaire et validation de production encore requis ; `ACCESS-002-PRODUCTION` devient prioritaire avant INSCRIPTIONS-011 |
