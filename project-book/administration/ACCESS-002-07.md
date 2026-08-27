@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
-| **Version** | 0.2.0 |
-| **Statut** | Application intégrée dans `develop` par la PR #135 au commit `6d7815a` — clôture documentaire en revue dans la PR #194 |
+| **Version** | 0.3.2 |
+| **Statut** | Finalisation V1.4.1 intégrée dans le `develop` applicatif par la PR #136 — PR documentaire #195 en revue |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
-| **Version du produit** | Post-V1.4.0 |
+| **Version du produit** | V1.4.1 en préparation |
 
 ---
 
@@ -146,17 +146,19 @@ Après autorisation explicite, le commit applicatif `c2efda48a0d2cabbb735cd7c024
 
 ## 8. Publication et production
 
-Après la fusion applicative explicitement autorisée, restent non autorisés :
+ACCESS-002-07 est intégré dans les deux branches `develop`. Sa formalisation
+comme correctif V1.4.1 est préparée séparément, sans publication.
 
-- la fusion de la PR Project Book #194 vers `develop` ;
-- la publication dans `main` ;
-- le déplacement du tag `v1.4.0` ;
+Restent non autorisés dans le présent cycle :
+
+- la fusion d’une PR vers `main` ;
+- la création ou le déplacement d’un tag ;
 - un push Apps Script de production ;
 - la création d’une version Apps Script ;
 - la modification du déploiement `wgNc37` ;
 - l’attribution réelle de `CONFIG_*` ou `LOG_READ` ;
 - une écriture ACCESS ou AUDIT ;
-- l’élargissement du cadrage en lecture seule d’INSCRIPTIONS-011, autorisé séparément le 26 août 2026, ou l’engagement de son implémentation.
+- l’engagement de l’implémentation d’INSCRIPTIONS-011.
 
 Toute attribution réelle devra suivre un protocole séparé : inventaire,
 prévisualisation, autorisation explicite, écriture unique, relecture des droits,
@@ -167,25 +169,35 @@ validation fonctionnelle, vérification AUDIT et conclusion documentaire.
 - branche applicative : `agent/access-002-07-administration-ui` ;
 - branche Project Book : `docs/access-002-07-administration-ui` ;
 - PR applicative : [AKS-Platform #135](https://github.com/karateseremange/AKS-Platform/pull/135), fusionnée dans `develop` au commit [`6d7815a`](https://github.com/karateseremange/AKS-Platform/commit/6d7815a2f3e20256de4c55c361670c7fd3fdaddb) ;
-- PR Project Book : [AKS-Platform-ProjectBook #194](https://github.com/karateseremange/AKS-Platform-ProjectBook/pull/194).
+- PR Project Book : [AKS-Platform-ProjectBook #194](https://github.com/karateseremange/AKS-Platform-ProjectBook/pull/194), fusionnée dans `develop` au commit [`860d353`](https://github.com/karateseremange/AKS-Platform-ProjectBook/commit/860d3534c8ab16318b18576caff50c42efccf4f8).
 
 ## 10. Critères de clôture
 
-ACCESS-002-07 pourra être déclaré documentairement intégré lorsque :
+ACCESS-002-07 est clôturé pour son intégration dans `develop` :
 
-1. la PR applicative, déjà revue et fusionnée, restera référencée par son commit réel ;
-2. les corrections de revue resteront consignées ;
-3. les tests autorisés resteront référencés ;
-4. la fusion de la PR Project Book #194 vers `develop` aura été explicitement autorisée ;
-5. le commit applicatif réel restera indiqué dans la documentation et le commit documentaire restera traçable dans l’historique GitHub de la PR #194.
+1. la réalisation applicative est intégrée au commit `6d7815a` ;
+2. les validations **15/15** et **665/665** sont référencées ;
+3. la restauration exacte de la recette est documentée ;
+4. la documentation est intégrée au commit `860d353`.
 
-Il ne pourra être déclaré publié ou actif en production qu’après un cycle de
-publication et de déploiement séparé.
+La candidate finale V1.4.1 exacte `60cc727e` a réussi VERSION-001
+**8/8**, ACCESS **15/15** et la campagne cumulative **665/665** après relecture
+à 261/261 fichiers sans différence. La recette a ensuite été restaurée à
+261/261 fichiers sans différence ; ses deux déploiements sont préservés et le
+suffixe de production `wgNc37` est absent.
+
+La PR applicative #136 a été fusionnée dans `develop` au commit `62c859a7`.
+La PR documentaire #195 reste ouverte sans fusion. Toute publication vers
+`main`, création de tag ou opération de production devra être explicitement
+autorisée séparément.
 
 ## 11. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.2 | 2026-08-27 | Finalisation V1.4.1 fusionnée dans le `develop` applicatif par la PR #136 au commit `62c859a7`, contenu validé préservé ; PR documentaire #195 en revue, `main` et production inchangés |
+| 0.3.1 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR de finalisation maintenues sans fusion, production inchangée |
+| 0.3.0 | 2026-08-27 | PR Project Book #194 fusionnée dans `develop` au commit `860d353` ; ACCESS-002-07 intégré dans les deux `develop` et publication corrective V1.4.1 préparée sans `main`, tag, recette finale ni production |
 | 0.2.0 | 2026-08-27 | PR applicative #135 fusionnée dans `develop` au commit `6d7815a` après validations **15/15** et **665/665** et restauration exacte de la recette ; PR Project Book #194 maintenue ouverte sans fusion, `main` et production inchangés |
 | 0.1.1 | 2026-08-27 | Revue corrective et recette Apps Script isolée : portée globale `ADMINISTRATION` préservée à l’enregistrement, compatibilité de la suite cumulative maintenue, candidate `c2efda48` relue à 261/261 sans différence, validations **15/15** et **665/665** sans échec, puis restauration de recette relue à 261/261 sans différence ; PR toujours sans fusion et production inchangée |
 | 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR applicative #135 et Project Book #194 ouvertes vers `develop` sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi par cet incrément et sans implémentation engagée |

@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.56 |
+| **Version** | 1.3.59 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -802,7 +802,19 @@ La réalisation est officiellement découpée en six incréments :
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
-`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`. `ACCESS-002-07` a ensuite été synchronisé exclusivement sur la recette suffixée `eIRxs4` au commit `c2efda48`, relu à 261/261 sans différence et validé à **15/15** puis **665/665**, sans mutation de production. La recette a ensuite été restaurée depuis la sauvegarde préalable et relue à 261/261 sans différence ; l’inventaire du projet restauré compte sept déploiements et ne contient pas `wgNc37`. La PR applicative #135 a été fusionnée dans `develop` au commit `6d7815a`; la PR Project Book #194 reste ouverte sans fusion.
+`ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`. `ACCESS-002-07` a ensuite été synchronisé exclusivement sur la recette suffixée `eIRxs4` au commit `c2efda48`, relu à 261/261 sans différence et validé à **15/15** puis **665/665**, sans mutation de production. La recette a ensuite été restaurée depuis la sauvegarde préalable et relue à 261/261 sans différence ; l’inventaire du projet restauré compte sept déploiements et ne contient pas `wgNc37`. La PR applicative #135 a été fusionnée dans `develop` au commit `6d7815a`; la PR Project Book #194 a été fusionnée dans le `develop` documentaire au commit `860d353`.
+
+La publication corrective V1.4.1 est préparée sur deux branches dédiées
+depuis les têtes `develop` contrôlées. Elle formalise ACCESS-002-07 avec la
+version `1.4.1`, le build `20260827.1` et le nom « ACCESS et administration
+sécurisée — correctif d’attribution ». La candidate exacte `60cc727e` a été
+relue à 261/261 fichiers sans différence, validée à **8/8** VERSION-001,
+**15/15** ACCESS et **665/665** cumulés, puis la recette a été restaurée à
+261/261 fichiers sans différence. Ses deux déploiements sont préservés et le
+suffixe de production `wgNc37` est absent. La PR applicative #136 a ensuite été fusionnée dans `develop` au commit
+`62c859a7`, avec un contenu identique à la branche validée. La PR documentaire
+#195 reste ouverte sans fusion. Cette intégration n’autorise ni fusion vers
+`main`, ni tag, ni déploiement ou mutation de production.
 
 Le cadrage en lecture seule d’INSCRIPTIONS-011 a été explicitement autorisé par le Product Owner le 26 août 2026, uniquement pour l’analyse et la préparation d’une proposition. ACCESS-002-07 reste distinct de ce cadrage, ne l’élargit pas et n’autorise ni implémentation, ni modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
 
@@ -951,7 +963,7 @@ ACCESS-002-05 — Portail privé et Mes accès
         ↓
 ACCESS-002-06 — clôturé, six lots intégrés
         ↓
-ACCESS-002-07 — application intégrée, clôture documentaire en revue
+ACCESS-002-07 — finalisation V1.4.1 intégrée dans `develop`
         ↓
 INSCRIPTIONS-011 — cadrage en lecture seule autorisé, proposition à préparer
 ```
@@ -964,6 +976,9 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.59 | 2026-08-27 | PR applicative V1.4.1 #136 fusionnée dans `develop` au commit `62c859a7`, contenu identique à la branche validée ; PR Project Book #195 encore ouverte, sans `main`, tag, production ni INSCRIPTIONS-011 |
+| 1.3.58 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR #136 et #195 maintenues ouvertes sans fusion, `main` et production inchangés |
+| 1.3.57 | 2026-08-27 | ACCESS-002-07 intégré dans les deux `develop` par les PR #135 et #194 ; préparation de V1.4.1 sur deux branches dédiées, sans fusion vers `main`, sans tag, sans production et sans implémentation d’INSCRIPTIONS-011 |
 | 1.3.56 | 2026-08-27 | ACCESS-002-07 intégré dans `develop` par la PR applicative #135 au commit `6d7815a` après recette validée et restaurée ; PR Project Book #194 ouverte sans fusion, `main` et production inchangés |
 | 1.3.55 | 2026-08-27 | ACCESS-002-07 validé en recette isolée sur `c2efda48` : relecture 261/261 sans différence, campagnes **15/15** et **665/665** sans échec, puis restauration de recette relue à 261/261 sans différence ; PR en revue, sans fusion ni production |
 | 1.3.54 | 2026-08-26 | ACCESS-002-07 autorisé : correctif d’interface limité à l’attribution du module ADMINISTRATION, branches et PR vers `develop` sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi et sans implémentation engagée |
