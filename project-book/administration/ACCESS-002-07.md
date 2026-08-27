@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
-| **Version** | 0.3.1 |
-| **Statut** | Intégré dans les deux `develop` — candidate V1.4.1 recettée et restaurée, PR de finalisation en revue |
+| **Version** | 0.3.2 |
+| **Statut** | Finalisation V1.4.1 intégrée dans le `develop` applicatif par la PR #136 — PR documentaire #195 en revue |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -186,14 +186,16 @@ La candidate finale V1.4.1 exacte `60cc727e` a réussi VERSION-001
 261/261 fichiers sans différence ; ses deux déploiements sont préservés et le
 suffixe de production `wgNc37` est absent.
 
-La décision de fusion vers `develop`, puis toute publication vers `main`,
-tag ou déploiement devront chacun être explicitement autorisés. Aucun de ces
-actes n’est réalisé ici.
+La PR applicative #136 a été fusionnée dans `develop` au commit `62c859a7`.
+La PR documentaire #195 reste ouverte sans fusion. Toute publication vers
+`main`, création de tag ou opération de production devra être explicitement
+autorisée séparément.
 
 ## 11. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.2 | 2026-08-27 | Finalisation V1.4.1 fusionnée dans le `develop` applicatif par la PR #136 au commit `62c859a7`, contenu validé préservé ; PR documentaire #195 en revue, `main` et production inchangés |
 | 0.3.1 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR de finalisation maintenues sans fusion, production inchangée |
 | 0.3.0 | 2026-08-27 | PR Project Book #194 fusionnée dans `develop` au commit `860d353` ; ACCESS-002-07 intégré dans les deux `develop` et publication corrective V1.4.1 préparée sans `main`, tag, recette finale ni production |
 | 0.2.0 | 2026-08-27 | PR applicative #135 fusionnée dans `develop` au commit `6d7815a` après validations **15/15** et **665/665** et restauration exacte de la recette ; PR Project Book #194 maintenue ouverte sans fusion, `main` et production inchangés |
