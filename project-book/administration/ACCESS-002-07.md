@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
-| **Version** | 0.3.0 |
-| **Statut** | Intégré dans les deux `develop` par les PR #135 et #194 — publication corrective V1.4.1 en préparation |
+| **Version** | 0.3.1 |
+| **Statut** | Intégré dans les deux `develop` — candidate V1.4.1 recettée et restaurée, PR de finalisation en revue |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -180,14 +180,21 @@ ACCESS-002-07 est clôturé pour son intégration dans `develop` :
 3. la restauration exacte de la recette est documentée ;
 4. la documentation est intégrée au commit `860d353`.
 
-La publication de V1.4.1 reste un cycle distinct : recette de la candidate
-finalisée, décision de fusion vers `main`, tag et déploiement devront chacun
-être explicitement autorisés. Aucun de ces actes n’est réalisé ici.
+La candidate finale V1.4.1 exacte `60cc727e` a réussi VERSION-001
+**8/8**, ACCESS **15/15** et la campagne cumulative **665/665** après relecture
+à 261/261 fichiers sans différence. La recette a ensuite été restaurée à
+261/261 fichiers sans différence ; ses deux déploiements sont préservés et le
+suffixe de production `wgNc37` est absent.
+
+La décision de fusion vers `develop`, puis toute publication vers `main`,
+tag ou déploiement devront chacun être explicitement autorisés. Aucun de ces
+actes n’est réalisé ici.
 
 ## 11. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.1 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR de finalisation maintenues sans fusion, production inchangée |
 | 0.3.0 | 2026-08-27 | PR Project Book #194 fusionnée dans `develop` au commit `860d353` ; ACCESS-002-07 intégré dans les deux `develop` et publication corrective V1.4.1 préparée sans `main`, tag, recette finale ni production |
 | 0.2.0 | 2026-08-27 | PR applicative #135 fusionnée dans `develop` au commit `6d7815a` après validations **15/15** et **665/665** et restauration exacte de la recette ; PR Project Book #194 maintenue ouverte sans fusion, `main` et production inchangés |
 | 0.1.1 | 2026-08-27 | Revue corrective et recette Apps Script isolée : portée globale `ADMINISTRATION` préservée à l’enregistrement, compatibilité de la suite cumulative maintenue, candidate `c2efda48` relue à 261/261 sans différence, validations **15/15** et **665/665** sans échec, puis restauration de recette relue à 261/261 sans différence ; PR toujours sans fusion et production inchangée |
