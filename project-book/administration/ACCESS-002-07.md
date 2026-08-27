@@ -157,7 +157,7 @@ La réalisation sur branches et l’ouverture des PR n’autorisent pas :
 - la modification du déploiement `wgNc37` ;
 - l’attribution réelle de `CONFIG_*` ou `LOG_READ` ;
 - une écriture ACCESS ou AUDIT ;
-- l’engagement d’INSCRIPTIONS-011.
+- l’élargissement du cadrage en lecture seule d’INSCRIPTIONS-011, autorisé séparément le 26 août 2026, ou l’engagement de son implémentation.
 
 Toute attribution réelle devra suivre un protocole séparé : inventaire,
 prévisualisation, autorisation explicite, écriture unique, relecture des droits,
@@ -187,4 +187,4 @@ publication et de déploiement séparé.
 
 | Version | Date | Évolution |
 |---|---|---|
-| 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR applicative #135 et Project Book #194 ouvertes vers `develop` sans fusion, production inchangée et INSCRIPTIONS-011 non engagé |
+| 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR applicative #135 et Project Book #194 ouvertes vers `develop` sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi par cet incrément et sans implémentation engagée |
