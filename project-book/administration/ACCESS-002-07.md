@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
-| **Version** | 0.1.1 |
-| **Statut** | En revue — recette Apps Script validée à 15/15 et 665/665 puis restaurée exactement, PR #135 et #194 ouvertes vers `develop` |
+| **Version** | 0.2.0 |
+| **Statut** | Application intégrée dans `develop` par la PR #135 au commit `6d7815a` — clôture documentaire en revue dans la PR #194 |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -146,9 +146,9 @@ Après autorisation explicite, le commit applicatif `c2efda48a0d2cabbb735cd7c024
 
 ## 8. Publication et production
 
-La réalisation sur branches et l’ouverture des PR n’autorisent pas :
+Après la fusion applicative explicitement autorisée, restent non autorisés :
 
-- la fusion vers `develop` ;
+- la fusion de la PR Project Book #194 vers `develop` ;
 - la publication dans `main` ;
 - le déplacement du tag `v1.4.0` ;
 - un push Apps Script de production ;
@@ -166,18 +166,18 @@ validation fonctionnelle, vérification AUDIT et conclusion documentaire.
 
 - branche applicative : `agent/access-002-07-administration-ui` ;
 - branche Project Book : `docs/access-002-07-administration-ui` ;
-- PR applicative : [AKS-Platform #135](https://github.com/karateseremange/AKS-Platform/pull/135) ;
+- PR applicative : [AKS-Platform #135](https://github.com/karateseremange/AKS-Platform/pull/135), fusionnée dans `develop` au commit [`6d7815a`](https://github.com/karateseremange/AKS-Platform/commit/6d7815a2f3e20256de4c55c361670c7fd3fdaddb) ;
 - PR Project Book : [AKS-Platform-ProjectBook #194](https://github.com/karateseremange/AKS-Platform-ProjectBook/pull/194).
 
 ## 10. Critères de clôture
 
-ACCESS-002-07 pourra être déclaré intégré lorsque :
+ACCESS-002-07 pourra être déclaré documentairement intégré lorsque :
 
-1. les PR applicative et documentaire auront été revues ;
-2. les corrections de revue auront été appliquées ;
-3. les tests autorisés auront réussi ;
-4. les deux fusions vers `develop` auront été explicitement autorisées ;
-5. la documentation indiquera les commits de fusion réels.
+1. la PR applicative, déjà revue et fusionnée, restera référencée par son commit réel ;
+2. les corrections de revue resteront consignées ;
+3. les tests autorisés resteront référencés ;
+4. la fusion de la PR Project Book #194 vers `develop` aura été explicitement autorisée ;
+5. la documentation indiquera les deux commits de fusion réels.
 
 Il ne pourra être déclaré publié ou actif en production qu’après un cycle de
 publication et de déploiement séparé.
@@ -186,5 +186,6 @@ publication et de déploiement séparé.
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-27 | PR applicative #135 fusionnée dans `develop` au commit `6d7815a` après validations **15/15** et **665/665** et restauration exacte de la recette ; PR Project Book #194 maintenue ouverte sans fusion, `main` et production inchangés |
 | 0.1.1 | 2026-08-27 | Revue corrective et recette Apps Script isolée : portée globale `ADMINISTRATION` préservée à l’enregistrement, compatibilité de la suite cumulative maintenue, candidate `c2efda48` relue à 261/261 sans différence, validations **15/15** et **665/665** sans échec, puis restauration de recette relue à 261/261 sans différence ; PR toujours sans fusion et production inchangée |
 | 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR applicative #135 et Project Book #194 ouvertes vers `develop` sans fusion ni production ; cadrage en lecture seule d’INSCRIPTIONS-011 autorisé séparément, non élargi par cet incrément et sans implémentation engagée |
