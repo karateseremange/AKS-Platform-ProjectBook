@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.53 |
+| **Version** | 1.3.54 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-26 |
@@ -135,6 +135,8 @@ ACCESS-002-05 — Portail privé et Mes accès
 ACCESS-002-06 — six lots intégrés et validés en recette
         ↓
 ACCESS-002-PRODUCTION — publication, déploiement et amorçage
+        ↓
+ACCESS-002-07 — attribution Administration dans l’interface
         ↓
 INSCRIPTIONS-011 — après validation effective d’ACCESS en production
         ↓
@@ -795,13 +797,14 @@ La réalisation est officiellement découpée en six incréments :
 3. `ACCESS-002-03` — administration des utilisateurs : liste, recherche, filtres, création, activation/désactivation et vue « Qui a accès à quoi ? » ;
 4. `ACCESS-002-04` — fiche et habilitations : multi-rôle, modules, cours, capacités, périodes de validité, synthèse et historique ;
 5. `ACCESS-002-05` — portail privé et « Mes accès » ;
-6. `ACCESS-002-06` — migration définitive des modules et retrait contrôlé de l’ancien mécanisme.
+6. `ACCESS-002-06` — migration définitive des modules et retrait contrôlé de l’ancien mécanisme ;
+7. `ACCESS-002-07` — correctif d’interface pour attribuer Configuration et Journaux depuis la fiche utilisateur.
 
 La règle produit reste explicite : un rôle ne donne pas automatiquement accès à un module. En particulier, un professeur peut n’avoir aucun accès à Présences ; Analytics, Présences et Inscriptions peuvent être attribués indépendamment selon les besoins.
 
 `ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`.
 
-INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre.
+INSCRIPTIONS-011 ne sera cadré qu’après validation d’ACCESS-002 ou décision explicite du Product Owner modifiant cet ordre. Le Product Owner a priorisé ACCESS-002-07 avant cet engagement afin de rendre Configuration et Journaux attribuables depuis l’interface normale.
 
 INSCRIPTIONS-010 reste strictement interne et editor-only : aucun déploiement Web App de test n’a été requis pour cet incrément. Si une fonctionnalité observable via le Web App est introduite dans un incrément ultérieur, elle devra faire l’objet d’un déploiement Web App de test et d’une recette utilisateur avant validation finale et fusion dans `develop`.
 
@@ -948,6 +951,8 @@ ACCESS-002-05 — Portail privé et Mes accès
         ↓
 ACCESS-002-06 — clôturé, six lots intégrés
         ↓
+ACCESS-002-07 — correctif Administration en revue
+        ↓
 INSCRIPTIONS-011 — cinquième incrément à cadrer après ACCESS-002
 ```
 
@@ -959,6 +964,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.54 | 2026-08-26 | ACCESS-002-07 autorisé avant INSCRIPTIONS-011 : correctif d’interface limité à l’attribution du module ADMINISTRATION, branches et PR vers `develop` sans fusion ni production |
 | 1.3.53 | 2026-08-26 | P10 clôturé : production V1.4.0 confirmée, neuf déploiements Apps Script vérifiés, `wgNc37` unique en version 54, AUDIT privé stable à cinq preuves et aucun retour arrière autorisé ; prérequis ACCESS-002 d’INSCRIPTIONS-011 satisfait sans engager son cadrage |
 | 1.3.52 | 2026-08-26 | P9 clôturé : deuxième gestionnaire actif, révision `dlkpc9`, preuves corrélées par `c9e6d7`, validation multi-compte, refus fermé et Questionnaire public conformes ; évolution du choix initial documentée, `karate.seremange@gmail.com` étant retenu comme premier gestionnaire de production car propriétaire du Drive et du projet ; P10 non autorisé |
 | 1.3.51 | 2026-08-26 | P8-C et P8-D clôturés : premier gestionnaire ACCESS actif, révision persistée `nshtnj`, preuves `INTENTION` et `REUSSI` corrélées par `4d3bb3`, support privé à trois preuves et déploiement public toujours en version 54 ; P8 clôturé, P9 non autorisé |
