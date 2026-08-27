@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.60 |
+| **Version** | 1.3.61 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -804,7 +804,7 @@ La règle produit reste explicite : un rôle ne donne pas automatiquement accès
 
 `ACCESS-002-03` est clôturé après intégration de la [PR applicative #104](https://github.com/karateseremange/AKS-Platform/pull/104) au commit `b120963`, synchronisation de 240 fichiers et campagne 542/542. `ACCESS-002-04` est clôturé en version 1.0.0 au commit final `9d8e57f`, avec 248 fichiers, **586/586** et une recette restaurée exactement. `ACCESS-002-05` est clôturé en version 1.0.0 au commit `9af21d7`, avec 258 fichiers, **614/614** et une recette multi-profils conforme. [`ACCESS-002-06`](../administration/ACCESS-002-06.md) est désormais cadré : migration progressive d’Analytics, Paramétrage et Journaux, compatibilité `access/1.1` sans réécriture, aucune attribution ou récupération réelle pendant l’implémentation et recette de récupération obligatoirement réversible avant décision finale sur `AKS.Admin.Access`. `ACCESS-002-07` a ensuite été synchronisé exclusivement sur la recette suffixée `eIRxs4` au commit `c2efda48`, relu à 261/261 sans différence et validé à **15/15** puis **665/665**, sans mutation de production. La recette a ensuite été restaurée depuis la sauvegarde préalable et relue à 261/261 sans différence ; l’inventaire du projet restauré compte sept déploiements et ne contient pas `wgNc37`. La PR applicative #135 a été fusionnée dans `develop` au commit `6d7815a`; la PR Project Book #194 a été fusionnée dans le `develop` documentaire au commit `860d353`.
 
-La publication corrective V1.4.1 est préparée sur deux branches dédiées
+La publication corrective V1.4.1 a été préparée sur deux branches dédiées
 depuis les têtes `develop` contrôlées. Elle formalise ACCESS-002-07 avec la
 version `1.4.1`, le build `20260827.1` et le nom « ACCESS et administration
 sécurisée — correctif d’attribution ». La candidate exacte `60cc727e` a été
@@ -814,8 +814,9 @@ relue à 261/261 fichiers sans différence, validée à **8/8** VERSION-001,
 suffixe de production `wgNc37` est absent. La PR applicative #136 a ensuite été fusionnée dans `develop` au commit
 `62c859a7`, avec un contenu identique à la branche validée. La PR documentaire
 #195 a été fusionnée dans le `develop` documentaire au commit `0b428b76`.
-Cette intégration n’autorise ni fusion vers
-`main`, ni tag, ni déploiement ou mutation de production.
+La PR applicative de publication #137 a ensuite été fusionnée dans `main` au
+commit `7e5125e7`. La PR Project Book #197 reste ouverte sans fusion ; aucun tag
+ni déploiement ou mutation de production n’a été réalisé.
 
 Le cadrage en lecture seule d’INSCRIPTIONS-011 a été explicitement autorisé par le Product Owner le 26 août 2026, uniquement pour l’analyse et la préparation d’une proposition. ACCESS-002-07 reste distinct de ce cadrage, ne l’élargit pas et n’autorise ni implémentation, ni modification des dépôts ou de la production au titre d’INSCRIPTIONS-011.
 
@@ -964,7 +965,7 @@ ACCESS-002-05 — Portail privé et Mes accès
         ↓
 ACCESS-002-06 — clôturé, six lots intégrés
         ↓
-ACCESS-002-07 — finalisation V1.4.1 intégrée dans `develop`
+ACCESS-002-07 — V1.4.1 publiée dans `main` applicatif, documentation en attente
         ↓
 INSCRIPTIONS-011 — cadrage en lecture seule autorisé, proposition à préparer
 ```
@@ -977,6 +978,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.61 | 2026-08-27 | PR applicative de publication #137 fusionnée dans `main` au commit `7e5125e7` ; PR Project Book #197 ouverte sans fusion, tag et production inchangés, INSCRIPTIONS-011 non engagé |
 | 1.3.60 | 2026-08-27 | PR Project Book #195 fusionnée dans `develop` au commit `0b428b76` ; V1.4.1 intégrée dans les deux `develop`, sans `main`, tag, production ni engagement d’INSCRIPTIONS-011 |
 | 1.3.59 | 2026-08-27 | PR applicative V1.4.1 #136 fusionnée dans `develop` au commit `62c859a7`, contenu identique à la branche validée ; PR Project Book #195 encore ouverte, sans `main`, tag, production ni INSCRIPTIONS-011 |
 | 1.3.58 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR #136 et #195 maintenues ouvertes sans fusion, `main` et production inchangés |

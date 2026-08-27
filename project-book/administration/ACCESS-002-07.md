@@ -4,12 +4,12 @@
 |---|---|
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
-| **Version** | 0.3.3 |
-| **Statut** | Finalisation V1.4.1 intégrée dans les deux `develop` par les PR #136 et #195 — non publiée et non déployée |
+| **Version** | 0.3.4 |
+| **Statut** | V1.4.1 publiée dans `main` applicatif par la PR #137 — publication documentaire et déploiement en attente |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
-| **Version du produit** | V1.4.1 en préparation |
+| **Version du produit** | V1.4.1 publiée dans `main` applicatif — non déployée |
 
 ---
 
@@ -146,12 +146,13 @@ Après autorisation explicite, le commit applicatif `c2efda48a0d2cabbb735cd7c024
 
 ## 8. Publication et production
 
-ACCESS-002-07 est intégré dans les deux branches `develop`. Sa formalisation
-comme correctif V1.4.1 est préparée séparément, sans publication.
+ACCESS-002-07 est intégré dans les deux branches `develop`. Sa publication Git
+applicative comme correctif V1.4.1 a été réalisée par la PR #137 au commit
+`7e5125e7`. La PR documentaire #197 reste ouverte et la production inchangée.
 
 Restent non autorisés dans le présent cycle :
 
-- la fusion d’une PR vers `main` ;
+- la fusion de la PR Project Book #197 vers `main` ;
 - la création ou le déplacement d’un tag ;
 - un push Apps Script de production ;
 - la création d’une version Apps Script ;
@@ -187,14 +188,16 @@ La candidate finale V1.4.1 exacte `60cc727e` a réussi VERSION-001
 suffixe de production `wgNc37` est absent.
 
 La PR applicative #136 a été fusionnée dans `develop` au commit `62c859a7`.
-La PR documentaire #195 a été fusionnée dans `develop` au commit `0b428b76`. Toute publication vers
-`main`, création de tag ou opération de production devra être explicitement
-autorisée séparément.
+La PR documentaire #195 a été fusionnée dans `develop` au commit `0b428b76`.
+La PR applicative de publication #137 a été fusionnée dans `main` au commit
+`7e5125e7`. La fusion documentaire #197, la création du tag et toute opération
+de production devront être explicitement autorisées séparément.
 
 ## 11. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.4 | 2026-08-27 | PR applicative de publication #137 fusionnée dans `main` au commit `7e5125e7` ; PR Project Book #197 ouverte sans fusion, tag et production inchangés, INSCRIPTIONS-011 non engagé |
 | 0.3.3 | 2026-08-27 | PR Project Book #195 fusionnée dans `develop` au commit `0b428b76` ; finalisation V1.4.1 intégrée dans les deux `develop`, sans `main`, tag, production ni engagement d’INSCRIPTIONS-011 |
 | 0.3.2 | 2026-08-27 | Finalisation V1.4.1 fusionnée dans le `develop` applicatif par la PR #136 au commit `62c859a7`, contenu validé préservé ; PR documentaire #195 en revue, `main` et production inchangés |
 | 0.3.1 | 2026-08-27 | Candidate finale V1.4.1 `60cc727e` relue à 261/261, validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; PR de finalisation maintenues sans fusion, production inchangée |

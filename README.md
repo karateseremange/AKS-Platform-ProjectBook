@@ -56,7 +56,7 @@ L'arborescence peut évoluer lorsque de nouveaux domaines apparaissent. Le catal
 - [INDEX-001 — Catalogue du Project Book](project-book/documentation/INDEX-001.md)
 - [DOC-001 — Règles de documentation](project-book/documentation/DOC-001.md)
 - [RELEASE-001 — Processus de publication](project-book/release/RELEASE-001.md)
-- [V1.4.1 — Correctif ACCESS en préparation](releases/V1.4.1.md)
+- [V1.4.1 — Publication Git applicative réalisée](releases/V1.4.1.md)
 - [V1.4.0 — Publication et production clôturées](releases/V1.4.0.md)
 - [V1.1.0 — Note de publication](releases/V1.1.0.md)
 - [V1.2.0 — Note de publication](releases/V1.2.0.md)
@@ -178,8 +178,9 @@ contrôlés. La candidate applicative exacte `60cc727e` a réussi VERSION-001
 Apps Script de recette `eIRxs4`. La recette a ensuite été restaurée à
 261/261 fichiers sans différence. La finalisation V1.4.1 a été intégrée dans le `develop` applicatif par la
 PR #136 au commit `62c859a7`, puis dans le `develop` documentaire par la
-PR #195 au commit `0b428b76`. V1.4.1 n’est ni publiée dans `main`, ni taguée,
-ni déployée.
+PR #195 au commit `0b428b76`. La PR applicative de publication #137 a ensuite
+été fusionnée dans `main` au commit `7e5125e7`. La publication documentaire,
+le tag et le déploiement restent en attente.
 La production reste sur V1.4.0, version Apps Script 54 du déploiement public
 `wgNc37`. L’implémentation d’INSCRIPTIONS-011 n’est pas engagée.
 
