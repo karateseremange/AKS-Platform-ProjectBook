@@ -1,0 +1,190 @@
+# ACCESS-002-07 — Attribution des habilitations Administration
+
+| Propriété | Valeur |
+|---|---|
+| **Document ID** | ACCESS-002-07 |
+| **Titre** | Attribution des habilitations Configuration et Journaux |
+| **Version** | 0.1.0 |
+| **Statut** | En réalisation — branches dédiées, PR en préparation |
+| **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
+| **Propriétaire** | Product Owner |
+| **Dernière mise à jour** | 2026-08-26 |
+| **Version du produit** | Post-V1.4.0 |
+
+---
+
+## 1. Contexte
+
+V1.4.0 a publié le registre ACCESS `access/1.2`, le module transverse
+`ADMINISTRATION` et les capacités explicites `CONFIG_READ`,
+`CONFIG_WRITE`, `CONFIG_RESET` et `LOG_READ`. Les contrôleurs
+Paramétrage et Journaux ainsi que la projection du Portail réautorisent déjà
+ces capacités côté serveur.
+
+Après l’amorçage réel du registre, la validation multi-compte a toutefois
+montré que la fiche « Gérer les habilitations » n’expose que Présences,
+Analytics, Inscriptions et Administration ACCESS. Elle ne permet donc pas à
+un détenteur de `ACCESS_MANAGE` d’attribuer les capacités du module
+`ADMINISTRATION` depuis l’interface normale.
+
+Les refus actuels « Paramétrage non autorisé » et « Administration non
+autorisée » sont conformes au registre de production, dans lequel les deux
+gestionnaires ne possèdent que `ACCESS_MANAGE`. Le correctif ne contourne
+pas ces refus : il complète l’interface d’attribution prévue par le modèle.
+
+## 2. Décision Product Owner
+
+Le 26 août 2026, le Product Owner a retenu une évolution applicative plutôt
+qu’une modification technique directe du registre de production.
+
+Le correctif doit permettre l’attribution normale, prévisualisée, confirmée
+et auditée des capacités Configuration et Journaux depuis la fiche
+utilisateur. Une attribution réelle en production reste une opération
+distincte, interdite par le présent incrément.
+
+## 3. Périmètre fonctionnel
+
+La fiche utilisateur ajoute une carte « Configuration et journaux » rattachée
+au module technique `ADMINISTRATION`.
+
+Elle expose exactement :
+
+- `CONFIG_READ` ;
+- `CONFIG_WRITE` ;
+- `CONFIG_RESET` ;
+- `LOG_READ`.
+
+Le filtre global des comptes ajoute également le module
+`ADMINISTRATION`.
+
+L’affectation est globale :
+
+- `season: "*"` ;
+- aucune section ;
+- aucun cours.
+
+Les rôles restent descriptifs et doivent être détenus par le compte. Aucun
+rôle, y compris `ADMINISTRATEUR`, n’accorde implicitement l’une de ces
+capacités.
+
+## 4. Règles de cohérence conservées
+
+| Action | Capacités effectives nécessaires |
+|---|---|
+| Ouvrir et consulter le Paramétrage | `CONFIG_READ` |
+| Enregistrer une valeur | `CONFIG_READ` et `CONFIG_WRITE` |
+| Réinitialiser une valeur | `CONFIG_READ`, `CONFIG_WRITE` et `CONFIG_RESET` |
+| Consulter les Journaux | `LOG_READ` |
+
+Une nouvelle affectation incohérente reste refusée côté serveur :
+
+- `CONFIG_WRITE` sans `CONFIG_READ` ;
+- `CONFIG_RESET` sans `CONFIG_READ` et `CONFIG_WRITE` ;
+- capacité extérieure au module `ADMINISTRATION` ;
+- saison différente de `*` ;
+- section ou cours renseigné.
+
+`LOG_READ` reste indépendant des capacités Configuration. Il ne donne accès
+ni à AUDIT, ni à ACCESS, ni au Paramétrage.
+
+## 5. Sécurité et audit
+
+Toute lecture globale et toute modification du registre restent protégées par
+`ACCESS_MANAGE`.
+
+Le correctif conserve :
+
+1. la prévisualisation serveur ;
+2. la révision optimiste ;
+3. le verrou du registre ;
+4. la validation du catalogue serveur ;
+5. la confirmation explicite avant enregistrement ;
+6. l’écriture atomique ;
+7. les preuves AUDIT corrélées `INTENTION` et `REUSSI` ;
+8. la restauration en cas d’échec de preuve finale ;
+9. la protection du dernier gestionnaire ACCESS.
+
+Le correctif n’ajoute aucun droit implicite, aucune exception d’adresse et
+aucun rôle `SUPER_ADMIN`.
+
+## 6. Modifications applicatives
+
+Le périmètre applicatif est limité à :
+
+- `src/ui/admin/AccessAccounts.html` ;
+- `src/ui/admin/AccessAccountsClient.html` ;
+- `src/tests/access/Access002AdminUiTest.gs`.
+
+Les changements attendus sont :
+
+- ajout du filtre `ADMINISTRATION` ;
+- ajout de la cinquième carte d’habilitations ;
+- initialisation de la portée globale `season: "*"` ;
+- maintien de l’unicité de l’affectation ACCESS ;
+- extension des contrôles structurels de l’interface.
+
+Le moteur ACCESS, les contrôleurs Paramétrage et Journaux et la projection du
+Portail ne nécessitent aucune modification : ils prennent déjà en charge les
+capacités concernées.
+
+## 7. Validation attendue
+
+Avant toute fusion applicative, la revue doit confirmer :
+
+1. exactement trois fichiers applicatifs modifiés ;
+2. cinq cartes d’habilitations visibles ;
+3. `ADMINISTRATION` disponible dans le filtre ;
+4. portée globale correctement initialisée ;
+5. catalogue serveur inchangé ;
+6. cohérences Config toujours refusées fermées ;
+7. `LOG_READ` indépendant ;
+8. `ACCESS_MANAGE` inchangé ;
+9. absence de route ou destination Inscriptions ajoutée ;
+10. absence de mutation de production.
+
+Les tests exécutables dans Apps Script feront l’objet d’une autorisation et
+d’une recette distinctes après intégration éventuelle dans `develop`.
+
+## 8. Publication et production
+
+La réalisation sur branches et l’ouverture des PR n’autorisent pas :
+
+- la fusion vers `develop` ;
+- la publication dans `main` ;
+- le déplacement du tag `v1.4.0` ;
+- un push Apps Script ;
+- la création d’une version Apps Script ;
+- la modification du déploiement `wgNc37` ;
+- l’attribution réelle de `CONFIG_*` ou `LOG_READ` ;
+- une écriture ACCESS ou AUDIT ;
+- l’engagement d’INSCRIPTIONS-011.
+
+Toute attribution réelle devra suivre un protocole séparé : inventaire,
+prévisualisation, autorisation explicite, écriture unique, relecture des droits,
+validation fonctionnelle, vérification AUDIT et conclusion documentaire.
+
+## 9. Références de réalisation
+
+- branche applicative : `agent/access-002-07-administration-ui` ;
+- branche Project Book : `docs/access-002-07-administration-ui` ;
+- PR applicative : à ouvrir ;
+- PR Project Book : à ouvrir.
+
+## 10. Critères de clôture
+
+ACCESS-002-07 pourra être déclaré intégré lorsque :
+
+1. les PR applicative et documentaire auront été revues ;
+2. les corrections de revue auront été appliquées ;
+3. les tests autorisés auront réussi ;
+4. les deux fusions vers `develop` auront été explicitement autorisées ;
+5. la documentation indiquera les commits de fusion réels.
+
+Il ne pourra être déclaré publié ou actif en production qu’après un cycle de
+publication et de déploiement séparé.
+
+## 11. Historique
+
+| Version | Date | Évolution |
+|---|---|---|
+| 0.1.0 | 2026-08-26 | Cadrage et réalisation autorisés sur deux branches dédiées : carte Administration, filtre, portée globale et tests structurels ; PR vers `develop` sans fusion, production inchangée et INSCRIPTIONS-011 non engagé |
