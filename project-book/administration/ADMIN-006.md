@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.1.0 |
-| **Statut** | Cadrage engagé — blocage de production confirmé |
+| **Version** | 0.2.0 |
+| **Statut** | Inventaire terminé — décision d’architecture attendue |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -185,6 +185,12 @@ Les tests unitaires avec dépôts en mémoire ne suffisent pas. Une recette rée
 10. publication corrective séparée ;
 11. documentation et contrôle post-production.
 
+## 10.1 Résultat d’ADMIN-006-01
+
+L’inventaire détaillé est consigné dans [ADMIN-006-01](ADMIN-006-01.md).
+
+Il confirme que les routes privées combinent des autorisations ACCESS avec des dépendances Google évaluées sous l’identité `USER_ACCESSING`. L’option « portail utilisateur + backend privé signé » est recommandée pour un prototype limité à la lecture LOG en RECETTE. Cette recommandation ne constitue pas encore une autorisation d’implémenter.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -224,4 +230,5 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.2.0 | 2026-08-28 | ADMIN-006-01 : inventaire des routes et supports terminé, matrice multi-compte établie et option backend privé signé recommandée pour prototype, sans implémentation |
 | 0.1.0 | 2026-08-28 | Création du cadrage après reproduction en production du blocage multi-compte, retrait réversible de l’habilitation et analyse en lecture seule du code V1.4.1 |
