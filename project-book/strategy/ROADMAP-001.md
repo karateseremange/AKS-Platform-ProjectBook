@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.65 |
+| **Version** | 1.3.66 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -140,7 +140,11 @@ ACCESS-002-07 — attribution Administration dans l’interface
         ↓
 ADMIN-006 — exécution multi-compte et supports privés
         ↓
-ADMIN-006-01 — décision d’architecture puis prototype LOG en RECETTE
+ADMIN-006-01 — inventaire et recommandation d’architecture
+        ↓
+ADMIN-006-02 — contrat détaillé du prototype LOG en RECETTE
+        ↓
+ADMIN-006 lot A — contrats purs et tests unitaires après autorisation
         ↓
 INSCRIPTIONS-011 — après validation effective d’ADMIN-006
         ↓
@@ -984,6 +988,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.66 | 2026-08-28 | ADMIN-006-02 cadre le prototype LOG_READ privé en RECETTE ; prochaine étape proposée limitée aux contrats purs et tests unitaires, sous autorisation distincte |
 | 1.3.65 | 2026-08-28 | ADMIN-006-01 termine l’inventaire d’exécution et recommande un backend privé signé ; prochaine décision limitée au prototype LOG en RECETTE, sans implémentation autorisée à ce stade |
 | 1.3.64 | 2026-08-28 | ADMIN-006 devient le prérequis transverse prioritaire après reproduction en production du blocage Configuration/Journaux sur un compte secondaire ; aucune nouvelle attribution, INSCRIPTIONS-011 et futurs modules privés suspendus |
 | 1.3.63 | 2026-08-27 | Tags légers `v1.4.1` créés et vérifiés : application `7e5125e7`, Project Book `5f9f6623` ; production inchangée, INSCRIPTIONS-011 non engagé |
