@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.3.0 |
-| **Statut** | Cadrage détaillé du prototype terminé — implémentation non autorisée |
+| **Version** | 0.4.0 |
+| **Statut** | Lot A implémenté en PR — validation et fusion attendues |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -199,6 +199,12 @@ Il ferme le périmètre du premier prototype à `LOG_READ` en RECETTE et défini
 
 La prochaine étape proposée est exclusivement le lot A : contrats purs et tests unitaires dans le dépôt applicatif, après une nouvelle autorisation explicite.
 
+## 10.3 Résultat d’ADMIN-006-03
+
+Le résultat du lot A est consigné dans [ADMIN-006-03](ADMIN-006-03.md).
+
+La PR applicative #140 implémente les contrats purs `AKS-PRIVATE/1`, sans backend, secret, stockage anti-rejeu ou ressource Google. Les 18 tests dédiés réussissent dans le harnais local et sont rattachés à la suite cumulative de 684 cas. La suite cumulative Apps Script n’a pas été exécutée, conformément à l’interdiction de toute opération Google.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -238,6 +244,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.4.0 | 2026-08-28 | ADMIN-006-03 : lot A implémenté dans la PR applicative #140, 18/18 tests isolés réussis, aucune opération Google ; validation et fusion attendues |
 | 0.3.0 | 2026-08-28 | ADMIN-006-02 : protocole du prototype LOG_READ RECETTE, anti-rejeu, résilience, tests et retour arrière cadrés ; implémentation non autorisée |
 | 0.2.0 | 2026-08-28 | ADMIN-006-01 : inventaire des routes et supports terminé, matrice multi-compte établie et option backend privé signé recommandée pour prototype, sans implémentation |
 | 0.1.0 | 2026-08-28 | Création du cadrage après reproduction en production du blocage multi-compte, retrait réversible de l’habilitation et analyse en lecture seule du code V1.4.1 |
