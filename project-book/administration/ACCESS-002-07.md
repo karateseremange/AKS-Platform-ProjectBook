@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ACCESS-002-07 |
 | **Titre** | Attribution des habilitations Configuration et Journaux |
-| **Version** | 0.3.5 |
-| **Statut** | V1.4.1 publiée dans les deux branches `main` — tags et déploiement en attente |
+| **Version** | 0.3.6 |
+| **Statut** | V1.4.1 publiée et taguée dans Git — déploiement en attente |
 | **Nature** | Correctif fonctionnel et de sécurité post-V1.4.0 |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-27 |
@@ -149,11 +149,11 @@ Après autorisation explicite, le commit applicatif `c2efda48a0d2cabbb735cd7c024
 ACCESS-002-07 est publié dans les deux branches `main`. La publication Git
 applicative a été réalisée par la PR #137 au commit `7e5125e7` et la
 publication documentaire par la PR Project Book #197 au commit `5f9f6623`.
-Les tags restent absents et la production demeure inchangée.
+Les tags légers `v1.4.1` ont été créés et vérifiés sur `7e5125e7` pour l’application et `5f9f6623` pour le Project Book. La production demeure inchangée.
 
 Restent non autorisés dans le présent cycle :
 
-- la création ou le déplacement d’un tag ;
+- le déplacement d’un tag ;
 - un push Apps Script de production ;
 - la création d’une version Apps Script ;
 - la modification du déploiement `wgNc37` ;
@@ -191,13 +191,15 @@ La PR applicative #136 a été fusionnée dans `develop` au commit `62c859a7`.
 La PR documentaire #195 a été fusionnée dans `develop` au commit `0b428b76`.
 La PR applicative de publication #137 a été fusionnée dans `main` au commit
 `7e5125e7`. La PR Project Book de publication #197 a été fusionnée dans `main`
-au commit `5f9f6623`. La création des tags et toute opération de production
-devront être explicitement autorisées séparément.
+au commit `5f9f6623`. Les tags légers `v1.4.1` ont été créés et vérifiés sur
+`7e5125e7` pour l’application et `5f9f6623` pour le Project Book. Toute
+opération de production devra être explicitement autorisée séparément.
 
 ## 11. Historique
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.3.6 | 2026-08-27 | Tags légers `v1.4.1` créés et vérifiés : application `7e5125e7`, Project Book `5f9f6623` ; production inchangée, INSCRIPTIONS-011 non engagé |
 | 0.3.5 | 2026-08-27 | PR Project Book de publication #197 fusionnée dans `main` au commit `5f9f6623` ; V1.4.1 publiée dans les deux dépôts, tags et production inchangés, INSCRIPTIONS-011 non engagé |
 | 0.3.4 | 2026-08-27 | PR applicative de publication #137 fusionnée dans `main` au commit `7e5125e7` ; PR Project Book #197 ouverte sans fusion, tag et production inchangés, INSCRIPTIONS-011 non engagé |
 | 0.3.3 | 2026-08-27 | PR Project Book #195 fusionnée dans `develop` au commit `0b428b76` ; finalisation V1.4.1 intégrée dans les deux `develop`, sans `main`, tag, production ni engagement d’INSCRIPTIONS-011 |

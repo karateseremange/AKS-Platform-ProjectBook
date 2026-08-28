@@ -6,11 +6,11 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.56 |
+| Version | 1.3.57 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-27 |
-| Version du produit | V1.4.1 publiée dans les deux branches `main` — tags et déploiement en attente |
+| Version du produit | V1.4.1 publiée et taguée dans Git — déploiement en attente |
 
 ---
 
@@ -121,14 +121,14 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ACCESS-002 | Administration des utilisateurs et habilitations privées | V1.4.0 en production — correctif V1.4.1 publié dans Git, non déployé | 0.4.55 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
+| ACCESS-002 | Administration des utilisateurs et habilitations privées | V1.4.0 en production — correctif V1.4.1 publié et tagué dans Git, non déployé | 0.4.56 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
 | ACCESS-002-03 | Liste, recherche et cycle de vie des comptes d’accès | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-002-02, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #101 à #104, `b120963` |
 | ACCESS-002-04 | Fiche utilisateur, rôles multiples et habilitations explicites | Validé et clôturé | 1.0.0 | ACCESS-002, ACCESS-002-01 à ACCESS-002-03, ACCESS-001, SECURITY-001, AUDIT-001 |
 | ACCESS-002-05 | Portail privé personnalisé et consultation de ses accès | Clôturé — recette multi-profils conforme | 1.0.0 | ACCESS-002, ACCESS-002-04, ACCESS-001, SECURITY-001 |
 | ACCESS-002-06 | Migration définitive des modules vers les capacités ACCESS | Intégré, publié et validé en production dans V1.4.0 | 0.7.1 | ACCESS-002, ACCESS-002-05, CONFIG-001, LOG-001, AUDIT-001 |
-| ACCESS-002-07 | Attribution des habilitations Configuration et Journaux | V1.4.1 publiée dans Git — tags et déploiement en attente | 0.3.5 | ACCESS-002, ACCESS-002-06, CONFIG-001, LOG-001, AUDIT-001 |
+| ACCESS-002-07 | Attribution des habilitations Configuration et Journaux | V1.4.1 publiée et taguée dans Git — déploiement en attente | 0.3.6 | ACCESS-002, ACCESS-002-06, CONFIG-001, LOG-001, AUDIT-001 |
 | ACCESS-002-PRODUCTION | Publication, déploiement et amorçage d’ACCESS en production | P1 à P10 clôturés — production V1.4.0 confirmée | 1.2.15 | ACCESS-002, ACCESS-002-06, AUDIT-001, AUDIT-001-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, RELEASE-001, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P2 | Candidate et Quality Gate ACCESS | P2 clôturé sur `develop` — candidate validée en recette, production interdite | 1.0.0 | ACCESS-002-PRODUCTION, RELEASE-001, AUDIT-001-PRODUCTION, ROADMAP-001 |
 | ACCESS-002-PRODUCTION-P3 | Inventaire de production en lecture seule | Inventaire et rapprochement clôturés — production inchangée | 1.0.0 | ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2, RELEASE-001, ROADMAP-001 |
@@ -292,7 +292,7 @@ Chaque document officiel doit comporter au minimum : identifiant, titre, version
 | Gouvernance documentaire | GOV-DOC-001, GOV-DEV-001, DOC-001, STD-001, ADR-001 | Complète sous réserve de confirmation d'ADR-001 |
 | Architecture générale | ARCH-001, CORE-001 | Complète |
 | Services transverses | API-001, SECURITY-001, ERROR-001, NOTIF-001, DOCUMENT-001, STORAGE-001, UI-001 | Complète |
-| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-07, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; P10 clôturé sans retour arrière ; correctif ACCESS-002-07 intégré dans les deux `develop` par les PR #135 et #194 après validation **15/15** et **665/665** et restauration exacte de la recette ; candidate V1.4.1 `60cc727e` validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; publication applicative #137 fusionnée dans `main` au commit `7e5125e7` et publication documentaire #197 fusionnée dans `main` au commit `5f9f6623`, tags et production en attente |
+| Administration | ADMIN-001 à ADMIN-005, ACCESS-002, ACCESS-002-01 à ACCESS-002-07, ACCESS-002-PRODUCTION, ACCESS-002-PRODUCTION-P2 à P10, CONFIG-001, LOG-001, AUDIT-001, AUDIT-001-RECETTE, AUDIT-001-PRODUCTION | ACCESS publié, déployé, amorcé et validé en production ; P10 clôturé sans retour arrière ; correctif ACCESS-002-07 intégré dans les deux `develop` par les PR #135 et #194 après validation **15/15** et **665/665** et restauration exacte de la recette ; candidate V1.4.1 `60cc727e` validée à **8/8**, **15/15** et **665/665**, puis recette restaurée exactement ; publication applicative #137 fusionnée dans `main` au commit `7e5125e7` et publication documentaire #197 fusionnée dans `main` au commit `5f9f6623` ; tags légers `v1.4.1` créés et vérifiés sur `7e5125e7` pour l’application et `5f9f6623` pour le Project Book, déploiement et production en attente |
 | Expérience utilisateur | UX-001 | Complète |
 | AKS Analytics | ANALYTICS-001 à ANALYTICS-009, V1.2.0 | Publié en V1.2.0 ; exploitation officielle conditionnée à des sources réelles exploitables |
 | AKS Calendar | CALENDAR-001 à CALENDAR-004, V1.3.0 | Publié en V1.3.0 |
@@ -317,6 +317,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.57 | 2026-08-27 | Tags légers `v1.4.1` créés et vérifiés : application `7e5125e7`, Project Book `5f9f6623` ; production inchangée, INSCRIPTIONS-011 non engagé |
 | 1.3.56 | 2026-08-27 | PR Project Book de publication #197 fusionnée dans `main` au commit `5f9f6623` ; V1.4.1 publiée dans les deux dépôts, tags et production inchangés, INSCRIPTIONS-011 non engagé |
 | 1.3.55 | 2026-08-27 | PR applicative de publication #137 fusionnée dans `main` au commit `7e5125e7` ; PR Project Book #197 ouverte sans fusion, tag et production inchangés, INSCRIPTIONS-011 non engagé |
 | 1.3.54 | 2026-08-27 | PR Project Book #195 fusionnée dans `develop` au commit `0b428b76` ; V1.4.1 intégrée dans les deux `develop`, sans `main`, tag, production ni engagement d’INSCRIPTIONS-011 |
