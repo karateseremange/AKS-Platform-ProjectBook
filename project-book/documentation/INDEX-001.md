@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.58 |
+| Version | 1.3.59 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-28 |
@@ -121,7 +121,8 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ADMIN-006 | Administration multi-compte et accès aux supports privés | Cadrage engagé — blocage de production confirmé | 0.1.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ADMIN-006 | Administration multi-compte et accès aux supports privés | Inventaire terminé — décision d’architecture attendue | 0.2.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ADMIN-006-01 | Inventaire des routes, identités et dépendances Google | Analyse terminée — option backend privé signé recommandée | 0.1.0 | ADMIN-006, Web Apps Apps Script, ACCESS-002, LOG-001, AUDIT-001-PRODUCTION |
 | ACCESS-002 | Administration des utilisateurs et habilitations privées | V1.4.0 en production — correctif V1.4.1 publié et tagué dans Git, non déployé | 0.4.56 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
@@ -318,6 +319,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.59 | 2026-08-28 | ADMIN-006-01 : inventaire des routes, identités et supports privés terminé ; option portail utilisateur et backend privé signé recommandée pour prototype LOG en RECETTE, sans implémentation ni production |
 | 1.3.58 | 2026-08-28 | Création d’ADMIN-006 après reproduction du blocage de l’habilitation Configuration et Journaux sur un compte secondaire en production ; V1.4.1 maintenue, habilitation retirée, futurs modules privés suspendus |
 | 1.3.57 | 2026-08-27 | Tags légers `v1.4.1` créés et vérifiés : application `7e5125e7`, Project Book `5f9f6623` ; production inchangée, INSCRIPTIONS-011 non engagé |
 | 1.3.56 | 2026-08-27 | PR Project Book de publication #197 fusionnée dans `main` au commit `5f9f6623` ; V1.4.1 publiée dans les deux dépôts, tags et production inchangés, INSCRIPTIONS-011 non engagé |
