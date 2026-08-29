@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.66 |
+| **Version** | 1.3.69 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -144,7 +144,9 @@ ADMIN-006-01 — inventaire et recommandation d’architecture
         ↓
 ADMIN-006-02 — contrat détaillé du prototype LOG en RECETTE
         ↓
-ADMIN-006 lot A — contrats purs et tests unitaires après autorisation
+ADMIN-006-03 — lot A validé en RECETTE et intégré dans `develop` (`ea38f0`)
+        ↓
+ADMIN-006 lot B — backend RECETTE sans déploiement après autorisation
         ↓
 INSCRIPTIONS-011 — après validation effective d’ADMIN-006
         ↓
@@ -988,6 +990,9 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.69 | 2026-08-29 | ADMIN-006 lot A intégré dans `develop` par la PR applicative #140 au commit `ea38f0759ec4b26ce73e112738075f3b501799da` |
+| 1.3.68 | 2026-08-29 | ADMIN-006-03 valide le lot A en RECETTE à 683/683 avec restauration exacte ; prochaine décision limitée aux fusions des PR #140 et #205 |
+| 1.3.67 | 2026-08-28 | ADMIN-006-03 consigne le lot A dans la PR applicative #140 : contrats purs, 18/18 tests isolés réussis, sans opération Google ; validation avant fusion |
 | 1.3.66 | 2026-08-28 | ADMIN-006-02 cadre le prototype LOG_READ privé en RECETTE ; prochaine étape proposée limitée aux contrats purs et tests unitaires, sous autorisation distincte |
 | 1.3.65 | 2026-08-28 | ADMIN-006-01 termine l’inventaire d’exécution et recommande un backend privé signé ; prochaine décision limitée au prototype LOG en RECETTE, sans implémentation autorisée à ce stade |
 | 1.3.64 | 2026-08-28 | ADMIN-006 devient le prérequis transverse prioritaire après reproduction en production du blocage Configuration/Journaux sur un compte secondaire ; aucune nouvelle attribution, INSCRIPTIONS-011 et futurs modules privés suspendus |
