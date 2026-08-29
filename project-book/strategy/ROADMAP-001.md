@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.69 |
+| **Version** | 1.3.70 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -146,7 +146,9 @@ ADMIN-006-02 — contrat détaillé du prototype LOG en RECETTE
         ↓
 ADMIN-006-03 — lot A validé en RECETTE et intégré dans `develop` (`ea38f0`)
         ↓
-ADMIN-006 lot B — backend RECETTE sans déploiement après autorisation
+ADMIN-006-04 — lot B backend RECETTE et anti-rejeu cadré
+  ↓
+ADMIN-006 lot B — implémentation B1 à B3 sans opération Google après autorisation
         ↓
 INSCRIPTIONS-011 — après validation effective d’ADMIN-006
         ↓
@@ -990,6 +992,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.70 | 2026-08-29 | ADMIN-006-04 cadre le backend RECETTE, le registre anti-rejeu, les tests et le retour arrière ; implémentation non autorisée |
 | 1.3.69 | 2026-08-29 | ADMIN-006 lot A intégré dans `develop` par la PR applicative #140 au commit `ea38f0759ec4b26ce73e112738075f3b501799da` |
 | 1.3.68 | 2026-08-29 | ADMIN-006-03 valide le lot A en RECETTE à 683/683 avec restauration exacte ; prochaine décision limitée aux fusions des PR #140 et #205 |
 | 1.3.67 | 2026-08-28 | ADMIN-006-03 consigne le lot A dans la PR applicative #140 : contrats purs, 18/18 tests isolés réussis, sans opération Google ; validation avant fusion |
