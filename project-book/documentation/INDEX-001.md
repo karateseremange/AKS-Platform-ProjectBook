@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.65 |
+| Version | 1.3.66 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-28 |
@@ -121,12 +121,12 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ADMIN-006 | Administration multi-compte et accès aux supports privés | Lot B validé en RECETTE — fusion applicative attendue | 0.8.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ADMIN-006 | Administration multi-compte et accès aux supports privés | Lot B validé en RECETTE et intégré dans `develop` | 0.9.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
 | ADMIN-006-01 | Inventaire des routes, identités et dépendances Google | Analyse terminée — option backend privé signé recommandée | 0.1.0 | ADMIN-006, Web Apps Apps Script, ACCESS-002, LOG-001, AUDIT-001-PRODUCTION |
 | ADMIN-006-02 | Contrat du prototype LOG_READ avec backend privé signé | Contrat directeur validé — lot B détaillé dans ADMIN-006-04 | 0.2.0 | ADMIN-006, ADMIN-006-01, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-03 | Implémentation des contrats purs AKS-PRIVATE/1 | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-01, ADMIN-006-02, AKS-Platform #140 |
-| ADMIN-006-04 | Backend privé RECETTE et stockage anti-rejeu | Implémenté et validé en RECETTE — fusion applicative attendue | 0.2.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ACCESS-002, LOG-001, AUDIT-001 |
-| ADMIN-006-05 | Implémentation B1 à B3 du backend privé RECETTE | Validé en RECETTE — fusion applicative attendue | 0.1.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ADMIN-006-04, AKS-Platform #141 |
+| ADMIN-006-04 | Backend privé RECETTE et stockage anti-rejeu | Implémenté, validé en RECETTE et intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ACCESS-002, LOG-001, AUDIT-001 |
+| ADMIN-006-05 | Implémentation B1 à B3 du backend privé RECETTE | Validé en RECETTE — intégré dans `develop` | 0.2.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ADMIN-006-04, AKS-Platform #141 |
 | ACCESS-002 | Administration des utilisateurs et habilitations privées | V1.4.0 en production — correctif V1.4.1 publié et tagué dans Git, non déployé | 0.4.56 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
@@ -323,6 +323,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.66 | 2026-08-29 | ADMIN-006 lot B intégré dans `develop` par la PR applicative #141 au commit `c064f0f027e3e8d6e3087ba71930866588a95d05` |
 | 1.3.65 | 2026-08-29 | ADMIN-006-05 : lot B validé à 18/18 localement et 701/701 en RECETTE avec restauration exacte ; fusion applicative attendue |
 | 1.3.64 | 2026-08-29 | ADMIN-006-04 : cadrage détaillé du lot B backend RECETTE et stockage anti-rejeu, sans implémentation ni opération Google |
 | 1.3.63 | 2026-08-29 | ADMIN-006 lot A intégré dans `develop` par la PR applicative #140 au commit `ea38f0759ec4b26ce73e112738075f3b501799da` |
