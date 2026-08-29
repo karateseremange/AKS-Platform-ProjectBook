@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.6.0 |
-| **Statut** | Lot A validé en RECETTE et intégré dans `develop` |
+| **Version** | 0.7.0 |
+| **Statut** | Lot B cadré — implémentation non autorisée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -205,6 +205,14 @@ Le résultat du lot A est consigné dans [ADMIN-006-03](ADMIN-006-03.md).
 
 La PR applicative #140, fusionnée dans `develop` au commit `ea38f0759ec4b26ce73e112738075f3b501799da`, implémente les contrats purs `AKS-PRIVATE/1`, sans backend, secret, stockage anti-rejeu ou ressource Google. Les 18 tests dédiés réussissent dans le harnais local. La suite cumulative réelle contient 683 cas et réussit à **683/683** dans Apps Script RECETTE. La candidate a été relue à 263 fichiers puis RECETTE restaurée exactement à 261 fichiers, sans création de version ni modification de déploiement.
 
+## 10.4 Cadrage d’ADMIN-006-04
+
+Le cadrage détaillé du lot B est consigné dans [ADMIN-006-04](ADMIN-006-04.md).
+
+Il retient un backend RECETTE fermé à `LOG_READ_RECENT_V1`, réutilisant les contrats du lot A, avec registre anti-rejeu partagé fondé sur `ScriptProperties + ScriptLock`, consommation avant lecture LOG, adaptateurs injectés, réponses minimisées et refus fermé. Le document définit les sous-lots B1 à B3, les tests, le retour arrière et les précontrôles requis.
+
+Aucune implémentation, ressource Google, propriété, URL, habilitation, version ou déploiement n’est autorisé par ce cadrage.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -244,6 +252,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.7.0 | 2026-08-29 | ADMIN-006-04 : lot B backend RECETTE et stockage anti-rejeu cadré, sans implémentation, secret, ressource Google ni déploiement |
 | 0.6.0 | 2026-08-29 | Lot A intégré dans `develop` par la PR applicative #140 au commit `ea38f0759ec4b26ce73e112738075f3b501799da`, sans opération Google ni production |
 | 0.5.0 | 2026-08-29 | ADMIN-006-03 : lot A validé en RECETTE à 683/683, candidate relue intégralement et HEAD restauré exactement sans modification de déploiement |
 | 0.4.0 | 2026-08-28 | ADMIN-006-03 : lot A implémenté dans la PR applicative #140, 18/18 tests isolés réussis, aucune opération Google ; validation et fusion attendues |
