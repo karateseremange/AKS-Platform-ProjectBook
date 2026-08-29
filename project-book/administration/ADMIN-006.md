@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.4.0 |
-| **Statut** | Lot A implémenté en PR — validation et fusion attendues |
+| **Version** | 0.5.0 |
+| **Statut** | Lot A validé en RECETTE — fusion applicative attendue |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -203,7 +203,7 @@ La prochaine étape proposée est exclusivement le lot A : contrats purs et test
 
 Le résultat du lot A est consigné dans [ADMIN-006-03](ADMIN-006-03.md).
 
-La PR applicative #140 implémente les contrats purs `AKS-PRIVATE/1`, sans backend, secret, stockage anti-rejeu ou ressource Google. Les 18 tests dédiés réussissent dans le harnais local et sont rattachés à la suite cumulative de 684 cas. La suite cumulative Apps Script n’a pas été exécutée, conformément à l’interdiction de toute opération Google.
+La PR applicative #140 implémente les contrats purs `AKS-PRIVATE/1`, sans backend, secret, stockage anti-rejeu ou ressource Google. Les 18 tests dédiés réussissent dans le harnais local. La suite cumulative réelle contient 683 cas et réussit à **683/683** dans Apps Script RECETTE. La candidate a été relue à 263 fichiers puis RECETTE restaurée exactement à 261 fichiers, sans création de version ni modification de déploiement.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -244,6 +244,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.5.0 | 2026-08-29 | ADMIN-006-03 : lot A validé en RECETTE à 683/683, candidate relue intégralement et HEAD restauré exactement sans modification de déploiement |
 | 0.4.0 | 2026-08-28 | ADMIN-006-03 : lot A implémenté dans la PR applicative #140, 18/18 tests isolés réussis, aucune opération Google ; validation et fusion attendues |
 | 0.3.0 | 2026-08-28 | ADMIN-006-02 : protocole du prototype LOG_READ RECETTE, anti-rejeu, résilience, tests et retour arrière cadrés ; implémentation non autorisée |
 | 0.2.0 | 2026-08-28 | ADMIN-006-01 : inventaire des routes et supports terminé, matrice multi-compte établie et option backend privé signé recommandée pour prototype, sans implémentation |
