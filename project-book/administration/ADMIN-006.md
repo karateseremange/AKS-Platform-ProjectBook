@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.14.0 |
-| **Statut** | D0 terminé — backend et LOG dédiés requis |
+| **Version** | 0.15.0 |
+| **Statut** | D1 terminé — ressources dédiées créées, raccordement interdit |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -253,6 +253,14 @@ Le portail RECETTE est confirmé. Le POC et la configuration Services sont refus
 
 D1 devra créer des ressources RECETTE dédiées sous autorisation distincte, sans secret, partage, déploiement ou raccordement dans le même sous-lot.
 
+## 10.10 Résultat d’ADMIN-006-10
+
+La préparation D1 est consignée dans [ADMIN-006-10](ADMIN-006-10.md).
+
+Le projet `AKS Private Backend RECETTE` a été créé puis rendu vide par suppression confirmée du fichier automatique `Code.gs`. Le classeur `AKS LOG RECETTE` contient uniquement l’onglet `AKS_Logs`, les seize colonnes contractuelles et aucune donnée. Les deux ressources appartiennent uniquement au propriétaire observé et ne sont pas partagées.
+
+Aucun code, secret, déploiement, raccordement au portail, droit ACCESS ou élément de production n’a été créé ou modifié.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -292,6 +300,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.15.0 | 2026-08-30 | ADMIN-006-10 : D1 terminé, backend privé vide et support LOG dédié créés sans partage, secret, déploiement ni raccordement |
 | 0.14.0 | 2026-08-30 | ADMIN-006-09 : D0 terminé, aucun backend existant admissible, backend et support LOG RECETTE dédiés requis |
 | 0.13.0 | 2026-08-30 | ADMIN-006-08 : lot D raccordement privé RECETTE, secret, anti-rejeu et recette multi-compte cadrés sans opération Google |
 | 0.12.0 | 2026-08-30 | Lot C intégré dans `develop` par la PR #142 au commit `d8ca2840659cad6b467772f2563ac61a834d6ada` |

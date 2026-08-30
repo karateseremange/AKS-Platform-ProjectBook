@@ -158,7 +158,9 @@ ADMIN-006-08 — lot D raccordement privé et recette multi-compte cadré
 ↓
 ADMIN-006-09 — D0 terminé, aucun backend existant admissible
 ↓
-ADMIN-006 D1 — création préparatoire de ressources dédiées après autorisation
+ADMIN-006-10 — D1 terminé, ressources dédiées créées et non raccordées
+↓
+ADMIN-006 D2 — installation contrôlée du secret HMAC après autorisation
         ↓
 INSCRIPTIONS-011 — après validation effective d’ADMIN-006
         ↓
@@ -1002,6 +1004,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.78 | 2026-08-30 | ADMIN-006-10 clôt D1 ; backend privé vide et support LOG dédié créés sans partage, secret, déploiement ni raccordement ; D2 reste non autorisé |
 | 1.3.77 | 2026-08-30 | ADMIN-006-09 clôt D0 ; prochaine décision limitée à la création préparatoire D1 de ressources RECETTE dédiées |
 | 1.3.76 | 2026-08-30 | ADMIN-006-08 cadre le lot D ; prochaine décision limitée à l’inventaire D0 en lecture seule |
 | 1.3.75 | 2026-08-30 | ADMIN-006 lot C intégré dans `develop` par la PR applicative #142 au commit `d8ca2840659cad6b467772f2563ac61a834d6ada` |
