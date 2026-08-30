@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.19.0 |
-| **Statut** | Précontrôle D3 terminé — D3-A applicatif requis |
+| **Version** | 0.20.0 |
+| **Statut** | D3-A terminé — D3-B requis avant tout push backend |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-30 |
@@ -299,6 +299,16 @@ L'identité d'exécution, l'audience Web App et le support de preuve doivent êt
 
 La prochaine étape est D3-A sur branche applicative dédiée, avec backend inactif et tests complets. Les opérations Google et le raccordement du portail restent exclus et soumis à des autorisations ultérieures distinctes.
 
+## 10.15 Résultat D3-A
+
+Le résultat détaillé est consigné dans [ADMIN-006-13](ADMIN-006-13.md).
+
+La PR applicative #143 a ajouté le runtime backend fermé, les adaptateurs Apps Script contrôlés, le lecteur LOG dédié, l’écrivain de preuve relu, le point d’entrée backend séparé et le constructeur de package à liste blanche. Les 13 tests dédiés réussissent localement.
+
+La tête `e2d21b492167a2a0571035dcff66230819a0d7c1` a été validée à **729/729** dans Apps Script RECETTE. La candidate de 271 fichiers a été relue, puis le HEAD initial de 261 fichiers restauré exactement. L’archive de sauvegarde porte l’empreinte `26BB92891E32FA839C55ED2E360835188A74CE94C0C2B6AA80C7955660A4D2F3`.
+
+La PR a été fusionnée dans `develop` au commit `bc8b3be19c3860079db0228769d8cb1d80f302dc`. Aucun backend, support Google, secret, propriété, version, déploiement, partage ou droit ACCESS n’a été modifié. D3-B reste requis avant tout push backend.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -338,6 +348,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.20.0 | 2026-08-30 | D3-A intégré par la PR #143, validé à 729/729 et restauré exactement ; D3-B requis avant push backend |
 | 0.19.0 | 2026-08-30 | ADMIN-006-13 : précontrôle D3 terminé, lacunes de déploiement identifiées et D3-A applicatif requis sans mutation externe |
 | 0.18.0 | 2026-08-30 | D2-B conforme : secret courant et version concordants, clé précédente absente, code restauré et transport désactivé |
 | 0.17.0 | 2026-08-30 | ADMIN-006-12 : D2-A conforme, propriétés inventoriées et restaurations exactes ; D2-B cadré sans installation |
