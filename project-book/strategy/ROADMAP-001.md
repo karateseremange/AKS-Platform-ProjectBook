@@ -160,7 +160,9 @@ ADMIN-006-09 — D0 terminé, aucun backend existant admissible
 ↓
 ADMIN-006-10 — D1 terminé, ressources dédiées créées et non raccordées
 ↓
-ADMIN-006 D2 — installation contrôlée du secret HMAC après autorisation
+ADMIN-006-11 — précontrôle D2 terminé, inspecteur réversible requis
+↓
+ADMIN-006 D2-A — inspection des propriétés par noms et empreintes après autorisation
         ↓
 INSCRIPTIONS-011 — après validation effective d’ADMIN-006
         ↓
@@ -1004,6 +1006,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.79 | 2026-08-30 | ADMIN-006-11 clôt le précontrôle D2 ; propriétés non observables en lecture seule, inspecteur réversible requis avant toute génération de secret |
 | 1.3.78 | 2026-08-30 | ADMIN-006-10 clôt D1 ; backend privé vide et support LOG dédié créés sans partage, secret, déploiement ni raccordement ; D2 reste non autorisé |
 | 1.3.77 | 2026-08-30 | ADMIN-006-09 clôt D0 ; prochaine décision limitée à la création préparatoire D1 de ressources RECETTE dédiées |
 | 1.3.76 | 2026-08-30 | ADMIN-006-08 cadre le lot D ; prochaine décision limitée à l’inventaire D0 en lecture seule |
