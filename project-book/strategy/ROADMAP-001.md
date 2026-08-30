@@ -5,7 +5,7 @@
 |---|---|
 | **Document ID** | ROADMAP-001 |
 | **Titre** | Feuille de route officielle d’AKS Platform |
-| **Version** | 1.3.72 |
+| **Version** | 1.3.73 |
 | **Statut** | Validé |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -150,7 +150,9 @@ ADMIN-006-04 — lot B backend RECETTE et anti-rejeu cadré
   ↓
 ADMIN-006-05 — B1 à B3 validés et intégrés dans `develop` (`c064f0f`)
   ↓
-ADMIN-006 lot C — portail et isolation LOG après autorisation
+ADMIN-006-06 — lot C portail et isolation Journaux cadré
+↓
+ADMIN-006 lot C — implémentation C1 à C3 sans raccordement après autorisation
         ↓
 INSCRIPTIONS-011 — après validation effective d’ADMIN-006
         ↓
@@ -994,6 +996,7 @@ Toute modification de cet ordre ou du périmètre engagé doit être validée et
 
 | Version | Date | Évolution |
 |---|---|---|
+| 1.3.73 | 2026-08-30 | ADMIN-006-06 cadre le client portail privé, la séparation Paramétrage/Journaux et le fonctionnement dégradé ; implémentation non autorisée |
 | 1.3.72 | 2026-08-29 | ADMIN-006 lot B intégré dans `develop` par la PR applicative #141 au commit `c064f0f027e3e8d6e3087ba71930866588a95d05` |
 | 1.3.71 | 2026-08-29 | ADMIN-006-05 valide B1 à B3 à 18/18 localement et 701/701 en RECETTE avec restauration exacte ; fusion applicative attendue |
 | 1.3.70 | 2026-08-29 | ADMIN-006-04 cadre le backend RECETTE, le registre anti-rejeu, les tests et le retour arrière ; implémentation non autorisée |

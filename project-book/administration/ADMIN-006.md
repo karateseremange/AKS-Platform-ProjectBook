@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.9.0 |
-| **Statut** | Lot B validé en RECETTE et intégré dans `develop` |
+| **Version** | 0.10.0 |
+| **Statut** | Lot C cadré — implémentation non autorisée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -221,6 +221,14 @@ La PR applicative #141, fusionnée dans `develop` au commit `c064f0f027e3e8d6e30
 
 Aucun raccordement réel n’est autorisé.
 
+## 10.6 Cadrage d’ADMIN-006-06
+
+Le cadrage détaillé du lot C est consigné dans [ADMIN-006-06](ADMIN-006-06.md).
+
+Il définit le client portail privé, le contrôle serveur de `LOG_READ`, la construction signée côté serveur, un transport injecté et inactif, la validation des réponses, ainsi que l’isolation du widget Journaux. Paramétrage et Journaux restent deux destinations et deux autorisations indépendantes.
+
+Aucune implémentation, URL, secret, opération Google ou déploiement n’est autorisé par ce cadrage.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -260,6 +268,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.10.0 | 2026-08-30 | ADMIN-006-06 : lot C client portail et isolation Journaux cadré, sans implémentation, secret, raccordement ou déploiement |
 | 0.9.0 | 2026-08-29 | Lot B intégré dans `develop` par la PR #141 au commit `c064f0f027e3e8d6e3087ba71930866588a95d05` |
 | 0.8.0 | 2026-08-29 | ADMIN-006-05 : lot B validé à 18/18 localement et 701/701 en RECETTE, restauration exacte, fusion applicative attendue |
 | 0.7.0 | 2026-08-29 | ADMIN-006-04 : lot B backend RECETTE et stockage anti-rejeu cadré, sans implémentation, secret, ressource Google ni déploiement |
