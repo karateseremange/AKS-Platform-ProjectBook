@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.16.0 |
-| **Statut** | Précontrôle D2 terminé — inspection contrôlée requise |
+| **Version** | 0.17.0 |
+| **Statut** | D2-A terminé — D2-B cadré, installation non autorisée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-28 |
+| **Dernière mise à jour** | 2026-08-30 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -267,7 +267,17 @@ Le précontrôle D2 et son protocole sont consignés dans [ADMIN-006-11](ADMIN-0
 
 Drive et `clasp` n’exposent pas les propriétés d’exécution Apps Script. Leurs noms et empreintes ne peuvent donc pas être certifiés sans un inspecteur temporaire explicitement autorisé. Le protocole d’installation HMAC, la vérification croisée et le retour arrière sont définis, mais aucun secret n’a été créé ou installé.
 
-La prochaine décision doit rester limitée à l’inspection réversible des propriétés, sans installation du secret dans le même sous-lot.
+L’inspection réversible a ensuite été exécutée et est consignée dans [ADMIN-006-12](ADMIN-006-12.md).
+
+## 10.12 Résultat D2-A et cadrage D2-B
+
+Le résultat de D2-A et le plan fermé de D2-B sont consignés dans [ADMIN-006-12](ADMIN-006-12.md).
+
+Le portail RECETTE contient six propriétés ACCESS/AUDIT historiques et aucune clé `AKS_PRIVATE_`. Le backend privé contient zéro propriété. Après retrait manuel des inspecteurs temporaires, les deux HEAD ont été relus et restaurés exactement : 261 fichiers portail, un manifeste backend, zéro différence.
+
+D2-B est limité à `AKS_PRIVATE_HMAC_CURRENT` et `AKS_PRIVATE_SECRET_VERSION`, installés d’abord sur le backend puis sur le portail avec transport désactivé. `AKS_PRIVATE_HMAC_PREVIOUS` doit rester absente. Aucun autre paramètre, endpoint, version, déploiement, partage ou droit ACCESS n’est inclus.
+
+Une autorisation distincte reste requise avant toute génération ou installation du secret.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -308,6 +318,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.17.0 | 2026-08-30 | ADMIN-006-12 : D2-A conforme, propriétés inventoriées et restaurations exactes ; D2-B cadré sans installation |
 | 0.16.0 | 2026-08-30 | ADMIN-006-11 : précontrôle D2 terminé, propriétés non observables sans inspecteur contrôlé, protocole HMAC réversible défini sans création de secret |
 | 0.15.0 | 2026-08-30 | ADMIN-006-10 : D1 terminé, backend privé vide et support LOG dédié créés sans partage, secret, déploiement ni raccordement |
 | 0.14.0 | 2026-08-30 | ADMIN-006-09 : D0 terminé, aucun backend existant admissible, backend et support LOG RECETTE dédiés requis |
