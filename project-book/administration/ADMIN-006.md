@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.11.0 |
-| **Statut** | Lot C validé en RECETTE — fusion applicative attendue |
+| **Version** | 0.12.0 |
+| **Statut** | Lot C validé et intégré dans `develop` |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -233,7 +233,7 @@ Aucune implémentation, URL, secret, opération Google ou déploiement n’est a
 
 Le résultat d’implémentation et de validation du lot C est consigné dans [ADMIN-006-07](ADMIN-006-07.md).
 
-La PR applicative #142, tête `ae28c735f89bdb1b3981093b39e16142e6f73090`, fournit C1 à C3 avec un transport inactif. Les 15 tests dédiés et les 716 tests cumulatifs ont réussi en RECETTE, puis le HEAD initial de 261 fichiers a été restauré exactement.
+La PR applicative #142, tête `ae28c735f89bdb1b3981093b39e16142e6f73090`, fournit C1 à C3 avec un transport inactif. Les 15 tests dédiés et les 716 tests cumulatifs ont réussi en RECETTE, puis le HEAD initial de 261 fichiers a été restauré exactement. La PR a été fusionnée dans `develop` au commit `d8ca2840659cad6b467772f2563ac61a834d6ada`.
 
 La fusion applicative, le raccordement backend, les secrets et toute opération Google restent soumis à des décisions distinctes.
 
@@ -276,6 +276,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.12.0 | 2026-08-30 | Lot C intégré dans `develop` par la PR #142 au commit `d8ca2840659cad6b467772f2563ac61a834d6ada` |
 | 0.11.0 | 2026-08-30 | ADMIN-006-07 : lot C validé à 15/15 puis 716/716 en RECETTE, restauration exacte, fusion applicative attendue |
 | 0.10.0 | 2026-08-30 | ADMIN-006-06 : lot C client portail et isolation Journaux cadré, sans implémentation, secret, raccordement ou déploiement |
 | 0.9.0 | 2026-08-29 | Lot B intégré dans `develop` par la PR #141 au commit `c064f0f027e3e8d6e3087ba71930866588a95d05` |
