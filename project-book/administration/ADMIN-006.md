@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.12.0 |
-| **Statut** | Lot C validé et intégré dans `develop` |
+| **Version** | 0.13.0 |
+| **Statut** | Lot D cadré — inventaire D0 non autorisé |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -237,6 +237,14 @@ La PR applicative #142, tête `ae28c735f89bdb1b3981093b39e16142e6f73090`, fourni
 
 La fusion applicative, le raccordement backend, les secrets et toute opération Google restent soumis à des décisions distinctes.
 
+## 10.8 Cadrage d’ADMIN-006-08
+
+Le raccordement réel du backend privé RECETTE et la recette multi-compte `LOG_READ` sont cadrés dans [ADMIN-006-08](ADMIN-006-08.md).
+
+Le lot D sépare l’inventaire en lecture seule, la préparation des ressources, l’installation du secret, le déploiement backend, le raccordement du portail, la recette multi-compte et la clôture. Chaque sous-lot exige une autorisation et un retour arrière distincts.
+
+Aucune ressource Google, aucun secret, aucun partage, aucun déploiement et aucune habilitation ACCESS ne sont autorisés par ce cadrage.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -276,6 +284,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.13.0 | 2026-08-30 | ADMIN-006-08 : lot D raccordement privé RECETTE, secret, anti-rejeu et recette multi-compte cadrés sans opération Google |
 | 0.12.0 | 2026-08-30 | Lot C intégré dans `develop` par la PR #142 au commit `d8ca2840659cad6b467772f2563ac61a834d6ada` |
 | 0.11.0 | 2026-08-30 | ADMIN-006-07 : lot C validé à 15/15 puis 716/716 en RECETTE, restauration exacte, fusion applicative attendue |
 | 0.10.0 | 2026-08-30 | ADMIN-006-06 : lot C client portail et isolation Journaux cadré, sans implémentation, secret, raccordement ou déploiement |
