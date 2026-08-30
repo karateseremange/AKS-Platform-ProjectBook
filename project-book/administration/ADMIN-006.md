@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.18.0 |
-| **Statut** | D2-B terminé — secret installé, transport désactivé |
+| **Version** | 0.19.0 |
+| **Statut** | Précontrôle D3 terminé — D3-A applicatif requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-30 |
@@ -289,6 +289,16 @@ Les inspecteurs temporaires ont été supprimés et les deux HEAD ont été rest
 
 D3 reste soumis à une autorisation séparée et ne doit pas raccorder le portail.
 
+## 10.14 Résultat du précontrôle D3
+
+Le précontrôle détaillé D3 est consigné dans [ADMIN-006-13](ADMIN-006-13.md).
+
+Le code intégré dans `develop` fournit les contrats `AKS-PRIVATE/1`, la commande fermée `LOG_READ_RECENT_V1`, le backend injecté, le registre anti-rejeu et le client portail inactif. Il manque encore les éléments indispensables à un backend Apps Script autonome : `doPost`, configuration réelle par propriétés, accès explicite au support LOG dédié, preuve persistante et package backend avec manifeste propre.
+
+L'identité d'exécution, l'audience Web App et le support de preuve doivent être décidés explicitement. Aucun code applicatif, projet Apps Script, support Google, propriété, secret, version, déploiement, partage ou droit ACCESS n'a été modifié pendant ce précontrôle.
+
+La prochaine étape est D3-A sur branche applicative dédiée, avec backend inactif et tests complets. Les opérations Google et le raccordement du portail restent exclus et soumis à des autorisations ultérieures distinctes.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -328,6 +338,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.19.0 | 2026-08-30 | ADMIN-006-13 : précontrôle D3 terminé, lacunes de déploiement identifiées et D3-A applicatif requis sans mutation externe |
 | 0.18.0 | 2026-08-30 | D2-B conforme : secret courant et version concordants, clé précédente absente, code restauré et transport désactivé |
 | 0.17.0 | 2026-08-30 | ADMIN-006-12 : D2-A conforme, propriétés inventoriées et restaurations exactes ; D2-B cadré sans installation |
 | 0.16.0 | 2026-08-30 | ADMIN-006-11 : précontrôle D2 terminé, propriétés non observables sans inspecteur contrôlé, protocole HMAC réversible défini sans création de secret |
