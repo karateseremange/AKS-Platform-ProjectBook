@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.17.0 |
-| **Statut** | D2-A terminé — D2-B cadré, installation non autorisée |
+| **Version** | 0.18.0 |
+| **Statut** | D2-B terminé — secret installé, transport désactivé |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-30 |
@@ -277,7 +277,17 @@ Le portail RECETTE contient six propriétés ACCESS/AUDIT historiques et aucune 
 
 D2-B est limité à `AKS_PRIVATE_HMAC_CURRENT` et `AKS_PRIVATE_SECRET_VERSION`, installés d’abord sur le backend puis sur le portail avec transport désactivé. `AKS_PRIVATE_HMAC_PREVIOUS` doit rester absente. Aucun autre paramètre, endpoint, version, déploiement, partage ou droit ACCESS n’est inclus.
 
-Une autorisation distincte reste requise avant toute génération ou installation du secret.
+D2-B a ensuite été exécuté et validé. Le secret n’a jamais été affiché ni conservé dans les rapports.
+
+## 10.13 Résultat D2-B
+
+Le résultat D2-B est consigné dans [ADMIN-006-12](ADMIN-006-12.md).
+
+Le portail et le backend portent le même secret courant par empreinte et la même version non secrète `RECETTE-20260830-192805`. Le backend contient exactement deux propriétés ; le portail huit, dont les six propriétés ACCESS/AUDIT antérieures inchangées. `AKS_PRIVATE_HMAC_PREVIOUS` est absente.
+
+Les inspecteurs temporaires ont été supprimés et les deux HEAD ont été restaurés exactement. Le transport reste désactivé. Aucun endpoint, version, déploiement, partage ou droit ACCESS n’a été créé ou modifié.
+
+D3 reste soumis à une autorisation séparée et ne doit pas raccorder le portail.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -318,6 +328,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.18.0 | 2026-08-30 | D2-B conforme : secret courant et version concordants, clé précédente absente, code restauré et transport désactivé |
 | 0.17.0 | 2026-08-30 | ADMIN-006-12 : D2-A conforme, propriétés inventoriées et restaurations exactes ; D2-B cadré sans installation |
 | 0.16.0 | 2026-08-30 | ADMIN-006-11 : précontrôle D2 terminé, propriétés non observables sans inspecteur contrôlé, protocole HMAC réversible défini sans création de secret |
 | 0.15.0 | 2026-08-30 | ADMIN-006-10 : D1 terminé, backend privé vide et support LOG dédié créés sans partage, secret, déploiement ni raccordement |
