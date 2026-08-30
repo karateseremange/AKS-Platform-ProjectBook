@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.15.0 |
-| **Statut** | D1 terminé — ressources dédiées créées, raccordement interdit |
+| **Version** | 0.16.0 |
+| **Statut** | Précontrôle D2 terminé — inspection contrôlée requise |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -261,6 +261,14 @@ Le projet `AKS Private Backend RECETTE` a été créé puis rendu vide par suppr
 
 Aucun code, secret, déploiement, raccordement au portail, droit ACCESS ou élément de production n’a été créé ou modifié.
 
+## 10.11 Résultat d’ADMIN-006-11
+
+Le précontrôle D2 et son protocole sont consignés dans [ADMIN-006-11](ADMIN-006-11.md).
+
+Drive et `clasp` n’exposent pas les propriétés d’exécution Apps Script. Leurs noms et empreintes ne peuvent donc pas être certifiés sans un inspecteur temporaire explicitement autorisé. Le protocole d’installation HMAC, la vérification croisée et le retour arrière sont définis, mais aucun secret n’a été créé ou installé.
+
+La prochaine décision doit rester limitée à l’inspection réversible des propriétés, sans installation du secret dans le même sous-lot.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -300,6 +308,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.16.0 | 2026-08-30 | ADMIN-006-11 : précontrôle D2 terminé, propriétés non observables sans inspecteur contrôlé, protocole HMAC réversible défini sans création de secret |
 | 0.15.0 | 2026-08-30 | ADMIN-006-10 : D1 terminé, backend privé vide et support LOG dédié créés sans partage, secret, déploiement ni raccordement |
 | 0.14.0 | 2026-08-30 | ADMIN-006-09 : D0 terminé, aucun backend existant admissible, backend et support LOG RECETTE dédiés requis |
 | 0.13.0 | 2026-08-30 | ADMIN-006-08 : lot D raccordement privé RECETTE, secret, anti-rejeu et recette multi-compte cadrés sans opération Google |
