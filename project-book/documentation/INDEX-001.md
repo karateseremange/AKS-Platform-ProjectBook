@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.70 |
+| Version | 1.3.71 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-08-28 |
@@ -121,7 +121,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ADMIN-006 | Administration multi-compte et accès aux supports privés | Lot D cadré — inventaire D0 non autorisé | 0.13.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ADMIN-006 | Administration multi-compte et accès aux supports privés | D0 terminé — backend et LOG dédiés requis | 0.14.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
 | ADMIN-006-01 | Inventaire des routes, identités et dépendances Google | Analyse terminée — option backend privé signé recommandée | 0.1.0 | ADMIN-006, Web Apps Apps Script, ACCESS-002, LOG-001, AUDIT-001-PRODUCTION |
 | ADMIN-006-02 | Contrat du prototype LOG_READ avec backend privé signé | Contrat directeur validé — lot D détaillé dans ADMIN-006-08 | 0.6.0 | ADMIN-006, ADMIN-006-01, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-03 | Implémentation des contrats purs AKS-PRIVATE/1 | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-01, ADMIN-006-02, AKS-Platform #140 |
@@ -129,7 +129,8 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-006-05 | Implémentation B1 à B3 du backend privé RECETTE | Validé en RECETTE — intégré dans `develop` | 0.2.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ADMIN-006-04, AKS-Platform #141 |
 | ADMIN-006-06 | Client portail privé et isolation du widget Journaux | Implémenté, validé et intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-04, ADMIN-006-05, ACCESS-002, LOG-001 |
 | ADMIN-006-07 | Résultat du lot C portail privé | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, AKS-Platform #142 |
-| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | Cadrage détaillé terminé — aucune opération Google autorisée | 0.1.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-07, ACCESS-002, LOG-001, AUDIT-001 |
+| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | D0 terminé — préparation D1 non autorisée | 0.2.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-07, ACCESS-002, LOG-001, AUDIT-001 |
+| ADMIN-006-09 | Inventaire D0 des ressources RECETTE | D0 terminé — aucun backend existant admissible | 0.1.0 | ADMIN-006, ADMIN-006-08, ACCESS-002, LOG-001, AUDIT-001 |
 | ACCESS-002 | Administration des utilisateurs et habilitations privées | V1.4.0 en production — correctif V1.4.1 publié et tagué dans Git, non déployé | 0.4.56 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
@@ -326,6 +327,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.71 | 2026-08-30 | ADMIN-006-09 : D0 terminé en lecture seule ; POC, Services et supports LOG multifonctions refusés, ressources dédiées recommandées |
 | 1.3.70 | 2026-08-30 | ADMIN-006-08 : raccordement backend privé, secret HMAC, anti-rejeu, preuves et recette multi-compte cadrés sans opération Google |
 | 1.3.69 | 2026-08-30 | ADMIN-006 lot C intégré dans `develop` par la PR applicative #142 au commit `d8ca2840659cad6b467772f2563ac61a834d6ada` |
 | 1.3.68 | 2026-08-30 | ADMIN-006-07 : C1 à C3 validés à 15/15 puis 716/716 en RECETTE avec restauration exacte ; fusion applicative attendue |

@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.13.0 |
-| **Statut** | Lot D cadré — inventaire D0 non autorisé |
+| **Version** | 0.14.0 |
+| **Statut** | D0 terminé — backend et LOG dédiés requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-28 |
@@ -245,6 +245,14 @@ Le lot D sépare l’inventaire en lecture seule, la préparation des ressources
 
 Aucune ressource Google, aucun secret, aucun partage, aucun déploiement et aucune habilitation ACCESS ne sont autorisés par ce cadrage.
 
+## 10.9 Résultat d’ADMIN-006-09
+
+L’inventaire D0 est consigné dans [ADMIN-006-09](ADMIN-006-09.md).
+
+Le portail RECETTE est confirmé. Le POC et la configuration Services sont refusés comme backend. Les deux onglets LOG existants cohabitent avec des données métier sensibles et sont refusés pour le backend privé au titre du moindre privilège.
+
+D1 devra créer des ressources RECETTE dédiées sous autorisation distincte, sans secret, partage, déploiement ou raccordement dans le même sous-lot.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -284,6 +292,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.14.0 | 2026-08-30 | ADMIN-006-09 : D0 terminé, aucun backend existant admissible, backend et support LOG RECETTE dédiés requis |
 | 0.13.0 | 2026-08-30 | ADMIN-006-08 : lot D raccordement privé RECETTE, secret, anti-rejeu et recette multi-compte cadrés sans opération Google |
 | 0.12.0 | 2026-08-30 | Lot C intégré dans `develop` par la PR #142 au commit `d8ca2840659cad6b467772f2563ac61a834d6ada` |
 | 0.11.0 | 2026-08-30 | ADMIN-006-07 : lot C validé à 15/15 puis 716/716 en RECETTE, restauration exacte, fusion applicative attendue |
