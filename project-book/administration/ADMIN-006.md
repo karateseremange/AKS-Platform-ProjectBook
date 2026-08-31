@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.21.0 |
-| **Statut** | D3-B terminé — D3-C autorisable |
+| **Version** | 0.22.0 |
+| **Statut** | D3-C terminé — D3-D à préparer |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-30 |
@@ -319,6 +319,16 @@ L’installateur temporaire a dû être supprimé manuellement, car `clasp push 
 
 Aucune valeur secrète, version, déploiement, audience, partage, habilitation ACCESS, ressource de production ou opération INSCRIPTIONS-011 n’a été créé ou modifié. D3-C peut désormais être autorisé séparément pour une validation réversible du package backend, sans version ni déploiement.
 
+## 10.17 Résultat D3-C
+
+Le résultat D3-C est consigné dans [ADMIN-006-13](ADMIN-006-13.md).
+
+Le package backend de sept fichiers, construit depuis `develop@bc8b3be19c3860079db0228769d8cb1d80f302dc`, a été poussé temporairement puis relu sans aucune différence. Le fonctionnement fermé a été confirmé avec `AKS_PRIVATE_ENABLED=false`, onze propriétés inchangées, secret inchangé et clé précédente absente.
+
+Après suppression visible des fichiers temporaires, le backend a été relu et correspond exactement à son manifeste initial. L’archive de sauvegarde porte l’empreinte `0F94658D368B1EF3824D34A9577513CCD00255DFF20EA095C4DFD2218D7ED5C0`. Les inventaires de versions et de déploiements sont inchangés.
+
+D3-D reste soumis à une autorisation distincte. Le portail demeure non raccordé et aucun élément de production ou INSCRIPTIONS-011 n’a été engagé.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -358,6 +368,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.22.0 | 2026-08-30 | D3-C conforme : package backend validé réversiblement, configuration fermée, restauration exacte et inventaires externes inchangés |
 | 0.21.0 | 2026-08-30 | D3-B conforme : support de preuve dédié, onze propriétés backend avec activation à false, secret inchangé et restauration exacte |
 | 0.20.0 | 2026-08-30 | D3-A intégré par la PR #143, validé à 729/729 et restauré exactement ; D3-B requis avant push backend |
 | 0.19.0 | 2026-08-30 | ADMIN-006-13 : précontrôle D3 terminé, lacunes de déploiement identifiées et D3-A applicatif requis sans mutation externe |
