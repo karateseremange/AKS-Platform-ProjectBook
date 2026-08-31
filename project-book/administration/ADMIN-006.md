@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.22.0 |
-| **Statut** | D3-C terminé — D3-D à préparer |
+| **Version** | 0.23.0 |
+| **Statut** | D3-D cadré — D3-D1 applicatif requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-08-30 |
@@ -329,6 +329,14 @@ Après suppression visible des fichiers temporaires, le backend a été relu et 
 
 D3-D reste soumis à une autorisation distincte. Le portail demeure non raccordé et aucun élément de production ou INSCRIPTIONS-011 n’a été engagé.
 
+## 10.18 Cadrage D3-D
+
+Le cadrage du premier déploiement backend est consigné dans [ADMIN-006-14](ADMIN-006-14.md).
+
+La cible RECETTE retenue est une Web App exécutée sous l’identité du déployeur (`USER_DEPLOYING`) et accessible sans authentification Google (`ANYONE_ANONYMOUS`) afin de permettre l’appel serveur à serveur du portail. Cette audience n’est admissible qu’avec le protocole signé, l’anti-rejeu, la commande unique, les réponses minimisées et le refus fermé déjà implémentés.
+
+D3-D est séparé en quatre sous-lots : modification applicative revue du manifeste, validation réversible, publication inactive, puis preuve signée contrôlée. La prochaine étape est exclusivement D3-D1 sur branche applicative. Aucune opération Google n’est autorisée par ce cadrage.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -368,6 +376,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.23.0 | 2026-08-31 | ADMIN-006-14 : D3-D cadré avec identité USER_DEPLOYING, audience ANYONE_ANONYMOUS et quatre sous-lots séparés sans mise en œuvre |
 | 0.22.0 | 2026-08-30 | D3-C conforme : package backend validé réversiblement, configuration fermée, restauration exacte et inventaires externes inchangés |
 | 0.21.0 | 2026-08-30 | D3-B conforme : support de preuve dédié, onze propriétés backend avec activation à false, secret inchangé et restauration exacte |
 | 0.20.0 | 2026-08-30 | D3-A intégré par la PR #143, validé à 729/729 et restauré exactement ; D3-B requis avant push backend |
