@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.27.2 |
-| **Statut** | B0 local Windows validé — lecture Google à autoriser |
+| **Version** | 0.28.0 |
+| **Statut** | B0 conforme — outillage B1 préparé, exécution non autorisée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -363,11 +363,17 @@ Le protocole détaillé relève d'[ADMIN-006-08](ADMIN-006-08.md), §22 : packag
 
 Les deux PR restent ouvertes sans fusion ; seul le Project Book est complété. Aucun précontrôle ni test Google n'a été exécuté. Prochaine étape : préparer l'outillage B0 compatible PowerShell 5.1 ; son exécution en lecture seule sera soumise à autorisation, puis le résultat concret permettra de décider B1.
 
-## 10.22 Outillage B0 préparé
+## 10.22 Préparation B0 et contrôle local Windows, avant collecte Google
 
 [ADMIN-006-08](ADMIN-006-08.md), §23, référence le lanceur PowerShell 5.1, le moteur Node B0-r2 et leurs 14 tests synthétiques réussis. Les versions Windows transmises sont compatibles ; clasp 3.3.0 est accepté après revue de son interface, sans mise à jour du poste. Le rapport consigne sa version effective. L'extraction réelle des objets Git retrouve les 277 fichiers et leur empreinte attendue. Le code applicatif reste à la tête #145 déjà revue.
 
 Le contrôle local Windows est désormais rapporté conforme : 14/14 tests et statut `LOCAL_CHECK_ONLY`, dans le run `2026-09-01T13-37-35-830Z-57aefd` ; le bloc vérifie les empreintes et la syntaxe PowerShell avant le lanceur. La preuve et ses limites figurent dans ADMIN-006-08 §23.4. Le mode local n'appelle pas Google. Le mode de lecture Google exige une autorisation distincte et conserve un statut à revoir : propriétés et coupe-circuits restent à vérifier par l'opérateur, et le diff complet doit être expliqué avant B1. Les outils ne savent ni pousser, ni exécuter une fonction Apps Script, ni modifier une propriété ou un déploiement. Aucune fusion ni opération Google n'a été réalisée.
+
+## 10.23 B0 conforme et préparation B1
+
+Le précontrôle B0 a été autorisé puis exécuté en lecture seule par l'opérateur. Sa conformité est validée après revue du rapport, des 204 écarts SHA (178 fins de ligne, six correctifs V1.4.1, quatre raccordements ADMIN-006 et 16 ajouts), et confirmation du portail désactivé, de l'URL temporaire absente et du backend désactivé. Aucun écart inexpliqué, aucune suppression, aucune écriture Google B0. Les empreintes et limites de preuve font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §24 ; les archives restent locales.
+
+Le Product Owner autorise ensuite la préparation de l'outillage B1-r1, décrite au §25 du même document : défaut local seul, autorisation liée au package, relectures exactes, test manuel dans l'éditeur et restauration en `finally` avec reprise indépendante. Les 39 tests B1 et 14 tests B0 réussissent hors Google. Le contrôle Windows sur les archives réelles reste à réaliser. B1, les fusions, l'activation, le parcours navigateur et tout changement de production restent non autorisés ; la candidate applicative #145 est inchangée.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -408,6 +414,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.28.0 | 2026-09-01 | B0 déclaré conforme après revue et confirmation opérateur ; outillage B1-r1 préparé, 39/39 tests locaux, contrôle Windows requis et aucune autorisation d'exécution B1 |
 | 0.27.2 | 2026-09-01 | Contrôle local Windows B0-r2 conforme selon le retour opérateur, 14/14 et LOCAL_CHECK_ONLY ; lecture Google à autoriser, aucune fusion |
 | 0.27.1 | 2026-09-01 | B0-r2 prend en charge clasp 3.3.0 du poste après revue ; 14/14 tests Node, validation PowerShell et lecture Google encore à réaliser |
 | 0.27.0 | 2026-09-01 | Outillage B0-r1 préparé et tests Node 13/13 ; contrôle PowerShell/Windows et lectures Google restent à exécuter, sans changement de candidate applicative |
