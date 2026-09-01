@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.28.1 |
-| **Statut** | B1 autorisé — exécution opérateur et résultats attendus |
+| **Version** | 0.29.0 |
+| **Statut** | B1 restauré après échec — nouvelle candidate à revalider |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -379,6 +379,12 @@ Le Product Owner autorise ensuite la préparation de l'outillage B1-r1, décrite
 
 Le contrôle local Windows est rapporté conforme : 39/39 tests et `B1_LOCAL_CHECK_ONLY`, sans écriture Google. Le Product Owner autorise distinctement le push temporaire du portail RECETTE, la relecture, la seule suite `AKS_runValidationSuiteV11` puis la restauration exacte, y compris sa reprise après interruption. Le périmètre figé, les exclusions et les preuves attendues font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §25.4. Les outils sont inchangés depuis `b7bcf1cc948e59fdbdc269c340f450259eef7a9f`. Aucun résultat Google B1 n'est encore rapporté ; aucune activation, propriété, opération backend/production ou fusion n'est autorisée.
 
+## 10.25 Échec B1 restauré et correction des tests
+
+La campagne `b1-2YMQP2` a échoué sur deux tests D4-A ; le rapport indique `TEST_NOT_PASSED`, `restoredExact: true` et `propertiesOperatorConfirmed: true`. Le diagnostic local reproduit exactement ces deux erreurs lorsque l'URL Web App est vide ou nulle. B1 n'est pas conforme, mais la restauration est rapportée réussie ; aucune relance n'est demandée.
+
+La correction ciblée autorisée dans #145 ne change que la fixture de tests, le harnais et une preuve locale. La nouvelle candidate `c39cded9f8d17493780a03cc66e408158ebb5d2d` passe six scénarios URL/projet à 761/761, plus les 8 tests DOM. Le code fonctionnel et Google ne sont pas modifiés par cette correction. Le résultat, l'explication, les limites et les nouvelles étapes de préparation font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §26. Un nouveau package et une nouvelle autorisation B1 sont requis ; les outils et preuves initiaux restent conservés, sans fusion.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -418,6 +424,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.29.0 | 2026-09-01 | B1 en échec sur deux tests, restauration exacte rapportée ; correction ciblée des tests/harnais publiée et revalidée localement, nouveau package et nouvelle autorisation requis |
 | 0.28.1 | 2026-09-01 | Contrôle Windows B1-r1 conforme selon le retour opérateur ; B1 et restauration autorisés sur le périmètre figé, résultats Google encore attendus |
 | 0.28.0 | 2026-09-01 | B0 déclaré conforme après revue et confirmation opérateur ; outillage B1-r1 préparé, 39/39 tests locaux, contrôle Windows requis et aucune autorisation d'exécution B1 |
 | 0.27.2 | 2026-09-01 | Contrôle local Windows B0-r2 conforme selon le retour opérateur, 14/14 et LOCAL_CHECK_ONLY ; lecture Google à autoriser, aucune fusion |
