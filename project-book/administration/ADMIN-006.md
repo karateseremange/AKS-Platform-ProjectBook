@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.23.0 |
-| **Statut** | D3-D cadré — D3-D1 applicatif requis |
+| **Version** | 0.24.0 |
+| **Statut** | D3-D4 terminé — plan D4 proposé en revue |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-08-30 |
+| **Dernière mise à jour** | 2026-09-01 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -337,6 +337,14 @@ La cible RECETTE retenue est une Web App exécutée sous l’identité du déplo
 
 D3-D est séparé en quatre sous-lots : modification applicative revue du manifeste, validation réversible, publication inactive, puis preuve signée contrôlée. La prochaine étape est exclusivement D3-D1 sur branche applicative. Aucune opération Google n’est autorisée par ce cadrage.
 
+## 10.19 Résultat D3-D4 et plan D4
+
+Le résultat technique D3-D4 est consigné dans [ADMIN-006-14](ADMIN-006-14.md), §14 : preuve signée et refus anti-rejeu conformes, code et propriétés restaurés, backend publié mais inactif. Cette preuve éditeur ne constitue pas une recette navigateur multi-compte.
+
+Le précontrôle du code applicatif `064ca709a754915a87451e829c24088ec878fdde` confirme que le client portail reste inerte et que la route Journaux conserve le dépôt Google direct. Le [plan D4 dans ADMIN-006-08](ADMIN-006-08.md), §20, propose un runtime RECETTE gardé, un chargement asynchrone, une vue minimisée sans pagination, les tests et un retour arrière préservant D2/D3.
+
+D4-A applicatif reste à autoriser après revue documentaire. Aucun raccordement, activation, modification Google ou attribution ACCESS n'a été effectué par ce précontrôle ; D5 et INSCRIPTIONS-011 restent non engagés.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -351,7 +359,7 @@ Le cadrage est prêt pour décision lorsque :
 
 ## 12. État et restrictions
 
-À la date du présent cadrage :
+Dernier état de production rapporté, sans nouvelle interrogation de production lors du cadrage D4 :
 
 - V1.4.1 reste active en production sur la version Apps Script 55 ;
 - le compte secondaire a retrouvé son accès après retrait de l’habilitation Administration ;
@@ -376,6 +384,7 @@ Le cadrage est prêt pour décision lorsque :
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.24.0 | 2026-09-01 | D3-D4 technique terminé ; plan D4 proposé dans ADMIN-006-08, sans implémentation ni opération Google |
 | 0.23.0 | 2026-08-31 | ADMIN-006-14 : D3-D cadré avec identité USER_DEPLOYING, audience ANYONE_ANONYMOUS et quatre sous-lots séparés sans mise en œuvre |
 | 0.22.0 | 2026-08-30 | D3-C conforme : package backend validé réversiblement, configuration fermée, restauration exacte et inventaires externes inchangés |
 | 0.21.0 | 2026-08-30 | D3-B conforme : support de preuve dédié, onze propriétés backend avec activation à false, secret inchangé et restauration exacte |
