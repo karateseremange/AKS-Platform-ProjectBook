@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.71 |
+| Version | 1.3.74 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-08-28 |
+| Dernière mise à jour | 2026-09-01 |
 | Version du produit | V1.4.1 déployée — ADMIN-006 bloquant multi-compte |
 
 ---
@@ -133,6 +133,8 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-006-09 | Inventaire D0 des ressources RECETTE | D0 terminé — aucun backend existant admissible | 0.1.0 | ADMIN-006, ADMIN-006-08, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-10 | Préparation D1 du backend privé et du support LOG RECETTE | D1 terminé — ressources créées, non raccordées | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-09, LOG-001 |
 | ADMIN-006-11 | Précontrôle D2 et protocole du secret HMAC | Précontrôle terminé — inspecteur réversible requis | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-10, SECURITY-001 |
+| ADMIN-006-13 | Précontrôle D3 du backend privé RECETTE | D3-D4 validé — backend inactif, D4 non engagé | 0.8.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-10, ADMIN-006-12, SECURITY-001, LOG-001 |
+| ADMIN-006-14 | Manifeste, version et premier déploiement du backend privé | D3-D4 validé — preuve technique, pas encore de recette multi-compte | 0.4.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-12, ADMIN-006-13, SECURITY-001, LOG-001 |
 | ACCESS-002 | Administration des utilisateurs et habilitations privées | V1.4.0 en production — correctif V1.4.1 publié et tagué dans Git, non déployé | 0.4.56 | ACCESS-001, ADMIN-001 à ADMIN-005, SECURITY-001, CONFIG-001, AUDIT-001 |
 | ACCESS-002-01 | Socle d’administration des utilisateurs et habilitations | Validé — intégré dans `develop` par la PR #93 | 1.0.0 | ACCESS-002, ACCESS-001, SECURITY-001, AUDIT-001, AKS-Platform #93, `91ba7e3` |
 | ACCESS-002-02 | Amorçage contrôlé et migration du premier gestionnaire ACCESS | Validé — recette réversible concluante | 1.0.0 | ACCESS-002, ACCESS-002-01, ACCESS-001, SECURITY-001, AUDIT-001, CONFIG-001, AKS-Platform #94 à #100, `a1181ed` |
@@ -329,6 +331,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.74 | 2026-09-01 | Référencement d’ADMIN-006-13 0.8.0 et ADMIN-006-14 0.4.0 : D3-D4 validé selon le rapport transmis, backend inactif, code et propriétés restaurés ; D4 et recette fonctionnelle multi-compte non engagés |
 | 1.3.73 | 2026-08-30 | ADMIN-006-11 : précontrôle D2 terminé, propriétés non observables sans inspecteur contrôlé, protocole HMAC réversible préparé sans secret |
 | 1.3.72 | 2026-08-30 | ADMIN-006-10 : D1 terminé, backend privé vide et support LOG dédié créés, propriétaires et permissions contrôlés sans partage ni raccordement |
 | 1.3.71 | 2026-08-30 | ADMIN-006-09 : D0 terminé en lecture seule ; POC, Services et supports LOG multifonctions refusés, ressources dédiées recommandées |
