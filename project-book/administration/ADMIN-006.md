@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.27.1 |
-| **Statut** | B0 outillé — contrôle Windows et exécution Google requis |
+| **Version** | 0.27.2 |
+| **Statut** | B0 local Windows validé — lecture Google à autoriser |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -367,7 +367,7 @@ Les deux PR restent ouvertes sans fusion ; seul le Project Book est complété. 
 
 [ADMIN-006-08](ADMIN-006-08.md), §23, référence le lanceur PowerShell 5.1, le moteur Node B0-r2 et leurs 14 tests synthétiques réussis. Les versions Windows transmises sont compatibles ; clasp 3.3.0 est accepté après revue de son interface, sans mise à jour du poste. Le rapport consigne sa version effective. L'extraction réelle des objets Git retrouve les 277 fichiers et leur empreinte attendue. Le code applicatif reste à la tête #145 déjà revue.
 
-La validation syntaxique PowerShell n'a pas été exécutée faute de parseur disponible ; le contrôle local Windows est la prochaine étape. Le mode local n'appelle pas Google. Le mode de lecture Google exige une autorisation distincte et conserve un statut à revoir : propriétés et coupe-circuits restent à vérifier par l'opérateur, et le diff complet doit être expliqué avant B1. Les outils ne savent ni pousser, ni exécuter une fonction Apps Script, ni modifier une propriété ou un déploiement. Aucune fusion ni opération Google n'a été réalisée.
+Le contrôle local Windows est désormais rapporté conforme : 14/14 tests et statut `LOCAL_CHECK_ONLY`, dans le run `2026-09-01T13-37-35-830Z-57aefd` ; le bloc vérifie les empreintes et la syntaxe PowerShell avant le lanceur. La preuve et ses limites figurent dans ADMIN-006-08 §23.4. Le mode local n'appelle pas Google. Le mode de lecture Google exige une autorisation distincte et conserve un statut à revoir : propriétés et coupe-circuits restent à vérifier par l'opérateur, et le diff complet doit être expliqué avant B1. Les outils ne savent ni pousser, ni exécuter une fonction Apps Script, ni modifier une propriété ou un déploiement. Aucune fusion ni opération Google n'a été réalisée.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -408,6 +408,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.27.2 | 2026-09-01 | Contrôle local Windows B0-r2 conforme selon le retour opérateur, 14/14 et LOCAL_CHECK_ONLY ; lecture Google à autoriser, aucune fusion |
 | 0.27.1 | 2026-09-01 | B0-r2 prend en charge clasp 3.3.0 du poste après revue ; 14/14 tests Node, validation PowerShell et lecture Google encore à réaliser |
 | 0.27.0 | 2026-09-01 | Outillage B0-r1 préparé et tests Node 13/13 ; contrôle PowerShell/Windows et lectures Google restent à exécuter, sans changement de candidate applicative |
 | 0.26.0 | 2026-09-01 | Revue D4-A et protocole D4-B préparés dans ADMIN-006-08 §22 ; B0 lecture seule puis B1 réversible, aucune fusion ni opération Google |
