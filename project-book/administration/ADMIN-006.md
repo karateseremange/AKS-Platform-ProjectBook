@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.25.0 |
-| **Statut** | D4-A implémenté et testé localement — revue et D4-B requis |
+| **Version** | 0.26.0 |
+| **Statut** | D4-A revu — protocole D4-B préparé, non exécuté |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -355,6 +355,14 @@ Validation hors ligne : **761/761 tests cumulatifs uniques**, dont **32 D4-A**, 
 
 La PR est ouverte, non fusionnée. Aucune opération Google, activation, publication ou attribution ACCESS n'a été effectuée. Revue conjointe du code et du compte rendu, puis préparation de D4-B réversible ; son exécution et les fusions nécessitent des autorisations distinctes. D4-C, D5 et la résolution d'ADMIN-006 restent à démontrer ; INSCRIPTIONS-011 reste non engagé.
 
+## 10.21 Revue D4-A et préparation D4-B
+
+La revue conjointe de la candidate applicative #145 `688c81bb64e6aa09f9955743b783fca989369ae2` et du compte rendu #225 n'a identifié aucun défaut bloquant statique ou local. La simulation du projet RECETTE et le chargement complémentaire des six `.js` serveur conservent chacun 761/761 tests réussis. Les limites Apps Script et navigateur restent ouvertes.
+
+Le protocole détaillé relève d'[ADMIN-006-08](ADMIN-006-08.md), §22 : package complet de 277 fichiers avec manifeste initial RECETTE conservé exactement, B0 en lecture seule pour sauvegarder et expliquer le diff réel, puis B1 distinctement autorisé pour push temporaire, relecture, suite Apps Script et restauration contrôlée. Le nombre de fichiers réellement présent sur Google reste à observer.
+
+Les deux PR restent ouvertes sans fusion ; seul le Project Book est complété. Aucun précontrôle ni test Google n'a été exécuté. Prochaine étape : préparer l'outillage B0 compatible PowerShell 5.1 ; son exécution en lecture seule sera soumise à autorisation, puis le résultat concret permettra de décider B1.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -394,6 +402,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.26.0 | 2026-09-01 | Revue D4-A et protocole D4-B préparés dans ADMIN-006-08 §22 ; B0 lecture seule puis B1 réversible, aucune fusion ni opération Google |
 | 0.25.0 | 2026-09-01 | D4-A proposé dans la PR applicative #145 : runtime inactif, 761/761 tests locaux et 8/8 client simulé ; revue et D4-B requis, aucune opération Google |
 | 0.24.0 | 2026-09-01 | D3-D4 technique terminé ; plan D4 proposé dans ADMIN-006-08, sans implémentation ni opération Google |
 | 0.23.0 | 2026-08-31 | ADMIN-006-14 : D3-D cadré avec identité USER_DEPLOYING, audience ANYONE_ANONYMOUS et quatre sous-lots séparés sans mise en œuvre |
