@@ -10,7 +10,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-# Revision B0-r1. No push, run, deployment or property write is implemented.
+# Revision B0-r2. No push, run, deployment or property write is implemented.
 $EnginePath = Join-Path $PSScriptRoot 'prepare-d4b.cjs'
 $TestPath = Join-Path $PSScriptRoot 'prepare-d4b.test.cjs'
 foreach ($RequiredPath in @($EnginePath, $TestPath)) {

@@ -13,7 +13,7 @@ function fixture(t, mode = 'GoogleReadOnly', override = {}) {
   const repo = path.join(root, 'repo'), pkg = path.join(root, 'clasp');
   fs.mkdirSync(repo); fs.mkdirSync(pkg);
   fs.writeFileSync(path.join(repo, '.clasp.json'), JSON.stringify({scriptId: api.TARGET, rootDir: 'src'}));
-  fs.writeFileSync(path.join(pkg, 'package.json'), JSON.stringify({name: '@google/clasp', version: '3.4.1', bin: 'index.js'}));
+  fs.writeFileSync(path.join(pkg, 'package.json'), JSON.stringify({name: '@google/clasp', version: override.claspVersion || '3.3.0', bin: 'index.js'}));
   fs.writeFileSync(path.join(pkg, 'index.js'), '// synthetic, never executed');
   const calls = [];
   const candidate = [f('appsscript.json', '{}\n'), f('same.js', 'same'), f('added.gs', 'new')];
@@ -82,13 +82,14 @@ test('wrong recipe and unsupported clasp stop before native calls', t => {
   assert.equal(ctx.calls.length, 0);
   fs.writeFileSync(path.join(ctx.repo, '.clasp.json'), JSON.stringify({scriptId: api.TARGET, rootDir: 'src'}));
   fs.writeFileSync(path.join(ctx.pkg, 'package.json'), '{"name":"@google/clasp","version":"2.0.0","bin":"index.js"}');
-  assert.throws(() => api.prepare(ctx.options, ctx.deps), /CLASP_3_4_1_REQUIRED/);
+  assert.throws(() => api.prepare(ctx.options, ctx.deps), /CLASP_VERSION_NOT_REVIEWED/);
   assert.equal(ctx.calls.length, 0);
 });
-test('successful collection preserves exact manifest and records all diff classes', t => {
-  const ctx = fixture(t);
+for (const claspVersion of ['3.3.0', '3.4.1']) test('successful collection preserves manifest and records actual clasp ' + claspVersion, t => {
+  const ctx = fixture(t, 'GoogleReadOnly', {claspVersion});
   const out = api.prepare(ctx.options, ctx.deps);
   assert.equal(out.report.status, 'READ_ONLY_COLLECTED_REVIEW_REQUIRED');
+  assert.equal(out.report.clasp, claspVersion);
   assert.equal(out.report.googleWriteExecuted, false);
   assert.equal(out.report.propertiesVerified, false);
   assert.deepEqual(fs.readFileSync(path.join(out.campaign, 'candidate/src/appsscript.json')), manifest);

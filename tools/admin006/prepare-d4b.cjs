@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// B0-r1: local preparation and explicitly selected Google reads only.
+// B0-r2: local preparation and explicitly selected Google reads only.
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
@@ -8,9 +8,9 @@ const cp = require('node:child_process');
 const TARGET = '1quyIoxSMlxe6xpADPlxRxGikRF3OCTEid0-xhOHeSRZH0sU0AOeIRxs4';
 const CANDIDATE = '688c81bb64e6aa09f9955743b783fca989369ae2';
 const SOURCE_SHA = '91871173349d843986aab23fc74271606e6562f79de8bdb2e5c9fbd1206b8580';
-// This revision uses the JSON CLI and 100*10 paging bound reviewed in clasp 3.4.1.
+// This revision uses the JSON CLI and 100*10 paging bound reviewed in clasp 3.3.0 and 3.4.1.
 // Stop on another installed version; do not install or update the user's tools.
-const CLASP_VERSION = '3.4.1';
+const CLASP_VERSIONS = Object.freeze(['3.3.0', '3.4.1']);
 function check(ok, code) { if (!ok) throw new Error(code); }
 const hash = data => crypto.createHash('sha256').update(data).digest('hex');
 const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
@@ -150,7 +150,7 @@ function gitSource(repository, git, run = native) {
 }
 function validateLists(versions, deployments) {
   check(Array.isArray(versions) && Array.isArray(deployments), 'INVENTORY_NOT_ARRAY');
-  // clasp 3.4.1 fetchWithPages caps at 10 pages of 100 and omits the partial flag in CLI JSON.
+  // clasp 3.3.0/3.4.1 fetchWithPages caps at 10 pages of 100 and omits the partial flag in CLI JSON.
   check(versions.length < 1000 && deployments.length < 1000, 'INVENTORY_MAY_BE_TRUNCATED');
   const ids = new Set(), numbers = new Set();
   versions.forEach(v => {
@@ -187,7 +187,7 @@ function prepare(options, deps = {}) {
     'LOCAL_RECIPE_CONFIGURATION_MISMATCH');
   const claspPackage = fs.realpathSync(options['clasp-package']);
   const packageJson = readJson(path.join(claspPackage, 'package.json'));
-  check(packageJson.name === '@google/clasp' && packageJson.version === CLASP_VERSION, 'CLASP_3_4_1_REQUIRED');
+  check(packageJson.name === '@google/clasp' && CLASP_VERSIONS.includes(packageJson.version), 'CLASP_VERSION_NOT_REVIEWED');
   const bin = typeof packageJson.bin === 'string' ? packageJson.bin : packageJson.bin?.clasp;
   check(typeof bin === 'string' && !path.isAbsolute(bin), 'CLASP_ENTRY_INVALID');
   const entry = fs.realpathSync(path.join(claspPackage, bin));
@@ -198,8 +198,8 @@ function prepare(options, deps = {}) {
   fs.mkdirSync(output, {recursive: true, mode: 0o700});
   const campaign = path.join(output, 'run-' + new Date().toISOString().replace(/[:.]/g, '-') + '-' + crypto.randomBytes(3).toString('hex'));
   fs.mkdirSync(campaign, {mode: 0o700});
-  const report = {revision: 'B0-r1', mode: options.mode, target: TARGET, candidate: CANDIDATE,
-    generatedAt: new Date().toISOString(), gitVersion, node: process.version, clasp: CLASP_VERSION,
+  const report = {revision: 'B0-r2', mode: options.mode, target: TARGET, candidate: CANDIDATE,
+    generatedAt: new Date().toISOString(), gitVersion, node: process.version, clasp: packageJson.version,
     localWorktreeDirty: !!status.trim(), sourceFiles: files.length, sourceSha256: sourceDigest(files),
     googleReadExecuted: false, googleWriteExecuted: false, propertiesVerified: false,
     status: 'LOCAL_CHECK_ONLY', blockers: ['PROPERTIES_OPERATOR_CHECK_REQUIRED', 'DIFF_REVIEW_REQUIRED', 'B1_NOT_AUTHORIZED']};
