@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.26.0 |
-| **Statut** | D4-A revu — protocole D4-B préparé, non exécuté |
+| **Version** | 0.27.0 |
+| **Statut** | B0 outillé — contrôle Windows et exécution Google requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -363,6 +363,12 @@ Le protocole détaillé relève d'[ADMIN-006-08](ADMIN-006-08.md), §22 : packag
 
 Les deux PR restent ouvertes sans fusion ; seul le Project Book est complété. Aucun précontrôle ni test Google n'a été exécuté. Prochaine étape : préparer l'outillage B0 compatible PowerShell 5.1 ; son exécution en lecture seule sera soumise à autorisation, puis le résultat concret permettra de décider B1.
 
+## 10.22 Outillage B0 préparé
+
+[ADMIN-006-08](ADMIN-006-08.md), §23, référence le lanceur PowerShell 5.1, le moteur Node et leurs 13 tests synthétiques réussis. L'extraction réelle des objets Git retrouve les 277 fichiers et leur empreinte attendue. Le code applicatif reste à la tête #145 déjà revue.
+
+La validation syntaxique PowerShell n'a pas été exécutée faute de parseur disponible ; le contrôle local Windows est la prochaine étape. Le mode local n'appelle pas Google. Le mode de lecture Google exige une autorisation distincte et conserve un statut à revoir : propriétés et coupe-circuits restent à vérifier par l'opérateur, et le diff complet doit être expliqué avant B1. Les outils ne savent ni pousser, ni exécuter une fonction Apps Script, ni modifier une propriété ou un déploiement. Aucune fusion ni opération Google n'a été réalisée.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -402,6 +408,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.27.0 | 2026-09-01 | Outillage B0-r1 préparé et tests Node 13/13 ; contrôle PowerShell/Windows et lectures Google restent à exécuter, sans changement de candidate applicative |
 | 0.26.0 | 2026-09-01 | Revue D4-A et protocole D4-B préparés dans ADMIN-006-08 §22 ; B0 lecture seule puis B1 réversible, aucune fusion ni opération Google |
 | 0.25.0 | 2026-09-01 | D4-A proposé dans la PR applicative #145 : runtime inactif, 761/761 tests locaux et 8/8 client simulé ; revue et D4-B requis, aucune opération Google |
 | 0.24.0 | 2026-09-01 | D3-D4 technique terminé ; plan D4 proposé dans ADMIN-006-08, sans implémentation ni opération Google |
