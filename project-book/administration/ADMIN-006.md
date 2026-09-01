@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.30.0 |
-| **Statut** | Nouvelle candidate — reconstruction locale du package à exécuter |
+| **Version** | 0.31.0 |
+| **Statut** | Précontrôle C2 lecture seule autorisé — tests Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -389,6 +389,12 @@ La correction ciblée autorisée dans #145 ne change que la fixture de tests, le
 
 La préparation locale du nouveau package est livrée pour `c39cded9f8d17493780a03cc66e408158ebb5d2d` : extraction Git exacte, conservation du manifeste sauvegardé et vérification des preuves locales de restauration B1. Le flux ne contacte pas Google et n'autorise aucun B1. Les 17 tests dédiés passent, ainsi que les 53 tests des outils initiaux. [ADMIN-006-08](ADMIN-006-08.md), §27, définit les entrées, empreintes d'outillage et résultats attendus. Le contrôle Windows avec les archives réelles reste à effectuer ; les empreintes du package adapté ne sont pas encore rapportées. Les anciens outils/preuves restent intacts, sans nouvelle opération Google ni fusion.
 
+## 10.27 C2 reconstruit et précontrôle lecture seule autorisé
+
+L'opérateur rapporte 17/17 tests et une reconstruction locale C2 conforme, avec un seul fichier de tests différent du précédent package, manifeste inchangé et aucune opération Google. Les empreintes et le résultat font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §27.4.
+
+Le précontrôle distant en lecture seule est autorisé, mais pas encore exécuté. Trois nouveaux outils sont préparés via GitHub ; faute de terminal accessible à l'assistant, leurs 20 tests synthétiques et le lanceur PowerShell doivent d'abord être exécutés sur le poste opérateur en `LocalCheck`. Le §28 définit les deux lectures, le refus indépendant des écritures et la revue manuelle actuelle des propriétés. Aucun nouveau B1, backend/production, activation ou fusion n'est autorisé.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -428,6 +434,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.31.0 | 2026-09-01 | Reconstruction C2 conforme selon le retour opérateur ; précontrôle lecture seule autorisé et préparé, 20 tests Windows requis avant lecture Google, nouveau B1 non autorisé |
 | 0.30.0 | 2026-09-01 | Reconstruction locale C2 préparée et testée sans Google ; contrôle opérateur et nouvelles empreintes attendus avant revalidation distante et nouvelle autorisation B1 |
 | 0.29.0 | 2026-09-01 | B1 en échec sur deux tests, restauration exacte rapportée ; correction ciblée des tests/harnais publiée et revalidée localement, nouveau package et nouvelle autorisation requis |
 | 0.28.1 | 2026-09-01 | Contrôle Windows B1-r1 conforme selon le retour opérateur ; B1 et restauration autorisés sur le périmètre figé, résultats Google encore attendus |
