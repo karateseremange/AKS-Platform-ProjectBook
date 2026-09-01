@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.24.0 |
-| **Statut** | D3-D4 terminé — plan D4 proposé en revue |
+| **Version** | 0.25.0 |
+| **Statut** | D4-A implémenté et testé localement — revue et D4-B requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -343,7 +343,17 @@ Le résultat technique D3-D4 est consigné dans [ADMIN-006-14](ADMIN-006-14.md),
 
 Le précontrôle du code applicatif `064ca709a754915a87451e829c24088ec878fdde` confirme que le client portail reste inerte et que la route Journaux conserve le dépôt Google direct. Le [plan D4 dans ADMIN-006-08](ADMIN-006-08.md), §20, propose un runtime RECETTE gardé, un chargement asynchrone, une vue minimisée sans pagination, les tests et un retour arrière préservant D2/D3.
 
-D4-A applicatif reste à autoriser après revue documentaire. Aucun raccordement, activation, modification Google ou attribution ACCESS n'a été effectué par ce précontrôle ; D5 et INSCRIPTIONS-011 restent non engagés.
+À ce précontrôle, D4-A restait à autoriser après revue documentaire ; l'autorisation ultérieure et le résultat sont consignés au §10.20. Aucun raccordement, activation, modification Google ou attribution ACCESS n'a été effectué par ce précontrôle ; D5 et INSCRIPTIONS-011 restent non engagés.
+
+## 10.20 Résultat D4-A applicatif
+
+Après intégration du plan documentaire #224, le Product Owner a autorisé D4-A : implémentation inactive, tests locaux et PR vers `develop`. Le résultat détaillé et les rapports sont consignés dans [ADMIN-006-08](ADMIN-006-08.md), §21.
+
+La [PR applicative #145](https://github.com/karateseremange/AKS-Platform/pull/145) propose la candidate `688c81bb64e6aa09f9955743b783fca989369ae2`, depuis `064ca709a754915a87451e829c24088ec878fdde`. Elle apporte le runtime RECETTE gardé, l'autorisation LOG_READ effective avec refus du bootstrap, la RPC asynchrone, le widget et la page Journaux minimisés. La fenêtre des 500 dernières lignes est explicitée, y compris à vide ; le backend et les manifestes sont inchangés.
+
+Validation hors ligne : **761/761 tests cumulatifs uniques**, dont **32 D4-A**, et **8/8 tests du client avec DOM simulé** ; base 729/729 avec le même harnais. Le diff a été vérifié et les 14 fichiers applicatifs relus à l'identique sur GitHub. Ces résultats Node ne sont ni une validation Apps Script, ni une recette navigateur multi-compte.
+
+La PR est ouverte, non fusionnée. Aucune opération Google, activation, publication ou attribution ACCESS n'a été effectuée. Revue conjointe du code et du compte rendu, puis préparation de D4-B réversible ; son exécution et les fusions nécessitent des autorisations distinctes. D4-C, D5 et la résolution d'ADMIN-006 restent à démontrer ; INSCRIPTIONS-011 reste non engagé.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -384,6 +394,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.25.0 | 2026-09-01 | D4-A proposé dans la PR applicative #145 : runtime inactif, 761/761 tests locaux et 8/8 client simulé ; revue et D4-B requis, aucune opération Google |
 | 0.24.0 | 2026-09-01 | D3-D4 technique terminé ; plan D4 proposé dans ADMIN-006-08, sans implémentation ni opération Google |
 | 0.23.0 | 2026-08-31 | ADMIN-006-14 : D3-D cadré avec identité USER_DEPLOYING, audience ANYONE_ANONYMOUS et quatre sous-lots séparés sans mise en œuvre |
 | 0.22.0 | 2026-08-30 | D3-C conforme : package backend validé réversiblement, configuration fermée, restauration exacte et inventaires externes inchangés |
