@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.29.0 |
-| **Statut** | B1 restauré après échec — nouvelle candidate à revalider |
+| **Version** | 0.30.0 |
+| **Statut** | Nouvelle candidate — reconstruction locale du package à exécuter |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -385,6 +385,10 @@ La campagne `b1-2YMQP2` a échoué sur deux tests D4-A ; le rapport indique `TES
 
 La correction ciblée autorisée dans #145 ne change que la fixture de tests, le harnais et une preuve locale. La nouvelle candidate `c39cded9f8d17493780a03cc66e408158ebb5d2d` passe six scénarios URL/projet à 761/761, plus les 8 tests DOM. Le code fonctionnel et Google ne sont pas modifiés par cette correction. Le résultat, l'explication, les limites et les nouvelles étapes de préparation font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §26. Un nouveau package et une nouvelle autorisation B1 sont requis ; les outils et preuves initiaux restent conservés, sans fusion.
 
+## 10.26 Reconstruction locale C2 préparée
+
+La préparation locale du nouveau package est livrée pour `c39cded9f8d17493780a03cc66e408158ebb5d2d` : extraction Git exacte, conservation du manifeste sauvegardé et vérification des preuves locales de restauration B1. Le flux ne contacte pas Google et n'autorise aucun B1. Les 17 tests dédiés passent, ainsi que les 53 tests des outils initiaux. [ADMIN-006-08](ADMIN-006-08.md), §27, définit les entrées, empreintes d'outillage et résultats attendus. Le contrôle Windows avec les archives réelles reste à effectuer ; les empreintes du package adapté ne sont pas encore rapportées. Les anciens outils/preuves restent intacts, sans nouvelle opération Google ni fusion.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -424,6 +428,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.30.0 | 2026-09-01 | Reconstruction locale C2 préparée et testée sans Google ; contrôle opérateur et nouvelles empreintes attendus avant revalidation distante et nouvelle autorisation B1 |
 | 0.29.0 | 2026-09-01 | B1 en échec sur deux tests, restauration exacte rapportée ; correction ciblée des tests/harnais publiée et revalidée localement, nouveau package et nouvelle autorisation requis |
 | 0.28.1 | 2026-09-01 | Contrôle Windows B1-r1 conforme selon le retour opérateur ; B1 et restauration autorisés sur le périmètre figé, résultats Google encore attendus |
 | 0.28.0 | 2026-09-01 | B0 déclaré conforme après revue et confirmation opérateur ; outillage B1-r1 préparé, 39/39 tests locaux, contrôle Windows requis et aucune autorisation d'exécution B1 |
