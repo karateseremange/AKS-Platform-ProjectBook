@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.28.0 |
-| **Statut** | B0 conforme — outillage B1 préparé, exécution non autorisée |
+| **Version** | 0.28.1 |
+| **Statut** | B1 autorisé — exécution opérateur et résultats attendus |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-01 |
@@ -375,6 +375,10 @@ Le précontrôle B0 a été autorisé puis exécuté en lecture seule par l'opé
 
 Le Product Owner autorise ensuite la préparation de l'outillage B1-r1, décrite au §25 du même document : défaut local seul, autorisation liée au package, relectures exactes, test manuel dans l'éditeur et restauration en `finally` avec reprise indépendante. Les 39 tests B1 et 14 tests B0 réussissent hors Google. Le contrôle Windows sur les archives réelles reste à réaliser. B1, les fusions, l'activation, le parcours navigateur et tout changement de production restent non autorisés ; la candidate applicative #145 est inchangée.
 
+## 10.24 B1 autorisé après contrôle Windows
+
+Le contrôle local Windows est rapporté conforme : 39/39 tests et `B1_LOCAL_CHECK_ONLY`, sans écriture Google. Le Product Owner autorise distinctement le push temporaire du portail RECETTE, la relecture, la seule suite `AKS_runValidationSuiteV11` puis la restauration exacte, y compris sa reprise après interruption. Le périmètre figé, les exclusions et les preuves attendues font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §25.4. Les outils sont inchangés depuis `b7bcf1cc948e59fdbdc269c340f450259eef7a9f`. Aucun résultat Google B1 n'est encore rapporté ; aucune activation, propriété, opération backend/production ou fusion n'est autorisée.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -414,6 +418,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.28.1 | 2026-09-01 | Contrôle Windows B1-r1 conforme selon le retour opérateur ; B1 et restauration autorisés sur le périmètre figé, résultats Google encore attendus |
 | 0.28.0 | 2026-09-01 | B0 déclaré conforme après revue et confirmation opérateur ; outillage B1-r1 préparé, 39/39 tests locaux, contrôle Windows requis et aucune autorisation d'exécution B1 |
 | 0.27.2 | 2026-09-01 | Contrôle local Windows B0-r2 conforme selon le retour opérateur, 14/14 et LOCAL_CHECK_ONLY ; lecture Google à autoriser, aucune fusion |
 | 0.27.1 | 2026-09-01 | B0-r2 prend en charge clasp 3.3.0 du poste après revue ; 14/14 tests Node, validation PowerShell et lecture Google encore à réaliser |
