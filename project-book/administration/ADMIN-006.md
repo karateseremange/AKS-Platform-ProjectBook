@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.31.0 |
-| **Statut** | Précontrôle C2 lecture seule autorisé — tests Windows requis |
+| **Version** | 0.31.1 |
+| **Statut** | Contrôle local C2 conforme — précontrôle lecture seule à exécuter |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-01 |
+| **Dernière mise à jour** | 2026-09-02 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -393,7 +393,7 @@ La préparation locale du nouveau package est livrée pour `c39cded9f8d17493780a
 
 L'opérateur rapporte 17/17 tests et une reconstruction locale C2 conforme, avec un seul fichier de tests différent du précédent package, manifeste inchangé et aucune opération Google. Les empreintes et le résultat font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §27.4.
 
-Le précontrôle distant en lecture seule est autorisé, mais pas encore exécuté. Trois nouveaux outils sont préparés via GitHub ; faute de terminal accessible à l'assistant, leurs 20 tests synthétiques et le lanceur PowerShell doivent d'abord être exécutés sur le poste opérateur en `LocalCheck`. Le §28 définit les deux lectures, le refus indépendant des écritures et la revue manuelle actuelle des propriétés. Aucun nouveau B1, backend/production, activation ou fusion n'est autorisé.
+Le contrôle Windows des trois nouveaux outils est rapporté conforme : 20/20 tests, `C2_READONLY_LOCAL_CHECK_ONLY`, aucune lecture/écriture Google et aucune autorisation B1. Le précontrôle distant en lecture seule déjà autorisé peut maintenant être exécuté. Le §28 définit les deux lectures, le refus indépendant des écritures et la revue manuelle actuelle des propriétés. Aucun nouveau B1, backend/production, activation ou fusion n'est autorisé.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -434,6 +434,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.31.1 | 2026-09-02 | Contrôle Windows C2-readonly-r1 rapporté conforme à 20/20, sans Google ; précontrôle distant lecture seule à exécuter, nouveau B1 non autorisé |
 | 0.31.0 | 2026-09-01 | Reconstruction C2 conforme selon le retour opérateur ; précontrôle lecture seule autorisé et préparé, 20 tests Windows requis avant lecture Google, nouveau B1 non autorisé |
 | 0.30.0 | 2026-09-01 | Reconstruction locale C2 préparée et testée sans Google ; contrôle opérateur et nouvelles empreintes attendus avant revalidation distante et nouvelle autorisation B1 |
 | 0.29.0 | 2026-09-01 | B1 en échec sur deux tests, restauration exacte rapportée ; correction ciblée des tests/harnais publiée et revalidée localement, nouveau package et nouvelle autorisation requis |
