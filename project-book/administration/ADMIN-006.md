@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.32.0 |
-| **Statut** | Précontrôle C2 conforme — B1-C2 préparé, contrôle Windows requis |
+| **Version** | 0.32.1 |
+| **Statut** | B1-C2 autorisé — résultats RECETTE et restauration attendus |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-02 |
@@ -401,6 +401,10 @@ Les deux lectures distantes sont rapportées exactes, avec les mêmes empreintes
 
 La préparation B1-C2 seule est autorisée et livrée : 25/25 tests dédiés, 84/84 avec les dépendances réutilisées, aucune opération Google. Le §29 définit les liaisons au package C2 et à la session de lecture, le cycle de restauration et les empreintes des six fichiers. Prochaine étape : contrôle Windows LocalCheck avec les archives réelles. Aucune nouvelle exécution B1 ni fusion n'est autorisée.
 
+## 10.29 B1-C2 autorisé après contrôle Windows
+
+Le contrôle Windows est rapporté conforme : 25/25 tests, `B1_C2_LOCAL_CHECK_ONLY`, preuves C2 relues localement et aucune opération Google. Le Product Owner autorise distinctement le push temporaire de la candidate C2 sur le seul portail RECETTE, sa relecture, la suite manuelle `AKS_runValidationSuiteV11` puis la restauration exacte, y compris après échec ou interruption. Le périmètre figé et les exclusions font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §29.4. Les outils ne changent pas. Résultats Google encore attendus ; aucune activation, propriété, opération backend/production ou fusion n'est autorisée.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -440,6 +444,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.32.1 | 2026-09-02 | Contrôle Windows B1-C2 rapporté conforme à 25/25 ; test RECETTE réversible et restauration autorisés distinctement, résultats attendus |
 | 0.32.0 | 2026-09-02 | Précontrôle C2 conforme et propriétés confirmées ; préparation B1-C2 autorisée et testée à 25/25, contrôle Windows requis sans autorisation de push |
 | 0.31.1 | 2026-09-02 | Contrôle Windows C2-readonly-r1 rapporté conforme à 20/20, sans Google ; précontrôle distant lecture seule à exécuter, nouveau B1 non autorisé |
 | 0.31.0 | 2026-09-01 | Reconstruction C2 conforme selon le retour opérateur ; précontrôle lecture seule autorisé et préparé, 20 tests Windows requis avant lecture Google, nouveau B1 non autorisé |
