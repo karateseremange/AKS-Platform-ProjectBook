@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.33.1 |
-| **Statut** | D4-B et revue conformes — décisions de fusion attendues |
+| **Version** | 0.34.0 |
+| **Statut** | D4-A intégré et D4-B conforme — fusion documentaire attendue |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-02 |
@@ -417,6 +417,12 @@ La revue en lecture seule des PR #145 et #225 n'identifie pas de défaut fonctio
 
 Aucun code ou outil n'est modifié. Les fusions restent à autoriser séparément, avec recontrôle des têtes ; D4-C, D5, activation et production ne sont pas engagés.
 
+## 10.32 D4-A intégré dans develop
+
+La PR applicative #145 est fusionnée sous autorisation distincte au commit `f600560edb941bbfb63c7d75e881d7d5de836bd0`. Sa tête `c39cded9f8d17493780a03cc66e408158ebb5d2d` a été recontrôlée et imposée à la fusion ; l'arbre obtenu est identique à celui de la candidate testée. [ADMIN-006-08](ADMIN-006-08.md), §30.4, conserve les références et limites.
+
+Aucune opération Google n'accompagne cette intégration Git. La PR documentaire #225 reste ouverte, sans autorisation de fusion ; la présente mise à jour consigne seulement la fusion applicative. D4-C, D5, activation, production et INSCRIPTIONS-011 restent non engagés.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -456,6 +462,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.34.0 | 2026-09-02 | PR applicative #145 fusionnée dans develop à f600560e ; #225 toujours ouverte, consignation sans opération Google |
 | 0.33.1 | 2026-09-02 | Revue finale terminée et description #145 actualisée ; aucun défaut fonctionnel bloquant identifié, décisions de fusion séparées encore requises |
 | 0.33.0 | 2026-09-02 | D4-B conforme sur preuves opérateur : 761/761, restauration exacte et propriétés confirmées ; revue avant fusion et cadrage D4-C encore requis |
 | 0.32.1 | 2026-09-02 | Contrôle Windows B1-C2 rapporté conforme à 25/25 ; test RECETTE réversible et restauration autorisés distinctement, résultats attendus |
