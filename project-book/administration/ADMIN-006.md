@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.34.0 |
-| **Statut** | D4-A intégré et D4-B conforme — fusion documentaire attendue |
+| **Version** | 0.35.0 |
+| **Statut** | D4-C préparé localement — contrôle Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-02 |
@@ -423,6 +423,14 @@ La PR applicative #145 est fusionnée sous autorisation distincte au commit `f60
 
 Aucune opération Google n'accompagne cette intégration Git. La PR documentaire #225 reste ouverte, sans autorisation de fusion ; la présente mise à jour consigne seulement la fusion applicative. D4-C, D5, activation, production et INSCRIPTIONS-011 restent non engagés.
 
+## 10.33 Fusion documentaire et préparation D4-C
+
+La PR #225 est fusionnée sous autorisation distincte dans develop au commit `fdddfa281e1fb280404db721d5fc17c2b99670fc`, sans opération Google. Le cadrage D4-C a ensuite été lu et la préparation locale autorisée, sans collecte distante ni activation.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31, définit les étapes C0 à C4, l'inventaire futur des deux projets RECETTE, les décisions de déploiement/compte et le retour arrière. C0 vérifie les preuves B1-C2 locales et produit un plan non exécutable ; 16/16 tests dédiés passent, 131/131 avec l'outillage existant. Contrôle PowerShell/archives réelles requis sur le poste. La vérification des propriétés secrètes ne peut pas être déduite de clasp ou des anciennes empreintes ; aucun inspecteur n'est installé.
+
+La nouvelle PR documentaire reste à revoir, sans fusion. Collecte Google, raccordement navigateur, activation et D5 restent à autoriser séparément. Aucune habilitation ACCESS ni ressource de production n'est modifiée.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -462,6 +470,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.35.0 | 2026-09-02 | Fusion #225 à fdddfa28 consignée ; protocole D4-C et C0 local préparés, 16/16 tests dédiés, contrôle Windows requis sans appel Google |
 | 0.34.0 | 2026-09-02 | PR applicative #145 fusionnée dans develop à f600560e ; #225 toujours ouverte, consignation sans opération Google |
 | 0.33.1 | 2026-09-02 | Revue finale terminée et description #145 actualisée ; aucun défaut fonctionnel bloquant identifié, décisions de fusion séparées encore requises |
 | 0.33.0 | 2026-09-02 | D4-B conforme sur preuves opérateur : 761/761, restauration exacte et propriétés confirmées ; revue avant fusion et cadrage D4-C encore requis |

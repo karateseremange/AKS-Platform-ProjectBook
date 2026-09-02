@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.92 |
+| Version | 1.3.93 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-09-02 |
@@ -121,7 +121,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ADMIN-006 | Administration multi-compte et accès aux supports privés | D4-A intégré et D4-B conforme — fusion documentaire attendue | 0.34.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ADMIN-006 | Administration multi-compte et accès aux supports privés | D4-C préparé localement — contrôle Windows requis | 0.35.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
 | ADMIN-006-01 | Inventaire des routes, identités et dépendances Google | Analyse terminée — option backend privé signé recommandée | 0.1.0 | ADMIN-006, Web Apps Apps Script, ACCESS-002, LOG-001, AUDIT-001-PRODUCTION |
 | ADMIN-006-02 | Contrat du prototype LOG_READ avec backend privé signé | Contrat directeur validé — lot D détaillé dans ADMIN-006-08 | 0.6.0 | ADMIN-006, ADMIN-006-01, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-03 | Implémentation des contrats purs AKS-PRIVATE/1 | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-01, ADMIN-006-02, AKS-Platform #140 |
@@ -129,7 +129,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-006-05 | Implémentation B1 à B3 du backend privé RECETTE | Validé en RECETTE — intégré dans `develop` | 0.2.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ADMIN-006-04, AKS-Platform #141 |
 | ADMIN-006-06 | Client portail privé et isolation du widget Journaux | Implémenté, validé et intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-04, ADMIN-006-05, ACCESS-002, LOG-001 |
 | ADMIN-006-07 | Résultat du lot C portail privé | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, AKS-Platform #142 |
-| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | D4-A intégré et D4-B conforme — fusion documentaire attendue | 0.19.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, ADMIN-006-14, ACCESS-002, LOG-001 |
+| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | D4-C préparé localement — contrôle Windows requis | 0.20.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, ADMIN-006-14, ACCESS-002, LOG-001 |
 | ADMIN-006-09 | Inventaire D0 des ressources RECETTE | D0 terminé — aucun backend existant admissible | 0.1.0 | ADMIN-006, ADMIN-006-08, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-10 | Préparation D1 du backend privé et du support LOG RECETTE | D1 terminé — ressources créées, non raccordées | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-09, LOG-001 |
 | ADMIN-006-11 | Précontrôle D2 et protocole du secret HMAC | Précontrôle terminé — inspecteur réversible requis | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-10, SECURITY-001 |
@@ -331,6 +331,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.93 | 2026-09-02 | ADMIN-006 0.35.0 et ADMIN-006-08 0.20.0 : #225 fusionnée, protocole D4-C et outils locaux C0 préparés ; contrôle Windows requis, aucune collecte Google/activation |
 | 1.3.92 | 2026-09-02 | ADMIN-006 0.34.0 et ADMIN-006-08 0.19.0 : fusion applicative #145 à f600560e consignée ; fusion documentaire #225 encore à autoriser, aucune opération Google |
 | 1.3.91 | 2026-09-02 | ADMIN-006 0.33.1 et ADMIN-006-08 0.18.1 : revue finale consignée et description #145 actualisée ; aucune fusion ni nouvelle opération Google |
 | 1.3.90 | 2026-09-02 | ADMIN-006 0.33.0 et ADMIN-006-08 0.18.0 : D4-B conforme, 761/761 et restauration/propriétés confirmées ; revue avant décision de fusion, D4-C/D5 non engagés |
