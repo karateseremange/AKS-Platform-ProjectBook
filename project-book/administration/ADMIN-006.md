@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.35.0 |
-| **Statut** | D4-C préparé localement — contrôle Windows requis |
+| **Version** | 0.36.0 |
+| **Statut** | D4-C C0 conforme — collecteur C1 préparé, contrôle Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-02 |
@@ -431,6 +431,12 @@ La PR #225 est fusionnée sous autorisation distincte dans develop au commit `fd
 
 La nouvelle PR documentaire reste à revoir, sans fusion. Collecte Google, raccordement navigateur, activation et D5 restent à autoriser séparément. Aucune habilitation ACCESS ni ressource de production n'est modifiée.
 
+## 10.34 Résultat C0 et préparation du collecteur C1
+
+C0 est conforme sur le rapport opérateur du 2026-09-02 : 16/16 tests, chaîne B1-C2 vérifiée localement, aucun appel Google. [ADMIN-006-08](ADMIN-006-08.md), §31.7–31.8, consigne la campagne et les empreintes, puis le collecteur C1 préparé sous autorisation distincte : 23/23 tests simulés, 154/154 cumulés. Contrôle Windows local requis avant toute demande de lecture Google.
+
+Le collecteur futur sera limité aux snapshots et inventaires des deux projets RECETTE ; ni propriétés, secrets, droits ni déploiement navigateur ne sont validés par ces lectures. Le backend restera à rapprocher des preuves D3 protégées. Aucune exécution Google, activation, attribution ACCESS, production ou fusion de #226 n'est autorisée à ce stade.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -470,6 +476,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.36.0 | 2026-09-02 | C0 conforme sur preuve opérateur ; collecteur C1 préparé, 23/23 tests simulés et contrôle Windows requis avant autorisation Google lecture seule |
 | 0.35.0 | 2026-09-02 | Fusion #225 à fdddfa28 consignée ; protocole D4-C et C0 local préparés, 16/16 tests dédiés, contrôle Windows requis sans appel Google |
 | 0.34.0 | 2026-09-02 | PR applicative #145 fusionnée dans develop à f600560e ; #225 toujours ouverte, consignation sans opération Google |
 | 0.33.1 | 2026-09-02 | Revue finale terminée et description #145 actualisée ; aucun défaut fonctionnel bloquant identifié, décisions de fusion séparées encore requises |
