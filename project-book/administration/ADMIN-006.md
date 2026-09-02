@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.33.0 |
-| **Statut** | D4-B conforme — revue avant décision de fusion |
+| **Version** | 0.33.1 |
+| **Statut** | D4-B et revue conformes — décisions de fusion attendues |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-02 |
@@ -411,6 +411,12 @@ La suite Apps Script est rapportée à 761/761, zéro échec. Le rapport de sess
 
 Le HEAD du portail est revenu à la sauvegarde, les propriétés restent fermées et les PR ne sont pas fusionnées. Prochaine étape : revue finale de #145/#225 avant décisions séparées de fusion, puis cadrage D4-C. Navigateur et multi-compte D5 restent à démontrer ; ADMIN-006 demeure ouvert et INSCRIPTIONS-011 non engagé.
 
+## 10.31 Revue finale terminée avant décisions de fusion
+
+La revue en lecture seule des PR #145 et #225 n'identifie pas de défaut fonctionnel bloquant dans son périmètre. Les six scénarios locaux à 761/761, les huit tests DOM et les 115 tests d'outillage passent ; l'empreinte source correspond à la candidate testée. Le seul écart documentaire relevé, la description de #145 encore antérieure au succès B1-C2, est corrigé sous autorisation distincte. Le compte rendu fait autorité dans [ADMIN-006-08](ADMIN-006-08.md), §30.3.
+
+Aucun code ou outil n'est modifié. Les fusions restent à autoriser séparément, avec recontrôle des têtes ; D4-C, D5, activation et production ne sont pas engagés.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -450,6 +456,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.33.1 | 2026-09-02 | Revue finale terminée et description #145 actualisée ; aucun défaut fonctionnel bloquant identifié, décisions de fusion séparées encore requises |
 | 0.33.0 | 2026-09-02 | D4-B conforme sur preuves opérateur : 761/761, restauration exacte et propriétés confirmées ; revue avant fusion et cadrage D4-C encore requis |
 | 0.32.1 | 2026-09-02 | Contrôle Windows B1-C2 rapporté conforme à 25/25 ; test RECETTE réversible et restauration autorisés distinctement, résultats attendus |
 | 0.32.0 | 2026-09-02 | Précontrôle C2 conforme et propriétés confirmées ; préparation B1-C2 autorisée et testée à 25/25, contrôle Windows requis sans autorisation de push |
