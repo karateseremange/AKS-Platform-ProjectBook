@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.24.0 |
-| **Statut** | D3-D4 terminé — plan D4 proposé en revue |
+| **Version** | 0.34.0 |
+| **Statut** | D4-A intégré et D4-B conforme — fusion documentaire attendue |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-01 |
+| **Dernière mise à jour** | 2026-09-02 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -343,7 +343,85 @@ Le résultat technique D3-D4 est consigné dans [ADMIN-006-14](ADMIN-006-14.md),
 
 Le précontrôle du code applicatif `064ca709a754915a87451e829c24088ec878fdde` confirme que le client portail reste inerte et que la route Journaux conserve le dépôt Google direct. Le [plan D4 dans ADMIN-006-08](ADMIN-006-08.md), §20, propose un runtime RECETTE gardé, un chargement asynchrone, une vue minimisée sans pagination, les tests et un retour arrière préservant D2/D3.
 
-D4-A applicatif reste à autoriser après revue documentaire. Aucun raccordement, activation, modification Google ou attribution ACCESS n'a été effectué par ce précontrôle ; D5 et INSCRIPTIONS-011 restent non engagés.
+À ce précontrôle, D4-A restait à autoriser après revue documentaire ; l'autorisation ultérieure et le résultat sont consignés au §10.20. Aucun raccordement, activation, modification Google ou attribution ACCESS n'a été effectué par ce précontrôle ; D5 et INSCRIPTIONS-011 restent non engagés.
+
+## 10.20 Résultat D4-A applicatif
+
+Après intégration du plan documentaire #224, le Product Owner a autorisé D4-A : implémentation inactive, tests locaux et PR vers `develop`. Le résultat détaillé et les rapports sont consignés dans [ADMIN-006-08](ADMIN-006-08.md), §21.
+
+La [PR applicative #145](https://github.com/karateseremange/AKS-Platform/pull/145) propose la candidate `688c81bb64e6aa09f9955743b783fca989369ae2`, depuis `064ca709a754915a87451e829c24088ec878fdde`. Elle apporte le runtime RECETTE gardé, l'autorisation LOG_READ effective avec refus du bootstrap, la RPC asynchrone, le widget et la page Journaux minimisés. La fenêtre des 500 dernières lignes est explicitée, y compris à vide ; le backend et les manifestes sont inchangés.
+
+Validation hors ligne : **761/761 tests cumulatifs uniques**, dont **32 D4-A**, et **8/8 tests du client avec DOM simulé** ; base 729/729 avec le même harnais. Le diff a été vérifié et les 14 fichiers applicatifs relus à l'identique sur GitHub. Ces résultats Node ne sont ni une validation Apps Script, ni une recette navigateur multi-compte.
+
+La PR est ouverte, non fusionnée. Aucune opération Google, activation, publication ou attribution ACCESS n'a été effectuée. Revue conjointe du code et du compte rendu, puis préparation de D4-B réversible ; son exécution et les fusions nécessitent des autorisations distinctes. D4-C, D5 et la résolution d'ADMIN-006 restent à démontrer ; INSCRIPTIONS-011 reste non engagé.
+
+## 10.21 Revue D4-A et préparation D4-B
+
+La revue conjointe de la candidate applicative #145 `688c81bb64e6aa09f9955743b783fca989369ae2` et du compte rendu #225 n'a identifié aucun défaut bloquant statique ou local. La simulation du projet RECETTE et le chargement complémentaire des six `.js` serveur conservent chacun 761/761 tests réussis. Les limites Apps Script et navigateur restent ouvertes.
+
+Le protocole détaillé relève d'[ADMIN-006-08](ADMIN-006-08.md), §22 : package complet de 277 fichiers avec manifeste initial RECETTE conservé exactement, B0 en lecture seule pour sauvegarder et expliquer le diff réel, puis B1 distinctement autorisé pour push temporaire, relecture, suite Apps Script et restauration contrôlée. Le nombre de fichiers réellement présent sur Google reste à observer.
+
+Les deux PR restent ouvertes sans fusion ; seul le Project Book est complété. Aucun précontrôle ni test Google n'a été exécuté. Prochaine étape : préparer l'outillage B0 compatible PowerShell 5.1 ; son exécution en lecture seule sera soumise à autorisation, puis le résultat concret permettra de décider B1.
+
+## 10.22 Préparation B0 et contrôle local Windows, avant collecte Google
+
+[ADMIN-006-08](ADMIN-006-08.md), §23, référence le lanceur PowerShell 5.1, le moteur Node B0-r2 et leurs 14 tests synthétiques réussis. Les versions Windows transmises sont compatibles ; clasp 3.3.0 est accepté après revue de son interface, sans mise à jour du poste. Le rapport consigne sa version effective. L'extraction réelle des objets Git retrouve les 277 fichiers et leur empreinte attendue. Le code applicatif reste à la tête #145 déjà revue.
+
+Le contrôle local Windows est désormais rapporté conforme : 14/14 tests et statut `LOCAL_CHECK_ONLY`, dans le run `2026-09-01T13-37-35-830Z-57aefd` ; le bloc vérifie les empreintes et la syntaxe PowerShell avant le lanceur. La preuve et ses limites figurent dans ADMIN-006-08 §23.4. Le mode local n'appelle pas Google. Le mode de lecture Google exige une autorisation distincte et conserve un statut à revoir : propriétés et coupe-circuits restent à vérifier par l'opérateur, et le diff complet doit être expliqué avant B1. Les outils ne savent ni pousser, ni exécuter une fonction Apps Script, ni modifier une propriété ou un déploiement. Aucune fusion ni opération Google n'a été réalisée.
+
+## 10.23 B0 conforme et préparation B1
+
+Le précontrôle B0 a été autorisé puis exécuté en lecture seule par l'opérateur. Sa conformité est validée après revue du rapport, des 204 écarts SHA (178 fins de ligne, six correctifs V1.4.1, quatre raccordements ADMIN-006 et 16 ajouts), et confirmation du portail désactivé, de l'URL temporaire absente et du backend désactivé. Aucun écart inexpliqué, aucune suppression, aucune écriture Google B0. Les empreintes et limites de preuve font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §24 ; les archives restent locales.
+
+Le Product Owner autorise ensuite la préparation de l'outillage B1-r1, décrite au §25 du même document : défaut local seul, autorisation liée au package, relectures exactes, test manuel dans l'éditeur et restauration en `finally` avec reprise indépendante. Les 39 tests B1 et 14 tests B0 réussissent hors Google. Le contrôle Windows sur les archives réelles reste à réaliser. B1, les fusions, l'activation, le parcours navigateur et tout changement de production restent non autorisés ; la candidate applicative #145 est inchangée.
+
+## 10.24 B1 autorisé après contrôle Windows
+
+Le contrôle local Windows est rapporté conforme : 39/39 tests et `B1_LOCAL_CHECK_ONLY`, sans écriture Google. Le Product Owner autorise distinctement le push temporaire du portail RECETTE, la relecture, la seule suite `AKS_runValidationSuiteV11` puis la restauration exacte, y compris sa reprise après interruption. Le périmètre figé, les exclusions et les preuves attendues font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §25.4. Les outils sont inchangés depuis `b7bcf1cc948e59fdbdc269c340f450259eef7a9f`. Aucun résultat Google B1 n'est encore rapporté ; aucune activation, propriété, opération backend/production ou fusion n'est autorisée.
+
+## 10.25 Échec B1 restauré et correction des tests
+
+La campagne `b1-2YMQP2` a échoué sur deux tests D4-A ; le rapport indique `TEST_NOT_PASSED`, `restoredExact: true` et `propertiesOperatorConfirmed: true`. Le diagnostic local reproduit exactement ces deux erreurs lorsque l'URL Web App est vide ou nulle. B1 n'est pas conforme, mais la restauration est rapportée réussie ; aucune relance n'est demandée.
+
+La correction ciblée autorisée dans #145 ne change que la fixture de tests, le harnais et une preuve locale. La nouvelle candidate `c39cded9f8d17493780a03cc66e408158ebb5d2d` passe six scénarios URL/projet à 761/761, plus les 8 tests DOM. Le code fonctionnel et Google ne sont pas modifiés par cette correction. Le résultat, l'explication, les limites et les nouvelles étapes de préparation font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §26. Un nouveau package et une nouvelle autorisation B1 sont requis ; les outils et preuves initiaux restent conservés, sans fusion.
+
+## 10.26 Reconstruction locale C2 préparée
+
+La préparation locale du nouveau package est livrée pour `c39cded9f8d17493780a03cc66e408158ebb5d2d` : extraction Git exacte, conservation du manifeste sauvegardé et vérification des preuves locales de restauration B1. Le flux ne contacte pas Google et n'autorise aucun B1. Les 17 tests dédiés passent, ainsi que les 53 tests des outils initiaux. [ADMIN-006-08](ADMIN-006-08.md), §27, définit les entrées, empreintes d'outillage et résultats attendus. Le contrôle Windows avec les archives réelles reste à effectuer ; les empreintes du package adapté ne sont pas encore rapportées. Les anciens outils/preuves restent intacts, sans nouvelle opération Google ni fusion.
+
+## 10.27 C2 reconstruit et précontrôle lecture seule autorisé
+
+L'opérateur rapporte 17/17 tests et une reconstruction locale C2 conforme, avec un seul fichier de tests différent du précédent package, manifeste inchangé et aucune opération Google. Les empreintes et le résultat font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §27.4.
+
+Le contrôle Windows des trois nouveaux outils est rapporté conforme : 20/20 tests, `C2_READONLY_LOCAL_CHECK_ONLY`, aucune lecture/écriture Google et aucune autorisation B1. Le précontrôle distant en lecture seule déjà autorisé peut maintenant être exécuté. Le §28 définit les deux lectures, le refus indépendant des écritures et la revue manuelle actuelle des propriétés. Aucun nouveau B1, backend/production, activation ou fusion n'est autorisé.
+
+## 10.28 Précontrôle C2 conforme et B1-C2 préparé
+
+Les deux lectures distantes sont rapportées exactes, avec les mêmes empreintes que la sauvegarde B0 et des inventaires inchangés. Les deux propriétés privées du portail sont confirmées absentes ; le backend reste à false. Le précontrôle C2 est conforme après revue, sans écriture Google. Les preuves et la séparation entre rapport machine et confirmation humaine figurent dans [ADMIN-006-08](ADMIN-006-08.md), §28.4.
+
+La préparation B1-C2 seule est autorisée et livrée : 25/25 tests dédiés, 84/84 avec les dépendances réutilisées, aucune opération Google. Le §29 définit les liaisons au package C2 et à la session de lecture, le cycle de restauration et les empreintes des six fichiers. Prochaine étape : contrôle Windows LocalCheck avec les archives réelles. Aucune nouvelle exécution B1 ni fusion n'est autorisée.
+
+## 10.29 B1-C2 autorisé après contrôle Windows
+
+Le contrôle Windows est rapporté conforme : 25/25 tests, `B1_C2_LOCAL_CHECK_ONLY`, preuves C2 relues localement et aucune opération Google. Le Product Owner autorise distinctement le push temporaire de la candidate C2 sur le seul portail RECETTE, sa relecture, la suite manuelle `AKS_runValidationSuiteV11` puis la restauration exacte, y compris après échec ou interruption. Le périmètre figé et les exclusions font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §29.4. Les outils ne changent pas. Résultats Google encore attendus ; aucune activation, propriété, opération backend/production ou fusion n'est autorisée.
+
+## 10.30 D4-B conforme après B1-C2
+
+La suite Apps Script est rapportée à 761/761, zéro échec. Le rapport de session `b1-c2-vglRNl` indique `testPassed: true`, `restoredExact: true` et `propertiesOperatorConfirmed: true`. D4-B est conforme sur la base des preuves opérateur revues ; [ADMIN-006-08](ADMIN-006-08.md), §30, fait autorité sur le résultat et ses limites. Aucune relance de test ou restauration n'est requise.
+
+Le HEAD du portail est revenu à la sauvegarde, les propriétés restent fermées et les PR ne sont pas fusionnées. Prochaine étape : revue finale de #145/#225 avant décisions séparées de fusion, puis cadrage D4-C. Navigateur et multi-compte D5 restent à démontrer ; ADMIN-006 demeure ouvert et INSCRIPTIONS-011 non engagé.
+
+## 10.31 Revue finale terminée avant décisions de fusion
+
+La revue en lecture seule des PR #145 et #225 n'identifie pas de défaut fonctionnel bloquant dans son périmètre. Les six scénarios locaux à 761/761, les huit tests DOM et les 115 tests d'outillage passent ; l'empreinte source correspond à la candidate testée. Le seul écart documentaire relevé, la description de #145 encore antérieure au succès B1-C2, est corrigé sous autorisation distincte. Le compte rendu fait autorité dans [ADMIN-006-08](ADMIN-006-08.md), §30.3.
+
+Aucun code ou outil n'est modifié. Les fusions restent à autoriser séparément, avec recontrôle des têtes ; D4-C, D5, activation et production ne sont pas engagés.
+
+## 10.32 D4-A intégré dans develop
+
+La PR applicative #145 est fusionnée sous autorisation distincte au commit `f600560edb941bbfb63c7d75e881d7d5de836bd0`. Sa tête `c39cded9f8d17493780a03cc66e408158ebb5d2d` a été recontrôlée et imposée à la fusion ; l'arbre obtenu est identique à celui de la candidate testée. [ADMIN-006-08](ADMIN-006-08.md), §30.4, conserve les références et limites.
+
+Aucune opération Google n'accompagne cette intégration Git. La PR documentaire #225 reste ouverte, sans autorisation de fusion ; la présente mise à jour consigne seulement la fusion applicative. D4-C, D5, activation, production et INSCRIPTIONS-011 restent non engagés.
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -384,6 +462,22 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.34.0 | 2026-09-02 | PR applicative #145 fusionnée dans develop à f600560e ; #225 toujours ouverte, consignation sans opération Google |
+| 0.33.1 | 2026-09-02 | Revue finale terminée et description #145 actualisée ; aucun défaut fonctionnel bloquant identifié, décisions de fusion séparées encore requises |
+| 0.33.0 | 2026-09-02 | D4-B conforme sur preuves opérateur : 761/761, restauration exacte et propriétés confirmées ; revue avant fusion et cadrage D4-C encore requis |
+| 0.32.1 | 2026-09-02 | Contrôle Windows B1-C2 rapporté conforme à 25/25 ; test RECETTE réversible et restauration autorisés distinctement, résultats attendus |
+| 0.32.0 | 2026-09-02 | Précontrôle C2 conforme et propriétés confirmées ; préparation B1-C2 autorisée et testée à 25/25, contrôle Windows requis sans autorisation de push |
+| 0.31.1 | 2026-09-02 | Contrôle Windows C2-readonly-r1 rapporté conforme à 20/20, sans Google ; précontrôle distant lecture seule à exécuter, nouveau B1 non autorisé |
+| 0.31.0 | 2026-09-01 | Reconstruction C2 conforme selon le retour opérateur ; précontrôle lecture seule autorisé et préparé, 20 tests Windows requis avant lecture Google, nouveau B1 non autorisé |
+| 0.30.0 | 2026-09-01 | Reconstruction locale C2 préparée et testée sans Google ; contrôle opérateur et nouvelles empreintes attendus avant revalidation distante et nouvelle autorisation B1 |
+| 0.29.0 | 2026-09-01 | B1 en échec sur deux tests, restauration exacte rapportée ; correction ciblée des tests/harnais publiée et revalidée localement, nouveau package et nouvelle autorisation requis |
+| 0.28.1 | 2026-09-01 | Contrôle Windows B1-r1 conforme selon le retour opérateur ; B1 et restauration autorisés sur le périmètre figé, résultats Google encore attendus |
+| 0.28.0 | 2026-09-01 | B0 déclaré conforme après revue et confirmation opérateur ; outillage B1-r1 préparé, 39/39 tests locaux, contrôle Windows requis et aucune autorisation d'exécution B1 |
+| 0.27.2 | 2026-09-01 | Contrôle local Windows B0-r2 conforme selon le retour opérateur, 14/14 et LOCAL_CHECK_ONLY ; lecture Google à autoriser, aucune fusion |
+| 0.27.1 | 2026-09-01 | B0-r2 prend en charge clasp 3.3.0 du poste après revue ; 14/14 tests Node, validation PowerShell et lecture Google encore à réaliser |
+| 0.27.0 | 2026-09-01 | Outillage B0-r1 préparé et tests Node 13/13 ; contrôle PowerShell/Windows et lectures Google restent à exécuter, sans changement de candidate applicative |
+| 0.26.0 | 2026-09-01 | Revue D4-A et protocole D4-B préparés dans ADMIN-006-08 §22 ; B0 lecture seule puis B1 réversible, aucune fusion ni opération Google |
+| 0.25.0 | 2026-09-01 | D4-A proposé dans la PR applicative #145 : runtime inactif, 761/761 tests locaux et 8/8 client simulé ; revue et D4-B requis, aucune opération Google |
 | 0.24.0 | 2026-09-01 | D3-D4 technique terminé ; plan D4 proposé dans ADMIN-006-08, sans implémentation ni opération Google |
 | 0.23.0 | 2026-08-31 | ADMIN-006-14 : D3-D cadré avec identité USER_DEPLOYING, audience ANYONE_ANONYMOUS et quatre sous-lots séparés sans mise en œuvre |
 | 0.22.0 | 2026-08-30 | D3-C conforme : package backend validé réversiblement, configuration fermée, restauration exacte et inventaires externes inchangés |
