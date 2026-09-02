@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.32.1 |
-| **Statut** | B1-C2 autorisé — résultats RECETTE et restauration attendus |
+| **Version** | 0.33.0 |
+| **Statut** | D4-B conforme — revue avant décision de fusion |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-02 |
@@ -405,6 +405,12 @@ La préparation B1-C2 seule est autorisée et livrée : 25/25 tests dédiés, 84
 
 Le contrôle Windows est rapporté conforme : 25/25 tests, `B1_C2_LOCAL_CHECK_ONLY`, preuves C2 relues localement et aucune opération Google. Le Product Owner autorise distinctement le push temporaire de la candidate C2 sur le seul portail RECETTE, sa relecture, la suite manuelle `AKS_runValidationSuiteV11` puis la restauration exacte, y compris après échec ou interruption. Le périmètre figé et les exclusions font autorité dans [ADMIN-006-08](ADMIN-006-08.md), §29.4. Les outils ne changent pas. Résultats Google encore attendus ; aucune activation, propriété, opération backend/production ou fusion n'est autorisée.
 
+## 10.30 D4-B conforme après B1-C2
+
+La suite Apps Script est rapportée à 761/761, zéro échec. Le rapport de session `b1-c2-vglRNl` indique `testPassed: true`, `restoredExact: true` et `propertiesOperatorConfirmed: true`. D4-B est conforme sur la base des preuves opérateur revues ; [ADMIN-006-08](ADMIN-006-08.md), §30, fait autorité sur le résultat et ses limites. Aucune relance de test ou restauration n'est requise.
+
+Le HEAD du portail est revenu à la sauvegarde, les propriétés restent fermées et les PR ne sont pas fusionnées. Prochaine étape : revue finale de #145/#225 avant décisions séparées de fusion, puis cadrage D4-C. Navigateur et multi-compte D5 restent à démontrer ; ADMIN-006 demeure ouvert et INSCRIPTIONS-011 non engagé.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -444,6 +450,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.33.0 | 2026-09-02 | D4-B conforme sur preuves opérateur : 761/761, restauration exacte et propriétés confirmées ; revue avant fusion et cadrage D4-C encore requis |
 | 0.32.1 | 2026-09-02 | Contrôle Windows B1-C2 rapporté conforme à 25/25 ; test RECETTE réversible et restauration autorisés distinctement, résultats attendus |
 | 0.32.0 | 2026-09-02 | Précontrôle C2 conforme et propriétés confirmées ; préparation B1-C2 autorisée et testée à 25/25, contrôle Windows requis sans autorisation de push |
 | 0.31.1 | 2026-09-02 | Contrôle Windows C2-readonly-r1 rapporté conforme à 20/20, sans Google ; précontrôle distant lecture seule à exécuter, nouveau B1 non autorisé |
