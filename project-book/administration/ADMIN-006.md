@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.31.1 |
-| **Statut** | Contrôle local C2 conforme — précontrôle lecture seule à exécuter |
+| **Version** | 0.32.0 |
+| **Statut** | Précontrôle C2 conforme — B1-C2 préparé, contrôle Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-02 |
@@ -395,6 +395,12 @@ L'opérateur rapporte 17/17 tests et une reconstruction locale C2 conforme, avec
 
 Le contrôle Windows des trois nouveaux outils est rapporté conforme : 20/20 tests, `C2_READONLY_LOCAL_CHECK_ONLY`, aucune lecture/écriture Google et aucune autorisation B1. Le précontrôle distant en lecture seule déjà autorisé peut maintenant être exécuté. Le §28 définit les deux lectures, le refus indépendant des écritures et la revue manuelle actuelle des propriétés. Aucun nouveau B1, backend/production, activation ou fusion n'est autorisé.
 
+## 10.28 Précontrôle C2 conforme et B1-C2 préparé
+
+Les deux lectures distantes sont rapportées exactes, avec les mêmes empreintes que la sauvegarde B0 et des inventaires inchangés. Les deux propriétés privées du portail sont confirmées absentes ; le backend reste à false. Le précontrôle C2 est conforme après revue, sans écriture Google. Les preuves et la séparation entre rapport machine et confirmation humaine figurent dans [ADMIN-006-08](ADMIN-006-08.md), §28.4.
+
+La préparation B1-C2 seule est autorisée et livrée : 25/25 tests dédiés, 84/84 avec les dépendances réutilisées, aucune opération Google. Le §29 définit les liaisons au package C2 et à la session de lecture, le cycle de restauration et les empreintes des six fichiers. Prochaine étape : contrôle Windows LocalCheck avec les archives réelles. Aucune nouvelle exécution B1 ni fusion n'est autorisée.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -434,6 +440,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.32.0 | 2026-09-02 | Précontrôle C2 conforme et propriétés confirmées ; préparation B1-C2 autorisée et testée à 25/25, contrôle Windows requis sans autorisation de push |
 | 0.31.1 | 2026-09-02 | Contrôle Windows C2-readonly-r1 rapporté conforme à 20/20, sans Google ; précontrôle distant lecture seule à exécuter, nouveau B1 non autorisé |
 | 0.31.0 | 2026-09-01 | Reconstruction C2 conforme selon le retour opérateur ; précontrôle lecture seule autorisé et préparé, 20 tests Windows requis avant lecture Google, nouveau B1 non autorisé |
 | 0.30.0 | 2026-09-01 | Reconstruction locale C2 préparée et testée sans Google ; contrôle opérateur et nouvelles empreintes attendus avant revalidation distante et nouvelle autorisation B1 |
