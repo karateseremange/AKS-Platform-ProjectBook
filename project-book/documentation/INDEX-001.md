@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.98 |
+| Version | 1.3.99 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-09-03 |
@@ -121,7 +121,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ADMIN-006 | Administration multi-compte et accès aux supports privés | D4-C — outillage package LOG_READ prêt, reconstruction à exécuter | 0.39.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ADMIN-006 | Administration multi-compte et accès aux supports privés | D4-C — package LOG_READ reconstruit, précontrôle lecture seule préparé | 0.40.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
 | ADMIN-006-01 | Inventaire des routes, identités et dépendances Google | Analyse terminée — option backend privé signé recommandée | 0.1.0 | ADMIN-006, Web Apps Apps Script, ACCESS-002, LOG-001, AUDIT-001-PRODUCTION |
 | ADMIN-006-02 | Contrat du prototype LOG_READ avec backend privé signé | Contrat directeur validé — lot D détaillé dans ADMIN-006-08 | 0.6.0 | ADMIN-006, ADMIN-006-01, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-03 | Implémentation des contrats purs AKS-PRIVATE/1 | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-01, ADMIN-006-02, AKS-Platform #140 |
@@ -129,7 +129,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-006-05 | Implémentation B1 à B3 du backend privé RECETTE | Validé en RECETTE — intégré dans `develop` | 0.2.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ADMIN-006-04, AKS-Platform #141 |
 | ADMIN-006-06 | Client portail privé et isolation du widget Journaux | Implémenté, validé et intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-04, ADMIN-006-05, ACCESS-002, LOG-001 |
 | ADMIN-006-07 | Résultat du lot C portail privé | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, AKS-Platform #142 |
-| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | D4-C — outillage package LOG_READ prêt, reconstruction à exécuter | 0.24.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, ADMIN-006-14, ACCESS-002, LOG-001 |
+| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | D4-C — package LOG_READ reconstruit, précontrôle lecture seule préparé | 0.25.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, ADMIN-006-14, ACCESS-002, LOG-001 |
 | ADMIN-006-09 | Inventaire D0 des ressources RECETTE | D0 terminé — aucun backend existant admissible | 0.1.0 | ADMIN-006, ADMIN-006-08, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-10 | Préparation D1 du backend privé et du support LOG RECETTE | D1 terminé — ressources créées, non raccordées | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-09, LOG-001 |
 | ADMIN-006-11 | Précontrôle D2 et protocole du secret HMAC | Précontrôle terminé — inspecteur réversible requis | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-10, SECURITY-001 |
@@ -331,6 +331,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.99 | 2026-09-03 | ADMIN-006 v0.40.0 et ADMIN-006-08 v0.25.0 : package LOG_READ Windows reconstruit, précontrôle lié préparé et 48 tests hors ligne ; contrôle local attendu, sans Google ni fusion |
 | 1.3.98 | 2026-09-03 | ADMIN-006 0.39.0 et ADMIN-006-08 0.24.0 : reconstruction locale LOG_READ et protocole préparés, 20 tests, reconstruction Windows attendue ; aucune opération Google ni fusion |
 | 1.3.97 | 2026-09-03 | ADMIN-006 0.38.1 et ADMIN-006-08 0.23.1 : contrôle Windows LOG_READ et revue locale conformes, preuves CRLF/LF consignées ; aucune fusion ni opération Google |
 | 1.3.96 | 2026-09-03 | ADMIN-006 0.38.0 et ADMIN-006-08 0.23.0 : recette LOG_READ réversible préparée en PR #146, tests locaux ; aucune installation/exécution Google, activation, publication ou fusion |

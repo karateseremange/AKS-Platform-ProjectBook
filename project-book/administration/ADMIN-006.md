@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.39.0 |
-| **Statut** | D4-C — outillage package LOG_READ prêt, reconstruction à exécuter |
+| **Version** | 0.40.0 |
+| **Statut** | D4-C — package LOG_READ reconstruit, précontrôle lecture seule préparé |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-03 |
@@ -471,6 +471,14 @@ La reconstruction effective doit être exécutée sur le poste opérateur ; son 
 
 ---
 
+## 10.39 Package LOG_READ reconstruit et précontrôle lié préparé
+
+Le rapport opérateur du 3 septembre confirme la reconstruction locale : 20/20 tests, 279 fichiers, package `cd635f54e1c8c6cc5d7a43053a4a1bd37c866d728abb3a89dd04c0e91620689b`, manifeste historique exact et delta borné. [ADMIN-006-08](ADMIN-006-08.md), §31.16, conserve les empreintes et les limites de cette preuve déclarée.
+
+Un nouveau précontrôle lié à ce package est préparé, avec 48/48 tests hors ligne. Son mode LocalCheck vérifie les preuves locales sans Google. Le mode ReadOnly exige une autorisation séparée et compare deux lectures de chaque cible aux références C1 historiques ; il ne valide ni propriétés/secrets/permissions ni la référence backend D3 complète. Aucun appel Google effectué, aucune modification applicative ou des helpers historiques. Contrôle local Windows encore attendu ; D4-C navigateur et D5 non validés.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -510,6 +518,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.40.0 | 2026-09-03 | Package LOG_READ reconstruit sur Windows ; précontrôle lié préparé, 48 tests hors ligne, contrôle local opérateur attendu, sans Google ni fusion |
 | 0.39.0 | 2026-09-03 | Outillage de reconstruction locale LOG_READ et protocole préparés, 20 tests ; contrôle Windows et rapport réel attendus, sans Google ni fusion |
 | 0.38.1 | 2026-09-03 | Contrôle Windows LOG_READ conforme et revue locale des PR consignés ; écart CRLF/LF expliqué, aucune fusion ni opération Google |
 | 0.38.0 | 2026-09-03 | Recette LOG_READ préparée en PR #146, réutilisation ACCESS/AUDIT, 781/781 local dans six scénarios et 8/8 client ; installation/exécution Google et fusion non autorisées |
