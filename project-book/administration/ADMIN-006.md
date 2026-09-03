@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.38.1 |
-| **Statut** | D4-C — contrôle local LOG_READ conforme, Google non exécuté |
+| **Version** | 0.39.0 |
+| **Statut** | D4-C — outillage package LOG_READ prêt, reconstruction à exécuter |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-03 |
@@ -459,7 +459,15 @@ L'autorisation couvre cette préparation et la documentation, pas l'installation
 
 [ADMIN-006-08](ADMIN-006-08.md), §31.14, consigne les preuves opérateur de la candidate #146 : commit exact, worktree propre en HEAD détachée, 781/781 dans six scénarios et 8/8 client sous Node Windows v24.18.0. L'écart de SHA-256 provenait des fins de ligne CRLF ; la normalisation en mémoire retrouve l'empreinte LF de référence, sans modifier les fichiers.
 
-La revue des deux PR n'a identifié aucun défaut bloquant dans le périmètre local ; les limites et la récupération sur incident restent celles du §31.13. Aucune fusion ni opération Google. Le nouveau package et le protocole de test/restauration restent à préparer sous autorisation distincte ; le contrôle local ne valide pas D4-C navigateur ni D5.
+La revue des deux PR n'a identifié aucun défaut bloquant dans le périmètre local ; les limites et la récupération sur incident restent celles du §31.13. Aucune fusion ni opération Google. La préparation locale du nouveau package et du protocole a ensuite été autorisée (§10.38) ; le contrôle local ne valide pas D4-C navigateur ni D5.
+
+---
+
+## 10.38 Outillage de reconstruction LOG_READ et protocole préparés
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.15, détaille le nouveau lanceur local, ses dépendances existantes et le protocole de test/restauration non exécutable. Les objets Git figés fournissent la source LF ; les deux snapshots C1 protégés fournissent le manifeste et la référence historique, sans nouvelle lecture Google. Vingt tests locaux de l'outillage passent.
+
+La reconstruction effective doit être exécutée sur le poste opérateur ; son rapport et ses nouvelles empreintes restent attendus. Aucun package réel issu de ces archives n'est présumé disponible. L'autorisation ne couvre ni les contrôles Google, ni l'exécuteur de test réversible, ni l'installation, l'habilitation, l'activation, la publication ou la fusion. Les validations antérieures restent historiques et D4-C navigateur/D5 non validés.
 
 ---
 
@@ -502,6 +510,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.39.0 | 2026-09-03 | Outillage de reconstruction locale LOG_READ et protocole préparés, 20 tests ; contrôle Windows et rapport réel attendus, sans Google ni fusion |
 | 0.38.1 | 2026-09-03 | Contrôle Windows LOG_READ conforme et revue locale des PR consignés ; écart CRLF/LF expliqué, aucune fusion ni opération Google |
 | 0.38.0 | 2026-09-03 | Recette LOG_READ préparée en PR #146, réutilisation ACCESS/AUDIT, 781/781 local dans six scénarios et 8/8 client ; installation/exécution Google et fusion non autorisées |
 | 0.37.0 | 2026-09-03 | Collecte C1, contrôles manuels et essai gestionnaire ACCESS/AUDIT consignés ; restaurations exactes rapportées, preuves conservées, parcours privé LOG_READ et D5 à valider |
