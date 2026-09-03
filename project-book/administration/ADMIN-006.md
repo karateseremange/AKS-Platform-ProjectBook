@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.38.0 |
-| **Statut** | D4-C — recette LOG_READ préparée en PR, non exécutée |
+| **Version** | 0.38.1 |
+| **Statut** | D4-C — contrôle local LOG_READ conforme, Google non exécuté |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-03 |
@@ -455,6 +455,14 @@ L'autorisation couvre cette préparation et la documentation, pas l'installation
 
 ---
 
+## 10.37 Contrôle Windows LOG_READ et revue locale conformes
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.14, consigne les preuves opérateur de la candidate #146 : commit exact, worktree propre en HEAD détachée, 781/781 dans six scénarios et 8/8 client sous Node Windows v24.18.0. L'écart de SHA-256 provenait des fins de ligne CRLF ; la normalisation en mémoire retrouve l'empreinte LF de référence, sans modifier les fichiers.
+
+La revue des deux PR n'a identifié aucun défaut bloquant dans le périmètre local ; les limites et la récupération sur incident restent celles du §31.13. Aucune fusion ni opération Google. Le nouveau package et le protocole de test/restauration restent à préparer sous autorisation distincte ; le contrôle local ne valide pas D4-C navigateur ni D5.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -494,6 +502,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.38.1 | 2026-09-03 | Contrôle Windows LOG_READ conforme et revue locale des PR consignés ; écart CRLF/LF expliqué, aucune fusion ni opération Google |
 | 0.38.0 | 2026-09-03 | Recette LOG_READ préparée en PR #146, réutilisation ACCESS/AUDIT, 781/781 local dans six scénarios et 8/8 client ; installation/exécution Google et fusion non autorisées |
 | 0.37.0 | 2026-09-03 | Collecte C1, contrôles manuels et essai gestionnaire ACCESS/AUDIT consignés ; restaurations exactes rapportées, preuves conservées, parcours privé LOG_READ et D5 à valider |
 | 0.36.0 | 2026-09-02 | C0 conforme sur preuve opérateur ; collecteur C1 préparé, 23/23 tests simulés et contrôle Windows requis avant autorisation Google lecture seule |
