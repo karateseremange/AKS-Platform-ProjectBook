@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.36.0 |
-| **Statut** | D4-C C0 conforme — collecteur C1 préparé, contrôle Windows requis |
+| **Version** | 0.37.0 |
+| **Statut** | D4-C C1 collecté — essai ACCESS restauré, LOG_READ à valider |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-02 |
+| **Dernière mise à jour** | 2026-09-03 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -437,6 +437,14 @@ C0 est conforme sur le rapport opérateur du 2026-09-02 : 16/16 tests, chaîne B
 
 Le collecteur futur sera limité aux snapshots et inventaires des deux projets RECETTE ; ni propriétés, secrets, droits ni déploiement navigateur ne sont validés par ces lectures. Le backend restera à rapprocher des preuves D3 protégées. Aucune exécution Google, activation, attribution ACCESS, production ou fusion de #226 n'est autorisée à ce stade.
 
+## 10.35 Collecte C1 et essai gestionnaire restauré
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.9–31.12, consigne la collecte C1 autorisée (23/23 sur le poste, deux lectures identiques par projet), les contrôles opérateur des flags et déploiements, puis l'essai ACCESS/AUDIT distinctement autorisé. Le registre RECETTE était absent : le bootstrap, et non une habilitation attribuée, expliquait les accès historiques. Les procédures existantes ont été réutilisées, sans nouveau mécanisme ni nouvelle version.
+
+Le gestionnaire configuré a reçu temporairement ACCESS_MANAGE ; les captures confirment son menu et un compte actif avec une habilitation effective. Les fonctions ont ensuite rapporté la restauration exacte du registre absent et de la configuration AUDIT, avec suppression des sauvegardes temporaires ; les preuves AUDIT sont conservées. Ces constats reposent sur les rapports et captures opérateur, pas sur une nouvelle lecture indépendante de Google.
+
+Le parcours privé LOG_READ, la revue C1 restante et D5 ne sont pas validés. Aucun compte de test habilité LOG_READ ne subsiste ; prochaine préparation sous autorisation distincte, avec réutilisation des mécanismes existants. #226 reste ouverte, sans fusion ; la présente consignation ne modifie ni code, outil, Google ni production.
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -476,6 +484,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.37.0 | 2026-09-03 | Collecte C1, contrôles manuels et essai gestionnaire ACCESS/AUDIT consignés ; restaurations exactes rapportées, preuves conservées, parcours privé LOG_READ et D5 à valider |
 | 0.36.0 | 2026-09-02 | C0 conforme sur preuve opérateur ; collecteur C1 préparé, 23/23 tests simulés et contrôle Windows requis avant autorisation Google lecture seule |
 | 0.35.0 | 2026-09-02 | Fusion #225 à fdddfa28 consignée ; protocole D4-C et C0 local préparés, 16/16 tests dédiés, contrôle Windows requis sans appel Google |
 | 0.34.0 | 2026-09-02 | PR applicative #145 fusionnée dans develop à f600560e ; #225 toujours ouverte, consignation sans opération Google |
