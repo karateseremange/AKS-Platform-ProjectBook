@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.37.0 |
-| **Statut** | D4-C C1 collecté — essai ACCESS restauré, LOG_READ à valider |
+| **Version** | 0.38.0 |
+| **Statut** | D4-C — recette LOG_READ préparée en PR, non exécutée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-03 |
@@ -443,7 +443,17 @@ Le collecteur futur sera limité aux snapshots et inventaires des deux projets R
 
 Le gestionnaire configuré a reçu temporairement ACCESS_MANAGE ; les captures confirment son menu et un compte actif avec une habilitation effective. Les fonctions ont ensuite rapporté la restauration exacte du registre absent et de la configuration AUDIT, avec suppression des sauvegardes temporaires ; les preuves AUDIT sont conservées. Ces constats reposent sur les rapports et captures opérateur, pas sur une nouvelle lecture indépendante de Google.
 
-Le parcours privé LOG_READ, la revue C1 restante et D5 ne sont pas validés. Aucun compte de test habilité LOG_READ ne subsiste ; prochaine préparation sous autorisation distincte, avec réutilisation des mécanismes existants. #226 reste ouverte, sans fusion ; la présente consignation ne modifie ni code, outil, Google ni production.
+Le parcours privé LOG_READ, la revue C1 restante et D5 ne sont pas validés. Aucun compte de test habilité LOG_READ ne subsiste ; la préparation ultérieure distinctement autorisée est décrite au §10.36, sans exécution Google. #226 reste ouverte, sans fusion ; cette consignation historique v0.37.0 n'a modifié ni code, outil, Google ni production.
+
+## 10.36 Préparation réversible LOG_READ en PR
+
+La [PR applicative #146](https://github.com/karateseremange/AKS-Platform/pull/146), candidate `1645734f3b81219bfd80569da21edc5d054ff223`, prépare une variante de la recette ACCESS/AUDIT existante. Son contrat, ses trois fonctions, les prérequis et les limites de récupération figurent dans [ADMIN-006-08](ADMIN-006-08.md), §31.13.
+
+L'amorçage est limité au registre RECETTE absent et accorde au gestionnaire configuré ACCESS_MANAGE + LOG_READ, sans CONFIG. Il ne constitue pas le scénario D5 LOG_READ seul. Vingt tests supplémentaires sont intégrés : 781/781 dans six scénarios locaux, 8/8 client. Le diff reste limité aux recettes/tests ; services métier et backend inchangés.
+
+L'autorisation couvre cette préparation et la documentation, pas l'installation ou l'exécution Google, les activations, les publications ou la fusion. Le package historique D4-B reste intact ; nouvelle candidate, nouveau package et précontrôles distincts requis. Les preuves antérieures et les validations D3-D4 ne sont pas remises en cause ; D4-C navigateur et D5 restent ouverts.
+
+---
 
 ## 11. Critères d’acceptation du cadrage
 
@@ -484,6 +494,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.38.0 | 2026-09-03 | Recette LOG_READ préparée en PR #146, réutilisation ACCESS/AUDIT, 781/781 local dans six scénarios et 8/8 client ; installation/exécution Google et fusion non autorisées |
 | 0.37.0 | 2026-09-03 | Collecte C1, contrôles manuels et essai gestionnaire ACCESS/AUDIT consignés ; restaurations exactes rapportées, preuves conservées, parcours privé LOG_READ et D5 à valider |
 | 0.36.0 | 2026-09-02 | C0 conforme sur preuve opérateur ; collecteur C1 préparé, 23/23 tests simulés et contrôle Windows requis avant autorisation Google lecture seule |
 | 0.35.0 | 2026-09-02 | Fusion #225 à fdddfa28 consignée ; protocole D4-C et C0 local préparés, 16/16 tests dédiés, contrôle Windows requis sans appel Google |
