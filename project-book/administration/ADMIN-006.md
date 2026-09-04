@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.44.0 |
-| **Statut** | D4-C — V2 restaurée, V3 sur version 9 préparée |
+| **Version** | 0.45.0 |
+| **Statut** | D4-C — V3 restaurée, V4 Web App préparée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-04 |
@@ -511,6 +511,14 @@ La V2 a créé la version immuable 9 mais s'est arrêtée avant le déploiement 
 
 ---
 
+## 10.44 V3 restaurée et V4 Web App préparée
+
+La V3 a créé un déploiement suffixé `feBNnyn`, mais la revue opérateur a identifié un point d'entrée **Bibliothèque** et non un Web App. La confirmation OAuth a été refusée, aucun succès navigateur n'a été enregistré, puis la récupération a restauré exactement ACCESS, AUDIT, les propriétés privées et le code. Le déploiement temporaire a été supprimé, `OMcZ9gl@8` est resté inchangé et la version 9 a été conservée.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.21, prépare une V4 sans création de version ou de déploiement. Elle bascule temporairement le Web App RECETTE existant `OMcZ9gl` de la version 8 à la version 9, réalise la séquence fermée, restaure sa configuration en version 8 puis restaure le code. La mutation de l'horodatage du déploiement et la fenêtre temporaire sur la version 9 sont explicitement reconnues. Les 137/137 tests hors ligne couvrent cette frontière et ses reprises. Aucun appel Google n'a été effectué pendant la préparation ; une autorisation distincte et le contrôle Windows restent requis. D4-C navigateur et D5 demeurent non validés.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -550,6 +558,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.45.0 | 2026-09-04 | V3 arrêtée sur un déploiement Bibliothèque puis restaurée ; V4 sans création, avec bascule temporaire de `OMcZ9gl@8` vers la version 9 et retour à 8, préparée à 137 tests hors ligne |
 | 0.44.0 | 2026-09-04 | V2 restaurée après création de la version 9 sans déploiement ; V3 réutilisant cette version préparée, 120 tests hors ligne, aucun nouvel appel Google |
 | 0.43.0 | 2026-09-04 | Tentative navigateur sur version 8 arrêtée et restaurée exactement ; protocole V2 avec version immuable et déploiement temporaire préparé, 102 tests hors ligne |
 | 0.42.0 | 2026-09-04 | Test technique LOG_READ réussi et restauré exactement ; campagne navigateur réversible préparée et 84 tests hors ligne, sans nouvelle opération Google ni fusion |
