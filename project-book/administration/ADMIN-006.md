@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.41.0 |
-| **Statut** | D4-C — C1 clôturé, exécuteur LOG_READ préparé localement |
+| **Version** | 0.42.0 |
+| **Statut** | D4-C — test technique restauré, campagne navigateur préparée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-03 |
+| **Dernière mise à jour** | 2026-09-04 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -487,6 +487,14 @@ Le nouvel exécuteur est lié au package LOG_READ et à la session C1. Ses 68/68
 
 ---
 
+## 10.41 Test technique restauré et campagne navigateur préparée
+
+Le test technique lié au package LOG_READ a été rapporté réussi dans la session protégée `logread-executor-WunNuE`, avec restauration exacte du code et propriétés privées revenues à l'état fermé : cinq propriétés portail absentes et backend à `false`. [ADMIN-006-08](ADMIN-006-08.md), §31.18, conserve les références et limites de cette preuve opérateur.
+
+La campagne navigateur réversible est préparée sans exécution : 84/84 tests hors ligne, dont 16 nouveaux. Elle séquence AUDIT, ACCESS `ACCESS_MANAGE + LOG_READ`, activation privée, consentement et contrôles des deux profils, puis fermeture privée, restauration ACCESS, déconnexion AUDIT et restauration finale du code. Les intentions sont persistées avant les mutations manuelles afin de guider une reprise. Aucune nouvelle opération Google, activation, publication ou fusion n'est autorisée ; un contrôle Windows puis une autorisation distincte restent requis. D5 « LOG_READ seul » n'est pas couvert.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -526,6 +534,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.42.0 | 2026-09-04 | Test technique LOG_READ réussi et restauré exactement ; campagne navigateur réversible préparée et 84 tests hors ligne, sans nouvelle opération Google ni fusion |
 | 0.41.0 | 2026-09-04 | C1 LOG_READ clôturé ; exécuteur réversible lié préparé et 68 tests hors ligne, sans exécution Google ni fusion |
 | 0.40.0 | 2026-09-03 | Package LOG_READ reconstruit sur Windows ; précontrôle lié préparé, 48 tests hors ligne, contrôle local opérateur attendu, sans Google ni fusion |
 | 0.39.0 | 2026-09-03 | Outillage de reconstruction locale LOG_READ et protocole préparés, 20 tests ; contrôle Windows et rapport réel attendus, sans Google ni fusion |
