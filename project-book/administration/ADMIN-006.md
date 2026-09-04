@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.45.0 |
-| **Statut** | D4-C — V3 restaurée, V4 Web App préparée |
+| **Version** | 0.46.0 |
+| **Statut** | D4-C — V4 restaurée, comparaison version 8 préparée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-04 |
@@ -519,6 +519,14 @@ La V3 a créé un déploiement suffixé `feBNnyn`, mais la revue opérateur a id
 
 ---
 
+## 10.45 V4 restaurée et comparaison de la version 8 préparée
+
+La bascule V4 de `OMcZ9gl@8` vers la version 9 a remplacé le point d'entrée Web App par une Bibliothèque et rendu l'URL `/exec` inutilisable. Aucun succès OAuth ou navigateur n'a été confirmé. La récupération a restauré ACCESS, AUDIT, les propriétés privées, `OMcZ9gl@8` et le code historique ; le retour du type Application Web et l'accès du compte principal ont été reconfirmés. La version 9 reste inventoriée et l'horodatage du déploiement a changé conformément à l'autorisation.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.22, prépare un collecteur V5 strictement en lecture seule pour extraire indépendamment le HEAD restauré et la version immuable 8, comparer leurs manifestes et isoler les champs Web App. Les 150/150 tests hors ligne couvrent la liaison à la récupération V4, la frontière de commandes, les inventaires et la minimisation du rapport. Aucune opération Google pendant la préparation ; collecte distincte à autoriser. D4-C navigateur et D5 restent non validés.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -558,6 +566,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.46.0 | 2026-09-04 | V4 arrêtée sur la version 9 de type Bibliothèque et restaurée en version 8 Web App ; comparaison HEAD/version 8 en lecture seule préparée, 150 tests hors ligne |
 | 0.45.0 | 2026-09-04 | V3 arrêtée sur un déploiement Bibliothèque puis restaurée ; V4 sans création, avec bascule temporaire de `OMcZ9gl@8` vers la version 9 et retour à 8, préparée à 137 tests hors ligne |
 | 0.44.0 | 2026-09-04 | V2 restaurée après création de la version 9 sans déploiement ; V3 réutilisant cette version préparée, 120 tests hors ligne, aucun nouvel appel Google |
 | 0.43.0 | 2026-09-04 | Tentative navigateur sur version 8 arrêtée et restaurée exactement ; protocole V2 avec version immuable et déploiement temporaire préparé, 102 tests hors ligne |
