@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.40.0 |
-| **Statut** | D4-C — package LOG_READ reconstruit, précontrôle lecture seule préparé |
+| **Version** | 0.41.0 |
+| **Statut** | D4-C — C1 clôturé, exécuteur LOG_READ préparé localement |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-03 |
@@ -479,6 +479,14 @@ Un nouveau précontrôle lié à ce package est préparé, avec 48/48 tests hors
 
 ---
 
+## 10.40 Clôture C1 et préparation de l'exécuteur LOG_READ
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.17, consigne les deux lectures indépendantes des deux projets, les propriétés et secrets vérifiés sans divulgation, les propriétaires/partages, supports, scopes, déploiements et comptes de recette. C1 est clôturé sur cette chaîne de preuves ; le rapprochement backend conserve sa limite opérateur vis-à-vis de l'archive D3 protégée.
+
+Le nouvel exécuteur est lié au package LOG_READ et à la session C1. Ses 68/68 tests hors ligne valident installation simulée, relecture, suite attendue à 781/781, restauration systématique, récupération séparée et refus des changements concurrents. Aucun appel Google, changement applicatif, exécution, activation ou fusion. L'exécution technique, puis ACCESS/AUDIT et la recette navigateur exigent des autorisations séparées ; D4-C navigateur et D5 restent non validés.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -518,6 +526,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.41.0 | 2026-09-04 | C1 LOG_READ clôturé ; exécuteur réversible lié préparé et 68 tests hors ligne, sans exécution Google ni fusion |
 | 0.40.0 | 2026-09-03 | Package LOG_READ reconstruit sur Windows ; précontrôle lié préparé, 48 tests hors ligne, contrôle local opérateur attendu, sans Google ni fusion |
 | 0.39.0 | 2026-09-03 | Outillage de reconstruction locale LOG_READ et protocole préparés, 20 tests ; contrôle Windows et rapport réel attendus, sans Google ni fusion |
 | 0.38.1 | 2026-09-03 | Contrôle Windows LOG_READ conforme et revue locale des PR consignés ; écart CRLF/LF expliqué, aucune fusion ni opération Google |
