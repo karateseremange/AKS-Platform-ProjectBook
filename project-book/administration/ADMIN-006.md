@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.42.0 |
-| **Statut** | D4-C — test technique restauré, campagne navigateur préparée |
+| **Version** | 0.43.0 |
+| **Statut** | D4-C — première tentative restaurée, V2 temporaire préparée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-04 |
@@ -495,6 +495,14 @@ La campagne navigateur réversible est préparée sans exécution : 84/84 tests 
 
 ---
 
+## 10.42 Tentative navigateur restaurée et V2 temporaire préparée
+
+La première campagne navigateur a correctement refusé de valider le parcours : `OMcZ9gl` servait toujours la version immuable 8 malgré l'installation de la candidate au HEAD. ACCESS, AUDIT, les propriétés privées et le code ont ensuite été restaurés exactement dans la session protégée ; les états fermés et le déploiement version 8 inchangé ont été reconfirmés.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.19, prépare une V2 qui laisse `OMcZ9gl` intact, crée une version immuable et un déploiement temporaire distinct, supprime ce déploiement après les contrôles puis restaure le code. La version restera inventoriée et nécessite une autorisation explicite. L'outillage passe 102/102 tests hors ligne, dont 18 nouveaux. Aucun nouveau changement Google, version, déploiement, modification applicative ou fusion n'a été effectué par cette préparation ; D4-C navigateur et D5 restent non validés.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -534,6 +542,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.43.0 | 2026-09-04 | Tentative navigateur sur version 8 arrêtée et restaurée exactement ; protocole V2 avec version immuable et déploiement temporaire préparé, 102 tests hors ligne |
 | 0.42.0 | 2026-09-04 | Test technique LOG_READ réussi et restauré exactement ; campagne navigateur réversible préparée et 84 tests hors ligne, sans nouvelle opération Google ni fusion |
 | 0.41.0 | 2026-09-04 | C1 LOG_READ clôturé ; exécuteur réversible lié préparé et 68 tests hors ligne, sans exécution Google ni fusion |
 | 0.40.0 | 2026-09-03 | Package LOG_READ reconstruit sur Windows ; précontrôle lié préparé, 48 tests hors ligne, contrôle local opérateur attendu, sans Google ni fusion |
