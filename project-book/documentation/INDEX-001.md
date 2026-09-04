@@ -6,10 +6,10 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.92 |
+| Version | 1.3.105 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
-| Dernière mise à jour | 2026-09-02 |
+| Dernière mise à jour | 2026-09-04 |
 | Version du produit | V1.4.1 déployée — ADMIN-006 bloquant multi-compte |
 
 ---
@@ -121,7 +121,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-003 | Centre de pilotage | Validé | 1.2.1 | ADMIN-001, ADMIN-002, CORE-001 |
 | ADMIN-004 | Contrat DashboardProvider et DashboardWidget | Validé | 1.2.1 | ADMIN-003, CORE-001, API-001 |
 | ADMIN-005 | Validation et conformité du Centre de pilotage | Validé | 1.2.1 | ADMIN-001 à ADMIN-004, UI-001, SECURITY-001 |
-| ADMIN-006 | Administration multi-compte et accès aux supports privés | D4-A intégré et D4-B conforme — fusion documentaire attendue | 0.34.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
+| ADMIN-006 | Administration multi-compte et accès aux supports privés | D4-C — V4 restaurée, comparaison version 8 préparée | 0.46.0 | ACCESS-002, CONFIG-001, LOG-001, AUDIT-001-PRODUCTION, SECURITY-001 |
 | ADMIN-006-01 | Inventaire des routes, identités et dépendances Google | Analyse terminée — option backend privé signé recommandée | 0.1.0 | ADMIN-006, Web Apps Apps Script, ACCESS-002, LOG-001, AUDIT-001-PRODUCTION |
 | ADMIN-006-02 | Contrat du prototype LOG_READ avec backend privé signé | Contrat directeur validé — lot D détaillé dans ADMIN-006-08 | 0.6.0 | ADMIN-006, ADMIN-006-01, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-03 | Implémentation des contrats purs AKS-PRIVATE/1 | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-01, ADMIN-006-02, AKS-Platform #140 |
@@ -129,7 +129,7 @@ Toute évolution significative de cette organisation doit être répercutée dan
 | ADMIN-006-05 | Implémentation B1 à B3 du backend privé RECETTE | Validé en RECETTE — intégré dans `develop` | 0.2.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-03, ADMIN-006-04, AKS-Platform #141 |
 | ADMIN-006-06 | Client portail privé et isolation du widget Journaux | Implémenté, validé et intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-04, ADMIN-006-05, ACCESS-002, LOG-001 |
 | ADMIN-006-07 | Résultat du lot C portail privé | Validé en RECETTE — intégré dans `develop` | 0.3.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, AKS-Platform #142 |
-| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | D4-A intégré et D4-B conforme — fusion documentaire attendue | 0.19.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, ADMIN-006-14, ACCESS-002, LOG-001 |
+| ADMIN-006-08 | Raccordement privé RECETTE et recette multi-compte LOG_READ | D4-C — V4 restaurée, comparaison version 8 préparée | 0.31.0 | ADMIN-006, ADMIN-006-02, ADMIN-006-06, ADMIN-006-14, ACCESS-002, LOG-001 |
 | ADMIN-006-09 | Inventaire D0 des ressources RECETTE | D0 terminé — aucun backend existant admissible | 0.1.0 | ADMIN-006, ADMIN-006-08, ACCESS-002, LOG-001, AUDIT-001 |
 | ADMIN-006-10 | Préparation D1 du backend privé et du support LOG RECETTE | D1 terminé — ressources créées, non raccordées | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-09, LOG-001 |
 | ADMIN-006-11 | Précontrôle D2 et protocole du secret HMAC | Précontrôle terminé — inspecteur réversible requis | 0.1.0 | ADMIN-006, ADMIN-006-08, ADMIN-006-10, SECURITY-001 |
@@ -331,6 +331,19 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.105 | 2026-09-04 | ADMIN-006 v0.46.0 et ADMIN-006-08 v0.31.0 : V4 restaurée après constat Bibliothèque sur la version 9 ; collecteur HEAD/version 8 en lecture seule préparé, 150 tests hors ligne |
+| 1.3.104 | 2026-09-04 | ADMIN-006 v0.45.0 et ADMIN-006-08 v0.30.0 : V3 arrêtée sur un déploiement Bibliothèque puis restaurée ; V4 basculant temporairement `OMcZ9gl@8` vers la version 9 préparée, 137 tests hors ligne |
+| 1.3.103 | 2026-09-04 | ADMIN-006 v0.44.0 et ADMIN-006-08 v0.29.0 : V2 restaurée avec version 9 conservée, sans déploiement ; V3 réutilisant cette version préparée, 120 tests hors ligne |
+| 1.3.102 | 2026-09-04 | ADMIN-006 v0.43.0 et ADMIN-006-08 v0.28.0 : tentative navigateur sur version 8 arrêtée et restaurée ; V2 avec version immuable et déploiement temporaire préparée, 102 tests hors ligne |
+| 1.3.101 | 2026-09-04 | ADMIN-006 v0.42.0 et ADMIN-006-08 v0.27.0 : test technique LOG_READ réussi et restauré ; campagne navigateur réversible préparée, 84 tests hors ligne, aucune nouvelle opération Google ni fusion |
+| 1.3.100 | 2026-09-04 | ADMIN-006 v0.41.0 et ADMIN-006-08 v0.26.0 : C1 LOG_READ clôturé et exécuteur réversible préparé, 68 tests hors ligne ; aucune exécution Google ni fusion |
+| 1.3.99 | 2026-09-03 | ADMIN-006 v0.40.0 et ADMIN-006-08 v0.25.0 : package LOG_READ Windows reconstruit, précontrôle lié préparé et 48 tests hors ligne ; contrôle local attendu, sans Google ni fusion |
+| 1.3.98 | 2026-09-03 | ADMIN-006 0.39.0 et ADMIN-006-08 0.24.0 : reconstruction locale LOG_READ et protocole préparés, 20 tests, reconstruction Windows attendue ; aucune opération Google ni fusion |
+| 1.3.97 | 2026-09-03 | ADMIN-006 0.38.1 et ADMIN-006-08 0.23.1 : contrôle Windows LOG_READ et revue locale conformes, preuves CRLF/LF consignées ; aucune fusion ni opération Google |
+| 1.3.96 | 2026-09-03 | ADMIN-006 0.38.0 et ADMIN-006-08 0.23.0 : recette LOG_READ réversible préparée en PR #146, tests locaux ; aucune installation/exécution Google, activation, publication ou fusion |
+| 1.3.95 | 2026-09-03 | ADMIN-006 0.37.0 et ADMIN-006-08 0.22.0 : collecte C1 et contrôles opérateur, essai gestionnaire réversible restauré ; LOG_READ/D4-C/D5 non validés, consignation sans fusion ni opération Google |
+| 1.3.94 | 2026-09-02 | ADMIN-006 0.36.0 et ADMIN-006-08 0.21.0 : C0 conforme sur preuve opérateur, collecteur C1 préparé et testé ; contrôle Windows requis, aucune lecture Google ni fusion |
+| 1.3.93 | 2026-09-02 | ADMIN-006 0.35.0 et ADMIN-006-08 0.20.0 : #225 fusionnée, protocole D4-C et outils locaux C0 préparés ; contrôle Windows requis, aucune collecte Google/activation |
 | 1.3.92 | 2026-09-02 | ADMIN-006 0.34.0 et ADMIN-006-08 0.19.0 : fusion applicative #145 à f600560e consignée ; fusion documentaire #225 encore à autoriser, aucune opération Google |
 | 1.3.91 | 2026-09-02 | ADMIN-006 0.33.1 et ADMIN-006-08 0.18.1 : revue finale consignée et description #145 actualisée ; aucune fusion ni nouvelle opération Google |
 | 1.3.90 | 2026-09-02 | ADMIN-006 0.33.0 et ADMIN-006-08 0.18.0 : D4-B conforme, 761/761 et restauration/propriétés confirmées ; revue avant décision de fusion, D4-C/D5 non engagés |

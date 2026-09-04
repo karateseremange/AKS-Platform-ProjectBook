@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.34.0 |
-| **Statut** | D4-A intégré et D4-B conforme — fusion documentaire attendue |
+| **Version** | 0.46.0 |
+| **Statut** | D4-C — V4 restaurée, comparaison version 8 préparée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-02 |
+| **Dernière mise à jour** | 2026-09-04 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -423,6 +423,110 @@ La PR applicative #145 est fusionnée sous autorisation distincte au commit `f60
 
 Aucune opération Google n'accompagne cette intégration Git. La PR documentaire #225 reste ouverte, sans autorisation de fusion ; la présente mise à jour consigne seulement la fusion applicative. D4-C, D5, activation, production et INSCRIPTIONS-011 restent non engagés.
 
+## 10.33 Fusion documentaire et préparation D4-C
+
+La PR #225 est fusionnée sous autorisation distincte dans develop au commit `fdddfa281e1fb280404db721d5fc17c2b99670fc`, sans opération Google. Le cadrage D4-C a ensuite été lu et la préparation locale autorisée, sans collecte distante ni activation.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31, définit les étapes C0 à C4, l'inventaire futur des deux projets RECETTE, les décisions de déploiement/compte et le retour arrière. C0 vérifie les preuves B1-C2 locales et produit un plan non exécutable ; 16/16 tests dédiés passent, 131/131 avec l'outillage existant. Contrôle PowerShell/archives réelles requis sur le poste. La vérification des propriétés secrètes ne peut pas être déduite de clasp ou des anciennes empreintes ; aucun inspecteur n'est installé.
+
+La nouvelle PR documentaire reste à revoir, sans fusion. Collecte Google, raccordement navigateur, activation et D5 restent à autoriser séparément. Aucune habilitation ACCESS ni ressource de production n'est modifiée.
+
+## 10.34 Résultat C0 et préparation du collecteur C1
+
+C0 est conforme sur le rapport opérateur du 2026-09-02 : 16/16 tests, chaîne B1-C2 vérifiée localement, aucun appel Google. [ADMIN-006-08](ADMIN-006-08.md), §31.7–31.8, consigne la campagne et les empreintes, puis le collecteur C1 préparé sous autorisation distincte : 23/23 tests simulés, 154/154 cumulés. Contrôle Windows local requis avant toute demande de lecture Google.
+
+Le collecteur futur sera limité aux snapshots et inventaires des deux projets RECETTE ; ni propriétés, secrets, droits ni déploiement navigateur ne sont validés par ces lectures. Le backend restera à rapprocher des preuves D3 protégées. Aucune exécution Google, activation, attribution ACCESS, production ou fusion de #226 n'est autorisée à ce stade.
+
+## 10.35 Collecte C1 et essai gestionnaire restauré
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.9–31.12, consigne la collecte C1 autorisée (23/23 sur le poste, deux lectures identiques par projet), les contrôles opérateur des flags et déploiements, puis l'essai ACCESS/AUDIT distinctement autorisé. Le registre RECETTE était absent : le bootstrap, et non une habilitation attribuée, expliquait les accès historiques. Les procédures existantes ont été réutilisées, sans nouveau mécanisme ni nouvelle version.
+
+Le gestionnaire configuré a reçu temporairement ACCESS_MANAGE ; les captures confirment son menu et un compte actif avec une habilitation effective. Les fonctions ont ensuite rapporté la restauration exacte du registre absent et de la configuration AUDIT, avec suppression des sauvegardes temporaires ; les preuves AUDIT sont conservées. Ces constats reposent sur les rapports et captures opérateur, pas sur une nouvelle lecture indépendante de Google.
+
+Le parcours privé LOG_READ, la revue C1 restante et D5 ne sont pas validés. Aucun compte de test habilité LOG_READ ne subsiste ; la préparation ultérieure distinctement autorisée est décrite au §10.36, sans exécution Google. #226 reste ouverte, sans fusion ; cette consignation historique v0.37.0 n'a modifié ni code, outil, Google ni production.
+
+## 10.36 Préparation réversible LOG_READ en PR
+
+La [PR applicative #146](https://github.com/karateseremange/AKS-Platform/pull/146), candidate `1645734f3b81219bfd80569da21edc5d054ff223`, prépare une variante de la recette ACCESS/AUDIT existante. Son contrat, ses trois fonctions, les prérequis et les limites de récupération figurent dans [ADMIN-006-08](ADMIN-006-08.md), §31.13.
+
+L'amorçage est limité au registre RECETTE absent et accorde au gestionnaire configuré ACCESS_MANAGE + LOG_READ, sans CONFIG. Il ne constitue pas le scénario D5 LOG_READ seul. Vingt tests supplémentaires sont intégrés : 781/781 dans six scénarios locaux, 8/8 client. Le diff reste limité aux recettes/tests ; services métier et backend inchangés.
+
+L'autorisation couvre cette préparation et la documentation, pas l'installation ou l'exécution Google, les activations, les publications ou la fusion. Le package historique D4-B reste intact ; nouvelle candidate, nouveau package et précontrôles distincts requis. Les preuves antérieures et les validations D3-D4 ne sont pas remises en cause ; D4-C navigateur et D5 restent ouverts.
+
+---
+
+## 10.37 Contrôle Windows LOG_READ et revue locale conformes
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.14, consigne les preuves opérateur de la candidate #146 : commit exact, worktree propre en HEAD détachée, 781/781 dans six scénarios et 8/8 client sous Node Windows v24.18.0. L'écart de SHA-256 provenait des fins de ligne CRLF ; la normalisation en mémoire retrouve l'empreinte LF de référence, sans modifier les fichiers.
+
+La revue des deux PR n'a identifié aucun défaut bloquant dans le périmètre local ; les limites et la récupération sur incident restent celles du §31.13. Aucune fusion ni opération Google. La préparation locale du nouveau package et du protocole a ensuite été autorisée (§10.38) ; le contrôle local ne valide pas D4-C navigateur ni D5.
+
+---
+
+## 10.38 Outillage de reconstruction LOG_READ et protocole préparés
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.15, détaille le nouveau lanceur local, ses dépendances existantes et le protocole de test/restauration non exécutable. Les objets Git figés fournissent la source LF ; les deux snapshots C1 protégés fournissent le manifeste et la référence historique, sans nouvelle lecture Google. Vingt tests locaux de l'outillage passent.
+
+La reconstruction effective doit être exécutée sur le poste opérateur ; son rapport et ses nouvelles empreintes restent attendus. Aucun package réel issu de ces archives n'est présumé disponible. L'autorisation ne couvre ni les contrôles Google, ni l'exécuteur de test réversible, ni l'installation, l'habilitation, l'activation, la publication ou la fusion. Les validations antérieures restent historiques et D4-C navigateur/D5 non validés.
+
+---
+
+## 10.39 Package LOG_READ reconstruit et précontrôle lié préparé
+
+Le rapport opérateur du 3 septembre confirme la reconstruction locale : 20/20 tests, 279 fichiers, package `cd635f54e1c8c6cc5d7a43053a4a1bd37c866d728abb3a89dd04c0e91620689b`, manifeste historique exact et delta borné. [ADMIN-006-08](ADMIN-006-08.md), §31.16, conserve les empreintes et les limites de cette preuve déclarée.
+
+Un nouveau précontrôle lié à ce package est préparé, avec 48/48 tests hors ligne. Son mode LocalCheck vérifie les preuves locales sans Google. Le mode ReadOnly exige une autorisation séparée et compare deux lectures de chaque cible aux références C1 historiques ; il ne valide ni propriétés/secrets/permissions ni la référence backend D3 complète. Aucun appel Google effectué, aucune modification applicative ou des helpers historiques. Contrôle local Windows encore attendu ; D4-C navigateur et D5 non validés.
+
+---
+
+## 10.40 Clôture C1 et préparation de l'exécuteur LOG_READ
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.17, consigne les deux lectures indépendantes des deux projets, les propriétés et secrets vérifiés sans divulgation, les propriétaires/partages, supports, scopes, déploiements et comptes de recette. C1 est clôturé sur cette chaîne de preuves ; le rapprochement backend conserve sa limite opérateur vis-à-vis de l'archive D3 protégée.
+
+Le nouvel exécuteur est lié au package LOG_READ et à la session C1. Ses 68/68 tests hors ligne valident installation simulée, relecture, suite attendue à 781/781, restauration systématique, récupération séparée et refus des changements concurrents. Aucun appel Google, changement applicatif, exécution, activation ou fusion. L'exécution technique, puis ACCESS/AUDIT et la recette navigateur exigent des autorisations séparées ; D4-C navigateur et D5 restent non validés.
+
+---
+
+## 10.41 Test technique restauré et campagne navigateur préparée
+
+Le test technique lié au package LOG_READ a été rapporté réussi dans la session protégée `logread-executor-WunNuE`, avec restauration exacte du code et propriétés privées revenues à l'état fermé : cinq propriétés portail absentes et backend à `false`. [ADMIN-006-08](ADMIN-006-08.md), §31.18, conserve les références et limites de cette preuve opérateur.
+
+La campagne navigateur réversible est préparée sans exécution : 84/84 tests hors ligne, dont 16 nouveaux. Elle séquence AUDIT, ACCESS `ACCESS_MANAGE + LOG_READ`, activation privée, consentement et contrôles des deux profils, puis fermeture privée, restauration ACCESS, déconnexion AUDIT et restauration finale du code. Les intentions sont persistées avant les mutations manuelles afin de guider une reprise. Aucune nouvelle opération Google, activation, publication ou fusion n'est autorisée ; un contrôle Windows puis une autorisation distincte restent requis. D5 « LOG_READ seul » n'est pas couvert.
+
+---
+
+## 10.42 Tentative navigateur restaurée et V2 temporaire préparée
+
+La première campagne navigateur a correctement refusé de valider le parcours : `OMcZ9gl` servait toujours la version immuable 8 malgré l'installation de la candidate au HEAD. ACCESS, AUDIT, les propriétés privées et le code ont ensuite été restaurés exactement dans la session protégée ; les états fermés et le déploiement version 8 inchangé ont été reconfirmés.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.19, prépare une V2 qui laisse `OMcZ9gl` intact, crée une version immuable et un déploiement temporaire distinct, supprime ce déploiement après les contrôles puis restaure le code. La version restera inventoriée et nécessite une autorisation explicite. L'outillage passe 102/102 tests hors ligne, dont 18 nouveaux. Aucun nouveau changement Google, version, déploiement, modification applicative ou fusion n'a été effectué par cette préparation ; D4-C navigateur et D5 restent non validés.
+
+---
+
+## 10.43 V2 restaurée et V3 liée à la version 9
+
+La V2 a créé la version immuable 9 mais s'est arrêtée avant le déploiement temporaire et avant AUDIT/ACCESS/propriétés. Le mode de récupération a ensuite restauré et relu exactement le code ; `OMcZ9gl@8`, les propriétés fermées et l'absence de déploiement temporaire ont été reconfirmés. La version 9 reste inventoriée avec la description fermée prévue.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.20, prépare une V3 qui interdit toute nouvelle version et réutilise exclusivement la version 9 pour un déploiement temporaire distinct. Les 120/120 tests hors ligne couvrent le contrôle de l'inventaire, la conservation de `OMcZ9gl@8`, la suppression temporaire et la restauration. Aucun nouvel appel Google ni fusion pendant cette préparation ; D4-C navigateur et D5 restent non validés.
+
+---
+
+## 10.44 V3 restaurée et V4 Web App préparée
+
+La V3 a créé un déploiement suffixé `feBNnyn`, mais la revue opérateur a identifié un point d'entrée **Bibliothèque** et non un Web App. La confirmation OAuth a été refusée, aucun succès navigateur n'a été enregistré, puis la récupération a restauré exactement ACCESS, AUDIT, les propriétés privées et le code. Le déploiement temporaire a été supprimé, `OMcZ9gl@8` est resté inchangé et la version 9 a été conservée.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.21, prépare une V4 sans création de version ou de déploiement. Elle bascule temporairement le Web App RECETTE existant `OMcZ9gl` de la version 8 à la version 9, réalise la séquence fermée, restaure sa configuration en version 8 puis restaure le code. La mutation de l'horodatage du déploiement et la fenêtre temporaire sur la version 9 sont explicitement reconnues. Les 137/137 tests hors ligne couvrent cette frontière et ses reprises. Aucun appel Google n'a été effectué pendant la préparation ; une autorisation distincte et le contrôle Windows restent requis. D4-C navigateur et D5 demeurent non validés.
+
+---
+
+## 10.45 V4 restaurée et comparaison de la version 8 préparée
+
+La bascule V4 de `OMcZ9gl@8` vers la version 9 a remplacé le point d'entrée Web App par une Bibliothèque et rendu l'URL `/exec` inutilisable. Aucun succès OAuth ou navigateur n'a été confirmé. La récupération a restauré ACCESS, AUDIT, les propriétés privées, `OMcZ9gl@8` et le code historique ; le retour du type Application Web et l'accès du compte principal ont été reconfirmés. La version 9 reste inventoriée et l'horodatage du déploiement a changé conformément à l'autorisation.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.22, prépare un collecteur V5 strictement en lecture seule pour extraire indépendamment le HEAD restauré et la version immuable 8, comparer leurs manifestes et isoler les champs Web App. Les 150/150 tests hors ligne couvrent la liaison à la récupération V4, la frontière de commandes, les inventaires et la minimisation du rapport. Aucune opération Google pendant la préparation ; collecte distincte à autoriser. D4-C navigateur et D5 restent non validés.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -462,6 +566,19 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.46.0 | 2026-09-04 | V4 arrêtée sur la version 9 de type Bibliothèque et restaurée en version 8 Web App ; comparaison HEAD/version 8 en lecture seule préparée, 150 tests hors ligne |
+| 0.45.0 | 2026-09-04 | V3 arrêtée sur un déploiement Bibliothèque puis restaurée ; V4 sans création, avec bascule temporaire de `OMcZ9gl@8` vers la version 9 et retour à 8, préparée à 137 tests hors ligne |
+| 0.44.0 | 2026-09-04 | V2 restaurée après création de la version 9 sans déploiement ; V3 réutilisant cette version préparée, 120 tests hors ligne, aucun nouvel appel Google |
+| 0.43.0 | 2026-09-04 | Tentative navigateur sur version 8 arrêtée et restaurée exactement ; protocole V2 avec version immuable et déploiement temporaire préparé, 102 tests hors ligne |
+| 0.42.0 | 2026-09-04 | Test technique LOG_READ réussi et restauré exactement ; campagne navigateur réversible préparée et 84 tests hors ligne, sans nouvelle opération Google ni fusion |
+| 0.41.0 | 2026-09-04 | C1 LOG_READ clôturé ; exécuteur réversible lié préparé et 68 tests hors ligne, sans exécution Google ni fusion |
+| 0.40.0 | 2026-09-03 | Package LOG_READ reconstruit sur Windows ; précontrôle lié préparé, 48 tests hors ligne, contrôle local opérateur attendu, sans Google ni fusion |
+| 0.39.0 | 2026-09-03 | Outillage de reconstruction locale LOG_READ et protocole préparés, 20 tests ; contrôle Windows et rapport réel attendus, sans Google ni fusion |
+| 0.38.1 | 2026-09-03 | Contrôle Windows LOG_READ conforme et revue locale des PR consignés ; écart CRLF/LF expliqué, aucune fusion ni opération Google |
+| 0.38.0 | 2026-09-03 | Recette LOG_READ préparée en PR #146, réutilisation ACCESS/AUDIT, 781/781 local dans six scénarios et 8/8 client ; installation/exécution Google et fusion non autorisées |
+| 0.37.0 | 2026-09-03 | Collecte C1, contrôles manuels et essai gestionnaire ACCESS/AUDIT consignés ; restaurations exactes rapportées, preuves conservées, parcours privé LOG_READ et D5 à valider |
+| 0.36.0 | 2026-09-02 | C0 conforme sur preuve opérateur ; collecteur C1 préparé, 23/23 tests simulés et contrôle Windows requis avant autorisation Google lecture seule |
+| 0.35.0 | 2026-09-02 | Fusion #225 à fdddfa28 consignée ; protocole D4-C et C0 local préparés, 16/16 tests dédiés, contrôle Windows requis sans appel Google |
 | 0.34.0 | 2026-09-02 | PR applicative #145 fusionnée dans develop à f600560e ; #225 toujours ouverte, consignation sans opération Google |
 | 0.33.1 | 2026-09-02 | Revue finale terminée et description #145 actualisée ; aucun défaut fonctionnel bloquant identifié, décisions de fusion séparées encore requises |
 | 0.33.0 | 2026-09-02 | D4-B conforme sur preuves opérateur : 761/761, restauration exacte et propriétés confirmées ; revue avant fusion et cadrage D4-C encore requis |
