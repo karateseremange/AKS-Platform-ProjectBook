@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.43.0 |
-| **Statut** | D4-C — première tentative restaurée, V2 temporaire préparée |
+| **Version** | 0.44.0 |
+| **Statut** | D4-C — V2 restaurée, V3 sur version 9 préparée |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-04 |
@@ -503,6 +503,14 @@ La première campagne navigateur a correctement refusé de valider le parcours :
 
 ---
 
+## 10.43 V2 restaurée et V3 liée à la version 9
+
+La V2 a créé la version immuable 9 mais s'est arrêtée avant le déploiement temporaire et avant AUDIT/ACCESS/propriétés. Le mode de récupération a ensuite restauré et relu exactement le code ; `OMcZ9gl@8`, les propriétés fermées et l'absence de déploiement temporaire ont été reconfirmés. La version 9 reste inventoriée avec la description fermée prévue.
+
+[ADMIN-006-08](ADMIN-006-08.md), §31.20, prépare une V3 qui interdit toute nouvelle version et réutilise exclusivement la version 9 pour un déploiement temporaire distinct. Les 120/120 tests hors ligne couvrent le contrôle de l'inventaire, la conservation de `OMcZ9gl@8`, la suppression temporaire et la restauration. Aucun nouvel appel Google ni fusion pendant cette préparation ; D4-C navigateur et D5 restent non validés.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -542,6 +550,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.44.0 | 2026-09-04 | V2 restaurée après création de la version 9 sans déploiement ; V3 réutilisant cette version préparée, 120 tests hors ligne, aucun nouvel appel Google |
 | 0.43.0 | 2026-09-04 | Tentative navigateur sur version 8 arrêtée et restaurée exactement ; protocole V2 avec version immuable et déploiement temporaire préparé, 102 tests hors ligne |
 | 0.42.0 | 2026-09-04 | Test technique LOG_READ réussi et restauré exactement ; campagne navigateur réversible préparée et 84 tests hors ligne, sans nouvelle opération Google ni fusion |
 | 0.41.0 | 2026-09-04 | C1 LOG_READ clôturé ; exécuteur réversible lié préparé et 68 tests hors ligne, sans exécution Google ni fusion |
