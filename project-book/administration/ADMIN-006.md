@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.46.0 |
-| **Statut** | D4-C — V4 restaurée, comparaison version 8 préparée |
+| **Version** | 0.47.0 |
+| **Statut** | D4-C — V5 collectée, cause Web App établie |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-04 |
+| **Dernière mise à jour** | 2026-09-07 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -527,6 +527,16 @@ La bascule V4 de `OMcZ9gl@8` vers la version 9 a remplacé le point d'entrée We
 
 ---
 
+## 10.46 V5 collectée et cause Web App établie
+
+Le contrôle opérateur V5 a réussi à 150/150 en `LocalCheck`, sans Google. La collecte `GoogleReadOnly` séparément autorisée a ensuite relu le HEAD restauré et la version immuable 8, avec inventaires stables et aucune écriture. Les deux états possèdent 261 fichiers, mais leurs sources et manifestes diffèrent : la section `webapp` est absente du HEAD et présente dans la version 8 avec `ANYONE` / `USER_ACCESSING`.
+
+Ce résultat établit la configuration manquante qui explique le point d'entrée Bibliothèque observé sur la version 9. V5 n'a pas relu directement le manifeste immuable de la version 9 ; son type reste une observation opérateur V3/V4 cohérente avec le HEAD. Après V3, V4 aurait dû être bloquée jusqu'à cette comparaison : les tests hors ligne couvraient les transitions et restaurations, pas le type réel du point d'entrée.
+
+Désormais, la preuve préalable d'un manifeste Application Web conforme est bloquante avant AUDIT, ACCESS, activation privée, nouvelle version ou bascule de déploiement. Aucune nouvelle tentative navigateur n'est admissible avant cette preuve et une autorisation distincte. La session `logread-version8-6Y0HL6` reste protégée. [ADMIN-006-08](ADMIN-006-08.md), §31.23, conserve les empreintes, distinctions de preuve et limites. Aucune correction applicative, opération Google supplémentaire, fusion, production ou D5 n'est autorisée.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -566,6 +576,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.47.0 | 2026-09-07 | V5 LocalCheck et GoogleReadOnly conformes ; HEAD sans section webapp comparé à la version 8 Web App, cause et garde bloquante consignées |
 | 0.46.0 | 2026-09-04 | V4 arrêtée sur la version 9 de type Bibliothèque et restaurée en version 8 Web App ; comparaison HEAD/version 8 en lecture seule préparée, 150 tests hors ligne |
 | 0.45.0 | 2026-09-04 | V3 arrêtée sur un déploiement Bibliothèque puis restaurée ; V4 sans création, avec bascule temporaire de `OMcZ9gl@8` vers la version 9 et retour à 8, préparée à 137 tests hors ligne |
 | 0.44.0 | 2026-09-04 | V2 restaurée après création de la version 9 sans déploiement ; V3 réutilisant cette version préparée, 120 tests hors ligne, aucun nouvel appel Google |
