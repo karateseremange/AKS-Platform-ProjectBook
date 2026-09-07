@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.47.0 |
-| **Statut** | D4-C — V5 collectée, cause Web App établie |
+| **Version** | 0.48.0 |
+| **Statut** | D4-C — candidate Web App corrigée, contrôle Windows conforme |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-07 |
@@ -537,6 +537,16 @@ Désormais, la preuve préalable d'un manifeste Application Web conforme est blo
 
 ---
 
+## 10.47 Candidate Web App corrigée et contrôle Windows conforme
+
+La comparaison locale des manifestes conservés par V5 confirme `nonWebappExact=true` : les valeurs `ANYONE / USER_ACCESSING` constituent l'unique différence sémantique entre le HEAD restauré et la version 8. La PR applicative #146 porte désormais la tête `6a7d86300d90c3f9a629e89a113dc7b0dd7e5f73`, qui ajoute ces champs au manifeste et un garde hors ligne dédié, sans autre modification fonctionnelle depuis la candidate LOG_READ.
+
+Le garde a réussi à 3/3. Le contrôle Windows lié à cette tête a atteint son statut final après le garde, la matrice des six scénarios et les tests client ; le retour opérateur contient explicitement 8/8 côté client, l'empreinte attendue du manifeste et l'absence de lecture ou écriture Google. Comme aucun fichier fonctionnel sous `src` n'a changé depuis la candidate validée, l'inventaire reste 781/781 dans chacun des six scénarios. Le JSON détaillé intermédiaire de la matrice n'a pas été recopié ; cette limite de preuve est explicitée dans [ADMIN-006-08](ADMIN-006-08.md), §31.24.
+
+Aucune installation Apps Script, propriété, opération ACCESS/AUDIT, version, déploiement, validation navigateur, fusion, production ou D5. Un nouveau package figé et son précontrôle bloquant de manifeste sont requis avant toute autorisation Google.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -576,6 +586,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.48.0 | 2026-09-07 | Delta manifeste limité à webapp confirmé ; candidate #146 corrigée à 6a7d8630 et contrôle Windows conforme, sans Google |
 | 0.47.0 | 2026-09-07 | V5 LocalCheck et GoogleReadOnly conformes ; HEAD sans section webapp comparé à la version 8 Web App, cause et garde bloquante consignées |
 | 0.46.0 | 2026-09-04 | V4 arrêtée sur la version 9 de type Bibliothèque et restaurée en version 8 Web App ; comparaison HEAD/version 8 en lecture seule préparée, 150 tests hors ligne |
 | 0.45.0 | 2026-09-04 | V3 arrêtée sur un déploiement Bibliothèque puis restaurée ; V4 sans création, avec bascule temporaire de `OMcZ9gl@8` vers la version 9 et retour à 8, préparée à 137 tests hors ligne |
