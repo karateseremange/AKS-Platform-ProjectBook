@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.50.0 |
-| **Statut** | D4-C — package Web App reconstruit, précontrôle lecture seule préparé |
+| **Version** | 0.51.0 |
+| **Statut** | D4-C — précontrôle lecture seule corrigé, contrôle Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-08 |
@@ -567,6 +567,18 @@ Le contrôle `LocalCheck` Windows est requis avant toute demande d'autorisation 
 
 ---
 
+## 10.50 Première collecte arrêtée et baseline post-V4/V5 corrigée
+
+La première collecte Web App autorisée s'est arrêtée dès la lecture initiale du portail, sans écriture Google. Les 261 fichiers, la source, l'archive et le manifeste historiques étaient exacts ; seul l'inventaire à neuf versions différait de C1. Cette neuvième version est pourtant le résidu immuable connu, créé en V2 puis conservé et vérifié jusqu'à V5. Le message `REMOTE_INVENTORIES_CHANGED_SINCE_C1` constituait donc un faux écart provoqué par une baseline d'outillage obsolète, et non la preuve d'une nouvelle dérive distante. La session `logread-webapp-readonly-Ub6fnW` reste protégée ; aucune récupération n'est nécessaire.
+
+Le précontrôle corrigé exige maintenant la session V5 `logread-version8-6Y0HL6`. Il vérifie localement l'unique version 9 ajoutée, sa description exacte, les deux déploiements historiques, le retour de `OMcZ9gl` à la version 8, les deux sources/manifeste V5 et toutes les liaisons de preuve. Le portail futur est comparé à cette baseline post-V4 à neuf versions ; le backend reste comparé à sa référence C1 indépendante. La correction refuse explicitement l'ancienne baseline portail à huit versions et toute dérive supplémentaire.
+
+Les **108/108 tests hors ligne** passent, dont 28 contrôles propres à cette révision. [ADMIN-006-08](ADMIN-006-08.md), §31.27, conserve le diagnostic, les empreintes, les limites et la preuve d'absence d'écriture. Un nouveau `LocalCheck` Windows est requis. L'autorisation de collecte précédente est consommée et ne permet aucune relance.
+
+Aucune nouvelle opération Google, aucun push Apps Script, version, déploiement, propriété, ACCESS/AUDIT, navigateur, fusion, production ou D5 n'est autorisé.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -606,6 +618,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.51.0 | 2026-09-08 | Collecte arrêtée sans écriture sur baseline C1 obsolète ; précontrôle corrigé sur la preuve V5 post-V4 et testé à 108/108 |
 | 0.50.0 | 2026-09-08 | Package Web App Windows conforme à 32/32 ; précontrôle lecture seule lié préparé à 102/102, contrôle LocalCheck requis sans Google |
 | 0.49.0 | 2026-09-08 | Préparateur local du package Web App lié à 6a7d8630, garde manifeste/delta et 32/32 tests hors ligne ; contrôle Windows requis |
 | 0.48.0 | 2026-09-07 | Delta manifeste limité à webapp confirmé ; candidate #146 corrigée à 6a7d8630 et contrôle Windows conforme, sans Google |

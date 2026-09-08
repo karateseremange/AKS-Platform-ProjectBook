@@ -3,6 +3,7 @@
 param(
     [ValidateSet("LocalCheck", "ReadOnly")][string] $Mode = "LocalCheck",
     [string] $PackageRun = "D:\AKS\ADMIN-006-LOGREAD-WEBAPP-PACKAGE\logread-webapp-package-arjzvs",
+    [string] $Version8Session = "D:\AKS\ADMIN-006-LOGREAD-VERSION8\logread-version8-6Y0HL6",
     [string] $CampaignRoot = "D:\AKS\ADMIN-006-LOGREAD-WEBAPP-READONLY",
     [string] $ClaspPackage = "",
     [string] $Authorization = ""
@@ -30,7 +31,8 @@ if ([string]::IsNullOrWhiteSpace($ClaspPackage)) {
     $ClaspPackage = Join-Path (Split-Path -Parent $ClaspCommand.Source) "node_modules\@google\clasp"
 }
 $EngineArguments = @((Join-Path $PSScriptRoot "check-logread-webapp.cjs"), "--mode", $Mode,
-    "--package-run", $PackageRun, "--clasp-package", $ClaspPackage, "--output", $CampaignRoot)
+    "--package-run", $PackageRun, "--version8-session", $Version8Session,
+    "--clasp-package", $ClaspPackage, "--output", $CampaignRoot)
 if ($Mode -eq "ReadOnly") { $EngineArguments += @("--authorization", $Authorization) }
 & $NodeCommand @EngineArguments
 if ($LASTEXITCODE -ne 0) { throw "Web App read-only preflight stopped. Preserve evidence. No Google write." }
