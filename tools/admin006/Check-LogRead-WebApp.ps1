@@ -1,0 +1,38 @@
+#Requires -Version 5.1
+[CmdletBinding()]
+param(
+    [ValidateSet("LocalCheck", "ReadOnly")][string] $Mode = "LocalCheck",
+    [string] $PackageRun = "D:\AKS\ADMIN-006-LOGREAD-WEBAPP-PACKAGE\logread-webapp-package-arjzvs",
+    [string] $Version8Session = "D:\AKS\ADMIN-006-LOGREAD-VERSION8\logread-version8-6Y0HL6",
+    [string] $CampaignRoot = "D:\AKS\ADMIN-006-LOGREAD-WEBAPP-READONLY",
+    [string] $ClaspPackage = "",
+    [string] $Authorization = ""
+)
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+if ($Mode -eq "ReadOnly" -and [string]::IsNullOrWhiteSpace($Authorization)) {
+    throw "Separate read-only authorization required. No Google operation."
+}
+if ($Mode -eq "LocalCheck" -and -not [string]::IsNullOrWhiteSpace($Authorization)) {
+    throw "LocalCheck must not receive an authorization."
+}
+$NodeCommand = (Get-Command node -CommandType Application -ErrorAction Stop).Source
+$Tests = @(
+    (Join-Path $PSScriptRoot "check-logread-webapp.test.cjs")
+    (Join-Path $PSScriptRoot "prepare-logread-webapp.test.cjs")
+    (Join-Path $PSScriptRoot "prepare-logread.test.cjs")
+    (Join-Path $PSScriptRoot "check-logread.test.cjs")
+    (Join-Path $PSScriptRoot "check-d4c.test.cjs")
+)
+& $NodeCommand --test @Tests
+if ($LASTEXITCODE -ne 0) { throw "Local Web App read-only checks failed. No Google operation." }
+if ([string]::IsNullOrWhiteSpace($ClaspPackage)) {
+    $ClaspCommand = Get-Command clasp -ErrorAction Stop
+    $ClaspPackage = Join-Path (Split-Path -Parent $ClaspCommand.Source) "node_modules\@google\clasp"
+}
+$EngineArguments = @((Join-Path $PSScriptRoot "check-logread-webapp.cjs"), "--mode", $Mode,
+    "--package-run", $PackageRun, "--version8-session", $Version8Session,
+    "--clasp-package", $ClaspPackage, "--output", $CampaignRoot)
+if ($Mode -eq "ReadOnly") { $EngineArguments += @("--authorization", $Authorization) }
+& $NodeCommand @EngineArguments
+if ($LASTEXITCODE -ne 0) { throw "Web App read-only preflight stopped. Preserve evidence. No Google write." }
