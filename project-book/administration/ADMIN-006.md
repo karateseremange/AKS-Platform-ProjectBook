@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.48.0 |
-| **Statut** | D4-C — candidate Web App corrigée, contrôle Windows conforme |
+| **Version** | 0.49.0 |
+| **Statut** | D4-C — package Web App local préparé, contrôle Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-07 |
+| **Dernière mise à jour** | 2026-09-08 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -547,6 +547,16 @@ Aucune installation Apps Script, propriété, opération ACCESS/AUDIT, version, 
 
 ---
 
+## 10.48 Outillage du package Web App préparé
+
+La PR documentaire #226 ajoute un préparateur strictement local lié à la tête applicative `6a7d86300d90c3f9a629e89a113dc7b0dd7e5f73`, à son SHA-256 source et au manifeste Web App `40ebf6b3…`. Il vérifie le package LOG_READ précédent protégé, n'accepte comme delta que `appsscript.json`, conserve le rollback historique et produit un nouveau package sans `.clasp.json`.
+
+Les 32/32 tests hors ligne contrôlent notamment les valeurs `ANYONE / USER_ACCESSING`, l'absence d'`executionApi`, les altérations de preuve, les dérives fonctionnelles et toute tentative de sortie dans les racines protégées. Une extraction locale additionnelle des objets Git réels confirme 279 fichiers et les empreintes source/manifeste attendues. Aucun mode Google ou jeton d'autorisation n'existe dans cet outil. Le contrôle Windows et la reconstruction réelle restent requis avant un nouveau précontrôle distant. Voir [ADMIN-006-08](ADMIN-006-08.md), §31.25.
+
+Aucune lecture ou écriture Google, installation, propriété, ACCESS/AUDIT, version, déploiement, navigateur, fusion, production ou D5 n'est autorisée.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -586,6 +596,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.49.0 | 2026-09-08 | Préparateur local du package Web App lié à 6a7d8630, garde manifeste/delta et 32/32 tests hors ligne ; contrôle Windows requis |
 | 0.48.0 | 2026-09-07 | Delta manifeste limité à webapp confirmé ; candidate #146 corrigée à 6a7d8630 et contrôle Windows conforme, sans Google |
 | 0.47.0 | 2026-09-07 | V5 LocalCheck et GoogleReadOnly conformes ; HEAD sans section webapp comparé à la version 8 Web App, cause et garde bloquante consignées |
 | 0.46.0 | 2026-09-04 | V4 arrêtée sur la version 9 de type Bibliothèque et restaurée en version 8 Web App ; comparaison HEAD/version 8 en lecture seule préparée, 150 tests hors ligne |
