@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.49.0 |
-| **Statut** | D4-C — package Web App local préparé, contrôle Windows requis |
+| **Version** | 0.50.0 |
+| **Statut** | D4-C — package Web App reconstruit, précontrôle lecture seule préparé |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-08 |
@@ -557,6 +557,16 @@ Aucune lecture ou écriture Google, installation, propriété, ACCESS/AUDIT, ver
 
 ---
 
+## 10.49 Package Web App reconstruit et précontrôle lecture seule préparé
+
+Le contrôle Windows du préparateur est rapporté conforme à 32/32. La campagne protégée `logread-webapp-package-arjzvs` contient 279 fichiers liés à la candidate `6a7d8630…`, avec une empreinte source/package `3931cc5b…`, une archive `19f0755b…` et le manifeste Web App `40ebf6b3…`. Le seul delta depuis le package LOG_READ précédent est `appsscript.json` ; le rollback historique de 261 fichiers reste vérifié. Aucun appel Google n'a été effectué.
+
+La PR documentaire #226 ajoute un précontrôle distinct possédant uniquement `LocalCheck` et `ReadOnly`. Les 102/102 tests hors ligne vérifient la liaison complète au nouveau package, l'intégrité des preuves, la configuration `ANYONE / USER_ACCESSING`, les frontières d'autorisation et le refus de toutes les classes de mutation. `LocalCheck` ne lance aucun sous-processus. Le futur `ReadOnly`, qui reste non autorisé, est limité aux doubles lectures indépendantes des deux cibles RECETTE et à leur comparaison aux références C1. Voir [ADMIN-006-08](ADMIN-006-08.md), §31.26.
+
+Le contrôle `LocalCheck` Windows est requis avant toute demande d'autorisation de lecture Google. Aucun push Apps Script, version, déploiement, propriété, ACCESS/AUDIT, navigateur, fusion, production ou D5 n'est autorisé.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -596,6 +606,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.50.0 | 2026-09-08 | Package Web App Windows conforme à 32/32 ; précontrôle lecture seule lié préparé à 102/102, contrôle LocalCheck requis sans Google |
 | 0.49.0 | 2026-09-08 | Préparateur local du package Web App lié à 6a7d8630, garde manifeste/delta et 32/32 tests hors ligne ; contrôle Windows requis |
 | 0.48.0 | 2026-09-07 | Delta manifeste limité à webapp confirmé ; candidate #146 corrigée à 6a7d8630 et contrôle Windows conforme, sans Google |
 | 0.47.0 | 2026-09-07 | V5 LocalCheck et GoogleReadOnly conformes ; HEAD sans section webapp comparé à la version 8 Web App, cause et garde bloquante consignées |
