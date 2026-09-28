@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.51.0 |
-| **Statut** | D4-C — précontrôle lecture seule corrigé, contrôle Windows requis |
+| **Version** | 0.52.0 |
+| **Statut** | D4-C — collecte Web App conforme, exécuteur local préparé, contrôle Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-08 |
+| **Dernière mise à jour** | 2026-09-28 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -579,6 +579,18 @@ Aucune nouvelle opération Google, aucun push Apps Script, version, déploiement
 
 ---
 
+## 10.51 Collecte Web App conforme et exécuteur réversible préparé
+
+Le `LocalCheck` Windows corrigé a réussi à **108/108**, puis la collecte en lecture seule séparément autorisée a terminé avec le statut `LOGREAD_WEBAPP_READONLY_COLLECTED_OPERATOR_REVIEW_REQUIRED`. La session `logread-webapp-readonly-b2U2jL` contient deux lectures indépendantes et exactes du portail et du backend. Le portail reste le HEAD historique restauré à 261 fichiers, avec neuf versions et deux déploiements ; le backend reste sa référence C1 à sept fichiers. Les inventaires n'ont pas changé pendant les lectures, la version 9 est conservée et `OMcZ9gl` est revenu à la version 8. Aucune écriture Google n'a été tentée.
+
+L'opérateur a ensuite confirmé l'absence des propriétés temporaires, la désactivation privée du backend, la présence et la continuité des secrets courants sans en révéler les valeurs, l'absence des anciens secrets, ainsi que `OMcZ9gl@8` de type Application Web, `USER_ACCESSING` et l'accès aux comptes Google.
+
+La PR #226 ajoute un exécuteur Web App distinct, lié au paquet `3931cc5b…`, à la preuve V5 et à cette collecte réussie. Ses **58/58 tests ciblés** vérifient notamment l'absence de transport en `LocalCheck`, l'autorisation future exacte, le refus des dérives, la relecture avant/après push, la restauration systématique et la reprise bornée. L'exécution distante demeure non autorisée ; un `LocalCheck` Windows est la seule étape suivante admissible. [ADMIN-006-08](ADMIN-006-08.md), §31.28, conserve les empreintes, confirmations, gardes et limites.
+
+Aucune nouvelle opération Google, aucun push Apps Script, propriété, ACCESS/AUDIT, version, déploiement, navigateur, fusion, production ou D5 n'est autorisé.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -618,6 +630,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.52.0 | 2026-09-28 | Collecte Web App corrigée conforme et contrôles opérateur consignés ; exécuteur réversible lié préparé à 58/58 hors ligne, LocalCheck Windows requis |
 | 0.51.0 | 2026-09-08 | Collecte arrêtée sans écriture sur baseline C1 obsolète ; précontrôle corrigé sur la preuve V5 post-V4 et testé à 108/108 |
 | 0.50.0 | 2026-09-08 | Package Web App Windows conforme à 32/32 ; précontrôle lecture seule lié préparé à 102/102, contrôle LocalCheck requis sans Google |
 | 0.49.0 | 2026-09-08 | Préparateur local du package Web App lié à 6a7d8630, garde manifeste/delta et 32/32 tests hors ligne ; contrôle Windows requis |
