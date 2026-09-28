@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.52.0 |
-| **Statut** | D4-C — collecte Web App conforme, exécuteur local préparé, contrôle Windows requis |
+| **Version** | 0.53.0 |
+| **Statut** | D4-C — exécuteur Web App conforme en LocalCheck Windows, exécution distincte requise |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-28 |
@@ -591,6 +591,16 @@ Aucune nouvelle opération Google, aucun push Apps Script, propriété, ACCESS/A
 
 ---
 
+## 10.52 LocalCheck Windows conforme après correction LF/CRLF
+
+Le premier clone Windows a refusé les empreintes des outils avant les tests parce que Git avait converti les fichiers `.cjs` en CRLF. La règle `.gitattributes` ajoutée à la PR #226 fixe désormais ces fichiers en LF. Après vérification sur un clone simulant `core.autocrlf=true`, le nouveau contrôle Windows a réussi à **58/58** et produit `LOGREAD_WEBAPP_EXECUTOR_LOCAL_CHECK_ONLY`.
+
+Le rapport lie exactement le paquet Web App, la preuve V5, la collecte réussie `logread-webapp-readonly-b2U2jL` et son SHA-256 `1768160f3bc08939db45db26fb04192b9f7486a2bc0108af56cbc055b8aedb0a`. Les snapshots sont vérifiés localement sur neuf versions, deux déploiements et la version 9 conservée. Tous les indicateurs Google et d'autorisation restent à `false`, conformément au mode local. Voir [ADMIN-006-08](ADMIN-006-08.md), §31.29.
+
+La préparation locale de l'exécuteur est terminée. Son exécution réversible nécessite une autorisation distincte ; aucun push Apps Script, propriété, ACCESS/AUDIT, version, déploiement, navigateur, fusion, production ou D5 n'est autorisé.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -630,6 +640,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.53.0 | 2026-09-28 | Conversion CRLF arrêtée puis neutralisée par `.gitattributes` ; LocalCheck Windows de l'exécuteur Web App conforme à 58/58, sans Google |
 | 0.52.0 | 2026-09-28 | Collecte Web App corrigée conforme et contrôles opérateur consignés ; exécuteur réversible lié préparé à 58/58 hors ligne, LocalCheck Windows requis |
 | 0.51.0 | 2026-09-08 | Collecte arrêtée sans écriture sur baseline C1 obsolète ; précontrôle corrigé sur la preuve V5 post-V4 et testé à 108/108 |
 | 0.50.0 | 2026-09-08 | Package Web App Windows conforme à 32/32 ; précontrôle lecture seule lié préparé à 102/102, contrôle LocalCheck requis sans Google |
