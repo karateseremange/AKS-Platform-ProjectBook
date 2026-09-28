@@ -6,7 +6,7 @@
 |-----------|--------|
 | Document ID | INDEX-001 |
 | Titre | Catalogue du Project Book |
-| Version | 1.3.112 |
+| Version | 1.3.113 |
 | Statut | Validé |
 | Propriétaire | Product Owner |
 | Dernière mise à jour | 2026-09-28 |
@@ -331,6 +331,7 @@ Avant le gel d'une version du Project Book, il faut vérifier l'existence des do
 
 | Version | Date | Évolution |
 |---------|------|-----------|
+| 1.3.113 | 2026-09-28 | ADMIN-006 v0.54.0 et ADMIN-006-08 v0.39.0 : test technique Web App réussi à 781/781, candidate relue puis code historique restauré exactement |
 | 1.3.112 | 2026-09-28 | ADMIN-006 v0.53.0 et ADMIN-006-08 v0.38.0 : correction durable LF/CRLF et LocalCheck Windows de l'exécuteur Web App conforme à 58/58, sans opération Google |
 | 1.3.111 | 2026-09-28 | ADMIN-006 v0.52.0 et ADMIN-006-08 v0.37.0 : collecte Web App corrigée conforme, revue opérateur consignée et exécuteur réversible préparé à 58/58 hors ligne ; LocalCheck Windows requis sans nouvelle opération Google |
 | 1.3.110 | 2026-09-08 | ADMIN-006 v0.51.0 et ADMIN-006-08 v0.36.0 : collecte arrêtée sans écriture sur baseline C1 obsolète ; précontrôle corrigé sur V5 post-V4, 108/108 hors ligne |

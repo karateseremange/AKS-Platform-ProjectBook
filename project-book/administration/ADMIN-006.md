@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.53.0 |
-| **Statut** | D4-C — exécuteur Web App conforme en LocalCheck Windows, exécution distincte requise |
+| **Version** | 0.54.0 |
+| **Statut** | D4-C — test technique Web App réussi et restauré, campagne navigateur à préparer |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-28 |
@@ -601,6 +601,16 @@ La préparation locale de l'exécuteur est terminée. Son exécution réversible
 
 ---
 
+## 10.53 Test technique Web App réussi et restauré exactement
+
+L'exécution réversible autorisée a utilisé la session protégée `logread-webapp-executor-Sk2Uvw`. Après relecture de l'état historique, la candidate Web App `6a7d8630…` a été poussée temporairement et relue exactement. `AKS_runValidationSuiteV11` a réussi à **781/781**. L'exécuteur a ensuite restauré exactement les 261 fichiers historiques dans son bloc de retour arrière.
+
+Le rapport final porte `RESTORED_TEST_PASS_OPERATOR_REVIEW_REQUIRED`, `testPassed=true` et `restoredExact=true`. Les lectures et les deux écritures Google attendues sont déclarées ; aucune version, aucun déploiement, aucune propriété et aucune donnée ACCESS/AUDIT n'ont été modifiés. Les confirmations finales des propriétés, de la continuité des secrets et de `OMcZ9gl@8` sont toutes positives. [ADMIN-006-08](ADMIN-006-08.md), §31.30, conserve la session, le déroulement et les limites.
+
+Le test technique est terminé. Une future campagne navigateur doit être préparée et autorisée séparément ; aucune tentative navigateur, version, bascule de déploiement, fusion, production ou D5 n'est autorisée à ce stade.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -640,6 +650,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.54.0 | 2026-09-28 | Test technique de la candidate Web App réussi à 781/781 ; code historique restauré exactement et propriétés, secrets, déploiement reconfirmés |
 | 0.53.0 | 2026-09-28 | Conversion CRLF arrêtée puis neutralisée par `.gitattributes` ; LocalCheck Windows de l'exécuteur Web App conforme à 58/58, sans Google |
 | 0.52.0 | 2026-09-28 | Collecte Web App corrigée conforme et contrôles opérateur consignés ; exécuteur réversible lié préparé à 58/58 hors ligne, LocalCheck Windows requis |
 | 0.51.0 | 2026-09-08 | Collecte arrêtée sans écriture sur baseline C1 obsolète ; précontrôle corrigé sur la preuve V5 post-V4 et testé à 108/108 |
