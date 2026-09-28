@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.55.0 |
-| **Statut** | D4-C — campagne navigateur Web App préparée localement, contrôle Windows requis |
+| **Version** | 0.56.0 |
+| **Statut** | D4-C — LocalCheck Windows navigateur conforme, autorisation d'exécution requise |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-28 |
@@ -623,6 +623,16 @@ La prochaine étape est uniquement le `LocalCheck` Windows. Aucune opération Go
 
 ---
 
+## 10.55 LocalCheck Windows navigateur conforme
+
+Le clone propre de la tête `b8be10dad21d290358d45f4a75c1be9a87e54e17` de la PR #226 a réussi les **52/52 tests ciblés** du nouvel outil navigateur. Le rapport `LOGREAD_WEBAPP_BROWSER_LOCAL_CHECK_ONLY` lie exactement le paquet Web App, la preuve V5, le précontrôle réussi et la session technique restaurée ; l'empreinte de ce dernier résultat est `a062c1966ed8cdd394652b1890a91d0d4f57f5dfd0d25a8925729485304e9d74`.
+
+La baseline vérifiée contient neuf versions, deux déploiements et `OMcZ9gl@8`. La version planifiée reste la version 10 et aucun nouveau déploiement n'est prévu. Tous les indicateurs de lecture Google, écriture Google, navigateur, création de version et mise à jour de déploiement sont à `false`. [ADMIN-006-08](ADMIN-006-08.md), §31.32, conserve les empreintes et le résultat détaillé.
+
+La préparation locale est terminée. Une autorisation distincte reste obligatoire avant la séquence distante fermée ; aucune opération Google, fusion, production ou D5 n'est autorisée par ce contrôle.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -662,6 +672,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.56.0 | 2026-09-28 | LocalCheck Windows navigateur conforme à 52/52 ; paquet, précontrôle et résultat technique liés, baseline à neuf versions avec `OMcZ9gl@8`, aucune opération Google |
 | 0.55.0 | 2026-09-28 | Campagne navigateur Web App préparée localement : version 10 relue avant bascule de `OMcZ9gl`, aucun nouveau déploiement, restauration vers 8, 52/52 ciblés et 365/365 complets |
 | 0.54.0 | 2026-09-28 | Test technique de la candidate Web App réussi à 781/781 ; code historique restauré exactement et propriétés, secrets, déploiement reconfirmés |
 | 0.53.0 | 2026-09-28 | Conversion CRLF arrêtée puis neutralisée par `.gitattributes` ; LocalCheck Windows de l'exécuteur Web App conforme à 58/58, sans Google |
