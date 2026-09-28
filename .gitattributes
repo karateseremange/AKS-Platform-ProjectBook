@@ -1,0 +1,2 @@
+# Integrity-pinned Node tools must keep repository bytes on Windows.
+tools/admin006/*.cjs text eol=lf
