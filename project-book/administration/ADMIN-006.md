@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.54.0 |
-| **Statut** | D4-C — test technique Web App réussi et restauré, campagne navigateur à préparer |
+| **Version** | 0.55.0 |
+| **Statut** | D4-C — campagne navigateur Web App préparée localement, contrôle Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-28 |
@@ -611,6 +611,18 @@ Le test technique est terminé. Une future campagne navigateur doit être prépa
 
 ---
 
+## 10.54 Campagne navigateur Web App préparée localement
+
+La PR #226 ajoute `Validate-LogRead-WebApp-Browser.ps1`, `validate-logread-webapp-browser.cjs` et leur suite de tests. Cette campagne est liée au paquet `3931cc5b…`, au rapport V5, au précontrôle réussi `1768160f…` et à l'unique résultat restauré de `logread-webapp-executor-Sk2Uvw`. Son `LocalCheck` ne lance aucun appel Google et ne crée aucune session.
+
+La future exécution fermée créera exclusivement la version immuable 10. Elle devra relire directement cette version et confirmer les 279 fichiers, l'empreinte source et le manifeste `ANYONE / USER_ACCESSING` avant de pouvoir basculer le déploiement existant `OMcZ9gl` de 8 vers 10. Aucun chemin de création de déploiement n'existe. Après les contrôles manuels AUDIT, ACCESS, propriétés, OAuth et navigateur multi-compte, elle restaurera `OMcZ9gl@8` puis les 261 fichiers historiques ; la version 10 restera volontairement conservée.
+
+Les **52/52 tests ciblés** et les **365/365 tests complets** passent hors ligne. Ils couvrent la reprise après interruption, y compris la création de version réussie avant journalisation locale, le refus de toute dérive d'inventaire ou de configuration et l'ordre obligatoire du nettoyage manuel. [ADMIN-006-08](ADMIN-006-08.md), §31.31, conserve les empreintes, la séquence exacte, les surfaces autorisées et les états de reprise.
+
+La prochaine étape est uniquement le `LocalCheck` Windows. Aucune opération Google, création de version, bascule de déploiement, propriété, ACCESS/AUDIT, navigateur, fusion, production ou D5 n'a été effectuée ou autorisée par cette préparation.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -650,6 +662,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.55.0 | 2026-09-28 | Campagne navigateur Web App préparée localement : version 10 relue avant bascule de `OMcZ9gl`, aucun nouveau déploiement, restauration vers 8, 52/52 ciblés et 365/365 complets |
 | 0.54.0 | 2026-09-28 | Test technique de la candidate Web App réussi à 781/781 ; code historique restauré exactement et propriétés, secrets, déploiement reconfirmés |
 | 0.53.0 | 2026-09-28 | Conversion CRLF arrêtée puis neutralisée par `.gitattributes` ; LocalCheck Windows de l'exécuteur Web App conforme à 58/58, sans Google |
 | 0.52.0 | 2026-09-28 | Collecte Web App corrigée conforme et contrôles opérateur consignés ; exécuteur réversible lié préparé à 58/58 hors ligne, LocalCheck Windows requis |
