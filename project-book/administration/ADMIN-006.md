@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.59.0 |
-| **Statut** | D4-C — reprise R3 corrigée localement, LocalCheck Windows requis |
+| **Version** | 0.60.0 |
+| **Statut** | D4-C — LocalCheck Windows R3 conforme, autorisation de reprise requise |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-29 |
@@ -665,6 +665,16 @@ La prochaine étape admissible est uniquement le `LocalCheck` Windows R3. Aucune
 
 ---
 
+## 10.59 LocalCheck Windows R3 conforme
+
+Le clone propre de la tête `1459f4b71165cd201740824370181935fe331010` de la PR #226 a terminé les **56/56 tests ciblés** puis produit `LOGREAD_WEBAPP_BROWSER_R3_LOCAL_CHECK_ONLY`. Le rapport lie la session R2 arrêtée `logread-webapp-browser-r2-6OZtg9`, son résultat `8710a077276902135c9071d674b9b90294bf271c9c1d06a34388969b987f74c8` et l'inventaire canonique exact de la version 10 `919f02d58d9b0d848fbca9c305bd8ff67d5c06885dbc4357d4103ab139049a00`.
+
+La version 10 reste conservée et la baseline demeure `OMcZ9gl@8`. `localEvidenceVerified=true` ; tous les indicateurs d'opération ou d'autorisation distante sont à `false`, notamment lecture Google, écriture Google, navigateur, création de version, mise à jour ou création de déploiement et push de code. [ADMIN-006-08](ADMIN-006-08.md), §31.36, conserve le résultat détaillé.
+
+Une autorisation distincte reste obligatoire avant le mode `Resume`. Aucune opération Google, fusion, production ou D5 n'est autorisée par ce contrôle local.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -704,6 +714,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.60.0 | 2026-09-29 | LocalCheck Windows R3 conforme à 56/56 ; session R2 et inventaire canonique version 10 liés, baseline `OMcZ9gl@8`, aucune opération ni autorisation distante |
 | 0.59.0 | 2026-09-29 | R2 arrêtée sans écriture sur un faux écart de hash local malgré 279/279 fichiers canoniques exacts ; reprise R3 corrigée et testée à 56/56 ciblés et 369/369 complets, LocalCheck Windows requis |
 | 0.58.0 | 2026-09-29 | LocalCheck Windows R2 conforme à 55/55 ; arrêt et restauration R1 liés, version 10 conservée, aucune autorisation distante accordée |
 | 0.57.0 | 2026-09-29 | Tentative navigateur arrêtée sur cohérence différée après création de la version 10 puis restaurée ; reprise R2 sans création ni push préparée et testée à 368/368 |
