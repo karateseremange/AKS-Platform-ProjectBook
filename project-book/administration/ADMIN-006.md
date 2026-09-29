@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.56.0 |
-| **Statut** | D4-C — LocalCheck Windows navigateur conforme, autorisation d'exécution requise |
+| **Version** | 0.57.0 |
+| **Statut** | D4-C — tentative navigateur restaurée, reprise R2 préparée localement |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-28 |
+| **Dernière mise à jour** | 2026-09-29 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -633,6 +633,16 @@ La préparation locale est terminée. Une autorisation distincte reste obligatoi
 
 ---
 
+## 10.56 Tentative navigateur restaurée et reprise R2 préparée
+
+La commande de création de version de la première tentative navigateur a réussi et produit la version 10, mais sa lecture immédiate a encore observé l'inventaire à neuf versions. L'outil R1 s'est arrêté avec `VERSION_CREATE_NOT_EXACT` avant toute bascule de `OMcZ9gl` et avant les opérations manuelles. Son mode `Restore` a ensuite retrouvé la version 10 et confirmé la restauration exacte du code historique, de `OMcZ9gl@8` et de sa configuration, sans nouveau déploiement.
+
+La version 10 est conservée mais reste à vérifier directement. La révision R2 est liée aux deux résultats protégés de `logread-webapp-browser-fcC70e`. Elle retire le mode `Execute`, toute création de version, tout push de code et toute création/suppression de déploiement. Une future reprise pourra uniquement relire et vérifier la version 10, basculer le déploiement existant de 8 vers 10, conduire les contrôles manuels, puis imposer le retour vers 8. Les **55/55 tests ciblés** et les **368/368 tests complets** réussissent hors ligne. [ADMIN-006-08](ADMIN-006-08.md), §31.33, conserve le diagnostic, les empreintes et les gardes de reprise.
+
+La seule étape suivante est le `LocalCheck` Windows de R2. Aucune nouvelle opération Google, reprise distante, fusion, production ou D5 n'est autorisée.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -672,6 +682,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.57.0 | 2026-09-29 | Tentative navigateur arrêtée sur cohérence différée après création de la version 10 puis restaurée ; reprise R2 sans création ni push préparée et testée à 368/368 |
 | 0.56.0 | 2026-09-28 | LocalCheck Windows navigateur conforme à 52/52 ; paquet, précontrôle et résultat technique liés, baseline à neuf versions avec `OMcZ9gl@8`, aucune opération Google |
 | 0.55.0 | 2026-09-28 | Campagne navigateur Web App préparée localement : version 10 relue avant bascule de `OMcZ9gl`, aucun nouveau déploiement, restauration vers 8, 52/52 ciblés et 365/365 complets |
 | 0.54.0 | 2026-09-28 | Test technique de la candidate Web App réussi à 781/781 ; code historique restauré exactement et propriétés, secrets, déploiement reconfirmés |
