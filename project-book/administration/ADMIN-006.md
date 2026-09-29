@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.58.0 |
-| **Statut** | D4-C — LocalCheck Windows R2 conforme, autorisation de reprise requise |
+| **Version** | 0.59.0 |
+| **Statut** | D4-C — reprise R3 corrigée localement, LocalCheck Windows requis |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-29 |
@@ -653,6 +653,18 @@ Une autorisation distincte reste obligatoire avant le mode `Resume`. Aucune opé
 
 ---
 
+## 10.58 Arrêt R2 sans écriture et correction canonique R3
+
+La reprise R2 distinctement autorisée a relu la version immuable 10, puis s'est arrêtée avec `VERSION_10_SOURCE_MISMATCH` avant toute mise à jour de déploiement et avant toute action manuelle. La session `logread-webapp-browser-r2-6OZtg9` porte `googleReadAttempted=true`, `googleWriteAttempted=false`, `webAppUpdatedToVersion10=false` et confirme le maintien de `OMcZ9gl@8`, du code historique et de sa configuration.
+
+Le diagnostic local sur la preuve conservée établit pourtant **279 fichiers sur 279**, `CandidateDifferences=0` selon l'identité distante canonique et le manifeste exact `40ebf6b32fb6cba6f0b44ada9ce85fd023fee18f0599833b08e18f26336b0b38`. Le faux refus provenait d'un second hash dépendant des suffixes locaux `.gs/.js`, que clasp peut normaliser lors d'une lecture de version sans modifier le fichier Apps Script distant.
+
+La révision R3 est liée à la session R2 arrêtée, à son résultat et à l'inventaire canonique conservé. Elle exige toujours 279 fichiers, compare nom distant, type, taille et SHA-256 du contenu, puis vérifie le manifeste figé. Elle n'expose toujours aucun push, aucune création de version ou de déploiement et aucune suppression de déploiement. Les **56/56 tests ciblés** et **369/369 tests complets** réussissent hors ligne, avec un test de non-régression dédié à la seule normalisation `.gs/.js`. [ADMIN-006-08](ADMIN-006-08.md), §31.35, conserve les empreintes et les gardes.
+
+La prochaine étape admissible est uniquement le `LocalCheck` Windows R3. Aucune nouvelle opération Google, reprise distante, fusion, production ou D5 n'est autorisée par cette correction locale.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -692,6 +704,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.59.0 | 2026-09-29 | R2 arrêtée sans écriture sur un faux écart de hash local malgré 279/279 fichiers canoniques exacts ; reprise R3 corrigée et testée à 56/56 ciblés et 369/369 complets, LocalCheck Windows requis |
 | 0.58.0 | 2026-09-29 | LocalCheck Windows R2 conforme à 55/55 ; arrêt et restauration R1 liés, version 10 conservée, aucune autorisation distante accordée |
 | 0.57.0 | 2026-09-29 | Tentative navigateur arrêtée sur cohérence différée après création de la version 10 puis restaurée ; reprise R2 sans création ni push préparée et testée à 368/368 |
 | 0.56.0 | 2026-09-28 | LocalCheck Windows navigateur conforme à 52/52 ; paquet, précontrôle et résultat technique liés, baseline à neuf versions avec `OMcZ9gl@8`, aucune opération Google |
