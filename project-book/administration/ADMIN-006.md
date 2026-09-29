@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.57.0 |
-| **Statut** | D4-C — tentative navigateur restaurée, reprise R2 préparée localement |
+| **Version** | 0.58.0 |
+| **Statut** | D4-C — LocalCheck Windows R2 conforme, autorisation de reprise requise |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-29 |
@@ -643,6 +643,16 @@ La seule étape suivante est le `LocalCheck` Windows de R2. Aucune nouvelle opé
 
 ---
 
+## 10.57 LocalCheck Windows R2 conforme
+
+Le clone propre de la tête `18b2368cdce3f28a1576461bee6403d2e31deef2` a terminé les **55/55 tests ciblés** puis produit `LOGREAD_WEBAPP_BROWSER_R2_LOCAL_CHECK_ONLY`. Les empreintes exactes de l'arrêt R1 et de sa restauration sont respectivement `a822ebbb5937211036aee576ac956eca442668f7653014347505f2b575cbd1ac` et `80ddcfcd1a43a49c5699e231fbf072209ef91ff1683cc028314698e390e4f066`.
+
+La version 10 est conservée et la baseline reste `OMcZ9gl@8`. Le contrôle n'a tenté aucune opération Google et n'accorde aucune autorisation de navigateur, création de version, push de code, mise à jour ou création de déploiement. [ADMIN-006-08](ADMIN-006-08.md), §31.34, conserve le résultat détaillé.
+
+Une autorisation distincte reste obligatoire avant le mode `Resume`. Aucune opération Google, fusion, production ou D5 n'est autorisée à ce stade.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -682,6 +692,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.58.0 | 2026-09-29 | LocalCheck Windows R2 conforme à 55/55 ; arrêt et restauration R1 liés, version 10 conservée, aucune autorisation distante accordée |
 | 0.57.0 | 2026-09-29 | Tentative navigateur arrêtée sur cohérence différée après création de la version 10 puis restaurée ; reprise R2 sans création ni push préparée et testée à 368/368 |
 | 0.56.0 | 2026-09-28 | LocalCheck Windows navigateur conforme à 52/52 ; paquet, précontrôle et résultat technique liés, baseline à neuf versions avec `OMcZ9gl@8`, aucune opération Google |
 | 0.55.0 | 2026-09-28 | Campagne navigateur Web App préparée localement : version 10 relue avant bascule de `OMcZ9gl`, aucun nouveau déploiement, restauration vers 8, 52/52 ciblés et 365/365 complets |
