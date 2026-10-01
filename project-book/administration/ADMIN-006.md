@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.62.1 |
-| **Statut** | D4-C — R4 préparée localement, LocalCheck Windows requis ; Google interdit |
+| **Version** | 0.62.2 |
+| **Statut** | D4-C — LocalCheck Windows R4 conforme sur retour opérateur ; Google interdit |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-10-01 |
@@ -701,6 +701,16 @@ La livraison reprend la méthode clone Git neuf, commit exact, arbre propre et c
 
 ---
 
+### 10.62 LocalCheck Windows R4 conforme sur preuve opérateur
+
+Le nouvel essai Windows, distinctement autorisé, a atteint `LOGREAD_WEBAPP_R4_LOCAL_CHECK_ONLY` au commit `8b2d3f568b6183e6c68fce0d8534aa2a36a49659`, selon le journal et le JSON transmis par l'opérateur. Candidate 279 / historique 261, cinq fonctions opérateur présentes localement et preuves package/R3 vérifiées. PowerShell `5.1.26100.9444`, Node `v24.18.0`.
+
+Les lectures/écritures et toutes les autorisations Google restent à false ; `currentGoogleStateVerified=false` et `remoteModeAvailable=false`. Aucun contrôle de l'éditeur Apps Script ou navigateur n'est revendiqué. La complétion du lanceur indique le succès de sa commande de tests ; le transcript Windows lui-même n'est pas transmis et le JSON ne contient pas le décompte détaillé. Les 71/71 locaux Linux sont une preuve distincte.
+
+La consignation et ses empreintes sont conservées dans [R4-WINDOWS-LOCALCHECK.md](../../tools/admin006/R4-WINDOWS-LOCALCHECK.md), avec transcription JSON du retour opérateur. Les outils sont inchangés. Cette publication documentaire est autorisée séparément ; elle n'autorise aucune collecte Google, installation, propriété, ACCESS/AUDIT, bascule, navigateur, fusion, production ou D5. Le raccordement distant reste à préparer et à revoir séparément. R1/R2/R3 restent interdites de nouvelle exécution.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -740,6 +750,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.62.2 | 2026-10-01 | LocalCheck Windows R4 conforme sur retour opérateur au commit 8b2d3f5, preuves et empreintes consignées ; outils inchangés, aucune autorisation Google |
 | 0.62.1 | 2026-10-01 | Arrêt Windows ARCHIVE_TYPE_INVALID reproduit, contrat D4C corrigé et 71/71 tests ; publication distinctement autorisée, nouveau Windows en attente |
 | 0.62.0 | 2026-10-01 | Préparation R4 hors ligne 59/59, livraison Git exacte et contrôles LF ; LocalCheck Windows requis, transport Google absent et aucune autorisation distante |
 | 0.61.0 | 2026-10-01 | R3 arrêtée après bascule vers 10 car les fonctions opérateur étaient absentes du HEAD historique ; AUDIT, `OMcZ9gl@8` et code restaurés exactement, R3 interdite et aucune R4 autorisée |
