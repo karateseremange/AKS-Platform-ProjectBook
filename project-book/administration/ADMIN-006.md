@@ -4,8 +4,8 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.60.0 |
-| **Statut** | D4-C — LocalCheck Windows R3 conforme, autorisation de reprise requise |
+| **Version** | 0.61.0 |
+| **Statut** | D4-C — R3 restaurée, reprise interdite avant nouvelle conception revue |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
 | **Dernière mise à jour** | 2026-09-29 |
@@ -675,6 +675,18 @@ Une autorisation distincte reste obligatoire avant le mode `Resume`. Aucune opé
 
 ---
 
+## 10.60 Reprise R3 arrêtée puis restaurée — fonction opérateur indisponible
+
+La reprise R3 autorisée a vérifié exactement la version immuable 10 puis basculé temporairement `OMcZ9gl` de 8 vers 10. Après connexion AUDIT, la séquence a été arrêtée volontairement avant le précontrôle LOG_READ : la fonction `AKS_preflightAccess002LogReadRecipe` n'était pas disponible dans l'éditeur Apps Script. Le premier résultat de la session `logread-webapp-browser-r3-mAKvaa` porte `MANUAL_RECOVERY_REQUIRED` et `OPERATOR_STEP_NOT_CONFIRMED`.
+
+La cause est conceptuelle : le déploiement Web App exécutait la version immuable 10 à 279 fichiers, mais l'éditeur Apps Script expose les fonctions du HEAD, resté sur les 261 fichiers historiques. R3 interdisait tout push de code ; les fonctions opérateur de la candidate ne pouvaient donc pas être exécutées. Cette incohérence aurait dû être détectée avant la tentative distante.
+
+Le mode `Restore` de la même session a déconnecté AUDIT, restauré `OMcZ9gl@8`, sa configuration et le code historique exact. Le résultat final porte `RESTORED_WEBAPP_VERSION_8_VERSION_10_VERIFIED_BROWSER_REVIEW_REQUIRED`, sans échec. Aucune application ACCESS, propriété privée, création de version, création de déploiement ou push de code n'a eu lieu. La version 10 reste conservée et vérifiée. [ADMIN-006-08](ADMIN-006-08.md), §31.37, conserve la séquence et les états exacts.
+
+R3 ne doit plus être relancée. Aucun R4 n'est préparé ni autorisé. Une nouvelle conception devra d'abord démontrer localement la disponibilité réelle des fonctions opérateur dans le HEAD, borner ensemble l'installation temporaire de la candidate et sa restauration, puis faire l'objet d'une revue complète avant toute implémentation ou opération Google.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -714,6 +726,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.61.0 | 2026-10-01 | R3 arrêtée après bascule vers 10 car les fonctions opérateur étaient absentes du HEAD historique ; AUDIT, `OMcZ9gl@8` et code restaurés exactement, R3 interdite et aucune R4 autorisée |
 | 0.60.0 | 2026-09-29 | LocalCheck Windows R3 conforme à 56/56 ; session R2 et inventaire canonique version 10 liés, baseline `OMcZ9gl@8`, aucune opération ni autorisation distante |
 | 0.59.0 | 2026-09-29 | R2 arrêtée sans écriture sur un faux écart de hash local malgré 279/279 fichiers canoniques exacts ; reprise R3 corrigée et testée à 56/56 ciblés et 369/369 complets, LocalCheck Windows requis |
 | 0.58.0 | 2026-09-29 | LocalCheck Windows R2 conforme à 55/55 ; arrêt et restauration R1 liés, version 10 conservée, aucune autorisation distante accordée |
