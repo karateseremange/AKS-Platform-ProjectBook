@@ -1,0 +1,41 @@
+{
+  "revision": "LOGREAD-webapp-browser-r4-preparation-1",
+  "files": [
+    {
+      "path": "Validate-LogRead-WebApp-Browser-R4.ps1",
+      "sha256": "a2157069fca6089e5c7a652fd53a04690cb3ac4e37e3749a099290ae416487d7"
+    },
+    {
+      "path": "validate-logread-webapp-browser-r4.cjs",
+      "sha256": "14c9db9dba2100c25b6365450bbbb12c10626c2a1977e0d9b9d8f90f1a2d61bb"
+    },
+    {
+      "path": "validate-logread-webapp-browser-r4.test.cjs",
+      "sha256": "5c96e884e05bdb038c48122bf7ce082a0e86d8dd85b6abd0253d591fc9f8113e"
+    },
+    {
+      "path": "r4-fixtures/candidate.json",
+      "sha256": "2eeacb1a416be849edfae4b23ad77e61354522ee8324fd57a03cbbdc1f3706e9"
+    },
+    {
+      "path": "r4-vendor/acorn.cjs",
+      "sha256": "b373ccd10e9deb63654289f73216eeefcaf0405d9ee24289aabf596b91b4c318"
+    },
+    {
+      "path": "r4-vendor/LICENSE-acorn.txt",
+      "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+    },
+    {
+      "path": "R4-PREPARATION.md",
+      "sha256": "dc166e696a3952f0dabe4117f7b1b9eca776134107df642093af208b5fcb4439"
+    },
+    {
+      "path": "R4-PREPARATION-REPORT.json",
+      "sha256": "44f9af8fe56e4f60dc14e074ff7060937262caea55805cc37f955914b5f5f23a"
+    },
+    {
+      "path": "R4-tests.tap",
+      "sha256": "d3829357ae19d4f9b494bbd818238075fe8853c9418cbb8dafaf1de2934493eb"
+    }
+  ]
+}

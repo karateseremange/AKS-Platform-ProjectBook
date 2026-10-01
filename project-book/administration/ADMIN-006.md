@@ -4,11 +4,11 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.61.0 |
-| **Statut** | D4-C — R3 restaurée, reprise interdite avant nouvelle conception revue |
+| **Version** | 0.62.0 |
+| **Statut** | D4-C — R4 préparée localement, LocalCheck Windows requis ; Google interdit |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
-| **Dernière mise à jour** | 2026-09-29 |
+| **Dernière mise à jour** | 2026-10-01 |
 | **Version observée** | AKS Platform V1.4.1 — Apps Script version 55 |
 | **Priorité** | Bloquant transverse avant INSCRIPTIONS-011 et les futurs modules privés |
 
@@ -687,6 +687,18 @@ R3 ne doit plus être relancée. Aucun R4 n'est préparé ni autorisé. Une nouv
 
 ---
 
+### 10.61 Préparation R4 hors ligne et retour à la livraison Git
+
+La conception R4 a été validée, puis sa préparation locale et sa publication dans la branche de #226 ont reçu des autorisations distinctes. Cela remplace uniquement l'interdiction de préparation R4 mentionnée dans la section précédente. R1/R2/R3 restent interdites de nouvelle exécution. Aucun Google, merge, production ou D5 n'est autorisé.
+
+Le lanceur R4 expose exclusivement `LocalCheck` ; aucun transport Google natif n'est livré. Les 59 tests hors ligne passent sous Node 24.19.0/Linux. Ils couvrent visibilité tardive R1 sans création, comparaison canonique R2 indépendante de `.gs/.js`, présence des fonctions R3, interruptions, confirmations perdues, nettoyage partiel et conflits. La fixture candidate contient les 279 fichiers réels de #146 ; le HEAD historique et les rapports R3 utilisés dans les tests sont synthétiques. Les dossiers protégés Windows réels n'ont pas été lus ici.
+
+L'état Google de référence reste celui des rapports opérateur : HEAD historique 261, `OMcZ9gl@8`, version 10 conservée, AUDIT déconnecté, ACCESS inchangé, propriétés privées inactives et backend inchangé. Aucune relecture actuelle Google n'est revendiquée.
+
+La livraison reprend la méthode clone Git neuf, commit exact, arbre propre et commande PowerShell 5.1 autonome sur une seule ligne. Le ZIP est écarté ; l'opérateur n'a rien téléchargé ni exécuté. LocalCheck Windows reste à effectuer. Un succès local ne vaut ni autorisation Google ni preuve navigateur.
+
+---
+
 ## 11. Critères d’acceptation du cadrage
 
 Le cadrage est prêt pour décision lorsque :
@@ -726,6 +738,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.62.0 | 2026-10-01 | Préparation R4 hors ligne 59/59, livraison Git exacte et contrôles LF ; LocalCheck Windows requis, transport Google absent et aucune autorisation distante |
 | 0.61.0 | 2026-10-01 | R3 arrêtée après bascule vers 10 car les fonctions opérateur étaient absentes du HEAD historique ; AUDIT, `OMcZ9gl@8` et code restaurés exactement, R3 interdite et aucune R4 autorisée |
 | 0.60.0 | 2026-09-29 | LocalCheck Windows R3 conforme à 56/56 ; session R2 et inventaire canonique version 10 liés, baseline `OMcZ9gl@8`, aucune opération ni autorisation distante |
 | 0.59.0 | 2026-09-29 | R2 arrêtée sans écriture sur un faux écart de hash local malgré 279/279 fichiers canoniques exacts ; reprise R3 corrigée et testée à 56/56 ciblés et 369/369 complets, LocalCheck Windows requis |

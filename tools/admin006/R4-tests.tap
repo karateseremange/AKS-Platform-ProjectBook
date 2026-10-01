@@ -1,0 +1,364 @@
+TAP version 13
+# Subtest: real candidate Git bytes match 279 files, package digest, manifest and global editor functions
+ok 1 - real candidate Git bytes match 279 files, package digest, manifest and global editor functions
+  ---
+  duration_ms: 111.515381
+  type: 'test'
+  ...
+# Subtest: AST rejects comments, nested declarations, strings, function expressions, parameters and duplicate declarations
+ok 2 - AST rejects comments, nested declarations, strings, function expressions, parameters and duplicate declarations
+  ---
+  duration_ms: 0.902646
+  type: 'test'
+  ...
+# Subtest: R2 normalization passes canonically; modified byte, renamed file, changed type, missing file fail
+ok 3 - R2 normalization passes canonically; modified byte, renamed file, changed type, missing file fail
+  ---
+  duration_ms: 26.488819
+  type: 'test'
+  ...
+# Subtest: canonical collisions and unsafe paths are rejected
+ok 4 - canonical collisions and unsafe paths are rejected
+  ---
+  duration_ms: 0.492951
+  type: 'test'
+  ...
+# Subtest: CLI is local-only and rejects every Google mode and authority parameter
+ok 5 - CLI is local-only and rejects every Google mode and authority parameter
+  ---
+  duration_ms: 0.513331
+  type: 'test'
+  ...
+# Subtest: full real orchestration uses real ACCESS/AUDIT functions, distinct HEAD/v10/deployment states and restores
+ok 6 - full real orchestration uses real ACCESS/AUDIT functions, distinct HEAD/v10/deployment states and restores
+  ---
+  duration_ms: 476.105026
+  type: 'test'
+  ...
+# Subtest: R1 delayed version visibility causes only bounded reads, never creation
+ok 7 - R1 delayed version visibility causes only bounded reads, never creation
+  ---
+  duration_ms: 429.30614
+  type: 'test'
+  ...
+# Subtest: R1 persistent absence of version 10 stops without any mutation
+ok 8 - R1 persistent absence of version 10 stops without any mutation
+  ---
+  duration_ms: 77.331681
+  type: 'test'
+  ...
+# Subtest: immutable byte mismatch stops before installation and never updates deployment
+ok 9 - immutable byte mismatch stops before installation and never updates deployment
+  ---
+  duration_ms: 77.823369
+  type: 'test'
+  ...
+# Subtest: R3 actual missing editor function blocks AUDIT, ACCESS and deployment then restores HEAD
+ok 10 - R3 actual missing editor function blocks AUDIT, ACCESS and deployment then restores HEAD
+  ---
+  duration_ms: 344.617135
+  type: 'test'
+  ...
+# Subtest: R3 missing candidate declaration is detected before every mutation
+ok 11 - R3 missing candidate declaration is detected before every mutation
+  ---
+  duration_ms: 79.971277
+  type: 'test'
+  ...
+# Subtest: interruption after partial-push: real recovery cleans only touched mutations
+ok 12 - interruption after partial-push: real recovery cleans only touched mutations
+  ---
+  duration_ms: 154.36329
+  type: 'test'
+  ...
+# Subtest: interruption after push-install: real recovery cleans only touched mutations
+ok 13 - interruption after push-install: real recovery cleans only touched mutations
+  ---
+  duration_ms: 261.393071
+  type: 'test'
+  ...
+# Subtest: interruption after editor-functions: real recovery cleans only touched mutations
+ok 14 - interruption after editor-functions: real recovery cleans only touched mutations
+  ---
+  duration_ms: 320.77995
+  type: 'test'
+  ...
+# Subtest: interruption after audit: real recovery cleans only touched mutations
+ok 15 - interruption after audit: real recovery cleans only touched mutations
+  ---
+  duration_ms: 404.447716
+  type: 'test'
+  ...
+# Subtest: interruption after preflight: real recovery cleans only touched mutations
+ok 16 - interruption after preflight: real recovery cleans only touched mutations
+  ---
+  duration_ms: 433.350247
+  type: 'test'
+  ...
+# Subtest: interruption after access: real recovery cleans only touched mutations
+ok 17 - interruption after access: real recovery cleans only touched mutations
+  ---
+  duration_ms: 490.261525
+  type: 'test'
+  ...
+# Subtest: interruption after deploy-10: real recovery cleans only touched mutations
+ok 18 - interruption after deploy-10: real recovery cleans only touched mutations
+  ---
+  duration_ms: 481.411861
+  type: 'test'
+  ...
+# Subtest: interruption after property-AKS_PRIVATE_PORTAL_ENVIRONMENT: real recovery cleans only touched mutations
+ok 19 - interruption after property-AKS_PRIVATE_PORTAL_ENVIRONMENT: real recovery cleans only touched mutations
+  ---
+  duration_ms: 426.702807
+  type: 'test'
+  ...
+# Subtest: interruption after property-AKS_PRIVATE_CALLER_PROJECT: real recovery cleans only touched mutations
+ok 20 - interruption after property-AKS_PRIVATE_CALLER_PROJECT: real recovery cleans only touched mutations
+  ---
+  duration_ms: 457.486503
+  type: 'test'
+  ...
+# Subtest: interruption after property-AKS_PRIVATE_BACKEND_URL: real recovery cleans only touched mutations
+ok 21 - interruption after property-AKS_PRIVATE_BACKEND_URL: real recovery cleans only touched mutations
+  ---
+  duration_ms: 436.749781
+  type: 'test'
+  ...
+# Subtest: interruption after property-AKS_PRIVATE_TIMEOUT_MS: real recovery cleans only touched mutations
+ok 22 - interruption after property-AKS_PRIVATE_TIMEOUT_MS: real recovery cleans only touched mutations
+  ---
+  duration_ms: 414.453333
+  type: 'test'
+  ...
+# Subtest: interruption after backend-on: real recovery cleans only touched mutations
+ok 23 - interruption after backend-on: real recovery cleans only touched mutations
+  ---
+  duration_ms: 425.817847
+  type: 'test'
+  ...
+# Subtest: interruption after property-AKS_PRIVATE_PORTAL_ENABLED: real recovery cleans only touched mutations
+ok 24 - interruption after property-AKS_PRIVATE_PORTAL_ENABLED: real recovery cleans only touched mutations
+  ---
+  duration_ms: 440.069692
+  type: 'test'
+  ...
+# Subtest: interruption after browser-oauth: real recovery cleans only touched mutations
+ok 25 - interruption after browser-oauth: real recovery cleans only touched mutations
+  ---
+  duration_ms: 437.54866
+  type: 'test'
+  ...
+# Subtest: interruption after browser-manager: real recovery cleans only touched mutations
+ok 26 - interruption after browser-manager: real recovery cleans only touched mutations
+  ---
+  duration_ms: 445.433627
+  type: 'test'
+  ...
+# Subtest: interruption after browser-denied: real recovery cleans only touched mutations
+ok 27 - interruption after browser-denied: real recovery cleans only touched mutations
+  ---
+  duration_ms: 473.812818
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at portal-off: independent recovery from reopened journal
+ok 28 - cleanup interruption at portal-off: independent recovery from reopened journal
+  ---
+  duration_ms: 441.258218
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at backend-off: independent recovery from reopened journal
+ok 29 - cleanup interruption at backend-off: independent recovery from reopened journal
+  ---
+  duration_ms: 420.703364
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at requests-ended: independent recovery from reopened journal
+ok 30 - cleanup interruption at requests-ended: independent recovery from reopened journal
+  ---
+  duration_ms: 426.094053
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at remove-AKS_PRIVATE_BACKEND_URL: independent recovery from reopened journal
+ok 31 - cleanup interruption at remove-AKS_PRIVATE_BACKEND_URL: independent recovery from reopened journal
+  ---
+  duration_ms: 416.272526
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at restore-access: independent recovery from reopened journal
+ok 32 - cleanup interruption at restore-access: independent recovery from reopened journal
+  ---
+  duration_ms: 420.560499
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at disconnect-audit: independent recovery from reopened journal
+ok 33 - cleanup interruption at disconnect-audit: independent recovery from reopened journal
+  ---
+  duration_ms: 488.601794
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at baseline-properties: independent recovery from reopened journal
+ok 34 - cleanup interruption at baseline-properties: independent recovery from reopened journal
+  ---
+  duration_ms: 434.998232
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at deploy-8: independent recovery from reopened journal
+ok 35 - cleanup interruption at deploy-8: independent recovery from reopened journal
+  ---
+  duration_ms: 413.357126
+  type: 'test'
+  ...
+# Subtest: cleanup interruption at push-restore: independent recovery from reopened journal
+ok 36 - cleanup interruption at push-restore: independent recovery from reopened journal
+  ---
+  duration_ms: 582.327357
+  type: 'test'
+  ...
+# Subtest: incomplete/conflicting ACCESS backup keeps candidate functions and returns deployment to 8: PARTIAL
+ok 37 - incomplete/conflicting ACCESS backup keeps candidate functions and returns deployment to 8: PARTIAL
+  ---
+  duration_ms: 260.224396
+  type: 'test'
+  ...
+# Subtest: incomplete/conflicting ACCESS backup keeps candidate functions and returns deployment to 8: CONFLICT
+ok 38 - incomplete/conflicting ACCESS backup keeps candidate functions and returns deployment to 8: CONFLICT
+  ---
+  duration_ms: 247.85255
+  type: 'test'
+  ...
+# Subtest: unknown concurrent HEAD change is never overwritten
+ok 39 - unknown concurrent HEAD change is never overwritten
+  ---
+  duration_ms: 110.198632
+  type: 'test'
+  ...
+# Subtest: initial drift produces no automatic repair and no mutation
+ok 40 - initial drift produces no automatic repair and no mutation
+  ---
+  duration_ms: 18.574249
+  type: 'test'
+  ...
+# Subtest: recovery refuses changed source/binding before transport or cleanup
+ok 41 - recovery refuses changed source/binding before transport or cleanup
+  ---
+  duration_ms: 15.081837
+  type: 'test'
+  ...
+# Subtest: journal rejects corruption, gaps and concurrent appends
+ok 42 - journal rejects corruption, gaps and concurrent appends
+  ---
+  duration_ms: 13.279615
+  type: 'test'
+  ...
+# Subtest: transport cannot expose version/deployment creation or deletion
+ok 43 - transport cannot expose version/deployment creation or deletion
+  ---
+  duration_ms: 10.389889
+  type: 'test'
+  ...
+# Subtest: deployment observation tolerates lag and stops on changed configuration
+ok 44 - deployment observation tolerates lag and stops on changed configuration
+  ---
+  duration_ms: 11.118203
+  type: 'test'
+  ...
+# Subtest: alreadyRestored branch requires exact initial revision and backup absence confirmation
+ok 45 - alreadyRestored branch requires exact initial revision and backup absence confirmation
+  ---
+  duration_ms: 0.19931
+  type: 'test'
+  ...
+# Subtest: manual success token with wrong JSON result is refused; logs contain no raw identity or URL
+ok 46 - manual success token with wrong JSON result is refused; logs contain no raw identity or URL
+  ---
+  duration_ms: 441.48545
+  type: 'test'
+  ...
+# Subtest: real ACCESS incomplete-backup failure retains registry and backup, with no blind cleanup
+ok 47 - real ACCESS incomplete-backup failure retains registry and backup, with no blind cleanup
+  ---
+  duration_ms: 8.582484
+  type: 'test'
+  ...
+# Subtest: local evidence reader checks real candidate bytes and synthetic protected proof chain without writes
+ok 48 - local evidence reader checks real candidate bytes and synthetic protected proof chain without writes
+  ---
+  duration_ms: 171.622815
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered report
+ok 49 - local evidence reader refuses altered report
+  ---
+  duration_ms: 56.431958
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered archive
+ok 50 - local evidence reader refuses altered archive
+  ---
+  duration_ms: 56.894643
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered materialized-candidate
+ok 51 - local evidence reader refuses altered materialized-candidate
+  ---
+  duration_ms: 140.164951
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered historical
+ok 52 - local evidence reader refuses altered historical
+  ---
+  duration_ms: 142.150128
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered r3-result
+ok 53 - local evidence reader refuses altered r3-result
+  ---
+  duration_ms: 150.180212
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered r3-binding
+ok 54 - local evidence reader refuses altered r3-binding
+  ---
+  duration_ms: 161.396997
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered r3-event
+ok 55 - local evidence reader refuses altered r3-event
+  ---
+  duration_ms: 174.168759
+  type: 'test'
+  ...
+# Subtest: local evidence reader refuses altered r3-ambiguous
+ok 56 - local evidence reader refuses altered r3-ambiguous
+  ---
+  duration_ms: 143.686248
+  type: 'test'
+  ...
+# Subtest: default local check cannot accept fixture hashes or injected loaders as arguments
+ok 57 - default local check cannot accept fixture hashes or injected loaders as arguments
+  ---
+  duration_ms: 51.360412
+  type: 'test'
+  ...
+# Subtest: real ACCESS restoration conflict preserves independent change and pending evidence
+ok 58 - real ACCESS restoration conflict preserves independent change and pending evidence
+  ---
+  duration_ms: 10.224927
+  type: 'test'
+  ...
+# Subtest: new campaign cannot reuse old or already started journal
+ok 59 - new campaign cannot reuse old or already started journal
+  ---
+  duration_ms: 14.894004
+  type: 'test'
+  ...
+1..59
+# tests 59
+# suites 0
+# pass 59
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14697.607493
