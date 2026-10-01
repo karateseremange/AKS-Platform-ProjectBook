@@ -1,0 +1,57 @@
+{
+  "revision": "LOGREAD-webapp-browser-r4-preparation-1",
+  "files": [
+    {
+      "path": "Validate-LogRead-WebApp-Browser-R4.ps1",
+      "sha256": "a2157069fca6089e5c7a652fd53a04690cb3ac4e37e3749a099290ae416487d7"
+    },
+    {
+      "path": "validate-logread-webapp-browser-r4.cjs",
+      "sha256": "4e1e3108489250f1302300b82643c1b1eb429a15e36d4f720bd9e1e674b2b044"
+    },
+    {
+      "path": "validate-logread-webapp-browser-r4.test.cjs",
+      "sha256": "03067ee7dd45877781cf233db75e13d83e1ccc3b3a8823702daea2c208f95d20"
+    },
+    {
+      "path": "r4-fixtures/candidate.json",
+      "sha256": "2eeacb1a416be849edfae4b23ad77e61354522ee8324fd57a03cbbdc1f3706e9"
+    },
+    {
+      "path": "r4-vendor/acorn.cjs",
+      "sha256": "b373ccd10e9deb63654289f73216eeefcaf0405d9ee24289aabf596b91b4c318"
+    },
+    {
+      "path": "r4-vendor/LICENSE-acorn.txt",
+      "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+    },
+    {
+      "path": "R4-PREPARATION.md",
+      "sha256": "fa22f4d1c964f34fcbb5e91f5e2f871221c00defa16d54d6abfca3473d5c65ae"
+    },
+    {
+      "path": "R4-PREPARATION-REPORT.json",
+      "sha256": "44f9af8fe56e4f60dc14e074ff7060937262caea55805cc37f955914b5f5f23a"
+    },
+    {
+      "path": "R4-tests.tap",
+      "sha256": "d3829357ae19d4f9b494bbd818238075fe8853c9418cbb8dafaf1de2934493eb"
+    },
+    {
+      "path": "prepare-d4b.cjs",
+      "sha256": "e19b4701d423bc676948e158a78f7bb4bf85490690538f6fbeafad684db9b52b"
+    },
+    {
+      "path": "R4-ARCHIVE-CORRECTION.md",
+      "sha256": "5e20371acf746e53590f15f85e65037fb7b8502dc8ec57d3c5428d583e916d00"
+    },
+    {
+      "path": "R4-ARCHIVE-CORRECTION-REPORT.json",
+      "sha256": "0338f40566fb6358535b9fd3e437b8bd53f19b6480ad5dd665a85a7cb8ebef2e"
+    },
+    {
+      "path": "R4-ARCHIVE-CORRECTION-tests.tap",
+      "sha256": "bd39dbf428d180216c09f21ebad25300d566fa4dd7bdb08bdf7e8b7d6bccf6f1"
+    }
+  ]
+}

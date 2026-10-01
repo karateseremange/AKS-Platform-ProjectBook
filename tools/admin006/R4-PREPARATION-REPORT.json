@@ -1,0 +1,35 @@
+{
+  "revision": "LOGREAD-webapp-browser-r4-preparation-1",
+  "status": "LOCAL_R4_PREPARED_WINDOWS_VALIDATION_REQUIRED",
+  "generatedAt": "2026-10-01T20:25:01.086548+00:00",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "Linux"
+  },
+  "projectBookBase": "fe7a9a55c7f0fdb27ae85aec2c34208b568f0f82",
+  "applicationCandidate": "6a7d86300d90c3f9a629e89a113dc7b0dd7e5f73",
+  "candidateFiles": 279,
+  "candidateSourceSha256": "3931cc5b455b40fa7eb3dd76f8c7cb41d5acae3b5ad7674b5a67be7f286a465f",
+  "tests": {
+    "tests": 59,
+    "pass": 59,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "fixtureCandidate": "REAL_GIT_BYTES",
+  "fixtureHistorical": "SYNTHETIC_261_FILES",
+  "fixtureOperatorReports": "SYNTHETIC_TEST_DATA",
+  "actualProtectedWindowsEvidenceRead": false,
+  "windowsPowerShell51Executed": false,
+  "windowsLocalCheckCompleted": false,
+  "googleReadAttempted": false,
+  "googleWriteAttempted": false,
+  "remoteModeAvailable": false,
+  "githubWriteAttempted": false,
+  "existingTrackedFilesChanged": false,
+  "mergeAttempted": false,
+  "productionTouched": false,
+  "d5Started": false,
+  "transcriptSha256": "d3829357ae19d4f9b494bbd818238075fe8853c9418cbb8dafaf1de2934493eb"
+}

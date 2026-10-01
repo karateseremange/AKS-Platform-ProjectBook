@@ -1,0 +1,22 @@
+{
+  "revision": "LOGREAD-webapp-browser-r4-archive-correction-1",
+  "status": "LOCAL_CORRECTION_VERIFIED_PUBLICATION_AND_WINDOWS_PENDING",
+  "baseCommit": "aab570ae594995370dfde197b54b6a0d4c0c68a4",
+  "generatedAt": "2026-10-01T21:32:27.817618+00:00",
+  "failureReproducedBeforeCorrection": "ARCHIVE_TYPE_INVALID",
+  "tests": {
+    "tests": 71,
+    "pass": 71,
+    "fail": 0
+  },
+  "transcriptSha256": "bd39dbf428d180216c09f21ebad25300d566fa4dd7bdb08bdf7e8b7d6bccf6f1",
+  "actualProtectedWindowsEvidenceRead": false,
+  "windowsPowerShell51Executed": false,
+  "windowsLocalCheckCompleted": false,
+  "googleReadAttempted": false,
+  "googleWriteAttempted": false,
+  "githubWriteAttempted": false,
+  "mergeAttempted": false,
+  "productionTouched": false,
+  "d5Started": false
+}

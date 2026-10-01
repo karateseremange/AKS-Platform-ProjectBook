@@ -1,0 +1,7 @@
+# Integrity-pinned Node tools must keep repository bytes on Windows.
+tools/admin006/*.cjs text eol=lf
+tools/admin006/Validate-LogRead-WebApp-Browser-R4.ps1 text eol=lf
+tools/admin006/r4-fixtures/** text eol=lf
+tools/admin006/r4-vendor/** text eol=lf
+tools/admin006/r4-integrity.json text eol=lf
+tools/admin006/R4-* text eol=lf
