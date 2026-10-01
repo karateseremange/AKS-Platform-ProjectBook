@@ -84,7 +84,7 @@ Ne pas modifier la politique d'exécution PowerShell pour contourner un refus. C
 
 Le lanceur vérifie les empreintes des fichiers livrés avant les tests, exécute les tests hors ligne, puis relit le package et la session R3. Le lecteur Node n'écrit pas dans ces entrées. Le lanceur produit une nouvelle session de rapports locale sous `ReportRoot`, hors des dossiers protégés.
 
-Résultat attendu : **59 tests, 59 réussites, 0 échec**, puis `LOGREAD_WEBAPP_R4_LOCAL_CHECK_ONLY`, 279/261 fichiers et les cinq fonctions listées. `currentGoogleStateVerified=false`, toutes les tentatives/autorisations Google à `false`, `remoteModeAvailable=false`. Le rapport porte aussi PowerShell, Node et le SHA-256 du transcript.
+Résultat attendu après correction locale du lecteur d’archive : **71 tests, 71 réussites, 0 échec**, puis `LOGREAD_WEBAPP_R4_LOCAL_CHECK_ONLY`, 279/261 fichiers et les cinq fonctions listées. `currentGoogleStateVerified=false`, toutes les tentatives/autorisations Google à `false`, `remoteModeAvailable=false`. Le rapport porte aussi PowerShell, Node et le SHA-256 du transcript.
 
 En cas d'échec, arrêter, conserver `tests.tap` et `localcheck.txt` s'ils existent, et transmettre le code d'erreur. Ne pas relancer R1/R2/R3, ne pas modifier les dossiers protégés, ne pas passer dans Apps Script.
 
@@ -97,3 +97,13 @@ Windows PowerShell 5.1 n'est pas disponible dans cet environnement : ni l'exécu
 Le code applicatif et les outils R1/R2/R3 restent inchangés. La publication GitHub et la consignation documentaire constituent une étape distincte autorisée. Aucun merge, version, déploiement, propriété, ACCESS/AUDIT distant, navigateur, production ou D5 n'est autorisé. `R4-PREPARATION-REPORT.json` conserve les faits de la préparation initiale avant publication ; ses indicateurs GitHub décrivent cette étape historique uniquement.
 
 Après le contrôle Windows : revoir le rapport, préparer séparément le lecteur actuel et le raccordement distant, puis définir les autorisations Google par opération et session. Une future autorisation devra aussi fixer le déploiement complet, les deux comptes, les scopes attendus, les appels maximaux, la fenêtre, l'opérateur de secours et toutes les restaurations. Aucun jeton Google n'est accordé ou réutilisé par cette livraison.
+
+## Correction locale après arrêt Windows et publication distincte
+
+Le clone opérateur a atteint `aab570ae594995370dfde197b54b6a0d4c0c68a4`, mais LocalCheck a échoué avec `ARCHIVE_TYPE_INVALID`. Aucun LocalCheck Windows conforme n'est acquis. Le lecteur exigeait `type` dans l'archive historique D4C, alors que `check-d4c.cjs` ne l'écrit pas. Les premiers tests construisaient à tort les deux archives comme D4B.
+
+La correction distingue les formats attendus à chaque emplacement. D4B exige toujours le type déclaré exact ; D4C exige `role=portal`, déduit le type du nom et refuse un type déclaré incohérent. Les empreintes figées, encodage, inventaire complet, manifeste et comparaison des fichiers restent bloquants. Le test utilise le producteur local D4B existant et une représentation indépendante du schéma historique D4C. Aucun mode des anciennes campagnes n'est exécuté.
+
+Le défaut a été reproduit avant correction. Douze tests supplémentaires couvrent le schéma historique sans type et les refus sur rôle, cible, format, type D4B absent/inexact, type D4C incohérent, contenu, extension et doublon. La fixture R3 adopte les noms UUID et horodatages du producteur, sans prétendre contenir les preuves réelles.
+
+Les détails de revue et le résultat sont dans `R4-ARCHIVE-CORRECTION.md` et `R4-ARCHIVE-CORRECTION-REPORT.json`. Le transcript initial 59/59 reste conservé ; le nouveau transcript est séparé. La correction a été autorisée et vérifiée localement, puis sa publication GitHub dans #226 a reçu une validation distincte. Le nouvel essai Windows reste une étape séparée à valider. Aucun dossier Windows protégé n'a été modifié. Restauration locale : abandonner ce delta et reprendre le commit `aab570a…` ; aucun rollback Google nécessaire.

@@ -268,25 +268,28 @@ function localEvidence(t) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'r4-local-evidence-')); t.after(() => fs.rmSync(root, {recursive: true, force: true}));
   const dir = path.join(root, api.PIN.packageSession), r3 = path.join(root, api.PIN.r3Session); fs.mkdirSync(dir); fs.mkdirSync(r3);
   const write = (file, data) => fs.writeFileSync(file, JSON.stringify(data));
-  const archive = files => ({format: 'AKS-D4B-SNAPSHOT/1', target: api.PIN.target, files: files.map(f => ({name: f.name,
-    base64: f.bytes.toString('base64'), sha256: api.hash(f.bytes), type: api.inventory([f])[0].type}))});
+  // Candidate uses the actual local producer; historical follows check-d4c's independent schema.
+  const candidateProducer = require('./prepare-d4b.cjs');
+  const historicalArchive = files => ({format: 'AKS-D4C-READONLY-SNAPSHOT/1', role: 'portal', target: api.PIN.target,
+    files: files.map(f => ({name: f.name, sha256: api.hash(f.bytes), base64: f.bytes.toString('base64')}))});
   for (const [files, location] of [[actualCandidate, path.join(dir, 'candidate', 'src')], [historical, path.join(dir, 'historical-rollback', 'src')]]) {
     for (const f of files) { const file = path.join(location, f.name); fs.mkdirSync(path.dirname(file), {recursive: true}); fs.writeFileSync(file, f.bytes); }
   }
-  const cf = path.join(dir, 'candidate-bundle.json'), hf = path.join(dir, 'historical-c1-bundle.json'); write(cf, archive(actualCandidate)); write(hf, archive(historical));
+  const cf = path.join(dir, 'candidate-bundle.json'), hf = path.join(dir, 'historical-c1-bundle.json'); candidateProducer.archive(cf, [...actualCandidate].sort((a, b) => a.name < b.name ? -1 : 1)); write(hf, historicalArchive(historical));
   const report = {candidate: api.PIN.candidate, target: api.PIN.target, packageSha256: api.PIN.source,
     packageArchiveSha256: api.hash(fs.readFileSync(cf)), sourceFiles: 279, packageFiles: 279, status: 'LOCAL_WEBAPP_PACKAGE_PREPARED_REMOTE_REVIEW_REQUIRED'};
   write(path.join(dir, 'report.json'), report);
   const binding = {revision: 'LOGREAD-webapp-browser-r3', candidate: api.PIN.candidate, packageSha256: api.PIN.source,
     r2ResultSha256: api.PIN.r2Result, r2CanonicalInventorySha256: api.PIN.r2Inventory, packageRun: dir};
-  write(path.join(r3, 'session.json'), {binding});
+  write(path.join(r3, 'session.json'), {binding, createdAt: '2026-10-01T00:00:00.000Z'});
   const result = {revision: binding.revision, target: api.PIN.target, candidate: api.PIN.candidate, packageSha256: api.PIN.source,
     session: r3, status: 'RESTORED_WEBAPP_VERSION_8_VERSION_10_VERIFIED_BROWSER_REVIEW_REQUIRED', failure: null,
     immutableVersion10Verified: true, webAppRestoredToVersion8: true, deploymentConfigurationRestored: true,
     versionRetained: true, newDeploymentCreated: false, codePushAttempted: false};
   write(path.join(r3, 'result-abcdef.json'), result);
   for (const [i, event] of ['VERSION_10_VERIFIED', 'AUDIT_CONNECTED', 'AUDIT_DISCONNECTED', 'WEBAPP_RESTORED_TO_8', 'RESTORED_EXACT', 'CODE_RESTORED'].entries())
-    write(path.join(r3, 'event-' + String(i).padStart(6, '0') + '.json'), {event});
+    write(path.join(r3, 'event-' + '00000000-0000-4000-8000-' + String(i).padStart(12, '0') + '.json'),
+      {event, at: '2026-10-01T00:00:00.000Z'});
   const pin = {...api.PIN, archive: report.packageArchiveSha256, packageReport: api.hash(fs.readFileSync(path.join(dir, 'report.json'))),
     historicalSource: api.sourceDigest(historical), historicalManifest: api.hash(historical[0].bytes), historicalArchive: api.hash(fs.readFileSync(hf))};
   return {root, dir, r3, pin, result, options: {'package-run': dir, 'r3-session': r3}, write};
@@ -296,6 +299,38 @@ test('local evidence reader checks real candidate bytes and synthetic protected 
   const walk = dir => { for (const x of fs.readdirSync(dir, {withFileTypes: true})) { const p = path.join(dir, x.name); if (x.isDirectory()) walk(p); else before.push([p, api.hash(fs.readFileSync(p))]); } };
   walk(f.root); const e = api.loadLocal(f.options, f.pin); assert.equal(e.candidate.length, 279); assert.equal(e.backup.length, 261);
   for (const [p, h] of before) assert.equal(api.hash(fs.readFileSync(p)), h);
+});
+// Exercise historical bytes/schema separately from the R4 inventory implementation.
+for (const mutation of ['role-missing', 'role-backend', 'wrong-target', 'wrong-format', 'missing-type-d4b',
+  'wrong-type-d4b', 'wrong-type-d4c', 'bad-sha256', 'bad-base64', 'unknown-extension', 'duplicate-name']) {
+  test('archive contracts refuse ' + mutation, t => {
+    const f = localEvidence(t), candidate = mutation.endsWith('d4b');
+    const file = path.join(f.dir, candidate ? 'candidate-bundle.json' : 'historical-c1-bundle.json');
+    const data = JSON.parse(fs.readFileSync(file));
+    if (mutation === 'role-missing') delete data.role;
+    if (mutation === 'role-backend') data.role = 'backend';
+    if (mutation === 'wrong-target') data.target = api.PIN.backend;
+    if (mutation === 'wrong-format') data.format = 'AKS-D4B-SNAPSHOT/1';
+    if (mutation === 'missing-type-d4b') delete data.files[0].type;
+    if (mutation.startsWith('wrong-type')) data.files[0].type = 'HTML';
+    if (mutation === 'bad-sha256') data.files[0].sha256 = '0'.repeat(64);
+    if (mutation === 'bad-base64') data.files[0].base64 += '!';
+    if (mutation === 'unknown-extension') data.files[1].name = 'File.exe';
+    if (mutation === 'duplicate-name') data.files.push(data.files[0]);
+    f.write(file, data);
+    // Pin new raw hash to reach schema checks; production CLI pins remain unchanged.
+    const digest = api.hash(fs.readFileSync(file));
+    assert.throws(() => api.archiveFiles(file, digest, api.PIN.target,
+      candidate ? 'AKS-D4B-SNAPSHOT/1' : 'AKS-D4C-READONLY-SNAPSHOT/1'));
+  });
+}
+test('historical schema regression omits type and preserves exact names and bytes', t => {
+  const f = localEvidence(t), file = path.join(f.dir, 'historical-c1-bundle.json');
+  const data = JSON.parse(fs.readFileSync(file));
+  assert.equal(data.format, 'AKS-D4C-READONLY-SNAPSHOT/1'); assert.equal(data.role, 'portal');
+  assert(data.files.every(row => !Object.hasOwn(row, 'type')));
+  const result = api.archiveFiles(file, f.pin.historicalArchive, api.PIN.target, data.format);
+  assert.deepEqual(result, historical);
 });
 for (const mutation of ['report', 'archive', 'materialized-candidate', 'historical', 'r3-result', 'r3-binding', 'r3-event', 'r3-ambiguous']) {
   test('local evidence reader refuses altered ' + mutation, t => {

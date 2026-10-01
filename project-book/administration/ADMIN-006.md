@@ -4,7 +4,7 @@
 |---|---|
 | **Document ID** | ADMIN-006 |
 | **Titre** | Architecture d’exécution multi-compte pour les modules privés |
-| **Version** | 0.62.0 |
+| **Version** | 0.62.1 |
 | **Statut** | D4-C — R4 préparée localement, LocalCheck Windows requis ; Google interdit |
 | **Nature** | Incident, cadrage fonctionnel, architecture et sécurité |
 | **Propriétaire** | Product Owner |
@@ -689,6 +689,8 @@ R3 ne doit plus être relancée. Aucun R4 n'est préparé ni autorisé. Une nouv
 
 ### 10.61 Préparation R4 hors ligne et retour à la livraison Git
 
+La validation Windows du commit `aab570ae594995370dfde197b54b6a0d4c0c68a4` s'est arrêtée avec `ARCHIVE_TYPE_INVALID`. Le lecteur R4 exigeait `type` dans l'archive historique D4C, qui ne possède pas ce champ. Le défaut a été reproduit localement puis corrigé sous autorisation locale distincte : formats D4B/D4C séparés, rôle portail exigé pour D4C, contrôles de type D4B et empreintes conservés. Les tests utilisent désormais les deux schémas réels et des événements UUID ; 71/71 hors ligne. La publication de cette correction dans #226 a ensuite reçu une validation distincte ; aucun nouvel essai Windows n'est exécuté. Voir `tools/admin006/R4-ARCHIVE-CORRECTION.md`.
+
 La conception R4 a été validée, puis sa préparation locale et sa publication dans la branche de #226 ont reçu des autorisations distinctes. Cela remplace uniquement l'interdiction de préparation R4 mentionnée dans la section précédente. R1/R2/R3 restent interdites de nouvelle exécution. Aucun Google, merge, production ou D5 n'est autorisé.
 
 Le lanceur R4 expose exclusivement `LocalCheck` ; aucun transport Google natif n'est livré. Les 59 tests hors ligne passent sous Node 24.19.0/Linux. Ils couvrent visibilité tardive R1 sans création, comparaison canonique R2 indépendante de `.gs/.js`, présence des fonctions R3, interruptions, confirmations perdues, nettoyage partiel et conflits. La fixture candidate contient les 279 fichiers réels de #146 ; le HEAD historique et les rapports R3 utilisés dans les tests sont synthétiques. Les dossiers protégés Windows réels n'ont pas été lus ici.
@@ -738,6 +740,7 @@ Dernier état de production rapporté, sans nouvelle interrogation de production
 
 | Version | Date | Évolution |
 |---|---|---|
+| 0.62.1 | 2026-10-01 | Arrêt Windows ARCHIVE_TYPE_INVALID reproduit, contrat D4C corrigé et 71/71 tests ; publication distinctement autorisée, nouveau Windows en attente |
 | 0.62.0 | 2026-10-01 | Préparation R4 hors ligne 59/59, livraison Git exacte et contrôles LF ; LocalCheck Windows requis, transport Google absent et aucune autorisation distante |
 | 0.61.0 | 2026-10-01 | R3 arrêtée après bascule vers 10 car les fonctions opérateur étaient absentes du HEAD historique ; AUDIT, `OMcZ9gl@8` et code restaurés exactement, R3 interdite et aucune R4 autorisée |
 | 0.60.0 | 2026-09-29 | LocalCheck Windows R3 conforme à 56/56 ; session R2 et inventaire canonique version 10 liés, baseline `OMcZ9gl@8`, aucune opération ni autorisation distante |

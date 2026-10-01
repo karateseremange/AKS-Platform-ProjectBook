@@ -81,16 +81,23 @@ function scan(root) {
   });
   const files = walk(root, ''); inventory(files); return files;
 }
-function archiveFiles(file, digest, target = PIN.target) {
+function archiveFiles(file, digest, target = PIN.target, expectedFormat = null) {
   const raw = fs.readFileSync(file); check(hash(raw) === digest, 'ARCHIVE_HASH_MISMATCH');
   const value = JSON.parse(raw.toString('utf8'));
   check(['AKS-D4B-SNAPSHOT/1', 'AKS-D4C-READONLY-SNAPSHOT/1'].includes(value.format) &&
-    value.target === target && Array.isArray(value.files), 'ARCHIVE_FORMAT_INVALID');
+    value.target === target && Array.isArray(value.files) &&
+    (expectedFormat === null || value.format === expectedFormat), 'ARCHIVE_FORMAT_INVALID');
+  const historical = value.format === 'AKS-D4C-READONLY-SNAPSHOT/1';
+  if (historical) check(value.role === 'portal', 'ARCHIVE_ROLE_INVALID');
   const files = value.files.map(f => {
     const bytes = Buffer.from(f.base64 || '', 'base64');
     check(typeof f.base64 === 'string' && bytes.toString('base64') === f.base64 && hash(bytes) === f.sha256 &&
       Buffer.from(bytes.toString('utf8')).equals(bytes), 'ARCHIVE_CONTENT_INVALID');
-    const row = {name: f.name, bytes}; check(inventory([row])[0].type === f.type, 'ARCHIVE_TYPE_INVALID'); return row;
+    const row = {name: f.name, bytes}, type = inventory([row])[0].type;
+    // D4C's producer omits type; D4B's producer requires it. Never relax D4B.
+    check(historical ? !Object.prototype.hasOwnProperty.call(f, 'type') || f.type === type : f.type === type,
+      'ARCHIVE_TYPE_INVALID');
+    return row;
   });
   inventory(files); return files;
 }
@@ -125,7 +132,7 @@ function loadLocal(options, pin = PIN) {
   check(report.candidate === pin.candidate && report.target === pin.target && report.packageSha256 === pin.source &&
     report.packageArchiveSha256 === pin.archive && report.sourceFiles === pin.candidateFiles && report.packageFiles === pin.candidateFiles &&
     report.status === 'LOCAL_WEBAPP_PACKAGE_PREPARED_REMOTE_REVIEW_REQUIRED', 'PACKAGE_REPORT_MISMATCH');
-  const candidate = archiveFiles(path.join(dir, 'candidate-bundle.json'), pin.archive);
+  const candidate = archiveFiles(path.join(dir, 'candidate-bundle.json'), pin.archive, pin.target, 'AKS-D4B-SNAPSHOT/1');
   check(candidate.length === pin.candidateFiles && sourceDigest(candidate) === pin.source, 'PACKAGE_SOURCE_MISMATCH');
   manifest(candidate, pin.manifest); functionsPresent(candidate);
   const installed = scan(path.join(dir, 'candidate', 'src'));
@@ -133,7 +140,7 @@ function loadLocal(options, pin = PIN) {
   const backup = scan(path.join(dir, 'historical-rollback', 'src'));
   check(backup.length === pin.historicalFiles && sourceDigest(backup) === pin.historicalSource &&
     hash(backup.find(f => f.name === 'appsscript.json')?.bytes || '') === pin.historicalManifest, 'LOCAL_ROLLBACK_MISMATCH');
-  check(same(backup, archiveFiles(path.join(dir, 'historical-c1-bundle.json'), pin.historicalArchive)), 'ROLLBACK_ARCHIVE_MISMATCH');
+  check(same(backup, archiveFiles(path.join(dir, 'historical-c1-bundle.json'), pin.historicalArchive, pin.target, 'AKS-D4C-READONLY-SNAPSHOT/1')), 'ROLLBACK_ARCHIVE_MISMATCH');
   check(!fs.existsSync(path.join(dir, '.clasp.json')) && !fs.existsSync(path.join(dir, 'candidate', '.clasp.json')), 'CLASP_CONFIGURATION_REFUSED');
   const r3 = fs.realpathSync(options['r3-session']); check(path.basename(r3) === pin.r3Session, 'WRONG_R3_SESSION');
   const binding = readJson(path.join(r3, 'session.json')).binding;
